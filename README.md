@@ -2,7 +2,7 @@
 
 ## HumanEval-X Benchmark Usage
 ### Code generation
-1. Use the dataset at `benchmark/CodeGeeX/benchmark/humaneval-x/js/data/humaneval_js.jsonl` for code generation. An example data entry is as follows:
+1. Use the dataset at `benchmark/CodeGeeX/codegeex/benchmark/humaneval-x/js/data/humaneval_js.jsonl` for code generation. An example data entry is as follows:
 ```json
 {
     "task_id": "JavaScript/0", 
