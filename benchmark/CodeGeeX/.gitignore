@@ -1,0 +1,5 @@
+.vscode/
+input_data/
+build/
+__pycache__/
+codegeex.egg-info/

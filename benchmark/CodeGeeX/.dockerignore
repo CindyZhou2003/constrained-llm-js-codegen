@@ -1,0 +1,10 @@
+.git
+.gitignore
+
+.dockerignore
+Dockerfile
+
+build/
+.vscode/
+codegeex.egg-info/
+input_data/
