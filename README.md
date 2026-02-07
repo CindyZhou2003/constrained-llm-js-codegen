@@ -42,3 +42,33 @@
    ```bash
    exit
    ```
+
+
+## MultiPL-E
+### Code generation
+1. After running the following code, we can generate the target languange prompts:
+``` bash
+python prepare_prompts_for_hfhub.py
+ --lang humaneval_to_js.py # replace
+ --doctests transform
+ --prompt-terminology reworded
+ --output jsonl:../datasets/js_prompts.jsonl # replace
+ --original-dataset humaneval
+ --originals ../datasets/originals-with-cleaned-doctests
+```
+(baseline can just skip the step)
+
+2. Use the dataset in `benchmark\MultiPL-E\datasets\js_prompts.jsonl` for code generation.
+   
+   ``` python
+   python automodel.py
+   --name bigcode/starcoder2-3b
+   --root-dataset humaneval
+   --lang js
+   --temperature 0.2
+   --batch-size 8
+   --completion-limit 20
+   --output-dir-prefix experiment
+   ```
+3. To use Syncode to generate results, see the syncode repo.
+   
