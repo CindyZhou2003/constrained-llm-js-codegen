@@ -1,4 +1,4 @@
-# constrained-llm-js-codegen
+# Constrained-llm-js-codegen
 
 ## HumanEval-X Benchmark Usage
 ### Code generation
@@ -46,29 +46,37 @@
 
 ## MultiPL-E
 ### Code generation
-1. After running the following code, we can generate the target languange prompts:
+1. Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target languange prompts(change the lang and output if needed):
 ``` bash
 python prepare_prompts_for_hfhub.py
- --lang humaneval_to_js.py # replace
+ --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
  --doctests transform
  --prompt-terminology reworded
- --output jsonl:../datasets/js_prompts.jsonl # replace
+ --output jsonl:../datasets/js_prompts.jsonl # translated dataset file
  --original-dataset humaneval
  --originals ../datasets/originals-with-cleaned-doctests
 ```
 (baseline can just skip the step)
 
-2. Use the dataset in `benchmark\MultiPL-E\datasets\js_prompts.jsonl` for code generation.
-   
-   ``` python
+2. Code generation for baseline models 
+```bash
    python automodel.py
-   --name bigcode/starcoder2-3b
+   --name microsoft/phi-2 # model name
    --root-dataset humaneval
-   --lang js
-   --temperature 0.2
-   --batch-size 8
-   --completion-limit 20
-   --output-dir-prefix experiment
-   ```
-3. To use Syncode to generate results, see the syncode repo.
-   
+   --lang js # language
+   --temperature 0.2 # the randomness and creativity of LLMs
+   --batch-size 1 #change batchsize if needed
+   --completion-limit 1 # number of times a model can try for one problem
+   --output-dir-prefix tutorial # output dir
+```
+
+3. To use Syncode(or other constrained models) to generate results, we need to use the dataset in step 1, eg `benchmark\MultiPL-E\datasets\js_prompts.jsonl`. Go to the syncode repo and run the `syncode_generate.py`.
+
+### Evaluation
+1. Gp to the directory `constrained-llm-js-codegen\benchmark\MultiPL-E`
+2. Pull the image: `docker pull ghcr.io/nuprl/multipl-e-evaluation`
+3. Tag the image as `multipl-e-val` using command: `docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval`
+4. Run the evaluation command for specific dataset: `docker run --rm --network none -v "Your_generation_results_directory:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive`
+   eg, `docker run --rm --network none -v "D:/code/constrained-llm-js-codegen/benchmark/MultiPL-E/tutorial/humaneval-js-microsoft_phi_2-0.2-reworded:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive`
+   This maps your data to the tutortial directory(absolute path) in Docker.
+5. Get the test results: `python pass_k.py Your_generation_results_directory`, eg`python pass_k.py tutorial/humaneval-js-microsoft_phi_2-0.2-reworded`
