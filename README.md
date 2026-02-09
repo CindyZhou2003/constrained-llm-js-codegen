@@ -3,20 +3,20 @@
 ## HumanEval-X Benchmark Usage
 ### Code generation
 1. Use the dataset at `benchmark/CodeGeeX/codegeex/benchmark/humaneval-x/js/data/humaneval_js.jsonl` for code generation. An example data entry is as follows:
-```json
-{
-    "task_id": "JavaScript/0", 
-    "prompt": "/* Check if in given list of numbers, are any two numbers closer to each other than\n  given threshold.\n  >>> hasCloseElements([1.0, 2.0, 3.0], 0.5)\n  false\n  >>> hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n  true\n  */\nconst hasCloseElements = (numbers, threshold) => {\n", 
-    "canonical_solution": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n", 
-    "test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) === true)\n  console.assert(\n    hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) === false\n  )\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) === true)\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) === false)\n  console.assert(hasCloseElements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) === false)\n}\n\ntestHasCloseElements()\n", 
-    "declaration": "\nconst hasCloseElements = (numbers, threshold) => {\n", 
-    "example_test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.0], 0.5) === false)\n  console.assert(\n    hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) === true\n  )\n}\ntestHasCloseElements()\n"
-}
-```
+   ```json
+   {
+      "task_id": "JavaScript/0", 
+      "prompt": "/* Check if in given list of numbers, are any two numbers closer to each other than\n  given threshold.\n  >>> hasCloseElements([1.0, 2.0, 3.0], 0.5)\n  false\n  >>> hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n  true\n  */\nconst hasCloseElements = (numbers, threshold) => {\n", 
+      "canonical_solution": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n", 
+      "test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) === true)\n  console.assert(\n    hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) === false\n  )\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) === true)\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) === false)\n  console.assert(hasCloseElements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) === false)\n}\n\ntestHasCloseElements()\n", 
+      "declaration": "\nconst hasCloseElements = (numbers, threshold) => {\n", 
+      "example_test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.0], 0.5) === false)\n  console.assert(\n    hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) === true\n  )\n}\ntestHasCloseElements()\n"
+   }
+   ```
 2. Store the generated code under `benchmark/CodeGeeX/input_data`. Each **line** of the file should be a JSON object with `task_id` and `generation` fields. An example line in the file is as follows:
-```json
-{"task_id": "JavaScript/0", "generation": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n"}
-```
+   ```json
+   {"task_id": "JavaScript/0", "generation": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n"}
+   ```
 ### Evaluation
 1. Change directory to `benchmark/CodeGeeX`
    ```bash
@@ -35,9 +35,9 @@
     ./scripts/evaluate_humaneval_x.sh input_data/<filename> js
     ```
 5. The evaluation results will be appended to each line of the input file. An example output line is as follows:
-```json
-{"task_id": "JavaScript/0", "completion_id": 0, "test_code": "...", "prompt": "...", "generation": "...", "result": "failed: ...", "passed": false, "finish": -1, "file": "", "output": []}
-```
+   ```json
+   {"task_id": "JavaScript/0", "completion_id": 0, "test_code": "...", "prompt": "...", "generation": "...", "result": "failed: ...", "passed": false, "finish": -1, "file": "", "output": []}
+   ```
 6. Exit the Docker container and the data is available in the `benchmark/CodeGeeX/input_data` directory.
    ```bash
    exit
@@ -47,36 +47,53 @@
 ## MultiPL-E
 ### Code generation
 1. Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target languange prompts(change the lang and output if needed):
-``` bash
-python prepare_prompts_for_hfhub.py
- --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
- --doctests transform
- --prompt-terminology reworded
- --output jsonl:../datasets/js_prompts.jsonl # translated dataset file
- --original-dataset humaneval
- --originals ../datasets/originals-with-cleaned-doctests
-```
+   ``` bash
+   python prepare_prompts_for_hfhub.py
+      --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
+      --doctests transform
+      --prompt-terminology reworded
+      --output jsonl:../datasets/js_prompts.jsonl # translated dataset file
+      --original-dataset humaneval
+      --originals ../datasets/originals-with-cleaned-doctests
+   ```
 (baseline can just skip the step)
 
 2. Code generation for baseline models 
-```bash
+   ```bash
    python automodel.py
-   --name microsoft/phi-2 # model name
-   --root-dataset humaneval
-   --lang js # language
-   --temperature 0.2 # the randomness and creativity of LLMs
-   --batch-size 1 #change batchsize if needed
-   --completion-limit 1 # number of times a model can try for one problem
-   --output-dir-prefix tutorial # output dir
-```
+      --name microsoft/phi-2 # model name
+      --root-dataset humaneval
+      --lang js # language
+      --temperature 0.2 # the randomness and creativity of LLMs
+      --batch-size 1 #change batchsize if needed
+      --completion-limit 1 # number of times a model can try for one problem
+      --output-dir-prefix tutorial # output dir
+   ```
 
-3. To use Syncode(or other constrained models) to generate results, we need to use the dataset in step 1, eg `benchmark\MultiPL-E\datasets\js_prompts.jsonl`. Go to the syncode repo and run the `syncode_generate.py`.
+3. To use Syncode (or other constrained models) to generate results, use the dataset from step 1, e.g. `benchmark/MultiPL-E/datasets/js_prompts.jsonl`. Go to the Syncode repo and run `syncode_generate.py`.
 
 ### Evaluation
-1. Gp to the directory `constrained-llm-js-codegen\benchmark\MultiPL-E`
-2. Pull the image: `docker pull ghcr.io/nuprl/multipl-e-evaluation`
-3. Tag the image as `multipl-e-val` using command: `docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval`
-4. Run the evaluation command for specific dataset: `docker run --rm --network none -v "Your_generation_results_directory:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive`
-   eg, `docker run --rm --network none -v "D:/code/constrained-llm-js-codegen/benchmark/MultiPL-E/tutorial/humaneval-js-microsoft_phi_2-0.2-reworded:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive`
-   This maps your data to the tutortial directory(absolute path) in Docker.
-5. Get the test results: `python pass_k.py Your_generation_results_directory`, eg`python pass_k.py tutorial/humaneval-js-microsoft_phi_2-0.2-reworded`
+1. Go to the MultiPL-E directory:
+   ```bash
+   cd benchmark/MultiPL-E
+   ```
+2. Pull the evaluation image:
+   ```bash
+   docker pull ghcr.io/nuprl/multipl-e-evaluation
+   ```
+3. Tag the image as `multipl-e-eval`:
+   ```bash
+   docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
+   ```
+4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `humaneval-*.jsonl.gz` files):
+   ```bash
+   docker run --rm --network none \
+     -v "/absolute/path/to/results:/tutorial:rw" \
+     multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
+   ```
+   This maps your local results directory to `/tutorial` inside the Docker container.
+5. Compute pass@k metrics on the evaluated results:
+   ```bash
+   cd benchmark/MultiPL-E
+   python pass_k.py /absolute/path/to/results
+   ```
