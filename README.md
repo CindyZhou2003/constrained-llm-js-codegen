@@ -1,5 +1,9 @@
 # Constrained-llm-js-codegen
 
+## Setup
+
+Create a python virtual environment and install all the packages in `requirements.txt`.
+
 ## HumanEval-X Benchmark Usage
 ### Code generation
 1. Use the dataset at `benchmark/CodeGeeX/codegeex/benchmark/humaneval-x/js/data/humaneval_js.jsonl` for code generation. An example data entry is as follows:
@@ -13,7 +17,7 @@
       "example_test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.0], 0.5) === false)\n  console.assert(\n    hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) === true\n  )\n}\ntestHasCloseElements()\n"
    }
    ```
-2. Store the generated code under `benchmark/CodeGeeX/input_data`. Each **line** of the file should be a JSON object with `task_id` and `generation` fields. An example line in the file is as follows:
+2. Use the `benchmark/CodeGeeX/test_generate.py` to generate code and store the code under `benchmark/CodeGeeX/input_data`. Each **line** of the file should be a JSON object with `task_id` and `generation` fields. An example line in the file is as follows:
    ```json
    {"task_id": "JavaScript/0", "generation": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n"}
    ```
@@ -32,7 +36,7 @@
    ```
 4. Inside the container, run the evaluation script to evaluate the generated code. 
     ```bash
-    ./scripts/evaluate_humaneval_x.sh input_data/<filename> js
+    ./scripts/evaluate_humaneval_x.sh input_data/generations.jsonl js
     ```
 5. The evaluation results will be appended to each line of the input file. An example output line is as follows:
    ```json
