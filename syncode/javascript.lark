@@ -1,0 +1,209 @@
+// JavaScript Grammar
+
+start: js_script_module
+
+js_script_module: top_level+
+
+top_level: function_declaration
+         | class_declaration
+         | declaration_statement
+         | export_statement
+         | import_statement
+         | if_statement
+         | for_statement
+         | for_in_statement
+         | for_of_statement
+         | switch_statement
+         | try_catch_finally_statement
+
+// ------------------------------------------
+// Statements (Inside functions, expressions ARE allowed)
+// ------------------------------------------
+
+statement: expression_statement
+         | declaration_statement
+         | if_statement
+         | switch_statement
+         | for_statement
+         | for_in_statement
+         | for_of_statement
+         | do_while_statement
+         | control_flow_statement
+         | try_catch_finally_statement
+         | with_statement
+         | compound_statement
+
+// Expression Statements cannot start with '{', 'function', or 'class'
+expression_statement: expr_safe ";"?
+
+function_declaration: "async"? "function" "*"? IDENTIFIER function_params_postfix compound_statement
+class_declaration: "class" IDENTIFIER ("extends" expression)? class_body
+class_body: "{" class_member* "}"
+class_member: ("static" | "getter" | "setter" | "public" | "private")? (class_method | class_property)
+class_property: "#"? IDENTIFIER ("=" expression)? ";"?
+class_method: "#"? IDENTIFIER function_params_postfix compound_statement
+compound_statement: "{" statement* "}"
+
+export_statement: "export" "default"? (declaration_statement | function_declaration | class_declaration)
+                | "export" "default" expression ";"
+                | "export" module_element ("from" module_element)? ";"?
+import_statement: "import" module_element ";"?
+                | "import" paren_enclosed_string ";"?
+                | "import" module_element "from" module_element ";"?
+
+with_statement: "with" "(" expression ")" compound_statement
+try_catch_finally_statement: "try" compound_statement ("catch" ("(" expression ")")? compound_statement)? ("finally" compound_statement)?
+control_flow_statement: "break" ";"? | "continue" ";"? | "return" expression ";"? | "throw" expression ";"?
+do_while_statement: "do" compound_statement "while" "(" expression ")" ";"?
+for_of_statement: "for" "(" expression "of" expression ")" compound_statement
+for_in_statement: "for" "(" expression "in" expression ")" compound_statement
+for_statement: "for" "(" (var_decl | expression)? ";" expression? ";" expression? ")" compound_statement
+switch_statement: "switch" "(" expression ")" "{" case_clause* "}"
+case_clause: "case" expression ":" statement* | "default" ":" statement*
+if_statement: "if" "(" expression ")" compound_statement ("else" if_statement | "else" compound_statement)? 
+declaration_statement: var_decl ";"?
+var_decl: ("var" | "let" | "const" | "static") lvalue "=" expression
+
+lvalue: member_expression
+
+// Expression Grammar
+
+expression: expr_safe | expr_func | expr_obj
+
+// Level 1: Assignment (Lowest Priority)
+expr_safe: unary_safe assignment_operator expression -> assignment
+         | ternary_safe
+expr_func: unary_func assignment_operator expression -> assignment
+         | ternary_func
+expr_obj:  unary_obj  assignment_operator expression -> assignment
+         | ternary_obj
+
+assignment_operator: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "**=" 
+                   | ">>=" | "<<=" | ">>>=" | "&=" | "^=" | "&&=" | "||=" | "??="
+
+// Level 2: Ternary
+ternary_safe: logic_safe "?" expression ":" expression | logic_safe
+ternary_func: logic_func "?" expression ":" expression | logic_func
+ternary_obj:  logic_obj  "?" expression ":" expression | logic_obj
+
+// Level 3: Logical (||, &&, ??)
+logic_safe: logic_safe logic_op compare_expr | compare_safe
+logic_func: logic_func logic_op compare_expr | compare_func
+logic_obj:  logic_obj  logic_op compare_expr | compare_obj
+logic_op: "||" | "&&" | "??"
+
+// Level 4: Comparison (==, <, >, in)
+compare_safe: compare_safe compare_op sum_expr | sum_safe
+compare_func: compare_func compare_op sum_expr | sum_func
+compare_obj:  compare_obj  compare_op sum_expr | sum_obj
+compare_op: "==" | "===" | "!=" | "!==" | "<" | "<=" | ">" | ">=" | "instanceof" | "in"
+
+// Level 5: Sum (+, -)
+sum_safe: sum_safe sum_op product_expr | product_safe
+sum_func: sum_func sum_op product_expr | product_func
+sum_obj:  sum_obj  sum_op product_expr | product_obj
+sum_op: "+" | "-"
+
+// Level 6: Product (*, /, %)
+product_safe: product_safe product_op unary_expression | unary_safe
+product_func: product_func product_op unary_expression | unary_func
+product_obj:  product_obj  product_op unary_expression | unary_obj
+product_op: "*" | "/" | "%" | "**"
+
+// Helper to bridge the split chains back to unified expressions for the right-hand side
+compare_expr: compare_safe | compare_func | compare_obj
+sum_expr: sum_safe | sum_func | sum_obj
+product_expr: product_safe | product_func | product_obj
+
+// --- Unary ---
+unary_expression: unary_safe | unary_func | unary_obj
+unary_operator: "+" | "-" | "++" | "--" | "!" | "~" | "typeof" | "void" | "delete" | "await"
+
+unary_safe: prefix_expression | member_safe
+unary_func: member_func
+unary_obj:  member_obj
+
+prefix_expression: unary_operator unary_expression
+
+// --- Member / Postfix ---
+member_expression: member_safe | member_func | member_obj
+
+member_safe: primary_safe postfix_modifier*
+member_func: primary_func postfix_modifier*
+member_obj:  primary_obj  postfix_modifier*
+
+postfix_modifier: "[" expression "]"
+                | "." IDENTIFIER
+                | "(" comma_separated_expressions? ")"
+                | "++" | "--" | "?"
+
+// --- Primary ---
+
+primary_safe: IDENTIFIER
+            | lexical_literal
+            | TEMPLATE_LITERAL
+            | array_literal
+            | paren_enclosed_expression
+            | arrow_expression_safe
+            | "this"
+            | "new" expression
+
+primary_func: function_expression
+            | class_expression
+
+primary_obj: object_literal
+
+
+paren_enclosed_expression: "(" expression? ")"
+
+object_literal: "{" comma_separated_properties? "}"
+comma_separated_properties: property ("," property)*
+property: (IDENTIFIER ":")? expression
+
+function_expression: "async"? "function" function_params_postfix compound_statement
+class_expression: "class" class_body
+
+// Split Arrow to avoid collision
+arrow_expression_safe: IDENTIFIER "=>" arrow_body 
+                     | "(" comma_separated_expressions? ")" "=>" arrow_body
+arrow_body: compound_statement 
+          | expr_safe 
+          | expr_func
+
+lexical_literal: "null" | "undefined" | "true" | "false" 
+               | INTEGER_LITERAL | FLOAT_LITERAL | STRING_LITERAL | REGEX_LITERAL | BIGINT_LITERAL
+
+array_literal: "[" comma_separated_expressions? "]"
+
+comma_separated_expressions: expression ("," expression)*
+
+function_params_postfix: "(" comma_separated_function_params? ")"
+comma_separated_function_params: function_parameter ("," function_parameter)*
+function_parameter: IDENTIFIER ("=" expression)? | object_literal
+
+module_element: module_names | curly_enclosed_module_names
+paren_enclosed_string: "(" STRING_LITERAL ")"
+curly_enclosed_module_names: "{" comma_separated_module_names "}"
+comma_separated_module_names: module_names ("," module_names)*
+module_names: IDENTIFIER | identifier_as_another | STRING_LITERAL
+identifier_as_another: IDENTIFIER "as" IDENTIFIER
+
+// Lexical Grammar
+
+IDENTIFIER: CNAME
+REGEX_LITERAL: /\/[^\n\/]+\/[gimsuy]*/
+BIGINT_LITERAL: /\d+n/
+FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/
+INTEGER_LITERAL: /0[bB][01]+/ | /0[oO][0-7]+/ | /0[xX][0-9a-fA-F]+/ | /\d+/
+STRING_LITERAL: /'[^']*'/ | /"[^"]*"/
+TEMPLATE_LITERAL: /`([^`\\]*(\\.[^`\\]*)*)`/
+
+LINE_COMMENT: /\/\/[^\n\r]*/
+BLOCK_COMMENT: /\/\*[\s\S]*?\*\//
+
+%import common.CNAME
+%import common.DIGIT
+%import common.WS
+%ignore WS
+%ignore LINE_COMMENT
+%ignore BLOCK_COMMENT

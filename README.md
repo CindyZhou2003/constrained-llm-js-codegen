@@ -51,15 +51,26 @@ Create a python virtual environment and install all the packages in `requirement
 ## MultiPL-E
 ### Code generation
 1. Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target languange prompts(change the lang and output if needed):
+   For humaneval dataset, we got a total 164 test cases:
+
    ``` bash
    python prepare_prompts_for_hfhub.py
       --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
       --doctests transform
       --prompt-terminology reworded
-      --output jsonl:../datasets/js_prompts.jsonl # translated dataset file
+      --output jsonl:../datasets/js_prompts_humaneval.jsonl # translated dataset file
       --original-dataset humaneval
-      --originals ../datasets/originals-with-cleaned-doctests
+      --originals ../datasets/originals-with-cleaned-doctests # original data dir
    ```
+
+   For mbpp dataset, we got a total 397 test cases:
+
+   ```bash
+   python prepare_prompts_for_hfhub.py --lang humaneval_to_js.py --doctests transform --prompt-terminology reworded --output jsonl:../datasets/js_prompts_mbpp.jsonl --originals ../datasets/mbpp-typed --original-dataset mbpp
+   ```
+
+   Both of them are in `./benchmark/MultiPL-E/datasets`.
+   
 (baseline can just skip the step)
 
 2. Code generation for baseline models 
@@ -74,7 +85,7 @@ Create a python virtual environment and install all the packages in `requirement
       --output-dir-prefix tutorial # output dir
    ```
 
-3. To use Syncode (or other constrained models) to generate results, use the dataset from step 1, e.g. `benchmark/MultiPL-E/datasets/js_prompts.jsonl`. Go to the Syncode repo and run `syncode_generate.py`.
+3. To use Syncode (or other constrained models) to generate results, use the dataset from step 1, e.g. `benchmark/MultiPL-E/datasets/js_prompts_humaneval.jsonl`. Go to the Syncode dir and run `syncode_generate.py`.
 
 ### Evaluation
 1. Go to the MultiPL-E directory:
