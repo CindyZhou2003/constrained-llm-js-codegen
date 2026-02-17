@@ -32,7 +32,7 @@ Create a python virtual environment and install all the packages in `requirement
    ``` 
 3. Run the Docker container `jseval` and mount the `benchmark/CodeGeeX/input_data` directory to `/workspace/CodeGeeX/input_data` in the container
    ```bash
-    docker run -it --mount type=bind,source=./input_data,target=/workspace/CodeGeeX/input_data --name jseval humanevalx
+   docker run -it --mount type=bind,source=./input_data,target=/workspace/CodeGeeX/input_data --name jseval humanevalx
    ```
 4. Inside the container, run the evaluation script to evaluate the generated code. 
     ```bash
@@ -69,11 +69,11 @@ Create a python virtual environment and install all the packages in `requirement
    python prepare_prompts_for_hfhub.py --lang humaneval_to_js.py --doctests transform --prompt-terminology reworded --output jsonl:../datasets/js_prompts_mbpp.jsonl --originals ../datasets/mbpp-typed --original-dataset mbpp
    ```
 
-   Both of them are in `./benchmark/MultiPL-E/datasets`.
+   You can find them in `./datasets`.
    
 (baseline can just skip the step)
 
-2. Code generation for baseline models 
+2. Code generation for baseline models:
    ```bash
    python automodel.py
       --name microsoft/phi-2 # model name
@@ -85,7 +85,17 @@ Create a python virtual environment and install all the packages in `requirement
       --output-dir-prefix tutorial # output dir
    ```
 
-3. To use Syncode (or other constrained models) to generate results, use the dataset from step 1, e.g. `benchmark/MultiPL-E/datasets/js_prompts_humaneval.jsonl`. Go to the Syncode dir and run `syncode_generate.py`.
+3. Code generation for all kinds of datasets and models:
+   ```bash
+      python code_evaluation.py 
+      --model microsoft/phi-2  # model name
+      --input_file datasets/js_prompts_mbpp.jsonl # input file
+      --mode syncode # "unconstrained" or "syncode"
+      --grammar syncode/javascript.lark # extra file for constrained models, unnecessary for unconstrained ones
+      --dataset_name mbpp # "huamaneval" or "mbpp"
+      --output_base results # ouput dir
+   ```
+
 
 ### Evaluation
 1. Go to the MultiPL-E directory:
@@ -100,7 +110,7 @@ Create a python virtual environment and install all the packages in `requirement
    ```bash
    docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
    ```
-4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `humaneval-*.jsonl.gz` files):
+4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `*.jsonl.gz` files):
    ```bash
    docker run --rm --network none \
      -v "/absolute/path/to/results:/tutorial:rw" \
@@ -109,6 +119,5 @@ Create a python virtual environment and install all the packages in `requirement
    This maps your local results directory to `/tutorial` inside the Docker container.
 5. Compute pass@k metrics on the evaluated results:
    ```bash
-   cd benchmark/MultiPL-E
    python pass_k.py /absolute/path/to/results
    ```
