@@ -1,8 +1,119 @@
 # Constrained-llm-js-codegen
 
+## Project Structure
+
+`code_generator.py`: The core library and router. It handles model initialization and provides a CLI for raw code generation.
+
+`code_evaluation.py`: The evaluation wrapper. It processes .jsonl datasets (like MBPP or HumanEval) and outputs files in the compressed .json.gz format required for the MultiPL-E eval pipeline.
+
+`generators/`: A subdirectory containing the specific implementation strategies (e.g., `hf_generator.py` and `syncode_generator.py`).
+
+`datasets/`: The directory that contains datasets of prompts we use to generate code.
+
+`results/`: The directory that stores the results of code generation and evaluation for different models.
+
 ## Setup
 
 Create a python virtual environment and install all the packages in `requirements.txt`.
+Requires Python 3.10+.
+
+```bash
+   python -m venv .venv
+   source .venv/bin/activate  # Windows use: .venv\Scripts\activate
+   pip install -r requirements.txt
+```
+
+## MultiPL-E benchmark
+
+We use MultiPL-E framework(`./benchmark/MultiPL-E`) to evaluate the code accuracy.
+
+### Code generation
+
+#### Generate target prompts
+
+Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target language prompts(change the lang and output directory if needed):
+
+For humaneval dataset, we got a total 164 test cases:
+
+``` bash
+   python prepare_prompts_for_hfhub.py
+      --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
+      --doctests transform
+      --prompt-terminology reworded
+      --output jsonl:../datasets/js_prompts_humaneval.jsonl # translated dataset file
+      --original-dataset humaneval
+      --originals ../datasets/originals-with-cleaned-doctests # original data dir
+   ```
+
+   For MBPP dataset, we got a total 397 test cases:
+
+   ```bash
+   python prepare_prompts_for_hfhub.py --lang humaneval_to_js.py --doctests transform --prompt-terminology reworded --output jsonl:../datasets/js_prompts_mbpp.jsonl --originals ../datasets/mbpp-typed --original-dataset mbpp
+   ```
+
+   The translated javascript prompts are already in `./datasets`.
+
+#### Basic Generation
+   
+Use the `code_generator.py` CLI to quickly test how a model handles prompts. It reads a `.jsonl` file but outputs plain text files (or prints to the terminal).
+
+
+```bash
+python code_generator.py
+  --model microsoft/phi-2 # model name
+  --input_file datasets/js_prompts_mbpp.jsonl
+  --mode syncode  # "unconstrained" or "syncode"
+  --grammar javascript 
+  --output_dir ./raw_outputs/ # output dir
+```
+
+**Input**: `.jsonl` file.
+**Output**: Individual `.js` files containing only the code.
+
+#### Batch Evaluation
+
+Use the the `code_evaluation.py`.It processes the same `.jsonl` file but follows the strict MultiPL-E formatting and compression rules required for scoring.
+
+```bash
+   python code_evaluation.py 
+      --model microsoft/phi-2  # model name
+      --input_file datasets/js_prompts_mbpp.jsonl # input file
+      --mode syncode # "unconstrained" or "syncode"
+      --grammar syncode/javascript.lark # extra grammar file for constrained models, unnecessary for unconstrained ones
+      --dataset_name mbpp # "humaneval" or "mbpp"
+      --output_base results # ouput dir
+   ```
+**Input**: `.jsonl` file and possible grammar file
+
+**Output**: Compressed `.json.gz` files containing code, task IDs, and prompt metadata.
+
+### Evaluation
+
+1. Go to the MultiPL-E directory:
+```bash
+   cd benchmark/MultiPL-E
+   ```
+2. Pull the evaluation image:
+```bash
+   docker pull ghcr.io/nuprl/multipl-e-evaluation
+   ```
+3. Tag the image as `multipl-e-eval`:
+```bash
+   docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
+   ```
+4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `*.jsonl.gz` files):
+```bash
+   docker run --rm --network none \
+     -v "/absolute/path/to/results:/tutorial:rw" \
+     multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
+   ```
+   This maps your local results directory to `/tutorial` inside the Docker container.
+
+5. Compute pass@k metrics on the evaluated results:
+```bash
+   python pass_k.py /absolute/path/to/results
+   ```
+   After running `pass_k.py`, it will output related `.results.json.gz` files in your results directory.
 
 ## HumanEval-X Benchmark Usage
 ### Code generation
@@ -45,79 +156,4 @@ Create a python virtual environment and install all the packages in `requirement
 6. Exit the Docker container and the data is available in the `benchmark/CodeGeeX/input_data` directory.
    ```bash
    exit
-   ```
-
-
-## MultiPL-E
-### Code generation
-1. Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target languange prompts(change the lang and output if needed):
-   For humaneval dataset, we got a total 164 test cases:
-
-   ``` bash
-   python prepare_prompts_for_hfhub.py
-      --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
-      --doctests transform
-      --prompt-terminology reworded
-      --output jsonl:../datasets/js_prompts_humaneval.jsonl # translated dataset file
-      --original-dataset humaneval
-      --originals ../datasets/originals-with-cleaned-doctests # original data dir
-   ```
-
-   For mbpp dataset, we got a total 397 test cases:
-
-   ```bash
-   python prepare_prompts_for_hfhub.py --lang humaneval_to_js.py --doctests transform --prompt-terminology reworded --output jsonl:../datasets/js_prompts_mbpp.jsonl --originals ../datasets/mbpp-typed --original-dataset mbpp
-   ```
-
-   You can find them in `./datasets`.
-   
-(baseline can just skip the step)
-
-2. Code generation for baseline models:
-   ```bash
-   python automodel.py
-      --name microsoft/phi-2 # model name
-      --root-dataset humaneval
-      --lang js # language
-      --temperature 0.2 # the randomness and creativity of LLMs
-      --batch-size 1 #change batchsize if needed
-      --completion-limit 1 # number of times a model can try for one problem
-      --output-dir-prefix tutorial # output dir
-   ```
-
-3. Code generation for all kinds of datasets and models:
-   ```bash
-      python code_evaluation.py 
-      --model microsoft/phi-2  # model name
-      --input_file datasets/js_prompts_mbpp.jsonl # input file
-      --mode syncode # "unconstrained" or "syncode"
-      --grammar syncode/javascript.lark # extra file for constrained models, unnecessary for unconstrained ones
-      --dataset_name mbpp # "huamaneval" or "mbpp"
-      --output_base results # ouput dir
-   ```
-
-
-### Evaluation
-1. Go to the MultiPL-E directory:
-   ```bash
-   cd benchmark/MultiPL-E
-   ```
-2. Pull the evaluation image:
-   ```bash
-   docker pull ghcr.io/nuprl/multipl-e-evaluation
-   ```
-3. Tag the image as `multipl-e-eval`:
-   ```bash
-   docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
-   ```
-4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `*.jsonl.gz` files):
-   ```bash
-   docker run --rm --network none \
-     -v "/absolute/path/to/results:/tutorial:rw" \
-     multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
-   ```
-   This maps your local results directory to `/tutorial` inside the Docker container.
-5. Compute pass@k metrics on the evaluated results:
-   ```bash
-   python pass_k.py /absolute/path/to/results
    ```

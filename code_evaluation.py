@@ -12,9 +12,13 @@ from code_generator import UnifiedCodeGenerator
 
 def run_evaluation_pipeline(args):
     # Initialize generator API
-    generator = UnifiedCodeGenerator(model_name=args.model)
+    generator = UnifiedCodeGenerator(
+        mode=args.mode, 
+        model_name=args.model, 
+        grammar=args.grammar
+    )
 
-    # 2. 准备输出目录 (符合 MultiPL-E 结构: results/dataset-model-mode/)
+    # ouput dir naming: dataset-js-model-temp-mode
     model_name_clean = args.model.replace("/", "_").replace("-", "_")
     output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
     output_path = Path(args.output_base) / output_dir_name
@@ -29,18 +33,18 @@ def run_evaluation_pipeline(args):
     
     print(f">>> Step 2: Generating Code (Mode: {args.mode})...")
     
-    # 3. 批量生成并保存
+    # generate code for each task
     for task in tqdm(tasks):
-        # 提取字段，兼容不同格式
+        
         task_name = task.get('name', task.get('task_id', task.get('id')))
         prompt = task['prompt']
         stop_tokens = task.get('stop_tokens', ["\nfunction", "\n//", "\n/*"]) # 默认 JS 停止符
         
-        # --- 调用 API ---
+        # unified generation interface
         code = generator.generate(
             prompt=prompt,
             mode=args.mode,
-            grammar=args.grammar, # 只有 mode=syncode 时才用
+            grammar=args.grammar, # use if mode=syncode
             stop_tokens=stop_tokens,
             temperature=args.temperature
         )
@@ -48,10 +52,9 @@ def run_evaluation_pipeline(args):
         
         # Build MultiPL-E result format
         result_item = task.copy()
-        result_item["completions"] = [code] # 必须是列表
+        result_item["completions"] = [code]
         
-        # 5. 保存为 .json.gz (MultiPL-E 要求每个任务一个单独文件)
-        # 文件名处理：替换掉非法字符
+        # save as .json.gz (one file per task)
         safe_filename = str(task_name).replace("/", "_") + ".json.gz"
         save_file = output_path / safe_filename
         

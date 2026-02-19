@@ -1,130 +1,74 @@
-import os
-import torch
+from typing import Optional, Dict, Any, List
+from generators.hf_generator import HFGenerator
+from generators.syncode_generator import SyncodeGenerator
+import argparse
 import json
-import gzip
-from typing import List, Dict, Any, Optional
-from transformers import AutoTokenizer, AutoModelForCausalLM, LogitsProcessorList
-from syncode import Syncode
-
+from tqdm import tqdm
+from pathlib import Path
 
 class UnifiedCodeGenerator:
-    def __init__(self, model_name: str, device: str = None, model_kwargs: Optional[Dict[str, Any]] = None):
-        """
-        One-time initialization of the model and tokenizer.
-        """
+    def __init__(self, mode: str, model_name: str, grammar: Optional[str] = None):
+        self.mode = mode
         self.model_name = model_name
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.generator = self._build_generator(grammar)
+
+    def _build_generator(self, grammar):
+        if self.mode == "syncode":
+            return SyncodeGenerator(self.model_name, grammar)
+        elif self.mode == "unconstrained":
+            return HFGenerator(self.model_name)
+        else:
+            raise ValueError(f"Unknown mode: {self.mode}")
+
+    def generate(self, prompt: str, stop_tokens: Optional[List[str]] = None, **kwargs) -> str:
+        """Returns ONLY the raw generated string."""
+        return self.generator.generate(prompt, stop_tokens=stop_tokens, **kwargs)
+    
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Raw Code Generator for .jsonl datasets")
+    # model and generation configuration
+    parser.add_argument("--model", type=str, default="microsoft/phi-2")
+    parser.add_argument("--mode", type=str, default="unconstrained", choices=["unconstrained", "syncode"])
+    parser.add_argument("--grammar", type=str, default="javascript")
+    
+    # input and output configuration
+    parser.add_argument("--input_file", type=str, required=True, help="Path to a .jsonl prompts file")
+    parser.add_argument("--output_dir", type=str, default="raw_outputs", help="Base directory for results")
+    parser.add_argument("--dataset_name", type=str, default="mbpp", help="Dataset name for folder naming")
+    
+    # generation parameters
+    parser.add_argument("--temperature", type=float, default=0.2)
+    parser.add_argument("--max_tokens", type=int, default=512)
+    
+    args = parser.parse_args()
+    
+    model_name_clean = args.model.replace("/", "_").replace("-", "_")
+    output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
+    final_output_path = Path(args.output_dir) / output_dir_name
+    final_output_path.mkdir(parents=True, exist_ok=True)
+    
+    gen = UnifiedCodeGenerator(args.mode, args.model, args.grammar)
+
+    with open(args.input_file, 'r', encoding='utf-8') as f:
+        tasks = [json.loads(line) for line in f if line.strip()]
+
+    print(f"--- Generating raw code for {len(tasks)} tasks ---")
+    print(f"--- Results will be saved to: {final_output_path} ---")
+    
+    for task in tqdm(tasks):
+        task_id = str(task.get('name', task.get('task_id', 'output'))).replace("/", "_")
+        prompt_text = task['prompt']
         
-        print(f"--- Loading Model: {model_name} to {self.device} ---")
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            model_name,
-            padding_side="left",
-            trust_remote_code=True,
+        result = gen.generate(
+            prompt=prompt_text,
+            stop_tokens=task.get('stop_tokens', ["\nfunction", "\n//", "\n/*"]),
+            temperature=args.temperature,
+            max_new_tokens=args.max_tokens
         )
         
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
-            
-        dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=dtype,
-            device_map="auto" if self.device == "cuda" else None,
-            trust_remote_code=True     
-        ).cuda()
-        self.model.eval()
+        combined_output = f"/* PROMPT:\n{prompt_text}\n*/\n\n{result}"
         
-        # Cache Syncode processors by language to avoid re-compiling grammars
-        self._syncode_cache = {}
+        file_path = final_output_path / f"{task_id}.js"
+        file_path.write_text(combined_output, encoding='utf-8')
 
-    def _get_syncode(self, grammar: str):
-        """Internal helper to setup Syncode LogitsProcessor."""
-        if Syncode is None:
-            raise ImportError("Syncode is not installed. Run 'pip install syncode'.")
-        
-        if grammar not in self._syncode_cache:
-            print(f"Initializing Syncode Grammar for: {grammar}")
-            sc = Syncode(
-                model=self.model_name, 
-                mode='grammar_mask', 
-                grammar=grammar, # e.g., 'javascript.lark'
-                parse_output_only=True
-            )
-            self._syncode_cache[grammar] = sc
-        return self._syncode_cache[grammar]
-
-    def _post_process_stop(self, text: str, stop_tokens: List[str]) -> str:
-        """Implements the MultiPL-E stop token slicing logic."""
-        if not stop_tokens:
-            return text
-        
-        min_stop_index = len(text)
-        found = False
-        for stop in stop_tokens:
-            idx = text.find(stop)
-            if idx != -1:
-                min_stop_index = min(min_stop_index, idx)
-                found = True
-        return text[:min_stop_index] if found else text
-
-    def generate(
-        self, 
-        prompt: str, 
-        mode: str = "unconstrained", # "unconstrained" or "syncode"
-        grammar: str = "javascript", # Can also be "javascript.lark" for Syncode grammar
-        stop_tokens: Optional[List[str]] = None,
-        max_new_tokens: int = 512,
-        temperature: float = 0.2,
-        top_p: float = 0.95,
-        **extra_params
-    ) -> str:
-        """
-        The main API entry point. Returns the generated string.
-        
-        :param mode: 'unconstrained' or 'syncode'
-        :param grammar: The grammar for Syncode constraints (e.g. 'javascript')
-        """
-        self.model.eval()
-        
-        if mode == "syncode":
-            syn_llm = self._get_syncode(grammar)
-            completions= syn_llm.infer(
-                prompt,
-                stop_words=stop_tokens
-            )
-            generated_text = completions[0] if completions else ""
-        
-        # default generation logic for unconstrained mode
-        else:
-            inputs = self.tokenizer(
-                prompt,
-                padding=True,
-                return_tensors="pt",
-                return_token_type_ids=False,
-                truncation=True,
-                max_length=max_new_tokens-1,  # Ensure total length fits model context
-            ).to(self.device)
-            input_len = inputs.input_ids.shape[1]
-
-            # Base parameters
-            gen_config = {
-                "max_new_tokens": max_new_tokens,
-                "do_sample": True if temperature > 0 else False,
-                "temperature": temperature if temperature > 0 else 1.0,
-                "top_p": 0.95,
-                "pad_token_id": self.tokenizer.eos_token_id,
-                "logits_processor": LogitsProcessorList()
-            }
-            gen_config.update(extra_params)
-
-            with torch.no_grad():
-                outputs = self.model.generate(
-                    **inputs,
-                    use_cache=True,
-                    **gen_config
-                )
-            
-            generated_text = self.tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
-            
-            # Apply MultiPL-E clean-up
-        return self._post_process_stop(generated_text, stop_tokens)
+    print(f"\nDone! All files saved in {final_output_path}")
