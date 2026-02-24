@@ -2,19 +2,13 @@
 
 start: js_script_module
 
-js_script_module: top_level+
+js_script_module: top_level* "}"?
 
-top_level: function_declaration
+top_level: statement
+         | function_declaration
          | class_declaration
-         | declaration_statement
          | export_statement
          | import_statement
-         | if_statement
-         | for_statement
-         | for_in_statement
-         | for_of_statement
-         | switch_statement
-         | try_catch_finally_statement
 
 // ------------------------------------------
 // Statements (Inside functions, expressions ARE allowed)
@@ -28,6 +22,7 @@ statement: expression_statement
          | for_in_statement
          | for_of_statement
          | do_while_statement
+         | while_statement
          | control_flow_statement
          | try_catch_finally_statement
          | with_statement
@@ -54,13 +49,14 @@ import_statement: "import" module_element ";"?
 with_statement: "with" "(" expression ")" compound_statement
 try_catch_finally_statement: "try" compound_statement ("catch" ("(" expression ")")? compound_statement)? ("finally" compound_statement)?
 control_flow_statement: "break" ";"? | "continue" ";"? | "return" expression ";"? | "throw" expression ";"?
-do_while_statement: "do" compound_statement "while" "(" expression ")" ";"?
-for_of_statement: "for" "(" expression "of" expression ")" compound_statement
-for_in_statement: "for" "(" expression "in" expression ")" compound_statement
-for_statement: "for" "(" (var_decl | expression)? ";" expression? ";" expression? ")" compound_statement
+do_while_statement: "do" statement "while" "(" expression ")" ";"?
+while_statement: "while" "(" expression ")" statement
+for_of_statement: "for" "(" expression "of" expression ")" statement
+for_in_statement: "for" "(" expression "in" expression ")" statement
+for_statement: "for" "(" (var_decl | expression)? ";" expression? ";" expression? ")" statement
 switch_statement: "switch" "(" expression ")" "{" case_clause* "}"
 case_clause: "case" expression ":" statement* | "default" ":" statement*
-if_statement: "if" "(" expression ")" compound_statement ("else" if_statement | "else" compound_statement)? 
+if_statement: "if" "(" expression ")" statement ("else" statement)?
 declaration_statement: var_decl ";"?
 var_decl: ("var" | "let" | "const" | "static") lvalue "=" expression
 
@@ -158,7 +154,7 @@ paren_enclosed_expression: "(" expression? ")"
 
 object_literal: "{" comma_separated_properties? "}"
 comma_separated_properties: property ("," property)*
-property: (IDENTIFIER ":")? expression
+property: "..." expression | (IDENTIFIER ":")? expression
 
 function_expression: "async"? "function" function_params_postfix compound_statement
 class_expression: "class" class_body
@@ -175,7 +171,8 @@ lexical_literal: "null" | "undefined" | "true" | "false"
 
 array_literal: "[" comma_separated_expressions? "]"
 
-comma_separated_expressions: expression ("," expression)*
+comma_separated_expressions: spread_expr ("," spread_expr)*
+spread_expr: "..."? expression
 
 function_params_postfix: "(" comma_separated_function_params? ")"
 comma_separated_function_params: function_parameter ("," function_parameter)*
@@ -191,9 +188,9 @@ identifier_as_another: IDENTIFIER "as" IDENTIFIER
 // Lexical Grammar
 
 IDENTIFIER: CNAME
-REGEX_LITERAL: /\/[^\n\/]+\/[gimsuy]*/
+REGEX_LITERAL: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
 BIGINT_LITERAL: /\d+n/
-FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/
+FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/ | /\d+\./
 INTEGER_LITERAL: /0[bB][01]+/ | /0[oO][0-7]+/ | /0[xX][0-9a-fA-F]+/ | /\d+/
 STRING_LITERAL: /'[^']*'/ | /"[^"]*"/
 TEMPLATE_LITERAL: /`([^`\\]*(\\.[^`\\]*)*)`/

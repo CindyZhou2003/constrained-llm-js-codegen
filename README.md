@@ -22,6 +22,13 @@ Requires Python 3.10+.
    source .venv/bin/activate  # Windows use: .venv\Scripts\activate
    pip install -r requirements.txt
 ```
+The mxeval installation script (`setup.py`) depends on the pkg_resources module from the older setuptools library. In newer versions of Python or pip build environments, this module may not be included by default or may have been removed. So we download the mxeval repo and modified its `setup.py` file to install it manually.
+
+```bash
+   git clone https://github.com/shubhamugare/mxeval.git
+   cd mxeval
+   pip install -e .
+```
 
 ## MultiPL-E benchmark
 

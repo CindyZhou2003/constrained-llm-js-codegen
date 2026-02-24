@@ -1,0 +1,4 @@
+[submodule "itergen/syncode"]
+	path = itergen/syncode
+	url = git@github.com:uiuc-focal-lab/syncode.git
+	branch = itergen

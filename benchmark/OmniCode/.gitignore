@@ -1,0 +1,252 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# UV
+#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#uv.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#pdm.lock
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+
+# PyPI configuration file
+.pypirc
+
+.DS_Store
+
+# github tokens
+github_tokens.sh
+
+# Exclude specific directories in multiswebench
+# multiswebench_local/mswebench_dataset/
+multiswebench_local/repos/
+multiswebench_local/multi_swe_bench.egg-info/
+multiswebench_local/data/
+multiswebench_local/build/
+multiswebench_local/.github/
+multiswebench_local/docs/
+# Exclude specific files in multiswebench
+multiswebench_local/.vscode/
+multiswebench_local/LICENSE
+multiswebench_local/README.md
+multiswebench_local/clean_config.json
+logs/
+multiswebench_runs/
+gemini-2.0-flash.test*.json
+
+dev/
+data/java_style_review/
+clean_config.json
+codearena.json
+codearena_dataset.jsonl
+convert_msweb_dataset_format.py
+data/multiswebench_data/mswebench_instances_example.json.save
+data/output/final_report.json
+data/patches/gold_patches.jsonl
+gemini-2.5-flash-preview-4-17.test_1.json
+gemini__gemini-2.5-flash-preview-04-17.StyleFixEval.json
+gold.BugFixing.json
+gold.StyleReview.json
+multiswebench/clean_config.json
+multiswebench/data/MSWE_TestGen_all_config.json
+multiswebench/data/datasets/dataset.jsonl
+multiswebench/data/output/final_report.json
+multiswebench/data/patches/MSWE_TestGen_patches.jsonl
+multiswebench/data/patches/gold_patches.jsonl
+multiswebench/data/repos/alibaba/fastjson2
+multiswebench/data/repos/elastic/logstash
+multiswebench/data/workdir/
+temp_BugFixing_python_style_predictions.json
+testgen_mockito3424.json
+testgen_mockito3424.jsonl
+slurm_logs/
+data/agentless_results/*
+
+# python style review intermediate files during dataset collection
+data/python_style_review_dataset/pylint_results/*
+data/python_style_review_dataset/python_style_review_dataset/*
+server/
+*.Dockerfile 
+clones/
+cpp_style_review_results.json
+sweagent_patch_*.json
+unicorn_runner.py
+results_fmtlib_fmt_4310.json
+results_catchorg_Catch2_2849.json
+sweagent_style_review_results.json
+unique_results_pmd.json
+patch_maker.py
+patch_maker_logs.txt
+original_results_clang-tidy.jsonl
+server_new/
+slurm_logs/
+sweagent_results/
+workspace/
+swebench_eval/
+
+
+# python style review intermediate files during dataset collection
+data/python_style_review_dataset/pylint_results/*
+data/python_style_review_dataset/python_style_review_dataset/*
+
+*.json
+*.csv
+*.jsonl

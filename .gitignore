@@ -211,3 +211,7 @@ __marimo__/
 
 # Model Cache
 cache/
+
+# Results
+results/
+raw_outputs/

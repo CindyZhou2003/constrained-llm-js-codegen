@@ -74,7 +74,8 @@ if __name__ == "__main__":
     parser.add_argument("--output_base", type=str, default="results", help="Base output directory")
     
     # generation configuration
-    parser.add_argument("--mode", type=str, default="unconstrained", choices=["unconstrained", "syncode"])
+    parser.add_argument("--mode", type=str, default="unconstrained", 
+                        choices=["unconstrained", "syncode", "itergen"], help="Generation mode")
     parser.add_argument("--grammar", type=str, default="syncode/javascript.lark", help="Path to grammar file (for syncode)")
     parser.add_argument("--temperature", type=float, default=0.2)
 

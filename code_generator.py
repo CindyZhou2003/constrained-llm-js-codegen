@@ -1,6 +1,7 @@
 from typing import Optional, Dict, Any, List
 from generators.hf_generator import HFGenerator
 from generators.syncode_generator import SyncodeGenerator
+from generators.itergen_generator import ItergenGenerator
 import argparse
 import json
 from tqdm import tqdm
@@ -15,6 +16,8 @@ class UnifiedCodeGenerator:
     def _build_generator(self, grammar):
         if self.mode == "syncode":
             return SyncodeGenerator(self.model_name, grammar)
+        elif self.mode == "itergen":
+            return ItergenGenerator(self.model_name, grammar)
         elif self.mode == "unconstrained":
             return HFGenerator(self.model_name)
         else:
@@ -28,7 +31,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Raw Code Generator for .jsonl datasets")
     # model and generation configuration
     parser.add_argument("--model", type=str, default="microsoft/phi-2")
-    parser.add_argument("--mode", type=str, default="unconstrained", choices=["unconstrained", "syncode"])
+    parser.add_argument("--mode", type=str, default="unconstrained", 
+                        choices=["unconstrained", "syncode", "itergen"], help="Generation mode")
     parser.add_argument("--grammar", type=str, default="javascript")
     
     # input and output configuration
@@ -46,6 +50,7 @@ if __name__ == "__main__":
     output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
     final_output_path = Path(args.output_dir) / output_dir_name
     final_output_path.mkdir(parents=True, exist_ok=True)
+    print(f"Creating directory: {final_output_path.absolute()}")
     
     gen = UnifiedCodeGenerator(args.mode, args.model, args.grammar)
 
@@ -66,7 +71,7 @@ if __name__ == "__main__":
             max_new_tokens=args.max_tokens
         )
         
-        combined_output = f"/* PROMPT:\n{prompt_text}\n*/\n\n{result}"
+        combined_output = f"{prompt_text}\n\n{result}"
         
         file_path = final_output_path / f"{task_id}.js"
         file_path.write_text(combined_output, encoding='utf-8')
