@@ -7,7 +7,7 @@ class SyncodeGenerator(BaseGenerator):
             model=model_name, 
             mode='grammar_mask', 
             grammar=grammar, 
-            parse_output_only=True
+            parse_output_only=False
         )
 
     def generate(self, prompt: str, stop_tokens=None, **kwargs) -> str:

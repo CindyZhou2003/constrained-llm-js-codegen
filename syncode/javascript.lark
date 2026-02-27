@@ -2,7 +2,7 @@
 
 start: js_script_module
 
-js_script_module: top_level* "}"?
+js_script_module: top_level+
 
 top_level: statement
          | function_declaration

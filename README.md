@@ -12,6 +12,16 @@
 
 `results/`: The directory that stores the results of code generation and evaluation for different models.
 
+
+`tools/`: Files that help analyze code genration results of (un)constrained models.
+
+- Unzip the results.json.gz files to the raw_results directory.
+  - `python tools/unzip.py ./results/mbpp-js-microsoft_phi_2-0.2`
+
+- Summarize the cases results.
+  - `python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 # auto name the output file`
+  - `python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt # manually define the output name(optional)`
+
 ## Setup
 
 Create a python virtual environment and install all the packages in `requirements.txt`.

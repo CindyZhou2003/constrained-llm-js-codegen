@@ -213,5 +213,5 @@ __marimo__/
 cache/
 
 # Results
-results/
 raw_outputs/
+raw_results/
