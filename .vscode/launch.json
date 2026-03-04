@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Code Generator (Syncode)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/code_generator.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--input_file", "datasets/tem.jsonl",
+                "--mode", "syncode",
+                "--grammar", "syncode/javascript.lark",
+                "--output_dir", "./raw_outputs/",
+                "--temperature", "0.0",
+                "--max_new_tokens", "512"
+            ],
+            "justMyCode": false 
+        }
+    ]
+}

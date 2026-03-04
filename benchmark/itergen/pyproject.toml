@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itergen"
+version="0.4.16"
+requires-python = ">=3.6,<3.13"
+description = "Iterate on LLM-based structured generation forward and backward"
+readme = "README.md"
+authors = [
+    {name = "Shubham Ugare", email = "shubhamugare@gmail.com"}
+]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fire",
+    "interegular",
+    "regex==2024.11.6",
+    "torch",
+    "tqdm",
+    "transformers",
+    "datasets",
+    "jsonschema",
+    "syncode"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests", "case_studies"]
+
+[project.urls]
+"Homepage" = "https://github.com/shubhamugare/itergen"
+"Bug Tracker" = "https://github.com/shubhamugare/itergen/issues"

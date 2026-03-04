@@ -10,12 +10,13 @@ from tqdm import tqdm
 import subprocess
 from code_generator import UnifiedCodeGenerator
 
-def run_evaluation_pipeline(args):
+def run_evaluation_pipeline(kwargs):
     # Initialize generator API
     generator = UnifiedCodeGenerator(
-        mode=args.mode, 
-        model_name=args.model, 
-        grammar=args.grammar
+        mode=kwargs.mode, 
+        model_name=kwargs.model, 
+        grammar=kwargs.grammar,
+        **kwargs
     )
 
     # ouput dir naming: dataset-js-model-temp-mode
@@ -77,7 +78,8 @@ if __name__ == "__main__":
     parser.add_argument("--mode", type=str, default="unconstrained", 
                         choices=["unconstrained", "syncode", "itergen"], help="Generation mode")
     parser.add_argument("--grammar", type=str, default="syncode/javascript.lark", help="Path to grammar file (for syncode)")
-    parser.add_argument("--temperature", type=float, default=0.2)
+    parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of tokens to generate")
+    parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
 
     args = parser.parse_args()
     run_evaluation_pipeline(args)

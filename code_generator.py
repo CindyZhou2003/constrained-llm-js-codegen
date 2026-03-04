@@ -8,22 +8,23 @@ from tqdm import tqdm
 from pathlib import Path
 
 class UnifiedCodeGenerator:
-    def __init__(self, mode: str, model_name: str, grammar: Optional[str] = None):
+    def __init__(self, mode: str, model_name: str, grammar: Optional[str] = None, **kwargs):
         self.mode = mode
         self.model_name = model_name
+        self.kwargs = kwargs
         self.generator = self._build_generator(grammar)
 
     def _build_generator(self, grammar):
         if self.mode == "syncode":
-            return SyncodeGenerator(self.model_name, grammar)
+            return SyncodeGenerator(self.model_name, grammar, **self.kwargs)
         elif self.mode == "itergen":
-            return ItergenGenerator(self.model_name, grammar)
+            return ItergenGenerator(self.model_name, grammar, **self.kwargs)
         elif self.mode == "unconstrained":
-            return HFGenerator(self.model_name)
+            return HFGenerator(self.model_name, **self.kwargs)
         else:
             raise ValueError(f"Unknown mode: {self.mode}")
 
-    def generate(self, prompt: str, stop_tokens: Optional[List[str]] = None, **kwargs) -> str:
+    def generate(self, prompt: str, stop_tokens: Optional[List[str]], **kwargs) -> str:
         """Returns ONLY the raw generated string."""
         return self.generator.generate(prompt, stop_tokens=stop_tokens, **kwargs)
     
@@ -41,8 +42,8 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_name", type=str, default="mbpp", help="Dataset name for folder naming")
     
     # generation parameters
-    parser.add_argument("--temperature", type=float, default=0.2)
-    parser.add_argument("--max_tokens", type=int, default=512)
+    parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
+    parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of new tokens to generate")
     
     args = parser.parse_args()
     
@@ -52,7 +53,7 @@ if __name__ == "__main__":
     final_output_path.mkdir(parents=True, exist_ok=True)
     print(f"Creating directory: {final_output_path.absolute()}")
     
-    gen = UnifiedCodeGenerator(args.mode, args.model, args.grammar)
+    gen = UnifiedCodeGenerator(args.mode, args.model, args.grammar, temperature=args.temperature, max_new_tokens=args.max_new_tokens)
 
     with open(args.input_file, 'r', encoding='utf-8') as f:
         tasks = [json.loads(line) for line in f if line.strip()]
@@ -61,14 +62,13 @@ if __name__ == "__main__":
     print(f"--- Results will be saved to: {final_output_path} ---")
     
     for task in tqdm(tasks):
-        task_id = str(task.get('name', task.get('task_id', 'output'))).replace("/", "_")
+        task_id = str(task.get('name', task.get('task_id'))).replace("/", "_")
         prompt_text = task['prompt']
         
         result = gen.generate(
             prompt=prompt_text,
-            stop_tokens=task.get('stop_tokens', ["\nfunction", "\n//", "\n/*"]),
-            temperature=args.temperature,
-            max_new_tokens=args.max_tokens
+            stop_tokens=task.get('stop_tokens', ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
+            **vars(args)
         )
         
         combined_output = f"{prompt_text}\n\n{result}"

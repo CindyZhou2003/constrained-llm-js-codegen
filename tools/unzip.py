@@ -15,9 +15,9 @@ def unzip_json_gz_files(source_dir, output_dir):
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
     
-    # Get all results.json.gz files in source directory
+    # Get all json.gz files in source directory
     source_path = Path(source_dir)
-    gz_files = list(source_path.glob('*results.json.gz'))
+    gz_files = list(source_path.glob('*.json.gz'))
     
     if not gz_files:
         print(f"No .json.gz files found in {source_dir}")

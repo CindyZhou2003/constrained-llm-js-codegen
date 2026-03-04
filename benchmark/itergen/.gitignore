@@ -10,3 +10,4 @@ cache/
 case_studies/tot/logs/
 logs/
 case_studies/nlv/out/
+*egg-info/

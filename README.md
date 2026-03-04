@@ -114,9 +114,11 @@ Use the `code_generator.py` CLI to quickly test how a model handles prompts. It 
 python code_generator.py
   --model microsoft/phi-2 # model name
   --input_file datasets/js_prompts_mbpp.jsonl
-  --mode syncode  # "unconstrained" or "syncode"
+  --mode syncode  # "unconstrained" or "syncode" or "itergen"
   --grammar javascript 
   --output_dir ./raw_outputs/ # output dir
+  --temperature 0.2 # optional, default=0.0
+  --max_new_tokens 512 # optional, default=512
 ```
 
 **Input**: `.jsonl` file.
@@ -130,10 +132,12 @@ Use the the `code_evaluation.py`.It processes the same `.jsonl` file but follows
    python code_evaluation.py 
       --model microsoft/phi-2  # model name
       --input_file datasets/js_prompts_mbpp.jsonl # input file
-      --mode syncode # "unconstrained" or "syncode"
+      --mode syncode # "unconstrained" or "syncode" or "itergen"
       --grammar syncode/javascript.lark # extra grammar file for constrained models, unnecessary for unconstrained ones
       --dataset_name mbpp # "humaneval" or "mbpp"
       --output_base results # ouput dir
+      --temperature 0.2 # optional, default=0.0
+      --max_new_tokens 512 # optional, default=512
    ```
 **Input**: `.jsonl` file and possible grammar file
 
