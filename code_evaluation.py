@@ -13,10 +13,8 @@ from code_generator import UnifiedCodeGenerator
 def run_evaluation_pipeline(kwargs):
     # Initialize generator API
     generator = UnifiedCodeGenerator(
-        mode=kwargs.mode, 
         model_name=kwargs.model, 
-        grammar=kwargs.grammar,
-        **kwargs
+        **vars(kwargs)
     )
 
     # ouput dir naming: dataset-js-model-temp-mode
