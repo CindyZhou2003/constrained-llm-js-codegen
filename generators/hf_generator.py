@@ -19,7 +19,7 @@ class HFGenerator(BaseGenerator):
         
         temp= kwargs.get("temperature")
         model_params = {
-            "max_new_tokens": kwargs.get("max_new_tokens"),
+            # "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
         }
         if temp > 0:

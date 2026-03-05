@@ -15,12 +15,30 @@
 
 `tools/`: Files that help analyze code genration results of (un)constrained models.
 
-- Unzip the results.json.gz files to the raw_results directory.
-  - `python tools/unzip.py ./results/mbpp-js-microsoft_phi_2-0.2`
-
-- Summarize the cases results.
-  - `python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 # auto name the output file`
-  - `python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt # manually define the output name(optional)`
+- `unzip.py`: Unzip the results.json.gz files to the raw_results directory.
+```bash
+python tools/unzip.py ./results/mbpp-js-microsoft_phi_2-0.2`
+```
+- `count.py`: Summarize the cases results.
+ ```bash
+ # auto name the output file
+python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2
+# specify the output name(optional)
+python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt 
+```
+- `diff.py`: Show the differences between different models 
+```bash
+python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt
+# specify the output name(optional)
+python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt custom_diff.txt 
+```
+- `extract_prompts.py`: extract OK->error cases from unconstrained models to constrained ones(one model to another)
+```bash
+# use default prompts file and output path
+python tools/extract_prompts.py mbpp-js-microsoft_phi_2-0.0-unconstrained_vs_mbpp-js-microsoft_phi_2-0.0-syncode_diff.txt
+# specify other prompts or output path
+python tools/extract_prompts.py diff.txt datasets/js_prompts_mbpp.jsonl datasets/tem_custom.jsonl
+```
 
 ## Setup
 
