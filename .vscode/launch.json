@@ -8,8 +8,8 @@
             "program": "${workspaceFolder}/code_generator.py",
             "console": "integratedTerminal",
             "args": [
-                "--input_file", "datasets/tem.jsonl",
-                "--mode", "syncode",
+                "--input_file", "datasets/tem1.jsonl",
+                "--mode", "itergen",
                 "--grammar", "syncode/javascript.lark",
                 "--output_dir", "./raw_outputs/",
                 "--temperature", "0.0",

@@ -43,7 +43,7 @@ if __name__ == "__main__":
     
     # generation parameters
     parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
-    # parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of new tokens to generate")
+    parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of new tokens to generate")
     
     args = parser.parse_args()
     

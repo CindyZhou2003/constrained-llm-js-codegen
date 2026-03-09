@@ -11,7 +11,7 @@ class SyncodeGenerator(BaseGenerator):
             "mode": 'grammar_mask', 
             "grammar": grammar, 
             "parse_output_only": False,
-            # "max_new_tokens": kwargs.get("max_new_tokens"),
+            "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
         }
         
