@@ -51,48 +51,6 @@ source .venv/bin/activate  # Windows use: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-The mxeval installation script (`setup.py`) depends on the pkg_resources module from the older setuptools library. In newer versions of Python or pip build environments, this module may not be included by default or may have been removed. So we download the mxeval repo and modified its `setup.py` file to install it manually.
-
-```bash
-git clone https://github.com/shubhamugare/mxeval.git
-cd mxeval
-```
-Enter the folder and replace the `mxeval/setup.py` with the following code.
-
-```python
-# mxeval/setup.py
-# Original Copyright 2021 OpenAI under MIT License.
-# Modifications Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-import os
-from setuptools import setup, find_packages
-
-# replace pkg_resources.parse_requirements
-def parse_requirements(filename):
-    with open(os.path.join(os.path.dirname(__file__), filename)) as f:
-        lines = f.read().splitlines()
-        return [l.strip() for l in lines if l.strip() and not l.startswith("#")]
-
-setup(
-    name="mxeval",
-    py_modules=["mxeval"],
-    version="1.0",
-    description="",
-    author="AWS AI Labs",
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=parse_requirements("requirements.txt"),
-    entry_points={
-        "console_scripts": [
-            "evaluate_functional_correctness = mxeval.evaluate_functional_correctness:main",
-        ]
-    }
-)
-```
-Then, install mxeval using the following command.
-```bash
-pip install -e .
-```
-
 ## MultiPL-E benchmark
 
 We use MultiPL-E framework(`./benchmark/MultiPL-E`) to evaluate the code accuracy.

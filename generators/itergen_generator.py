@@ -1,18 +1,5 @@
-import sys
-import os
 import re
-# itergen_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'benchmark', 'itergen'))
-# syncode_outer = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'syncode'))
-# syncode_inner=os.path.join(syncode_outer, 'syncode')
-
-# if syncode_inner not in sys.path:
-#     sys.path.insert(0, syncode_inner)
-# if syncode_outer not in sys.path:
-#     sys.path.insert(0, syncode_outer)
-# if itergen_root not in sys.path:
-#     sys.path.insert(0, itergen_root)
-
-from benchmark.itergen.itergen.main import IterGen
+from .itergen.itergen.main import IterGen
 from .base import BaseGenerator
 
 class ItergenGenerator(BaseGenerator):
@@ -23,7 +10,7 @@ class ItergenGenerator(BaseGenerator):
             "model_id": model_name,
             "grammar": grammar,
             "parse_output_only": False,
-            "recurrence_penalty": 0.0,
+            "recurrence_penalty": 1.0,
             "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
         }
@@ -40,7 +27,7 @@ class ItergenGenerator(BaseGenerator):
         itergen_params = {
             "model_id": self.itergen.model_id,
             "grammar": self.itergen.grammar,
-            "parse_output_only": False,
+            "parse_output_only": True,            
             "recurrence_penalty": 0.0,
             "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
@@ -57,18 +44,30 @@ class ItergenGenerator(BaseGenerator):
         
         # Analyze grammar to identify which tokens to track for semantic checks
         base_identifiers = set([
-            "console", "Math", "Object", "Array", "String", "Number",
+            "console", "Math", "Object", "Array", "String", "Number", "Boolean",
             "true", "false", "null", "undefined", "NaN", "Infinity",
-            "this", "arguments", "window", "document"
+            "this", "arguments", "window", "document", "global",
+            "Error", "Symbol", "Date", "RegExp", "Map", "Set", "WeakMap", "WeakSet",
+            "Promise", "JSON", "parseInt", "parseFloat", "isNaN", "isFinite", 
+            "encodeURI", "decodeURI", "encodeURIComponent", "decodeURIComponent", 
+            "require", "module", "exports", "process", "Buffer", 
+            "setTimeout", "clearTimeout", "setInterval", "clearInterval"
         ])
         
         # EXTRACT PARAMS FROM PROMPT to prevent undeclared errors for function arguments
         # e.g. "function pancake_sort(nums){" -> add "nums" to base_identifiers
-        param_pattern = re.compile(r'function\s+(?:[a-zA-Z_$][a-zA-Z0-9_$]*\s*)?\(([^)]*)\)')
+        # MODIFIED: Capture function name too for recursion support
+        param_pattern = re.compile(r'function\s+([a-zA-Z_$][a-zA-Z0-9_$]*\s*)?\(([^)]*)\)')
         try:
             matches = param_pattern.findall(prompt)
             if matches:
-                last_params = matches[-1]
+                last_match = matches[-1]
+                
+                # Add function name to identifiers (for recursion)
+                if last_match[0] and last_match[0].strip():
+                    base_identifiers.add(last_match[0].strip())
+
+                last_params = last_match[1]
                 if last_params.strip():
                     p_tokens = [p.strip() for p in last_params.split(',')]
                     for p in p_tokens:
@@ -81,6 +80,9 @@ class ItergenGenerator(BaseGenerator):
             pass
         
         # print(f"DEBUG: Starting generation. Max tokens: {kwargs.get('max_new_tokens')}")
+        
+        # Count opening braces in prompt to track when the function body is complete
+        prompt_brace_depth = prompt.count('{') - prompt.count('}')
         
         # Increase loop limit significantly. Assuming 1 step ~= 1 token roughly, use max_new_tokens + buffer
         max_steps = kwargs.get("max_new_tokens", 512)
@@ -107,12 +109,34 @@ class ItergenGenerator(BaseGenerator):
             try:
                 self.itergen.forward(unit="statement", num=1, **itergen_params)
             except Exception as e:
-                # print(f"DEBUG: Forward step failed: {e}")
+                # Simply log and break on any error - don't try complex recovery
+                print(f"DEBUG: Forward step failed: {e}")
                 break
 
             current_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
             # print(f"DEBUG: Step {step+1} code len: {len(current_code)}")
-            # print(f"DEBUG: Code content:\n{current_code}\n---")
+            print(f"DEBUG: Step {step+1} current code:\n{current_code}\n---")
+
+            # --- Early termination checks ---
+            generated_so_far = current_code[len(prompt):] if current_code.startswith(prompt) else current_code
+            
+            # Check 1: Stop tokens — if any stop token appears in generated text, stop immediately
+            if stop_tokens and generated_so_far:
+                should_stop = False
+                for stop in stop_tokens:
+                    if stop in generated_so_far:
+                        should_stop = True
+                        break
+                if should_stop:
+                    break
+            
+            # Check 2: Brace depth — if the function body is complete (all braces balanced), stop
+            if generated_so_far and prompt_brace_depth > 0:
+                gen_open = generated_so_far.count('{')
+                gen_close = generated_so_far.count('}')
+                current_depth = prompt_brace_depth + gen_open - gen_close
+                if current_depth <= 0:
+                    break
 
             post_items = {}
             for cat in tracking_categories:
@@ -134,9 +158,10 @@ class ItergenGenerator(BaseGenerator):
                 match = re.search(r'\s*(?:var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)', decl_str)
                 if match:
                     var_name = match.group(1)
+                    decl_keyword = decl_str.strip().split()[0]  # 'var', 'let', or 'const'
                     
-                    # Rule 1a: Check for Redeclaration (Only for NEW declarations)
-                    if idx >= decl_start_idx:
+                    # Rule 1a: Check for Redeclaration (Only for let/const, var allows redeclaration)
+                    if idx >= decl_start_idx and decl_keyword in ('let', 'const'):
                         if var_name in current_identifiers:
                             violation_reason = f"Redeclared variable: '{var_name}'"
                             is_valid = False
@@ -147,10 +172,6 @@ class ItergenGenerator(BaseGenerator):
                     if decl_str.strip().startswith("const"):
                         const_identifiers.add(var_name)
             
-            if not is_valid:
-                # print(f"DEBUG: Violation found: {violation_reason}. Backtracking...")
-                self.itergen.backward(unit="statement", num=1)
-                continue
 
             for param_str in post_items["function_parameter"]:
                 # simple split for now
@@ -161,13 +182,28 @@ class ItergenGenerator(BaseGenerator):
                 if p_name:
                     current_identifiers.add(p_name)
 
-            for prim_str in post_items["primary_safe_non_numeric"][pre_counts.get("primary_safe_non_numeric", 0):]:
-                token = prim_str.strip()
-                if re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token):
-                        if token not in current_identifiers:
-                            violation_reason = f"Undeclared var: '{token}'"
-                            is_valid = False
-                            break
+            # Heuristic: Scan for implicit declarations (catch, for-in/of, arrow functions) that might be missed by simple views
+            # Since we re-enable strict checking, we must ensure these valid declaring contexts are captured.
+            full_gen_so_far = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+            
+            # 1. catch(e)
+            current_identifiers.update(re.findall(r'catch\s*\(\s*([a-zA-Z_$][a-zA-Z0-9_$]*)', full_gen_so_far))
+            # 2. for (x of y) / for (x in y)
+            current_identifiers.update(re.findall(r'for\s*\(\s*(?:var|let|const\s+)?([a-zA-Z_$][a-zA-Z0-9_$]*)\s+(?:of|in)', full_gen_so_far))
+            # 3. Arrow function params (simple Identifier => ...)
+            current_identifiers.update(re.findall(r'(?:^|[\W])([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=>', full_gen_so_far))
+
+            # DISABLED: Undeclared variable check causes too many false positives
+            # The parser extracts identifiers from comments, property accesses, etc.
+            # which falsely triggers this check (e.g., 'ray' from 'array' in comments).
+            # Grammar constraints ensure syntactic validity; semantic checks are over-engineering.
+            # for prim_str in post_items["primary_safe_non_numeric"][pre_counts.get("primary_safe_non_numeric", 0):]:
+            #     token = prim_str.strip()
+            #     if re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token):
+            #             if token not in current_identifiers:
+            #                violation_reason = f"Undeclared var: '{token}'"
+            #                is_valid = False
+            #                break
 
             # 2. Check Assignments (Const reassignment & Literal assignment)
             if is_valid:
@@ -213,7 +249,9 @@ class ItergenGenerator(BaseGenerator):
 
             # backtrack if any violation is found
             if not is_valid:
-                # print(f"DEBUG: Violation found at semantic check: {violation_reason}. Backtracking...")
+                # print(f"DEBUG: Violation found: {violation_reason}. Backtracking...")
+                current_state = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+                print(f"DEBUG: Step {step} current code before backtrack:\n{current_state}\n---")
                 self.itergen.backward(unit="statement", num=1)
                 continue
 

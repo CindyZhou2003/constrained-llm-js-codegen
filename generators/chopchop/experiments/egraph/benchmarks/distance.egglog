@@ -1,0 +1,12 @@
+;; sqrt (pow (x1 - x2) 2 + pow (y1 - y2) 2)
+
+(let x1 (Var "x1"))
+(let x2 (Var "x2"))
+(let y1 (Var "y1"))
+(let y2 (Var "y2"))
+
+(let start (App sqrt (
+    Add
+    (App (App pow (Sub x1 x2)) (Num 2))
+    (App (App pow (Sub y1 y2)) (Num 2))
+)))

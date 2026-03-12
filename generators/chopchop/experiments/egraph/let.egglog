@@ -1,0 +1,49 @@
+(datatype Math
+(Num i64)
+(Str String)
+(Var String)
+(Add Math Math)
+(Sub Math Math)
+(Neg Math)
+(Pow Math Math)
+(Sqrt Math)
+(Mul Math Math)
+(Div Math Math)
+(App Math Math))
+
+
+(rewrite (Add a b)
+        (Add b a))
+(rewrite (Add (Num a) (Num b))
+(Num (+ a b)))
+(rewrite (Add (Add a b) c) (Add a (Add b c)))
+
+(rewrite (Neg a) (Sub (Num 0) a))
+(rewrite (Sub (Num 0) a) (Neg a))
+(rewrite (Sub a b) (Add a (Neg b)))
+(rewrite (Sub (Num a) (Num b))
+        (Num (- a b)))
+
+(rewrite (Mul a b) (Mul b a))
+(rewrite (Mul (Num a) (Num b))
+        (Num (* a b)))
+(rewrite (Mul (Mul a b) c) (Mul a (Mul b c)))
+
+(rewrite (Mul a (Add b c))
+        (Add (Mul a b) (Mul a c)))
+
+;; for some reason this makes egglog upset?
+;; (rewrite (Div (Num a) (Num b)) (Num (/ a b)))
+(rewrite (Div a b) (Mul a (Div (Num 1) b)))
+(rewrite (Mul a (Div (Num 1) b)) (Div a b))
+(rewrite (Div (Num 1) (Mul b c)) (Mul (Div (Num 1) b) (Div (Num 1) c)))
+(rewrite (Mul (Div (Num 1) b) (Div (Num 1) c)) (Div (Num 1) (Mul b c)))
+
+(let pow (Var "pow"))
+(let sqrt (Var "sqrt"))
+
+(rewrite (Pow a b) (App (App pow a) b))
+(rewrite (App (App pow a) b) (Pow a b))
+(rewrite (Sqrt a) (App sqrt a))
+(rewrite (App sqrt a) (Sqrt a))
+(rewrite (Pow (Sub a b) (Num 2)) (Pow (Sub b a) (Num 2)))

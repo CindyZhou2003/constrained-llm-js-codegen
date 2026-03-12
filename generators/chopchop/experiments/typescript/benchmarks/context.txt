@@ -1,0 +1,7 @@
+
+
+You are an expert in typescript programming. Solve the given problem by writing solution code in typescript.
+When answering, insert the solution code in a ```typescript...``` block.
+Do NOT use arrays, strings, or lambdas!
+Do NOT use console.log or add tests!
+Do NOT throw errors!

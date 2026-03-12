@@ -104,7 +104,7 @@ sum_op: "+" | "-"
 product_safe: product_safe product_op unary_expression | unary_safe
 product_func: product_func product_op unary_expression | unary_func
 product_obj:  product_obj  product_op unary_expression | unary_obj
-product_op: "*" | "/" | "%" | "**"
+product_op: "*" | SLASH | "%" | "**"
 
 // Helper to bridge the split chains back to unified expressions for the right-hand side
 compare_expr: compare_safe | compare_func | compare_obj
@@ -191,7 +191,8 @@ identifier_as_another: IDENTIFIER "as" IDENTIFIER
 // Lexical Grammar
 
 IDENTIFIER: CNAME
-REGEX_LITERAL: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
+REGEX_LITERAL.2: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
+SLASH: "/"
 BIGINT_LITERAL: /\d+n/
 FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/ | /\d+\./
 INTEGER_LITERAL: /0[bB][01]+/ | /0[oO][0-7]+/ | /0[xX][0-9a-fA-F]+/ | /\d+/
