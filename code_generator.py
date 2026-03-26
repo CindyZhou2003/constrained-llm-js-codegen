@@ -2,6 +2,7 @@ from typing import Optional, Dict, Any, List
 from generators.hf_generator import HFGenerator
 from generators.syncode_generator import SyncodeGenerator
 from generators.itergen_generator import ItergenGenerator
+from generators.chopchop_generator import ChopchopGenerator
 import argparse
 import json
 from tqdm import tqdm
@@ -19,6 +20,8 @@ class UnifiedCodeGenerator:
             return SyncodeGenerator(self.model_name, grammar, **self.kwargs)
         elif self.mode == "itergen":
             return ItergenGenerator(self.model_name, grammar, **self.kwargs)
+        elif self.mode == "chopchop":
+            return ChopchopGenerator(self.model_name, grammar, **self.kwargs)
         elif self.mode == "unconstrained":
             return HFGenerator(self.model_name, **self.kwargs)
         else:
@@ -27,14 +30,15 @@ class UnifiedCodeGenerator:
     def generate(self, prompt: str, stop_tokens: Optional[List[str]], **kwargs) -> str:
         """Returns ONLY the raw generated string."""
         return self.generator.generate(prompt, stop_tokens=stop_tokens, **kwargs)
-    
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Raw Code Generator for .jsonl datasets")
     # model and generation configuration
     parser.add_argument("--model", type=str, default="microsoft/phi-2")
     parser.add_argument("--mode", type=str, default="unconstrained", 
-                        choices=["unconstrained", "syncode", "itergen"], help="Generation mode")
-    parser.add_argument("--grammar", type=str, default="javascript")
+                        choices=["unconstrained", "syncode", "itergen", "chopchop"], help="Generation mode")
+    parser.add_argument("--grammar", type=str, default=None, help="Path to grammar file (.lark) for constrained modes")
     
     # input and output configuration
     parser.add_argument("--input_file", type=str, required=True, help="Path to a .jsonl prompts file")
@@ -44,8 +48,10 @@ if __name__ == "__main__":
     # generation parameters
     parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
     parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of new tokens to generate")
-    
     args = parser.parse_args()
+
+    if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
+        parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
     
     model_name_clean = args.model.replace("/", "_").replace("-", "_")
     output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
@@ -70,8 +76,8 @@ if __name__ == "__main__":
             stop_tokens=task.get('stop_tokens', ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
             **vars(args)
         )
-        
-        combined_output = f"{prompt_text}\n\n{result}"
+
+        combined_output = f"{prompt_text.rstrip()}\n\n{result.rstrip()}"
         
         file_path = final_output_path / f"{task_id}.js"
         file_path.write_text(combined_output, encoding='utf-8')

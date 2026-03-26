@@ -10,11 +10,11 @@ from tqdm import tqdm
 import subprocess
 from code_generator import UnifiedCodeGenerator
 
-def run_evaluation_pipeline(kwargs):
+def run_evaluation_pipeline(args):
     # Initialize generator API
     generator = UnifiedCodeGenerator(
-        model_name=kwargs.model, 
-        **vars(kwargs)
+        model_name=args.model, 
+        **vars(args)
     )
 
     # ouput dir naming: dataset-js-model-temp-mode
@@ -22,6 +22,9 @@ def run_evaluation_pipeline(kwargs):
     output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
     output_path = Path(args.output_base) / output_dir_name
     output_path.mkdir(parents=True, exist_ok=True)
+    
+    if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
+        parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
     
     print(f"\n>>> Step 1: Loading Dataset from {args.input_file}")
     tasks = []
@@ -74,8 +77,8 @@ if __name__ == "__main__":
     
     # generation configuration
     parser.add_argument("--mode", type=str, default="unconstrained", 
-                        choices=["unconstrained", "syncode", "itergen"], help="Generation mode")
-    parser.add_argument("--grammar", type=str, default="syncode/javascript.lark", help="Path to grammar file (for syncode)")
+                        choices=["unconstrained", "syncode", "itergen", "chopchop"], help="Generation mode")
+    parser.add_argument("--grammar", type=str, default=None, help="Path to grammar file (.lark) for constrained modes")
     parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of tokens to generate")
     parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
 

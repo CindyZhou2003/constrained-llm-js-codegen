@@ -1,8 +1,12 @@
 from collections import OrderedDict
-from typing import Optional
+from typing import Generic, Optional, TypeVar
 
 
-class LRUCache[K, V]:
+K = TypeVar("K")
+V = TypeVar("V")
+
+
+class LRUCache(Generic[K, V]):
     """Copied from
     https://www.geeksforgeeks.org/python/lru-cache-in-python-using-ordereddict/"""
     # initialising capacity

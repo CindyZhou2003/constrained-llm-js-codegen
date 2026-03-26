@@ -6,7 +6,7 @@
 
 `code_evaluation.py`: The evaluation wrapper. It processes .jsonl datasets (like MBPP or HumanEval) and outputs files in the compressed .json.gz format required for the MultiPL-E eval pipeline.
 
-`generators/`: A subdirectory containing the specific implementation strategies (e.g., `hf_generator.py` and `syncode_generator.py`).
+`generators/`: A subdirectory containing the specific implementation strategies (e.g., `hf_generator.py` and `syncode_generator.py`) and generation frameworks including [itergen](https://github.com/structuredllm/itergen), [chopchop](https://github.com/large-loris-models/chopchop), etc.
 
 `datasets/`: The directory that contains datasets of prompts we use to generate code.
 
@@ -43,7 +43,7 @@ python tools/extract_prompts.py diff.txt datasets/js_prompts_mbpp.jsonl datasets
 ## Setup
 
 Create a python virtual environment and install all the packages in `requirements.txt`.
-Requires Python 3.10+.
+Requires Python 3.10~3.12
 
 ```bash
 python -m venv .venv
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 ## MultiPL-E benchmark
 
-We use MultiPL-E framework(`./benchmark/MultiPL-E`) to evaluate the code accuracy.
+We use [MultiPL-E](https://github.com/nuprl/MultiPL-E) framework(`./benchmark/MultiPL-E`) to evaluate the code accuracy.
 
 ### Code generation
 
@@ -90,11 +90,11 @@ Use the `code_generator.py` CLI to quickly test how a model handles prompts. It 
 python code_generator.py
   --model microsoft/phi-2 # model name
   --input_file datasets/js_prompts_mbpp.jsonl
-  --mode syncode  # "unconstrained" or "syncode" or "itergen"
-  --grammar javascript 
+  --mode syncode  # "unconstrained" or "syncode" or "itergen" or "chopchop"
+  --grammar generators/grammars/javascript.lark # optional: path to grammar file (.lark) for constrained modes
   --output_dir ./raw_outputs/ # output dir
-  --temperature 0.2 # optional, default=0.0
-  --max_new_tokens 512 # optional, default=512
+  --temperature 0.2 # optional: default=0.0
+  --max_new_tokens 512 # optional: default=512
 ```
 
 **Input**: `.jsonl` file.
@@ -108,12 +108,13 @@ Use the the `code_evaluation.py`.It processes the same `.jsonl` file but follows
    python code_evaluation.py 
       --model microsoft/phi-2  # model name
       --input_file datasets/js_prompts_mbpp.jsonl # input file
-      --mode syncode # "unconstrained" or "syncode" or "itergen"
-      --grammar syncode/javascript.lark # extra grammar file for constrained models, unnecessary for unconstrained ones
+      --mode syncode # "unconstrained" or "syncode" or "itergen" or "chopchop"
+      --grammar generators/grammars/javascript.lark # optional: path to grammar file (.lark) for constrained modes
+      
       --dataset_name mbpp # "humaneval" or "mbpp"
       --output_base results # ouput dir
-      --temperature 0.2 # optional, default=0.0
-      --max_new_tokens 512 # optional, default=512
+      --temperature 0.2 # optional: default=0.0
+      --max_new_tokens 512 # optional: default=512
    ```
 **Input**: `.jsonl` file and possible grammar file
 

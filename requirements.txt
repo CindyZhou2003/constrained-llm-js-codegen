@@ -27,3 +27,15 @@ tree-sitter
 tree-sitter-python
 scipy
 common
+networkx
+greenery
+matplotlib
+egglog
+streamlit
+streamlit-ace
+st-annotated-text
+streamlit-keyup
+lark
+tabulate
+func_timeout
+-e .
