@@ -24,6 +24,16 @@ from llm.realizability import RealizabilityChecker  # type: ignore  # noqa: E402
 from llm.run_llm import Config, LanguageModelRunner, ModelConfig  # type: ignore  # noqa: E402
 
 
+class _SafeRealizabilityChecker(RealizabilityChecker):
+    """Prevent RecursionError in pathological realizability branches."""
+
+    def realizable(self, prefix: str, final: bool = False) -> bool:
+        try:
+            return super().realizable(prefix, final=final)
+        except RecursionError:
+            return False
+
+
 class _LocalLanguageModelRunner(LanguageModelRunner):
     """Script-local compatibility layer; avoids editing upstream ChopChop files."""
 
@@ -148,7 +158,7 @@ class _LocalLanguageModelRunner(LanguageModelRunner):
             pass
 
 
-# Constructors matching generators/chopchop/grammars/javascript_chopchop_enhanced.lark
+# Constructors matching generators/grammars/javascript_chopchop.lark
 class Var(Unary): ...
 class Num(Unary): ...
 class Str(Unary): ...
@@ -223,7 +233,6 @@ class TryCatch(Ternary): ...
 class TryFinally(Binary): ...
 class TryCatchFinally(Binary): ...
 class VarDecl(Binary): ...
-class LetDecl(Binary): ...
 class AssignStmt(Binary): ...
 class AssignAddStmt(Binary): ...
 class AssignSubStmt(Binary): ...
@@ -296,45 +305,63 @@ class ParamSeq(Binary): ...
 # Pruner
 @rewrite
 def _basic_js_pruner(t: TreeGrammar) -> TreeGrammar:
-    """Conservative semantic pruning for JS codegen.
-
-    Removes clearly undesirable branches while keeping broad solution space.
     """
+    Basic pruner for JavaScript code generation:
+    - Removes calls to eval and Function constructors, which can lead to unbounded recursion in realizability checking.
+    - Removes trivial expression statements that don't contribute to meaningful code (e.g., "true;", "'hello';").
+    """
+    
+    if isinstance(t, (Call0, CallN)):
+        callee_tree = as_tree(t.children[0]) 
+        
+        # Prune away eval and Function calls to prevent unbounded recursion in realizability checking, since these can execute arbitrary code and thus may require the checker to consider an unbounded space of possibilities.
+        if isinstance(callee_tree, Var):
+            tok = as_tree(callee_tree.children[0])
+            if isinstance(tok, ASTLeaf) and tok.is_complete:
+                if tok.prefix in {"eval", "Function"}:
+                    return EmptySet()
+
     match t:
-        case Union(children):
-            return Union.of(_basic_js_pruner(c) for c in children)
-        case ReturnVoidStmt():
-            return EmptySet()
-        case ThrowStmt(_):
-            return EmptySet()
-        case WithStmt(_, _):
-            return EmptySet()
-        case CallN(callee, args):
-            # Avoid dangerous dynamic code execution patterns.
-            callee_tree = as_tree(callee)
-            match callee_tree:
-                case Var(v):
-                    tok = as_tree(v)
-                    match tok:
-                        case ASTLeaf(is_complete=True, prefix=prefix) if prefix in {"eval", "Function"}:
-                            return EmptySet()
-                        case _:
-                            pass
-                case _:
-                    pass
-            return CallN.of(
-                _basic_js_pruner(callee),
-                _basic_js_pruner(args),
-                is_tree=t.is_tree,
-            )
+        
+        # Terminator Pruning: If a statement is a terminator (e.g., return, throw, break, continue), prune away any subsequent statements in the same block, since they would be unreachable.
+        case StmtSeq(current_stmt, next_seq):
+            if _is_terminator(current_stmt):
+                return EmptySet() 
+
+        # Tautology Pruning
+        case Eq(left, right) | StrictEq(left, right):
+            if _is_syntactically_equal(left, right):
+                return EmptySet() 
+
+        # Remove trivial expression statements that are just literals (e.g., "42;", "'hello';", "true;").
+        case ExprStmt(child):
+            inner = as_tree(child)
+            if isinstance(inner, (Num, Str, TrueLit, FalseLit, NullLit)):
+                return EmptySet()
+
         case Application(children):
+            
+            new_children = [_basic_js_pruner(c) for c in children]
+            
+            if any(isinstance(c, EmptySet) for c in new_children):
+                return EmptySet()
+                
             return t.__class__.of(
-                *(_basic_js_pruner(c) for c in children),
+                *new_children,
                 is_tree=t.is_tree,
             )
+
         case _:
             return t
 
+def _is_terminator(stmt_node) -> bool:
+    """check if a statement is a terminator (return, throw, break, continue)"""
+    n = as_tree(stmt_node)
+    return isinstance(n, (ReturnStmt, ReturnVoidStmt, ThrowStmt, BreakStmt, ContinueStmt))
+
+def _is_syntactically_equal(node_a, node_b) -> bool:
+    """Prune away tautological comparisons like x === x by checking if the two sides are syntactically identical."""
+    return str(node_a) == str(node_b)
 
 CONSTRUCTORS: list[type[Application]] = [
     Var,
@@ -479,7 +506,6 @@ CONSTRUCTORS: list[type[Application]] = [
     Params,
     Param,
     ParamSeq,
-    LetDecl,
 ]
 
 
@@ -504,7 +530,7 @@ class ChopchopGenerator(BaseGenerator):
         else:
             raise ValueError(f"Unsupported pruner mode: {self.pruner}")
 
-        self.checker = RealizabilityChecker(pruner_fn, parser, lexer_spec)
+        self.checker = _SafeRealizabilityChecker(pruner_fn, parser, lexer_spec)
         self.runner = _LocalLanguageModelRunner(ModelConfig(model_id=model_name))
 
     @staticmethod
@@ -623,6 +649,9 @@ class ChopchopGenerator(BaseGenerator):
         context = kwargs.get("context", self.context)
         fixed_prefix = kwargs.get("fixed_prefix", self.fixed_prefix)
         task_mode = kwargs.get("task_mode", self.task_mode)
+        # Keep a bounded runtime per sample to avoid pathological hangs.
+        safety_timeout = int(kwargs.get("safety_timeout", 120))
+        retry_timeout = int(kwargs.get("retry_timeout", max(240, safety_timeout * 2)))
         stop_tokens = kwargs.get("stop_tokens", stop_tokens) or []
         task_prompt = kwargs.get("task_prompt")
         if not task_prompt:
@@ -640,13 +669,29 @@ class ChopchopGenerator(BaseGenerator):
         self.runner.require_trailing_brace = use_close_checker
         self.runner.brace_wait_tokens = self.brace_wait_tokens
 
-        run_info = self.runner.run(
-            Config(temperature=temperature),
-            prompt=task_prompt,
-            context=context,
-            fixed_prefix=fixed_prefix,
-            realizability_checker=checker,
-        )
+        try:
+            run_info = self.runner.run(
+                Config(temperature=temperature, timeout=safety_timeout),
+                prompt=task_prompt,
+                context=context,
+                fixed_prefix=fixed_prefix,
+                realizability_checker=checker,
+            )
+
+            # If function-completion timed out, continue from partial output once with a longer budget.
+            if use_close_checker and run_info.timed_out and run_info.output:
+                retry_info = self.runner.run(
+                    Config(temperature=temperature, timeout=retry_timeout),
+                    prompt=task_prompt,
+                    context=context,
+                    fixed_prefix=run_info.output,
+                    realizability_checker=checker,
+                )
+                if len(retry_info.output) > len(run_info.output):
+                    run_info = retry_info
+        except RecursionError:
+            # Last-resort fallback: skip pathological sample instead of aborting batch.
+            return ""
 
         output = run_info.output
 
