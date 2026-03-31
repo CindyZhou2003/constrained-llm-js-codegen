@@ -23,6 +23,12 @@ def run_evaluation_pipeline(args):
     output_path = Path(args.output_base) / output_dir_name
     output_path.mkdir(parents=True, exist_ok=True)
     
+    # Also save compressed .json.gz for MultiPL-E if requested
+    gz_output_path = None
+    if args.save_gz:
+        gz_output_path = Path(args.gz_output_base) / output_dir_name
+        gz_output_path.mkdir(parents=True, exist_ok=True)
+    
     if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
         parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
     
@@ -56,14 +62,21 @@ def run_evaluation_pipeline(args):
         result_item = task.copy()
         result_item["completions"] = [code]
         
-        # save as .json.gz (one file per task)
-        safe_filename = str(task_name).replace("/", "_") + ".json.gz"
-        save_file = output_path / safe_filename
+        # save as uncompressed .json (easy to inspect)
+        safe_name = str(task_name).replace("/", "_")
+        json_file = output_path / (safe_name + ".json")
+        with open(json_file, "w", encoding="utf-8") as f_json:
+            json.dump(result_item, f_json, indent=2)
         
-        with gzip.open(save_file, "wt", encoding="utf-8") as f_gz:
-            json.dump(result_item, f_gz)
+        # optionally also save compressed .json.gz
+        if gz_output_path is not None:
+            gz_file = gz_output_path / (safe_name + ".json.gz")
+            with gzip.open(gz_file, "wt", encoding="utf-8") as f_gz:
+                json.dump(result_item, f_gz)
 
-    print(f"\n>>> Generation Finished! Files saved to: {output_path}")
+    print(f"\n>>> Generation Finished! Uncompressed JSON saved to: {output_path}")
+    if gz_output_path:
+        print(f"    Compressed .json.gz also saved to: {gz_output_path}")
     
 
 if __name__ == "__main__":
@@ -73,7 +86,9 @@ if __name__ == "__main__":
     parser.add_argument("--model", type=str, default="microsoft/phi-2", help="HuggingFace model ID")
     parser.add_argument("--input_file", type=str, required=True, help="Path to jsonl prompts (e.g., js_prompts_mbpp.jsonl)")
     parser.add_argument("--dataset_name", type=str, default="mbpp", help="Name for folder generation")
-    parser.add_argument("--output_base", type=str, default="results", help="Base output directory")
+    parser.add_argument("--output_base", type=str, default="raw_results", help="Base output directory for uncompressed .json")
+    parser.add_argument("--save_gz", action="store_true", help="Also save compressed .json.gz for MultiPL-E")
+    parser.add_argument("--gz_output_base", type=str, default="results", help="Base output directory for compressed .json.gz")
     
     # generation configuration
     parser.add_argument("--mode", type=str, default="unconstrained", 

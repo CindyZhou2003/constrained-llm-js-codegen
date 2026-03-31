@@ -1,192 +1,274 @@
 # Constrained-llm-js-codegen
 
+A framework for systematically evaluating LLM code generation under **unconstrained** and **grammar-constrained** decoding across multiple programming languages, using [MultiPL-E](https://github.com/nuprl/MultiPL-E) and [HumanEval-X](https://github.com/THUDM/CodeGeeX) as benchmarks.
+
+**JavaScript is used as the primary example** throughout this README. The same workflow applies to any language supported by MultiPL-E — replace the language-specific files (translation script, grammar, prompt dataset) at the relevant steps. See [Adding a New Language](#adding-a-new-language) for a checklist.
+
 ## Project Structure
 
-`code_generator.py`: The core library and router. It handles model initialization and provides a CLI for raw code generation.
+- `code_generator.py`: Core generation library and CLI for quick single-pass generation.
+- `code_evaluation.py`: Batch generation wrapper that produces MultiPL-E-compatible output for any language.
+  - Default output: uncompressed `.json` files in `raw_results/`.
+  - Optional output: compressed `.json.gz` files in `results/` (with `--save_gz`).
+- `compress_results.py`: Post-processing utility to convert `.json` to `.json.gz` for MultiPL-E.
+- `generators/`: Backend implementations and constrained decoding frameworks (`syncode`, `itergen`, `chopchop`, etc.).
+  - `grammars/`: Language grammar files (`.lark`) for constrained modes. Add a grammar here for each new language.
+- `datasets/`: Translated prompt datasets in `.jsonl` format, one file per language/benchmark combination.
+- `raw_results/`: Uncompressed generation outputs (`.json`).
+- `results/`: Compressed benchmark inputs and evaluation outputs (`.json.gz`).
+- `tools/`: Analysis scripts for generated and evaluated results.
 
-`code_evaluation.py`: The evaluation wrapper. It processes .jsonl datasets (like MBPP or HumanEval) and outputs files in the compressed .json.gz format required for the MultiPL-E eval pipeline.
+### Utilities in `tools/`
 
-`generators/`: A subdirectory containing the specific implementation strategies (e.g., `hf_generator.py` and `syncode_generator.py`) and generation frameworks including [itergen](https://github.com/structuredllm/itergen), [chopchop](https://github.com/large-loris-models/chopchop), etc.
+- `count.py`: Summarize evaluation cases.
 
-`datasets/`: The directory that contains datasets of prompts we use to generate code.
-
-`results/`: The directory that stores the results of code generation and evaluation for different models.
-
-
-`tools/`: Files that help analyze code genration results of (un)constrained models.
-
-- `unzip.py`: Unzip the results.json.gz files to the raw_results directory.
 ```bash
-python tools/unzip.py ./results/mbpp-js-microsoft_phi_2-0.2`
-```
-- `count.py`: Summarize the cases results.
- ```bash
- # auto name the output file
+# Auto-generate output file name
 python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2
-# specify the output name(optional)
-python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt 
+
+# Specify output file name (optional)
+python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt
 ```
-- `diff.py`: Show the differences between different models 
+
+- `diff.py`: Compare two summary files.
+
 ```bash
 python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt
-# specify the output name(optional)
-python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt custom_diff.txt 
+
+# Specify output file name (optional)
+python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt custom_diff.txt
 ```
-- `extract_prompts.py`: extract OK->error cases from unconstrained models to constrained ones(one model to another)
+
+- `extract_prompts.py`: Extract cases that regress from one run to another.
+
 ```bash
-# use default prompts file and output path
+# Use default prompts file and output path
 python tools/extract_prompts.py mbpp-js-microsoft_phi_2-0.0-unconstrained_vs_mbpp-js-microsoft_phi_2-0.0-syncode_diff.txt
-# specify other prompts or output path
+
+# Specify custom prompts file and output path
 python tools/extract_prompts.py diff.txt datasets/js_prompts_mbpp.jsonl datasets/tem_custom.jsonl
 ```
 
 ## Setup
 
-Create a python virtual environment and install all the packages in `requirements.txt`.
-Requires Python 3.10~3.12
+Requires Python 3.10 to 3.12.
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows use: .venv\Scripts\activate
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## MultiPL-E benchmark
+## MultiPL-E Benchmark
 
-We use [MultiPL-E](https://github.com/nuprl/MultiPL-E) framework(`./benchmark/MultiPL-E`) to evaluate the code accuracy.
+This project uses [MultiPL-E](https://github.com/nuprl/MultiPL-E) at `benchmark/MultiPL-E`.
 
-### Code generation
+### 1) Generate Prompt Datasets
 
-#### Generate target prompts
+MultiPL-E translates benchmark problems from Python into many target languages. Run these commands inside `benchmark/MultiPL-E/dataset_builder`.
 
-Go to the `./benchmark/MultiPL-E/dataset_builder` directory and run the following code, we can generate the target language prompts(change the lang and output directory if needed):
+Replace `--lang` with the translator for your target language (e.g., `humaneval_to_py.py`, `humaneval_to_cpp.py`). All available translators are in `benchmark/MultiPL-E/dataset_builder/`.
 
-For humaneval dataset, we got a total 164 test cases:
-
-``` bash
-   python prepare_prompts_for_hfhub.py
-      --lang humaneval_to_js.py # language translation file in MultiPL-E\dataset_builder
-      --doctests transform
-      --prompt-terminology reworded
-      --output jsonl:../datasets/js_prompts_humaneval.jsonl # translated dataset file
-      --original-dataset humaneval
-      --originals ../datasets/originals-with-cleaned-doctests # original data dir
-   ```
-
-   For MBPP dataset, we got a total 397 test cases:
-
-   ```bash
-   python prepare_prompts_for_hfhub.py --lang humaneval_to_js.py --doctests transform --prompt-terminology reworded --output jsonl:../datasets/js_prompts_mbpp.jsonl --originals ../datasets/mbpp-typed --original-dataset mbpp
-   ```
-
-   The translated javascript prompts are already in `./datasets`.
-
-#### Basic Generation
-   
-Use the `code_generator.py` CLI to quickly test how a model handles prompts. It reads a `.jsonl` file but outputs plain text files (or prints to the terminal).
-
+**HumanEval** (164 cases) — JavaScript example:
 
 ```bash
-python code_generator.py
-  --model microsoft/phi-2 # model name
-  --input_file datasets/js_prompts_mbpp.jsonl
-  --mode syncode  # "unconstrained" or "syncode" or "itergen" or "chopchop"
-  --grammar generators/grammars/javascript.lark # optional: path to grammar file (.lark) for constrained modes
-  --output_dir ./raw_outputs/ # output dir
-  --temperature 0.2 # optional: default=0.0
-  --max_new_tokens 512 # optional: default=512
+python prepare_prompts_for_hfhub.py \
+  --lang humaneval_to_js.py \
+  --doctests transform \
+  --prompt-terminology reworded \
+  --output jsonl:../datasets/js_prompts_humaneval.jsonl \
+  --original-dataset humaneval \
+  --originals ../datasets/originals-with-cleaned-doctests
 ```
 
-**Input**: `.jsonl` file.
-**Output**: Individual `.js` files containing only the code.
-
-#### Batch Evaluation
-
-Use the the `code_evaluation.py`.It processes the same `.jsonl` file but follows the strict MultiPL-E formatting and compression rules required for scoring.
+**MBPP** (397 cases) — JavaScript example:
 
 ```bash
-   python code_evaluation.py 
-      --model microsoft/phi-2  # model name
-      --input_file datasets/js_prompts_mbpp.jsonl # input file
-      --mode syncode # "unconstrained" or "syncode" or "itergen" or "chopchop"
-      --grammar generators/grammars/javascript.lark # optional: path to grammar file (.lark) for constrained modes
-      
-      --dataset_name mbpp # "humaneval" or "mbpp"
-      --output_base results # ouput dir
-      --temperature 0.2 # optional: default=0.0
-      --max_new_tokens 512 # optional: default=512
-   ```
-**Input**: `.jsonl` file and possible grammar file
+python prepare_prompts_for_hfhub.py \
+  --lang humaneval_to_js.py \
+  --doctests transform \
+  --prompt-terminology reworded \
+  --output jsonl:../datasets/js_prompts_mbpp.jsonl \
+  --originals ../datasets/mbpp-typed \
+  --original-dataset mbpp
+```
 
-**Output**: Compressed `.json.gz` files containing code, task IDs, and prompt metadata.
+The translated JavaScript prompts are already included under `datasets/`. For other languages, run the corresponding translator and save to `datasets/<lang>_prompts_<benchmark>.jsonl`.
 
-### Evaluation
+### 2) Basic Generation
+
+Use `code_generator.py` for quick iteration. It reads `.jsonl` prompts and outputs plain source code files.
+
+Key parameters to adapt for your language:
+- `--input_file`: your language's prompt dataset (e.g., `datasets/py_prompts_mbpp.jsonl`)
+- `--mode`: `unconstrained` | `syncode` | `itergen` | `chopchop`
+- `--grammar`: path to the `.lark` grammar file; required for all constrained modes
+
+```bash
+python code_generator.py \
+  --model microsoft/phi-2 \
+  --input_file datasets/js_prompts_mbpp.jsonl \
+  --mode syncode \
+  --grammar generators/grammars/javascript.lark \
+  --output_dir ./raw_outputs/ \
+  --temperature 0.2 \
+  --max_new_tokens 512
+```
+
+**Input**: `.jsonl` prompt file
+
+**Output**: individual source code files
+
+### 3) Batch Generation for Evaluation
+
+Use `code_evaluation.py` for task-wise generation with MultiPL-E-compatible JSON content.
+
+The output directory is automatically named `<dataset_name>-<lang>-<model>-<temperature>-<mode>`. Adjust `--input_file` and `--dataset_name` to switch languages or benchmarks.
+
+Key parameters to adapt for your language:
+- `--input_file`: your language's prompt dataset
+- `--mode`: `unconstrained` | `syncode` | `itergen` | `chopchop`
+- `--grammar`: path to the `.lark` grammar file; required for all constrained modes
+- `--dataset_name`: used only as a label in the output directory name (`humaneval` | `mbpp` | any string)
+- `--save_gz`: optional flag to also write `.json.gz` files alongside the `.json` files
+
+```bash
+python code_evaluation.py \
+  --model microsoft/phi-2 \
+  --input_file datasets/js_prompts_mbpp.jsonl \
+  --mode syncode \
+  --grammar generators/grammars/javascript.lark \
+  --dataset_name mbpp \
+  --output_base raw_results \
+  --save_gz \
+  --gz_output_base results \
+  --temperature 0.2 \
+  --max_new_tokens 512
+```
+
+**Input**: `.jsonl` prompt file (and a grammar file for constrained modes)
+
+**Output**:
+- Default: uncompressed `.json` files in `raw_results/<run_name>/`
+- With `--save_gz`: additional `.json.gz` files in `results/<run_name>/`
+
+### 4) Compress Existing JSON Outputs
+
+If you generated only uncompressed files, convert them later with `compress_results.py`.
+
+```bash
+# Compress one run directory
+python compress_results.py raw_results/mbpp-js-microsoft_phi_2-0.2-syncode
+
+# Compress all run directories under raw_results/
+python compress_results.py raw_results --all
+
+# Specify custom output base directory
+python compress_results.py raw_results/mbpp-js-microsoft_phi_2-0.2-syncode --output_base results
+```
+
+### 5) Evaluate with MultiPL-E
 
 1. Go to the MultiPL-E directory:
-```bash
-   cd benchmark/MultiPL-E
-   ```
-2. Pull the evaluation image:
-```bash
-   docker pull ghcr.io/nuprl/multipl-e-evaluation
-   ```
-3. Tag the image as `multipl-e-eval`:
-```bash
-   docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
-   ```
-4. Run the evaluation container for your results directory. Replace `/absolute/path/to/results` with the absolute path to the directory containing your generated completions (the directory that has the `*.jsonl.gz` files):
-```bash
-   docker run --rm --network none \
-     -v "/absolute/path/to/results:/tutorial:rw" \
-     multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
-   ```
-   This maps your local results directory to `/tutorial` inside the Docker container.
 
-5. Compute pass@k metrics on the evaluated results:
 ```bash
-   python pass_k.py /absolute/path/to/results
+cd benchmark/MultiPL-E
+```
+
+2. Pull the evaluation image:
+
+```bash
+docker pull ghcr.io/nuprl/multipl-e-evaluation
+```
+
+3. Tag the image:
+
+```bash
+docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
+```
+
+4. Run evaluation on a directory containing `*.json.gz` completions:
+
+```bash
+docker run --rm --network none \
+  -v "/absolute/path/to/results:/tutorial:rw" \
+  multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
+```
+
+5. Compute pass@k:
+
+```bash
+python pass_k.py /absolute/path/to/results
+```
+
+After `pass_k.py`, related `.results.json.gz` files are written to that same results directory.
+
+## Adding a New Language
+
+Follow these steps to extend the evaluation to another language:
+
+1. **Generate prompts** — inside `benchmark/MultiPL-E/dataset_builder`, run `prepare_prompts_for_hfhub.py` with `--lang humaneval_to_<lang>.py` and save the output to `datasets/<lang>_prompts_<benchmark>.jsonl`.
+
+2. **Add a grammar** — write or obtain a `.lark` grammar for the target language and place it in `generators/grammars/<lang>.lark`. This is required when using constrained modes (`syncode`, `itergen`, `chopchop`).
+
+3. **Run generation** — pass the new prompt file and grammar to `code_evaluation.py`:
+   ```bash
+   python code_evaluation.py \
+     --model <your_model> \
+     --input_file datasets/<lang>_prompts_<benchmark>.jsonl \
+     --mode <mode> \
+     --grammar generators/grammars/<lang>.lark \
+     --dataset_name <benchmark>
    ```
-   After running `pass_k.py`, it will output related `.results.json.gz` files in your results directory.
+
+4. **Compress and evaluate** — compress outputs with `compress_results.py` if needed, then run the MultiPL-E Docker container against your `results/` directory as described in [step 5](#5-evaluate-with-multipl-e).
 
 ## HumanEval-X Benchmark Usage
-### Code generation
-1. Use the dataset at `benchmark/CodeGeeX/codegeex/benchmark/humaneval-x/js/data/humaneval_js.jsonl` for code generation. An example data entry is as follows:
-   ```json
-   {
-      "task_id": "JavaScript/0", 
-      "prompt": "/* Check if in given list of numbers, are any two numbers closer to each other than\n  given threshold.\n  >>> hasCloseElements([1.0, 2.0, 3.0], 0.5)\n  false\n  >>> hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n  true\n  */\nconst hasCloseElements = (numbers, threshold) => {\n", 
-      "canonical_solution": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n", 
-      "test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3) === true)\n  console.assert(\n    hasCloseElements([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05) === false\n  )\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.95) === true)\n  console.assert(hasCloseElements([1.0, 2.0, 5.9, 4.0, 5.0], 0.8) === false)\n  console.assert(hasCloseElements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 1.0) === true)\n  console.assert(hasCloseElements([1.1, 2.2, 3.1, 4.1, 5.1], 0.5) === false)\n}\n\ntestHasCloseElements()\n", 
-      "declaration": "\nconst hasCloseElements = (numbers, threshold) => {\n", 
-      "example_test": "const testHasCloseElements = () => {\n  console.assert(hasCloseElements([1.0, 2.0, 3.0], 0.5) === false)\n  console.assert(\n    hasCloseElements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3) === true\n  )\n}\ntestHasCloseElements()\n"
-   }
-   ```
-2. Use the `benchmark/CodeGeeX/test_generate.py` to generate code and store the code under `benchmark/CodeGeeX/input_data`. Each **line** of the file should be a JSON object with `task_id` and `generation` fields. An example line in the file is as follows:
-   ```json
-   {"task_id": "JavaScript/0", "generation": "  for (let i = 0; i < numbers.length; i++) {\n    for (let j = 0; j < numbers.length; j++) {\n      if (i != j) {\n        let distance = Math.abs(numbers[i] - numbers[j]);\n        if (distance < threshold) {\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}\n\n"}
-   ```
+
+### Code Generation
+
+1. Use dataset:
+
+`benchmark/CodeGeeX/codegeex/benchmark/humaneval-x/js/data/humaneval_js.jsonl`
+
+2. Generate code with `benchmark/CodeGeeX/test_generate.py` and write to `benchmark/CodeGeeX/input_data`.
+
+Each line must be JSON with `task_id` and `generation` fields, for example:
+
+```json
+{"task_id": "JavaScript/0", "generation": "..."}
+```
+
 ### Evaluation
-1. Change directory to `benchmark/CodeGeeX`
-   ```bash
-   cd benchmark/CodeGeeX
-   ```
-2. Build the Docker image `humanevalx`
-   ```bash
-   docker build -t humanevalx .
-   ``` 
-3. Run the Docker container `jseval` and mount the `benchmark/CodeGeeX/input_data` directory to `/workspace/CodeGeeX/input_data` in the container
-   ```bash
-   docker run -it --mount type=bind,source=./input_data,target=/workspace/CodeGeeX/input_data --name jseval humanevalx
-   ```
-4. Inside the container, run the evaluation script to evaluate the generated code. 
-    ```bash
-    ./scripts/evaluate_humaneval_x.sh input_data/generations.jsonl js
-    ```
-5. The evaluation results will be appended to each line of the input file. An example output line is as follows:
-   ```json
-   {"task_id": "JavaScript/0", "completion_id": 0, "test_code": "...", "prompt": "...", "generation": "...", "result": "failed: ...", "passed": false, "finish": -1, "file": "", "output": []}
-   ```
-6. Exit the Docker container and the data is available in the `benchmark/CodeGeeX/input_data` directory.
-   ```bash
-   exit
-   ```
+
+1. Change directory:
+
+```bash
+cd benchmark/CodeGeeX
+```
+
+2. Build image:
+
+```bash
+docker build -t humanevalx .
+```
+
+3. Start container and mount input directory:
+
+```bash
+docker run -it --mount type=bind,source=./input_data,target=/workspace/CodeGeeX/input_data --name jseval humanevalx
+```
+
+4. Run evaluation inside container:
+
+```bash
+./scripts/evaluate_humaneval_x.sh input_data/generations.jsonl js
+```
+
+5. Results are appended to each line of the input file.
+
+6. Exit container:
+
+```bash
+exit
+```

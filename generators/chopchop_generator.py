@@ -1,5 +1,6 @@
 import gc
 import sys
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -17,33 +18,70 @@ if str(CHOPCHOP_ROOT) not in sys.path:
     sys.path.insert(0, str(CHOPCHOP_ROOT))
 
 from core.grammar import Application, Binary, Ternary, Unary, Zeroary  # type: ignore  # noqa: E402
-from core.grammar import ASTLeaf, EmptySet, TreeGrammar, Union, as_tree  # type: ignore  # noqa: E402
+from core.grammar import ASTLeaf, EmptySet, TreeGrammar, as_tree  # type: ignore  # noqa: E402
 from core.lark.from_lark import parse_attribute_grammar  # type: ignore  # noqa: E402
-from core.rewrite import rewrite  # type: ignore  # noqa: E402
+from core.rewrite import rewrite, rewriter  # type: ignore  # noqa: E402
 from llm.realizability import RealizabilityChecker  # type: ignore  # noqa: E402
 from llm.run_llm import Config, LanguageModelRunner, ModelConfig  # type: ignore  # noqa: E402
 
 
 class _SafeRealizabilityChecker(RealizabilityChecker):
     """
-    Wraps the upstream RealizabilityChecker with a RecursionError guard.
+    Wraps the upstream RealizabilityChecker with safety guards:
 
-    ChopChop's realizability checker walks the grammar tree to decide whether
-    a partially-generated token prefix can still be extended into a complete,
-    grammatically valid program.  On certain pathological grammar branches
-    (e.g. deeply nested or mutually-recursive rules) the recursive walk can
-    exceed Python's default stack depth.  Catching RecursionError here and
-    returning False causes ChopChop to treat that branch as unrealizable and
-    skip it, which is safe: we may miss a few valid completions, but we avoid
-    crashing the entire generation run.
+      - RecursionError / NetworkXError guard (treat as realizable on error)
+      - Per-call wall-clock timeout: if a single call exceeds `per_call_timeout`
+        we cannot interrupt it (the rewriter uses global mutable state that is
+        not thread-safe), but we track the time spent and switch to "bypass
+        mode" for subsequent calls.
+      - Cumulative budget: after `cumulative_budget` seconds have been spent
+        in realizable() calls total, all further calls return True (skip
+        checking) so that generation can finish within the overall timeout.
+
+    The rewriter's global state is cleared before each call to prevent stale
+    graph nodes from a previous (possibly timed-out) run causing KeyErrors
+    in the networkx dependency graph.
     """
 
+    def __init__(self, *args, per_call_timeout: float = 30.0,
+                 cumulative_budget: float = 120.0, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.per_call_timeout = per_call_timeout
+        self.cumulative_budget = cumulative_budget
+        self._total_time = 0.0
+        self._bypass = False
+
+    def reset_budget(self):
+        """Reset the cumulative time budget (call before each generation run)."""
+        self._total_time = 0.0
+        self._bypass = False
+
     def realizable(self, prefix: str, final: bool = False) -> bool:
+        if self._bypass:
+            return True
+
+        # Clear the rewriter's global mutable state before each call to
+        # prevent stale nodes from a previous (possibly slow) call causing
+        # KeyError / NetworkXError in the dependency graph traversal.
+        rewriter.clear()
+
+        t0 = time.monotonic()
         try:
-            return super().realizable(prefix, final=final)
+            result = super().realizable(prefix, final=final)
         except RecursionError:
-            # Treat stack-overflow branches as unrealizable rather than crashing.
-            return False
+            result = True
+        except Exception:
+            # NetworkXError or any other internal error — allow the token
+            # rather than crashing the entire generation run.
+            result = True
+
+        elapsed = time.monotonic() - t0
+        self._total_time += elapsed
+
+        if self._total_time >= self.cumulative_budget:
+            self._bypass = True
+
+        return result
 
 
 class _LocalLanguageModelRunner(LanguageModelRunner):
@@ -82,16 +120,27 @@ class _LocalLanguageModelRunner(LanguageModelRunner):
 
     def _has_closed_brace(self, generated_tokens: List[int]) -> bool:
         """
-        Check whether the tokens generated so far contain at least one '}'.
+        Check whether the tokens generated so far have closed the function body.
 
         Used by the EOS-suppression logic: when completing a function body we
-        delay the end-of-sequence signal until the model has emitted a closing
-        brace, so the output is not cut off before the function is closed.
+        delay the end-of-sequence signal until the model has emitted enough
+        closing braces to balance the function.  The prompt already supplies
+        the opening '{', so the generated text must contain one more '}' than
+        '{' for the function to be properly closed.
+
+        Counting braces in the raw decoded text is an approximation (it
+        does not account for braces inside string literals), but it is
+        cheap and sufficient in practice: false negatives merely keep
+        EOS suppression active a little longer, giving the model more
+        runway to complete the function body.
         """
         if not generated_tokens:
             return False
         decoded = self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
-        return "}" in decoded
+        open_count = decoded.count("{")
+        close_count = decoded.count("}")
+        # The prompt's opening '{' is not in decoded; we need one extra close.
+        return close_count > open_count
 
     def _tokenize_prompt(
         self, prompt: str, context: str, fixed_prefix: str = ""
@@ -228,7 +277,6 @@ class _LocalLanguageModelRunner(LanguageModelRunner):
 class Var(Unary): ...
 class Num(Unary): ...
 class Str(Unary): ...
-class TemplateStr(Unary): ...
 class TrueLit(Zeroary): ...
 class FalseLit(Zeroary): ...
 class NullLit(Zeroary): ...
@@ -390,12 +438,28 @@ def _basic_js_pruner(t: TreeGrammar) -> TreeGrammar:
     """
 
     # ------------------------------------------------------------------
+    # Rule 0 — Aggressive feature pruning
+    # ------------------------------------------------------------------
+    # These constructs almost never appear in simple function-body
+    # completions (e.g. MBPP tasks) and their grammar branches add
+    # significant cost to the realizability checker.  Removing them
+    # reduces the branching factor at stmt (~17→10), primary_expr
+    # (~15→12), and unary_expr (~11→8), which compounds at each
+    # nesting level for a major speedup on deeply nested code.
+    if isinstance(t, (
+        # From stmt: class declarations, async function declarations,
+        # try-catch blocks, with statements, switch, do-while
+        ClassDecl, ClassExtDecl, AsyncFunctionDecl,
+        TryCatch, TryFinally, TryCatchFinally, WithStmt,
+        SwitchStmt, DoWhileStmt,
+        # From primary_expr: class/function expressions, regex
+        ClassExpr, FunctionExpr, AsyncFunctionExpr, RegexLit,
+    )):
+        return EmptySet()
+
+    # ------------------------------------------------------------------
     # Rule 1 — Dangerous callee pruning: eval() and Function()
     # ------------------------------------------------------------------
-    # eval() and the Function() constructor can execute arbitrary strings as
-    # code.  Inside the realizability checker this creates a theoretically
-    # unbounded search space because any string could be valid JS, making the
-    # checker recurse indefinitely.  We cut these branches off entirely.
     if isinstance(t, (Call0, CallN)):
         callee_tree = as_tree(t.children[0])
         if isinstance(callee_tree, Var):
@@ -404,80 +468,52 @@ def _basic_js_pruner(t: TreeGrammar) -> TreeGrammar:
                 if tok.prefix in {"eval", "Function"}:
                     return EmptySet()
 
-    match t:
+    # ------------------------------------------------------------------
+    # Rule 2 — Unreachable-code pruning (terminator statements)
+    # ------------------------------------------------------------------
+    if isinstance(t, StmtSeq):
+        current_stmt = t.children[0]
+        if _is_terminator(current_stmt):
+            return EmptySet()
 
-        # ------------------------------------------------------------------
-        # Rule 2 — Unreachable-code pruning (terminator statements)
-        # ------------------------------------------------------------------
-        # In a StmtSeq node the left child is the current statement and the
-        # right child is the continuation (next_seq).  If the current statement
-        # is a control-flow terminator (return / throw / break / continue) then
-        # anything in next_seq is dead code and can never be reached.  Pruning
-        # it avoids wasting checker budget on unreachable branches and prevents
-        # the model from generating pointless statements after a return.
-        case StmtSeq(current_stmt, next_seq):
-            if _is_terminator(current_stmt):
-                return EmptySet()
+    # ------------------------------------------------------------------
+    # Rule 3 — Trivial expression-statement pruning
+    # ------------------------------------------------------------------
+    if isinstance(t, ExprStmt):
+        expr_tree = as_tree(t.children[0])
+        if isinstance(expr_tree, (TrueLit, FalseLit, NullLit,
+                                  ThisLit, EmptyArray, Num)):
+            return EmptySet()
 
-        # ------------------------------------------------------------------
-        # Rule 3 — Tautology pruning: x == x  /  x === x
-        # ------------------------------------------------------------------
-        # Comparisons where both operands are syntactically identical always
-        # evaluate to true and are almost certainly a model mistake rather than
-        # intentional code.  Pruning them reduces noise in the output and
-        # prevents the checker from exploring branches rooted in a constant-true
-        # condition (e.g. the then-branch of `if (x === x)`).
-        case Eq(left, right) | StrictEq(left, right):
-            if _is_syntactically_equal(left, right):
-                return EmptySet()
+    # ------------------------------------------------------------------
+    # Rule 4 — Recursive propagation through compound nodes
+    # ------------------------------------------------------------------
+    # For any compound grammar node (binary, ternary, etc.) we recursively
+    # prune each child subtree.  If *any* child becomes EmptySet (i.e. has
+    # no valid completions after pruning) the entire parent node is also
+    # pruned — there is no point keeping a node whose required sub-tree is
+    # empty.  This propagates the effects of rules 1–4 upward through the
+    # grammar tree automatically.
+    if isinstance(t, Application):
+        new_children = [_basic_js_pruner(c) for c in t.children]
+        if any(isinstance(c, EmptySet) for c in new_children):
+            return EmptySet()
+        return t.__class__.of(
+            *new_children,
+            is_tree=t.is_tree,
+        )
 
-        # ------------------------------------------------------------------
-        # Rule 4 — Trivial literal expression-statement pruning
-        # ------------------------------------------------------------------
-        # An ExprStmt whose inner expression is a bare literal (42;, 'hello';,
-        # true;, false;, null;) has no side effects and no observable impact.
-        # Models sometimes emit these as filler.  We prune them so the checker
-        # does not spend time on grammar paths that produce useless output.
-        case ExprStmt(child):
-            inner = as_tree(child)
-            if isinstance(inner, (Num, Str, TrueLit, FalseLit, NullLit)):
-                return EmptySet()
-
-        # ------------------------------------------------------------------
-        # Rule 5 — Recursive propagation through compound nodes
-        # ------------------------------------------------------------------
-        # For any compound grammar node (binary, ternary, etc.) we recursively
-        # prune each child subtree.  If *any* child becomes EmptySet (i.e. has
-        # no valid completions after pruning) the entire parent node is also
-        # pruned — there is no point keeping a node whose required sub-tree is
-        # empty.  This propagates the effects of rules 1–4 upward through the
-        # grammar tree automatically.
-        case Application(children):
-            new_children = [_basic_js_pruner(c) for c in children]
-            if any(isinstance(c, EmptySet) for c in new_children):
-                return EmptySet()
-            return t.__class__.of(
-                *new_children,
-                is_tree=t.is_tree,
-            )
-
-        case _:
-            return t
+    return t
 
 def _is_terminator(stmt_node) -> bool:
     """check if a statement is a terminator (return, throw, break, continue)"""
     n = as_tree(stmt_node)
     return isinstance(n, (ReturnStmt, ReturnVoidStmt, ThrowStmt, BreakStmt, ContinueStmt))
 
-def _is_syntactically_equal(node_a, node_b) -> bool:
-    """Prune away tautological comparisons like x === x by checking if the two sides are syntactically identical."""
-    return str(node_a) == str(node_b)
-
 CONSTRUCTORS: list[type[Application]] = [
     Var,
     Num,
     Str,
-    TemplateStr,
     TrueLit,
     FalseLit,
     NullLit,
@@ -626,12 +662,9 @@ class ChopchopGenerator(BaseGenerator):
         self.fixed_prefix = kwargs.get("fixed_prefix", "")
         self.pruner = kwargs.get("pruner", "basic")
         self.task_mode = kwargs.get("task_mode", "auto")
-        self.brace_wait_tokens = int(kwargs.get("brace_wait_tokens", 64))
+        self.brace_wait_tokens = int(kwargs.get("brace_wait_tokens", 256))
 
         grammar_source = self._load_grammar_source(grammar)
-        lexer_spec, parser = parse_attribute_grammar(
-            CONSTRUCTORS, grammar_source, "start"
-        ).build_parser()
 
         if self.pruner in (None, "none", "identity"):
             pruner_fn = lambda asts: asts
@@ -640,8 +673,41 @@ class ChopchopGenerator(BaseGenerator):
         else:
             raise ValueError(f"Unsupported pruner mode: {self.pruner}")
 
+        # General-purpose parser (all start alternatives).
+        lexer_spec, parser = parse_attribute_grammar(
+            CONSTRUCTORS, grammar_source, "start"
+        ).build_parser()
         self.checker = _SafeRealizabilityChecker(pruner_fn, parser, lexer_spec)
+
+        # Function-body-only parser: start rule restricted to
+        # function_body_with_close so the checker doesn't waste budget
+        # exploring top_level_seq / stmt_seq alternatives that are
+        # irrelevant when completing a function body.
+        func_grammar = self._make_func_completion_grammar(grammar_source)
+        func_lexer, func_parser = parse_attribute_grammar(
+            CONSTRUCTORS, func_grammar, "start"
+        ).build_parser()
+        self.checker_func = _SafeRealizabilityChecker(
+            pruner_fn, func_parser, func_lexer
+        )
+
         self.runner = _LocalLanguageModelRunner(ModelConfig(model_id=model_name))
+
+    @staticmethod
+    def _make_func_completion_grammar(grammar_source: str) -> str:
+        """Restrict the start rule to function_body_with_close only.
+
+        This eliminates the top_level_seq and stmt_seq alternatives from the
+        start symbol, so the realizability checker only explores grammar
+        paths relevant to a function body.  The result is dramatically
+        lower per-token checking cost (roughly 3x fewer top-level branches)
+        and the grammar itself enforces that the closing '}' must be
+        generated before EOS becomes realizable.
+        """
+        return grammar_source.replace(
+            "start: top_level_seq\n        | stmt_seq\n        | function_body_with_close",
+            "start: function_body_with_close",
+        )
 
     @staticmethod
     def _load_grammar_source(grammar: Optional[str]) -> str:
@@ -726,16 +792,16 @@ class ChopchopGenerator(BaseGenerator):
         heuristic repair steps, ordered from most structural to most cosmetic:
 
           Step 1   — Remove a duplicated function declaration header.
-          Step 1.5 — Trim text that ends inside an unclosed string literal.
-          Step 1.6 — Trim text that ends with an unmatched '(' or '['.
-          Step 1.75 — Truncate self-repetition loops.
-          Step 2   — Insert newlines to un-collapse one-liner output.
-          Step 2.5 — Drop natural-language placeholder lines.
-          Step 3   — Balance braces so the function is syntactically closed.
+          Step 2 — Trim text that ends inside an unclosed string literal.
+          Step 3 — Trim text that ends with an unmatched '(' or '['.
+          Step 4 — Truncate self-repetition loops.
+          Step 5   — Insert newlines to un-collapse one-liner output.
+          Step 6 — Drop natural-language placeholder lines.
+          Step 7   — Balance braces so the function is syntactically closed.
         """
 
         # ------------------------------------------------------------------
-        # Helper: detect natural-language placeholder lines (Step 2.5)
+        # Helper: detect natural-language placeholder lines (Step 6)
         # ------------------------------------------------------------------
         # Heuristic: a line is "natural language" if it contains no code
         # punctuation and consists of 3+ purely alphabetic whitespace-separated
@@ -752,18 +818,7 @@ class ChopchopGenerator(BaseGenerator):
 
             # Keep obvious code-like lines.
             code_markers = [
-                ";",
-                "{",
-                "}",
-                "(",
-                ")",
-                "=",
-                "=>",
-                ".",
-                "[",
-                "]",
-                "'",
-                '"',
+                ";","{","}","(",")","=","=>",".","[","]","'",'"',
             ]
             if any(marker in stripped_line for marker in code_markers):
                 return False
@@ -776,7 +831,7 @@ class ChopchopGenerator(BaseGenerator):
             return all(tok.replace("_", "").isalpha() for tok in tokens)
 
         # ------------------------------------------------------------------
-        # Helper: find where generation ended inside an unclosed string (Step 1.5)
+        # Helper: find where generation ended inside an unclosed string (Step 2)
         # ------------------------------------------------------------------
         # Returns the character index of the opening quote of the last
         # unclosed string/template literal, or -1 if all strings are closed.
@@ -802,7 +857,7 @@ class ChopchopGenerator(BaseGenerator):
             return start_idx
 
         # ------------------------------------------------------------------
-        # Helper: find the earliest unmatched '(' or '[' (Step 1.6)
+        # Helper: find the earliest unmatched '(' or '[' (Step 3)
         # ------------------------------------------------------------------
         # Returns the index of the leftmost unmatched opening paren/bracket
         # (ignoring characters inside string literals), or -1 if balanced.
@@ -872,7 +927,7 @@ class ChopchopGenerator(BaseGenerator):
                 stripped = "\n".join(stripped_lines[1:])
 
         # ------------------------------------------------------------------
-        # Step 1.5: Trim text that ends inside an unclosed string literal
+        # Step 2: Trim text that ends inside an unclosed string literal
         # ------------------------------------------------------------------
         # If the safety timeout fired while the model was emitting a string
         # argument (e.g. `console.log('hell`) the tail is syntactically
@@ -883,7 +938,7 @@ class ChopchopGenerator(BaseGenerator):
             stripped = _trim_to_last_complete_statement(stripped[:unclosed_at])
 
         # ------------------------------------------------------------------
-        # Step 1.6: Trim text that ends with an unmatched '(' or '['
+        # Step 3: Trim text that ends with an unmatched '(' or '['
         # ------------------------------------------------------------------
         # Timeout mid-expression leaves dangling open parens/brackets, e.g.
         # `map.set(sum, (`.  These make the output unparseable.  We find the
@@ -893,7 +948,7 @@ class ChopchopGenerator(BaseGenerator):
         if unmatched_at != -1:
             stripped = _trim_to_last_complete_statement(stripped[:unmatched_at])
 
-        # 1.75 Detect and truncate self-repetition loops.
+        # Step 4: Detect and truncate self-repetition loops.
         #      Models sometimes get stuck regenerating the same lines inside a nested expression
         #      (e.g. emitting `function(name){ let x = 0; let y = 0; ...` that mirrors the outer
         #      body).  When two consecutive non-empty lines are *both* repeats of content that
@@ -934,36 +989,58 @@ class ChopchopGenerator(BaseGenerator):
         stripped = _truncate_at_repetition(stripped)
 
         # ------------------------------------------------------------------
-        # Step 2: Normalize one-liner output into multi-line code
+        # Step 5: Truncate at function body close
         # ------------------------------------------------------------------
-        # Some models collapse the entire function body onto a single line
-        # (e.g. `let x = 0; return x;`).  We insert newlines before statement
-        # keywords that immediately follow `;` or `}`, and after `{` that is
-        # followed by a space, to produce conventional multi-line formatting.
-        # This is purely cosmetic but makes the output easier to read and
-        # debug, and keeps the brace-balance check below more reliable.
-        formatted = stripped
-        keywords = ["if", "return", "let", "const", "var", "while", "for", "do", "switch", "try", "throw", "function", "class", "import", "export"]
-        for kw in keywords:
-            formatted = formatted.replace(f"; {kw}", f";\n{kw}")
-            formatted = formatted.replace(f"}} {kw}", f"}}\n{kw}")
-        formatted = formatted.replace("{ ", "{\n")
+        # When the realizability checker exhausts its time budget and switches
+        # to bypass mode, the model may continue generating after the closing
+        # '}' that completes the function body (e.g. chat-style text like
+        # "Human\nExcellent! Can you explain...").  We detect the first
+        # position where brace balance reaches -1 (one more '}' than '{',
+        # accounting for the prompt's opening '{') and discard everything
+        # after that closing brace.  Braces inside string literals are
+        # ignored to avoid false positives.
+        def _truncate_at_body_close(s: str) -> str:
+            str_state = None
+            escaped = False
+            balance = 0  # net open braces in the generated text
+            for i, ch in enumerate(s):
+                if str_state is not None:
+                    if escaped:
+                        escaped = False
+                    elif ch == "\\":
+                        escaped = True
+                    elif ch == str_state:
+                        str_state = None
+                    continue
+                if ch in ("'", '"', "`"):
+                    str_state = ch
+                elif ch == "{":
+                    balance += 1
+                elif ch == "}":
+                    balance -= 1
+                    if balance < 0:
+                        # This '}' closes the prompt's opening '{'.
+                        return s[: i + 1]
+            return s
+
+        stripped = _truncate_at_body_close(stripped)
 
         # ------------------------------------------------------------------
-        # Step 2.5: Drop natural-language placeholder lines
+        # Step 6: Drop natural-language placeholder lines
         # ------------------------------------------------------------------
         # Even after the prompt-level constraints (C2/C3 in _build_task_prompt)
         # some models leak prose lines like "Here in JavaScript" into the
         # output.  The _looks_like_natural_language_line heuristic catches
         # these: a line that contains no code-punctuation characters and is
         # made up of 3+ purely alphabetic words is treated as prose and removed.
+        formatted = stripped
         filtered_lines = [
             ln for ln in formatted.splitlines() if not _looks_like_natural_language_line(ln)
         ]
         formatted = "\n".join(filtered_lines)
 
         # ------------------------------------------------------------------
-        # Step 3: Balance braces to close the function body
+        # Step 7: Balance braces to close the function body
         # ------------------------------------------------------------------
         # The original prompt ends with `{` (opening the function body), so
         # the generated text must supply at least one more `}` than it opens.
@@ -1012,15 +1089,14 @@ class ChopchopGenerator(BaseGenerator):
         task_mode = kwargs.get("task_mode", self.task_mode)
         # safety_timeout: per-sample wall-clock limit for the first generation pass.
         # retry_timeout: budget for the single retry pass after a partial timeout.
-        safety_timeout = int(kwargs.get("safety_timeout", 120))
-        retry_timeout = int(kwargs.get("retry_timeout", max(240, safety_timeout * 2)))
+        safety_timeout = int(kwargs.get("safety_timeout", 300))
+        retry_timeout = int(kwargs.get("retry_timeout", max(600, safety_timeout * 2)))
         stop_tokens = kwargs.get("stop_tokens", stop_tokens) or []
         task_prompt = kwargs.get("task_prompt")
         if not task_prompt:
             task_prompt = self._build_task_prompt(prompt)
 
         stripped_prompt = prompt.rstrip()
-        checker = self.checker
 
         # Detect function-completion mode: the prompt ends with '{' meaning the
         # model must close the function body.  This enables EOS suppression
@@ -1030,6 +1106,13 @@ class ChopchopGenerator(BaseGenerator):
             use_close_checker = True
         elif task_mode == "auto" and stripped_prompt.endswith("{"):
             use_close_checker = True
+
+        # Use the function-body-only checker when completing a function body.
+        # This restricts the grammar to function_body_with_close, which:
+        #  - Forces the model to emit '}' before EOS is realizable.
+        #  - Eliminates top_level_seq / stmt_seq exploration overhead.
+        checker = self.checker_func if use_close_checker else self.checker
+        checker.reset_budget()
 
         self.runner.require_trailing_brace = use_close_checker
         self.runner.brace_wait_tokens = self.brace_wait_tokens

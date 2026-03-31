@@ -4,8 +4,7 @@
 IDENTIFIER: /(?!(let|const|var|return|true|false|null|function|if|else|for|while|do|switch|case|default|break|continue|throw|try|catch|finally|class|new|static|async|await|this|in|of|instanceof|typeof|void|delete|extends|import|export|with)$)[A-Za-z_$][A-Za-z0-9_$]*/
 NUMBER: /(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/
 STRING: /'([^'\\]|\\.)*'|"([^"\\]|\\.)*"/
-TEMPLATE: /`([^`\\]*(\\.[^`\\]*)*)`/
-REGEX: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
+REGEX: /\/([^\n\\\/\s]|\\.)+\/[gimsuy]*/
 WS: /\s+/
 
 %ignore WS
@@ -238,7 +237,6 @@ arg_list: expression
 primary_expr: IDENTIFIER {Var}
             | NUMBER {Num}
             | STRING {Str}
-            | TEMPLATE {TemplateStr}
             | REGEX {RegexLit}
             | "true" {TrueLit}
             | "false" {FalseLit}
