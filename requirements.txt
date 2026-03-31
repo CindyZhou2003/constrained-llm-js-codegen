@@ -38,4 +38,3 @@ streamlit-keyup
 lark
 tabulate
 func_timeout
--e .
