@@ -60,19 +60,19 @@ class _SafeRealizabilityChecker(RealizabilityChecker):
         if self._bypass:
             return True
 
-        # Clear the rewriter's global mutable state before each call to
-        # prevent stale nodes from a previous (possibly slow) call causing
-        # KeyError / NetworkXError in the dependency graph traversal.
-        rewriter.clear()
-
         t0 = time.monotonic()
         try:
             result = super().realizable(prefix, final=final)
         except RecursionError:
+            # RecursionError leaves the rewriter's dependency graph in an
+            # inconsistent state (partially expanded nodes).  Clear it so
+            # the next call starts from a clean slate.
+            rewriter.clear()
             result = True
         except Exception:
-            # NetworkXError or any other internal error — allow the token
-            # rather than crashing the entire generation run.
+            # NetworkXError or any other internal error — state is unknown,
+            # so clear defensively before the next call.
+            rewriter.clear()
             result = True
 
         elapsed = time.monotonic() - t0
