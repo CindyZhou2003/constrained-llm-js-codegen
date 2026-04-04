@@ -1,26 +1,13 @@
-# ChopChop-compatible JS grammar adapted from syncode/javascript.lark.
-# Note: expanded to avoid EBNF operators (+/*/?) unsupported by ChopChop attribute parser.
+# ChopChop-compatible JS grammar, trimmed for MBPP function-body generation.
 
-IDENTIFIER: /(?!(let|const|var|return|true|false|null|function|if|else|for|while|do|switch|case|default|break|continue|throw|try|catch|finally|class|new|static|async|await|this|in|of|instanceof|typeof|void|delete|extends|import|export|with)$)[A-Za-z_$][A-Za-z0-9_$]*/
+IDENTIFIER: /(?!(let|const|var|return|true|false|null|function|if|else|for|while|do|break|continue|throw|try|catch|finally|new|typeof|void|instanceof|in|of|switch|case|default)$)[A-Za-z_$][A-Za-z0-9_$]*/
 NUMBER: /(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/
 STRING: /'([^'\\]|\\.)*'|"([^"\\]|\\.)*"/
-REGEX: /\/([^\n\\\/\s]|\\.)+\/[gimsuy]*/
 WS: /\s+/
 
 %ignore WS
 
-start: top_level_seq
-        | stmt_seq
-        | function_body_with_close
-
-function_body_with_close: stmt_seq "}" {FunctionBodyClose}
-
-top_level_seq: top_level
-             | top_level top_level_seq {TopLevelSeq}
-
-top_level: stmt
-         | import_statement
-         | export_statement
+start: stmt_seq
 
 stmt_seq: stmt
         | stmt stmt_seq {StmtSeq}
@@ -28,62 +15,20 @@ stmt_seq: stmt
 stmt: declaration_statement
     | expression_statement
     | if_statement
-    | switch_statement
     | while_statement
     | do_while_statement
     | for_statement
     | for_in_statement
     | for_of_statement
+    | switch_statement
     | control_flow_statement
-    | try_catch_finally_statement
-    | with_statement
+    | try_catch_statement
     | compound_statement
     | function_declaration
-    | class_declaration
 
 expression_statement: expression ";" {ExprStmt}
 
 function_declaration: "function" IDENTIFIER function_params_postfix compound_statement {FunctionDecl}
-                    | "async" "function" IDENTIFIER function_params_postfix compound_statement {AsyncFunctionDecl}
-
-class_declaration: "class" IDENTIFIER class_body {ClassDecl}
-                 | "class" IDENTIFIER "extends" expression class_body {ClassExtDecl}
-
-class_body: "{" "}" {EmptyClassBody}
-          | "{" class_member_seq "}" {NonemptyClassBody}
-
-class_member_seq: class_member
-                | class_member class_member_seq {ClassMemberSeq}
-
-class_member: class_method
-            | class_property
-
-class_property: IDENTIFIER ";" {ClassProperty}
-              | IDENTIFIER "=" expression ";" {ClassPropertyInit}
-
-class_method: IDENTIFIER function_params_postfix compound_statement {ClassMethod}
-
-import_statement: "import" import_clause ";" {ImportStmt}
-                | "import" import_clause "from" module_ref ";" {ImportFromStmt}
-                | "import" module_ref ";" {ImportModuleStmt}
-
-export_statement: "export" "default" expression ";" {ExportDefaultExpr}
-                | "export" declaration_statement {ExportDecl}
-                | "export" function_declaration {ExportDecl}
-                | "export" class_declaration {ExportDecl}
-                | "export" "{" import_spec_list "}" ";" {ExportNamed}
-                | "export" "{" import_spec_list "}" "from" module_ref ";" {ExportNamedFrom}
-
-import_clause: IDENTIFIER {ImportName}
-             | "{" import_spec_list "}" {ImportNamedSet}
-
-import_spec_list: import_spec
-                | import_spec "," import_spec_list {ImportSpecSeq}
-
-import_spec: IDENTIFIER {ImportSpec}
-           | IDENTIFIER "as" IDENTIFIER {ImportSpecAs}
-
-module_ref: STRING {Str}
 
 compound_statement: "{" "}" {EmptyBlock}
                   | "{" stmt_seq "}" {NonemptyBlock}
@@ -91,38 +36,39 @@ compound_statement: "{" "}" {EmptyBlock}
 if_statement: "if" "(" expression ")" stmt {IfThen}
             | "if" "(" expression ")" stmt "else" stmt {IfThenElse}
 
-switch_statement: "switch" "(" expression ")" "{" case_clause_seq "}" {SwitchStmt}
-
-case_clause_seq: case_clause
-               | case_clause case_clause_seq {CaseClauseSeq}
-
-case_clause: "case" expression ":" stmt_seq {CaseClause}
-           | "default" ":" stmt_seq {DefaultCaseClause}
-
 while_statement: "while" "(" expression ")" stmt {WhileStmt}
 
 do_while_statement: "do" stmt "while" "(" expression ")" ";" {DoWhileStmt}
 
-for_statement: for_header stmt {ForStmt}
+for_statement: "for" "(" for_init ";" expression ";" expression ")" stmt {ForStmt}
 
-for_header: "for" "(" for_init ";" expression ";" expression ")" {ForHeader}
-
-for_init: declaration_for_init
-        | assignment_for_init
+for_init: "let" lvalue "=" expression {ForInitLet}
+        | "const" lvalue "=" expression {ForInitConst}
+        | "var" lvalue "=" expression {ForInitVar}
+        | lvalue "=" expression {ForInitAssign}
         | expression {ForInitExpr}
 
-declaration_for_init: "let" lvalue "=" expression {ForInitDecl}
-                    | "const" lvalue "=" expression {ForInitDecl}
-                    | "var" lvalue "=" expression {ForInitDecl}
-                    | "static" lvalue "=" expression {ForInitDecl}
+for_in_statement: "for" "(" "let" IDENTIFIER "in" expression ")" stmt {ForInLetStmt}
+                | "for" "(" "const" IDENTIFIER "in" expression ")" stmt {ForInConstStmt}
+                | "for" "(" "var" IDENTIFIER "in" expression ")" stmt {ForInVarStmt}
 
-assignment_for_init: lvalue "=" expression {ForInitAssign}
+for_of_statement: "for" "(" "let" IDENTIFIER "of" expression ")" stmt {ForOfLetStmt}
+                | "for" "(" "const" IDENTIFIER "of" expression ")" stmt {ForOfConstStmt}
+                | "for" "(" "var" IDENTIFIER "of" expression ")" stmt {ForOfVarStmt}
 
-for_in_statement: "for" "(" lvalue "in" expression ")" stmt {ForInStmt}
+switch_statement: "switch" "(" expression ")" "{" "}" {EmptySwitch}
+                | "switch" "(" expression ")" "{" case_clauses "}" {SwitchStmt}
+                | "switch" "(" expression ")" "{" case_clauses default_clause "}" {SwitchStmtDefault}
+                | "switch" "(" expression ")" "{" default_clause "}" {SwitchStmtDefaultOnly}
 
-for_of_statement: "for" "(" lvalue "of" expression ")" stmt {ForOfStmt}
+case_clauses: case_clause
+            | case_clause case_clauses {CaseClauses}
 
-with_statement: "with" "(" expression ")" stmt {WithStmt}
+case_clause: "case" expression ":" {EmptyCase}
+           | "case" expression ":" stmt_seq {CaseClause}
+
+default_clause: "default" ":" {EmptyDefault}
+              | "default" ":" stmt_seq {DefaultClause}
 
 control_flow_statement: "break" ";" {BreakStmt}
                       | "continue" ";" {ContinueStmt}
@@ -130,37 +76,19 @@ control_flow_statement: "break" ";" {BreakStmt}
                       | "return" ";" {ReturnVoidStmt}
                       | "throw" expression ";" {ThrowStmt}
 
-try_catch_finally_statement: try_catch_pair
-                           | "try" compound_statement "finally" compound_statement {TryFinally}
-                           | try_catch_pair "finally" compound_statement {TryCatchFinally}
+try_catch_statement: "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement {TryCatch}
 
-try_catch_pair: "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement {TryCatch}
-
-declaration_statement: "let" lvalue "=" expression ";" {VarDecl}
-                     | "const" lvalue "=" expression ";" {VarDecl}
+declaration_statement: "let" lvalue "=" expression ";" {LetDecl}
+                     | "const" lvalue "=" expression ";" {ConstDecl}
                      | "var" lvalue "=" expression ";" {VarDecl}
-                     | "static" lvalue "=" expression ";" {VarDecl}
 
 lvalue: member_expression
 
 expression: assignment_expr
 
-assignment_expr: lvalue "=" assignment_expr {AssignStmt}
-               | lvalue "+=" assignment_expr {AssignAddStmt}
-               | lvalue "-=" assignment_expr {AssignSubStmt}
-               | lvalue "*=" assignment_expr {AssignMulStmt}
-               | lvalue "/=" assignment_expr {AssignDivStmt}
-               | lvalue "%=" assignment_expr {AssignModStmt}
-               | lvalue "|=" assignment_expr {AssignBitOrStmt}
-               | lvalue "^=" assignment_expr {AssignBitXorStmt}
-               | lvalue "&=" assignment_expr {AssignBitAndStmt}
-               | lvalue "<<=" assignment_expr {AssignLShiftStmt}
-               | lvalue ">>=" assignment_expr {AssignRShiftStmt}
-               | lvalue ">>>=" assignment_expr {AssignURShiftStmt}
-               | lvalue "**=" assignment_expr {AssignPowerStmt}
-               | lvalue "||=" assignment_expr {AssignLogicOrStmt}
-               | lvalue "&&=" assignment_expr {AssignLogicAndStmt}
-               | lvalue "??=" assignment_expr {AssignNullishStmt}
+ASSIGN_OP: /\*\*=|[+\-*\/%&|^]?=/
+
+assignment_expr: lvalue ASSIGN_OP assignment_expr {AssignExpr}
                | ternary_expr
 
 ternary_expr: logic_expr
@@ -169,16 +97,15 @@ ternary_expr: logic_expr
 logic_expr: bitwise_or_expr
           | logic_expr "||" bitwise_or_expr {LogicOr}
           | logic_expr "&&" bitwise_or_expr {LogicAnd}
-          | logic_expr "??" bitwise_or_expr {NullishCoalesce}
 
 bitwise_or_expr: bitwise_xor_expr
-               | bitwise_or_expr "|" bitwise_xor_expr {BitOr}
+               | bitwise_or_expr "|" bitwise_xor_expr {BitwiseOr}
 
 bitwise_xor_expr: bitwise_and_expr
-                | bitwise_xor_expr "^" bitwise_and_expr {BitXor}
+                | bitwise_xor_expr "^" bitwise_and_expr {BitwiseXor}
 
 bitwise_and_expr: equality_expr
-                | bitwise_and_expr "&" equality_expr {BitAnd}
+                | bitwise_and_expr "&" equality_expr {BitwiseAnd}
 
 equality_expr: relational_expr
              | equality_expr "==" relational_expr {Eq}
@@ -191,7 +118,6 @@ relational_expr: shift_expr
                | relational_expr "<=" shift_expr {Lte}
                | relational_expr ">" shift_expr {Gt}
                | relational_expr ">=" shift_expr {Gte}
-               | relational_expr "in" shift_expr {In}
                | relational_expr "instanceof" shift_expr {InstanceOf}
 
 shift_expr: sum_expr
@@ -212,14 +138,12 @@ exp_expr: unary_expr
         | unary_expr "**" exp_expr {Power}
 
 unary_expr: member_expression
-          | "+" unary_expr {UnaryPlus}
           | "-" unary_expr {Neg}
+          | "+" unary_expr {UnaryPlus}
           | "!" unary_expr {Not}
-          | "~" unary_expr {BitNot}
+          | "~" unary_expr {BitwiseNot}
           | "typeof" unary_expr {TypeofExpr}
           | "void" unary_expr {VoidExpr}
-          | "delete" unary_expr {DeleteExpr}
-          | "await" unary_expr {AwaitExpr}
           | "++" unary_expr {PreInc}
           | "--" unary_expr {PreDec}
 
@@ -237,7 +161,6 @@ arg_list: expression
 primary_expr: IDENTIFIER {Var}
             | NUMBER {Num}
             | STRING {Str}
-            | REGEX {RegexLit}
             | "true" {TrueLit}
             | "false" {FalseLit}
             | "null" {NullLit}
@@ -246,16 +169,7 @@ primary_expr: IDENTIFIER {Var}
             | object_literal
             | "(" expression ")" {Group}
             | "new" member_expression {NewExpr}
-                                                | arrow_expression
             | function_expression
-            | class_expression
-
-arrow_expression: IDENTIFIER "=>" arrow_body {ArrowFunc1}
-                                                                | "(" ")" "=>" arrow_body {ArrowFunc0}
-                                                                | "(" param_list ")" "=>" arrow_body {ArrowFuncN}
-
-arrow_body: compound_statement {ArrowBodyBlock}
-                                        | expression {ArrowBodyExpr}
 
 array_literal: "[" "]" {EmptyArray}
              | "[" arg_list "]" {ArrayLit}
@@ -267,13 +181,9 @@ property_list: property
              | property "," property_list {PropertySeq}
 
 property: IDENTIFIER ":" expression {PropertyPair}
-        | STRING ":" expression {PropertyPair}
-        | "..." expression {SpreadProperty}
+        | STRING ":" expression {PropertyStrPair}
 
 function_expression: "function" function_params_postfix compound_statement {FunctionExpr}
-                   | "async" "function" function_params_postfix compound_statement {AsyncFunctionExpr}
-
-class_expression: "class" class_body {ClassExpr}
 
 function_params_postfix: "(" ")" {NoParams}
                        | "(" param_list ")" {Params}

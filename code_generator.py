@@ -8,6 +8,7 @@ import json
 from tqdm import tqdm
 from pathlib import Path
 
+
 class UnifiedCodeGenerator:
     def __init__(self, mode: str, model_name: str, grammar: Optional[str] = None, **kwargs):
         self.mode = mode
@@ -21,7 +22,21 @@ class UnifiedCodeGenerator:
         elif self.mode == "itergen":
             return ItergenGenerator(self.model_name, grammar, **self.kwargs)
         elif self.mode == "chopchop":
-            return ChopchopGenerator(self.model_name, grammar, **self.kwargs)
+            from generators.javascript_chopchop import (
+                CONSTRUCTORS, JS_START_RULE, JS_CONTEXT,
+                make_js_pruner, extract_js_prefix, build_js_prompt,
+            )
+            pruner_mode = self.kwargs.get("pruner", "none")
+            return ChopchopGenerator(
+                self.model_name, grammar,
+                constructors=CONSTRUCTORS,
+                start_rule=JS_START_RULE,
+                pruner_fn=make_js_pruner(pruner_mode),
+                extract_prefix_fn=extract_js_prefix,
+                build_prompt_fn=build_js_prompt,
+                context=JS_CONTEXT,
+                **self.kwargs,
+            )
         elif self.mode == "unconstrained":
             return HFGenerator(self.model_name, **self.kwargs)
         else:
@@ -32,54 +47,139 @@ class UnifiedCodeGenerator:
         return self.generator.generate(prompt, stop_tokens=stop_tokens, **kwargs)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Raw Code Generator for .jsonl datasets")
-    # model and generation configuration
-    parser.add_argument("--model", type=str, default="microsoft/phi-2")
-    parser.add_argument("--mode", type=str, default="unconstrained", 
-                        choices=["unconstrained", "syncode", "itergen", "chopchop"], help="Generation mode")
-    parser.add_argument("--grammar", type=str, default=None, help="Path to grammar file (.lark) for constrained modes")
-    
-    # input and output configuration
-    parser.add_argument("--input_file", type=str, required=True, help="Path to a .jsonl prompts file")
-    parser.add_argument("--output_dir", type=str, default="raw_outputs", help="Base directory for results")
-    parser.add_argument("--dataset_name", type=str, default="mbpp", help="Dataset name for folder naming")
-    
-    # generation parameters
-    parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature (0 for greedy)")
-    parser.add_argument("--max_new_tokens", type=int, default=512, help="Maximum number of new tokens to generate")
-    args = parser.parse_args()
+# ---------------------------------------------------------------------------
+# Sub-command: generate
+# ---------------------------------------------------------------------------
 
+def cmd_generate(args, parser):
     if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
         parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
-    
+
     model_name_clean = args.model.replace("/", "_").replace("-", "_")
     output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
     final_output_path = Path(args.output_dir) / output_dir_name
     final_output_path.mkdir(parents=True, exist_ok=True)
     print(f"Creating directory: {final_output_path.absolute()}")
-    
-    gen = UnifiedCodeGenerator(args.mode, args.model, args.grammar, temperature=args.temperature, max_new_tokens=args.max_new_tokens)
 
-    with open(args.input_file, 'r', encoding='utf-8') as f:
+    gen = UnifiedCodeGenerator(
+        args.mode, args.model, args.grammar,
+        temperature=args.temperature, max_new_tokens=args.max_new_tokens,
+    )
+
+    with open(args.input_file, "r", encoding="utf-8") as f:
         tasks = [json.loads(line) for line in f if line.strip()]
 
     print(f"--- Generating raw code for {len(tasks)} tasks ---")
     print(f"--- Results will be saved to: {final_output_path} ---")
-    
+
     for task in tqdm(tasks):
-        task_id = str(task.get('name', task.get('task_id'))).replace("/", "_")
-        prompt_text = task['prompt']
-        
+        task_id = str(task.get("name", task.get("task_id"))).replace("/", "_")
+        prompt_text = task["prompt"]
+
         result = gen.generate(
             prompt=prompt_text,
-            stop_tokens=task.get('stop_tokens', ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
-            **vars(args)
+            stop_tokens=task.get("stop_tokens", ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
+            **vars(args),
         )
 
         combined_output = f"{prompt_text.rstrip()}\n\n{result.rstrip()}"
-        
         file_path = final_output_path / f"{task_id}.js"
-        file_path.write_text(combined_output, encoding='utf-8')
+        file_path.write_text(combined_output, encoding="utf-8")
 
     print(f"\nDone! All files saved in {final_output_path}")
+
+
+# ---------------------------------------------------------------------------
+# Sub-command: evaluate
+# ---------------------------------------------------------------------------
+
+def cmd_evaluate(args, parser):
+    if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
+        parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
+
+    generator = UnifiedCodeGenerator(model_name=args.model, **vars(args))
+
+    model_name_clean = args.model.replace("/", "_").replace("-", "_")
+    run_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
+    output_path = Path(args.output_base) / run_name
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    print(f"\n>>> Step 1: Loading Dataset from {args.input_file}")
+    tasks = []
+    with open(args.input_file, "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                tasks.append(json.loads(line))
+
+    print(f">>> Step 2: Generating Code (Mode: {args.mode})...")
+    for task in tqdm(tasks):
+        task_name = task.get("name", task.get("task_id", task.get("id")))
+        prompt = task["prompt"]
+        stop_tokens = task.get("stop_tokens", ["\nfunction", "\n//", "\n/*"])
+
+        code = generator.generate(
+            prompt=prompt,
+            mode=args.mode,
+            grammar=args.grammar,
+            stop_tokens=stop_tokens,
+            temperature=args.temperature,
+        )
+
+        result_item = task.copy()
+        result_item["completions"] = [code]
+
+        safe_name = str(task_name).replace("/", "_")
+        json_file = output_path / (safe_name + ".json")
+        with open(json_file, "w", encoding="utf-8") as f_json:
+            json.dump(result_item, f_json, indent=2)
+
+    print(f"\n>>> Generation Finished! JSON saved to: {output_path}")
+    print(f"    To compress and evaluate, run:")
+    print(f"    python code_evaluation.py --input_dir {output_path} --benchmark multipl-e")
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Code generator and evaluator for constrained LLM benchmarks")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # -- generate sub-command ------------------------------------------------
+    gen_p = subparsers.add_parser("generate", help="Generate raw source-code files (.js / etc.)")
+    gen_p.add_argument("--model", type=str, default="microsoft/phi-2")
+    gen_p.add_argument("--mode", type=str, default="unconstrained",
+                       choices=["unconstrained", "syncode", "itergen", "chopchop"])
+    gen_p.add_argument("--grammar", type=str, default=None)
+    gen_p.add_argument("--input_file", type=str, required=True)
+    gen_p.add_argument("--output_dir", type=str, default="raw_outputs")
+    gen_p.add_argument("--dataset_name", type=str, default="mbpp")
+    gen_p.add_argument("--temperature", type=float, default=0.0)
+    gen_p.add_argument("--max_new_tokens", type=int, default=512)
+    gen_p.add_argument("--pruner", type=str, default="none",
+                       choices=["none", "basic"],
+                       help="Pruner mode for chopchop (none=identity, basic=env-aware JS pruning)")
+
+    # -- evaluate sub-command ------------------------------------------------
+    eval_p = subparsers.add_parser("evaluate", help="Batch generation — outputs MultiPL-E-compatible .json files")
+    eval_p.add_argument("--model", type=str, default="microsoft/phi-2")
+    eval_p.add_argument("--input_file", type=str, required=True)
+    eval_p.add_argument("--dataset_name", type=str, default="mbpp")
+    eval_p.add_argument("--output_base", type=str, default="raw_results",
+                        help="Base output directory for .json outputs")
+    eval_p.add_argument("--mode", type=str, default="unconstrained",
+                        choices=["unconstrained", "syncode", "itergen", "chopchop"])
+    eval_p.add_argument("--grammar", type=str, default=None)
+    eval_p.add_argument("--max_new_tokens", type=int, default=512)
+    eval_p.add_argument("--temperature", type=float, default=0.0)
+    eval_p.add_argument("--pruner", type=str, default="none",
+                        choices=["none", "basic"],
+                        help="Pruner mode for chopchop (none=identity, basic=env-aware JS pruning)")
+
+    args = parser.parse_args()
+
+    if args.command == "generate":
+        cmd_generate(args, gen_p)
+    elif args.command == "evaluate":
+        cmd_evaluate(args, eval_p)

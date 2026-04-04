@@ -6,10 +6,10 @@ A framework for systematically evaluating LLM code generation under **unconstrai
 
 ## Project Structure
 
-- `code_generator.py`: Core generation library and CLI for quick single-pass generation.
-- `code_evaluation.py`: Batch generation wrapper that produces MultiPL-E-compatible output for any language.
-  - Default output: uncompressed `.json` files in `raw_results/`.
-  - Optional output: compressed `.json.gz` files in `results/` (with `--save_gz`).
+- `code_generator.py`: Generation-only CLI with two sub-commands:
+  - `generate`: Quick single-pass generation — outputs plain source files (`.js`, etc.).
+  - `evaluate`: Batch generation — outputs MultiPL-E-compatible `.json` files in `raw_results/`.
+- `code_evaluation.py`: Post-generation evaluation CLI — compresses `.json` outputs to `.json.gz` and optionally runs the MultiPL-E Docker benchmark.
 - `compress_results.py`: Post-processing utility to convert `.json` to `.json.gz` for MultiPL-E.
 - `generators/`: Backend implementations and constrained decoding frameworks (`syncode`, `itergen`, `chopchop`, etc.).
   - `grammars/`: Language grammar files (`.lark`) for constrained modes. Add a grammar here for each new language.
@@ -97,7 +97,7 @@ The translated JavaScript prompts are already included under `datasets/`. For ot
 
 ### 2) Basic Generation
 
-Use `code_generator.py` for quick iteration. It reads `.jsonl` prompts and outputs plain source code files.
+Use `code_generator.py generate` for quick iteration. It reads `.jsonl` prompts and outputs plain source code files.
 
 Key parameters to adapt for your language:
 - `--input_file`: your language's prompt dataset (e.g., `datasets/py_prompts_mbpp.jsonl`)
@@ -105,7 +105,7 @@ Key parameters to adapt for your language:
 - `--grammar`: path to the `.lark` grammar file; required for all constrained modes
 
 ```bash
-python code_generator.py \
+python code_generator.py generate \
   --model microsoft/phi-2 \
   --input_file datasets/js_prompts_mbpp.jsonl \
   --mode syncode \
@@ -121,7 +121,7 @@ python code_generator.py \
 
 ### 3) Batch Generation for Evaluation
 
-Use `code_evaluation.py` for task-wise generation with MultiPL-E-compatible JSON content.
+Use `code_generator.py evaluate` for task-wise generation with MultiPL-E-compatible JSON content.
 
 The output directory is automatically named `<dataset_name>-<lang>-<model>-<temperature>-<mode>`. Adjust `--input_file` and `--dataset_name` to switch languages or benchmarks.
 
@@ -129,65 +129,69 @@ Key parameters to adapt for your language:
 - `--input_file`: your language's prompt dataset
 - `--mode`: `unconstrained` | `syncode` | `itergen` | `chopchop`
 - `--grammar`: path to the `.lark` grammar file; required for all constrained modes
+- `--pruner`: pruner mode for `chopchop` (`none` = grammar-only, `basic` = env-aware JS pruning)
 - `--dataset_name`: used only as a label in the output directory name (`humaneval` | `mbpp` | any string)
-- `--save_gz`: optional flag to also write `.json.gz` files alongside the `.json` files
 
 ```bash
-python code_evaluation.py \
+python code_generator.py evaluate \
   --model microsoft/phi-2 \
   --input_file datasets/js_prompts_mbpp.jsonl \
-  --mode syncode \
-  --grammar generators/grammars/javascript.lark \
+  --mode chopchop \
+  --grammar generators/grammars/javascript_chopchop.lark \
+  --pruner basic \
   --dataset_name mbpp \
   --output_base raw_results \
-  --save_gz \
-  --gz_output_base results \
   --temperature 0.2 \
   --max_new_tokens 512
 ```
 
 **Input**: `.jsonl` prompt file (and a grammar file for constrained modes)
 
-**Output**:
-- Default: uncompressed `.json` files in `raw_results/<run_name>/`
-- With `--save_gz`: additional `.json.gz` files in `results/<run_name>/`
+**Output**: uncompressed `.json` files in `raw_results/<run_name>/`
 
-### 4) Compress Existing JSON Outputs
+To compress and evaluate, pass the output directory to `code_evaluation.py` (see steps 4–5).
 
-If you generated only uncompressed files, convert them later with `compress_results.py`.
+### 4) Compress JSON Outputs
+
+Convert the `.json` files produced by `code_generator.py evaluate` to `.json.gz` for MultiPL-E.
 
 ```bash
-# Compress one run directory
-python compress_results.py raw_results/mbpp-js-microsoft_phi_2-0.2-syncode
+# Output defaults to results/<run_name>/
+python code_evaluation.py --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop
 
-# Compress all run directories under raw_results/
-python compress_results.py raw_results --all
-
-# Specify custom output base directory
-python compress_results.py raw_results/mbpp-js-microsoft_phi_2-0.2-syncode --output_base results
+# Specify a custom output directory
+python code_evaluation.py \
+  --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --gz_output_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop
 ```
 
 ### 5) Evaluate with MultiPL-E
 
-1. Go to the MultiPL-E directory:
+#### Option A — via code_evaluation.py (recommended)
+
+Compress and run the full MultiPL-E Docker pipeline in one step:
 
 ```bash
-cd benchmark/MultiPL-E
+python code_evaluation.py \
+  --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --benchmark multipl-e
 ```
 
-2. Pull the evaluation image:
+#### Option B — Manual
+
+1. Pull the evaluation image:
 
 ```bash
 docker pull ghcr.io/nuprl/multipl-e-evaluation
 ```
 
-3. Tag the image:
+2. Tag the image:
 
 ```bash
 docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
 ```
 
-4. Run evaluation on a directory containing `*.json.gz` completions:
+3. Run evaluation on a directory containing `*.json.gz` completions:
 
 ```bash
 docker run --rm --network none \
@@ -195,10 +199,10 @@ docker run --rm --network none \
   multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
 ```
 
-5. Compute pass@k:
+4. Compute pass@k:
 
 ```bash
-python pass_k.py /absolute/path/to/results
+python benchmark/MultiPL-E/pass_k.py /absolute/path/to/results
 ```
 
 After `pass_k.py`, related `.results.json.gz` files are written to that same results directory.
@@ -211,9 +215,9 @@ Follow these steps to extend the evaluation to another language:
 
 2. **Add a grammar** — write or obtain a `.lark` grammar for the target language and place it in `generators/grammars/<lang>.lark`. This is required when using constrained modes (`syncode`, `itergen`, `chopchop`).
 
-3. **Run generation** — pass the new prompt file and grammar to `code_evaluation.py`:
+3. **Run generation** — pass the new prompt file and grammar to `code_generator.py evaluate`:
    ```bash
-   python code_evaluation.py \
+   python code_generator.py evaluate \
      --model <your_model> \
      --input_file datasets/<lang>_prompts_<benchmark>.jsonl \
      --mode <mode> \
@@ -221,7 +225,12 @@ Follow these steps to extend the evaluation to another language:
      --dataset_name <benchmark>
    ```
 
-4. **Compress and evaluate** — compress outputs with `compress_results.py` if needed, then run the MultiPL-E Docker container against your `results/` directory as described in [step 5](#5-evaluate-with-multipl-e).
+4. **Compress and evaluate** — pass the output directory to `code_evaluation.py`:
+   ```bash
+   python code_evaluation.py \
+     --input_dir raw_results/<run_name> \
+     --benchmark multipl-e
+   ```
 
 ## HumanEval-X Benchmark Usage
 
