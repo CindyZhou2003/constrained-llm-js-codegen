@@ -4,7 +4,9 @@ from generators.syncode_generator import SyncodeGenerator
 from generators.itergen_generator import ItergenGenerator
 from generators.chopchop_generator import ChopchopGenerator
 import argparse
+import csv
 import json
+import time
 from tqdm import tqdm
 from pathlib import Path
 
@@ -72,21 +74,34 @@ def cmd_generate(args, parser):
     print(f"--- Generating raw code for {len(tasks)} tasks ---")
     print(f"--- Results will be saved to: {final_output_path} ---")
 
-    for task in tqdm(tasks):
-        task_id = str(task.get("name", task.get("task_id"))).replace("/", "_")
-        prompt_text = task["prompt"]
+    log_dir = Path(args.output_dir) / "log"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    timing_path = log_dir / f"{output_dir_name}_timing.csv"
+    with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["task_id", "task_name", "temperature", "execution_time_s"])
 
-        result = gen.generate(
-            prompt=prompt_text,
-            stop_tokens=task.get("stop_tokens", ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
-            **vars(args),
-        )
+        for task in tqdm(tasks):
+            task_name = task.get("name", task.get("task_id"))
+            task_id = str(task_name).replace("/", "_")
+            prompt_text = task["prompt"]
 
-        combined_output = f"{prompt_text.rstrip()}\n\n{result.rstrip()}"
-        file_path = final_output_path / f"{task_id}.js"
-        file_path.write_text(combined_output, encoding="utf-8")
+            t0 = time.perf_counter()
+            result = gen.generate(
+                prompt=prompt_text,
+                stop_tokens=task.get("stop_tokens", ["\nfunction ", "\n/*", "\n//", "\nconsole.log"]),
+                **vars(args),
+            )
+            elapsed = time.perf_counter() - t0
+
+            combined_output = f"{prompt_text.rstrip()}\n\n{result.rstrip()}"
+            file_path = final_output_path / f"{task_id}.js"
+            file_path.write_text(combined_output, encoding="utf-8")
+
+            writer.writerow([task_id, task_name, args.temperature, f"{elapsed:.4f}"])
 
     print(f"\nDone! All files saved in {final_output_path}")
+    print(f"Timing saved to: {timing_path}")
 
 
 # ---------------------------------------------------------------------------
@@ -112,28 +127,40 @@ def cmd_evaluate(args, parser):
                 tasks.append(json.loads(line))
 
     print(f">>> Step 2: Generating Code (Mode: {args.mode})...")
-    for task in tqdm(tasks):
-        task_name = task.get("name", task.get("task_id", task.get("id")))
-        prompt = task["prompt"]
-        stop_tokens = task.get("stop_tokens", ["\nfunction", "\n//", "\n/*"])
+    log_dir = Path(args.output_base) / "log"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    timing_path = log_dir / f"{run_name}_timing.csv"
+    with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["task_name", "temperature", "execution_time_s"])
 
-        code = generator.generate(
-            prompt=prompt,
-            mode=args.mode,
-            grammar=args.grammar,
-            stop_tokens=stop_tokens,
-            temperature=args.temperature,
-        )
+        for task in tqdm(tasks):
+            task_name = task.get("name", task.get("task_id", task.get("id")))
+            prompt = task["prompt"]
+            stop_tokens = task.get("stop_tokens", ["\nfunction", "\n//", "\n/*"])
+            safe_name = str(task_name).replace("/", "_")
 
-        result_item = task.copy()
-        result_item["completions"] = [code]
+            t0 = time.perf_counter()
+            code = generator.generate(
+                prompt=prompt,
+                mode=args.mode,
+                grammar=args.grammar,
+                stop_tokens=stop_tokens,
+                temperature=args.temperature,
+            )
+            elapsed = time.perf_counter() - t0
 
-        safe_name = str(task_name).replace("/", "_")
-        json_file = output_path / (safe_name + ".json")
-        with open(json_file, "w", encoding="utf-8") as f_json:
-            json.dump(result_item, f_json, indent=2)
+            result_item = task.copy()
+            result_item["completions"] = [code]
+
+            json_file = output_path / (safe_name + ".json")
+            with open(json_file, "w", encoding="utf-8") as f_json:
+                json.dump(result_item, f_json, indent=2)
+
+            writer.writerow([task_name, args.temperature, f"{elapsed:.4f}"])
 
     print(f"\n>>> Generation Finished! JSON saved to: {output_path}")
+    print(f"    Timing saved to: {timing_path}")
     print(f"    To compress and evaluate, run:")
     print(f"    python code_evaluation.py --input_dir {output_path} --benchmark multipl-e")
 
@@ -166,7 +193,7 @@ if __name__ == "__main__":
     eval_p.add_argument("--model", type=str, default="microsoft/phi-2")
     eval_p.add_argument("--input_file", type=str, required=True)
     eval_p.add_argument("--dataset_name", type=str, default="mbpp")
-    eval_p.add_argument("--output_base", type=str, default="raw_results",
+    eval_p.add_argument("--output_base", type=str, default="results",
                         help="Base output directory for .json outputs")
     eval_p.add_argument("--mode", type=str, default="unconstrained",
                         choices=["unconstrained", "syncode", "itergen", "chopchop"])
