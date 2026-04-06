@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   let binary = n.toString(2);\n    let first_bit = binary[0];\n    let last_bit = binary[binary.length-1];\n    let middle_bits = binary.substring(1,binary.length-1);\n    let toggled_middle_bits = middle_bits.split('').map(bit => bit == '0' ? \n                                                                    (bit = '1') \n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '0';\n                                                                    //bit = bit == '0' ? '1' : '"
+  ]
+}

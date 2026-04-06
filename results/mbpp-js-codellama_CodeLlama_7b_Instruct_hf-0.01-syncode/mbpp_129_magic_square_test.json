@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   //First, check if the matrix is a square matrix.\n    if(my_matrix.length != my_matrix[0].length){\n        return false;\n    }\n    //Second, check if the sum of the matrix is the same as the sum of the diagonal.\n    var sum_matrix = 0;\n    var sum_diagonal = 0;\n    for(var i = 0; i < my_matrix.length; i++){\n        for(var j = 0; j < my_matrix[i].length; j++){\n            sum_matrix += my_matrix[i][j];\n        }\n    }\n    for(var i = 0; i < my_matrix.length; i++){\n        sum_diagonal += my_matrix[i][i];\n    }\n    if(sum_matrix != sum_diagonal){\n        return false;\n    }\n    //Third, check if the sum of the matrix is the same as the sum of the anti-diagonal.\n    var sum_anti_diagonal = 0;\n    for(var i = 0; i < my_matrix.length; i++){\n        sum_anti_diagonal += my_matrix[i][my_matrix.length - i - 1];\n    }\n    if(sum_matrix != sum_anti_diagonal){\n        return false;\n    }\n    //Fourth, check if the matrix is symmetric.\n    for(var i = 0; i < my_matrix.length; i++){\n        for(var j = 0; j < my_matrix[i].length; j++){\n            if(my_matrix[i][j] != my_matrix[j][i]){\n                return false;\n            }\n        }\n    }\n    return true;\n}\n"
+  ]
+}

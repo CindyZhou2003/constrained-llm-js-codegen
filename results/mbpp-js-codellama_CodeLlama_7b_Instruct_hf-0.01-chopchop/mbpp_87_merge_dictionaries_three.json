@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_87_merge_dictionaries_three",
+  "language": "js",
+  "prompt": "//Write a function to merge three dictionaries into a single object.\nfunction merge_dictionaries_three(dict1, dict2, dict3){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_87_merge_dictionaries_three.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = merge_dictionaries_three;\n  assert.deepEqual(candidate({\"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\"}, {\"G\": \"Green\", \"W\": \"White\"}, {\"O\": \"Orange\", \"W\": \"White\", \"B\": \"Black\"}),{\"B\": \"Black\", \"R\": \"Red\", \"P\": \"Pink\", \"G\": \"Green\", \"W\": \"White\", \"O\": \"Orange\"});\n  assert.deepEqual(candidate({\"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\"}, {\"G\": \"Green\", \"W\": \"White\"}, {\"L\": \"lavender\", \"B\": \"Blue\"}),{\"W\": \"White\", \"P\": \"Pink\", \"B\": \"Black\", \"R\": \"Red\", \"G\": \"Green\", \"L\": \"lavender\"});\n  assert.deepEqual(candidate({\"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\"}, {\"L\": \"lavender\", \"B\": \"Blue\"}, {\"G\": \"Green\", \"W\": \"White\"}),{\"B\": \"Black\", \"P\": \"Pink\", \"R\": \"Red\", \"G\": \"Green\", \"L\": \"lavender\", \"W\": \"White\"});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " const result = {}; for (const key in dict1) { result[key] = dict1[key]; } for (const key in dict2) { result[key] = dict2[key]; } for (const key in dict3) { result[key] = dict3[key]; } return result; }"
+  ]
+}

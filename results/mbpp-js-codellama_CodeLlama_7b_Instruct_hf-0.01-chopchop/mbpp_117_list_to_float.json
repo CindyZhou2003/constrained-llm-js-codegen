@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_117_list_to_float",
+  "language": "js",
+  "prompt": "//Write a function to convert all possible convertible elements in an array of lists to floats.\nfunction list_to_float(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_117_list_to_float.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_to_float;\n  assert.deepEqual(candidate([[\"3\", \"4\"], [\"1\", \"26.45\"], [\"7.32\", \"8\"], [\"4\", \"8\"]]),[[3.0, 4.0], [1.0, 26.45], [7.32, 8.0], [4.0, 8.0]]);\n  assert.deepEqual(candidate([[\"4\", \"4\"], [\"2\", \"27\"], [\"4.12\", \"9\"], [\"7\", \"11\"]]),[[4.0, 4.0], [2.0, 27.0], [4.12, 9.0], [7.0, 11.0]]);\n  assert.deepEqual(candidate([[\"6\", \"78\"], [\"5\", \"26.45\"], [\"1.33\", \"4\"], [\"82\", \"13\"]]),[[6.0, 78.0], [5.0, 26.45], [1.33, 4.0], [82.0, 13.0]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " for (let i = 0; i < test_list.length; i++) { if (typeof test_list[i] === 'string') { test_list[i] = parseFloat(test_list[i]); } } return test_list; }"
+  ]
+}

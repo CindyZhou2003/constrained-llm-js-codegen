@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_743_rotate_right",
+  "language": "js",
+  "prompt": "//Write a function to rotate a given array by specified number of items to the right direction. https://www.geeksforgeeks.org/JavaScript-program-right-rotate-array-n/\nfunction rotate_right(list, m){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_743_rotate_right.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rotate_right;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3),[8, 9, 10, 1, 2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2),[9, 10, 1, 2, 3, 4, 5, 6, 7, 8]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5),[6, 7, 8, 9, 10, 1, 2, 3, 4, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let n = list.length;\n    let temp = list[n - 1];\n    for (let i = n - 1; i > m - 1; i--) {\n        list[i] = list[i - 1];\n    }\n    list[m - 1] = temp;\n    return list;\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_119_search",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the element that appears only once in a sorted array.\nfunction search(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_119_search.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = search;\n  assert.deepEqual(candidate([1, 1, 2, 2, 3]),3);\n  assert.deepEqual(candidate([1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8]),8);\n  assert.deepEqual(candidate([1, 2, 2, 3, 3, 4, 4]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   if(arr.length === 0) return -1;\n    if(arr.length === 1) return 0;\n    var mid = Math.floor(arr.length/2);\n    if(arr[mid] === arr[mid-1]){\n        return search(arr.slice(0,mid));\n    }\n    if(arr[mid] === arr[mid+1]){\n        return search(arr.slice(mid+1));\n    }\n    return mid;\n}\n\nvar arr = [1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10];"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_460_Extract",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the first element of each sublist.\nfunction Extract(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_460_Extract.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Extract;\n  assert.deepEqual(candidate([[1, 2], [3, 4, 5], [6, 7, 8, 9]]),[1, 3, 6]);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5]]),[1, 4]);\n  assert.deepEqual(candidate([[9, 8, 1], [1, 2]]),[9, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " var result = []; for (var i = 0; i < lst.length; i++) { result.push(lst[i][0]); } return result; }"
+  ]
+}

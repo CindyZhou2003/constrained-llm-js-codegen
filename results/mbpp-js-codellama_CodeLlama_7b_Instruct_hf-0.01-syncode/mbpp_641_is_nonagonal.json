@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_641_is_nonagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth nonagonal number.\nfunction is_nonagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_641_is_nonagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_nonagonal;\n  assert.deepEqual(candidate(10),325);\n  assert.deepEqual(candidate(15),750);\n  assert.deepEqual(candidate(18),1089);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   if(n%2==0) return false;\n    if(n%3==0) return false;\n    if(n%5==0) return false;\n    if(n%7==0) return false;\n    if(n%11==0) return false;\n    if(n%13==0) return false;\n    if(n%17==0) return false;\n    if(n%19==0) return false;\n    if(n%23==0) return false;\n    if(n%29==0) return false;\n    if(n%31==0) return false;\n    if(n%37==0) return false;\n    if(n%41==0) return false;\n    if(n%43==0) return false;\n    if(n%47==0) return false;\n    if(n%53==0) return false;\n    if(n%59==0) return false;\n    if(n%61==0) return false;\n    if(n%67==0) return false;\n    if(n%71==0) return false;\n    if(n%73==0) return false;\n    if(n%79==0) return false;\n    if(n%83==0) return false;\n    if(n%89==0) return false;\n    if(n%97==0) return false;\n    return true;\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_589_perfect_squares",
+  "language": "js",
+  "prompt": "//Write a function to find perfect squares between two given numbers.\nfunction perfect_squares(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_589_perfect_squares.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = perfect_squares;\n  assert.deepEqual(candidate(1, 30),[1, 4, 9, 16, 25]);\n  assert.deepEqual(candidate(50, 100),[64, 81, 100]);\n  assert.deepEqual(candidate(100, 200),[100, 121, 144, 169, 196]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   let result = [];\n    for(let i = a; i <= b; i++){\n        let root = Math.sqrt(i);\n        if(root % 1 === 0){\n            result.push(i);\n        }\n    }\n    return result;\n}\n"
+  ]
+}

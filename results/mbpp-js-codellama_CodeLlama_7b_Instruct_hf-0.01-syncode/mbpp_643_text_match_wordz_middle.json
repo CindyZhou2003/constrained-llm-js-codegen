@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_643_text_match_wordz_middle",
+  "language": "js",
+  "prompt": "//Write a function that checks if a strings contains 'z', except at the start and end of the word.\nfunction text_match_wordz_middle(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_643_text_match_wordz_middle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_wordz_middle;\n  assert.deepEqual(candidate(\"pythonzabc.\"),true);\n  assert.deepEqual(candidate(\"zxyabc.\"),false);\n  assert.deepEqual(candidate(\"  lang  .\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   let text_array = text.split('');\n    let text_array_length = text_array.length;\n    let text_array_middle = text_array_length / 2;\n    let text_array_middle_round = Math.round(text_array_middle);\n    let text_array_middle_round_string = text_array_middle_round.toString();\n    let text_array_middle_round_string_length = text_array_middle_round_string.length;\n    let text_array_middle_round_string_length_minus_1 = text_array_middle_round_string_length - 1;\n    let text_array_middle_round_string_length_minus_2 = text_array_middle_round_string_length - 2;\n    let text_array_middle_round_string_length_minus_3 = text_array_middle_round_string_length - 3;\n    let text_array_middle_round_string_length_minus_4 = text_array_middle_round_string_length - 4;\n    let text_array_middle_round_string_length_minus_5 = text_array_middle_round_string_length - 5;\n    let text_array_middle_round_string_length_minus_6 = text_array_middle_round_string_length - 6;\n    let text_array_middle_round_string_length_minus_7 = text_array_middle_round_string_length - 7;\n    let text_array_middle_round_string_length_minus_8 = text_array_middle_round_string_length - 8;\n    let text_array_middle_round_string_length_minus_9 = text_array_middle_round_string_length - 9;\n    let text_array_middle_round_string_length_minus_10 = text_array_middle_round_string_length - 10;\n    let text_array_middle_round_string_length_minus_11 = text_array_middle_round_string_length - 11;\n    let text_array_middle_round_string_length_minus_12"
+  ]
+}

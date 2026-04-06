@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_588_big_diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the difference between largest and smallest value in a given array.\nfunction big_diff(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_588_big_diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = big_diff;\n  assert.deepEqual(candidate([1, 2, 3, 4]),3);\n  assert.deepEqual(candidate([4, 5, 12]),8);\n  assert.deepEqual(candidate([9, 2, 3]),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   let largest = nums[0];\n    let smallest = nums[0];\n    for(let i = 0; i < nums.length; i++){\n        if(nums[i] > largest){\n            largest = nums[i];\n        }\n        if(nums[i] < smallest){\n            smallest = nums[i];\n        }\n    }\n    return largest - smallest;\n}"
+  ]
+}
