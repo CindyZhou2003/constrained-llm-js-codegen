@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_641_is_nonagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth nonagonal number.\nfunction is_nonagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_641_is_nonagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_nonagonal;\n  assert.deepEqual(candidate(10),325);\n  assert.deepEqual(candidate(15),750);\n  assert.deepEqual(candidate(18),1089);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   if(n%2==0){\n        return false;\n    }\n    let"
+  ]
+}

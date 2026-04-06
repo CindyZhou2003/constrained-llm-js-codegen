@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_633_pair_xor_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of xor of all pairs of numbers in the given array.\nfunction pair_xor_Sum(arr, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_633_pair_xor_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pair_xor_Sum;\n  assert.deepEqual(candidate([5, 9, 7, 6], 4),47);\n  assert.deepEqual(candidate([7, 3, 5], 3),12);\n  assert.deepEqual(candidate([7, 3], 2),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   let sum = 0;\n    for(let i = 0; i < n"
+  ]
+}

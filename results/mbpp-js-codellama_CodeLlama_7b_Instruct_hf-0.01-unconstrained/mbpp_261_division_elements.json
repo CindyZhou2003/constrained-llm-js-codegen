@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_261_division_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.\nfunction division_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_261_division_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = division_elements;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[2, 2, 2, 3]);\n  assert.deepEqual(candidate([12, 6, 8, 16], [6, 3, 4, 4]),[2, 2, 2, 4]);\n  assert.deepEqual(candidate([20, 14, 36, 18], [5, 7, 6, 9]),[4, 2, 6, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   //Create an empty list to store the results\n    var result_list = [];\n   "
+  ]
+}

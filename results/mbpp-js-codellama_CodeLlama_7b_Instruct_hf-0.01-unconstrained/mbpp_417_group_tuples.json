@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_417_group_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find common first element in given array of lists.\nfunction group_tuples(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_417_group_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = group_tuples;\n  assert.deepEqual(candidate([[\"x\", \"y\"], [\"x\", \"z\"], [\"w\", \"t\"]]),[[\"x\", \"y\", \"z\"], [\"w\", \"t\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"a\", \"c\"], [\"d\", \"e\"]]),[[\"a\", \"b\", \"c\"], [\"d\", \"e\"]]);\n  assert.deepEqual(candidate([[\"f\", \"g\"], [\"f\", \"g\"], [\"h\", \"i\"]]),[[\"f\", \"g\", \"g\"], [\"h\", \"i\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   var output = [];\n    for(var i = 0; i < Input.length"
+  ]
+}
