@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_143_find_lists",
+  "language": "js",
+  "prompt": "//Write a function to find number of lists present in the given array.\nfunction find_lists(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_143_find_lists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_lists;\n  assert.deepEqual(candidate([[1, 2, 3, 4], [5, 6, 7, 8]]),2);\n  assert.deepEqual(candidate([[1, 2], [3, 4], [5, 6]]),3);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5, 4, 3, 2, 1]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find number of lists present in the given array.\nfunction find_lists(Input){\n   let count = 0;\n    for(let i = 0; i < Input.length; i++){\n        if(Input[i] instanceof Array){\n            count++;\n        }\n    }\n    return count;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_lists;\n  assert.deepEqual(candidate([[1, 2, 3, 4], [5, 6, 7, 8]]),2);\n  assert.deepEqual(candidate([[1, 2], [3, 4], [5, 6]]),3);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5, 4, 3, 2, 1]),1);\n}\n\ntest();",
+      "timestamp": 1775510939,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n0\n\nshould loosely deep-equal\n\n1\n    at test (/tmp/tmp3nmc5gui.js:19:10)\n    at Object.<anonymous> (/tmp/tmp3nmc5gui.js:22:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 0,\n  expected: 1,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

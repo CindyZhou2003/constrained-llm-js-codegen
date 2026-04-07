@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_116_tuple_to_int",
+  "language": "js",
+  "prompt": "//Write a function to convert a given array of positive integers into a single integer.\nfunction tuple_to_int(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_116_tuple_to_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_to_int;\n  assert.deepEqual(candidate([1, 2, 3]),123);\n  assert.deepEqual(candidate([4, 5, 6]),456);\n  assert.deepEqual(candidate([5, 6, 7]),567);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to convert a given array of positive integers into a single integer.\nfunction tuple_to_int(nums){\n   let result = 0;\n    for(let i = 0; i < nums.length; i++){\n        result += nums[i] * Math.pow(10, i);\n    }\n    return result;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_to_int;\n  assert.deepEqual(candidate([1, 2, 3]),123);\n  assert.deepEqual(candidate([4, 5, 6]),456);\n  assert.deepEqual(candidate([5, 6, 7]),567);\n}\n\ntest();",
+      "timestamp": 1775510939,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n321\n\nshould loosely deep-equal\n\n123\n    at test (/tmp/tmp0m5omnt5.js:15:10)\n    at Object.<anonymous> (/tmp/tmp0m5omnt5.js:20:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 321,\n  expected: 123,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

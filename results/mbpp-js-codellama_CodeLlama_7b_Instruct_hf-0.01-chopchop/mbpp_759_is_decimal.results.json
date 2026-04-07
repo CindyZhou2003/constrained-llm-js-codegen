@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_759_is_decimal",
+  "language": "js",
+  "prompt": "//Write a function to check whether a given string is a decimal number with a precision of 2.\nfunction is_decimal(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_759_is_decimal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_decimal;\n  assert.deepEqual(candidate(\"123.11\"),true);\n  assert.deepEqual(candidate(\"e666.86\"),false);\n  assert.deepEqual(candidate(\"3.124587\"),false);\n  assert.deepEqual(candidate(\"1.11\"),true);\n  assert.deepEqual(candidate(\"1.1.11\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check whether a given string is a decimal number with a precision of 2.\nfunction is_decimal(num){\n const num_parts = num.split('.'); if (num_parts.length > 1 && num_parts[1].length > 2) { return false; } return true; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_decimal;\n  assert.deepEqual(candidate(\"123.11\"),true);\n  assert.deepEqual(candidate(\"e666.86\"),false);\n  assert.deepEqual(candidate(\"3.124587\"),false);\n  assert.deepEqual(candidate(\"1.11\"),true);\n  assert.deepEqual(candidate(\"1.1.11\"),false);\n}\n\ntest();",
+      "timestamp": 1775510155,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\ntrue\n\nshould loosely deep-equal\n\nfalse\n    at test (/tmp/tmps76jkcja.js:10:10)\n    at Object.<anonymous> (/tmp/tmps76jkcja.js:16:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_631_replace_spaces",
+  "language": "js",
+  "prompt": "//Write a function to replace whitespaces with an underscore and vice versa in a given string.\nfunction replace_spaces(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_631_replace_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"Jumanji The Jungle\"),\"Jumanji_The_Jungle\");\n  assert.deepEqual(candidate(\"The_Avengers\"),\"The Avengers\");\n  assert.deepEqual(candidate(\"Fast and Furious\"),\"Fast_and_Furious\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to replace whitespaces with an underscore and vice versa in a given string.\nfunction replace_spaces(text){\n   var new_text = \"\";\n    for(var i = 0; i < text.length; i++){\n        if(text[i] == \" \"){\n            new_text += \"_\";\n        }\n        else{\n            new_text += text[i];\n        }\n    }\n    return new_text;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"Jumanji The Jungle\"),\"Jumanji_The_Jungle\");\n  assert.deepEqual(candidate(\"The_Avengers\"),\"The Avengers\");\n  assert.deepEqual(candidate(\"Fast and Furious\"),\"Fast_and_Furious\");\n}\n\ntest();",
+      "timestamp": 1775510947,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'The_Avengers'\n\nshould loosely deep-equal\n\n'The Avengers'\n    at test (/tmp/tmpmrn6nhmb.js:21:10)\n    at Object.<anonymous> (/tmp/tmpmrn6nhmb.js:25:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'The_Avengers',\n  expected: 'The Avengers',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

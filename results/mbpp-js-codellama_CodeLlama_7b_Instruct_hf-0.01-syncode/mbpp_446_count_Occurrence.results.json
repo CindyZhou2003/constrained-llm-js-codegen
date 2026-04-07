@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_446_count_Occurrence",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the occurence of all elements of array in an array.\nfunction count_Occurrence(tup, lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_446_count_Occurrence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Occurrence;\n  assert.deepEqual(candidate([\"a\", \"a\", \"c\", \"b\", \"d\"], [\"a\", \"b\"]),3);\n  assert.deepEqual(candidate([1, 2, 3, 1, 4, 6, 7, 1, 4], [1, 4, 7]),6);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [1, 2]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to count the occurence of all elements of array in an array.\nfunction count_Occurrence(tup, lst){\n   let count = {};\n    for(let i = 0; i < lst.length; i++){\n        if(count[lst[i]] === undefined){\n            count[lst[i]] = 0;\n        }\n        count[lst[i]]++;\n    }\n    for(let i = 0; i < tup.length; i++){\n        if(count[tup[i]] === undefined){\n            count[tup[i]] = 0;\n        }\n        count[tup[i]]++;\n    }\n    return count;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Occurrence;\n  assert.deepEqual(candidate([\"a\", \"a\", \"c\", \"b\", \"d\"], [\"a\", \"b\"]),3);\n  assert.deepEqual(candidate([1, 2, 3, 1, 4, 6, 7, 1, 4], [1, 4, 7]),6);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [1, 2]),2);\n}\n\ntest();",
+      "timestamp": 1775510944,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n{\n  a: 3,\n  b: 2,\n  c: 1,\n  d: 1\n}\n\nshould loosely deep-equal\n\n3\n    at test (/tmp/tmpw3820kyt.js:24:10)\n    at Object.<anonymous> (/tmp/tmpw3820kyt.js:29:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { a: 3, b: 2, c: 1, d: 1 },\n  expected: 3,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

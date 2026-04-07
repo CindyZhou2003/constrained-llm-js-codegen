@@ -213,5 +213,7 @@ __marimo__/
 cache/
 
 # Results
-raw_outputs/
-raw_results/
+results_eval/
+
+# Compressed JSON files
+*.json.gz

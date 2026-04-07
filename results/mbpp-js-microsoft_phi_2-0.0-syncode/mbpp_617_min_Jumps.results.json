@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n    let count = 0;\n    let x = 0;\n    let y = 0;\n    while(x!= d || y!= 0){\n        if(x < d){\n            x += steps;\n            count++;\n        }\n        if(y < 0){\n            y += steps;\n            count++;\n        }\n    }\n    return count;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+      "timestamp": 1772667643,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": -1,
+      "status": "Timeout"
+    }
+  ]
+}

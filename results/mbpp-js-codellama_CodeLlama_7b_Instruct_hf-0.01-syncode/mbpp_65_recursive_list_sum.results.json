@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_65_recursive_list_sum",
+  "language": "js",
+  "prompt": "//Write a function to flatten an array and sum all of its elements.\nfunction recursive_list_sum(data_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_65_recursive_list_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = recursive_list_sum;\n  assert.deepEqual(candidate([1, 2, [3, 4], [5, 6]]),21);\n  assert.deepEqual(candidate([7, 10, [15, 14], [19, 41]]),106);\n  assert.deepEqual(candidate([10, 20, [30, 40], [50, 60]]),210);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to flatten an array and sum all of its elements.\nfunction recursive_list_sum(data_list){\n   if(data_list.length == 0){\n        return 0;\n    }\n    else{\n        return data_list[0] + recursive_list_sum(data_list.slice(1));\n    }\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = recursive_list_sum;\n  assert.deepEqual(candidate([1, 2, [3, 4], [5, 6]]),21);\n  assert.deepEqual(candidate([7, 10, [15, 14], [19, 41]]),106);\n  assert.deepEqual(candidate([10, 20, [30, 40], [50, 60]]),210);\n}\n\ntest();",
+      "timestamp": 1775510948,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'123,45,60'\n\nshould loosely deep-equal\n\n21\n    at test (/tmp/tmpf4h4btxc.js:16:10)\n    at Object.<anonymous> (/tmp/tmpf4h4btxc.js:21:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '123,45,60',\n  expected: 21,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

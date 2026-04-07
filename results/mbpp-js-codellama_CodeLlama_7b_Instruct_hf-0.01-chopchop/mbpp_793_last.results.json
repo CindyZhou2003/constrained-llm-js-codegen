@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_793_last",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the last position of an element in a sorted array.\nfunction last(arr, x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_793_last.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last;\n  assert.deepEqual(candidate([1, 2, 3], 1),0);\n  assert.deepEqual(candidate([1, 1, 1, 2, 3, 4], 1),2);\n  assert.deepEqual(candidate([2, 3, 2, 3, 6, 8, 9], 3),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to find the last position of an element in a sorted array.\nfunction last(arr, x){\n let low = 0; let high = arr.length - 1; while (low <= high) { const mid = (low + high) >>> 1; if (arr[mid] === x) { high = mid - 1; } else if (arr[mid] < x) { low = mid + 1; } else { high = mid - 1; } } return high; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last;\n  assert.deepEqual(candidate([1, 2, 3], 1),0);\n  assert.deepEqual(candidate([1, 1, 1, 2, 3, 4], 1),2);\n  assert.deepEqual(candidate([2, 3, 2, 3, 6, 8, 9], 3),3);\n}\n\ntest();",
+      "timestamp": 1775510156,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n-1\n\nshould loosely deep-equal\n\n0\n    at test (/tmp/tmppueym58k.js:9:10)\n    at Object.<anonymous> (/tmp/tmppueym58k.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: -1,\n  expected: 0,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

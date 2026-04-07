@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_787_text_match_three",
+  "language": "js",
+  "prompt": "//Write a function that matches a string that has an a followed by three 'b'.\nfunction text_match_three(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_787_text_match_three.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_three;\n  assert.deepEqual(candidate(\"ac\"),false);\n  assert.deepEqual(candidate(\"dc\"),false);\n  assert.deepEqual(candidate(\"abbbba\"),true);\n  assert.deepEqual(candidate(\"caacabbbba\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function that matches a string that has an a followed by three 'b'.\nfunction text_match_three(text){\n    return text.match(/a+b{3}/);\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_three;\n  assert.deepEqual(candidate(\"ac\"),false);\n  assert.deepEqual(candidate(\"dc\"),false);\n  assert.deepEqual(candidate(\"abbbba\"),true);\n  assert.deepEqual(candidate(\"caacabbbba\"),true);\n}\n\ntest();",
+      "timestamp": 1772667646,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nnull\n\nshould loosely deep-equal\n\nfalse\n    at test (/tmp/tmpsvohay6x.js:11:10)\n    at Object.<anonymous> (/tmp/tmpsvohay6x.js:17:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: null,\n  expected: false,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

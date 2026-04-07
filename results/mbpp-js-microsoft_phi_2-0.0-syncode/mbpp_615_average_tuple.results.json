@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_615_average_tuple",
+  "language": "js",
+  "prompt": "//Write a function which takes a lists of lists and returns the average value for each sublist as an array.\nfunction average_tuple(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_615_average_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = average_tuple;\n  assert.deepEqual(candidate([[10, 10, 10, 12], [30, 45, 56, 45], [81, 80, 39, 32], [1, 2, 3, 4]]),[30.5, 34.25, 27.0, 23.25]);\n  assert.deepEqual(candidate([[1, 1, -5], [30, -15, 56], [81, -60, -39], [-10, 2, 3]]),[25.5, -18.0, 3.75]);\n  assert.deepEqual(candidate([[100, 100, 100, 120], [300, 450, 560, 450], [810, 800, 390, 320], [10, 20, 30, 40]]),[305.0, 342.5, 270.0, 232.5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function which takes a lists of lists and returns the average value for each sublist as an array.\nfunction average_tuple(nums){\n    var avg = [];\n    for(var i = 0; i < nums.length; i++){\n        var sum = 0;\n        for(var j = 0; j < nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        avg[i] = sum / nums[i].length;\n    }\n    return avg;\n}\n\nvar nums = [[1,2,3],[4,5,6],[7,8,9]];\nvar avg = average_tuple(nums);\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = average_tuple;\n  assert.deepEqual(candidate([[10, 10, 10, 12], [30, 45, 56, 45], [81, 80, 39, 32], [1, 2, 3, 4]]),[30.5, 34.25, 27.0, 23.25]);\n  assert.deepEqual(candidate([[1, 1, -5], [30, -15, 56], [81, -60, -39], [-10, 2, 3]]),[25.5, -18.0, 3.75]);\n  assert.deepEqual(candidate([[100, 100, 100, 120], [300, 450, 560, 450], [810, 800, 390, 320], [10, 20, 30, 40]]),[305.0, 342.5, 270.0, 232.5]);\n}\n\ntest();",
+      "timestamp": 1772667638,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  10.5,\n  44,\n  58,\n  2.5\n]\n\nshould loosely deep-equal\n\n[\n  30.5,\n  34.25,\n  27,\n  23.25\n]\n    at test (/tmp/tmppy202pi4.js:21:10)\n    at Object.<anonymous> (/tmp/tmppy202pi4.js:26:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 10.5, 44, 58, 2.5 ],\n  expected: [ 30.5, 34.25, 27, 23.25 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

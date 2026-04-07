@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_459_remove_uppercase",
+  "language": "js",
+  "prompt": "//Write a function to remove uppercase substrings from a given string.\nfunction remove_uppercase(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_459_remove_uppercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_uppercase;\n  assert.deepEqual(candidate(\"cAstyoUrFavoRitETVshoWs\"),\"cstyoravoitshos\");\n  assert.deepEqual(candidate(\"wAtchTheinTernEtrAdIo\"),\"wtchheinerntrdo\");\n  assert.deepEqual(candidate(\"VoicESeaRchAndreComMendaTionS\"),\"oiceachndreomendaion\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to remove uppercase substrings from a given string.\nfunction remove_uppercase(str1){\n   var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(str1[i] == str1[i].toUpperCase()){\n            if(i == 0){\n                str2 += str1[i].toLowerCase();\n            }\n            else{\n                str2 += \" \" + str1[i].toLowerCase();\n            }\n        }\n        else{\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_uppercase;\n  assert.deepEqual(candidate(\"cAstyoUrFavoRitETVshoWs\"),\"cstyoravoitshos\");\n  assert.deepEqual(candidate(\"wAtchTheinTernEtrAdIo\"),\"wtchheinerntrdo\");\n  assert.deepEqual(candidate(\"VoicESeaRchAndreComMendaTionS\"),\"oiceachndreomendaion\");\n}\n\ntest();",
+      "timestamp": 1775510944,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'c astyo ur favo rit e t vsho ws'\n\nshould loosely deep-equal\n\n'cstyoravoitshos'\n    at test (/tmp/tmpc1s8nelw.js:25:10)\n    at Object.<anonymous> (/tmp/tmpc1s8nelw.js:30:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'c astyo ur favo rit e t vsho ws',\n  expected: 'cstyoravoitshos',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

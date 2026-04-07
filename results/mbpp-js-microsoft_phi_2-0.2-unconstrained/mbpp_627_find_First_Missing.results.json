@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_627_find_First_Missing",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the smallest missing number from a sorted array of natural numbers.\nfunction find_First_Missing(array){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_627_find_First_Missing.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_First_Missing;\n  assert.deepEqual(candidate([0, 1, 2, 3]),4);\n  assert.deepEqual(candidate([0, 1, 2, 6, 9]),3);\n  assert.deepEqual(candidate([2, 3, 5, 8, 9]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to find the smallest missing number from a sorted array of natural numbers.\nfunction find_First_Missing(array){\n    let n = array.length;\n    for(let i = 0\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_First_Missing;\n  assert.deepEqual(candidate([0, 1, 2, 3]),4);\n  assert.deepEqual(candidate([0, 1, 2, 6, 9]),3);\n  assert.deepEqual(candidate([2, 3, 5, 8, 9]),0);\n}\n\ntest();",
+      "timestamp": 1772687031,
+      "stdout": "",
+      "stderr": "/tmp/tmpzc7fmb6v.js:5\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

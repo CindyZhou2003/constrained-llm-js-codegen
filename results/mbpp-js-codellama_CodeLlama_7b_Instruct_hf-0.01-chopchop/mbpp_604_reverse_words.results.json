@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_604_reverse_words",
+  "language": "js",
+  "prompt": "//Write a function to reverse words seperated by spaces in a given string.\nfunction reverse_words(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_604_reverse_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_words;\n  assert.deepEqual(candidate(\"python program\"),\"program python\");\n  assert.deepEqual(candidate(\"java language\"),\"language java\");\n  assert.deepEqual(candidate(\"indian man\"),\"man indian\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to reverse words seperated by spaces in a given string.\nfunction reverse_words(s){\n var words = s.split(\" \"); var reversed_words = []; for (var i = 0; i < words.length; i++) { reversed_words.push(words[i].split(\"\").reverse().join(\"\")); } return reversed_words.join(\" \"); }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_words;\n  assert.deepEqual(candidate(\"python program\"),\"program python\");\n  assert.deepEqual(candidate(\"java language\"),\"language java\");\n  assert.deepEqual(candidate(\"indian man\"),\"man indian\");\n}\n\ntest();",
+      "timestamp": 1775510153,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'nohtyp margorp'\n\nshould loosely deep-equal\n\n'program python'\n    at test (/tmp/tmp2ygw4i0d.js:9:10)\n    at Object.<anonymous> (/tmp/tmp2ygw4i0d.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'nohtyp margorp',\n  expected: 'program python',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

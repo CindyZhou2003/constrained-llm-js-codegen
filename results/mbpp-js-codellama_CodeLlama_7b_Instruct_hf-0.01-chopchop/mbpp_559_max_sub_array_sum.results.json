@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_559_max_sub_array_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the sum of the largest contiguous sublist in the given array.\nfunction max_sub_array_sum(a, size){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_559_max_sub_array_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum;\n  assert.deepEqual(candidate([-2, -3, 4, -1, -2, 1, 5, -3], 8),7);\n  assert.deepEqual(candidate([-3, -4, 5, -2, -3, 2, 6, -4], 8),8);\n  assert.deepEqual(candidate([-4, -5, 6, -3, -4, 3, 7, -5], 8),10);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the sum of the largest contiguous sublist in the given array.\nfunction max_sub_array_sum(a, size){\n var max_sum = -Infinity; for (var i = 0; i < a.length; i++) { var sum = 0; for (var j = i; j < i + size && j < a.length; j++) { sum += a[j]; } if (sum > max_sum) { max_sum = sum; } } return max_sum; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum;\n  assert.deepEqual(candidate([-2, -3, 4, -1, -2, 1, 5, -3], 8),7);\n  assert.deepEqual(candidate([-3, -4, 5, -2, -3, 2, 6, -4], 8),8);\n  assert.deepEqual(candidate([-4, -5, 6, -3, -4, 3, 7, -5], 8),10);\n}\n\ntest();",
+      "timestamp": 1775510151,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n4\n\nshould loosely deep-equal\n\n7\n    at test (/tmp/tmpqtg9bsor.js:9:10)\n    at Object.<anonymous> (/tmp/tmpqtg9bsor.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 4,\n  expected: 7,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

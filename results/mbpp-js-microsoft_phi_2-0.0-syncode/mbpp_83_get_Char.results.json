@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_83_get_Char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.\nfunction get_Char(strr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_83_get_Char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_Char;\n  assert.deepEqual(candidate(\"abc\"),\"f\");\n  assert.deepEqual(candidate(\"gfg\"),\"t\");\n  assert.deepEqual(candidate(\"ab\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.\nfunction get_Char(strr){\n    var sum = 0;\n    for(var i = 0; i < strr.length; i++){\n        sum += strr.charCodeAt(i);\n    }\n    return String.fromCharCode((sum % 26) + 97);\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_Char;\n  assert.deepEqual(candidate(\"abc\"),\"f\");\n  assert.deepEqual(candidate(\"gfg\"),\"t\");\n  assert.deepEqual(candidate(\"ab\"),\"c\");\n}\n\ntest();",
+      "timestamp": 1772667646,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'i'\n\nshould loosely deep-equal\n\n'f'\n    at test (/tmp/tmpzm9pe3gv.js:15:10)\n    at Object.<anonymous> (/tmp/tmpzm9pe3gv.js:20:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'i',\n  expected: 'f',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

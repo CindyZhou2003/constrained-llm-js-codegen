@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_277_dict_filter",
+  "language": "js",
+  "prompt": "//Write a function that takes in an object and integer n and filters the object to only include entries with values greater than or equal to n.\nfunction dict_filter(dict, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_277_dict_filter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dict_filter;\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 170),{\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 180),{\"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 190),{\"Pierre Cox\": 190});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function that takes in an object and integer n and filters the object to only include entries with values greater than or equal to n.\nfunction dict_filter(dict, n){\n  return Object.keys(dict).filter(key => dict[key] >= n);\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dict_filter;\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 170),{\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 180),{\"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 190),{\"Pierre Cox\": 190});\n}\n\ntest();",
+      "timestamp": 1772667629,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  'Cierra Vega',\n  'Alden Cantrell',\n  'Pierre Cox'\n]\n\nshould loosely deep-equal\n\n{\n  'Alden Cantrell': 180,\n  'Cierra Vega': 175,\n  'Pierre Cox': 190\n}\n    at test (/tmp/tmpv9hwig2e.js:11:10)\n    at Object.<anonymous> (/tmp/tmpv9hwig2e.js:16:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 'Cierra Vega', 'Alden Cantrell', 'Pierre Cox' ],\n  expected: { 'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190 },\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

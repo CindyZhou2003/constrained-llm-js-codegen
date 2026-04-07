@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n return test_tup + (test_dict) + test_dict; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+      "timestamp": 1775510154,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'4,5,6[object Object][object Object]'\n\nshould loosely deep-equal\n\n[\n  4,\n  5,\n  6,\n  {\n    MSAM: 1,\n    best: 3,\n    is: 2\n  }\n]\n    at test (/tmp/tmpcpd9m2wt.js:9:10)\n    at Object.<anonymous> (/tmp/tmpcpd9m2wt.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '4,5,6[object Object][object Object]',\n  expected: [ 4, 5, 6, { MSAM: 1, is: 2, best: 3 } ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

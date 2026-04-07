@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_578_interleave_lists",
+  "language": "js",
+  "prompt": "//Write a function to interleave 3 lists of the same length into a single flat array.\nfunction interleave_lists(list1, list2, list3){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_578_interleave_lists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = interleave_lists;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7], [10, 20, 30, 40, 50, 60, 70], [100, 200, 300, 400, 500, 600, 700]),[1, 10, 100, 2, 20, 200, 3, 30, 300, 4, 40, 400, 5, 50, 500, 6, 60, 600, 7, 70, 700]);\n  assert.deepEqual(candidate([10, 20], [15, 2], [5, 10]),[10, 15, 5, 20, 2, 10]);\n  assert.deepEqual(candidate([11, 44], [10, 15], [20, 5]),[11, 10, 20, 44, 15, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to interleave 3 lists of the same length into a single flat array.\nfunction interleave_lists(list1, list2, list3){\n    //Write your code here\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = interleave_lists;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7], [10, 20, 30, 40, 50, 60, 70], [100, 200, 300, 400, 500, 600, 700]),[1, 10, 100, 2, 20, 200, 3, 30, 300, 4, 40, 400, 5, 50, 500, 6, 60, 600, 7, 70, 700]);\n  assert.deepEqual(candidate([10, 20], [15, 2], [5, 10]),[10, 15, 5, 20, 2, 10]);\n  assert.deepEqual(candidate([11, 44], [10, 15], [20, 5]),[11, 10, 20, 44, 15, 5]);\n}\n\ntest();",
+      "timestamp": 1773083227,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nundefined\n\nshould loosely deep-equal\n\n[\n  1,\n  10,\n  100,\n  2,\n  20,\n  200,\n  3,\n  30,\n  300,\n  4,\n  40,\n  400,\n  5,\n  50,\n  500,\n  6,\n  60,\n  600,\n  7,\n  70,\n  700\n]\n    at test (/tmp/tmpkezf9x8v.js:11:10)\n    at Object.<anonymous> (/tmp/tmpkezf9x8v.js:16:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: undefined,\n  expected: [\n      1,  10, 100,   2,  20, 200,   3,\n     30, 300,   4,  40, 400,   5,  50,\n    500,   6,  60, 600,   7,  70, 700\n  ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

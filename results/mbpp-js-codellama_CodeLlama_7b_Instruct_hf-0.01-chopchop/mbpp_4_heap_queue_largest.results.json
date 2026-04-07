@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n const heap = new Heap(nums, (a) = (b) = { a: a, b: b }); while (heap.size() > n) { heap.pop(); } return heap.toArray(); function Heap(arr, compare) { this.compare = compare; this.data = arr; this.size = arr.length; } Heap.prototype.push = function (item) { this.data.push(item); this.size++; this.heapifyUp(); }; Heap.prototype.pop = function () { const item = this.data[0]; this.data[0] = this.data[this.size - 1]; this.data.pop(); this.size--; this.heapifyDown(); return item; }; Heap.prototype.heapifyUp = function () { let i = this.size - 1; while (i > 0 && this.compare(this.data[i], this.data[(i - 1) >> 1]) < 0) { const tmp = this.data[i]; this.data[i] = this.data[(i - 1) >> 1]; this.data[i] = tmp; i = (i - 1) >> 1; } }; Heap.prototype.heapifyDown = function () { let i = 0; while (i < this.size) { const l = 2 * i + 1, r = 2 * i + 2; let largest = i; if (l < this.size && this.compare(this.data[l], this.data[i]) > 0) { largest = l; } if (r < this.size && this.compare(this.data[r], this.data[largest]) > 0) { largest = r; } if (largest === i) { break; } const tmp = this.data[i]; this.data[i] = this.data[largest]; this.data[i] = tmp; i = largest; } }; Heap.prototype.toArray = function () { return this.data.slice(0, this.size); }; return new Heap(nums, (a, b) => a - b); }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+      "timestamp": 1775510151,
+      "stdout": "",
+      "stderr": "/tmp/tmpxkuuix02.js:3\n const heap = new Heap(nums, (a) = (b) = { a: a, b: b }); while (heap.size() > n) { heap.pop(); } return heap.toArray(); function Heap(arr, compare) { this.compare = compare; this.data = arr; this.size = arr.length; } Heap.prototype.push = function (item) { this.data.push(item); this.size++; this.heapifyUp(); }; Heap.prototype.pop = function () { const item = this.data[0]; this.data[0] = this.data[this.size - 1]; this.data.pop(); this.size--; this.heapifyDown(); return item; }; Heap.prototype.heapifyUp = function () { let i = this.size - 1; while (i > 0 && this.compare(this.data[i], this.data[(i - 1) >> 1]) < 0) { const tmp = this.data[i]; this.data[i] = this.data[(i - 1) >> 1]; this.data[i] = tmp; i = (i - 1) >> 1; } }; Heap.prototype.heapifyDown = function () { let i = 0; while (i < this.size) { const l = 2 * i + 1, r = 2 * i + 2; let largest = i; if (l < this.size && this.compare(this.data[l], this.data[i]) > 0) { largest = l; } if (r < this.size && this.compare(this.data[r], this.data[largest]) > 0) { largest = r; } if (largest === i) { break; } const tmp = this.data[i]; this.data[i] = this.data[largest]; this.data[i] = tmp; i = largest; } }; Heap.prototype.toArray = function () { return this.data.slice(0, this.size); }; return new Heap(nums, (a, b) => a - b); }\n                                              ^\n\nReferenceError: a is not defined\n    at heap_queue_largest (/tmp/tmpxkuuix02.js:3:47)\n    at test (/tmp/tmpxkuuix02.js:9:20)\n    at Object.<anonymous> (/tmp/tmpxkuuix02.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "ReferenceError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_625_swap_List",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to interchange the first and last element in a given array.\nfunction swap_List(newList){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_625_swap_List.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = swap_List;\n  assert.deepEqual(candidate([1, 2, 3]),[3, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 4]),[4, 2, 3, 4, 1]);\n  assert.deepEqual(candidate([4, 5, 6]),[6, 5, 4]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to interchange the first and last element in a given array.\nfunction swap_List(newList){\n    let first = newList[0];\n    let last = newList\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = swap_List;\n  assert.deepEqual(candidate([1, 2, 3]),[3, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 4]),[4, 2, 3, 4, 1]);\n  assert.deepEqual(candidate([4, 5, 6]),[6, 5, 4]);\n}\n\ntest();",
+      "timestamp": 1772667709,
+      "stdout": "",
+      "stderr": "/tmp/tmpzbj6tg5_.js:15\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

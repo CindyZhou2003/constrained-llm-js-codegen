@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_641_is_nonagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth nonagonal number.\nfunction is_nonagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_641_is_nonagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_nonagonal;\n  assert.deepEqual(candidate(10),325);\n  assert.deepEqual(candidate(15),750);\n  assert.deepEqual(candidate(18),1089);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the nth nonagonal number.\nfunction is_nonagonal(n){\n   if(n%2==0) return false;\n    if(n%3==0) return false;\n    if(n%5==0) return false;\n    if(n%7==0) return false;\n    if(n%11==0) return false;\n    if(n%13==0) return false;\n    if(n%17==0) return false;\n    if(n%19==0) return false;\n    if(n%23==0) return false;\n    if(n%29==0) return false;\n    if(n%31==0) return false;\n    if(n%37==0) return false;\n    if(n%41==0) return false;\n    if(n%43==0) return false;\n    if(n%47==0) return false;\n    if(n%53==0) return false;\n    if(n%59==0) return false;\n    if(n%61==0) return false;\n    if(n%67==0) return false;\n    if(n%71==0) return false;\n    if(n%73==0) return false;\n    if(n%79==0) return false;\n    if(n%83==0) return false;\n    if(n%89==0) return false;\n    if(n%97==0) return false;\n    return true;\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_nonagonal;\n  assert.deepEqual(candidate(10),325);\n  assert.deepEqual(candidate(15),750);\n  assert.deepEqual(candidate(18),1089);\n}\n\ntest();",
+      "timestamp": 1775510948,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nfalse\n\nshould loosely deep-equal\n\n325\n    at test (/tmp/tmpyvq5pvov.js:35:10)\n    at Object.<anonymous> (/tmp/tmpyvq5pvov.js:40:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: 325,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

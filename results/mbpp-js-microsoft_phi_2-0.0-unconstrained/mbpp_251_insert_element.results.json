@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_251_insert_element",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and an element and inserts the element before each element in the array, and returns the resulting array.\nfunction insert_element(list, element){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_251_insert_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = insert_element;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Black\"], \"c\"),[\"c\", \"Red\", \"c\", \"Green\", \"c\", \"Black\"]);\n  assert.deepEqual(candidate([\"python\", \"java\"], \"program\"),[\"program\", \"python\", \"program\", \"java\"]);\n  assert.deepEqual(candidate([\"happy\", \"sad\"], \"laugh\"),[\"laugh\", \"happy\", \"laugh\", \"sad\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function that takes in an array and an element and inserts the element before each element in the array, and returns the resulting array.\nfunction insert_element(list, element){\n    let newList = [];\n    for(let i = 0; i\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = insert_element;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Black\"], \"c\"),[\"c\", \"Red\", \"c\", \"Green\", \"c\", \"Black\"]);\n  assert.deepEqual(candidate([\"python\", \"java\"], \"program\"),[\"program\", \"python\", \"program\", \"java\"]);\n  assert.deepEqual(candidate([\"happy\", \"sad\"], \"laugh\"),[\"laugh\", \"happy\", \"laugh\", \"sad\"]);\n}\n\ntest();",
+      "timestamp": 1772667702,
+      "stdout": "",
+      "stderr": "/tmp/tmpgs0tbr83.js:5\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_433_check_greater",
+  "language": "js",
+  "prompt": "//Write a function to check whether the entered number is greater than the elements of the given array.\nfunction check_greater(arr, number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_433_check_greater.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_greater;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], 4),false);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6], 8),true);\n  assert.deepEqual(candidate([9, 7, 4, 8, 6, 1], 11),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check whether the entered number is greater than the elements of the given array.\nfunction check_greater(arr, number){\n for (let i = 0; i < arr.length; i++) { if (arr[i] > number) return true; } return false; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_greater;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], 4),false);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6], 8),true);\n  assert.deepEqual(candidate([9, 7, 4, 8, 6, 1], 11),true);\n}\n\ntest();",
+      "timestamp": 1775510150,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\ntrue\n\nshould loosely deep-equal\n\nfalse\n    at test (/tmp/tmpui_tryj3.js:9:10)\n    at Object.<anonymous> (/tmp/tmpui_tryj3.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

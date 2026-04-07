@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_94_index_minimum",
+  "language": "js",
+  "prompt": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_94_index_minimum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n\n    var minimum = test_list[0][1];\n    var index = 0;\n    for (var i = 1; i < test_list.length; i++) {\n        if (test_list[i][1] < minimum) {\n            minimum = test_list[i][1];\n            index = i;\n        }\n    }\n    return index;\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+      "timestamp": 1775510162,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n2\n\nshould loosely deep-equal\n\n'Varsha'\n    at test (/tmp/tmps6phzaxb.js:19:10)\n    at Object.<anonymous> (/tmp/tmps6phzaxb.js:24:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 2,\n  expected: 'Varsha',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

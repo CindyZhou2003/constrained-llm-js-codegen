@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_597_find_kth",
+  "language": "js",
+  "prompt": "//Write a function to find kth element from the given two sorted arrays.\nfunction find_kth(arr1, arr2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_597_find_kth.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_kth;\n  assert.deepEqual(candidate([2, 3, 6, 7, 9], [1, 4, 8, 10], 5),6);\n  assert.deepEqual(candidate([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7),256);\n  assert.deepEqual(candidate([3, 4, 7, 8, 10], [2, 5, 9, 11], 6),8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find kth element from the given two sorted arrays.\nfunction find_kth(arr1, arr2, k){\n    let i = 0;\n    let j = 0;\n    let count = 0;\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_kth;\n  assert.deepEqual(candidate([2, 3, 6, 7, 9], [1, 4, 8, 10], 5),6);\n  assert.deepEqual(candidate([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7),256);\n  assert.deepEqual(candidate([3, 4, 7, 8, 10], [2, 5, 9, 11], 6),8);\n}\n\ntest();",
+      "timestamp": 1772667708,
+      "stdout": "",
+      "stderr": "/tmp/tmp1xci8pga.js:16\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

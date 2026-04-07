@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_410_min_val",
+  "language": "js",
+  "prompt": "//Write a function to find the minimum value in a given heterogeneous array.\nfunction min_val(listval){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_410_min_val.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_val;\n  assert.deepEqual(candidate([\"Python\", 3, 2, 4, 5, \"version\"]),2);\n  assert.deepEqual(candidate([\"Python\", 15, 20, 25]),15);\n  assert.deepEqual(candidate([\"Python\", 30, 20, 40, 50, \"version\"]),20);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the minimum value in a given heterogeneous array.\nfunction min_val(listval){\n  var min = listval[0];\n  for(var i = 0; i < listval.length; i++){\n    if(listval[i] < min){\n      min = listval[i];\n    }\n  }\n  return min;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_val;\n  assert.deepEqual(candidate([\"Python\", 3, 2, 4, 5, \"version\"]),2);\n  assert.deepEqual(candidate([\"Python\", 15, 20, 25]),15);\n  assert.deepEqual(candidate([\"Python\", 30, 20, 40, 50, \"version\"]),20);\n}\n\ntest();",
+      "timestamp": 1772667630,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'Python'\n\nshould loosely deep-equal\n\n2\n    at test (/tmp/tmpeb0aua_j.js:17:10)\n    at Object.<anonymous> (/tmp/tmpeb0aua_j.js:22:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'Python',\n  expected: 2,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

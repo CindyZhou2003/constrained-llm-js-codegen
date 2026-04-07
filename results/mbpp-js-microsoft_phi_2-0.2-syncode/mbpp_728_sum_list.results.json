@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_728_sum_list",
+  "language": "js",
+  "prompt": "//Write a function takes as input two lists [a_1,...,a_n], [b_1,...,b_n] and returns [a_1+b_1,...,a_n+b_n].\nfunction sum_list(lst1, lst2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_728_sum_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sum_list;\n  assert.deepEqual(candidate([10, 20, 30], [15, 25, 35]),[25, 45, 65]);\n  assert.deepEqual(candidate([1, 2, 3], [5, 6, 7]),[6, 8, 10]);\n  assert.deepEqual(candidate([15, 20, 30], [15, 45, 75]),[30, 65, 105]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function takes as input two lists [a_1,...,a_n], [b_1,...,b_n] and returns [a_1+b_1,...,a_n+b_n].\nfunction sum_list(lst1, lst2){\n    var result = [];\n    for(var i = 0; i < lst1.length; i++){\n        result.push(lst1[i] + lst2[i]);\n    }\n    return result;\n}\n\nvar list1 = [1,2,3];\nvar list2 = [4,5,6];\nvar result = sum_list(list1, list2);\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sum_list;\n  assert.deepEqual(candidate([10, 20, 30], [15, 25, 35]),[25, 45, 65]);\n  assert.deepEqual(candidate([1, 2, 3], [5, 6, 7]),[6, 8, 10]);\n  assert.deepEqual(candidate([15, 20, 30], [15, 45, 75]),[30, 65, 105]);\n}\n\ntest();",
+      "timestamp": 1772340305,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

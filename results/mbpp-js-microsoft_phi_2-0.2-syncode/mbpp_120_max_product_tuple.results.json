@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_120_max_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum absolute product between numbers in pairs of tuples within a given array.\nfunction max_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_120_max_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),36);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),200);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),484);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the maximum absolute product between numbers in pairs of tuples within a given array.\nfunction max_product_tuple(list1){\n    var max = 0;\n    for(var i = 0; i < list1.length; i++){\n        for(var j = i+1; j < list1.length; j++){\n            var product = list1[i][0] * list1[j][0] + list1[i][1] * list1[j][1];\n            if(product > max){\n                max = product;\n            }\n        }\n    }\n    return max;\n}\n\nvar list1 = [\n    [1, 2],\n    [3, 4],\n    [5, 6],\n    [7, 8],\n    [9, 10]\n];\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),36);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),200);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),484);\n}\n\ntest();",
+      "timestamp": 1772340290,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n76\n\nshould loosely deep-equal\n\n36\n    at test (/tmp/tmpetzult2v.js:28:10)\n    at Object.<anonymous> (/tmp/tmpetzult2v.js:33:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 76,\n  expected: 36,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

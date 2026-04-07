@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n    //Create a max heap from the given array\n    for (let i = Math.floor(nums.length / 2 - 1); i >= 0; i--) {\n        let parent = Math.floor((i - 1) / 2);\n        if (nums[i] > nums[parent]) {\n            let temp = nums[i];\n            nums[i] = nums[parent];\n            nums[parent] = temp;\n        }\n    }\n    //Extract the n largest integers from the max heap\n    let result = [];\n    for (let i = 0; i < n; i++) {\n        result.push(nums[0]);\n        nums[0] = nums.pop();\n        let left = 2 * i + 1;\n        let right = 2 * i + 2;\n        while (left < nums.length) {\n            if (right >= nums.length || nums[left] > nums[right]) {\n                result.push(nums[left]);\n                nums[left] = nums.pop();\n            } else {\n                result.push(nums[right]);\n                nums[right] = nums.pop();\n            }\n            left += 1;\n            right += 1;\n        }\n    }\n    return result;\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+      "timestamp": 1773083227,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  85,\n  25,\n  35,\n  75,\n  14,\n  58,\n  65,\n  14\n]\n\nshould loosely deep-equal\n\n[\n  85,\n  75,\n  65\n]\n    at test (/tmp/tmpj62ifkts.js:38:10)\n    at Object.<anonymous> (/tmp/tmpj62ifkts.js:43:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [\n    85, 25, 35, 75,\n    14, 58, 65, 14\n  ],\n  expected: [ 85, 75, 65 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

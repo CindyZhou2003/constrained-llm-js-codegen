@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n   let num = n;\n    let count = 0;\n    for(let i = l; i <= r; i++){\n        if(num &= 1){\n            count++;\n        }\n    }\n    if(count === r - l + 1){\n        return true;\n    }\n    return false;\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+      "timestamp": 1775510940,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nfalse\n\nshould loosely deep-equal\n\ntrue\n    at test (/tmp/tmpra5r91he.js:20:10)\n    at Object.<anonymous> (/tmp/tmpra5r91he.js:25:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

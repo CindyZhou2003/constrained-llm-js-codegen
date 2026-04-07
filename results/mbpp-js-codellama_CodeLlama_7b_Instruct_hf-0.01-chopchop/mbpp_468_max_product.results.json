@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_468_max_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_468_max_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n let n = arr.length; let dp = new Array(n).fill(1); for (let i = 1; i < n; i++) { dp[i] = Math.max(dp[i - 1] * arr[i], arr[i]); } for (let i = n - 2; i >= 0; i--) { dp[i] = Math.max(dp[i + 1] * arr[i], dp[i]); } return dp[0]; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();",
+      "timestamp": 1775510151,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n1620000000000\n\nshould loosely deep-equal\n\n3000\n    at test (/tmp/tmpifvexv1b.js:9:10)\n    at Object.<anonymous> (/tmp/tmpifvexv1b.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1620000000000,\n  expected: 3000,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

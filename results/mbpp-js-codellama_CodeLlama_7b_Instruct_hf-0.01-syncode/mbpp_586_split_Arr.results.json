@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_586_split_Arr",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to split an array at the nth eelment and add the first part to the end.\nfunction split_Arr(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_586_split_Arr.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_Arr;\n  assert.deepEqual(candidate([12, 10, 5, 6, 52, 36], 2),[5, 6, 52, 36, 12, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], 1),[2, 3, 4, 1]);\n  assert.deepEqual(candidate([0, 1, 2, 3, 4, 5, 6, 7], 3),[3, 4, 5, 6, 7, 0, 1, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to split an array at the nth eelment and add the first part to the end.\nfunction split_Arr(l, n){\n   var first = l.slice(0, n);\n    var second = l.slice(n);\n    return first.concat(second);\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_Arr;\n  assert.deepEqual(candidate([12, 10, 5, 6, 52, 36], 2),[5, 6, 52, 36, 12, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], 1),[2, 3, 4, 1]);\n  assert.deepEqual(candidate([0, 1, 2, 3, 4, 5, 6, 7], 3),[3, 4, 5, 6, 7, 0, 1, 2]);\n}\n\ntest();",
+      "timestamp": 1775510946,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  12,\n  10,\n  5,\n  6,\n  52,\n  36\n]\n\nshould loosely deep-equal\n\n[\n  5,\n  6,\n  52,\n  36,\n  12,\n  10\n]\n    at test (/tmp/tmp03l3qad5.js:13:10)\n    at Object.<anonymous> (/tmp/tmp03l3qad5.js:18:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 12, 10, 5, 6, 52, 36 ],\n  expected: [ 5, 6, 52, 36, 12, 10 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

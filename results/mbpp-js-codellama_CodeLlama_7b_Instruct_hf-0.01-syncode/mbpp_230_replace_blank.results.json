@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_230_replace_blank",
+  "language": "js",
+  "prompt": "//Write a function that takes in a string and character, replaces blank spaces in the string with the character, and returns the string.\nfunction replace_blank(str1, char){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_230_replace_blank.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_blank;\n  assert.deepEqual(candidate(\"hello people\", \"@\"),\"hello@people\");\n  assert.deepEqual(candidate(\"python program language\", \"$\"),\"python$program$language\");\n  assert.deepEqual(candidate(\"blank space\", \"-\"),\"blank-space\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function that takes in a string and character, replaces blank spaces in the string with the character, and returns the string.\nfunction replace_blank(str1, char){\n   // Your code here\n    return str1.replace(/ /g, char);\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_blank;\n  assert.deepEqual(candidate(\"hello people\", \"@\"),\"hello@people\");\n  assert.deepEqual(candidate(\"python program language\", \"$\"),\"python$program$language\");\n  assert.deepEqual(candidate(\"blank space\", \"-\"),\"blank-space\");\n}\n\ntest();",
+      "timestamp": 1775510940,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

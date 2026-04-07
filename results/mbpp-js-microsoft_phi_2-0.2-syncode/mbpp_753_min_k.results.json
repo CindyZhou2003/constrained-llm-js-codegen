@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_753_min_k",
+  "language": "js",
+  "prompt": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_753_min_k.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n    let min_k = [];\n    for(let i = 0; i < K; i++){\n        min_k.push(test_list[0][i]);\n    }\n    for(let i = 1; i < test_list.length; i++){\n        for(let j = 0; j < K; j++){\n            if(test_list[i][j] < min_k[j]){\n                min_k[j] = test_list[i][j];\n            }\n        }\n    }\n    return min_k;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+      "timestamp": 1772340306,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  'Akash',\n  2\n]\n\nshould loosely deep-equal\n\n[\n  [\n    'Akash',\n    2\n  ],\n  [\n    'Akshat',\n    4\n  ]\n]\n    at test (/tmp/tmpaaa1ea1w.js:22:10)\n    at Object.<anonymous> (/tmp/tmpaaa1ea1w.js:27:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 'Akash', 2 ],\n  expected: [ [ 'Akash', 2 ], [ 'Akshat', 4 ] ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_74_is_samepatterns",
+  "language": "js",
+  "prompt": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_74_is_samepatterns.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n    var i = 0;\n    var j = 0;\n    var pattern = 0;\n    var pattern_length = 0;\n    var pattern_array = [];\n    var pattern_array_length = 0;\n    var pattern_array_index = 0;\n    var pattern_array_index_length = 0;\n    var pattern_array_index_length_1 = 0;\n    var pattern_array_index_length_2 = 0;\n    var pattern_array_index_length_3 = 0;\n    var pattern_array_index_length_4 = 0;\n    var pattern_array_index_length_5 = 0;\n    var pattern_array_index_length_6 = 0;\n    var pattern_array_index_length_7 = 0;\n    var pattern_array_index_length_8 = 0;\n    var pattern_array_index_length_9 = 0;\n    var pattern_array_index_length_10 = 0;\n    var pattern_array_index_length_11 = 0;\n    var pattern_array_index_length_12 = 0;\n    var pattern_array_index_length_13 = 0;\n    var pattern_array_index_length_14 = 0;\n    var pattern_array_index_length_15 = 0;\n    var pattern_array_index_length_16 = 0;\n    var pattern_array_index_length_17 = 0;\n    var pattern_array_index_length_18 = 0;\n    var pattern_array_index_length_19 = 0;\n    var pattern_array_index_length_20 = 0;\n    var pattern_array_index_length_21 = 0;\n    var pattern_array_index_length_22 = 0;\n    var pattern_array_index_length_23 = 0;\n    var pattern_array_index_length_24 = 0;\n    var pattern_array_index_length_25 = 0;\n    var pattern_array_index_length_26 = 0;\n    var pattern_array_index_length_27 = 0;\n    var pattern_array_index_length_28 = 0;\n    var pattern_array_index_length_29 = 0;\n    var pattern_\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+      "timestamp": 1772667645,
+      "stdout": "",
+      "stderr": "/tmp/tmpvyh2kdt8.js:51\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

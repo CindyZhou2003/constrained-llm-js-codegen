@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_305_start_withp",
+  "language": "js",
+  "prompt": "//Write a function to return two words from an array of words starting with letter 'p'.\nfunction start_withp(words){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_305_start_withp.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = start_withp;\n  assert.deepEqual(candidate([\"Python PHP\", \"Java JavaScript\", \"c c++\"]),[\"Python\", \"PHP\"]);\n  assert.deepEqual(candidate([\"Python Programming\", \"Java Programming\"]),[\"Python\", \"Programming\"]);\n  assert.deepEqual(candidate([\"Pqrst Pqr\", \"qrstuv\"]),[\"Pqrst\", \"Pqr\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to return two words from an array of words starting with letter 'p'.\nfunction start_withp(words){\n let p_words = []; for (let i = 0; i < words.length; i++) { if (words[i].startsWith('p')) { p_words.push(words[i]); } } return p_words; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = start_withp;\n  assert.deepEqual(candidate([\"Python PHP\", \"Java JavaScript\", \"c c++\"]),[\"Python\", \"PHP\"]);\n  assert.deepEqual(candidate([\"Python Programming\", \"Java Programming\"]),[\"Python\", \"Programming\"]);\n  assert.deepEqual(candidate([\"Pqrst Pqr\", \"qrstuv\"]),[\"Pqrst\", \"Pqr\"]);\n}\n\ntest();",
+      "timestamp": 1775510143,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[]\n\nshould loosely deep-equal\n\n[\n  'Python',\n  'PHP'\n]\n    at test (/tmp/tmpcrq4e06a.js:9:10)\n    at Object.<anonymous> (/tmp/tmpcrq4e06a.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [],\n  expected: [ 'Python', 'PHP' ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

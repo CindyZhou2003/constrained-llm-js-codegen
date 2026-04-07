@@ -77,6 +77,7 @@ def cmd_generate(args, parser):
     log_dir = Path(args.output_dir) / "log"
     log_dir.mkdir(parents=True, exist_ok=True)
     timing_path = log_dir / f"{output_dir_name}_timing.csv"
+    total_time = 0.0
     with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(["task_id", "task_name", "temperature", "execution_time_s"])
@@ -93,6 +94,7 @@ def cmd_generate(args, parser):
                 **vars(args),
             )
             elapsed = time.perf_counter() - t0
+            total_time += elapsed
 
             combined_output = f"{prompt_text.rstrip()}\n\n{result.rstrip()}"
             file_path = final_output_path / f"{task_id}.js"
@@ -100,8 +102,11 @@ def cmd_generate(args, parser):
 
             writer.writerow([task_id, task_name, args.temperature, f"{elapsed:.4f}"])
 
+        writer.writerow(["TOTAL", "", "", f"{total_time:.4f}"])
+
     print(f"\nDone! All files saved in {final_output_path}")
     print(f"Timing saved to: {timing_path}")
+    print(f"Total generation time: {total_time:.2f}s ({total_time/60:.1f}min)")
 
 
 # ---------------------------------------------------------------------------
@@ -130,6 +135,7 @@ def cmd_evaluate(args, parser):
     log_dir = Path(args.output_base) / "log"
     log_dir.mkdir(parents=True, exist_ok=True)
     timing_path = log_dir / f"{run_name}_timing.csv"
+    total_time = 0.0
     with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(["task_name", "temperature", "execution_time_s"])
@@ -149,6 +155,7 @@ def cmd_evaluate(args, parser):
                 temperature=args.temperature,
             )
             elapsed = time.perf_counter() - t0
+            total_time += elapsed
 
             result_item = task.copy()
             result_item["completions"] = [code]
@@ -159,8 +166,11 @@ def cmd_evaluate(args, parser):
 
             writer.writerow([task_name, args.temperature, f"{elapsed:.4f}"])
 
+        writer.writerow(["TOTAL", "", f"{total_time:.4f}"])
+
     print(f"\n>>> Generation Finished! JSON saved to: {output_path}")
     print(f"    Timing saved to: {timing_path}")
+    print(f"    Total generation time: {total_time:.2f}s ({total_time/60:.1f}min)")
     print(f"    To compress and evaluate, run:")
     print(f"    python code_evaluation.py --input_dir {output_path} --benchmark multipl-e")
 

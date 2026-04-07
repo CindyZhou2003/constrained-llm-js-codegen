@@ -86,9 +86,6 @@ class ItergenGenerator(BaseGenerator):
         
         # Increase loop limit significantly. Assuming 1 step ~= 1 token roughly, use max_new_tokens + buffer
         max_steps = kwargs.get("max_new_tokens", 512)
-        # Ensure at least 500 steps if max_new_tokens is small or None, as steps are granular
-        if max_steps < 500:
-            max_steps = 500
 
         for step in range(max_steps):
             

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_560_union_elements",
+  "language": "js",
+  "prompt": "//Write a function to find the union of the elements of two given lists and output them in sorted order.\nfunction union_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_560_union_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = union_elements;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 4, 5, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [3, 4, 5, 6]),[1, 2, 3, 4, 5, 6]);\n  assert.deepEqual(candidate([11, 12, 13, 14], [13, 15, 16, 17]),[11, 12, 13, 14, 15, 16, 17]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the union of the elements of two given lists and output them in sorted order.\nfunction union_elements(test_tup1, test_tup2){\n    let union_set = new Set(test_tup1.concat(\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = union_elements;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 4, 5, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [3, 4, 5, 6]),[1, 2, 3, 4, 5, 6]);\n  assert.deepEqual(candidate([11, 12, 13, 14], [13, 15, 16, 17]),[11, 12, 13, 14, 15, 16, 17]);\n}\n\ntest();",
+      "timestamp": 1772687030,
+      "stdout": "",
+      "stderr": "/tmp/tmp1yw67znh.js:4\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

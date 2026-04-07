@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_791_remove_nested",
+  "language": "js",
+  "prompt": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_791_remove_nested.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n    var new_tup = [];\n    for(var i = 0; i < test_tup.length; i++){\n        if(test_tup[i][0]!== test_tup[i][1]){\n            new_tup.push(test_tup[i]);\n        }\n    }\n    return new_tup;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+      "timestamp": 1772340307,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  [\n    4,\n    6\n  ]\n]\n\nshould loosely deep-equal\n\n[\n  1,\n  5,\n  7,\n  10\n]\n    at test (/tmp/tmpn5x8djuw.js:17:10)\n    at Object.<anonymous> (/tmp/tmpn5x8djuw.js:23:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ [ 4, 6 ] ],\n  expected: [ 1, 5, 7, 10 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

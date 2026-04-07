@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_117_list_to_float",
+  "language": "js",
+  "prompt": "//Write a function to convert all possible convertible elements in an array of lists to floats.\nfunction list_to_float(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_117_list_to_float.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_to_float;\n  assert.deepEqual(candidate([[\"3\", \"4\"], [\"1\", \"26.45\"], [\"7.32\", \"8\"], [\"4\", \"8\"]]),[[3.0, 4.0], [1.0, 26.45], [7.32, 8.0], [4.0, 8.0]]);\n  assert.deepEqual(candidate([[\"4\", \"4\"], [\"2\", \"27\"], [\"4.12\", \"9\"], [\"7\", \"11\"]]),[[4.0, 4.0], [2.0, 27.0], [4.12, 9.0], [7.0, 11.0]]);\n  assert.deepEqual(candidate([[\"6\", \"78\"], [\"5\", \"26.45\"], [\"1.33\", \"4\"], [\"82\", \"13\"]]),[[6.0, 78.0], [5.0, 26.45], [1.33, 4.0], [82.0, 13.0]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to convert all possible convertible elements in an array of lists to floats.\nfunction list_to_float(test_list){\n    for(var i = 0; i < test_list.length; i++){\n        if(test_list[i] instanceof Array){\n            list_to_float(test_list[i]);\n        }else{\n            test_list[i] = parseFloat(test_list[i]);\n        }\n    }\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_to_float;\n  assert.deepEqual(candidate([[\"3\", \"4\"], [\"1\", \"26.45\"], [\"7.32\", \"8\"], [\"4\", \"8\"]]),[[3.0, 4.0], [1.0, 26.45], [7.32, 8.0], [4.0, 8.0]]);\n  assert.deepEqual(candidate([[\"4\", \"4\"], [\"2\", \"27\"], [\"4.12\", \"9\"], [\"7\", \"11\"]]),[[4.0, 4.0], [2.0, 27.0], [4.12, 9.0], [7.0, 11.0]]);\n  assert.deepEqual(candidate([[\"6\", \"78\"], [\"5\", \"26.45\"], [\"1.33\", \"4\"], [\"82\", \"13\"]]),[[6.0, 78.0], [5.0, 26.45], [1.33, 4.0], [82.0, 13.0]]);\n}\n\ntest();",
+      "timestamp": 1772667626,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nundefined\n\nshould loosely deep-equal\n\n[\n  [\n    3,\n    4\n  ],\n  [\n    1,\n    26.45\n  ],\n  [\n    7.32,\n    8\n  ],\n  [\n    4,\n    8\n  ]\n]\n    at test (/tmp/tmp8qxhu38i.js:17:10)\n    at Object.<anonymous> (/tmp/tmp8qxhu38i.js:22:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: undefined,\n  expected: [ [ 3, 4 ], [ 1, 26.45 ], [ 7.32, 8 ], [ 4, 8 ] ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

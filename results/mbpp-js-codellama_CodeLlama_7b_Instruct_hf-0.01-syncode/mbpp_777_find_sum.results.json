@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_777_find_sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of non-repeated elements in a given array.\nfunction find_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_777_find_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_sum;\n  assert.deepEqual(candidate([1, 2, 3, 1, 1, 4, 5, 6]),21);\n  assert.deepEqual(candidate([1, 10, 9, 4, 2, 10, 10, 45, 4]),71);\n  assert.deepEqual(candidate([12, 10, 9, 45, 2, 10, 10, 45, 10]),78);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to find the sum of non-repeated elements in a given array.\nfunction find_sum(arr){\n   let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])){\n            sum += arr[i];\n        }\n    }\n    return sum;\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_sum;\n  assert.deepEqual(candidate([1, 2, 3, 1, 1, 4, 5, 6]),21);\n  assert.deepEqual(candidate([1, 10, 9, 4, 2, 10, 10, 45, 4]),71);\n  assert.deepEqual(candidate([12, 10, 9, 45, 2, 10, 10, 45, 10]),78);\n}\n\ntest();",
+      "timestamp": 1775510950,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n20\n\nshould loosely deep-equal\n\n21\n    at test (/tmp/tmp6hsjelt2.js:16:10)\n    at Object.<anonymous> (/tmp/tmp6hsjelt2.js:21:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 20,\n  expected: 21,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

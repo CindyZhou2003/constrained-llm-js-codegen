@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_465_drop_empty",
+  "language": "js",
+  "prompt": "//Write a function to drop empty items from a given object.\nfunction drop_empty(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_465_drop_empty.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = drop_empty;\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": \"Green\", \"c3\": undefined}),{\"c1\": \"Red\", \"c2\": \"Green\"});\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": undefined, \"c3\": undefined}),{\"c1\": \"Red\"});\n  assert.deepEqual(candidate({\"c1\": undefined, \"c2\": \"Green\", \"c3\": undefined}),{\"c2\": \"Green\"});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to drop empty items from a given object.\nfunction drop_empty(dict1){\n    for(var key1 = Object.keys(dict1); key1.length; key1.shift()){\n        if(typeof dict1[key1] === 'object'){\n            //console.log(key1);\n            drop_empty(dict1[key1]);\n        }\n        else if(dict1[key1] === ''){\n            delete dict1[key1];\n        }\n    }\n    return dict1;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = drop_empty;\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": \"Green\", \"c3\": undefined}),{\"c1\": \"Red\", \"c2\": \"Green\"});\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": undefined, \"c3\": undefined}),{\"c1\": \"Red\"});\n  assert.deepEqual(candidate({\"c1\": undefined, \"c2\": \"Green\", \"c3\": undefined}),{\"c2\": \"Green\"});\n}\n\ntest();",
+      "timestamp": 1773083227,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n{\n  c1: 'Red',\n  c2: 'Green',\n  c3: undefined\n}\n\nshould loosely deep-equal\n\n{\n  c1: 'Red',\n  c2: 'Green'\n}\n    at test (/tmp/tmps4t3jz5c.js:20:10)\n    at Object.<anonymous> (/tmp/tmps4t3jz5c.js:25:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: { c1: 'Red', c2: 'Green', c3: undefined },\n  expected: { c1: 'Red', c2: 'Green' },\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

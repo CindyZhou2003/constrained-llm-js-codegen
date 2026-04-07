@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_247_lps",
+  "language": "js",
+  "prompt": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_247_lps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n let dp = Array(str.length).fill(0); for (let i = 0; i < str.length; i++) { for (let j = i; j < str.length; j++) { if (str[i] === str[j]) { dp[j] = dp[j - 1] + 2; } else { dp[j] = Math.max(dp[j - 1], dp[j]); } } } return dp[str.length - 1]; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+      "timestamp": 1775510141,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nNaN\n\nshould loosely deep-equal\n\n5\n    at test (/tmp/tmpw80nm5ra.js:9:10)\n    at Object.<anonymous> (/tmp/tmpw80nm5ra.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: NaN,\n  expected: 5,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

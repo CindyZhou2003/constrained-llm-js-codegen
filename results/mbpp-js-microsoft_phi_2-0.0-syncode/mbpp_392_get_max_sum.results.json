@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_392_get_max_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n).\nfunction get_max_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_392_get_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_max_sum;\n  assert.deepEqual(candidate(60),106);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n).\nfunction get_max_sum(n){\n    let max_sum = 0;\n    for(let i=1; i<=n; i++){\n        let sum = 0;\n        for(let j=1; j<=i; j++){\n            sum += get_f(j);\n        }\n        if(sum > max_sum){\n            max_sum = sum;\n        }\n    }\n    return max_sum;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_max_sum;\n  assert.deepEqual(candidate(60),106);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+      "timestamp": 1772667630,
+      "stdout": "",
+      "stderr": "/tmp/tmptv1djxe9.js:7\n            sum += get_f(j);\n            ^\n\nReferenceError: get_f is not defined\n    at get_max_sum (/tmp/tmptv1djxe9.js:7:13)\n    at test (/tmp/tmptv1djxe9.js:21:20)\n    at Object.<anonymous> (/tmp/tmptv1djxe9.js:26:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "ReferenceError"
+    }
+  ]
+}

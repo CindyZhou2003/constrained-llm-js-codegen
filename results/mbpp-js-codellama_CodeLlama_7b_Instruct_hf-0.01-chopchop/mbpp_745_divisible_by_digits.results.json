@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_745_divisible_by_digits",
+  "language": "js",
+  "prompt": "//Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/JavaScript-exercises/lambda/JavaScript-lambda-exercise-24.php\nfunction divisible_by_digits(startnum, endnum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_745_divisible_by_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisible_by_digits;\n  assert.deepEqual(candidate(1, 22),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]);\n  assert.deepEqual(candidate(1, 15),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15]);\n  assert.deepEqual(candidate(20, 25),[22, 24]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/JavaScript-exercises/lambda/JavaScript-lambda-exercise-24.php\nfunction divisible_by_digits(startnum, endnum){\n for (let i = startnum; i <= endnum; i++) { let divisible = true; for (let j = 0; j < i.toString().length; j++) { if (i % (i.toString()[j] - 0) !== 0) { divisible = false; break; } } if (divisible) { console.log(i); } } }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisible_by_digits;\n  assert.deepEqual(candidate(1, 22),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]);\n  assert.deepEqual(candidate(1, 15),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15]);\n  assert.deepEqual(candidate(20, 25),[22, 24]);\n}\n\ntest();",
+      "timestamp": 1775510155,
+      "stdout": "1\n2\n3\n4\n5\n6\n7\n8\n9\n11\n12\n15\n22\n",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\nundefined\n\nshould loosely deep-equal\n\n[\n  1,\n  2,\n  3,\n  4,\n  5,\n  6,\n  7,\n  8,\n  9,\n  11,\n  12,\n  15,\n  22\n]\n    at test (/tmp/tmpuaiqgz7d.js:9:10)\n    at Object.<anonymous> (/tmp/tmpuaiqgz7d.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: undefined,\n  expected: [\n     1, 2, 3,  4,  5,  6,\n     7, 8, 9, 11, 12, 15,\n    22\n  ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_84_sequence",
+  "language": "js",
+  "prompt": "//Write a function to find the nth number in the newman conway sequence.\nfunction sequence(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_84_sequence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sequence;\n  assert.deepEqual(candidate(10),6);\n  assert.deepEqual(candidate(2),1);\n  assert.deepEqual(candidate(3),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the nth number in the newman conway sequence.\nfunction sequence(n){\n  var count = 0;\n  var num = 1;\n  var next = 1;\n  var result = 0;\n  while(count < n){\n    result = num + next;\n    count++;\n    num = next;\n    next = result - num;\n  }\n  return result;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sequence;\n  assert.deepEqual(candidate(10),6);\n  assert.deepEqual(candidate(2),1);\n  assert.deepEqual(candidate(3),2);\n}\n\ntest();",
+      "timestamp": 1772667646,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n2\n\nshould loosely deep-equal\n\n6\n    at test (/tmp/tmpaojhihaf.js:21:10)\n    at Object.<anonymous> (/tmp/tmpaojhihaf.js:26:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 2,\n  expected: 6,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

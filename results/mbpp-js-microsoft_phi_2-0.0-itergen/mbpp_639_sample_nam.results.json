@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n  var sum = 0;\n  for(var i = 0; i < sample_names.length; i++){\n    if(sample_names[i][0].toUpperCase() === sample_names[i][0]){\n      sum += sample_names[i].length;\n    }\n  }\n  return sum;\n}\n\nvar sample_names = [\n  \"John\",\n  \"Jane\",\n  \"Bob\",\n  \"Alice\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n  \"Bob\",\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+      "timestamp": 1773083229,
+      "stdout": "",
+      "stderr": "/tmp/tmpt90iwuar.js:99\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

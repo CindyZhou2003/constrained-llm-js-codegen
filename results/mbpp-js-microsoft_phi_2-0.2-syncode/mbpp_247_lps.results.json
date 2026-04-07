@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_247_lps",
+  "language": "js",
+  "prompt": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_247_lps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n  //base case: if the string is empty or has one character, return 1\n  if(str.length <= 1){\n    return 1;\n  }\n  //initialize a 2D array to store the lengths of the longest palindromic subsequences\n  let dp = new Array(str.length);\n  for(let i=0; i<str.length; i++){\n    dp[i] = new Array(str.length);\n  }\n  //fill the diagonal elements with 1, as a single character is a palindrome\n  for(let i=0; i<str.length; i++){\n    dp[i][i] = 1;\n  }\n  //fill the upper triangle with the minimum of the lower diagonal elements, as a palindrome can be formed by deleting one character\n  for(let i=0\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+      "timestamp": 1772340292,
+      "stdout": "",
+      "stderr": "/tmp/tmp656kiih7.js:18\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

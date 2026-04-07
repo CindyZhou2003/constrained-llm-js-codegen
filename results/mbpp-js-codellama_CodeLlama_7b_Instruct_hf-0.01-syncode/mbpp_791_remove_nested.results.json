@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_791_remove_nested",
+  "language": "js",
+  "prompt": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_791_remove_nested.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n   var test_tup_copy = test_tup.slice();\n    var test_tup_copy_len = test_tup_copy.length;\n    var test_tup_copy_i = 0;\n    var test_tup_copy_j = 0;\n    var test_tup_copy_k = 0;\n    var test_tup_copy_l = 0;\n    var test_tup_copy_m = 0;\n    var test_tup_copy_n = 0;\n    var test_tup_copy_o = 0;\n    var test_tup_copy_p = 0;\n    var test_tup_copy_q = 0;\n    var test_tup_copy_r = 0;\n    var test_tup_copy_s = 0;\n    var test_tup_copy_t = 0;\n    var test_tup_copy_u = 0;\n    var test_tup_copy_v = 0;\n    var test_tup_copy_w = 0;\n    var test_tup_copy_x = 0;\n    var test_tup_copy_y = 0;\n    var test_tup_copy_z = 0;\n    var test_tup_copy_a = 0;\n    var test_tup_copy_b = 0;\n    var test_tup_copy_c = 0;\n    var test_tup_copy_d = 0;\n    var test_tup_copy_e = 0;\n    var test_tup_copy_f = 0;\n    var test_tup_copy_g = 0;\n    var test_tup_copy_h = 0;\n    var test_tup_copy_i = 0;\n    var test_tup_copy_j = 0;\n    var test_tup_copy_k = 0;\n    var test_tup_copy_l = 0;\n    var test_tup_copy_m = 0;\n    var test_tup_copy_\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+      "timestamp": 1775510950,
+      "stdout": "",
+      "stderr": "/tmp/tmpez6md8qb.js:48\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

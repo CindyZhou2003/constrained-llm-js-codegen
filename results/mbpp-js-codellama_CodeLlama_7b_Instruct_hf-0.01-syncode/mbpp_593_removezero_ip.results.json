@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_593_removezero_ip",
+  "language": "js",
+  "prompt": "//Write a function to remove leading zeroes from an ip address.\nfunction removezero_ip(ip){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_593_removezero_ip.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = removezero_ip;\n  assert.deepEqual(candidate(\"216.08.094.196\"),\"216.8.94.196\");\n  assert.deepEqual(candidate(\"12.01.024\"),\"12.1.24\");\n  assert.deepEqual(candidate(\"216.08.094.0196\"),\"216.8.94.196\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to remove leading zeroes from an ip address.\nfunction removezero_ip(ip){\n   let arr = ip.split(\".\");\n    let newarr = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] != \"0\"){\n            newarr.push(arr[i]);\n        }\n    }\n    return newarr.join(\".\");\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = removezero_ip;\n  assert.deepEqual(candidate(\"216.08.094.196\"),\"216.8.94.196\");\n  assert.deepEqual(candidate(\"12.01.024\"),\"12.1.24\");\n  assert.deepEqual(candidate(\"216.08.094.0196\"),\"216.8.94.196\");\n}\n\ntest();",
+      "timestamp": 1775510946,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n'216.08.094.196'\n\nshould loosely deep-equal\n\n'216.8.94.196'\n    at test (/tmp/tmp6d5x2vnj.js:18:10)\n    at Object.<anonymous> (/tmp/tmp6d5x2vnj.js:23:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: '216.08.094.196',\n  expected: '216.8.94.196',\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

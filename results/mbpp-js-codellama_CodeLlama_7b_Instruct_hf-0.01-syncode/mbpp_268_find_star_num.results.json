@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_268_find_star_num",
+  "language": "js",
+  "prompt": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_268_find_star_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n   var star_num = 1;\n    for(var i = 2; i <= n; i++){\n        star_num = star_num * 2 + 1;\n    }\n    return star_num;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();",
+      "timestamp": 1775510941,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n7\n\nshould loosely deep-equal\n\n37\n    at test (/tmp/tmpkq8y6d50.js:15:10)\n    at Object.<anonymous> (/tmp/tmpkq8y6d50.js:20:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 7,\n  expected: 37,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

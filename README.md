@@ -15,7 +15,7 @@ A framework for systematically evaluating LLM code generation under **unconstrai
   - `grammars/`: Language grammar files (`.lark`) for constrained modes. Add a grammar here for each new language.
 - `datasets/`: Translated prompt datasets in `.jsonl` format, one file per language/benchmark combination.
 - `raw_results/`: Uncompressed generation outputs (`.json`).
-- `results/`: Compressed benchmark inputs and evaluation outputs (`.json.gz`).
+- `results_eval/`: Compressed benchmark inputs and evaluation outputs (`.json.gz`).
 - `tools/`: Analysis scripts for generated and evaluated results.
 
 ### Utilities in `tools/`
@@ -156,13 +156,13 @@ To compress and evaluate, pass the output directory to `code_evaluation.py` (see
 Convert the `.json` files produced by `code_generator.py evaluate` to `.json.gz` for MultiPL-E.
 
 ```bash
-# Output defaults to results/<run_name>/
+# Output defaults to results_eval/<run_name>/
 python code_evaluation.py --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop
 
 # Specify a custom output directory
 python code_evaluation.py \
   --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
-  --gz_output_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop
+  --gz_output_dir results_eval/mbpp-js-microsoft_phi_2-0.2-chopchop
 ```
 
 ### 5) Evaluate with MultiPL-E
@@ -195,17 +195,17 @@ docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
 
 ```bash
 docker run --rm --network none \
-  -v "/absolute/path/to/results:/tutorial:rw" \
+  -v "/absolute/path/to/results_eval:/tutorial:rw" \
   multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
 ```
 
 4. Compute pass@k:
 
 ```bash
-python benchmark/MultiPL-E/pass_k.py /absolute/path/to/results
+python benchmark/MultiPL-E/pass_k.py /absolute/path/to/results_eval
 ```
 
-After `pass_k.py`, related `.results.json.gz` files are written to that same results directory.
+After `pass_k.py`, related `.results.json.gz` files are written to that same `results_eval` directory.
 
 ## Adding a New Language
 

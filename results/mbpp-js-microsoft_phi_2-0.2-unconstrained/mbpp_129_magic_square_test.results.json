@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n    var sum = 0;\n    var row_sum = 0;\n    var col_\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+      "timestamp": 1772687025,
+      "stdout": "",
+      "stderr": "/tmp/tmp1dvg6rps.js:16\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

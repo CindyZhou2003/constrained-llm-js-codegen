@@ -47,7 +47,6 @@ class PropertyStrPair(Binary): ...
 class PropertySeq(Binary): ...
 class Group(Unary): ...
 class NewExpr(Unary): ...
-class FunctionBodyClose(Unary): ...
 class StmtSeq(Binary): ...
 class ExprStmt(Unary): ...
 class FunctionDecl(Ternary): ...
@@ -58,7 +57,12 @@ class IfThen(Binary): ...
 class IfThenElse(Ternary): ...
 class WhileStmt(Binary): ...
 class DoWhileStmt(Binary): ...
-class ForStmt(Binary): ...
+@dataclass(frozen=True)
+class ForStmt(Application):
+    init: TreeGrammar
+    condition: TreeGrammar
+    update: TreeGrammar
+    body: TreeGrammar
 class ForInitLet(Binary): ...
 class ForInitConst(Binary): ...
 class ForInitVar(Binary): ...
@@ -177,9 +181,23 @@ JS_CONTEXT = "You are a JavaScript coding assistant."
 # ---------------------------------------------------------------------------
 
 _GLOBAL_JS_NAMES: frozenset[str] = frozenset({
+    # Constructors / namespaces
     "Math", "Array", "Object", "String", "Number", "Boolean",
-    "console", "JSON", "parseInt", "parseFloat", "isNaN", "isFinite",
+    "Date", "RegExp", "Error", "TypeError", "RangeError", "SyntaxError",
+    "ReferenceError", "URIError", "EvalError",
+    "Map", "Set", "WeakMap", "WeakSet",
+    "Promise", "Symbol", "Proxy", "Reflect",
+    "ArrayBuffer", "DataView", "Float32Array", "Float64Array",
+    "Int8Array", "Int16Array", "Int32Array",
+    "Uint8Array", "Uint16Array", "Uint32Array", "Uint8ClampedArray",
+    "BigInt", "BigInt64Array", "BigUint64Array",
+    # Global functions
+    "parseInt", "parseFloat", "isNaN", "isFinite",
+    "encodeURI", "encodeURIComponent", "decodeURI", "decodeURIComponent",
+    # Global values
+    "console", "JSON",
     "undefined", "Infinity", "NaN", "arguments",
+    "globalThis",
 })
 
 
@@ -195,7 +213,6 @@ class JSEnv:
     def enter_loop(self) -> "JSEnv":
         return JSEnv(self.names, in_loop=True)
 
-
 _default_js_env = JSEnv(_GLOBAL_JS_NAMES, in_loop=False)
 
 
@@ -203,24 +220,17 @@ _default_js_env = JSEnv(_GLOBAL_JS_NAMES, in_loop=False)
 # Helper utilities
 # ---------------------------------------------------------------------------
 
-def _is_terminator(stmt_node) -> bool:
-    n = as_tree(stmt_node)
-    return isinstance(n, (ReturnStmt, ReturnVoidStmt, ThrowStmt, BreakStmt, ContinueStmt))
-
-
 def _var_name(tok_child) -> str | None:
     t = as_tree(tok_child)
     if isinstance(t, ASTLeaf) and t.is_complete:
         return t.prefix
     return None
 
-
 def _lvalue_name(lvalue_tree) -> str | None:
     match lvalue_tree:
         case Var(tok):
             return _var_name(tok)
     return None
-
 
 def _decl_name(stmt_tree) -> str | None:
     match stmt_tree:
@@ -232,7 +242,6 @@ def _decl_name(stmt_tree) -> str | None:
             return _var_name(name)
     return None
 
-
 def _param_names(params_tree) -> frozenset[str]:
     match params_tree:
         case NoParams():
@@ -240,7 +249,6 @@ def _param_names(params_tree) -> frozenset[str]:
         case Params(param_list):
             return _collect_params(as_tree(param_list))
     return frozenset()
-
 
 def _collect_params(node) -> frozenset[str]:
     match node:
@@ -308,8 +316,6 @@ def js_prune_stmts(env: JSEnv, stmts: TreeGrammar) -> TreeGrammar:
             return Union.of(js_prune_stmts(env, child) for child in children)
         case StmtSeq(head, tail):
             head_tree = as_tree(head)
-            if head_tree is not None and _is_terminator(head_tree):
-                return EmptySet()
             pruned_head = js_prune_stmt(env, head)
             if isinstance(pruned_head, EmptySet):
                 return EmptySet()
@@ -331,7 +337,7 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
             return Union.of(js_prune_stmt(env, child) for child in children)
         case EmptySet():
             return EmptySet()
-        case DoWhileStmt() | TryCatch() | FunctionExpr():
+        case FunctionExpr():
             return EmptySet()
         case BreakStmt() | ContinueStmt():
             return stmt if env.in_loop else EmptySet()
@@ -349,6 +355,16 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
             return stmt
         case ThrowStmt(expr):
             return ThrowStmt.of(js_prune_expr(env, expr))
+        case TryCatch(try_body, catch_param, catch_body):
+            catch_env = env
+            catch_name = _var_name(catch_param)
+            if catch_name:
+                catch_env = env.add(catch_name)
+            return TryCatch.of(
+                js_prune_stmt(env, try_body),
+                catch_param,
+                js_prune_stmt(catch_env, catch_body),
+            )
         case IfThen(cond, body):
             return IfThen.of(js_prune_expr(env, cond), js_prune_stmt(env, body))
         case IfThenElse(cond, then_b, else_b):
@@ -362,7 +378,12 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
                 js_prune_expr(env, cond),
                 js_prune_stmt(env.enter_loop(), body),
             )
-        case ForStmt(for_init, body):
+        case DoWhileStmt(body, cond):
+            return DoWhileStmt.of(
+                js_prune_stmt(env.enter_loop(), body),
+                js_prune_expr(env, cond),
+            )
+        case ForStmt(for_init, cond, update, body):
             loop_env = env.enter_loop()
             init_tree = as_tree(for_init)
             if init_tree is not None:
@@ -372,7 +393,12 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
             pruned_init = js_prune_stmt(env, for_init)
             if isinstance(pruned_init, EmptySet):
                 return EmptySet()
-            return ForStmt.of(pruned_init, js_prune_stmt(loop_env, body))
+            return ForStmt.of(
+                pruned_init,
+                js_prune_expr(loop_env, cond),
+                js_prune_expr(loop_env, update),
+                js_prune_stmt(loop_env, body),
+            )
         case (ForInLetStmt(ident, iterable, body)
               | ForInConstStmt(ident, iterable, body)
               | ForInVarStmt(ident, iterable, body)
@@ -444,8 +470,12 @@ def js_prune_expr(env: JSEnv, expr: TreeGrammar) -> TreeGrammar:
             if name is not None and name not in env.names:
                 return EmptySet()
             return expr
-        case FunctionExpr():
-            return EmptySet()
+        case FunctionExpr(params, body):
+            params_tree = as_tree(params)
+            inner_env = env
+            if params_tree is not None:
+                inner_env = inner_env.add(*_param_names(params_tree))
+            return FunctionExpr.of(params, js_prune_stmt(inner_env, body))
         case Call0(callee) | CallN(callee, _):
             callee_tree = as_tree(callee)
             if isinstance(callee_tree, Var):

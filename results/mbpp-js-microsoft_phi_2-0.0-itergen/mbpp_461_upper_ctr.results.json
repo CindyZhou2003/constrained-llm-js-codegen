@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_461_upper_ctr",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the upper case characters in a given string.\nfunction upper_ctr(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_461_upper_ctr.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = upper_ctr;\n  assert.deepEqual(candidate(\"PYthon\"),1);\n  assert.deepEqual(candidate(\"BigData\"),1);\n  assert.deepEqual(candidate(\"program\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to count the upper case characters in a given string.\nfunction upper_ctr(str){\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = upper_ctr;\n  assert.deepEqual(candidate(\"PYthon\"),1);\n  assert.deepEqual(candidate(\"BigData\"),1);\n  assert.deepEqual(candidate(\"program\"),0);\n}\n\ntest();",
+      "timestamp": 1773083227,
+      "stdout": "",
+      "stderr": "/tmp/tmp6_sova55.js:14\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

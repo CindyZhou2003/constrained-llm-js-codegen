@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n    let result = [];\n    for(let i = 0; i < test_tup\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+      "timestamp": 1772667705,
+      "stdout": "",
+      "stderr": "/tmp/tmpz0ulpidu.js:5\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

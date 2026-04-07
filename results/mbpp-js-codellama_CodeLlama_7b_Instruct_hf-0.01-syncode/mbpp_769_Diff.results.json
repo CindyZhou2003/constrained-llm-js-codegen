@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_769_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_769_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n   var diff = li1.filter(function(i) {\n        return li2.indexOf(i) < 0;\n    });\n    return diff;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+      "timestamp": 1775510949,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  10,\n  15,\n  20,\n  30\n]\n\nshould loosely deep-equal\n\n[\n  10,\n  20,\n  30,\n  15\n]\n    at test (/tmp/tmprfspycmy.js:14:10)\n    at Object.<anonymous> (/tmp/tmprfspycmy.js:19:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 10, 15, 20, 30 ],\n  expected: [ 10, 20, 30, 15 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

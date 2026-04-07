@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n    var combinations = [];\n    var sum = 0;\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var l = 0;\n    var m = 0;\n    var n = 0;\n    var o = 0;\n    var p = 0;\n    var q = 0;\n    var r = 0;\n    var s = 0;\n    var t = 0;\n    var u = 0;\n    var v = 0;\n    var w = 0;\n    var x = 0;\n    var y = 0;\n    var z = 0;\n    var a = 0;\n    var b = 0;\n    var c = 0;\n    var d = 0;\n    var e = 0;\n    var f = 0;\n    var g = 0;\n    var h = 0;\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var l = 0;\n    var m = 0;\n    var n = 0;\n    var o = 0;\n    var p = 0;\n    var q = 0;\n    var r = 0;\n    var s = 0;\n    var t = 0;\n    var u = 0;\n    var v = 0;\n    var w = 0;\n    var x = 0;\n    var y = 0;\n    var z = 0;\n    var a = 0;\n    var b = 0;\n    var c = 0;\n    var d = 0;\n    var e = 0;\n    var f = 0;\n    var g = 0;\n    var h = 0;\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var l = 0;\n    var m = 0;\n    var n = 0;\n    var o = 0;\n    var p = 0;\n    var q = 0;\n    var r = 0;\n    var s = 0;\n    var t = 0;\n    var u = 0;\n    var v = 0;\n    var w = 0;\n    var x = 0;\n    var y = 0;\n    var z = 0;\n    var a = 0;\n    var\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+      "timestamp": 1772667645,
+      "stdout": "",
+      "stderr": "/tmp/tmp0ez68y0f.js:77\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

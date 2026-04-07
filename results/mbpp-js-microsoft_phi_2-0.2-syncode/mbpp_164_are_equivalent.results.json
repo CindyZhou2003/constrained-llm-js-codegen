@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_164_are_equivalent",
+  "language": "js",
+  "prompt": "//Write a function to determine if the sum of the divisors of two integers are the same.\nfunction are_equivalent(num1, num2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_164_are_equivalent.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = are_equivalent;\n  assert.deepEqual(candidate(36, 57),false);\n  assert.deepEqual(candidate(2, 4),false);\n  assert.deepEqual(candidate(23, 47),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to determine if the sum of the divisors of two integers are the same.\nfunction are_equivalent(num1, num2){\n    var divisors1 = [];\n    var divisors2 = [];\n    for(var i = 1; i <= num1; i++){\n        if(num1 % i == 0){\n            divisors1.push(i);\n        }\n    }\n    for(var i = 1; i <= num2; i++){\n        if(num2 % i == 0){\n            divisors2.push(i);\n        }\n    }\n    if(divisors1.length == divisors2.length){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n\nA function to  \n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = are_equivalent;\n  assert.deepEqual(candidate(36, 57),false);\n  assert.deepEqual(candidate(2, 4),false);\n  assert.deepEqual(candidate(23, 47),true);\n}\n\ntest();",
+      "timestamp": 1772340291,
+      "stdout": "",
+      "stderr": "/tmp/tmp__1uc0g2.js:23\nA function to  \n  ^^^^^^^^\n\nSyntaxError: Unexpected token 'function'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

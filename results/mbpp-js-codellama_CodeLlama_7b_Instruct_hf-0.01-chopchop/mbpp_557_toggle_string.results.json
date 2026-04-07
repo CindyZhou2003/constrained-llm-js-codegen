@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_557_toggle_string",
+  "language": "js",
+  "prompt": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_557_toggle_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n var result = \"\"; for (var i = 0; i < string.length; i++) { var char = string.charAt(i); if (char.match(isUpperCase)) { result += char.toLowerCase(); } else { result += char.toUpperCase(); } } return result; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+      "timestamp": 1775510151,
+      "stdout": "",
+      "stderr": "/tmp/tmpw_qjsou8.js:3\n var result = \"\"; for (var i = 0; i < string.length; i++) { var char = string.charAt(i); if (char.match(isUpperCase)) { result += char.toLowerCase(); } else { result += char.toUpperCase(); } } return result; }\n                                                                                                        ^\n\nReferenceError: isUpperCase is not defined\n    at toggle_string (/tmp/tmpw_qjsou8.js:3:105)\n    at test (/tmp/tmpw_qjsou8.js:9:20)\n    at Object.<anonymous> (/tmp/tmpw_qjsou8.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "ReferenceError"
+    }
+  ]
+}

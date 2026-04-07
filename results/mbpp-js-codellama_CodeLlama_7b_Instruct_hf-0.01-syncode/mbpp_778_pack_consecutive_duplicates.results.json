@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_778_pack_consecutive_duplicates",
+  "language": "js",
+  "prompt": "//Write a function to pack consecutive duplicates of a given array elements into sublists.\nfunction pack_consecutive_duplicates(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_778_pack_consecutive_duplicates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pack_consecutive_duplicates;\n  assert.deepEqual(candidate([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]),[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]);\n  assert.deepEqual(candidate([10, 10, 15, 19, 18, 18, 17, 26, 26, 17, 18, 10]),[[10, 10], [15], [19], [18, 18], [17], [26, 26], [17], [18], [10]]);\n  assert.deepEqual(candidate([\"a\", \"a\", \"b\", \"c\", \"d\", \"d\"]),[[\"a\", \"a\"], [\"b\"], [\"c\"], [\"d\", \"d\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to pack consecutive duplicates of a given array elements into sublists.\nfunction pack_consecutive_duplicates(list1){\n   var list2 = [];\n    for(var i = 0; i < list1.length; i++){\n        if(i == 0){\n            list2.push(list1[i]);\n        }\n        else{\n            if(list1[i] == list1[i-1]){\n                list2[list2.length-1].push(list1[i]);\n            }\n            else{\n                list2.push([list1[i]]);\n            }\n        }\n    }\n    return list2;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pack_consecutive_duplicates;\n  assert.deepEqual(candidate([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]),[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]);\n  assert.deepEqual(candidate([10, 10, 15, 19, 18, 18, 17, 26, 26, 17, 18, 10]),[[10, 10], [15], [19], [18, 18], [17], [26, 26], [17], [18], [10]]);\n  assert.deepEqual(candidate([\"a\", \"a\", \"b\", \"c\", \"d\", \"d\"]),[[\"a\", \"a\"], [\"b\"], [\"c\"], [\"d\", \"d\"]]);\n}\n\ntest();",
+      "timestamp": 1775510950,
+      "stdout": "",
+      "stderr": "/tmp/tmp_c8kzk33.js:10\n                list2[list2.length-1].push(list1[i]);\n                                      ^\n\nTypeError: list2[(list2.length - 1)].push is not a function\n    at pack_consecutive_duplicates (/tmp/tmp_c8kzk33.js:10:39)\n    at test (/tmp/tmp_c8kzk33.js:25:20)\n    at Object.<anonymous> (/tmp/tmp_c8kzk33.js:30:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "Exception"
+    }
+  ]
+}

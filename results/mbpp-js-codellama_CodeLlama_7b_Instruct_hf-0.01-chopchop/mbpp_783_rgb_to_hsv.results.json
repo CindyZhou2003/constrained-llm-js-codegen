@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n\n\n    var r = r / 255;\n    var g = g / 255;\n    var b = b / 255;\n\n    var cmin = Math.min(r, g, b);\n    var cmax = Math.max(r, g, b);\n    var delta = cmax - cmin;\n\n    var h = 0;\n    var s = 0;\n    var v = 0;\n\n    if (delta == 0) {\n        h = 0;\n        s = 0;\n    } else {\n        s = delta / cmax;\n\n        var del_r = (((cmax - r) / 6) + (delta / 2)) / delta;\n        var del_g = (((cmax - g) / 6) + (delta / 2)) / delta;\n        var del_b = (((cmax - b) / 6) + (delta / 2)) / delta;\n\n        if (r == cmax) {\n            h = del_b - del_g;\n        } else if (g == cmax) {\n            h = (1 / 3) + del_r - del_b;\n        } else if (b == cmax) {\n            h = (2 / 3) + del_g - del_r;\n        }\n\n        if (h < 0) {\n            h += 1;\n        }\n\n        if (h > 1) {\n            h -= 1;\n        }\n    }\n\n    return [h, s, v];\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+      "timestamp": 1775510156,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  0,\n  0,\n  0\n]\n\nshould loosely deep-equal\n\n[\n  0,\n  0,\n  100\n]\n    at test (/tmp/tmppls9i9dp.js:51:10)\n    at Object.<anonymous> (/tmp/tmppls9i9dp.js:56:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 0, 0, 0 ],\n  expected: [ 0, 0, 100 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_91_find_substring",
+  "language": "js",
+  "prompt": "//Write a function to check if a string is present as a substring in a given array of string values.\nfunction find_substring(str1, sub_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_91_find_substring.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_substring;\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ack\"),true);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"abc\"),false);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ange\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check if a string is present as a substring in a given array of string values.\nfunction find_substring(str1, sub_str){\n    let str_arr = str1.split(\" \");\n    let sub_str_arr = sub_str.split(\" \");\n    let str_length = str_arr.length;\n    let sub_str_length = sub_str_arr.length;\n    let result = false;\n    for(let i=0; i<str_length; i++){\n        if(str_arr[i] === sub_str_arr[0]){\n            let j = 1;\n            while(j<sub_str_length && str_arr[i+j] === sub_str_arr[j]){\n                j++;\n            }\n            if(j === sub_str_length){\n                result = true;\n                break;\n            }\n        }\n    }\n    return result;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_substring;\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ack\"),true);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"abc\"),false);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ange\"),true);\n}\n\ntest();",
+      "timestamp": 1772667646,
+      "stdout": "",
+      "stderr": "/tmp/tmphpvhjsj2.js:3\n    let str_arr = str1.split(\" \");\n                       ^\n\nTypeError: str1.split is not a function\n    at find_substring (/tmp/tmphpvhjsj2.js:3:24)\n    at test (/tmp/tmphpvhjsj2.js:28:20)\n    at Object.<anonymous> (/tmp/tmphpvhjsj2.js:33:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "Exception"
+    }
+  ]
+}

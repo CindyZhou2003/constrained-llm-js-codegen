@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_725_extract_quotation",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_725_extract_quotation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n    var text2 = text1.replace(/\\\"/g, '');\n    var text3 = text2.replace(/\\s+/g, '');\n    return text3;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+      "timestamp": 1772667644,
+      "stdout": "",
+      "stderr": "/tmp/tmp35xqrjaz.js:13\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n                             ^^^^^^^^^\n\nSyntaxError: missing ) after argument list\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

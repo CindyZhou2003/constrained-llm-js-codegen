@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_587_list_tuple",
+  "language": "js",
+  "prompt": "//Write a function to convert an array to an array.\nfunction list_tuple(listx){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_587_list_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_tuple;\n  assert.deepEqual(candidate([5, 10, 7, 4, 15, 3]),[5, 10, 7, 4, 15, 3]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 2, 3, 4, 4, 7]),[2, 4, 5, 6, 2, 3, 4, 4, 7]);\n  assert.deepEqual(candidate([58, 44, 56]),[58, 44, 56]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to convert an array to an array.\nfunction list_tuple(listx){\n   var listy = [];\n    for (var i = 0; i < listx.length; i++) {\n        listy.push(listx[i][0]);\n    }\n    return listy;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_tuple;\n  assert.deepEqual(candidate([5, 10, 7, 4, 15, 3]),[5, 10, 7, 4, 15, 3]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 2, 3, 4, 4, 7]),[2, 4, 5, 6, 2, 3, 4, 4, 7]);\n  assert.deepEqual(candidate([58, 44, 56]),[58, 44, 56]);\n}\n\ntest();",
+      "timestamp": 1775510946,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  undefined,\n  undefined,\n  undefined,\n  undefined,\n  undefined,\n  undefined\n]\n\nshould loosely deep-equal\n\n[\n  5,\n  10,\n  7,\n  4,\n  15,\n  3\n]\n    at test (/tmp/tmpwe9kqgzu.js:15:10)\n    at Object.<anonymous> (/tmp/tmpwe9kqgzu.js:20:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ undefined, undefined, undefined, undefined, undefined, undefined ],\n  expected: [ 5, 10, 7, 4, 15, 3 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -2,12 +2,14 @@
 Post-generation evaluation utilities: result compression and MultiPL-E benchmark execution.
 
 Usage:
-    python code_evaluation.py --input_dir raw_results/<run_name> [--gz_output_dir results/<run_name>] [--benchmark multipl-e]
+    python code_evaluation.py --input_dir raw_results/<run_name> [--gz_output_dir results_eval/<run_name>] [--benchmark multipl-e]
 """
 
 import argparse
+import csv
 import gzip
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -32,11 +34,59 @@ def compress_folder(src_dir: Path, dst_dir: Path) -> int:
     return count
 
 
+def _lookup_total_time(run_name: str) -> str:
+    """Look up total generation time from the timing CSV for a given run name."""
+    search_dirs = [
+        Path(__file__).parent / "results" / "log",
+    ]
+    for log_dir in search_dirs:
+        timing_path = log_dir / f"{run_name}_timing.csv"
+        if timing_path.exists():
+            total = 0.0
+            with open(timing_path, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    if row.get("task_name", row.get("task_id", "")) == "TOTAL":
+                        return row["execution_time_s"]
+                    total += float(row["execution_time_s"])
+            return f"{total:.4f}"
+    return ""
+
+
+def _append_to_results_csv(pass_k_output: str, run_name: str) -> None:
+    """Append pass@k result rows to results.csv, creating the file with a header if needed."""
+    csv_path = Path(__file__).parent / "results.csv"
+    lines = [line for line in pass_k_output.splitlines() if line.strip()]
+    # First line is the header emitted by pass_k.py; the rest are data rows.
+    data_lines = lines[1:] if len(lines) > 1 else []
+    if not data_lines:
+        return
+    total_time = _lookup_total_time(run_name)
+    write_header = not csv_path.exists()
+    with open(csv_path, "a", newline="", encoding="utf-8") as f:
+        if write_header:
+            f.write("Dataset,Pass@k,Estimate,NumProblems,MinCompletions,MaxCompletions,TotalTime_s\n")
+        for line in data_lines:
+            # Replace the full absolute path (first CSV field) with just the run name.
+            _, _, rest = line.partition(",")
+            f.write(f"{run_name},{rest},{total_time}\n")
+    print(f"  Results appended to: {csv_path}")
+
+
 def run_multipl_e_benchmark(gz_dir: Path):
     """Run MultiPL-E evaluation via Docker, then compute pass@k."""
     abs_gz_dir = gz_dir.resolve()
 
     print("\n>>> Running MultiPL-E Benchmark...")
+
+    if shutil.which("docker") is None:
+        print(
+            "Error: 'docker' executable not found in PATH.\n"
+            "Please install Docker Desktop from https://www.docker.com/products/docker-desktop/ "
+            "and ensure it is running before re-running this command.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     print("  Pulling Docker image...")
     subprocess.run(
@@ -66,7 +116,14 @@ def run_multipl_e_benchmark(gz_dir: Path):
     pass_k_script = Path(__file__).parent / "benchmark" / "MultiPL-E" / "pass_k.py"
     if pass_k_script.exists():
         print("  Computing pass@k...")
-        subprocess.run([sys.executable, str(pass_k_script), str(abs_gz_dir)], check=True)
+        result = subprocess.run(
+            [sys.executable, str(pass_k_script), str(abs_gz_dir)],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        print(result.stdout, end="")
+        _append_to_results_csv(result.stdout, abs_gz_dir.name)
     else:
         print(f"  Warning: pass_k.py not found at {pass_k_script}. Run manually:")
         print(f"    python benchmark/MultiPL-E/pass_k.py {abs_gz_dir}")
@@ -90,7 +147,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--gz_output_dir", type=str, default=None,
         help="Output directory for .json.gz files. "
-             "Defaults to results/<run_name> where <run_name> is the last component of --input_dir.",
+             "Defaults to results_eval/<run_name> where <run_name> is the last component of --input_dir.",
     )
     parser.add_argument(
         "--benchmark", type=str, default=None,
@@ -106,7 +163,7 @@ if __name__ == "__main__":
 
     gz_output_dir = (
         Path(args.gz_output_dir) if args.gz_output_dir
-        else Path("results") / input_dir.name
+        else Path("results_eval") / input_dir.name
     )
 
     print(f">>> Compressing results: {input_dir} -> {gz_output_dir}")

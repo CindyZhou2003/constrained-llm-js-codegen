@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_123_amicable_numbers_sum",
+  "language": "js",
+  "prompt": "//Write a function to sum all amicable numbers from 1 to a specified number.\nfunction amicable_numbers_sum(limit){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_123_amicable_numbers_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = amicable_numbers_sum;\n  assert.deepEqual(candidate(999),504);\n  assert.deepEqual(candidate(9999),31626);\n  assert.deepEqual(candidate(99),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to sum all amicable numbers from 1 to a specified number.\nfunction amicable_numbers_sum(limit){\n   var sum = 0;\n    for(var i = 1; i <= limit; i++){\n        var d = divisors(i);\n        if(d > 2 && d < limit){\n            var d2 = divisors(d);\n            if(d2 > 2 && d2 < limit && d2 != i && d2 != d){\n                if(d + d2 == i){\n                    sum += i;\n                }\n            }\n        }\n    }\n    return sum;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = amicable_numbers_sum;\n  assert.deepEqual(candidate(999),504);\n  assert.deepEqual(candidate(9999),31626);\n  assert.deepEqual(candidate(99),0);\n}\n\ntest();",
+      "timestamp": 1775510939,
+      "stdout": "",
+      "stderr": "/tmp/tmp5wncarpo.js:5\n        var d = divisors(i);\n                ^\n\nReferenceError: divisors is not defined\n    at amicable_numbers_sum (/tmp/tmp5wncarpo.js:5:17)\n    at test (/tmp/tmp5wncarpo.js:23:20)\n    at Object.<anonymous> (/tmp/tmp5wncarpo.js:28:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "ReferenceError"
+    }
+  ]
+}

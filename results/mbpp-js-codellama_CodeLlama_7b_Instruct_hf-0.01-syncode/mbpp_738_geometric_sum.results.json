@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_738_geometric_sum",
+  "language": "js",
+  "prompt": "//Write a function to calculate the geometric sum of n-1. https://www.w3resource.com/JavaScript-exercises/data-structures-and-algorithms/JavaScript-recursion-exercise-9.php\nfunction geometric_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_738_geometric_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = geometric_sum;\n  assert.deepEqual(candidate(7),1.9921875);\n  assert.deepEqual(candidate(4),1.9375);\n  assert.deepEqual(candidate(8),1.99609375);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to calculate the geometric sum of n-1. https://www.w3resource.com/JavaScript-exercises/data-structures-and-algorithms/JavaScript-recursion-exercise-9.php\nfunction geometric_sum(n){\n   if(n==1){\n        return 1;\n    }\n    else{\n        return n*geometric_sum(n-1);\n    }\n}\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = geometric_sum;\n  assert.deepEqual(candidate(7),1.9921875);\n  assert.deepEqual(candidate(4),1.9375);\n  assert.deepEqual(candidate(8),1.99609375);\n}\n\ntest();",
+      "timestamp": 1775510949,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n5040\n\nshould loosely deep-equal\n\n1.9921875\n    at test (/tmp/tmprhsj_x1q.js:15:10)\n    at Object.<anonymous> (/tmp/tmprhsj_x1q.js:20:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 5040,\n  expected: 1.9921875,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

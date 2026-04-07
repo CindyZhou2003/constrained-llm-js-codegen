@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_450_extract_string",
+  "language": "js",
+  "prompt": "//Write a function to extract specified size of strings from a given array of string values.\nfunction extract_string(str, l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_450_extract_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_string;\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 8),[\"practice\", \"solution\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 6),[\"Python\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 9),[\"exercises\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to extract specified size of strings from a given array of string values.\nfunction extract_string(str, l){\n    var result = [];\n    for(var i=0; i<str.length;\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_string;\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 8),[\"practice\", \"solution\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 6),[\"Python\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 9),[\"exercises\"]);\n}\n\ntest();",
+      "timestamp": 1772687029,
+      "stdout": "",
+      "stderr": "/tmp/tmp7x3exa17.js:5\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

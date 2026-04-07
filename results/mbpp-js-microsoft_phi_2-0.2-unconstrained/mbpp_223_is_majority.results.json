@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_223_is_majority",
+  "language": "js",
+  "prompt": "//Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)\nfunction is_majority(arr, n, x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_223_is_majority.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_majority;\n  assert.deepEqual(candidate([1, 2, 3, 3, 3, 3, 10], 7, 3),true);\n  assert.deepEqual(candidate([1, 1, 2, 4, 4, 4, 6, 6], 8, 4),false);\n  assert.deepEqual(candidate([1, 1, 1, 2, 2], 5, 1),true);\n  assert.deepEqual(candidate([1, 1, 2, 2], 5, 1),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.)\nfunction is_majority(arr, n, x){\n    let count = 0;\n    for(let i = 0; i < n; i\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_majority;\n  assert.deepEqual(candidate([1, 2, 3, 3, 3, 3, 10], 7, 3),true);\n  assert.deepEqual(candidate([1, 1, 2, 4, 4, 4, 6, 6], 8, 4),false);\n  assert.deepEqual(candidate([1, 1, 1, 2, 2], 5, 1),true);\n  assert.deepEqual(candidate([1, 1, 2, 2], 5, 1),false);\n}\n\ntest();",
+      "timestamp": 1772687026,
+      "stdout": "",
+      "stderr": "/tmp/tmp1plotby0.js:5\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

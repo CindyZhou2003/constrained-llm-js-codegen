@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_809_check_smaller",
+  "language": "js",
+  "prompt": "//Write a function to check if each element of second array is smaller than its corresponding element in the first array.\nfunction check_smaller(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_809_check_smaller.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_smaller;\n  assert.deepEqual(candidate([1, 2, 3], [2, 3, 4]),false);\n  assert.deepEqual(candidate([4, 5, 6], [3, 4, 5]),true);\n  assert.deepEqual(candidate([11, 12, 13], [10, 11, 12]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to check if each element of second array is smaller than its corresponding element in the first array.\nfunction check_smaller(test_tup1, test_tup2){\n  for(var i = 0; i < test_tup1.length; i++\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_smaller;\n  assert.deepEqual(candidate([1, 2, 3], [2, 3, 4]),false);\n  assert.deepEqual(candidate([4, 5, 6], [3, 4, 5]),true);\n  assert.deepEqual(candidate([11, 12, 13], [10, 11, 12]),true);\n}\n\ntest();",
+      "timestamp": 1772687034,
+      "stdout": "",
+      "stderr": "/tmp/tmp2_24amqo.js:4\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

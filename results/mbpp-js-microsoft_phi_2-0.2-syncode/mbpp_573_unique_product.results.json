@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_573_unique_product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to calculate the product of the unique numbers in a given array.\nfunction unique_product(list_data){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_573_unique_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_product;\n  assert.deepEqual(candidate([10, 20, 30, 40, 20, 50, 60, 40]),720000000);\n  assert.deepEqual(candidate([1, 2, 3, 1]),6);\n  assert.deepEqual(candidate([7, 8, 9, 0, 1, 1]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to calculate the product of the unique numbers in a given array.\nfunction unique_product(list_data){\n  //Create an empty array to store the unique numbers\n  let unique_nums = [];\n  \n  //Loop through the list and add each number to the unique_nums array\n  for (let i = 0; i < list_data.length; i++) {\n    if (!unique_nums.includes(list_data[i])) {\n      unique_nums.push(list_data[i]);\n    }\n  }\n  \n  //Create a variable to store the product of the unique numbers\n  let product = 1;\n  \n  //Loop through the unique_nums array and multiply each number to the product\n  for (let i = 0; i < unique_nums.length; i++) {\n    product *= unique_nums[i];\n  }\n  \n  //Return the\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_product;\n  assert.deepEqual(candidate([10, 20, 30, 40, 20, 50, 60, 40]),720000000);\n  assert.deepEqual(candidate([1, 2, 3, 1]),6);\n  assert.deepEqual(candidate([7, 8, 9, 0, 1, 1]),0);\n}\n\ntest();",
+      "timestamp": 1772340298,
+      "stdout": "",
+      "stderr": "/tmp/tmpfsk9g83b.js:32\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

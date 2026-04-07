@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_557_toggle_string",
+  "language": "js",
+  "prompt": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_557_toggle_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n   var new_string = \"\";\n    for(var i = 0; i < string.length; i++){\n        if(string.charAt(i) >= 'a' && string.charAt(i) <= 'z'){\n            new_string += string.charAt(i).toUpperCase();\n        }\n        else if(string.charAt(i) >= 'A' && string.charAt(i) <= 'Z'){\n            new_string += string.charAt(i).toLowerCase();\n        }\n        else{\n            new_string += string.charAt(i);\n        }\n    }\n    return new_string;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+      "timestamp": 1775510945,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 0,
+      "status": "OK"
+    }
+  ]
+}

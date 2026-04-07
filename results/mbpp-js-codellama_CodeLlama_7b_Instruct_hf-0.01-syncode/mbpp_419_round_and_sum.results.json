@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_419_round_and_sum",
+  "language": "js",
+  "prompt": "//Write a function to round every number of a given array of numbers and print the total sum multiplied by the length of the array.\nfunction round_and_sum(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_419_round_and_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = round_and_sum;\n  assert.deepEqual(candidate([22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]),243);\n  assert.deepEqual(candidate([5, 2, 9, 24.3, 29]),345);\n  assert.deepEqual(candidate([25.0, 56.7, 89.2]),513);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to round every number of a given array of numbers and print the total sum multiplied by the length of the array.\nfunction round_and_sum(list1){\n   let sum = 0;\n    for(let i = 0; i < list1.length; i++){\n        list1[i] = Math.round(list1[i]);\n        sum += list1[i];\n    }\n    console.log(sum);\n}\n\nround_and_sum([3.14, 2.56, 1.79, 4.21, 1.09]);\nround_and_sum([5, 5.55, 6, 6.00, 6.55, 7]);\nround_and_sum([1.0000000000000002, 1.5, 2.25, 2.75, 3.5, 4.25]);\nround_and_sum([1000000, 0.0000009999999999999, 0.0000000000000009999999]);\nround_and_sum([1000000000, 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = round_and_sum;\n  assert.deepEqual(candidate([22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]),243);\n  assert.deepEqual(candidate([5, 2, 9, 24.3, 29]),345);\n  assert.deepEqual(candidate([25.0, 56.7, 89.2]),513);\n}\n\ntest();",
+      "timestamp": 1775510943,
+      "stdout": "",
+      "stderr": "/tmp/tmpj7lps9n7.js:16\nconst assert = require('node:assert');\n^^^^^\n\nSyntaxError: Unexpected token 'const'\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

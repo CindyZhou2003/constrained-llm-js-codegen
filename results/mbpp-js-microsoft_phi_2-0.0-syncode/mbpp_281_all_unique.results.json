@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_281_all_unique",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check if the elements of a given array are unique or not.\nfunction all_unique(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_281_all_unique.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_unique;\n  assert.deepEqual(candidate([1, 2, 3]),true);\n  assert.deepEqual(candidate([1, 2, 1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to check if the elements of a given array are unique or not.\nfunction all_unique(test_list){\n    let unique_list = [];\n    for(let i = 0; i < test_list.length; i++){\n        if(unique_list.indexOf(test_list[i]) === -1){\n            unique_list.push(test_list[i]);\n        }\n    }\n    return unique_list;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_unique;\n  assert.deepEqual(candidate([1, 2, 3]),true);\n  assert.deepEqual(candidate([1, 2, 1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n}\n\ntest();",
+      "timestamp": 1772667629,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  1,\n  2,\n  3\n]\n\nshould loosely deep-equal\n\ntrue\n    at test (/tmp/tmpaqym3o5b.js:17:10)\n    at Object.<anonymous> (/tmp/tmpaqym3o5b.js:22:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [ 1, 2, 3 ],\n  expected: true,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

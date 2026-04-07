@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_628_replace_spaces",
+  "language": "js",
+  "prompt": "//Write a function to replace all spaces in the given string with '%20'.\nfunction replace_spaces(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_628_replace_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"My Name is Dawood\"),\"My%20Name%20is%20Dawood\");\n  assert.deepEqual(candidate(\"I am a Programmer\"),\"I%20am%20a%20Programmer\");\n  assert.deepEqual(candidate(\"I love Coding\"),\"I%20love%20Coding\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to replace all spaces in the given string with '%20'.\nfunction replace_spaces(string){\n   return string.replace(/\\\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"My Name is Dawood\"),\"My%20Name%20is%20Dawood\");\n  assert.deepEqual(candidate(\"I am a Programmer\"),\"I%20am%20a%20Programmer\");\n  assert.deepEqual(candidate(\"I love Coding\"),\"I%20love%20Coding\");\n}\n\ntest();",
+      "timestamp": 1775510947,
+      "stdout": "",
+      "stderr": "/tmp/tmpq7a6i2rm.js:3\n   return string.replace(/\\\n                         ^\n\nSyntaxError: Invalid regular expression: missing /\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

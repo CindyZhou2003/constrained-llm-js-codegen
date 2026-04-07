@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_577_last_Digit_Factorial",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the last digit in factorial of a given number.\nfunction last_Digit_Factorial(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_577_last_Digit_Factorial.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last_Digit_Factorial;\n  assert.deepEqual(candidate(4),4);\n  assert.deepEqual(candidate(21),0);\n  assert.deepEqual(candidate(30),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a JavaScript function to find the last digit in factorial of a given number.\nfunction last_Digit_Factorial(n){\n    \n    //Your code here\n    \n    //return the last digit of factorial of n\n    \n    //Example:\n    //last_Digit_Factorial(5) = 0\n    //last_Digit_Factorial(10) = 0\n    //last_Digit_Factorial(15) = 0\n    //last_Digit_Factorial(20) = 0\n    //last_Digit_Factorial(25) = 0\n    //last_Digit_Factorial(30) = 0\n    //last_Digit_Factorial(35) = 0\n    //last_Digit_Factorial(40) = 0\n    //last_Digit_Factorial(45) = 0\n    //last_Digit_Factorial(50) = 0\n    //last_Digit_Factorial(55) = 0\n    //last_Digit_Factorial(60) = 0\n    //last_Digit_Factorial(65) = 0\n    //last_Digit_Factorial(70) = 0\n    //last_Digit_Factorial(75) = 0\n    //last_Digit_Factorial(80) = 0\n    //last_Digit_Factorial(85) = 0\n    //last_Digit_Factorial(90) = 0\n    //last_Digit_Factorial(95) = 0\n    //last_Digit_Factorial(100) = 0\n    \n    //return the last digit of factorial of n\n    \n    //Example:\n    //last_Digit_Factorial(5) = 0\n    //last_Digit_Factorial(10) = 0\n    //last_Digit_Factorial(15) = 0\n    //last_Digit_Factorial(20) = 0\n    //last_Digit_Factorial(25) = 0\n    //last_Digit_Factorial(30) = 0\n    //last_Digit_Factorial(35) = 0\n    //last_Digit_Factorial(40) = 0\n    //last_Digit_Factorial(45) = 0\n    //last_Digit_Factorial(50) = 0\n    //last_Digit_Factorial(55) = 0\n    //last_Digit_Factorial(60) = 0\n    //last_Digit_Factorial(65) = 0\n    //last_Digit_Factorial(70) = 0\n    //last_Digit_Factorial(75) = 0\n    //last_Digit_Factorial(80) = 0\n    //last_Digit_Factorial(85) = 0\n    //last_Digit_Factorial(90) = 0\n    //last_Digit_Factorial(95) = 0\n    //last_Digit_Factorial(100) = 0\n    \n    //return the last digit of factorial of n\n    \n    //Example:\n    //last_Digit_Factorial(5) = 0\n    //last_Digit_Factorial(10) = 0\n    //last_Digit_Factorial(15) = 0\n    //last_Digit_Factorial(20) = 0\n    //last_Digit_Factorial(25) = 0\n    //last_Digit_Factorial(30) = 0\n    //last_Digit_Factorial(35) = 0\n    //last_Digit_Factorial(40) = 0\n    //last_Digit_Factorial(45) = 0\n    //last_Digit_Factorial(50) = 0\n    //last_Digit_Factorial(55) = 0\n    //last_Digit_Factorial(60) = 0\n    //last_Digit_Factorial(65) = 0\n    //last_Digit_Factorial(70) = 0\n    //last_Digit_Factorial(75) = 0\n    //last_Digit_Factorial(80) = 0\n    //last_Digit_Factorial(85) = 0\n    //last_Digit_Factorial(90) = 0\n    //last_Digit_Factorial(95) = 0\n    //last_Digit_Factorial(100) = 0\n    \n    //return the last digit of factorial of n\n    \n    //Example:\n    //last_Digit_Factorial(5) = 0\n    //last_Digit_Factorial(10) = 0\n    //last_Digit_Factorial(15) = 0\n    //last_Digit_Factorial(20) = 0\n    //last_Digit_Factorial(25) = 0\n    //last_Digit_Factorial(30)\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last_Digit_Factorial;\n  assert.deepEqual(candidate(4),4);\n  assert.deepEqual(candidate(21),0);\n  assert.deepEqual(candidate(30),0);\n}\n\ntest();",
+      "timestamp": 1773083227,
+      "stdout": "",
+      "stderr": "/tmp/tmpn20r8pce.js:97\ntest();\n       \n\nSyntaxError: Unexpected end of input\n    at wrapSafe (node:internal/modules/cjs/loader:1383:18)\n    at Module._compile (node:internal/modules/cjs/loader:1412:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "SyntaxError"
+    }
+  ]
+}

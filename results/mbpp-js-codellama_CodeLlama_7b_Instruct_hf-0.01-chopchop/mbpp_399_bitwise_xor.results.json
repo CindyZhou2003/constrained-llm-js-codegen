@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_399_bitwise_xor",
+  "language": "js",
+  "prompt": "//Write a function to perform the mathematical bitwise xor operation across the given tuples.\nfunction bitwise_xor(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_399_bitwise_xor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bitwise_xor;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[15, 6, 5, 10]);\n  assert.deepEqual(candidate([11, 5, 7, 10], [6, 3, 4, 4]),[13, 6, 3, 14]);\n  assert.deepEqual(candidate([12, 6, 8, 11], [7, 4, 5, 6]),[11, 2, 13, 13]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to perform the mathematical bitwise xor operation across the given tuples.\nfunction bitwise_xor(test_tup1, test_tup2){\n var result = 0; for (var i = 0; i < test_tup1.length; i++) { result ^= test_tup1[i] ^ test_tup2[i]; } return result; }\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bitwise_xor;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[15, 6, 5, 10]);\n  assert.deepEqual(candidate([11, 5, 7, 10], [6, 3, 4, 4]),[13, 6, 3, 14]);\n  assert.deepEqual(candidate([12, 6, 8, 11], [7, 4, 5, 6]),[11, 2, 13, 13]);\n}\n\ntest();",
+      "timestamp": 1775510148,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n6\n\nshould loosely deep-equal\n\n[\n  15,\n  6,\n  5,\n  10\n]\n    at test (/tmp/tmp7irdp24a.js:9:10)\n    at Object.<anonymous> (/tmp/tmp7irdp24a.js:14:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 6,\n  expected: [ 15, 6, 5, 10 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n   var ludic = [1,1];\n    for(var i = 2; i <= n; i++){\n        var j = 1;\n        while(ludic[j] * ludic[j] <= i){\n            j++;\n        }\n        ludic.push(i - ludic[j - 1]);\n    }\n    return ludic;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+      "timestamp": 1775510947,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n[\n  1,\n  1,\n  1,\n  2,\n  2,\n  3,\n  4,\n  5,\n  6,\n  6,\n  7\n]\n\nshould loosely deep-equal\n\n[\n  1,\n  2,\n  3,\n  5,\n  7\n]\n    at test (/tmp/tmpxb366nzf.js:19:10)\n    at Object.<anonymous> (/tmp/tmpxb366nzf.js:24:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: [\n    1, 1, 1, 2, 2,\n    3, 4, 5, 6, 6,\n    7\n  ],\n  expected: [ 1, 2, 3, 5, 7 ],\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n    var result = [];\n    for(var i = 1; i <= n; i++){\n        if(is_ludic(i)){\n            result.push(i);\n        }\n    }\n    return result;\n}\n\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+      "timestamp": 1772340299,
+      "stdout": "",
+      "stderr": "/tmp/tmprcovuv9s.js:5\n        if(is_ludic(i)){\n        ^\n\nReferenceError: is_ludic is not defined\n    at get_ludic (/tmp/tmprcovuv9s.js:5:9)\n    at test (/tmp/tmprcovuv9s.js:17:20)\n    at Object.<anonymous> (/tmp/tmprcovuv9s.js:22:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "ReferenceError"
+    }
+  ]
+}

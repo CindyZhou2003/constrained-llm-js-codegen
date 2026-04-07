@@ -1,0 +1,25 @@
+{
+  "name": "mbpp_291_count_no_of_ways",
+  "language": "js",
+  "prompt": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_291_count_no_of_ways.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "results": [
+    {
+      "program": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n    var arr = [];\n    for(var i = 0; i < n; i++){\n        arr.push(k);\n    }\n    var ans = 0;\n    for(var i = 0; i < n; i++){\n        if(i == 0){\n            ans += arr[i] * arr[i+1];\n        }else if(i == n-1){\n            ans += arr[i] * arr[i-1];\n        }else{\n            ans += arr[i] * arr[i-1] + arr[i] * arr[i+1];\n        }\n    }\n    return ans;\n}\n\nvar n = 5;\nvar k = 3;\nconst assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+      "timestamp": 1772340293,
+      "stdout": "",
+      "stderr": "node:assert:126\n  throw new AssertionError(obj);\n  ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be loosely deep-equal:\n\n32\n\nshould loosely deep-equal\n\n16\n    at test (/tmp/tmp70h3kofp.js:27:10)\n    at Object.<anonymous> (/tmp/tmp70h3kofp.js:32:1)\n    at Module._compile (node:internal/modules/cjs/loader:1467:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1551:10)\n    at Module.load (node:internal/modules/cjs/loader:1282:32)\n    at Module._load (node:internal/modules/cjs/loader:1098:12)\n    at TracingChannel.traceSync (node:diagnostics_channel:315:14)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:215:24)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:158:5)\n    at node:internal/main/run_main_module:30:49 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 32,\n  expected: 16,\n  operator: 'deepEqual'\n}\n\nNode.js v22.4.0\n",
+      "exit_code": 1,
+      "status": "AssertionError"
+    }
+  ]
+}
