@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\nlet count = 0;\nfor (let i = 0; i < Input.length; i++) {\nif (Array.isArray(Input[i])) {\ncount++;\n}\n}\nreturn count;\n}"
+    "\nlet count = 0;\nfor (let i in Input) {\nif (Array.isArray(Input[i])) {\ncount++;\n}\n}\nreturn count;\n}"
   ]
 }

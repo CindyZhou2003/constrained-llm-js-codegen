@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var n1_str = n1.toString(); var n2_str = n2.toString(); var n1_arr = n1_str.split(''); var n2_arr = n2_str.split(''); var diff_arr = []; for (var i = 0; i < n1_arr.length; i++) { diff_arr.push(Math.abs(n1_arr[i] - n2_arr[i])); } return diff_arr.reduce((a, b) => a + b); }"
+    " var n1_str = n1.toString(); var n2_str = n2.toString(); var n1_arr = n1_str.split(''); var n2_arr = n2_str.split(''); var diff_arr = []; for (var i in n1_arr) { diff_arr.push(Math.abs(n1_arr[i] - n2_arr[i])); } return diff_arr.reduce((a, b) => a + b); }"
   ]
 }

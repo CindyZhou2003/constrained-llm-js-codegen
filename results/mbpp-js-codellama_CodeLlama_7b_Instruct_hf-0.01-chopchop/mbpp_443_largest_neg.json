@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let largest = list1[0]; for (let i = 1; i < list1.length; i++) { if (list1[i] < largest) { largest = list1[i]; } } return largest; }"
+    " let largest = list1[0]; for (let i in list1) { if (list1[i] < 0 && list1[i] > largest) { largest = list1[i]; } } return largest; }"
   ]
 }

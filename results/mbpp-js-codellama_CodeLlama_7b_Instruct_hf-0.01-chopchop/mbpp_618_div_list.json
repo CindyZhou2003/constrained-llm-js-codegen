@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const result = []; for (let i = 0; i < nums1.length; i++) { result.push(nums1[i] / nums2[i]); } return result; }"
+    " const result = []; for (let i in nums1) { result.push(nums1[i] / nums2[i]); } return result; }"
   ]
 }

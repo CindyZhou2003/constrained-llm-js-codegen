@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (var i = 0; i < nums.length; i++) { if (nums[i] % 2 !== 0) return nums[i]; } return null; }"
+    " for (var i in nums) { if (nums[i] % 2 !== 0) return nums[i]; } return null; }"
   ]
 }

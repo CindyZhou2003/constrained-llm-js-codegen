@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = startnum; i <= endnum; i++) { let divisible = true; for (let j = 0; j < i.toString().length; j++) { if (i % (i.toString()[j] - 0) !== 0) { divisible = false; break; } } if (divisible) { console.log(i); } } }"
+    " for (let i of startnum) { if (i % 2 !== 0) { return false; } } for (let j of endnum) { if (j % 2 !== 0) { return false; } } return true; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var count = 0; for (var i = 0; i < str1.length; i++) { count++; } return count; }"
+    " var count = 0; for (var i in str1) { count++; } return count; }"
   ]
 }

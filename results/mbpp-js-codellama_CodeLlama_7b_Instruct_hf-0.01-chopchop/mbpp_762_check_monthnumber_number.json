@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " if (monthnum3 == 4 || monthnum3 == 6 || monthnum3 == 9 || monthnum3 == 11) { return false; } else { return true; } }"
+    " switch (monthnum3) { case 1: case 3: case 5: case 7: case 8: case 10: case 12: return true; case 4: case 6: case 9: case 11: return false; default: return false; } }"
   ]
 }

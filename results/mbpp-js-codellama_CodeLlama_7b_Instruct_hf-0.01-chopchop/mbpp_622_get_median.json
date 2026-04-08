@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let i = 0; let j = 0; let result = []; while (i < n) { result.push(arr1[i]); result.push(arr2[i]); i++; } return result; }"
+    " let i = 0; let j = 0; let result = []; while (i < n) { result.push(arr1[i]); i++; } while (j < n) { result.push(arr2[j]); j++; } return result; }"
   ]
 }

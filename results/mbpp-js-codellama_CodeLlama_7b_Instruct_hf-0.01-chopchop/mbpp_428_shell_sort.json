@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var n = my_list.length; var gap = Math.floor(n / 2); while (gap > 0) { for (var i = gap; i < n; i++) { var temp = my_list[i]; var j = i; while (j >= gap && my_list[j - gap] > temp) { my_list[j] = my_list[j - gap]; j -= gap; } my_list[j] = temp; } gap = Math.floor(gap / 2); } return my_list; }"
+    " var n = my_list.length; var gap = Math.floor(n / 2); while (gap > 0) { for (var i in my_list) { var temp = my_list[i]; var j = i; while (j >= gap && my_list[j - gap] > temp) { my_list[j] = my_list[j - gap]; j -= gap; } my_list[j] = temp; } gap = Math.floor(gap / 2); } return my_list; }"
   ]
 }

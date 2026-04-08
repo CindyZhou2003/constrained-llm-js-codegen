@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const test_dict = {}; for (let i = 0; i < test_tup.length; i += 2) { test_dict[test_tup[i]] = test_tup[i + 1]; } return test_dict; }"
+    " const test_dict = {}; for (let i in test_tup) { test_dict[test_tup[i]] = test_tup[i + 1]; } return test_dict; }"
   ]
 }

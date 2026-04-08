@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var max = -Infinity; for (var i = 0; i < test_list.length; i++) { var current = test_list[i][N]; if (current > max) { max = current; } } return max; }"
+    " var max = -Infinity; for (var i in test_list) { var current = test_list[i][N]; if (current > max) { max = current; } } return max; }"
   ]
 }

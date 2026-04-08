@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var neg_nos = []; for (var i = 0; i < list1.length; i++) { if (list1[i] < 0) { neg_nos.push(list1[i]); } } return neg_nos; }"
+    " var neg_nos = []; for (var i in list1) { if (list1[i] < 0) { neg_nos.push(list1[i]); } } return neg_nos; }"
   ]
 }

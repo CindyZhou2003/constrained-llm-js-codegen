@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " return test_tup + (test_dict) + test_dict; }"
+    " return test_tup + test_dict; }"
   ]
 }

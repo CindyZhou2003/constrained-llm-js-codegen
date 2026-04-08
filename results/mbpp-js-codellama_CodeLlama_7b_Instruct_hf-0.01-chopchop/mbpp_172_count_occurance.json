@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var count = 0; for (var i = 0; i < s.length; i++) { if (s.substring(i, i + 3) === 'std') { count++; } } return count; }"
+    " var count = 0; for (var i in s) { if (s[i] === 'std') count++; } return count; }"
   ]
 }

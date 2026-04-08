@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let commonDivisors = []; for (let i = 1; i <= a; i++) { if (a % i === 0 && b % i === 0) { commonDivisors.push(i); } } return commonDivisors.reduce((a + b), 0); }"
+    " let commonDivisors = []; for (let i of a) { if (b % i === 0) { commonDivisors.push(i); } } return commonDivisors.reduce((a + b), 0); }"
   ]
 }

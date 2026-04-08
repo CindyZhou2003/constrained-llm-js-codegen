@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = []; for (var i = 0; i < S.length; i += step) { result.push(S.slice(i, i + step)); } return result; }"
+    " var result = []; for (var i in S) { if (i % step == 0) { result.push([]); } result[result.length - 1].push(S[i]); } return result; }"
   ]
 }

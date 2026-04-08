@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var max = lst[0]; for (var i = 1; i < lst.length; i++) { if (lst[i].length > max.length) { max = lst[i]; } } return max; }"
+    " var max = lst[0]; for (var i in lst) { if (lst[i].length > max.length) { max = lst[i]; } } return max; }"
   ]
 }

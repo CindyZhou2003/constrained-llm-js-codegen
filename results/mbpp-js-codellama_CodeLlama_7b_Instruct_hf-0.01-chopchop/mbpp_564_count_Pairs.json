@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var count = 0; for (var i = 0; i < n; i++) { for (var j = i + 1; j < n; j++) { if (arr[i] != arr[j]) { count++; } } } return count; }"
+    " var count = 0; for (var i in arr) { for (var j in arr) { if (i != j && arr[i] != arr[j]) { count++; } } } return count; }"
   ]
 }

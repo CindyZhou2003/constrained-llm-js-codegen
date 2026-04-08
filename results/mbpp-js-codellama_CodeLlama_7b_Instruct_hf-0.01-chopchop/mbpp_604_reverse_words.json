@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var words = s.split(\" \"); var reversed_words = []; for (var i = 0; i < words.length; i++) { reversed_words.push(words[i].split(\"\").reverse().join(\"\")); } return reversed_words.join(\" \"); }"
+    "\n\n  let words = s.split(' ');\n  let reversed_words = [];\n\n  for (let i in words) {\n    reversed_words.push(words[i].split('').reverse().join(''));\n  }\n\n  return reversed_words.join(' ');\n}"
   ]
 }

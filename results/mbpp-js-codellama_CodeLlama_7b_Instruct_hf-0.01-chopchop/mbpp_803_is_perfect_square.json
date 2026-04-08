@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var root = Math.sqrt(n); return root === Math.floor(root); }"
+    " let root = Math.sqrt(n); return root % 1 === 0; }"
   ]
 }

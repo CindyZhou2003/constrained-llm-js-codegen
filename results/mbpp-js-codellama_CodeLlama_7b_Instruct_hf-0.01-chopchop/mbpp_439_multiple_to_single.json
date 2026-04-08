@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let result = 0; for (let i = 0; i < L.length; i++) { result = result * 10 + L[i]; } return result; }"
+    " let result = 0; for (let i of L) { result = result * 10 + i; } return result; }"
   ]
 }

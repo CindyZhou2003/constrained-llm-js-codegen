@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = ''; for (var i = 0; i < items.length; i++) { if (items[i] === '(') { result += '}'; } else if (items[i] === ')') { result += '{'; } else { result += items[i]; } } return result; }"
+    " var result = ''; for (var i in items) { result += items[i]; } return result; }"
   ]
 }

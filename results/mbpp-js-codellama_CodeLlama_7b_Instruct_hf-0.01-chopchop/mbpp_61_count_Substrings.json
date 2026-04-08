@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < s.length; i++) { for (let j = i; j < s.length; j++) { let substr = s.substring(i, j + 1); if (substr.length === substr.split('').reduce((a + b), 0)) { count++; } } } return count; }"
+    " let count = 0; for (let i in s) { for (let j in s) { if (i + j == s.length) { count++; } } } return count; }"
   ]
 }

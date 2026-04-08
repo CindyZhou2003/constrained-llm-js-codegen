@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var diff = []; for (var i = 0; i < li1.length; i++) { if (li2.indexOf(li1[i]) == -1) { diff.push(li1[i]); } } for (var i = 0; i < li2.length; i++) { if (li1.indexOf(li2[i]) == -1) { diff.push(li2[i]); } } return diff; }"
+    " var diff = []; for (var i in li1) { if (li2.indexOf(li1[i]) == -1) { diff.push(li1[i]); } } for (var i in li2) { if (li1.indexOf(li2[i]) == -1) { diff.push(li2[i]); } } return diff; }"
   ]
 }

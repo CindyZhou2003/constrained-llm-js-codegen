@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " nums_str.sort(function(a, b) { return a - b; }); return nums_str; { }\n"
+    " nums_str.sort(function(a, b) { return a - b; }); return nums_str; }"
   ]
 }

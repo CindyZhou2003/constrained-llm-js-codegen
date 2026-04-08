@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max_length = 0; for (let i = 0; i < input_list.length; i++) { if (input_list[i].length > max_length) { max_length = input_list[i].length; } } return max_length; }"
+    " let max_length = 0; for (let i in input_list) { if (input_list[i].length > max_length) { max_length = input_list[i].length; } } return max_length; }"
   ]
 }

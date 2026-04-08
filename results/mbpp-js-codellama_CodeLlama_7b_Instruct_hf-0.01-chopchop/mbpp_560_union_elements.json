@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var union_list = []; for (var i = 0; i < test_tup1.length; i++) { if (test_tup2.indexOf(test_tup1[i]) == -1) { union_list.push(test_tup1[i]); } } for (var j = 0; j < test_tup2.length; j++) { if (test_tup1.indexOf(test_tup2[j]) == -1) { union_list.push(test_tup2[j]); } } return union_list.sort(); }"
+    " var union_list = []; for (var i in test_tup1) { if (test_tup2.indexOf(test_tup1[i]) == -1) { union_list.push(test_tup1[i]); } } for (var j in test_tup2) { if (test_tup1.indexOf(test_tup2[j]) == -1) { union_list.push(test_tup2[j]); } } return union_list.sort(); }"
   ]
 }

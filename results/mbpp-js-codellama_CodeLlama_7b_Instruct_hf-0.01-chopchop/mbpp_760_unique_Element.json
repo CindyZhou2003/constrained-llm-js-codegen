@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let unique = true; for (let i = 0; i < arr.length - 1; i++) { if (arr[i] === arr[i + 1]) { unique = false; break; } } return unique; }"
+    " let unique = true; for (let i in arr) { if (arr[i] !== arr[0]) { unique = false; break; } } return unique; }"
   ]
 }

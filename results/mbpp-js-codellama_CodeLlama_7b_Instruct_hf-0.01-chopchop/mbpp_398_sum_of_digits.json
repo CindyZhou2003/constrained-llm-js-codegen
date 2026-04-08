@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let sum = 0; for (let i = 0; i < nums.length; i++) { let num = nums[i]; while (num > 0) { sum += num % 10; num = Math.floor(num / 10); } } return sum; }"
+    " let sum = 0; for (let i in nums) { let num = nums[i]; while (num > 0) { sum += num % 10; num = Math.floor(num / 10); } } return sum; }"
   ]
 }

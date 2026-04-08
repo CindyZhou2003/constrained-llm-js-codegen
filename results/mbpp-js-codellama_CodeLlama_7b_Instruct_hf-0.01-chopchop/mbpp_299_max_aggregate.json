@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max = 0; for (let i = 0; i < stdata.length; i++) { for (let j = 0; j < stdata[i].length; j++) { if (stdata[i][j] > max) { max = stdata[i][j]; } } } return max; }"
+    " let max = 0; for (let i in stdata) { let curr = stdata[i]; if (curr > max) max = curr; } return max; }"
   ]
 }

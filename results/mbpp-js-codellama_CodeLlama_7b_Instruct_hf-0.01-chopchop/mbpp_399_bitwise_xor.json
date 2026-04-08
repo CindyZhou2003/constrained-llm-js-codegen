@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = 0; for (var i = 0; i < test_tup1.length; i++) { result ^= test_tup1[i] ^ test_tup2[i]; } return result; }"
+    " var result = 0; for (var i in test_tup1) { result ^= test_tup1[i] ^ test_tup2[i]; } return result; }"
   ]
 }

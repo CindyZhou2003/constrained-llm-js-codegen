@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n\n  const unique_elements = list_data.filter((element) = element !== list_data[element - 1]);\n\n  let product = 1;\n\n  for (const element of unique_elements) {\n    product *= element;\n  }\n\n  return product;\n\n  function unique_product(list_data) {\n\n    const unique_elements = list_data.filter((element) = element !== list_data[element - 1]);\n\n    let product = 1;\n\n    for (const element of unique_elements) {\n      product *= element;\n    }\n\n    return product;\n  }"
+    "\n\n  let unique_elements = [];\n  let product = 1;\n\n  for (let i of list_data) {\n    if (!unique_elements.includes(i)) {\n      unique_elements.push(i);\n      product *= i;\n    }\n  }\n\n  return product;\n}\n\n\n\n"
   ]
 }

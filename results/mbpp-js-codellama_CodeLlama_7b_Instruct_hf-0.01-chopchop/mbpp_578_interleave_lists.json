@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let result = []; for (let i = 0; i < list1.length; i++) { result.push(list1[i]); result.push(list2[i]); result.push(list3[i]); } return result; }"
+    " let result = []; for (let i in list1) { result.push(list1[i]); result.push(list2[i]); result.push(list3[i]); } return result; }"
   ]
 }

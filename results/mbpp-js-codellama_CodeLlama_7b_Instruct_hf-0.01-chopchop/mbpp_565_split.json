@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var characters = []; for (var i = 0; i < word.length; i++) { characters.push(word[i]); } return characters; }"
+    " var characters = []; for (var i in word) { characters.push(word[i]); } return characters; }"
   ]
 }

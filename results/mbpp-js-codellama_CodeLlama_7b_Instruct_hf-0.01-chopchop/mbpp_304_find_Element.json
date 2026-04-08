@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < rotations; i++) { arr = arr.slice(ranges[i], ranges[i] + 1); } return arr[index]; }"
+    " for (let i in ranges) { if (i == rotations) { return arr[index]; } } }"
   ]
 }

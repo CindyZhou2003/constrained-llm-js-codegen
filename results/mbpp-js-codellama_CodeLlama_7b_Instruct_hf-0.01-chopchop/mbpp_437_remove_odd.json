@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var str2 = \"\"; for (var i = 0; i < str1.length; i++) { if (str1.charAt(i) % 2 == 0) { str2 += str1.charAt(i); } } return str2; }"
+    " var str2 = \"\"; for (var i in str1) { if (str1.charCodeAt(i) % 2 == 0) { str2 += str1[i]; } } return str2; }"
   ]
 }

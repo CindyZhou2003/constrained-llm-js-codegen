@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " if (n == 2) { return 1; } else if (n == 1) { return 2; } else { return find_lucas(n - 1) + find_lucas(n - 2); } }"
+    " if (n == 2) return 1; if (n == 1) return 2; return find_lucas(n - 1) + find_lucas(n - 2); }"
   ]
 }

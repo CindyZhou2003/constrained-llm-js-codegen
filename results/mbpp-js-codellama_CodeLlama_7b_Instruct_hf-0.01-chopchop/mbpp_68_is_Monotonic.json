@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n\n  if (A.length < 2) {\n    return true;\n  }\n\n  let increasing = true;\n  let decreasing = true;\n\n  for (let i = 1; i < A.length; i++) {\n    if (A[i] < A[i - 1]) {\n      increasing = false;\n    }\n    if (A[i] > A[i - 1]) {\n      decreasing = false;\n    }\n  }\n\n  return increasing || decreasing;\n}"
+    "\n\n  if (A.length < 2) {\n    return true;\n  }\n\n  let increasing = true;\n  let decreasing = true;\n\n  for (let i in A) {\n    if (i > 0) {\n      if (A[i] < A[i - 1]) {\n        increasing = false;\n      }\n      if (A[i] > A[i - 1]) {\n        decreasing = false;\n      }\n    }\n  }\n\n  return increasing || decreasing;\n}"
   ]
 }

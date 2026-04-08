@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let p_words = []; for (let i = 0; i < words.length; i++) { if (words[i].startsWith('p')) { p_words.push(words[i]); } } return p_words; }"
+    " let p_words = []; for (let i in words) { if (words[i].startsWith('p')) { p_words.push(words[i]); } } return p_words; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const sentence = text.split(\" \"); const adverbs = []; const adverb_positions = []; for (let i = 0; i < sentence.length; i++) { if (sentence[i].endsWith(\"ly\")) { adverbs.push(sentence[i]); adverb_positions.push(i); } } return { adverbs: adverbs, adverb_positions: adverb_positions }; }"
+    " const sentence = text.split(\" \"); const adverbs = []; const adverb_positions = []; for (let i in sentence) { const word = sentence[i]; if (word.endsWith(\"ly\")) { adverbs.push(word); adverb_positions.push(i); } } return { adverbs: adverbs, adverb_positions: adverb_positions }; }"
   ]
 }

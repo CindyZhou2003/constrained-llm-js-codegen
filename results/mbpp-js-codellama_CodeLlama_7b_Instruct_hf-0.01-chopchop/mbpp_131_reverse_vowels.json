@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]; var rev_str = \"\"; for (var i = 0; i < str1.length; i++) { if (vowels.includes(str1[i])) { rev_str += str1[i]; } else { rev_str += str1[i]; } } return rev_str; }"
+    " var vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]; var rev_str = \"\"; for (var i in str1) { if (vowels.includes(str1[i])) { rev_str += str1[i]; } else { rev_str += str1[i]; } } return rev_str; }"
   ]
 }

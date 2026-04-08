@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let sum = 0; for (let i = 0; i < arr.length; i++) { for (let j = i + 1; j < arr.length; j++) { if (j - i + 1 % 2 == 0) continue; sum += arr[j]; } } return sum; }"
+    " let sum = 0; for (let i in arr) { if (i % 2 === 0) continue; for (let j in arr) { if (j % 2 === 0) continue; sum += arr[i][j]; } } return sum; }"
   ]
 }

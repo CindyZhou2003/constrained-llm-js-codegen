@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const squares = []; for (let i = 0; i < nums.length; i++) { squares.push(nums[i] * nums[i]); } return squares; }"
+    " const squares = []; for (let i in nums) { squares.push(nums[i] * nums[i]); } return squares; }"
   ]
 }

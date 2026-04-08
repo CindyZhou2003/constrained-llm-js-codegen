@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const empty_dict = {}; const empty_list = []; for (let i = 0; i < length; i++) { empty_list.push(empty_dict); } return empty_list; }"
+    " const empty_dict = {}; const empty_list = []; for (let i of length) { empty_list.push(empty_dict); } return empty_list; }"
   ]
 }

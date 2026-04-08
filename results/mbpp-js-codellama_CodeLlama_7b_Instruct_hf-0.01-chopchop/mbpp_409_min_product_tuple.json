@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var min_product = Infinity; for (var i = 0; i < list1.length; i++) { var tuple = list1[i]; var product = 1; for (var j = 0; j < tuple.length; j++) { product *= tuple[j]; } if (product < min_product) { min_product = product; } } return min_product; }"
+    " var min_product = Infinity; for (var i in list1) { var tuple = list1[i]; var product = tuple[0] * tuple[1]; if (product < min_product) { min_product = product; } } return min_product; }"
   ]
 }

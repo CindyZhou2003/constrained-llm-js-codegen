@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < list1.length; i++) { if (list2.includes(list1[i])) { list1.splice(i, 1); i--; } } return list1; }"
+    " for (let i in list1) { if (list2.includes(list1[i])) { list1.splice(i, 1); } } return list1; }"
   ]
 }

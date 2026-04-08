@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < str1.length; i++) { if (str1[i] !== str2[i]) { count++; } } return count; }"
+    " let count = 0; for (let i in str1) { if (str1[i] != str2[i]) { count++; } } return count; }"
   ]
 }

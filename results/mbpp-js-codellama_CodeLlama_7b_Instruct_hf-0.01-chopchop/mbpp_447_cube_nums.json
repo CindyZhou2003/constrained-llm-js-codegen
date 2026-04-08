@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const cubes = []; for (let i = 0; i < nums.length; i++) { const num = nums[i]; const cube = num ** 3; cubes.push(cube); } return cubes; }"
+    " const cubes = []; for (let i in nums) { const cube = Math.pow(nums[i], 3); cubes.push(cube); } return cubes; }"
   ]
 }

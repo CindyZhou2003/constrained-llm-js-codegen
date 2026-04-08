@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var dissimilar_elements = []; for (var i = 0; i < test_tup1.length; i++) { if (test_tup1[i] !== test_tup2[i]) { dissimilar_elements.push(test_tup1[i]); } } return dissimilar_elements; }"
+    " var dissimilar_elements = []; for (var i in test_tup1) { if (test_tup1[i] !== test_tup2[i]) { dissimilar_elements.push(test_tup1[i]); } } return dissimilar_elements; }"
   ]
 }

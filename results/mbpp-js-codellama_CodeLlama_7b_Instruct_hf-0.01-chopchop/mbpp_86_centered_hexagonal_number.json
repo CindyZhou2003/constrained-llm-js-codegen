@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let num = 1; for (let i = 1; i <= n; i++) { num = num * 243 + 1; } return num; }"
+    " let num = 1; for (let i of Array(n).keys()) { num = num * 2 + 1; } return num; }"
   ]
 }

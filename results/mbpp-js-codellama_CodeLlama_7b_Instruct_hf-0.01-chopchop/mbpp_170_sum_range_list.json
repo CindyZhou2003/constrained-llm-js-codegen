@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var sum = 0; for (var i = m; i <= n; i++) { sum += list1[i]; } return sum; }"
+    " var sum = 0; for (var i in list1) { if (i >= m && i <= n) { sum += list1[i]; } } return sum; }"
   ]
 }

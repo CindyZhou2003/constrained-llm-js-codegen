@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < test_list.length; i++) { for (let j = 0; j < test_list[i].length; j++) { if (test_list[i][j] % K !== 0) { return false; } } } return true; }"
+    " for (let i in test_list) { let tuple = test_list[i]; for (let j in tuple) { if (tuple[j] % K !== 0) { return false; } } } return true; }"
   ]
 }

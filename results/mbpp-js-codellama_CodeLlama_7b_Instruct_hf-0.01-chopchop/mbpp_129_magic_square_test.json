@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let sum = 0; for (let i = 0; i < my_matrix.length; i++) { sum += my_matrix[i][i]; } if (sum !== 15) { return false; } for (let i = 0; i < my_matrix.length; i++) { let row_sum = 0; for (let j = 0; j < my_matrix[i].length; j++) { row_sum += my_matrix[i][j]; } if (row_sum !== 15) { return false; } } for (let i = 0; i < my_matrix[0].length; i++) { let col_sum = 0; for (let j = 0; j < my_matrix.length; j++) { col_sum += my_matrix[j][i]; } if (col_sum !== 15) { return false; } } return true; }"
+    " let sum = 0; for (let i in my_matrix) { sum += my_matrix[i]; } if (sum !== 15) { return false; } for (let i in my_matrix) { for (let j in my_matrix) { if (my_matrix[i][j] !== my_matrix[j][i]) { return false; } } } return true; }"
   ]
 }

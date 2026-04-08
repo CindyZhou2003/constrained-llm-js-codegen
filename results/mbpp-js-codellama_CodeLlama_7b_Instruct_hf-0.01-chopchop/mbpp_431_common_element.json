@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < list1.length; i++) { for (let j = 0; j < list2.length; j++) { if (list1[i] === list2[j]) { return true; } } } return false; }"
+    " for (let i in list1) { for (let j in list2) { if (list1[i] === list2[j]) { return true; } } } return false; }"
   ]
 }

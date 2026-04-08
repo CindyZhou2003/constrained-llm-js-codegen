@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var i = 0; while (n > 0) { if (n & 1) { return false; } n = n >> 1; i++; } return i > 0; }"
+    " var i = 0; while (n > 0) { if (n & 1) { return false; } n >> 1; i++; } return i > 0; }"
   ]
 }

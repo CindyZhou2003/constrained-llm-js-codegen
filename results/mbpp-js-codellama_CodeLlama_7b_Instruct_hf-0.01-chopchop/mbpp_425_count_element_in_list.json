@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < list1.length; i++) { if (list1[i].includes(x)) { count++; } } return count; }"
+    " let count = 0; for (let i of list1) { if (i.includes(x)) { count++; } } return count; }"
   ]
 }

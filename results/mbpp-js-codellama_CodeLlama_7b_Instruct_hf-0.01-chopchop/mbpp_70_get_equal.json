@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var equal = true; for (var i = 0; i < Input.length - 1; i++) { if (Input[i].length !== Input[i + 1].length) { equal = false; break; } } return equal; }"
+    " var equal = true; for (var i in Input) { if (Input[i].length !== Input[0].length) { equal = false; break; } } return equal; }"
   ]
 }

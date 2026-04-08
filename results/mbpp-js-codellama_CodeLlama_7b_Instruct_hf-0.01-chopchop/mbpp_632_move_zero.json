@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let zero_list = []; let non_zero_list = []; for (let i = 0; i < num_list.length; i++) { if (num_list[i] === 0) { zero_list.push(num_list[i]); } else { non_zero_list.push(num_list[i]); } } return zero_list.concat(non_zero_list); }"
+    " let zero_list = []; let non_zero_list = []; for (let i in num_list) { if (num_list[i] === 0) { zero_list.push(num_list[i]); } else { non_zero_list.push(num_list[i]); } } return zero_list.concat(non_zero_list); }"
   ]
 }

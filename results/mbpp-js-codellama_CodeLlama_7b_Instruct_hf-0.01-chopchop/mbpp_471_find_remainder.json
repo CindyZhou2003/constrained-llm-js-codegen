@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let product = 1; for (let i = 0; i < arr.length; i++) { product = (product * arr[i]) % n; } return product; }"
+    " let product = 1; for (let i of arr) { product = (product * i) % n; } return product; }"
   ]
 }

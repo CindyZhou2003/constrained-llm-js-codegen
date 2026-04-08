@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < list_.length; i++) { list_[i] = string + list_[i]; } return list_; }"
+    " for (let i in list_) { list_[i] = string + list_[i]; } return list_; }"
   ]
 }

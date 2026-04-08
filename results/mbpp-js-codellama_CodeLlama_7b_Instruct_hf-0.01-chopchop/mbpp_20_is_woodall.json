@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n\nif (x === 3 || x === 5 || x === 7) {\nreturn true;\n} else {\nreturn false;\n}\n}"
+    " if (x === 3 || x === 5 || x === 7) { return true; } else { return false; } }"
   ]
 }

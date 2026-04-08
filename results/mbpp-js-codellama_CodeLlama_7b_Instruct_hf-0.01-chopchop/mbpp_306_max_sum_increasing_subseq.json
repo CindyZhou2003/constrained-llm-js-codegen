@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max_sum = 0; for (let i = 0; i < n; i++) { if (i < index && a[i] < a[index]) { continue; } if (i > index && a[i] > a[index]) { continue; } if (i == index && a[i] == a[index]) { continue; } if (i == k) { return max_sum; } max_sum += a[i]; } return max_sum; }"
+    " let max_sum = 0; for (let i in a) { if (i > index && a[i] > a[index]) { max_sum += a[i]; } } return max_sum; }"
   ]
 }

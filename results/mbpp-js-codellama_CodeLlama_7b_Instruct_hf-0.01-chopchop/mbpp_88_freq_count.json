@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var freq = {}; for (var i = 0; i < list1.length; i++) { if (freq[list1[i]]) { freq[list1[i]]++; } else { freq[list1[i]] = 1; } } return freq; }"
+    " var freq = {}; for (var i in list1) { if (freq[list1[i]]) { freq[list1[i]]++; } else { freq[list1[i]] = 1; } } return freq; }"
   ]
 }

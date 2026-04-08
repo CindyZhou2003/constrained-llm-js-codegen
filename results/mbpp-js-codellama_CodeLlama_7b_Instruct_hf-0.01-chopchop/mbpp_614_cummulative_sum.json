@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var sum = 0; for (var i = 0; i < test_list.length; i++) { sum += test_list[i]; } return sum; }"
+    " var sum = 0; for (var i in test_list) { sum += test_list[i]; } return sum; }"
   ]
 }

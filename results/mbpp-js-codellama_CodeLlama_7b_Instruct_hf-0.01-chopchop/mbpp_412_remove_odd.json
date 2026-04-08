@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (var i = 0; i < l.length; i++) { if (l[i] % 2 !== 0) { l.splice(i, 1); i--; } } return l; }"
+    " for (var i in l) { if (l[i] % 2 !== 0) { l.splice(i, 1); } } return l; }"
   ]
 }

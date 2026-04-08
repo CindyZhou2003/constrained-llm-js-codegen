@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < list.length; i++) { if (list[i] !== element) { return false; } } return true; }"
+    " for (let i in list) { if (list[i] !== element) { return false; } } return true; }"
   ]
 }

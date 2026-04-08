@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let sum = 0; for (let i = 0; i < power; i++) { sum += base % 10; base = Math.floor(base / 10); } return sum; }"
+    " let sum = 0; for (let i of base.toString()) { sum += parseInt(i); } return sum ** power; }"
   ]
 }

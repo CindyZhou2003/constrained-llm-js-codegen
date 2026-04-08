@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var sum = 0; for (var i = 0; i < list1.length; i++) { sum += Math.round(list1[i]); } return sum * list1.length; }"
+    " var sum = 0; for (var i in list1) { sum += Math.round(list1[i]); } return sum; }"
   ]
 }

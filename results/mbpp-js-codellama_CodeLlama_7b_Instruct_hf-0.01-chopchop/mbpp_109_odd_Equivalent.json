@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < s.length; i++) { if (s[i] === '1') { count++; } } return count % 2 === 1; }"
+    " var count = 0; for (var i in s) { var num = parseInt(s[i], 2); if (num % 2 == 1) { count++; } } return count; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = ''; for (var i = 0; i < str.length; i++) { if (i % 2 == 0) { result += str[i]; } } return result; }"
+    " var result = ''; for (var i in str) { if (i % 2 == 0) { result += str[i]; } } return result; }"
   ]
 }

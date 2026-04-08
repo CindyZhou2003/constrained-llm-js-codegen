@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n    var test_arr = test_str.split(\",\");\n    var result = [];\n    for (var i = 0; i < test_arr.length; i++) {\n        result.push(parseInt(test_arr[i]));\n    }\n    return result;\n}"
+    "\n    var test_arr = test_str.split(\",\");\n    var result = [];\n    for (var i in test_arr) {\n        result.push(parseInt(test_arr[i]));\n    }\n    return result;\n}"
   ]
 }

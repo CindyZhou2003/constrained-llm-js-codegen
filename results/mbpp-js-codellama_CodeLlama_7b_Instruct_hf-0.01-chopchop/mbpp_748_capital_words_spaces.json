@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var str2 = \"\"; for (var i = 0; i < str1.length; i++) { if (str1[i] === str1[i].toUpperCase()) { str2 += \" \"; } str2 += str1[i]; } return str2; }"
+    " var str2 = \"\"; for (var i in str1) { if (str1[i] == str1[i].toUpperCase()) { str2 += \" \" + str1[i]; } else { str2 += str1[i]; } } return str2; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var coordinates = []; for (var i = 0; i < test_tup.length; i++) { var coordinate = test_tup[i]; if (i > 0 && test_tup[i - 1] == coordinate) { coordinates.push(coordinate); } } return coordinates; }"
+    " var coordinates = []; for (var i in test_tup) { var current_coord = test_tup[i]; var next_coord = test_tup[i + 1]; if (next_coord) { coordinates.push([current_coord, next_coord]); } } return coordinates; }"
   ]
 }

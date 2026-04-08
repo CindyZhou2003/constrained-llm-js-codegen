@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let min_rotations = 0; for (let i = 0; i < str.length; i++) { if (str[i] !== str[str.length - 1 - i]) { min_rotations++; } } return min_rotations; }"
+    " let min_rotations = 0; for (let i in str) { if (str[i] !== str[str.length - 1 - i]) { min_rotations++; } } return min_rotations; }"
   ]
 }

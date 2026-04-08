@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const obj = {}; for (let i = 0; i < list1.length; i++) { const element = list1[i]; if (obj[element] === undefined) { obj[element] = 1; } else { obj[element]++; } } return obj; }"
+    " const obj = {}; for (let i of list1) { if (obj[i] === undefined) { obj[i] = 1; } else { obj[i]++; } } return obj; }"
   ]
 }

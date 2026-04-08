@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var parts = ip.split(\".\"); var newParts = []; for (var i = 0; i < parts.length; i++) { var part = parts[i]; if (part.length > 1 && part[0] === \"0\") { part = part.substring(1); } newParts.push(part); } return newParts.join(\".\"); }"
+    " var parts = ip.split(\".\"); for (var i in parts) { parts[i] = parts[i].replace(new RegExp(\"^0+\"), \"\"); } return parts.join(\".\"); }"
   ]
 }

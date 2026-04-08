@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < test_list.length; i++) { if (typeof test_list[i] === 'string') { test_list[i] = parseFloat(test_list[i]); } } return test_list; }"
+    " for (let i in test_list) { if (typeof test_list[i] === 'string') { test_list[i] = parseFloat(test_list[i]); } } return test_list; }"
   ]
 }

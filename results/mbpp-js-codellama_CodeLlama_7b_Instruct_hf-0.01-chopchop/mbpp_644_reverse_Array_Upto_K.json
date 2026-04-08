@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let output = []; for (let i = 0; i < k; i++) { output.push(input[i]); } return output; }"
+    " let output = []; for (let i in input) { output.push(input[i]); } for (let i in output) { if (i < k) { output[i] = output[i]; } else { output[i] = output[output.length - i - 1]; } } return output; }"
   ]
 }

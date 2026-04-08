@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var max_run = 0; var curr_run = 0; for (var i = 0; i < test_str.length; i++) { if (test_str[i] === test_str[i].toUpperCase()) { curr_run++; } else { if (curr_run > max_run) { max_run = curr_run; } curr_run = 0; } } if (curr_run > max_run) { max_run = curr_run; } return max_run; }"
+    " var max_run = 0; var curr_run = 0; for (var i in test_str) { if (test_str[i] == test_str[i].toUpperCase()) { curr_run++; } else { if (curr_run > max_run) { max_run = curr_run; } curr_run = 0; } } if (curr_run > max_run) { max_run = curr_run; } return max_run; }"
   ]
 }

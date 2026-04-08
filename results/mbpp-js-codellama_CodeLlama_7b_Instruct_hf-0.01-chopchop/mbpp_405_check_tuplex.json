@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (var i = 0; i < tuplex.length; i++) { if (tuplex[i] === tuple1) { return true; } } return false; }"
+    " for (var i in tuplex) { if (tuplex[i] === tuple1) { return true; } } return false; }"
   ]
 }

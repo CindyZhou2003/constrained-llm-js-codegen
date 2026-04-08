@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var avg = []; for (var i = 0; i < nums.length; i++) { var sum = 0; for (var j = 0; j < nums[i].length; j++) { sum += nums[i][j]; } avg.push(sum / nums[i].length); } return avg; }"
+    " var avg = []; for (var i in nums) { var sum = 0; for (var j in nums[i]) { sum += nums[i][j]; } avg.push(sum / nums[i].length); } return avg; }"
   ]
 }

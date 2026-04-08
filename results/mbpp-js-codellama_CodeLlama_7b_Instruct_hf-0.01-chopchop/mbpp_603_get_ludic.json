@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let ludic = [1]; for (let i = 2; i <= n; i++) { let divisors = ludic.filter(d = i % d == 0); if (divisors.length == 0) { ludic.push(i); } } return ludic; }"
+    " let ludic = [1]; for (let i of Array(n).keys()) { let sum = 0; for (let j of ludic) { sum += j; if (sum > i) break; } if (sum <= i) ludic.push(i + 1); } return ludic; }"
   ]
 }

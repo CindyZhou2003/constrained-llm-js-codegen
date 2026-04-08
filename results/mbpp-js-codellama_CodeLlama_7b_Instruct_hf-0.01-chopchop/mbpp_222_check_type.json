@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var test_type = typeof test_tuple[0]; for (var i = 1; i < test_tuple.length; i++) { if (typeof test_tuple[i] !== test_type) { return false; } } return true; }"
+    " var test_type = typeof test_tuple[0]; for (var i in test_tuple) { if (typeof test_tuple[i] !== test_type) { return false; } } return true; }"
   ]
 }

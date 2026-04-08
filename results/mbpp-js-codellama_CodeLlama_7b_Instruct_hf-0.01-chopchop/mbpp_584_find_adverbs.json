@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const adverbs = []; for (let i = 0; i < text.length; i++) { const word = text.slice(i, i + 1); if (word.endsWith('ly')) { adverbs.push(word); } } return adverbs; }"
+    " const adverbs = []; for (let i in text) { const word = text[i]; if (word.endsWith('ly')) { adverbs.push(word); } } return adverbs; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n\n  let count = 0;\n\n  for (let i = 0; i < n; i++) {\n\n    if (arr[i] === x) {\n\n      count++;\n\n    }\n\n  }\n\n  return count > n / 2;\n\n}"
+    "\n\nlet count = 0;\n\nfor (let i in arr) {\n\nif (arr[i] === x) {\n\ncount++;\n\nif (count > n / 2) {\n\nreturn true;\n\n}\n\n}\n\n}\n\nreturn false;\n\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n    var minimum = test_list[0][1];\n    var index = 0;\n    for (var i = 1; i < test_list.length; i++) {\n        if (test_list[i][1] < minimum) {\n            minimum = test_list[i][1];\n            index = i;\n        }\n    }\n    return index;\n}"
+    " var minimum = test_list[0][1]; var index = 0; for (var i in test_list) { if (test_list[i][1] < minimum) { minimum = test_list[i][1]; index = i; } } return index; }"
   ]
 }

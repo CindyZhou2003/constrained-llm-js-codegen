@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max_num = 0; for (let i = 0; i < arr.length; i++) { for (let j = i + 1; j < arr.length; j++) { const num1 = arr[i] * 10 + arr[j]; const num2 = arr[j] * 10 + arr[i]; if (num1 > max_num) max_num = num1; if (num2 > max_num) max_num = num2; } } return max_num; }"
+    " let max_num = 0; for (let i of arr) { if (i > max_num) { max_num = i; } } return max_num; }"
   ]
 }

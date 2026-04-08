@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = []; result.push(num1[0]); result.push(num2[0]); result.push(num3[0]); var i = 1; var j = 1; var k = 2; while (i < num1.length && j < num2.length && k < num3.length) { if (num1[i] <= num2[j] && num1[i] <= num3[k]) { result.push(num1[i]); i++; } else if (num2[j] <= num1[i] && num2[j] <= num3[k]) { result.push(num2[j]); j++; } else if (num3[k] <= num1[i] && num3[k] <= num2[j]) { result.push(num3[k]); k++; } } while (i < num1.length) { result.push(num1[i]); i++; } while (j < num2.length) { result.push(num2[j]); j++; } while (k < num3.length) { result.push(num3[k]); k++; } return result; }"
+    " var result = []; result.push(num1[0]); result.push(num2[0]); result.push(num3[0]); var i = 1; var j = 1; var k = 2; while (i < num1.length && j < num2.length && k < num3.length) { if (num1[i] < num2[j]) { result.push(num1[i]); i++; } else if (num2[j] < num3[k]) { result.push(num2[j]); j++; } else { result.push(num3[k]); k++; } } while (i < num1.length) { result.push(num1[i]); i++; } while (j < num2.length) { result.push(num2[j]); j++; } while (k < num3.length) { result.push(num3[k]); k++; } return result; }"
   ]
 }

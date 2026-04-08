@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var char_count = {}; for (var i = 0; i < str1.length; i++) { var char = str1.charAt(i); if (char_count[char] == null) { char_count[char] = 1; } else { char_count[char]++; } } for (var char in char_count) { if (char_count[char] == 1) { return char; } } return null; }"
+    " var char_count = {}; for (var i in str1) { if (char_count[str1[i]]) { char_count[str1[i]]++; } else { char_count[str1[i]] = 1; } } for (var i in str1) { if (char_count[str1[i]] == 1) { return str1[i]; } } return null; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (var i = 0; i < A.length; i++) { if (A[i] === x) { return i; } } return -1; }"
+    " for (var i in A) { if (A[i] === x) { return i; } } return -1; }"
   ]
 }

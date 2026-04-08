@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n    var max_diff = 0;\n    for (var i = 0; i < test_list.length - 1; i++) {\n        for (var j = i + 1; j < test_list.length; j++) {\n            if (test_list[j] - test_list[i] > max_diff) {\n                max_diff = test_list[j] - test_list[i];\n            }\n        }\n    }\n    return max_diff;\n}"
+    "\n    var max_diff = 0;\n    for (var i in test_list) {\n        for (var j in test_list) {\n            if (i != j && test_list[i] - test_list[j] > max_diff) {\n                max_diff = test_list[i] - test_list[j];\n            }\n        }\n    }\n    return max_diff;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n    let n = list.length;\n    let temp = list[n - 1];\n    for (let i = n - 1; i > m - 1; i--) {\n        list[i] = list[i - 1];\n    }\n    list[m - 1] = temp;\n    return list;\n}"
+    " var n = list.length; var temp = list[n - 1]; for (var i in list) { list[i] = list[i - 1]; } list[0] = temp; return list; }"
   ]
 }

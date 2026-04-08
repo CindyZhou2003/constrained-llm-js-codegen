@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max_product = 0; for (let i = 0; i < list1.length; i++) { const tuple = list1[i]; const product = Math.abs(tuple[0]) * Math.abs(tuple[1]); if (product > max_product) { max_product = product; } } return max_product; }"
+    " let max_product = 0; for (let i in list1) { let tuple = list1[i]; let product = Math.abs(tuple[0]) * Math.abs(tuple[1]); if (product > max_product) { max_product = product; } } return max_product; }"
   ]
 }

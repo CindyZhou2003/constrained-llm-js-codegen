@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let max_sum = 0; let max_list = []; for (let i = 0; i < lists.length; i++) { let list = lists[i]; let sum = 0; for (let j = 0; j < list.length; j++) { sum += list[j]; } if (sum > max_sum) { max_sum = sum; max_list = list; } } return max_list; }"
+    " let max_sum = 0; let max_list = []; for (let i in lists) { let sum = 0; for (let j in lists[i]) { sum += lists[i][j]; } if (sum > max_sum) { max_sum = sum; max_list = lists[i]; } } return max_list; }"
   ]
 }

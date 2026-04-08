@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = []; for (var i = 0; i < test_tuple.length; i++) { result.push(test_tuple[i][test_tuple[i].length - 1]); } return result; }"
+    " var result = []; for (var i in test_tuple) { result.push(test_tuple[i][test_tuple[i].length - 1]); } return result; }"
   ]
 }

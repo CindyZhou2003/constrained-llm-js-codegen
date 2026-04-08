@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " const obj = {}; for (let i = 0; i < l1.length; i++) { obj[l1[i]] = l2[i]; } for (let i = 0; i < l3.length; i++) { obj[l3[i]] = l2[i]; } return obj; }"
+    " const obj = {}; for (let i in l1) { obj[l1[i]] = l2[i]; } for (let i in l3) { obj[l3[i]] = l2[i]; } return obj; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = 0; i < str1.length; i++) { for (let j = i + 1; j < str1.length; j++) { if (str1[i] === str1[j]) { return str1[i]; } } } return null; }"
+    " for (let i in str1) { if (str1.indexOf(str1[i]) !== str1.lastIndexOf(str1[i])) { return str1[i]; } } return null; }"
   ]
 }

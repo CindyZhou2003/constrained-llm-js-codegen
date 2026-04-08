@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var num = 0; for (var i = 1; i <= n; i++) { num += i * 2; } return num; }"
+    " var num = 0; for (var i in n) { num += i * (i + 1) / 2; } return num; }"
   ]
 }

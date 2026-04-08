@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var l2 = []; for (var i = 0; i < l1.length - 1; i++) { l2.push([l1[i], l1[i + 1]]); } return l2; }"
+    " var l2 = []; for (var i in l1) { l2.push([l1[i], l1[i + 1]]); } return l2; }"
   ]
 }

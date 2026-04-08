@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = []; for (var i = 0; i < list1.length; i++) { if (Array.isArray(list1[i])) { result = result.concat(flatten_list(list1[i])); } else { result.push(list1[i]); } } return result; }"
+    " let result = []; for (let i of list1) { if (Array.isArray(i)) { result = result.concat(flatten_list(i)); } else { result.push(i); } } return result; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var rear_list = []; for (var i = 0; i < test_list.length; i++) { rear_list.push(test_list[i][test_list[i].length - 1]); } return rear_list; }"
+    " var rear_list = []; for (var i in test_list) { rear_list.push(test_list[i][test_list[i].length - 1]); } return rear_list; }"
   ]
 }

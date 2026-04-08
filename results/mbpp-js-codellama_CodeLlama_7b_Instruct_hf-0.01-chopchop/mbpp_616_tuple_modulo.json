@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let result = []; for (let i = 0; i < test_tup1.length; i++) { result.push(test_tup1[i] % test_tup2[i]); } return result; }"
+    " let result = []; for (let i in test_tup1) { result.push(test_tup1[i] % test_tup2[i]); } return result; }"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = \"\"; for (var i = 0; i < string.length; i++) { var char = string.charAt(i); if (char.match(isUpperCase)) { result += char.toLowerCase(); } else { result += char.toUpperCase(); } } return result; }"
+    " var result = \"\"; for (var i in string) { if (string[i] >= 'A' && string[i] <= 'Z') { result += string[i].toLowerCase(); } else { result += string[i].toUpperCase(); } } return result; }"
   ]
 }

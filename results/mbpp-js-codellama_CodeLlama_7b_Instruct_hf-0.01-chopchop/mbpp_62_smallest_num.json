@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var smallest = xs[0]; for (var i = 1; i < xs.length; i++) { if (xs[i] < smallest) { smallest = xs[i]; } } return smallest; }"
+    " var smallest = xs[0]; for (var i in xs) { if (xs[i] < smallest) { smallest = xs[i]; } } return smallest; }"
   ]
 }

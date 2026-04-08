@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var num_str = number.toString(); var num_digits = num_str.length; var sum = 0; for (var i = 0; i < num_digits; i++) { var digit = parseInt(num_str[i]); sum += Math.pow(digit, num_digits); } return sum === number; }"
+    " var num_str = number.toString(); var num_digits = num_str.length; var sum = 0; for (var i in num_digits) { var digit = parseInt(num_str[i]); sum += Math.pow(digit, num_digits); } return sum === number; }"
   ]
 }

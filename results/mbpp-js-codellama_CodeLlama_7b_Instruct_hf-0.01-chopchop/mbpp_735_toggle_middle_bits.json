@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var mask = 0; for (var i = 1; i < n.length - 1; i++) { mask |= 1 << i; } return n ^ mask; }"
+    " var mask = 0; for (var i in n) { if (i == 0 || i == n.length - 1) continue; mask |= 1 << i; } return n ^ mask; }"
   ]
 }

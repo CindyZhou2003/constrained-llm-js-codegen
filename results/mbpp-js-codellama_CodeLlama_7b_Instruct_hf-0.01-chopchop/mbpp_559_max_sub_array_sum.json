@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var max_sum = -Infinity; for (var i = 0; i < a.length; i++) { var sum = 0; for (var j = i; j < i + size && j < a.length; j++) { sum += a[j]; } if (sum > max_sum) { max_sum = sum; } } return max_sum; }"
+    " var max_sum = -Infinity; for (var i in a) { var sum = 0; for (var j in a) { if (j >= i && j < i + size) { sum += a[j]; } } if (sum > max_sum) { max_sum = sum; } } return max_sum; }"
   ]
 }

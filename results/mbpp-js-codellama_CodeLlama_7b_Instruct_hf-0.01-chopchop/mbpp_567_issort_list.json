@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (var i = 0; i < list1.length - 1; i++) { if (list1[i] > list1[i + 1]) { return false; } } return true; }"
+    " for (var i in list1) { if (list1[i] > list1[i + 1]) { return false; } } return true; }"
   ]
 }

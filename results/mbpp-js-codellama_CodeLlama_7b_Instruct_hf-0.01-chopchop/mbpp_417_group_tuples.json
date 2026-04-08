@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "\n    var result = [];\n    for (var i = 0; i < Input.length; i++) {\n        var tuple = Input[i];\n        var found = false;\n        for (var j = 0; j < result.length; j++) {\n            var existing_tuple = result[j];\n            if (tuple[0] === existing_tuple[0]) {\n                found = true;\n                existing_tuple[1].push(tuple[1]);\n                break;\n            }\n        }\n        if (!found) {\n            result.push([tuple[0], [tuple[1]]]);\n        }\n    }\n    return result;\n}\n"
+    "\n    var result = [];\n    for (var i in Input) {\n        var current = Input[i];\n        var found = false;\n        for (var j in result) {\n            var previous = result[j];\n            if (current[0] == previous[0]) {\n                previous.push(current[1]);\n                found = true;\n                break;\n            }\n        }\n        if (!found) {\n            result.push([current[0], current[1]]);\n        }\n    }\n    return result;\n}\n"
   ]
 }

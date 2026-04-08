@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var second_smallest = numbers[0]; for (var i = 1; i < numbers.length; i++) { if (numbers[i] < second_smallest) { second_smallest = numbers[i]; } } return second_smallest; }"
+    " var second_smallest = numbers[0]; for (var i in numbers) { if (numbers[i] < second_smallest) { second_smallest = numbers[i]; } } return second_smallest; }"
   ]
 }

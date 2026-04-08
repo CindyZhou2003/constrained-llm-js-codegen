@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var result = []; var current = []; var current_value = null; for (var i = 0; i < list1.length; i++) { var value = list1[i]; if (value == current_value) { current.push(value); } else { if (current_value != null) { result.push(current); } current = [value]; current_value = value; } } result.push(current); return result; }"
+    " var result = []; var current = []; var current_value = null; for (var i in list1) { var value = list1[i]; if (value == current_value) { current.push(value); } else { if (current_value != null) { result.push(current); } current = [value]; current_value = value; } } result.push(current); return result; }"
   ]
 }

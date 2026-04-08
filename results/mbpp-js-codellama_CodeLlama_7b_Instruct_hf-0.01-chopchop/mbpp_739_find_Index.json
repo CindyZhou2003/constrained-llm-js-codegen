@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let triangular_numbers = []; for (let i = 1; i <= n; i++) { triangular_numbers.push(i * (i + 1) / 2); } let smallest_triangular_number = triangular_numbers.sort((a) = (b) = { a: a, b: b }); return smallest_triangular_number[0]; }"
+    " let triangular_numbers = []; for (let i of Array(n).keys()) { triangular_numbers.push(i * (i + 1) / 2); } let smallest_triangular_number = Math.min.apply(null, triangular_numbers); return triangular_numbers.indexOf(smallest_triangular_number); }"
   ]
 }

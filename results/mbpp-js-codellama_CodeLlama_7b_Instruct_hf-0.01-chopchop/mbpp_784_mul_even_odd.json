@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var even_product = 1; var odd_product = 1; for (var i = 0; i < list1.length; i++) { if (i % 2 === 0) { even_product *= list1[i]; } else { odd_product *= list1[i]; } } return [even_product, odd_product]; }"
+    " var even_product = 1; var odd_product = 1; for (var i in list1) { if (i % 2 == 0) { even_product *= list1[i]; } else { odd_product *= list1[i]; } } return even_product * odd_product; }"
   ]
 }

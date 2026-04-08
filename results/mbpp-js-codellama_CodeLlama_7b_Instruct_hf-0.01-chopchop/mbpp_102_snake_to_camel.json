@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let result = ''; for (let i = 0; i < word.length; i++) { if (word[i] === '_') { result += word[i + 1].toUpperCase(); i++; } else { result += word[i]; } } return result; }"
+    " let result = ''; for (let i in word) { if (i > 0 && word[i] !== '_') { result += word[i].toUpperCase(); } else { result += word[i]; } } return result; }"
   ]
 }

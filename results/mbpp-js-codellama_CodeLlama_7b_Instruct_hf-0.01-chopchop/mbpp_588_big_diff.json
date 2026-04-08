@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var smallest = nums[0]; var largest = nums[0]; for (var i = 1; i < nums.length; i++) { if (nums[i] < smallest) { smallest = nums[i]; } else if (nums[i] > largest) { largest = nums[i]; } } return largest - smallest; }"
+    " var smallest = nums[0]; var largest = nums[0]; for (var i in nums) { if (nums[i] < smallest) { smallest = nums[i]; } else if (nums[i] > largest) { largest = nums[i]; } } return largest - smallest; }"
   ]
 }

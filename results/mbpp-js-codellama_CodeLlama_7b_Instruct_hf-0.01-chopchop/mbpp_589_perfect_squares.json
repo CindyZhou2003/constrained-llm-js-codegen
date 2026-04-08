@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " for (let i = a; i <= b; i++) { if (Math.sqrt(i) % 1 === 0) { console.log(i); } } }"
+    " for (let i of [a, b]) { if (i ** 0.5 % 1 === 0) { return true; } } return false; }"
   ]
 }

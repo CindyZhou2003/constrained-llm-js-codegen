@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var num_digits = n.toString().length; var sum = 0; for (var i = 0; i < num_digits; i++) { sum += Math.pow(n % 10, i + 1); n = Math.floor(n / 10); } return sum === n; }"
+    " var arr = []; for (var i in n) { arr.push(n[i]); } for (var i in arr) { if (arr[i] !== arr[i + 1]) { return true; } } return false; }"
   ]
 }

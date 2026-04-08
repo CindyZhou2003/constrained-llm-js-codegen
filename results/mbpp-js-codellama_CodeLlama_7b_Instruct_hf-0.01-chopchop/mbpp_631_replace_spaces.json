@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " return text.replace(new RegExp(\" \", \"g\"), \"_\").replace(new RegExp(\"_\", \"g\"), \" \"); \n"
+    " return text.replace(new RegExp(\" \", \"g\"), \"_\").replace(new RegExp(\"_\", \"g\"), \" \"); }"
   ]
 }

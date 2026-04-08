@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < input_list.length; i++) { if (Array.isArray(input_list[i])) { count++; } } return count; }"
+    " let count = 0; for (let i of input_list) { if (Array.isArray(i)) { count += count_list(i); } else { count += 1; } } return count; }"
   ]
 }

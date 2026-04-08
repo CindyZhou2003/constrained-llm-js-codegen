@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var unique_arrays = []; var occurence_count = {}; for (var i = 0; i < test_list.length; i++) { var current_array = test_list[i]; if (unique_arrays.indexOf(current_array) === -1) { unique_arrays.push(current_array); occurence_count[current_array] = 1; } else { occurence_count[current_array]++; } } return occurence_count; }"
+    " var unique_arrays = []; var occurence_count = {}; for (var i in test_list) { var current_array = test_list[i]; if (unique_arrays.indexOf(current_array) === -1) { unique_arrays.push(current_array); occurence_count[current_array] = 1; } else { occurence_count[current_array]++; } } return occurence_count; }"
   ]
 }

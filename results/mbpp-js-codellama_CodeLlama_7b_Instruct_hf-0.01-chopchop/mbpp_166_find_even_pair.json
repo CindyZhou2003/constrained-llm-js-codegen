@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " let count = 0; for (let i = 0; i < A.length; i++) { for (let j = i + 1; j < A.length; j++) { if (A[i] ^ A[j] % 2 === 0) { count++; } } } return count; }"
+    " let count = 0; for (let i in A) { for (let j in A) { if (i !== j && A[i] ^ A[j] % 2 === 0) { count++; } } } return count; }"
   ]
 }

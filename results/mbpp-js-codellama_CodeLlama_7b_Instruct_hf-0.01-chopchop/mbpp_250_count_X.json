@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    " var count = 0; for (var i = 0; i < tup.length; i++) { if (tup[i] === x) { count++; } } return count; }"
+    " var count = 0; for (var i in tup) { if (tup[i] === x) { count++; } } return count; }"
   ]
 }
