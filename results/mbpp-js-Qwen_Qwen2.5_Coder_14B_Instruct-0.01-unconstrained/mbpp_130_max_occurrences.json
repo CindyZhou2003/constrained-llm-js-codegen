@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_130_max_occurrences",
+  "language": "js",
+  "prompt": "//Write a function to find the item with maximum frequency in a given array.\nfunction max_occurrences(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_130_max_occurrences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_occurrences;\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 2, 4, 6, 9, 1, 2]),2);\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 7, 9, 15, 14, 10, 12, 13, 16, 18]),8);\n  assert.deepEqual(candidate([10, 20, 20, 30, 40, 90, 80, 50, 30, 20, 50, 10]),20);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = 0;\n    let count = 0;\n    let item;\n    for",
+    "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n",
+    "    let max = 0;\n    let count = 0;\n    let item;\n    for"
+  ]
+}
