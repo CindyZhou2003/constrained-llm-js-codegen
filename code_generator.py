@@ -146,25 +146,30 @@ def cmd_evaluate(args, parser):
             stop_tokens = task.get("stop_tokens", ["\nfunction", "\n//", "\n/*"])
             safe_name = str(task_name).replace("/", "_")
 
-            t0 = time.perf_counter()
-            code = generator.generate(
-                prompt=prompt,
-                mode=args.mode,
-                grammar=args.grammar,
-                stop_tokens=stop_tokens,
-                temperature=args.temperature,
-            )
-            elapsed = time.perf_counter() - t0
-            total_time += elapsed
+            completions = []
+            task_time = 0.0
+            for _ in range(args.num_completions):
+                t0 = time.perf_counter()
+                code = generator.generate(
+                    prompt=prompt,
+                    mode=args.mode,
+                    grammar=args.grammar,
+                    stop_tokens=stop_tokens,
+                    temperature=args.temperature,
+                )
+                elapsed = time.perf_counter() - t0
+                task_time += elapsed
+                total_time += elapsed
+                completions.append(code)
 
             result_item = task.copy()
-            result_item["completions"] = [code]
+            result_item["completions"] = completions
 
             json_file = output_path / (safe_name + ".json")
             with open(json_file, "w", encoding="utf-8") as f_json:
                 json.dump(result_item, f_json, indent=2)
 
-            writer.writerow([task_name, args.temperature, f"{elapsed:.4f}"])
+            writer.writerow([task_name, args.temperature, f"{task_time:.4f}"])
 
         writer.writerow(["TOTAL", "", f"{total_time:.4f}"])
 
@@ -213,6 +218,8 @@ if __name__ == "__main__":
     eval_p.add_argument("--pruner", type=str, default="none",
                         choices=["none", "basic"],
                         help="Pruner mode for chopchop (none=identity, basic=env-aware JS pruning)")
+    eval_p.add_argument("--num_completions", "-n", type=int, default=1,
+                        help="Number of completions to generate per task (for pass@k with k>1)")
 
     args = parser.parse_args()
 

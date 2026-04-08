@@ -131,6 +131,7 @@ Key parameters to adapt for your language:
 - `--grammar`: path to the `.lark` grammar file; required for all constrained modes
 - `--pruner`: pruner mode for `chopchop` (`none` = grammar-only, `basic` = env-aware JS pruning)
 - `--dataset_name`: used only as a label in the output directory name (`humaneval` | `mbpp` | any string)
+- `--num_completions` / `-n`: number of completions to generate per task (default: `1`). Use `n > 1` together with `temperature > 0` to compute pass@k for k > 1.
 
 ```bash
 python code_generator.py evaluate \
@@ -140,9 +141,10 @@ python code_generator.py evaluate \
   --grammar generators/grammars/javascript_chopchop.lark \
   --pruner basic \
   --dataset_name mbpp \
-  --output_base raw_results \
+  --output_base results \
   --temperature 0.2 \
-  --max_new_tokens 512
+  --max_new_tokens 512 \
+  --num_completions 10
 ```
 
 **Input**: `.jsonl` prompt file (and a grammar file for constrained modes)
@@ -161,7 +163,7 @@ python code_evaluation.py --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-ch
 
 # Specify a custom output directory
 python code_evaluation.py \
-  --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --input_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop \
   --gz_output_dir results_eval/mbpp-js-microsoft_phi_2-0.2-chopchop
 ```
 
