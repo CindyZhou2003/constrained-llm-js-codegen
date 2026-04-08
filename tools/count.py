@@ -1,3 +1,4 @@
+import gzip
 import json
 import os
 from pathlib import Path
@@ -9,14 +10,18 @@ def organize_results(folder_path):
     """
     status_files = defaultdict(list)
     
-    # Find all results.json files recursively
+    # Find all results.json / results.json.gz files recursively
     for root, dirs, files in os.walk(folder_path):
         for file in files:
-            if file.endswith('.results.json'):
+            if file.endswith('.results.json') or file.endswith('.results.json.gz'):
                 file_path = os.path.join(root, file)
                 try:
-                    with open(file_path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
+                    if file.endswith('.gz'):
+                        with gzip.open(file_path, 'rt', encoding='utf-8') as f:
+                            data = json.load(f)
+                    else:
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
                         
                     # Extract status from results
                     if 'results' in data and isinstance(data['results'], list):

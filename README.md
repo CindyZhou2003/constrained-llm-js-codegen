@@ -24,10 +24,10 @@ A framework for systematically evaluating LLM code generation under **unconstrai
 
 ```bash
 # Auto-generate output file name
-python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2
+python tools/count.py results_eval/mbpp-js-microsoft_phi_2-0.2
 
 # Specify output file name (optional)
-python tools/count.py raw_results/mbpp-js-microsoft_phi_2-0.2 custom_name.txt
+python tools/count.py results_eval/mbpp-js-microsoft_phi_2-0.2 custom_name.txt
 ```
 
 - `diff.py`: Compare two summary files.
