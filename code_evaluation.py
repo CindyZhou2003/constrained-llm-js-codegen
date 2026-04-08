@@ -9,6 +9,7 @@ import argparse
 import csv
 import gzip
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -32,6 +33,14 @@ def compress_folder(src_dir: Path, dst_dir: Path) -> int:
         count += 1
     print(f"  Compressed {count} files: {src_dir} -> {dst_dir}")
     return count
+
+
+def _parse_run_name(run_name: str):
+    """Split run_name (e.g. mbpp-js-microsoft_phi_2-0.0-unconstrained) into (dataset, model, temperature, mode)."""
+    m = re.match(r'^(.+)-js-([^-]+)-(\d+\.\d+)-(.+)$', run_name)
+    if m:
+        return m.group(1) + '-js', m.group(2), m.group(3), m.group(4)
+    return run_name, '', '', ''
 
 
 def _lookup_total_time(run_name: str) -> str:
@@ -62,14 +71,15 @@ def _append_to_results_csv(pass_k_output: str, run_name: str) -> None:
     if not data_lines:
         return
     total_time = _lookup_total_time(run_name)
+    dataset, model, temperature, mode = _parse_run_name(run_name)
     write_header = not csv_path.exists()
     with open(csv_path, "a", newline="", encoding="utf-8") as f:
         if write_header:
-            f.write("Dataset,Pass@k,Estimate,NumProblems,MinCompletions,MaxCompletions,TotalTime_s\n")
+            f.write("Dataset,Model,Temperature,Mode,Pass@k,Estimate,NumProblems,MinCompletions,MaxCompletions,TotalTime_s\n")
         for line in data_lines:
-            # Replace the full absolute path (first CSV field) with just the run name.
+            # Replace the full absolute path (first CSV field) with the parsed columns.
             _, _, rest = line.partition(",")
-            f.write(f"{run_name},{rest},{total_time}\n")
+            f.write(f"{dataset},{model},{temperature},{mode},{rest},{total_time}\n")
     print(f"  Results appended to: {csv_path}")
 
 
