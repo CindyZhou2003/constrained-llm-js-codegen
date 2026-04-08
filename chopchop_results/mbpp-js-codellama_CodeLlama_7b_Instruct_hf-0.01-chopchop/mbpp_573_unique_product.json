@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_573_unique_product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to calculate the product of the unique numbers in a given array.\nfunction unique_product(list_data){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_573_unique_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_product;\n  assert.deepEqual(candidate([10, 20, 30, 40, 20, 50, 60, 40]),720000000);\n  assert.deepEqual(candidate([1, 2, 3, 1]),6);\n  assert.deepEqual(candidate([7, 8, 9, 0, 1, 1]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n\n  const unique_elements = list_data.filter((element) = element !== list_data[element - 1]);\n\n  let product = 1;\n\n  for (const element of unique_elements) {\n    product *= element;\n  }\n\n  return product;\n}"
+  ]
+}

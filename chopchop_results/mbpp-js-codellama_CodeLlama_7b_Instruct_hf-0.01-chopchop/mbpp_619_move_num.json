@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " var num_regex = new RegExp('[0-9]+', 'g'); var num_arr = test_str.match(num_regex); var non_num_arr = test_str.match(num_regex); var result = ''; for (var i = 0; i < non_num_arr.length; i++) { result += non_num_arr[i]; } for (var j = 0; j < num_arr.length; j++) { result += num_arr[j]; } return result; }"
+  ]
+}

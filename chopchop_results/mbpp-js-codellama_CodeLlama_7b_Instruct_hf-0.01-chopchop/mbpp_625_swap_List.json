@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_625_swap_List",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to interchange the first and last element in a given array.\nfunction swap_List(newList){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_625_swap_List.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = swap_List;\n  assert.deepEqual(candidate([1, 2, 3]),[3, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 4]),[4, 2, 3, 4, 1]);\n  assert.deepEqual(candidate([4, 5, 6]),[6, 5, 4]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "alg"
+  ]
+}

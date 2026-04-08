@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_406_find_Parity",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find whether the parity of a given number is odd.\nfunction find_Parity(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_406_find_Parity.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Parity;\n  assert.deepEqual(candidate(12),false);\n  assert.deepEqual(candidate(7),true);\n  assert.deepEqual(candidate(10),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " if (x % 2 == 0) { return \"even\"; } else { return \"odd\"; } }"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_632_move_zero",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to move all zeroes to the end of the given array.\nfunction move_zero(num_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_632_move_zero.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_zero;\n  assert.deepEqual(candidate([1, 0, 2, 0, 3, 4]),[1, 2, 3, 4, 0, 0]);\n  assert.deepEqual(candidate([2, 3, 2, 0, 0, 4, 0, 5, 0]),[2, 3, 2, 4, 5, 0, 0, 0, 0]);\n  assert.deepEqual(candidate([0, 1, 0, 1, 1]),[1, 1, 1, 0, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    " let zero_list = []; let non_zero_list = []; for (let i = 0; i < num_list.length; i++) { if (num_list[i] === 0) { zero_list.push(num_list[i]); } else { non_zero_list.push(num_list[i]); } } return zero_list.concat(non_zero_list); }"
+  ]
+}
