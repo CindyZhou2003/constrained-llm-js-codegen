@@ -262,4 +262,5 @@ class ItergenGenerator(BaseGenerator):
             # But let's try to return full text if prompt checking fails to be safe, though unexpected.
             generated_only = full_text 
             
-        return self._post_process_stop(generated_only, stop_tokens)
+        initial_depth = max(0, prompt.count('{') - prompt.count('}'))
+        return self._post_process_stop(generated_only, stop_tokens, initial_depth=initial_depth)

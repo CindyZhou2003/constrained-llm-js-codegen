@@ -10,13 +10,13 @@ class BaseGenerator(ABC):
     # Inside a function body these would falsely truncate the completion.
     _DEPTH_SENSITIVE_STOPS = {"\n//", "\n/*"}
 
-    def _post_process_stop(self, text: str, stop_tokens: List[str] | None) -> str:
+    def _post_process_stop(self, text: str, stop_tokens: List[str] | None, initial_depth: int = 0) -> str:
         if not stop_tokens:
             return text
 
         # Pre-compute brace depth at every character position so we can
         # skip depth-sensitive stop tokens while still inside a function body.
-        depth = 0
+        depth = initial_depth
         depth_at = []
         for ch in text:
             if ch == '{':
