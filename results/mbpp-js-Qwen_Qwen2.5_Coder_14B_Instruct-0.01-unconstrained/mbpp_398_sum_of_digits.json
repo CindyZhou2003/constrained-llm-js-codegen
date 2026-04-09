@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = nums.map(function(num){\n        return num.toString().split('').reduce((acc,",
     "    let result = nums.map(function(num){\n        return num.toString().split('').reduce((a,",
-    "    let result = nums.map(function(num){\n        return num.toString().split('').reduce((acc,"
+    "    let result = nums.map(function(num){\n        return num.toString().split('').reduce((a,",
+    "    let result = nums.map(function(num){\n        return num.toString().split('').reduce((a,"
   ]
 }

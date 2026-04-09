@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    if (v > 4.8 && t < 10) {\n        return Math",
-    "    if (v > 4.8 && t < 10) {\n        return Math",
-    "    if (v > 4.8 && t < 10) {\n        let w"
+    "    if (v > 4.8 && t < 10) {\n        let w",
+    "    if (v > 4.8 && t < 10) {\n        return Math"
   ]
 }

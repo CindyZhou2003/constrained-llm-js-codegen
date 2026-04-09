@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    if (n <= 1)\n        return true;\n    for (let i = 2",
-    "    if (n <= 1)\n        return true;\n    for (let i = 2",
+    "    if (n <= 1) return true;\n    for(let i = 2; i",
     "    if (n <= 1)\n        return true;\n    for (let i = 2"
   ]
 }

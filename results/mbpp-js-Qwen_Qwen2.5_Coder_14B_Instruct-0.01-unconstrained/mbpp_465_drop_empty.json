@@ -15,6 +15,6 @@
   "completions": [
     "    let result = {};\n    for(let key in dict1){\n        if(dict1[key] !==",
     "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n       ",
-    "    let result = {};\n    for(let key in dict1){\n        if(dict1[key] !=="
+    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n       "
   ]
 }

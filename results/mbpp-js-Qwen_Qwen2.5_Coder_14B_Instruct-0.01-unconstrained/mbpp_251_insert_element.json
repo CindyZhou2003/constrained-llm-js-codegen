@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let new_list = [];\n    for(let i=0; i<list.length; i++){\n",
     "    let new_list = [];\n    for(let i = 0; i < list.length; i",
+    "    let new_list = [];\n    for(let i=0; i<list.length; i++){\n",
     "    let new_list = [];\n    for(let i=0; i<list.length; i++){\n"
   ]
 }

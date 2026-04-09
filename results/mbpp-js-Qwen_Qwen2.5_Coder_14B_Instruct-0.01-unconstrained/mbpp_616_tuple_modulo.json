@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [];\n  for(let i=0; i<test_tup1.length;",
-    "  let res = [];\n  for(let i=0; i<test_tup1.length;",
-    "  let res = [];\n  for(let i=0; i<test_tup1.length;"
+    "  let res = test_tup1.map((ele, idx) => ele % test_tup",
+    "  let res = test_tup1.map((ele, idx) => ele % test_tup",
+    "  let res = test_tup1.map((ele, idx) => ele % test_tup"
   ]
 }

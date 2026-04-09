@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < l.length - 1; i++){\n        if",
-    "    for(let i = 0; i < l.length - 1; i++){\n        if",
+    "    l.sort(function(a, b){return a-b});\n    for(let i = 0;",
+    "    l.sort(function(a, b){return a-b});\n    for(let i = 0;",
     "    for(let i = 0; i < l.length - 1; i++){\n        if"
   ]
 }

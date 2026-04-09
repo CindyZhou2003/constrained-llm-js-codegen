@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
+    "    let first_even = null;\n    let first_odd = null;\n    for(let i=0",
     "    var first_even = 0;\n    var first_odd = 0;\n    for (var",
-    "    var first_even = 0;\n    var first_odd = 0;\n    for (var",
-    "    var first_even = 0;\n    var first_odd = 0;\n    for (var"
+    "    let first_even = null;\n    let first_odd = null;\n    for(let i=0"
   ]
 }

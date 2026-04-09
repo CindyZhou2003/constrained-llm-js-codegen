@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let res = tup.map((x) => [x, lst.filter(y => y === x",
-    "    let res = tup.map((x) => ({[x]: lst.filter(y => y ===",
-    "    let res = tup.map((x) => [x, lst.filter(y => y === x"
+    "    let res = tup.map((x) => [x, lst.filter(y => y === x",
+    "    let res = tup.map((x) => ({[x]: lst.filter(y => y ==="
   ]
 }

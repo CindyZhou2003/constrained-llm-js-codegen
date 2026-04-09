@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    // Check if the equation has a solution\n    if (n % gcd(a, b)",
-    "    // Check if the equation has a solution\n    if (n % gcd(a, b)",
-    "    // Check if the equation has a solution\n    if (n % gcd(a, b)"
+    "    // Your code here\n    let x = 0;\n    let y = 0;\n",
+    "    // Your code here\n}\n"
   ]
 }

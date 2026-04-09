@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +",
     "    let n = M.length;\n    let m = M[0].length;\n    let row",
-    "    let n = M.length;\n    let m = M[0].length;\n    let row"
+    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +",
+    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +"
   ]
 }

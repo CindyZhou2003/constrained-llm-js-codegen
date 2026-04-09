@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let result = {};\n    for(let i=0; i<Input.length; i++){\n        let",
-    "    let result = {};\n    for(let i=0;i<Input.length;i++){\n        if(result[",
-    "    let result = {};\n    for(let i=0;i<Input.length;i++){\n        if(result["
+    "    let result = {};\n    for(let i=0; i<Input.length; i++){\n        let",
+    "    let result = {};\n    for(let i=0; i<Input.length; i++){\n        let"
   ]
 }

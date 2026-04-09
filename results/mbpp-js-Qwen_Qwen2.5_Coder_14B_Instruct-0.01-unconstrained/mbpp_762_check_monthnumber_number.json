@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(monthnum3==4 || monthnum3==6 || monthnum3==9 ||",
+    "    if(monthnum3 == 4 || monthnum3 == 6 || monthnum3 ==",
     "    if(monthnum3==4 || monthnum3==6 || monthnum3==9 ||",
     "    if(monthnum3 == 4 || monthnum3 == 6 || monthnum3 =="
   ]

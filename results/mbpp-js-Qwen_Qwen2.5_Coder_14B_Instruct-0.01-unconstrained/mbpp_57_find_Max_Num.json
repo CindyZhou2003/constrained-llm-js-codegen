@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //sort the array in descending order\n    arr.sort((a,b) => b-a);\n",
+    "    let max_num = arr[0];\n    for(let i=1; i<arr.length",
     "    let max_num = arr[0];\n    for(let i=1; i<arr.length",
     "    //sort the array in descending order\n    arr.sort((a,b) => b-a);\n"
   ]

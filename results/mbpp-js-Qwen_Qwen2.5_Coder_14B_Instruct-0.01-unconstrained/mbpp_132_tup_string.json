@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let str = tup1.toString();\n    return str;\n}\nlet tup1 = [1,",
     "    return tup1.toString();\n}",
+    "    let str = tup1.toString();\n    return str;\n}\nlet tup1 = [1,",
     "    return tup1.toString();\n}"
   ]
 }

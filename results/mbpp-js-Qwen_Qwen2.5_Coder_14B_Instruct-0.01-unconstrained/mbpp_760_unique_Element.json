@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let unique = [...new Set(arr)];\n    return unique.length === 1;\n}",
-    "    let unique = [...new Set(arr)];\n    return unique.length === 1;\n}",
+    "    let unique = new Set(arr);\n    return unique.size === 1;\n}",
     "    let unique = [...new Set(arr)];\n    return unique.length === 1;\n}"
   ]
 }

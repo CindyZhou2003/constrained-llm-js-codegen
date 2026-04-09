@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n < 1) {\n        return false;\n    }\n    var x = (",
     "    if (n < 1) return false;\n    var x = (4 * n -",
-    "    if (n < 1) {\n        return false;\n    }\n    var x = ("
+    "    if (n < 1) return false;\n    var x = (4 * n -",
+    "    if (n < 1) return false;\n    var x = (4 * n -"
   ]
 }

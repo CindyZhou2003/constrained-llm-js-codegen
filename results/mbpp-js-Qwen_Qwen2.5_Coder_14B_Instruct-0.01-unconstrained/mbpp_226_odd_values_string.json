@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var newstr=\"\";\n    for (var i=0;i<str.length;i++){\n        if",
     "    var newstr=\"\";\n    for (var i = 0; i < str.length; i",
-    "    var newstr=\"\";\n    for (var i=0;i<str.length;i++){\n        if"
+    "  var newstr=\"\";\n  for (var i = 0; i < str.length; i",
+    "  var newstr=\"\";\n  for (var i = 0; i < str.length; i"
   ]
 }

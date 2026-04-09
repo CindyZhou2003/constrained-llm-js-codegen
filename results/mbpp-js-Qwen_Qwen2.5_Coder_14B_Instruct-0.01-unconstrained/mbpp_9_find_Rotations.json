@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let tmp = str + str;\n    let n = str.length;\n    for(let i=",
-    "    let n = str.length;\n    let temp = str + str;\n    for(let i=",
+    "    let tmp = str + str;\n    let n = str.length;\n    for(let i=",
     "    let n = str.length;\n    let temp = str + str;\n    for(let i="
   ]
 }

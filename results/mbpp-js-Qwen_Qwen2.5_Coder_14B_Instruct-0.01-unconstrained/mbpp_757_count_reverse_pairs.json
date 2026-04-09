@@ -14,7 +14,7 @@
   ],
   "completions": [
     "  let res = 0;\n  let temp = new Set();\n  for(let ele of test",
-    "  let res = 0;\n  let temp = new Set();\n  for(let ele of test",
+    "    let res = 0;\n    let temp = new Set();\n    for(let ele of test",
     "  let res = 0;\n  let temp = new Set();\n  for(let ele of test"
   ]
 }

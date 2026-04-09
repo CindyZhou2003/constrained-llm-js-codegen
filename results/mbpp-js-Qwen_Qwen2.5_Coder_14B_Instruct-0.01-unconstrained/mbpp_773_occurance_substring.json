@@ -15,6 +15,6 @@
   "completions": [
     "    let result = [];\n    let pos = text.indexOf(pattern);\n    while (pos !== -1",
     "    let result = [];\n    let pos = text.indexOf(pattern);\n    while(pos !== -1){\n",
-    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while (pos !== -1"
+    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while(pos !== -1){\n"
   ]
 }

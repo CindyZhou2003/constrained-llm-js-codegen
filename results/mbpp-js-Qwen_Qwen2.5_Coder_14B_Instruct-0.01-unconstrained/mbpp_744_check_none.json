@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  for(let i=0;i<test_tup.length;i++){\n    if(test_tup[i",
     "  // write your code here\n}",
-    "  for(let i=0;i<test_tup.length;i++){\n    if(test_tup[i"
+    "  // write your code here\n}",
+    "  // write your code here\n}"
   ]
 }

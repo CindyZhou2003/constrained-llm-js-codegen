@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let arr = [];\n    for(let i=0;i<lst.length;i++){\n        arr.push",
-    "    let result = [];\n    for(let i=0; i<lst.length; i++){\n       ",
-    "    let arr = [];\n    for(let i=0;i<lst.length;i++){\n        arr.push"
+    "    let arr = [];\n    for(let i=0;i<lst.length;i++){\n        arr.push",
+    "    let result = [];\n    for(let i=0; i<lst.length; i++){\n       "
   ]
 }

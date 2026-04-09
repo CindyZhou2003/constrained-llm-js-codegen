@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  if (x == y && y == z) {\n    return 3;\n  }\n ",
     "    if (x == y && y == z) {\n        return 3;\n    }\n   ",
-    "    if (x == y && y == z) {\n        return 3;\n    }\n   "
+    "  if (x == y && y == z) {\n    return 3;\n  }\n ",
+    "  if (x == y && y == z) {\n    return 3;\n  }\n "
   ]
 }

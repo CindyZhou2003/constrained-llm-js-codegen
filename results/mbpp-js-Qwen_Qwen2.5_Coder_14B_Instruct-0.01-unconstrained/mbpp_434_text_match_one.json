@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let pattern = /ab+/;\n    if(pattern.test(text)){\n        return true;\n    }",
-    "  let pattern = /ab+/;\n  if(pattern.test(text)){\n    return true;\n  }",
+    "    let pattern = /ab+/;\n    if(pattern.test(text)){\n        return true;\n    }",
     "    let pattern = /ab+/;\n    if(pattern.test(text)){\n        return true;\n    }"
   ]
 }

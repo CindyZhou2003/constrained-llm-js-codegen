@@ -15,6 +15,6 @@
   "completions": [
     "    let words = s.split(' ');\n    let reversedWords = words.map(word => word.split('').",
     "    return s.split(' ').reverse().join(' ');\n}",
-    "    return s.split(' ').reverse().join(' ');\n}"
+    "    let words = s.split(' ');\n    let reversedWords = words.map(word => word.split('')."
   ]
 }

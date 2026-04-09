@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let sum = 0;\n    for(let i = 0; i < strr.length;",
-    "    let sum = 0;\n    for(let i = 0; i < strr.length;",
+    "    let sum = 0;\n    for(let i=0;i<strr.length;i++){\n",
     "    let sum = 0;\n    for(let i=0;i<strr.length;i++){\n"
   ]
 }

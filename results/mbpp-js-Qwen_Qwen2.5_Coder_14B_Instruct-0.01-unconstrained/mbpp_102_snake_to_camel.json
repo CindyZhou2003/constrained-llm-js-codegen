@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase",
+    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n",
     "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase",
     "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase"
   ]
