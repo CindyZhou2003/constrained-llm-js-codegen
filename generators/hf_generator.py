@@ -33,5 +33,4 @@ class HFGenerator(BaseGenerator):
             )
         
         text = self.tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
-        initial_depth = max(0, prompt.count('{') - prompt.count('}'))
-        return self._post_process_stop(text, stop_tokens, initial_depth=initial_depth)
+        return self._post_process_stop(text, stop_tokens)

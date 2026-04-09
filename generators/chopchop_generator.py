@@ -351,7 +351,6 @@ class ChopchopGenerator(BaseGenerator):
             if output.startswith("{"):
                 output = output[1:]
 
-        initial_depth = max(0, prompt.count('{') - prompt.count('}'))
-        output = self._post_process_stop(output, stop_tokens, initial_depth=initial_depth)
+        output = self._post_process_stop(output, stop_tokens)
 
         return output

@@ -156,6 +156,7 @@ def cmd_evaluate(args, parser):
                     grammar=args.grammar,
                     stop_tokens=stop_tokens,
                     temperature=args.temperature,
+                    max_new_tokens=args.max_new_tokens,
                 )
                 elapsed = time.perf_counter() - t0
                 task_time += elapsed

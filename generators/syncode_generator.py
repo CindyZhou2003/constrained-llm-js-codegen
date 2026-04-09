@@ -24,5 +24,4 @@ class SyncodeGenerator(BaseGenerator):
     def generate(self, prompt: str, stop_tokens, **kwargs) -> str:
         completions = self.sc.infer(prompt, stop_words=stop_tokens)
         text = completions[0] if completions else ""
-        initial_depth = max(0, prompt.count('{') - prompt.count('}'))
-        return self._post_process_stop(text, stop_tokens, initial_depth=initial_depth)
+        return self._post_process_stop(text, stop_tokens)
