@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i=0; i<nums.length; i",
-    "    let sum = 0;\n    for(let i=0; i<nums.length; i",
-    "    let sum = 0;\n    for(let i=0; i<nums.length; i"
+    "    let sum = 0;\n    for(let i=0; i<nums.length; i++){\n        if(nums[i]<0){\n            sum += nums[i];\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=0; i<nums.length; i++){\n        if(nums[i] < 0){\n            sum += nums[i];\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=0; i<nums.length; i++){\n        if(nums[i] < 0){\n            sum += nums[i];\n        }\n    }\n    return sum;\n}"
   ]
 }

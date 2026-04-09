@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let low = 0;\n    let high = A.length - 1;\n    let result",
-    "    let low = 0;\n    let high = A.length - 1;\n    let result",
-    "    let low = 0;\n    let high = A.length - 1;\n    let result"
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(A[mid] == x){\n            result = mid;\n            high = mid - 1; // Continue searching in the left half\n        }\n        else if(A[mid] < x){\n            low = mid + 1;\n        }\n        else{\n            high = mid - 1;\n        }\n    }\n    return result;\n}\n",
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(A[mid] == x){\n            result = mid;\n            high = mid - 1; // Continue searching in the left half\n        }\n        else if(A[mid] < x){\n            low = mid + 1;\n        }\n        else{\n            high = mid - 1;\n        }\n    }\n    return result;\n}\n",
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(A[mid] == x){\n            result = mid;\n            high = mid - 1; // Continue searching in the left half\n        }\n        else if(A[mid] < x){\n            low = mid + 1;\n        }\n        else{\n            high = mid - 1;\n        }\n    }\n    return result;\n}\n"
   ]
 }

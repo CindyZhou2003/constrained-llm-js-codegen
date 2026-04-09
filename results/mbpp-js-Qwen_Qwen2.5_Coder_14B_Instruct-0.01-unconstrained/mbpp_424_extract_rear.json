@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test",
-    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test",
-    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test"
+    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test_tuple = ['Gfg', 'is', 'best']",
+    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test_tuple = [\"Gfg\", \"is\", \"best\"]",
+    "  let res = test_tuple.map(ele => ele[-1]);\n  return res;\n}\n\nlet test_tuple = ['Gfg', 'is', 'best']"
   ]
 }

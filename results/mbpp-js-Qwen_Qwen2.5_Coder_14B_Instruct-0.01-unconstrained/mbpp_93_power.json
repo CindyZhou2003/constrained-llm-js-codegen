@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = 1;\n    for(let i = 0; i < b; i",
-    "    let result = 1;\n    for(let i = 0; i < b; i",
-    "    let result = 1;\n    for(let i = 0; i < b; i"
+    "    let result = 1;\n    for(let i = 0; i < b; i++){\n        result *= a;\n    }\n    return result;\n}\n",
+    "    let result = 1;\n    for(let i = 0; i < b; i++){\n        result *= a;\n    }\n    return result;\n}",
+    "    let result = 1;\n    for(let i = 0; i < b; i++){\n        result *= a;\n    }\n    return result;\n}\n"
   ]
 }

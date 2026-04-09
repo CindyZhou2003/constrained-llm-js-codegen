@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (s.length === 0) return true;\n    if (l.length === 0",
-    "    if (s.length === 0) return true;\n    if (l.length === 0",
-    "    if (s.length === 0) return true;\n    if (l.length === 0"
+    "    if (s.length === 0) return true;\n    if (l.length === 0) return false;\n\n    if (l[0] === s[0]) {\n        return is_sublist(l.slice(1), s.slice(1));\n    } else {\n        return is_sublist(l.slice(1), s);\n    }\n}\n",
+    "    if (s.length === 0) return true;\n    if (l.length === 0) return false;\n\n    if (l[0] === s[0]) {\n        return is_sublist(l.slice(1), s.slice(1));\n    } else {\n        return is_sublist(l.slice(1), s);\n    }\n}\n",
+    "    if (s.length === 0) return true;\n    if (l.length === 0) return false;\n\n    if (l[0] === s[0]) {\n        return is_sublist(l.slice(1), s.slice(1));\n    } else {\n        return is_sublist(l.slice(1), s);\n    }\n}\n"
   ]
 }

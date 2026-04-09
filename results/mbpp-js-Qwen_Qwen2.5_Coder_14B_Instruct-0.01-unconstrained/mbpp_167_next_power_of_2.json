@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n <= 0)\n        return 1;\n    if (n == 1",
-    "    if (n <= 0)\n        return 1;\n    if (n == 1",
-    "    if (n <= 0)\n        return 1;\n    if (n == 1"
+    "    if (n <= 0)\n        return 1;\n    if (n == 1)\n        return 1;\n    let p = 1;\n    while (p < n)\n        p = p << 1;\n    return p;\n}",
+    "    if (n <= 0)\n        return 1;\n    if (n == 1)\n        return 1;\n    let p = 1;\n    while (p < n)\n        p = p << 1;\n    return p;\n}",
+    "    if (n <= 0)\n        return 1;\n    if (n == 1)\n        return 1;\n    let p = 1;\n    while (p < n)\n        p = p << 1;\n    return p;\n}"
   ]
 }

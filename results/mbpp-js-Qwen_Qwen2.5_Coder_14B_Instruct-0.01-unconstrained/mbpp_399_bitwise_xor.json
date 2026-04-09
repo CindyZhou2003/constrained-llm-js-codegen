@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate",
-    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate",
-    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate"
+    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate through each element in the tuples\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Perform the bitwise XOR operation and push the result to the array\n    res.push(test_tup1[idx] ^ test_tup2[idx]);\n  }\n  \n  // Return the resulting array\n  return res;\n}\n",
+    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate over the elements of the tuples\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Perform the bitwise XOR operation on corresponding elements\n    res.push(test_tup1[idx] ^ test_tup2[idx]);\n  }\n  \n  // Return the resulting array\n  return res;\n}\n",
+    "  // Initialize an empty array to store the results\n  let res = [];\n  \n  // Iterate over the elements of the tuples\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Perform the bitwise XOR operation on corresponding elements\n    res.push(test_tup1[idx] ^ test_tup2[idx]);\n  }\n  \n  // Return the resulting array\n  return res;\n}\n"
   ]
 }

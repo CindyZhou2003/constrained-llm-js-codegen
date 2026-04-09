@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str = n.toString();\n    var odd = 0;\n    var even = 0",
-    "    var str = n.toString();\n    var odd = 0;\n    var even = 0",
-    "    var str = n.toString();\n    var odd = 0;\n    var even = 0"
+    "    var str = n.toString();\n    var odd = 0;\n    var even = 0;\n    for(var i=0; i<str.length; i++){\n        if(i%2==0){\n            even += parseInt(str[i]);\n        }else{\n            odd += parseInt(str[i]);\n        }\n    }\n    return (even-odd)%11==0;\n}",
+    "    var str = n.toString();\n    var odd = 0;\n    var even = 0;\n    for(var i=0; i<str.length; i++){\n        if(i%2==0){\n            odd += parseInt(str[i]);\n        }else{\n            even += parseInt(str[i]);\n        }\n    }\n    return (odd-even)%11==0;\n}",
+    "    var str = n.toString();\n    var odd = 0;\n    var even = 0;\n    for(var i=0; i<str.length; i++){\n        if(i%2==0){\n            even += parseInt(str[i]);\n        }else{\n            odd += parseInt(str[i]);\n        }\n    }\n    return (even-odd)%11==0;\n}"
   ]
 }

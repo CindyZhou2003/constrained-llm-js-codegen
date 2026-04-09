@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n       ",
-    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n       ",
-    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n       "
+    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n        let sum = 0;\n        for(let j=0; j<nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        result.push(sum/nums[i].length);\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n        let sum = 0;\n        for(let j=0; j<nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        result.push(sum/nums[i].length);\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n        let sum = 0;\n        for(let j=0; j<nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        result.push(sum/nums[i].length);\n    }\n    return result;\n}"
   ]
 }

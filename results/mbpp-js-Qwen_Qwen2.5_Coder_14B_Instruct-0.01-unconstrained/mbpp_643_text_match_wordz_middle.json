@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return",
-    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return",
-    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return"
+    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return pattern.test(text);\n}\n",
+    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return pattern.test(text);\n}\n",
+    "  let pattern = /(^z)|(z$)|(^.*z.*$)/;\n  return pattern.test(text);\n}\n"
   ]
 }

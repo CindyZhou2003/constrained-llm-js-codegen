@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let res = tup.map((x) => [x, lst.filter(y => y === x",
-    "    let res = tup.map((x) => [x, lst.filter(y => y === x",
-    "    let res = tup.map((x) => ({[x]: lst.filter(y => y ==="
+    "    let res = tup.map((x) => ({[x]: lst.filter(y => y === x).length}));\n    return Object.assign({}, ...res);\n}",
+    "    let res = tup.map((x) => [x, lst.filter(y => y === x).length]);\n    return res;\n}\nlet tup = [10, 20, 30, 40, 50];\nlet lst = [10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 10, 20, 30, 40, 50];",
+    "    let res = tup.map((x) => ({[x]: lst.filter(y => y === x).length}));\n    return Object.assign({}, ...res);\n}"
   ]
 }

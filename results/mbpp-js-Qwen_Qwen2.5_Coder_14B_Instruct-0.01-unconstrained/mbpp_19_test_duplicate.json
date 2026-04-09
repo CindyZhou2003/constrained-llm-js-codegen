@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n",
-    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n",
-    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n"
+    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n}",
+    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n}",
+    "    let num_set = new Set(arraynums);\n    return num_set.size !== arraynums.length;\n}"
   ]
 }

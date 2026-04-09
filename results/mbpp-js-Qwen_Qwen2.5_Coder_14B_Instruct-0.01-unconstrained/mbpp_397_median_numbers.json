@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr = [a, b, c];\n    arr.sort((x, y) =>",
-    "    let arr = [a, b, c];\n    arr.sort((x, y) =>",
-    "    let arr = [a, b, c];\n    arr.sort((x, y) =>"
+    "    let arr = [a, b, c];\n    arr.sort((x, y) => x - y);\n    return arr[1];\n}",
+    "    let arr = [a, b, c];\n    arr.sort((x, y) => x - y);\n    return arr[1];\n}",
+    "    let arr = [a, b, c];\n    arr.sort((x, y) => x - y);\n    return arr[1];\n}"
   ]
 }

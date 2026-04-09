@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (index == n) return 0;\n    let res = max_sum_increasing_sub",
-    "    let dp = new Array(n).fill(0);\n    for(let i=0; i",
-    "    let dp = new Array(n).fill(0);\n    for(let i=0; i"
+    "    if (index == n) return 0;\n    let res = max_sum_increasing_subseq(a, n, index + 1, k);\n    for (let i = index + 1; i < n; i++){\n        if (a[i] > a[index] && i <= k){\n            res = Math.max(res, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    return res;\n}\nlet a = [1, 101, 2, 3, 100, 4, 5];\nlet n = a.length;\nlet index = 0;\nlet k = 4;",
+    "    let dp = new Array(n).fill(0);\n    for(let i=0; i<n; i++){\n        dp[i] = a[i];\n    }\n    for(let i=1; i<n; i++){\n        for(let j=0; j<i; j++){\n            if(a[i] > a[j] && dp[i] < dp[j] + a[i]){\n                dp[i] = dp[j] + a[i];\n            }\n        }\n    }\n    let max_sum = 0;\n    for(let i=0; i<index; i++){\n        if(dp[i] + a[k] > max_sum){\n            max_sum = dp[i] + a[k];\n        }\n    }\n    return max_sum;\n}\nlet a = [1, 101, 2, 3, 100, 4, 5];\nlet n = a.length;\nlet index = 3;\nlet k = 5;",
+    "    let dp = new Array(n).fill(0);\n    for(let i=0; i<n; i++){\n        dp[i] = a[i];\n    }\n    for(let i=1; i<n; i++){\n        for(let j=0; j<i; j++){\n            if(a[i] > a[j] && dp[i] < dp[j] + a[i]){\n                dp[i] = dp[j] + a[i];\n            }\n        }\n    }\n    let max_sum = 0;\n    for(let i=0; i<index; i++){\n        if(dp[i] + a[k] > max_sum){\n            max_sum = dp[i] + a[k];\n        }\n    }\n    return max_sum;\n}\nlet a = [1, 101, 2, 3, 100, 4, 5];\nlet n = a.length;\nlet index = 3;\nlet k = 5;"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i=",
-    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i=",
-    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i="
+    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i=0; i<flat_list.length; i++){\n        if(frequency_obj[flat_list[i]]){\n            frequency_obj[flat_list[i]] += 1;\n        } else {\n            frequency_obj[flat_list[i]] = 1;\n        }\n    }\n    return frequency_obj;\n}\n",
+    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i=0; i<flat_list.length; i++){\n        if(frequency_obj[flat_list[i]]){\n            frequency_obj[flat_list[i]] += 1;\n        } else {\n            frequency_obj[flat_list[i]] = 1;\n        }\n    }\n    return frequency_obj;\n}\n",
+    "    let flat_list = list1.flat();\n    let frequency_obj = {};\n    for(let i=0; i<flat_list.length; i++){\n        if(frequency_obj[flat_list[i]]){\n            frequency_obj[flat_list[i]] += 1;\n        } else {\n            frequency_obj[flat_list[i]] = 1;\n        }\n    }\n    return frequency_obj;\n}\n"
   ]
 }

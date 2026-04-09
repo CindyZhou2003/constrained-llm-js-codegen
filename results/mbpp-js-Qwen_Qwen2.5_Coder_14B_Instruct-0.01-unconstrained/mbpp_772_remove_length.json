@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n   ",
-    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n   ",
-    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n   "
+    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n    }).join(' ');\n    return (res);\n}\nlet test_str = 'Gfg is good website';\nlet K = 2;",
+    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n    }).join(' ');\n    return (res);\n}\nlet test_str = 'Gfg is good website';\nlet K = 2;",
+    "    res = test_str.split(' ').filter(function(ele){\n        return ele.length != K;\n    }).join(' ');\n    return (res);\n}\nlet test_str = 'Gfg is good website';\nlet K = 2;"
   ]
 }

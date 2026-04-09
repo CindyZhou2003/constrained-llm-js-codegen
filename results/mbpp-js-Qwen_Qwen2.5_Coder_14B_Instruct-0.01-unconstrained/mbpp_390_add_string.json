@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return list_.map(x => x + string);\n}\n",
-    "    return list_.map(function(item) {\n        return item + string;\n    });\n}\n",
-    "    return list_.map(x => x + string);\n}\n"
+    "    return list_.map(x => x + string);\n}\n",
+    "    return list_.map(function(item) {\n        return item + string;\n    });\n}\n"
   ]
 }

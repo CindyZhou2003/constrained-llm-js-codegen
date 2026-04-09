@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return nums.sort((a, b) => b - a).slice(0, n);\n",
-    "    return nums.sort((a, b) => b - a).slice(0, n);\n",
-    "    return nums.sort((a, b) => b - a).slice(0, n);\n"
+    "    return nums.sort((a, b) => b - a).slice(0, n);\n}\n",
+    "    return nums.sort((a, b) => b - a).slice(0, n);\n}",
+    "    return nums.sort((a, b) => b - a).slice(0, n);\n}"
   ]
 }

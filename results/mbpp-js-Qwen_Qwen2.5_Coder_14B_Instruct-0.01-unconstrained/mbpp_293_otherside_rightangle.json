@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return Math.sqrt((w*w) + (h*h));\n}",
-    "    return Math.sqrt((w*w) + (h*h));\n}",
+    "    return Math.sqrt((w*w)+(h*h));\n}",
     "    return Math.sqrt((w*w) + (h*h));\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n",
-    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n",
-    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n"
+    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n    return (1 << (p - 1));\n}",
+    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n    return (1 << (p - 1));\n}",
+    "    let p = 0;\n    while ((1 << p) <= n)\n        p++;\n    return (1 << (p - 1));\n}"
   ]
 }

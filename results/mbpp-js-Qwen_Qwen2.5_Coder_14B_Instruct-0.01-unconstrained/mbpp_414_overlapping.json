@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < list1.length; i++){\n        if(list2",
-    "    for(let i = 0; i < list1.length; i++){\n        if(list2",
-    "    for(let i = 0; i < list1.length; i++){\n        if(list2"
+    "    for(let i = 0; i < list1.length; i++){\n        if(list2.indexOf(list1[i]) !== -1){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    for(let i = 0; i < list1.length; i++){\n        if(list2.indexOf(list1[i]) !== -1){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    for(let i = 0; i < list1.length; i++){\n        if(list2.indexOf(list1[i]) !== -1){\n            return true;\n        }\n    }\n    return false;\n}"
   ]
 }

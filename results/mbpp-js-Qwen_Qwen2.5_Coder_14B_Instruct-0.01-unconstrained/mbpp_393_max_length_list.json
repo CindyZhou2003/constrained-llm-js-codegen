@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    max_length = 0;\n    for(let i=0; i<input_list.length; i",
-    "    max_length = 0;\n    for(let i=0; i<input_list.length; i",
-    "    max_length = 0;\n    for(let i=0; i<input_list.length; i"
+    "    max_length = 0;\n    for(let i=0; i<input_list.length; i++){\n        if(input_list[i].length > max_length){\n            max_length = input_list[i].length;\n        }\n    }\n    return max_length;\n}",
+    "    max_length = 0;\n    for(let i=0; i<input_list.length; i++){\n        if(input_list[i].length > max_length){\n            max_length = input_list[i].length;\n        }\n    }\n    return max_length;\n}",
+    "    max_length = 0;\n    for(let i=0; i<input_list.length; i++){\n        if(input_list[i].length > max_length){\n            max_length = input_list[i].length;\n        }\n    }\n    return max_length;\n}"
   ]
 }

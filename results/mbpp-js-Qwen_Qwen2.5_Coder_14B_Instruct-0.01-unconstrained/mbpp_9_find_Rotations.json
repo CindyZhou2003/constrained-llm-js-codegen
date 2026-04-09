@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let tmp = str + str;\n    let n = str.length;\n    for(let i=",
-    "    let tmp = str + str;\n    let n = str.length;\n    for(let i=",
-    "    let n = str.length;\n    let temp = str + str;\n    for(let i="
+    "    let n = str.length;\n    let temp = str + str;\n    for(let i=1; i<n; i++){\n        let substring = temp.substring(i, i+n);\n        if(substring === str){\n            return i;\n        }\n    }\n    return n;\n}",
+    "    let tmp = str + str;\n    let n = str.length;\n    for(let i=1; i<=n; i++){\n        let substring = tmp.substring(i, i+n);\n        if(substring == str)\n            return i;\n    }\n    return n;\n}",
+    "    let n = str.length;\n    let temp = str + str;\n    for(let i=1; i<=n; i++){\n        let substring = temp.substring(i, i+n);\n        if(substring == str){\n            return i;\n        }\n    }\n    return n;\n}"
   ]
 }

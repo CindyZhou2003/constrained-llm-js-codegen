@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let pattern = /ab+/;\n    if(pattern.test(text)){\n        return true;\n    }",
+    "  let regex = /ab+/;\n  return regex.test(text);\n}\n",
     "  let regex = /ab+/;\n  return regex.test(text);\n}\n",
     "  let regex = /ab+/;\n  return regex.test(text);\n}\n"
   ]

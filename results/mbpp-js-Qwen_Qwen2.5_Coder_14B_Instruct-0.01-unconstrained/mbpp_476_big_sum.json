@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = Math.max(...nums);\n    let min = Math.min(...nums);\n    return",
-    "    let max = nums[0];\n    let min = nums[0];\n    for(let i",
-    "    let max = nums[0];\n    let min = nums[0];\n    for(let i"
+    "    let max = Math.max(...nums);\n    let min = Math.min(...nums);\n    return max + min;\n}",
+    "    let max = nums[0];\n    let min = nums[0];\n    for(let i=1; i<nums.length; i++){\n        if(nums[i]>max){\n            max = nums[i];\n        }\n        if(nums[i]<min){\n            min = nums[i];\n        }\n    }\n    return max+min;\n}",
+    "    let max = nums[0];\n    let min = nums[0];\n    for(let i=1; i<nums.length; i++){\n        if(nums[i]>max){\n            max = nums[i];\n        }\n        if(nums[i]<min){\n            min = nums[i];\n        }\n    }\n    return max+min;\n}"
   ]
 }

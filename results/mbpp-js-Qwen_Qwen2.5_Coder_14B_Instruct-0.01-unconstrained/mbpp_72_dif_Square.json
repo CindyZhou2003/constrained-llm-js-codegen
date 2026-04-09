@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n % 4 == 0 || n % 4 == 1) {\n",
-    "    if (n % 4 == 0 || n % 4 == 1) {\n",
-    "    if (n % 4 == 0 || n % 4 == 1) {\n"
+    "    if (n % 4 == 0 || n % 4 == 1) {\n        return true;\n    } else {\n        return false;\n    }\n}",
+    "    if (n % 4 == 0 || n % 4 == 1) {\n        return true;\n    } else {\n        return false;\n    }\n}",
+    "    if (n % 4 == 0 || n % 4 == 1) {\n        return true;\n    } else {\n        return false;\n    }\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (num <= 1) {\n        return false;\n    }\n    for (let i",
-    "    if (num <= 1) {\n        return false;\n    }\n    for (let i",
-    "    if (num <= 1) {\n        return false;\n    }\n    for (let i"
+    "    if (num <= 1) {\n        return false;\n    }\n    for (let i = 2; i <= Math.sqrt(num); i++) {\n        if (num % i === 0) {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    if (num <= 1) {\n        return false;\n    }\n    for (let i = 2; i <= Math.sqrt(num); i++) {\n        if (num % i === 0) {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    if (num <= 1) {\n        return false;\n    }\n    for (let i = 2; i <= Math.sqrt(num); i++) {\n        if (num % i === 0) {\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

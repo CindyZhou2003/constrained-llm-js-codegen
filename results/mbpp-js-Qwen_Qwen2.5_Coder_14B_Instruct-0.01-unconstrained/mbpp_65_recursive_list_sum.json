@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if",
-    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if",
-    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if"
+    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if(Array.isArray(data_list[i])){\n            total = total + recursive_list_sum(data_list[i]);\n        }\n        else{\n            total = total + data_list[i];\n        }\n    }\n    return total;\n}",
+    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if(Array.isArray(data_list[i])){\n            total = total + recursive_list_sum(data_list[i]);\n        }\n        else{\n            total = total + data_list[i];\n        }\n    }\n    return total;\n}",
+    "    var total=0;\n    for(var i=0;i<data_list.length;i++){\n        if(Array.isArray(data_list[i])){\n            total = total + recursive_list_sum(data_list[i]);\n        }\n        else{\n            total = total + data_list[i];\n        }\n    }\n    return total;\n}"
   ]
 }

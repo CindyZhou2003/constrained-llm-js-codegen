@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console",
-    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console",
-    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console"
+    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console.log(\"The string starts with a vowel.\");\n    } else {\n        console.log(\"The string does not start with a vowel.\");\n    }\n}\n\ncheck_str(\"apple\"); // The string starts with a vowel.\ncheck_str(\"banana\"); // The string does not start with a vowel.",
+    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console.log(\"The string starts with a vowel.\");\n    } else {\n        console.log(\"The string does not start with a vowel.\");\n    }\n}\n\ncheck_str(\"apple\"); // The string starts with a vowel.\ncheck_str(\"banana\"); // The string does not start with a vowel.",
+    "    let pattern = /^[aeiouAEIOU]/;\n    if(pattern.test(string)){\n        console.log(\"The string starts with a vowel.\");\n    } else {\n        console.log(\"The string does not start with a vowel.\");\n    }\n}\n\ncheck_str(\"apple\"); // The string starts with a vowel.\ncheck_str(\"banana\"); // The string does not start with a vowel."
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n %",
-    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n %",
-    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n %"
+    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}",
+    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}",
+    "    let binary = \"\";\n    while (n > 0) {\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}"
   ]
 }

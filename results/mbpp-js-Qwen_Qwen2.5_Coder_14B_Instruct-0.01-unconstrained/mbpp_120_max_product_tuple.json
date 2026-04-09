@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = 0;\n    for(let i=0; i<list1.length;",
-    "    let max = 0;\n    for(let i=0; i<list1.length;",
-    "    let max = 0;\n    for(let i=0; i<list1.length;"
+    "    let max = 0;\n    for(let i=0; i<list1.length; i++){\n        let product = Math.abs(list1[i][0] * list1[i][1]);\n        if(product > max){\n            max = product;\n        }\n    }\n    return max;\n}\n",
+    "    let max = 0;\n    for(let i=0; i<list1.length; i++){\n        let product = Math.abs(list1[i][0] * list1[i][1]);\n        if(product > max){\n            max = product;\n        }\n    }\n    return max;\n}\n",
+    "    let max = 0;\n    for(let i=0; i<list1.length; i++){\n        let product = Math.abs(list1[i][0] * list1[i][1]);\n        if(product > max){\n            max = product;\n        }\n    }\n    return max;\n}\n"
   ]
 }

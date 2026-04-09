@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = len(test_tup) == len(set(test_tup))\n    return (res)",
-    "    res = len(test_tup) == len(set(test_tup))\n    return (res)",
-    "    res = len(test_tup) == len(set(test_tup))\n    return (res)"
+    "    res = len(test_tup) == len(set(test_tup))\n    return (res) \ntest_tup = (1, 2, 3, 4, 5)\nprint(check_distinct(test_tup))\n",
+    "    res = len(test_tup) == len(set(test_tup))\n    return (res) \ntest_tup = (1, 2, 3, 4, 5)\nprint(check_distinct(test_tup))\n",
+    "    res = len(test_tup) == len(set(test_tup))\n    return (res) \ntest_tup = (1, 2, 3, 4, 5)\nprint(check_distinct(test_tup))\n"
   ]
 }

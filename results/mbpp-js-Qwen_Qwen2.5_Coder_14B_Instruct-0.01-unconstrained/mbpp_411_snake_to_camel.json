@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n",
-    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n",
-    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n"
+    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);\n    }\n    return arr.join('');\n}",
+    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);\n    }\n    return arr.join('');\n}",
+    "    let arr = word.split('_');\n    for(let i=1;i<arr.length;i++){\n        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);\n    }\n    return arr.join('');\n}"
   ]
 }

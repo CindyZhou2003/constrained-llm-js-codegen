@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while",
-    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while",
-    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while"
+    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while(gap > 0){\n        for(var i = gap; i < n; i++){\n            var temp = my_list[i];\n            var j;\n            for(j = i; j >= gap && my_list[j - gap] > temp; j -= gap){\n                my_list[j] = my_list[j - gap];\n            }\n            my_list[j] = temp;\n        }\n        gap = Math.floor(gap/2);\n    }\n    return my_list;\n}",
+    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while(gap > 0){\n        for(var i = gap; i < n; i++){\n            var temp = my_list[i];\n            var j;\n            for(j = i; j >= gap && my_list[j - gap] > temp; j -= gap){\n                my_list[j] = my_list[j - gap];\n            }\n            my_list[j] = temp;\n        }\n        gap = Math.floor(gap/2);\n    }\n    return my_list;\n}",
+    "    var n = my_list.length;\n    var gap = Math.floor(n/2);\n    while(gap > 0){\n        for(var i = gap; i < n; i++){\n            var temp = my_list[i];\n            var j;\n            for(j = i; j >= gap && my_list[j - gap] > temp; j -= gap){\n                my_list[j] = my_list[j - gap];\n            }\n            my_list[j] = temp;\n        }\n        gap = Math.floor(gap/2);\n    }\n    return my_list;\n}"
   ]
 }

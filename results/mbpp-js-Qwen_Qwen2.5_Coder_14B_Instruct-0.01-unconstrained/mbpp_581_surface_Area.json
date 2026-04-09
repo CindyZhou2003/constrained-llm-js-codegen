@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2,",
-    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2,",
-    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2,"
+    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2, 2));\n    let SA = b*b + 2*b*l;\n    return SA;\n}",
+    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2, 2));\n    let SA = b*b + 2*b*l;\n    return SA;\n}",
+    "    let l = Math.sqrt(Math.pow(s, 2) - Math.pow(b/2, 2));\n    let SA = b*b + 2*b*l;\n    return SA;\n}"
   ]
 }

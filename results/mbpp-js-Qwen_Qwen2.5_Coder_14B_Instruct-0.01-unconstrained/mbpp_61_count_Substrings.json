@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = s.length;\n    let count = 0;\n    for(let i = ",
-    "    let n = s.length;\n    let count = 0;\n    for(let i = ",
-    "    let n = s.length;\n    let count = 0;\n    for(let i = "
+    "    let n = s.length;\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        let sum = 0;\n        for(let j = i; j < n; j++){\n            sum += parseInt(s[j]);\n            if(sum === (j - i + 1)){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let n = s.length;\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        let sum = 0;\n        for(let j = i; j < n; j++){\n            sum += parseInt(s[j]);\n            if(sum === (j - i + 1)){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let n = s.length;\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        let sum = 0;\n        for(let j = i; j < n; j++){\n            sum += parseInt(s[j]);\n            if(sum === (j - i + 1)){\n                count++;\n            }\n        }\n    }\n    return count;\n}"
   ]
 }

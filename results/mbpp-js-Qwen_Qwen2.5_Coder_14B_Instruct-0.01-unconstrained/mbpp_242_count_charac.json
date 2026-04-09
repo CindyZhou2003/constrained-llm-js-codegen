@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i=0; i<str1.length;",
-    "    let count = 0;\n    for(let i=0; i<str1.length;",
-    "    let count = 0;\n    for(let i=0; i<str1.length;"
+    "    let count = 0;\n    for(let i=0; i<str1.length; i++){\n        count += str1[i].length;\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i=0; i<str1.length; i++){\n        count += str1[i].length;\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i=0; i<str1.length; i++){\n        count++;\n    }\n    return count;\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Use the map function to iterate over the elements of the tuples\n  // The map function",
-    "  // Use the map function to iterate over the elements of the tuples\n  // The map function",
-    "  // Use the map function to iterate over the elements of the tuples\n  // The map function"
+    "  // Use the map function to iterate over the elements of the tuples\n  // The map function applies a function to each element of an array (or tuple in this case)\n  // Here, we use an arrow function to compare corresponding elements of the two tuples\n  // If both elements are truthy (i.e., not null, undefined, 0, false, NaN, or an empty string), \n  // the result is true; otherwise, it's false\n  let res = test_tup1.map((ele, idx) => ele && test_tup2[idx]);\n  return res;\n}\n",
+    "  // Use the map function to iterate over the elements of the tuples\n  // The map function applies a function to each element of an array (or tuple in this case)\n  // Here, we use an arrow function to compare corresponding elements of the two tuples\n  // If both elements are truthy (i.e., not null, undefined, 0, false, NaN, or an empty string), \n  // the result is true; otherwise, it's false\n  let res = test_tup1.map((ele, idx) => ele && test_tup2[idx]);\n  return res;\n}\n",
+    "  // Use the map function to iterate over the elements of the tuples\n  // The map function applies a function to each element of an array (or tuple in this case)\n  // Here, we use an arrow function to compare corresponding elements of the two tuples\n  // If both elements are truthy (i.e., not null, undefined, 0, false, NaN, or an empty string), \n  // the result is true; otherwise, it's false\n  let res = test_tup1.map((ele, idx) => ele && test_tup2[idx]);\n  return res;\n}\n"
   ]
 }

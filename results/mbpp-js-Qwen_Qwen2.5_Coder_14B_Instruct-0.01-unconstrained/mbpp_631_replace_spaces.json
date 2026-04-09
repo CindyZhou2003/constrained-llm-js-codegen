@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n",
-    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n",
-    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n"
+    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n        if(text[i] === ' '){\n            new_text += '_';\n        } else if(text[i] === '_'){\n            new_text += ' ';\n        } else {\n            new_text += text[i];\n        }\n    }\n    return new_text;\n}\n",
+    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n        if(text[i] === ' '){\n            new_text += '_';\n        } else if(text[i] === '_'){\n            new_text += ' ';\n        } else {\n            new_text += text[i];\n        }\n    }\n    return new_text;\n}\n",
+    "    let new_text = '';\n    for(let i=0; i<text.length; i++){\n        if(text[i] === ' '){\n            new_text += '_';\n        } else if(text[i] === '_'){\n            new_text += ' ';\n        } else {\n            new_text += text[i];\n        }\n    }\n    return new_text;\n}\n"
   ]
 }

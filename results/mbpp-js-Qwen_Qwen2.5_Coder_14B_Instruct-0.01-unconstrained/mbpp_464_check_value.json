@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < n; i++){\n        if(dict[i] !=",
-    "    for(let i = 0; i < n; i++){\n        if(dict[i] !=",
-    "    for(let i = 0; i < n; i++){\n        if(dict[i] !="
+    "    for(let i = 0; i < n; i++){\n        if(dict[i] != dict[0]){\n            return false;\n        }\n    }\n    return true;\n}\n\nlet dict = {1: \"apple\", 2: \"apple\", 3: \"apple\"};\nlet n = Object.keys(dict).length;",
+    "    for(let i = 0; i < n; i++){\n        if(dict[i] != dict[0]){\n            return false;\n        }\n    }\n    return true;\n}\n\nlet dict = {1: \"apple\", 2: \"apple\", 3: \"apple\"};\nlet n = Object.keys(dict).length;",
+    "    for(let i = 0; i < n; i++){\n        if(dict[i] != dict[0]){\n            return false;\n        }\n    }\n    return true;\n}\n\nlet dict = {1: \"apple\", 2: \"apple\", 3: \"apple\"};\nlet n = Object.keys(dict).length;"
   ]
 }

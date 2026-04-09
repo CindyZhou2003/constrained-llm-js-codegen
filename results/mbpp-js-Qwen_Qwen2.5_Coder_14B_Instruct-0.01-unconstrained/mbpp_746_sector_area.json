@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(a > 360) return undefined;\n    return (Math.PI * r *",
-    "    if(a > 360) return undefined;\n    return (Math.PI * r *",
-    "    if(a > 360) return undefined;\n    return (Math.PI * r *"
+    "    if(a > 360) return undefined;\n    return (Math.PI * r * r) * (a / 360);\n}",
+    "    if(a > 360) return undefined;\n    return (Math.PI * r * r) * (a / 360);\n}",
+    "    if(a > 360) return undefined;\n    return (Math.PI * r * r) * (a / 360);\n}"
   ]
 }

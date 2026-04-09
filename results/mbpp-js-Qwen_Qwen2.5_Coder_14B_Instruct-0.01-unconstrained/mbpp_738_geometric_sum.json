@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n < 0) {\n        return 0;\n    } else {\n        return",
-    "    if (n < 0) {\n        return 0;\n    } else {\n        return",
-    "    if (n < 0) {\n        return 0;\n    } else {\n        return"
+    "    if (n < 0) {\n        return 0;\n    } else {\n        return 1 / Math.pow(2, n) + geometric_sum(n - 1);\n    }\n}",
+    "    if (n < 0) {\n        return 0;\n    } else {\n        return 1 / Math.pow(2, n) + geometric_sum(n - 1);\n    }\n}",
+    "    if (n < 0) {\n        return 0;\n    } else {\n        return 1 / Math.pow(2, n) + geometric_sum(n - 1);\n    }\n}"
   ]
 }

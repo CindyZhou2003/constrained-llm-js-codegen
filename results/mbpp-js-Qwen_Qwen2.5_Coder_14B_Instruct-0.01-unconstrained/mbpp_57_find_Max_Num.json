@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_num = arr[0];\n    for(let i=1; i<arr.length",
-    "    //sort the array in descending order\n    arr.sort((a,b) => b-a);\n",
-    "    //sort the array in descending order\n    arr.sort((a,b) => b-a);\n"
+    "    //sort the array in descending order\n    arr.sort((a,b) => b-a);\n    //join the sorted array into a string and convert it to a number\n    let maxNum = parseInt(arr.join(''));\n    return maxNum;\n}",
+    "    let max_num = arr[0];\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] > max_num){\n            max_num = arr[i];\n        }\n    }\n    return max_num;\n}",
+    "    let max_num = arr[0];\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] > max_num){\n            max_num = arr[i];\n        }\n    }\n    return max_num;\n}"
   ]
 }

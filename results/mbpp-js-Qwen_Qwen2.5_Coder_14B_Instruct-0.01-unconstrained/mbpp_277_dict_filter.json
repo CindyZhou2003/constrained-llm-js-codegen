@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n",
-    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n",
-    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n"
+    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n){\n            new_dict[key] = dict[key];\n        }\n    }\n    return new_dict;\n}\n",
+    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n){\n            new_dict[key] = dict[key];\n        }\n    }\n    return new_dict;\n}\n",
+    "    let new_dict = {};\n    for(let key in dict){\n        if(dict[key] >= n){\n            new_dict[key] = dict[key];\n        }\n    }\n    return new_dict;\n}\n"
   ]
 }

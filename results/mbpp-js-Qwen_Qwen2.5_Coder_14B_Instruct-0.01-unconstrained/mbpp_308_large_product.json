@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i = 0; i < nums1.length; i",
-    "    let result = [];\n    for(let i = 0; i < nums1.length; i",
-    "    let result = [];\n    for(let i = 0; i < nums1.length; i"
+    "    let result = [];\n    for(let i = 0; i < nums1.length; i++){\n        for(let j = 0; j < nums2.length; j++){\n            result.push(nums1[i] * nums2[j]);\n        }\n    }\n    result.sort((a, b) => b - a);\n    return result.slice(0, N);\n}\n",
+    "    let result = [];\n    for(let i = 0; i < nums1.length; i++){\n        for(let j = 0; j < nums2.length; j++){\n            result.push(nums1[i] * nums2[j]);\n        }\n    }\n    result.sort((a, b) => b - a);\n    return result.slice(0, N);\n}",
+    "    let result = [];\n    for(let i = 0; i < nums1.length; i++){\n        for(let j = 0; j < nums2.length; j++){\n            result.push(nums1[i] * nums2[j]);\n        }\n    }\n    result.sort((a, b) => b - a);\n    return result.slice(0, N);\n}\n"
   ]
 }

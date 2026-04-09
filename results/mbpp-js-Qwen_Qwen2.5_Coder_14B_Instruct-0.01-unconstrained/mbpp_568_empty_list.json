@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n",
-    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n",
-    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n"
+    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n    }\n    return list;\n}",
+    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n    }\n    return list;\n}",
+    "    let list = [];\n    for(let i=0;i<length;i++){\n        list.push({});\n    }\n    return list;\n}"
   ]
 }

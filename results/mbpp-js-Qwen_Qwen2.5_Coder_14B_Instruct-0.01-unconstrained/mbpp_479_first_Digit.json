@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    while (n >= 10) {\n        n = n / 10;\n   ",
-    "    while (n >= 10) {\n        n = n / 10;\n   ",
-    "    while (n >= 10) {\n        n = n / 10;\n   "
+    "    while (n >= 10) {\n        n = n / 10;\n    }\n    return Math.floor(n);\n}",
+    "    while (n >= 10) {\n        n = n / 10;\n    }\n    return Math.floor(n);\n}",
+    "    while (n >= 10) {\n        n = n / 10;\n    }\n    return Math.floor(n);\n}"
   ]
 }

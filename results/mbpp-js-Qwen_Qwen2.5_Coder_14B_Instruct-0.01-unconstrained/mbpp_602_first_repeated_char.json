@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var temp = '';\n    var i;\n    for (i = 0; i < str",
-    "    var temp = '';\n    var i;\n    for (i = 0; i < str",
-    "    var temp = '';\n    var i;\n    for (i = 0; i < str"
+    "    var temp = '';\n    var i;\n    for (i = 0; i < str1.length; i++) {\n        if (temp.indexOf(str1.charAt(i)) === -1) {\n            temp += str1.charAt(i);\n        } else {\n            return str1.charAt(i);\n        }\n    }\n    return null;\n}",
+    "    var temp = '';\n    var i;\n    for (i = 0; i < str1.length; i++) {\n        if (temp.indexOf(str1.charAt(i)) === -1) {\n            temp += str1.charAt(i);\n        } else {\n            return str1.charAt(i);\n        }\n    }\n    return null;\n}",
+    "    var temp = '';\n    var i;\n    for (i = 0; i < str1.length; i++) {\n        if (temp.indexOf(str1.charAt(i)) === -1) {\n            temp += str1.charAt(i);\n        } else {\n            return str1.charAt(i);\n        }\n    }\n    return null;\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0",
-    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0",
-    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0"
+    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0;\n    for(let i = 0; i < n * k; i++){\n        max_ending_here += a[i % n];\n        if(max_so_far < max_ending_here){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n    return max_so_far;\n}",
+    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0;\n    for(let i = 0; i < n * k; i++){\n        max_ending_here += a[i % n];\n        if(max_so_far < max_ending_here){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n    return max_so_far;\n}",
+    "    let max_so_far = Number.MIN_SAFE_INTEGER;\n    let max_ending_here = 0;\n    for(let i = 0; i < n * k; i++){\n        max_ending_here += a[i % n];\n        if(max_so_far < max_ending_here){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n    return max_so_far;\n}"
   ]
 }

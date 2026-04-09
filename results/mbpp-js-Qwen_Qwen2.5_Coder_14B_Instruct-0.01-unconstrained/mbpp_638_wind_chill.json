@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (v > 4.8 && t < 10) {\n        return Math",
-    "    if (v > 4.8 && t < 10) {\n        return Math",
-    "    if (v > 4.8 && t < 10) {\n        return Math"
+    "    if (v > 4.8 && t < 10) {\n        let wci = 13.12 + 0.6215*t - 11.37*Math.pow(v, 0.16) + 0.3965*t*Math.pow(v, 0.16);\n        return Math.ceil(wci);\n    } else {\n        return t;\n    }\n}\n",
+    "    if (v > 4.8 && t < 10) {\n        let wci = 13.12 + 0.6215*t - 11.37*Math.pow(v, 0.16) + 0.3965*t*Math.pow(v, 0.16);\n        return Math.ceil(wci);\n    } else {\n        return t;\n    }\n}\n",
+    "    if (v > 4.8 && t < 10) {\n        let wci = 13.12 + 0.6215*t - 11.37*Math.pow(v, 0.16) + 0.3965*t*Math.pow(v, 0.16);\n        return Math.ceil(wci);\n    } else {\n        return t;\n    }\n}\n"
   ]
 }

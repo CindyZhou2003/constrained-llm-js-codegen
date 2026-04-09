@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n   ",
-    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n   ",
-    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n   "
+    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n    for(let i=1;i<=n;i++){\n        sumOfCubes += Math.pow(i,3);\n        sumOfNumbers += i;\n    }\n    return sumOfCubes - sumOfNumbers;\n}",
+    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n    for(let i=1;i<=n;i++){\n        sumOfCubes += Math.pow(i,3);\n        sumOfNumbers += i;\n    }\n    return sumOfCubes - sumOfNumbers;\n}",
+    "    let sumOfCubes = 0;\n    let sumOfNumbers = 0;\n    for(let i=1;i<=n;i++){\n        sumOfCubes += Math.pow(i,3);\n        sumOfNumbers += i;\n    }\n    return sumOfCubes - sumOfNumbers;\n}"
   ]
 }

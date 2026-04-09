@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [];\n  for(let i=0; i<test_tup1.length;",
-    "  let res = [];\n  for(let i=0; i<test_tup1.length;",
-    "  res = []\n  for(let i=0; i<test_tup1.length; i"
+    "  res = []\n  for(let i=0; i<test_tup1.length; i++){\n    res.push(test_tup1[i]*test_tup2[i])\n  }\n  return res\n}\n",
+    "  res = []\n  for(let i=0; i<test_tup1.length; i++){\n    res.push(test_tup1[i]*test_tup2[i])\n  }\n  return res\n}\n",
+    "  let res = [];\n  for(let i=0; i<test_tup1.length; i++){\n    res.push(test_tup1[i] * test_tup2[i]);\n  }\n  return res;\n}\n\nlet test_tup1 = [1, 3, 4, 6]\nlet test_tup2 = [4, 5, 6, 7]"
   ]
 }

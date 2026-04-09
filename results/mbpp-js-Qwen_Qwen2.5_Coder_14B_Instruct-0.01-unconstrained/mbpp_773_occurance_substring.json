@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while (pos !== -1",
-    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while(pos !== -1){\n",
-    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while (pos !== -1"
+    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while(pos !== -1){\n        result.push(pos);\n        pos = text.indexOf(pattern, pos + 1);\n    }\n    return result.length > 0 ? result : undefined;\n}\n",
+    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while(pos !== -1){\n        result.push(pos);\n        pos = text.indexOf(pattern, pos + 1);\n    }\n    return result.length > 0 ? result : undefined;\n}\n",
+    "    let result = [];\n    let pos = text.indexOf(pattern);\n    while (pos !== -1) {\n        result.push(pos);\n        pos = text.indexOf(pattern, pos + 1);\n    }\n    return result.length > 0 ? result : undefined;\n}\n"
   ]
 }

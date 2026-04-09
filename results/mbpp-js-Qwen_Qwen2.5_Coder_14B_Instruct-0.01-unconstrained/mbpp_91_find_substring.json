@@ -15,6 +15,6 @@
   "completions": [
     "  return str1.indexOf(sub_str) !== -1;\n}\n",
     "  return str1.indexOf(sub_str) !== -1;\n}",
-    "  return str1.indexOf(sub_str) !== -1;\n}"
+    "  return str1.indexOf(sub_str) !== -1;\n}\n"
   ]
 }

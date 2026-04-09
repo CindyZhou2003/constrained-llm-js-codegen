@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = str.length;\n    return parseInt(n * (n + 1) / ",
-    "    let n = str.length;\n    return parseInt(n * (n + 1) / ",
-    "    let n = str.length;\n    return parseInt(n * (n + 1) / "
+    "    let n = str.length;\n    return parseInt(n * (n + 1) / 2);\n}",
+    "    let n = str.length;\n    return parseInt(n * (n + 1) / 2);\n}",
+    "    let n = str.length;\n    return parseInt(n * (n + 1) / 2);\n}"
   ]
 }

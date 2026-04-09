@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over",
-    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over",
-    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over"
+    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over the elements of the tuples using the map function\n  for(let i=0; i<test_tup1.length; i++){\n    // Perform element-wise division and append the result to the list\n    res.push(test_tup1[i] / test_tup2[i]);\n  }\n  // Return the resulting list\n  return res;\n}\n",
+    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over the elements of the tuples using a for loop\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Perform element-wise division and append the result to the list\n    res.push(test_tup1[idx] / test_tup2[idx]);\n  }\n  // Return the resulting list\n  return res;\n}\n",
+    "  // Initialize an empty list to store the results\n  let res = [];\n  // Iterate over the elements of the tuples using a for loop\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Perform element-wise division and append the result to the list\n    res.push(test_tup1[idx] / test_tup2[idx]);\n  }\n  // Return the resulting list\n  return res;\n}\n"
   ]
 }

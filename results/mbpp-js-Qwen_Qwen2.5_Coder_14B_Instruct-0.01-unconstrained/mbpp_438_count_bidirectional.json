@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  res = 0\n  for (let idx in test_list) {\n    if (idx",
-    "  res = 0\n  for (let idx in test_list) {\n    if (idx",
-    "  res = 0\n  for (let idx in test_list) {\n    if (idx"
+    "  res = 0\n  for (let idx in test_list) {\n    if (idx != 0 && idx != len(test_list) - 1) {\n      if (test_list[idx] > test_list[idx - 1] and test_list[idx] > test_list[idx + 1]) {\n        res += 1\n      }\n    }\n  }\n  return res\n}",
+    "  res = 0\n  for (let idx in test_list) {\n    if (idx != 0 && idx != len(test_list) - 1) {\n      if (test_list[idx] > test_list[idx - 1] and test_list[idx] > test_list[idx + 1]) {\n        res += 1\n      }\n    }\n  }\n  return res\n}",
+    "  res = 0\n  for (let idx in test_list) {\n    if (idx != 0 && idx != len(test_list) - 1) {\n      if (test_list[idx] > test_list[idx - 1] and test_list[idx] > test_list[idx + 1]) {\n        res += 1\n      }\n    }\n  }\n  return res\n}\n"
   ]
 }

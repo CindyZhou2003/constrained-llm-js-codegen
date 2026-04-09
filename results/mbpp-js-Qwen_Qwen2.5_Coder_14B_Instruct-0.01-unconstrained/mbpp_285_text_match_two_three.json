@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return",
-    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return",
-    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return"
+    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}",
+    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}\n",
+    "  let pattern = /ab{2,3}/;\n  if(pattern.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}\n"
   ]
 }

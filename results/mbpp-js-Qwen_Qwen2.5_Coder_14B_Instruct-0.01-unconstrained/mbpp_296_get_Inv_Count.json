@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let inv_count = 0;\n    for(let i = 0; i < arr.length",
-    "    let inv_count = 0;\n    for(let i = 0; i < arr.length",
-    "    let inv_count = 0;\n    for(let i = 0; i < arr.length"
+    "    let inv_count = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                inv_count++;\n            }\n        }\n    }\n    return inv_count;\n}",
+    "    let inv_count = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                inv_count++;\n            }\n        }\n    }\n    return inv_count;\n}",
+    "    let inv_count = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                inv_count++;\n            }\n        }\n    }\n    return inv_count;\n}"
   ]
 }

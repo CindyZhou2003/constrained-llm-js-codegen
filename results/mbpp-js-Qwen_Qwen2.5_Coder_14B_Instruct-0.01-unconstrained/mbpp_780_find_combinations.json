@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx",
-    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx",
-    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx"
+    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx++){\n    for(let idxn = idx + 1; idxn < test_list.length; idxn++){\n      if(test_list[idx][1] + test_list[idxn][1] == 10){\n        res.push([test_list[idx], test_list[idxn]]);\n      }\n    }\n  }\n  return res;\n}\n\nlet test_list = [(1, 4), (2, 3), (3, 7), (4, 6), (5, 5)];",
+    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx++){\n    for(let idxn = idx + 1; idxn < test_list.length; idxn++){\n      if(test_list[idx][1] + test_list[idxn][1] == 10){\n        res.push([test_list[idx], test_list[idxn]]);\n      }\n    }\n  }\n  return res;\n}\n\nlet test_list = [(1, 4), (2, 3), (3, 7), (4, 6), (5, 5)];",
+    "  let res = [];\n  for(let idx = 0; idx < test_list.length; idx++){\n    for(let idxn = idx + 1; idxn < test_list.length; idxn++){\n      if(test_list[idx][1] + test_list[idxn][1] == 10){\n        res.push([test_list[idx], test_list[idxn]]);\n      }\n    }\n  }\n  return res;\n}\n\nlet test_list = [(1, 4), (2, 3), (3, 7), (4, 6), (5, 5)];"
   ]
 }

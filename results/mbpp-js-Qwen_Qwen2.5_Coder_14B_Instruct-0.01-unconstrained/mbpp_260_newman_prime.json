@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    let num = 1;\n    while(count < n){\n",
-    "    let count = 0;\n    let num = 1;\n    while(count < n){\n",
-    "    let count = 0;\n    let num = 1;\n    while(count < n){\n"
+    "    let count = 0;\n    let num = 1;\n    while(count < n){\n        let prime = true;\n        for(let i = 2; i <= Math.sqrt(num); i++){\n            if(num % i === 0){\n                prime = false;\n                break;\n            }\n        }\n        if(prime){\n            count++;\n        }\n        num++;\n    }\n    return num - 1;\n}",
+    "    let count = 0;\n    let num = 1;\n    while(count < n){\n        let prime = true;\n        for(let i = 2; i <= Math.sqrt(num); i++){\n            if(num % i === 0){\n                prime = false;\n                break;\n            }\n        }\n        if(prime){\n            count++;\n        }\n        num++;\n    }\n    return num - 1;\n}",
+    "    let count = 0;\n    let num = 1;\n    while(count < n){\n        let prime = true;\n        for(let i = 2; i <= Math.sqrt(num); i++){\n            if(num % i === 0){\n                prime = false;\n                break;\n            }\n        }\n        if(prime){\n            count++;\n        }\n        num++;\n    }\n    return num - 1;\n}"
   ]
 }

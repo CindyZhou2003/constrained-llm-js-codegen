@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n\nconsole",
-    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n\nconsole",
-    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n\nconsole"
+    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n",
+    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n",
+    "    let newStr = str1.split(' ').join(char);\n    return newStr;\n}\n"
   ]
 }

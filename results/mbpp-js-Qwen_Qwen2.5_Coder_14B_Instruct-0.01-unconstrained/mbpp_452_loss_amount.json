@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else",
-    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else",
-    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else"
+    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else{\n        return 0;\n    }\n}",
+    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else{\n        return 0;\n    }\n}",
+    "    if(sale_amount < actual_cost){\n        return actual_cost - sale_amount;\n    }else{\n        return 0;\n    }\n}"
   ]
 }

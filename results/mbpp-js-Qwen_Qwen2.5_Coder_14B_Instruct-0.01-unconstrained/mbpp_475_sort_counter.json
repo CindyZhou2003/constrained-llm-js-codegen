@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] -",
-    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] -",
-    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] -"
+    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] - a[1]);\n    return sorted;\n}\n\nlet dict1 = { 'apple': 4, 'banana': 2, 'orange': 5, 'grape': 3 };",
+    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] - a[1]);\n    return sorted;\n}\nlet dict1 = { 'apple': 4, 'banana': 2, 'orange': 5, 'grape': 3 };",
+    "    let sorted = Object.entries(dict1).sort((a,b) => b[1] - a[1]);\n    return sorted;\n}\nlet dict1 = { 'apple': 4, 'banana': 2, 'orange': 5, 'grape': 3 };"
   ]
 }

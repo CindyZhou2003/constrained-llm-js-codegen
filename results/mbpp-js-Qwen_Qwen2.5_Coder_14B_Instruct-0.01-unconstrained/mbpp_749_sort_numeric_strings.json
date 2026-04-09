@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    nums_str.sort(function(a, b){return a - b});\n    return nums_str;\n}\n\n",
-    "    nums_str.sort(function(a, b){return a - b});\n    return nums_str;\n}\n\n",
-    "    nums_str.sort((a, b) => a - b);\n    return nums_str;\n}\n\n"
+    "    nums_str.sort((a,b) => a-b);\n    return nums_str;\n}\n",
+    "    nums_str.sort(function(a, b){return a - b});\n    return nums_str;\n}\n",
+    "    nums_str.sort((a, b) => a - b);\n    return nums_str;\n}\n"
   ]
 }

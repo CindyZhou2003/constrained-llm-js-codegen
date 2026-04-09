@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // n is 32 bit number\n    return (n << d) | (n",
-    "    // n is 32 bit number\n    return (n << d) | (n",
-    "    // n is 32 bit number\n    return (n << d) | (n"
+    "    // n is 32 bit number\n    return (n << d) | (n >>> (32 - d));\n}\n",
+    "    // n is 32 bit number\n    return (n << d) | (n >>> (32 - d));\n}\n",
+    "    // n is 32 bit number\n    return (n << d) | (n >>> (32 - d));\n}\n"
   ]
 }

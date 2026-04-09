@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n\n",
-    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n\n",
-    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n\n"
+    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n",
+    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n",
+    "    num++;\n    while(!isPalindrome(num)){\n        num++;\n    }\n    return num;\n}\n"
   ]
 }

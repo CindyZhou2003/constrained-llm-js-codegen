@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n",
-    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n",
-    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n"
+    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n    while ((match = regex.exec(text)) !== null) {\n        result.push({\n            match: match[0],\n            startIndex: match.index,\n            endIndex: regex.lastIndex - 1\n        });\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n    while ((match = regex.exec(text)) !== null) {\n        result.push({\n            match: match[0],\n            startIndex: match.index,\n            endIndex: regex.lastIndex - 1\n        });\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let regex = new RegExp(pattern, 'g');\n    let match;\n    while ((match = regex.exec(text)) !== null) {\n        result.push({\n            match: match[0],\n            startIndex: match.index,\n            endIndex: regex.lastIndex - 1\n        });\n    }\n    return result;\n}\n"
   ]
 }

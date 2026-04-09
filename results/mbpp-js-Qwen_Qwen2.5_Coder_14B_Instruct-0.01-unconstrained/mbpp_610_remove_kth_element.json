@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}\nconsole",
-    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}\nconsole",
-    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}\nconsole"
+    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}",
+    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}",
+    "    return list1.slice(0, L-1).concat(list1.slice(L));\n}"
   ]
 }

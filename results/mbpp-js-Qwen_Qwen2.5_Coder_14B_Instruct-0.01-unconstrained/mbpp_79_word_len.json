@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    }",
-    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    }",
-    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    }"
+    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    } else {\n        return \"Odd\";\n    }\n}",
+    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    } else {\n        return \"Odd\";\n    }\n}",
+    "    if (s.length % 2 === 0) {\n        return \"Even\";\n    } else {\n        return \"Odd\";\n    }\n}"
   ]
 }

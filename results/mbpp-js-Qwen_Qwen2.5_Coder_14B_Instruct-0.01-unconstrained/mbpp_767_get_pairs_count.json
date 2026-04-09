@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i=0; i<arr.length; i",
-    "    let count = 0;\n    for(let i=0; i<arr.length; i",
-    "    let count = 0;\n    for(let i=0; i<arr.length; i"
+    "    let count = 0;\n    for(let i=0; i<arr.length; i++){\n        for(let j=i+1; j<arr.length; j++){\n            if(arr[i] + arr[j] == sum)\n                count++;\n        }\n    }\n    return count;\n}\n\nlet arr = [1, 5, 7, -1, 5];\nlet sum = 6;",
+    "    let count = 0;\n    for(let i=0; i<arr.length; i++){\n        for(let j=i+1; j<arr.length; j++){\n            if(arr[i] + arr[j] == sum)\n                count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i=0; i<arr.length; i++){\n        for(let j=i+1; j<arr.length; j++){\n            if(arr[i] + arr[j] == sum)\n                count++;\n        }\n    }\n    return count;\n}"
   ]
 }

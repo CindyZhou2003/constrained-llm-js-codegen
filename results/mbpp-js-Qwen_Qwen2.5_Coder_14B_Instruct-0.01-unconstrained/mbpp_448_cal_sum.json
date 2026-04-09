@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let perrin = [3, 0, 2];\n    for(let i=",
-    "    let perrin = [3, 0, 2];\n    for(let i=",
-    "    let perrin = [3, 0, 2];\n    for(let i="
+    "    let perrin = [3, 0, 2];\n    for(let i=3; i<n; i++){\n        perrin[i] = perrin[i-2] + perrin[i-3];\n    }\n    return perrin.reduce((a, b) => a + b);\n}",
+    "    let perrin = [3, 0, 2];\n    for(let i=3; i<n; i++){\n        perrin[i] = perrin[i-2] + perrin[i-3];\n    }\n    return perrin.reduce((a, b) => a + b);\n}",
+    "    let perrin = [3, 0, 2];\n    for(let i=3; i<n; i++){\n        perrin[i] = perrin[i-2] + perrin[i-3];\n    }\n    return perrin.reduce((a, b) => a + b);\n}"
   ]
 }

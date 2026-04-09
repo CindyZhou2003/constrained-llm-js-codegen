@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n   ",
-    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n   ",
-    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n   "
+    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n    if (match) {\n        return {adverb: match[0], position: text.search(match[0])};\n    } else {\n        return null;\n    }\n}",
+    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n    if (match) {\n        return [match[0], text.search(match[0])];\n    } else {\n        return null;\n    }\n}",
+    "    let regex = /\\w+ly\\b/g;\n    let match = text.match(regex);\n    if(match){\n        return [match[0],text.indexOf(match[0])];\n    }else{\n        return null;\n    }\n}"
   ]
 }

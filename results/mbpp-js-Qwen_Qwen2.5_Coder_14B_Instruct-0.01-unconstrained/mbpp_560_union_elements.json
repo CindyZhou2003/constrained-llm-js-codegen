@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [...new Set([...test_tup1, ...test_tup2])].",
-    "  let res = [...new Set([...test_tup1, ...test_tup2])].",
-    "  let res = [...new Set([...test_tup1, ...test_tup2])]."
+    "  let res = [...new Set([...test_tup1, ...test_tup2])].sort((a, b) => a - b);\n  return res;\n}\n\nlet test_tup1 = [1, 3, 5, 7];\nlet test_tup2 = [2, 4, 6, 8];",
+    "  let res = [...new Set([...test_tup1, ...test_tup2])].sort((a, b) => a - b);\n  return res;\n}\n\nlet test_tup1 = [1, 3, 5, 7];\nlet test_tup2 = [2, 4, 6, 8];",
+    "  let res = [...new Set([...test_tup1, ...test_tup2])].sort((a, b) => a - b);\n  return res;\n}\n\nlet test_tup1 = [1, 3, 5, 7];\nlet test_tup2 = [2, 4, 6, 8];"
   ]
 }

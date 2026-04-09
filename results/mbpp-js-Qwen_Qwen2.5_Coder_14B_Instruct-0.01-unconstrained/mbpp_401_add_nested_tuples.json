@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate",
-    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate",
-    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate"
+    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate over the indices of the first tuple\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Initialize an empty list to store the inner result\n    let inner_res = [];\n    \n    // Iterate over the indices of the inner tuples\n    for(let jdx = 0; jdx < test_tup1[idx].length; jdx++){\n      // Add the corresponding elements from the inner tuples and append to inner_res\n      inner_res.push(test_tup1[idx][jdx] + test_tup2[idx][jdx]);\n    }\n    \n    // Append the inner_res to the result list\n    res.push(inner_res);\n  }\n  \n  // Return the result list\n  return res;\n}\n",
+    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate over the indices of the first tuple\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Initialize an empty list to store the inner result\n    let inner_res = [];\n    \n    // Iterate over the indices of the inner tuples\n    for(let jdx = 0; jdx < test_tup1[idx].length; jdx++){\n      // Add the corresponding elements from the inner tuples and append to inner_res\n      inner_res.push(test_tup1[idx][jdx] + test_tup2[idx][jdx]);\n    }\n    \n    // Append the inner_res to the result list\n    res.push(inner_res);\n  }\n  \n  // Return the result list\n  return res;\n}\n",
+    "  // Initialize an empty list to store the result\n  let res = [];\n  \n  // Iterate over the indices of the first tuple\n  for(let idx = 0; idx < test_tup1.length; idx++){\n    // Initialize an empty list to store the inner result\n    let inner_res = [];\n    \n    // Iterate over the indices of the inner tuples\n    for(let jdx = 0; jdx < test_tup1[idx].length; jdx++){\n      // Add the corresponding elements from the inner tuples and append to inner_res\n      inner_res.push(test_tup1[idx][jdx] + test_tup2[idx][jdx]);\n    }\n    \n    // Append the inner_res to the result list\n    res.push(inner_res);\n  }\n  \n  // Return the result list\n  return res;\n}\n"
   ]
 }

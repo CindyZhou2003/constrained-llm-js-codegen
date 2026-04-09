@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let num = N-1;\n    while(num > 0){\n        if(num < N",
-    "    let num = N-1;\n    while(num > 0){\n        if(num < N",
-    "    let num = N-1;\n    while(num > 0){\n        if(num < N"
+    "    let num = N-1;\n    while(num > 0){\n        if(num < N){\n            return num;\n        }\n        num--;\n    }\n}",
+    "    let num = N-1;\n    while(num > 0){\n        if(num < N){\n            return num;\n        }\n        num--;\n    }\n}",
+    "    let num = N-1;\n    while(num > 0){\n        if(num < N){\n            return num;\n        }\n        num--;\n    }\n}"
   ]
 }

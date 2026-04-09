@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let reversed_list = [];\n    for(let i=0; i<stringlist.length; i++){\n",
+    "    let reversed_list = [];\n    for(let i=0; i<stringlist.length; i++){\n        let reversed_string = '';\n        for(let j=stringlist[i].length-1; j>=0; j--){\n            reversed_string += stringlist[i][j];\n        }\n        reversed_list.push(reversed_string);\n    }\n    return reversed_list;\n}\n",
     "    return stringlist.map(str => str.split('').reverse().join(''));\n}\n",
-    "    let reversed_list = [];\n    for(let i=0; i<stringlist.length; i++){\n"
+    "    return stringlist.map(str => str.split('').reverse().join(''));\n}\n"
   ]
 }

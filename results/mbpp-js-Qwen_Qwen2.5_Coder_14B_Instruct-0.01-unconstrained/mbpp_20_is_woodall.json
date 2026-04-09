@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = 1;\n    while (n < x) {\n        n *= 2",
-    "    let n = 1;\n    while (n < x) {\n        n *= 2",
-    "    let n = 1;\n    while (n < x) {\n        n *= 2"
+    "    let n = 1;\n    while (n < x) {\n        n *= 2;\n        if ((n - 1) == x) {\n            return true;\n        }\n    }\n    return false;\n}",
+    "    let n = 1;\n    while (n < x) {\n        n *= 2;\n        if ((n - 1) == x) {\n            return true;\n        }\n    }\n    return false;\n}",
+    "    let n = 1;\n    while (n < x) {\n        n *= 2;\n        if ((n - 1) == x) {\n            return true;\n        }\n    }\n    return false;\n}"
   ]
 }

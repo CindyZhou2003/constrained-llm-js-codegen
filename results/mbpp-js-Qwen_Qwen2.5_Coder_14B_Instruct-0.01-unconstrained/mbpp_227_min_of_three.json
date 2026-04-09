@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (a <= b && a <= c) {\n        return a;\n    } else if",
-    "    if (a <= b && a <= c) {\n        return a;\n    } else if",
-    "    if (a <= b && a <= c) {\n        return a;\n    } else if"
+    "    if (a <= b && a <= c) {\n        return a;\n    } else if (b <= a && b <= c) {\n        return b;\n    } else {\n        return c;\n    }\n}",
+    "    if (a <= b && a <= c) {\n        return a;\n    } else if (b <= a && b <= c) {\n        return b;\n    } else {\n        return c;\n    }\n}",
+    "    if (a <= b && a <= c) {\n        return a;\n    } else if (b <= a && b <= c) {\n        return b;\n    } else {\n        return c;\n    }\n}"
   ]
 }

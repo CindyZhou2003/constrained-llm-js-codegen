@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers",
-    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers",
-    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers"
+    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers.length; i++){\n        if(numbers[i] < first){\n            second = first;\n            first = numbers[i];\n        } else if(numbers[i] < second && numbers[i] !== first){\n            second = numbers[i];\n        }\n    }\n    return second;\n}",
+    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers.length; i++){\n        if(numbers[i] < first){\n            second = first;\n            first = numbers[i];\n        } else if(numbers[i] < second && numbers[i] !== first){\n            second = numbers[i];\n        }\n    }\n    return second;\n}",
+    "    let first = Infinity, second = Infinity;\n    for(let i=0; i<numbers.length; i++){\n        if(numbers[i] < first){\n            second = first;\n            first = numbers[i];\n        } else if(numbers[i] < second && numbers[i] !== first){\n            second = numbers[i];\n        }\n    }\n    return second;\n}"
   ]
 }

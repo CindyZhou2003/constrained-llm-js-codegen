@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student][",
-    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student][",
-    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student]["
+    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\nlet students = {\n    \"John\": [175.5, 68.2],\n    \"Jane\": [163.4, 55.1],\n    \"Mike\": [180.3, 72.5],\n    \"Emily\": [168.9, 54.3]\n};\n\nlet min_height = 165;\nlet min_weight = 50;\n",
+    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\nlet students = {\n    \"John\": [175.5, 68.2],\n    \"Jane\": [163.4, 55.1],\n    \"Mike\": [180.3, 72.5],\n    \"Emily\": [168.9, 54.3]\n};\n\nlet min_height = 165;\nlet min_weight = 50;\n",
+    "    let filtered_students = {};\n    for(let student in students){\n        if(students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\nlet students = {\n    \"John\": [175.5, 68.2],\n    \"Jane\": [163.4, 55.1],\n    \"Mike\": [180.3, 72.5],\n    \"Emily\": [168.9, 54.3]\n};\n\nlet min_height = 165;\nlet min_weight = 50;\n"
   ]
 }

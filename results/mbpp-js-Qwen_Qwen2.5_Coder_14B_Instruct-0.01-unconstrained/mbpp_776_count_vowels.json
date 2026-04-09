@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let res = 0;\n    for(let idx = 0; idx < test_str.length",
-    "    let res = 0;\n    for(let idx = 0; idx < test_str.length",
-    "    let res = 0;\n    for(let idx = 0; idx < test_str.length"
+    "    let res = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(idx > 0 && (test_str[idx - 1] == 'a' || test_str[idx - 1] == 'e' || test_str[idx - 1] == 'i' || test_str[idx - 1] == 'o' || test_str[idx - 1] == 'u')){\n            res += 1;\n        }\n        if(idx < len(test_str) - 1 && (test_str[idx + 1] == 'a' || test_str[idx + 1] == 'e' || test_str[idx + 1] == 'i' || test_str[idx + 1] == 'o' || test_str[idx + 1] == 'u')){\n            res += 1;\n        }\n    }\n    return res;\n}",
+    "    let res = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(idx > 0 and idx < len(test_str) - 1 and test_str[idx + 1] in \"aeiou\" and test_str[idx - 1] in \"aeiou\"):\n            res += 1\n    }\n    return (res)\n}\nlet test_str = 'geeksforgeeks'",
+    "    let res = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(idx > 0 and idx < len(test_str) - 1 and test_str[idx + 1] in \"aeiou\" and test_str[idx - 1] in \"aeiou\"):\n            res += 1\n    }\n    return (res)\n}\nlet test_str = 'geeksforgeeks'"
   ]
 }

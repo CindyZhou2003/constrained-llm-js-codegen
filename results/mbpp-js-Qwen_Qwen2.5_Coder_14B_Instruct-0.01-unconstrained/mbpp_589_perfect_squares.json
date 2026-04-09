@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if",
-    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if",
-    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if"
+    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if(Number.isInteger(Math.sqrt(i))){\n            arr.push(i);\n        }\n    }\n    return arr;\n}",
+    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if(Number.isInteger(Math.sqrt(i))){\n            arr.push(i);\n        }\n    }\n    return arr;\n}",
+    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if(Number.isInteger(Math.sqrt(i))){\n            arr.push(i);\n        }\n    }\n    return arr;\n}"
   ]
 }

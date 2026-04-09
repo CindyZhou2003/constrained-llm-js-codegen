@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists",
-    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists",
-    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists"
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists){\n        let sum = list.reduce((acc, val) => acc + val, 0);\n        if(sum > maxSum){\n            maxSum = sum;\n            maxList = list;\n        }\n    }\n    return [maxList];\n}\n",
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists){\n        let sum = list.reduce((acc, val) => acc + val, 0);\n        if(sum > maxSum){\n            maxSum = sum;\n            maxList = list;\n        }\n    }\n    return [maxList];\n}\n",
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let list of lists){\n        let sum = list.reduce((acc, val) => acc + val, 0);\n        if(sum > maxSum){\n            maxSum = sum;\n            maxList = list;\n        }\n    }\n    return [maxList];\n}\n"
   ]
 }

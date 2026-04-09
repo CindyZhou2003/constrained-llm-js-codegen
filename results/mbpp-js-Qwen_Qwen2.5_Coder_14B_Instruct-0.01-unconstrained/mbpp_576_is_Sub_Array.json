@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (A.length > B.length)\n        return false;\n    for(let i = 0",
-    "    let M = A.length;\n    let N = B.length;\n    if (M > N",
-    "    if (A.length > B.length)\n        return false;\n    for(let i = 0"
+    "    let M = A.length;\n    let N = B.length;\n    if (M > N)\n        return false;\n    for(let i = 0; i <= N - M; i++){\n        let j;\n        for(j = 0; j < M; j++)\n            if(B[i + j] != A[j])\n                break;\n        if(j == M)\n            return true;\n    }\n    return false;\n}\nlet A = [1, 2, 3];\nlet B = [5, 6, 7, 1, 2, 3, 8];",
+    "    let M = A.length;\n    let N = B.length;\n    if (M > N)\n        return false;\n    for(let i = 0; i <= N - M; i++){\n        let j;\n        for(j = 0; j < M; j++)\n            if(B[i + j] != A[j])\n                break;\n        if(j == M)\n            return true;\n    }\n    return false;\n}\nlet A = [1, 2, 3];\nlet B = [5, 6, 7, 1, 2, 3, 8];",
+    "    let M = A.length;\n    let N = B.length;\n    if (M > N)\n        return false;\n    for(let i = 0; i <= N - M; i++){\n        let j;\n        for(j = 0; j < M; j++)\n            if(B[i + j] != A[j])\n                break;\n        if(j == M)\n            return true;\n    }\n    return false;\n}\nlet A = [1, 2, 3];\nlet B = [5, 6, 7, 1, 2, 3, 8];"
   ]
 }

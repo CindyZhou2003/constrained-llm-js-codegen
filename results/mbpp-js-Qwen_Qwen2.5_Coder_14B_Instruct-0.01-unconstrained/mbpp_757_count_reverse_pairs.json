@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let res = 0;\n    let temp = new Set();\n    for(let ele of test",
-    "  let res = 0;\n  let temp = new Set();\n  for(let ele of test",
-    "    let res = 0;\n    let temp = new Set();\n    for(let ele of test"
+    "    let res = 0;\n    let temp = new Set();\n    for(let ele of test_list){\n        if(temp.has(ele)){\n            res += 1;\n        }\n        temp.add([...ele].reverse().join(''));\n    }\n    return res;\n}\nlet test_list = [\"abc\", \"cba\", \"bca\", \"xyz\", \"zyx\"];",
+    "  let res = 0;\n  let temp = new Set();\n  for(let ele of test_list){\n    if(temp.has(ele.split('').reverse().join(''))){\n      res += 1;\n    }\n    temp.add(ele);\n  }\n  return res;\n}\n\nlet test_list = [\"abc\", \"cba\", \"bca\", \"xyz\", \"zyx\"];",
+    "  let res = 0;\n  let temp = new Set();\n  for(let ele of test_list){\n    if(temp.has(ele.split('').reverse().join(''))){\n      res += 1;\n    }\n    temp.add(ele);\n  }\n  return res;\n}\n\nlet test_list = [\"abc\", \"cba\", \"bca\", \"xyz\", \"zyx\"];"
   ]
 }

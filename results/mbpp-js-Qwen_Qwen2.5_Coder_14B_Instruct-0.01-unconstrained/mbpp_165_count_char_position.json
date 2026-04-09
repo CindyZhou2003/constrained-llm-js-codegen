@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i",
-    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i",
-    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i"
+    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i<str.length;i++){\n        if((i===str.charCodeAt(i)-97)){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i<str.length;i++){\n        if((i===str.charCodeAt(i)-97)){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var str=str1.toLowerCase();\n    var count=0;\n    for(var i=0;i<str.length;i++){\n        if((i===str.charCodeAt(i)-97)){\n            count++;\n        }\n    }\n    return count;\n}"
   ]
 }

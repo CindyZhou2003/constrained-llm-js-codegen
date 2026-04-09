@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +",
-    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +",
-    "    let row_sums = M.map(row => row.reduce((acc, val) => acc +"
+    "    let n = M.length;\n    let m = M[0].length;\n    let row_sums = new Array(n);\n    for(let i=0; i<n; i++){\n        row_sums[i] = 0;\n        for(let j=0; j<m; j++){\n            row_sums[i] += M[i][j];\n        }\n    }\n    for(let i=0; i<n-1; i++){\n        for(let j=i+1; j<n; j++){\n            if(row_sums[i] > row_sums[j]){\n                let temp = row_sums[i];\n                row_sums[i] = row_sums[j];\n                row_sums[j] = temp;\n                let temp_row = M[i];\n                M[i] = M[j];\n                M[j] = temp_row;\n            }\n        }\n    }\n    return M;\n}\nlet M = [[3, 5, 2], [1, 4, 6], [7, 8, 9]];",
+    "    let n = M.length;\n    let m = M[0].length;\n    let row_sums = new Array(n);\n    for(let i=0; i<n; i++){\n        row_sums[i] = 0;\n        for(let j=0; j<m; j++){\n            row_sums[i] += M[i][j];\n        }\n    }\n    for(let i=0; i<n-1; i++){\n        for(let j=i+1; j<n; j++){\n            if(row_sums[i] > row_sums[j]){\n                let temp = row_sums[i];\n                row_sums[i] = row_sums[j];\n                row_sums[j] = temp;\n                let temp_row = M[i];\n                M[i] = M[j];\n                M[j] = temp_row;\n            }\n        }\n    }\n    return M;\n}\nlet M = [[3, 5, 2], [1, 4, 6], [7, 8, 9]];",
+    "    let row_sums = M.map(row => row.reduce((acc, val) => acc + val, 0));\n    let sorted_indices = row_sums.map((sum, index) => index).sort((a, b) => row_sums[a] - row_sums[b]);\n    let sorted_M = sorted_indices.map(index => M[index]);\n    return sorted_M;\n}"
   ]
 }

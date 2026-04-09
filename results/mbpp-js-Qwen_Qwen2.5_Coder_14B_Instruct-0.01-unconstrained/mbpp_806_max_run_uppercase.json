@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let res = 0;\n    let cnt = 0;\n    for(let idx = ",
-    "    let res = 0;\n    let cnt = 0;\n    for(let idx = ",
-    "    let res = 0;\n    let cnt = 0;\n    for(let idx = "
+    "    let res = 0;\n    let cnt = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(test_str[idx] >= 'A' && test_str[idx] <= 'Z'){\n            cnt += 1;\n        }\n        else{\n            res = Math.max(res, cnt);\n            cnt = 0;\n        }\n    }\n    res = Math.max(res, cnt);\n    return res;\n}",
+    "    let res = 0;\n    let cnt = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(test_str[idx] >= 'A' && test_str[idx] <= 'Z'){\n            cnt += 1;\n        }\n        else{\n            res = Math.max(res, cnt);\n            cnt = 0;\n        }\n    }\n    res = Math.max(res, cnt);\n    return res;\n}",
+    "    let res = 0;\n    let cnt = 0;\n    for(let idx = 0; idx < test_str.length; idx++){\n        if(test_str[idx] >= 'A' && test_str[idx] <= 'Z'){\n            cnt += 1;\n        }\n        else{\n            res = Math.max(res, cnt);\n            cnt = 0;\n        }\n    }\n    res = Math.max(res, cnt);\n    return res;\n}"
   ]
 }

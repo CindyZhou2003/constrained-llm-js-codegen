@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return",
-    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return",
-    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return"
+    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return surfaceArea;\n}",
+    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return surfaceArea;\n}",
+    "    let surfaceArea = 2 * Math.PI * r * (r + h);\n    return surfaceArea;\n}"
   ]
 }

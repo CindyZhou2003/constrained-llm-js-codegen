@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = new Map();\n  for(let sub of test_list){\n    if(res.has(sub",
-    "  let res = new Set(test_list);\n  return res.size;\n}\n\nlet test_list = [(",
-    "  let res = new Set(test_list);\n  return res.size;\n}\n\nlet test_list = [("
+    "  let res = new Map();\n  for(let sub of test_list){\n    if(res.has(sub)){\n      res.set(sub, res.get(sub) + 1);\n    }else{\n      res.set(sub, 1);\n    }\n  }\n  return res;\n}\n\nlet test_list = [(3, 4), (5, 6), (3, 4), (7, 8), (5, 6)];",
+    "  let res = new Set(test_list);\n  return res.size;\n}\n\nlet test_list = [(1, 2), (3, 4), (1, 2), (5, 6)]",
+    "  let res = new Set(test_list);\n  return res.size;\n}\n\nlet test_list = [(1, 2), (3, 4), (1, 2), (5, 6)]"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var count = 0;\n    for (var i = 1; i <= n;",
-    "    var count = 0;\n    for (var i = 1; i <= n;",
-    "    var count = 0;\n    for (var i = 1; i <= n;"
+    "    var count = 0;\n    for (var i = 1; i <= n; i++) {\n        if (n % i == 0) {\n            count++;\n        }\n    }\n    return count % 2 == 0;\n}",
+    "    var count = 0;\n    for (var i = 1; i <= n; i++) {\n        if (n % i == 0) {\n            count++;\n        }\n    }\n    return count % 2 == 0;\n}",
+    "    var count = 0;\n    for (var i = 1; i <= n; i++) {\n        if (n % i == 0) {\n            count++;\n        }\n    }\n    return count % 2 == 0;\n}"
   ]
 }

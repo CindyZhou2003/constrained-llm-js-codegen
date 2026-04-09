@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0]",
-    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0]",
-    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0]"
+    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0] = newList[size - 1];\n    newList[size - 1] = temp;\n    return newList;\n}\nvar arr = [1,2,3,4,5];",
+    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0] = newList[size-1];\n    newList[size-1] = temp;\n    return newList;\n}\nvar arr = [1,2,3,4,5];",
+    "    var size = newList.length;\n    var temp = newList[0];\n    newList[0] = newList[size - 1];\n    newList[size - 1] = temp;\n    return newList;\n}\nvar arr = [1,2,3,4,5];"
   ]
 }

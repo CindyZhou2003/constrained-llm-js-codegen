@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let min_product = list1[0][0] * list1[0][1];\n",
-    "    // Initialize the minimum product to a large number\n    let min_product = Number.MAX_SAFE_INTEGER",
-    "    // Initialize the minimum product to a large number\n    let min_product = Number.MAX_SAFE_INTEGER"
+    "    // Initialize the minimum product to a large number\n    let min_product = Number.MAX_SAFE_INTEGER;\n    \n    // Iterate through each tuple in the list\n    for(let i = 0; i < list1.length; i++){\n        // Calculate the product of the two elements in the tuple\n        let product = list1[i][0] * list1[i][1];\n        \n        // Update the minimum product if the current product is smaller\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    \n    // Return the minimum product found\n    return min_product;\n}\n",
+    "    // Initialize the minimum product to a large number\n    let min_product = Number.MAX_SAFE_INTEGER;\n    \n    // Iterate through each tuple in the list\n    for(let i = 0; i < list1.length; i++){\n        // Calculate the product of the two elements in the tuple\n        let product = list1[i][0] * list1[i][1];\n        \n        // Update the minimum product if the current product is smaller\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    \n    // Return the minimum product found\n    return min_product;\n}\n",
+    "    let min_product = list1[0][0] * list1[0][1];\n    for(let i=1; i<list1.length; i++){\n        let product = list1[i][0] * list1[i][1];\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    return min_product;\n}"
   ]
 }

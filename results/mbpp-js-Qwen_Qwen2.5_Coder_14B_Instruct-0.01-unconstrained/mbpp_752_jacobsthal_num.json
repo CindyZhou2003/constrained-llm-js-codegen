@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n == 0) return 0;\n    if (n == 1)",
-    "    if (n == 0) return 0;\n    if (n == 1)",
-    "    if (n == 0) return 0;\n    if (n == 1)"
+    "    if (n == 0) return 0;\n    if (n == 1) return 1;\n    return jacobsthal_num(n - 1) + 2 * jacobsthal_num(n - 2);\n}\n",
+    "    if (n == 0) return 0;\n    if (n == 1) return 1;\n    return jacobsthal_num(n - 1) + 2 * jacobsthal_num(n - 2);\n}\n",
+    "    if (n == 0) return 0;\n    if (n == 1) return 1;\n    return jacobsthal_num(n - 1) + 2 * jacobsthal_num(n - 2);\n}\n"
   ]
 }

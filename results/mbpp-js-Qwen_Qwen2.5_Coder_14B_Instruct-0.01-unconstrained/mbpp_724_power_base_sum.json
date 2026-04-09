@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result",
-    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result",
-    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result"
+    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result > 0){\n        sum += result % 10;\n        result = Math.floor(result / 10);\n    }\n    return sum;\n}",
+    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result > 0){\n        sum += result % 10;\n        result = Math.floor(result / 10);\n    }\n    return sum;\n}",
+    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result > 0){\n        sum += result % 10;\n        result = Math.floor(result / 10);\n    }\n    return sum;\n}"
   ]
 }

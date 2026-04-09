@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return (a ^ b) !== 0 && (a ^ b) & (a ^",
-    "    return (a ^ b) !== 0 && (a ^ b) & (a ^",
-    "    return (a ^ b) !== 0 && (a ^ b) & (a ^"
+    "    return (a ^ b) !== 0 && (a ^ b) & (a ^ b) - 1 === 0;\n}",
+    "    return (a ^ b) !== 0 && (a ^ b) & (a ^ b) - 1 === 0;\n}\n",
+    "    return (a ^ b) !== 0 && (a ^ b) & (a ^ b) - 1 === 0;\n}\n"
   ]
 }

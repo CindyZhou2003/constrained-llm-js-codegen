@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let x = -b / (2 * a);\n    let y = c - ((b",
-    "    // Calculate the vertex of the parabola\n    let x_vertex = -b / (",
-    "    let x = -b / (2 * a);\n    let y = c - ((b"
+    "    let x = -b / (2 * a);\n    let y = c - ((b ** 2) / (4 * a));\n    return `y = ${y}`;\n}",
+    "    let x = -b / (2 * a);\n    let y = c - ((b ** 2) / (4 * a));\n    return `y = ${y}`;\n}",
+    "    // Calculate the vertex of the parabola\n    let x_vertex = -b / (2 * a);\n    let y_vertex = c - ((b ** 2) / (4 * a));\n\n    // Calculate the directrix of the parabola\n    let directrix = y_vertex - (1 / (4 * a));\n\n    return directrix;\n}\n"
   ]
 }

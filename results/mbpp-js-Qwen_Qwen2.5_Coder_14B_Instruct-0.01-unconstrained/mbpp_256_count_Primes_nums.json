@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let prime = 0;\n  for (let i = 2; i < n;",
-    "    let prime = 0;\n    for (let i = 2; i < n;",
-    "  let prime = 0;\n  for (let i = 2; i < n;"
+    "    let prime = 0;\n    for (let i = 2; i < n; i++){\n        if (isPrime(i)){\n            prime++;\n        }\n    }\n    return prime;\n}\n",
+    "  let prime = 0;\n  for (let i = 2; i < n; i++){\n    if (isPrime(i)){\n      prime++;\n    }\n  }\n  return prime;\n}\n",
+    "  let prime = 0;\n  for (let i = 2; i < n; i++){\n    if (isPrime(i)){\n      prime++;\n    }\n  }\n  return prime;\n}\n"
   ]
 }

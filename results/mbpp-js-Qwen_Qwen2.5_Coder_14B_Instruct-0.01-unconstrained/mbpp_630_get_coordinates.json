@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_t",
-    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_t",
-    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_t"
+    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_tup[idx];\n    if(idx > 0){\n      res.push([ele, test_tup[Number(idx) - 1]]);\n    }\n    if(idx < test_tup.length - 1){\n      res.push([ele, test_tup[Number(idx) + 1]]);\n    }\n  }\n  return res;\n}\n\nlet test_tup = [3, 7, 1, 4, 9, 2];",
+    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_tup[idx];\n    if(idx > 0){\n      res.push([ele, test_tup[Number(idx) - 1]]);\n    }\n    if(idx < test_tup.length - 1){\n      res.push([ele, test_tup[Number(idx) + 1]]);\n    }\n  }\n  return res;\n}\n\nlet test_tup = [3, 7, 1, 4, 9, 2];",
+    "  let res = [];\n  for(let idx in test_tup){\n    let ele = test_tup[idx];\n    if(idx > 0){\n      res.push([ele, test_tup[Number(idx) - 1]]);\n    }\n    if(idx < test_tup.length - 1){\n      res.push([ele, test_tup[Number(idx) + 1]]);\n    }\n  }\n  return res;\n}\n\nlet test_tup = [3, 7, 1, 4, 9, 2];"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i",
-    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i",
-    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i"
+    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i<str1.length; i++) {\n        var char = str1.charAt(i);\n        if (ctr.hasOwnProperty(char)) {\n           ctr[char]++;\n        }\n        else {  \n           ctr[char] = 1; \n           char_order.push(char);\n        }\n    }\n    for(var i=0; i<char_order.length; i++) {\n        if(ctr[char_order[i]] == 1) {\n            return char_order[i];\n        }\n    }\n    return null;\n}",
+    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i<str1.length; i++) {\n        var char = str1.charAt(i);\n        if (ctr.hasOwnProperty(char)) {\n           ctr[char]++;\n        }\n        else {  \n           ctr[char] = 1; \n           char_order.push(char);\n        }\n    }\n    for(var i=0; i<char_order.length; i++) {\n        if(ctr[char_order[i]] == 1) {\n            return char_order[i];\n        }\n    }\n    return null;\n}",
+    "    var char_order = [];\n    var ctr = {};\n    for (var i=0; i<str1.length; i++) {\n        var char = str1.charAt(i);\n        if (ctr.hasOwnProperty(char)) {\n           ctr[char]++;\n        }\n        else {  \n           ctr[char] = 1; \n           char_order.push(char);\n        }\n    }\n    for(var i=0; i<char_order.length; i++) {\n        if(ctr[char_order[i]] == 1) {\n            return char_order[i];\n        }\n    }\n    return null;\n}"
   ]
 }

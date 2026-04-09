@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n           ",
-    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n           ",
-    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n           "
+    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n            result.push([...current]);\n            return;\n        }\n        for(let i = start; i < l.length; i++){\n            current.push(l[i]);\n            helper(current, i);\n            current.pop();\n        }\n    }\n    helper([], 0);\n    return result;\n}\n",
+    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n            result.push([...current]);\n            return;\n        }\n        for(let i = start; i < l.length; i++){\n            current.push(l[i]);\n            helper(current, i);\n            current.pop();\n        }\n    }\n    helper([], 0);\n    return result;\n}\n",
+    "    let result = [];\n    function helper(current, start){\n        if(current.length === n){\n            result.push([...current]);\n            return;\n        }\n        for(let i = start; i < l.length; i++){\n            current.push(l[i]);\n            helper(current, i);\n            current.pop();\n        }\n    }\n    helper([], 0);\n    return result;\n}\n"
   ]
 }

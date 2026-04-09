@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newtext = text.replace(/[, .]/g,\":\");\n    return newtext;\n",
-    "    let newtext = text.replace(/[\\s,.]/g, ':');\n    return newtext",
-    "    let new_text = text.replace(/[\\s,.]/g, ':');\n    return new_text"
+    "    let new_text = text.replace(/[, .]/g, ':');\n    return new_text;\n}",
+    "    let newtext = text.replace(/[, .]/g,\":\");\n    return newtext;\n}",
+    "    let new_text = text.replace(/[\\s,.]/g, ':');\n    return new_text;\n}"
   ]
 }

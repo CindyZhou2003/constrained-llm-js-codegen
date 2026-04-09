@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       "
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === string[i].toUpperCase()){\n            newString += string[i].toLowerCase();\n        } else {\n            newString += string[i].toUpperCase();\n        }\n    }\n    return newString;\n}\n",
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === string[i].toUpperCase()){\n            newString += string[i].toLowerCase();\n        } else {\n            newString += string[i].toUpperCase();\n        }\n    }\n    return newString;\n}\n",
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === string[i].toUpperCase()){\n            newString += string[i].toLowerCase();\n        } else {\n            newString += string[i].toUpperCase();\n        }\n    }\n    return newString;\n}\n"
   ]
 }

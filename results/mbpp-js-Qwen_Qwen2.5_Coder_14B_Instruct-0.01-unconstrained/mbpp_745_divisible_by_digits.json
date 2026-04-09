@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n",
-    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n",
-    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n"
+    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n        let digits = i.toString().split('');\n        if(digits.every(digit => i % parseInt(digit) === 0)){\n            result.push(i);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n        let digits = i.toString().split('');\n        if(digits.every(digit => i % parseInt(digit) === 0)){\n            result.push(i);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i = startnum; i <= endnum; i++){\n        let digits = i.toString().split('');\n        if(digits.every(digit => i % parseInt(digit) === 0)){\n            result.push(i);\n        }\n    }\n    return result;\n}"
   ]
 }

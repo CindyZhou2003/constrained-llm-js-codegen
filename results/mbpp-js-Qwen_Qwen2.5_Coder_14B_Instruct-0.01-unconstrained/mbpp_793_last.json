@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let start = 0;\n    let end = arr.length - 1;\n    let result",
-    "    let start = 0;\n    let end = arr.length - 1;\n    let result",
-    "    let start = 0;\n    let end = arr.length - 1;\n    let result"
+    "    let start = 0;\n    let end = arr.length - 1;\n    let result = -1;\n\n    while (start <= end) {\n        let mid = Math.floor((start + end) / 2);\n\n        if (arr[mid] === x) {\n            result = mid;\n            start = mid + 1; // Move to the right half to find the last occurrence\n        } else if (arr[mid] < x) {\n            start = mid + 1;\n        } else {\n            end = mid - 1;\n        }\n    }\n\n    return result;\n}\n",
+    "    let start = 0;\n    let end = arr.length - 1;\n    let result = -1;\n\n    while (start <= end) {\n        let mid = Math.floor((start + end) / 2);\n\n        if (arr[mid] === x) {\n            result = mid;\n            start = mid + 1; // Move to the right half to find the last occurrence\n        } else if (arr[mid] < x) {\n            start = mid + 1;\n        } else {\n            end = mid - 1;\n        }\n    }\n\n    return result;\n}\n",
+    "    let start = 0;\n    let end = arr.length - 1;\n    let result = -1;\n\n    while (start <= end) {\n        let mid = Math.floor((start + end) / 2);\n\n        if (arr[mid] === x) {\n            result = mid;\n            start = mid + 1; // Move to the right half to find the last occurrence\n        } else if (arr[mid] < x) {\n            start = mid + 1;\n        } else {\n            end = mid - 1;\n        }\n    }\n\n    return result;\n}\n"
   ]
 }

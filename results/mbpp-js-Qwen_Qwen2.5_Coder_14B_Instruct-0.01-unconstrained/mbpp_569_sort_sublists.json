@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n",
-    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n",
-    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n"
+    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n    }\n    return list1;\n}",
+    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n    }\n    return list1;\n}",
+    "    for(let i=0;i<list1.length;i++){\n        list1[i].sort();\n    }\n    return list1;\n}"
   ]
 }

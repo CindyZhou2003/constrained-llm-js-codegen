@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n       ",
-    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n       ",
-    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n       "
+    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n        ludics.push(i);\n    }\n    let index = 1;\n    while(index < ludics.length){\n        let first_ludic = ludics[index];\n        let remove_index = index + first_ludic;\n        while(remove_index < ludics.length){\n            ludics.splice(remove_index, 1);\n            remove_index += first_ludic - 1;\n        }\n        index++;\n    }\n    return ludics;\n}",
+    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n        ludics.push(i);\n    }\n    let index = 1;\n    while(index < ludics.length){\n        let first_ludic = ludics[index];\n        let remove_index = index + first_ludic;\n        while(remove_index < ludics.length){\n            ludics.splice(remove_index, 1);\n            remove_index += first_ludic - 1;\n        }\n        index++;\n    }\n    return ludics;\n}",
+    "    let ludics = [];\n    for(let i=1; i<=n; i++){\n        ludics.push(i);\n    }\n    let index = 1;\n    while(index < ludics.length){\n        let first_ludic = ludics[index];\n        let remove_index = index + first_ludic;\n        while(remove_index < ludics.length){\n            ludics.splice(remove_index, 1);\n            remove_index += first_ludic - 1;\n        }\n        index++;\n    }\n    return ludics;\n}"
   ]
 }

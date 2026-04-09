@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i = 0; i < lst1.length; i",
-    "    let result = [];\n    for(let i = 0; i < lst1.length; i",
-    "    let result = [];\n    for(let i = 0; i < lst1.length; i"
+    "    let result = [];\n    for(let i = 0; i < lst1.length; i++){\n        result.push(lst1[i] + lst2[i]);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < lst1.length; i++){\n        result.push(lst1[i] + lst2[i]);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < lst1.length; i++){\n        result.push(lst1[i] + lst2[i]);\n    }\n    return result;\n}\n"
   ]
 }

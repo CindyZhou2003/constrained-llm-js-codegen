@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let num = ((1 << r) - 1) ^ ((1 << (l -",
-    "    let num = ((1 << r) - 1) ^ ((1 << (l -",
-    "    let num = ((1 << r) - 1) ^ ((1 << (l -"
+    "    let num = ((1 << r) - 1) ^ ((1 << (l - 1)) - 1);\n    return (n & num) === num;\n}",
+    "    let num = ((1 << r) - 1) ^ ((1 << (l - 1)) - 1);\n    return (n & num) === num;\n}",
+    "    let num = ((1 << r) - 1) ^ ((1 << (l - 1)) - 1);\n    return (n & num) === num;\n}"
   ]
 }

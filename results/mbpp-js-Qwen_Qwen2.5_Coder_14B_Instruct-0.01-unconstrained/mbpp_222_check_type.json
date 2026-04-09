@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele",
-    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele",
-    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele"
+    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele) != typeof(test_tuple[0])) {\n            res = false\n            break\n        }\n    }\n    return (res)\n}\ntest_tuple = [1, 2, 3, 4, 5]",
+    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele) != typeof(test_tuple[0])) {\n            res = false\n            break\n        }\n    }\n    return (res)\n}\ntest_tuple = [1, 2, 3, 4, 5]",
+    "    res = true\n    for (let ele of test_tuple) {\n        if (typeof(ele) != typeof(test_tuple[0])) {\n            res = false\n            break\n        }\n    }\n    return (res)\n}\ntest_tuple = [1, 2, 3, 4, 5]"
   ]
 }

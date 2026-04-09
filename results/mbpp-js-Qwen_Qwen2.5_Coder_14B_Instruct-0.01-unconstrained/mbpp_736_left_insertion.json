@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let i = 0;\n    while (i < a.length && a[i] < x",
-    "    let i = 0;\n    while (i < a.length && a[i] < x",
-    "    let i = 0;\n    while (i < a.length && a[i] < x"
+    "    let i = 0;\n    while (i < a.length && a[i] < x) {\n        i++;\n    }\n    return i;\n}",
+    "    let i = 0;\n    while (i < a.length && a[i] < x) {\n        i++;\n    }\n    return i;\n}\n",
+    "    let i = 0;\n    while (i < a.length && a[i] < x) {\n        i++;\n    }\n    return i;\n}"
   ]
 }

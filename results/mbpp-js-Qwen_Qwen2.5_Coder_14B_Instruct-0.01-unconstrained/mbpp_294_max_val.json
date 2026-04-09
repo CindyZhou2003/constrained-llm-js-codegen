@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = -Infinity;\n    for(let i=0; i<listval.length;",
-    "    let max = -Infinity;\n    for(let i=0; i<listval.length;",
-    "    let max = -Infinity;\n    for(let i=0; i<listval.length;"
+    "    let max = -Infinity;\n    for(let i=0; i<listval.length; i++){\n        if(typeof listval[i] === 'number'){\n            if(max < listval[i]){\n                max = listval[i];\n            }\n        }\n    }\n    return max;\n}",
+    "    let max = -Infinity;\n    for(let i=0; i<listval.length; i++){\n        if(typeof listval[i] === 'number'){\n            if(max < listval[i]){\n                max = listval[i];\n            }\n        }\n    }\n    return max;\n}",
+    "    let max = -Infinity;\n    for(let i=0; i<listval.length; i++){\n        if(typeof listval[i] === 'number'){\n            if(max < listval[i]){\n                max = listval[i];\n            }\n        }\n    }\n    return max;\n}"
   ]
 }

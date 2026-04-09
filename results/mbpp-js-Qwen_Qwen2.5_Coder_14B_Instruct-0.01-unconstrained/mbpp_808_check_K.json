@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n",
-    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n",
-    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n"
+    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n            res = true;\n            break;\n        }\n    }\n    return res;\n}\n\nlet test_tup = (10, 15, 20, 25, 30);\nlet K = 20;",
+    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n            res = true;\n            break;\n        }\n    }\n    return res;\n}\n\nlet test_tup = (3, 4, 5, 6, 7, 8, 9)\nlet K = 4",
+    "    res = false;\n    for(let ele of test_tup){\n        if(ele == K){\n            res = true;\n            break;\n        }\n    }\n    return res;\n}\n\nlet test_tup = (10, 15, 20, 25, 30);\nlet K = 20;"
   ]
 }

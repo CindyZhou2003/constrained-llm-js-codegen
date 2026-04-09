@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n",
-    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n",
-    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n"
+    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n    }\n}",
+    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n    }\n}",
+    "    if (a > b) {\n        return a;\n    } else {\n        return b;\n    }\n}"
   ]
 }

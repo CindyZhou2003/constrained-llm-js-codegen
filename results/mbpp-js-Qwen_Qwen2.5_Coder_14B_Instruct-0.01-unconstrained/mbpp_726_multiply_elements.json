@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_t",
-    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_t",
-    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_t"
+    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_tup.length - 1){\n      res.push(test_tup[idx] * test_tup[Number(idx) + 1]);\n    }\n  }\n  return res;\n}\n",
+    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_tup.length - 1){\n      res.push(test_tup[idx] * test_tup[Number(idx) + 1]);\n    }\n  }\n  return res;\n}\n",
+    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_tup.length - 1){\n      res.push(test_tup[idx] * test_tup[Number(idx) + 1]);\n    }\n  }\n  return res;\n}\n"
   ]
 }

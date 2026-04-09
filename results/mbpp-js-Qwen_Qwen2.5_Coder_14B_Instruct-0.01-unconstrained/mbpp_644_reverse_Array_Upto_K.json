@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let start = 0;\n    while(start < k){\n        [input[start], input[k",
-    "    let start = 0;\n    while(start < k){\n        [input[start], input[k",
-    "    let start = 0;\n    while(start < k){\n        [input[start], input[k"
+    "    let start = 0;\n    while(start < k){\n        [input[start], input[k]] = [input[k], input[start]];\n        start++;\n        k--;\n    }\n    return input;\n}",
+    "    let start = 0;\n    while(start < k){\n        [input[start], input[k]] = [input[k], input[start]];\n        start++;\n        k--;\n    }\n    return input;\n}",
+    "    let start = 0;\n    while(start < k){\n        [input[start], input[k]] = [input[k], input[start]];\n        start++;\n        k--;\n    }\n    return input;\n}"
   ]
 }

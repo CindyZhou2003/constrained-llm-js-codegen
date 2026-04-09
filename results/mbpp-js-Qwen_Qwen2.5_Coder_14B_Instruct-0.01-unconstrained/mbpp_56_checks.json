@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let rev = 0;\n    let temp = n;\n    while (temp > 0",
-    "    let rev = 0;\n    let temp = n;\n    while (temp > 0",
-    "    let rev = 0;\n    let temp = n;\n    while (temp > 0"
+    "    let rev = 0;\n    let temp = n;\n    while (temp > 0) {\n        rev = rev * 10 + temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return n === 2 * rev - 1;\n}",
+    "    let rev = 0;\n    let temp = n;\n    while (temp > 0) {\n        rev = rev * 10 + temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return n === 2 * rev - 1;\n}",
+    "    let rev = 0;\n    let temp = n;\n    while (temp > 0) {\n        rev = rev * 10 + temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return n === 2 * rev - 1;\n}"
   ]
 }

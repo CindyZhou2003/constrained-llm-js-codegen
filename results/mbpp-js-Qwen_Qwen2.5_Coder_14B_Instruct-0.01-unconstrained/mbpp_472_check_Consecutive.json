@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    l.sort(function(a, b){return a-b});\n    for(let i = 0;",
-    "    l.sort(function(a, b){return a-b});\n    for(let i = 0;",
-    "    l.sort(function(a, b){return a-b});\n    for(let i = 0;"
+    "    l.sort(function(a, b){return a-b});\n    for(let i = 0; i < l.length - 1; i++)\n    {\n        if (l[i] + 1 !== l[i + 1])\n        {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    l.sort(function(a, b){return a-b});\n    for(let i = 0; i < l.length - 1; i++)\n    {\n        if (l[i] + 1 !== l[i + 1])\n        {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for(let i = 0; i < l.length - 1; i++){\n        if (l[i] + 1 !== l[i + 1]){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

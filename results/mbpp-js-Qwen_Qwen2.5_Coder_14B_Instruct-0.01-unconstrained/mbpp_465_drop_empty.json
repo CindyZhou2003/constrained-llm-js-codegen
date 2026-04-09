@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n       ",
-    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n       ",
-    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n       "
+    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n        if(value !== null && value !== undefined && value !== ''){\n            result[key] = value;\n        }\n    }\n    return result;\n}",
+    "    let result = {};\n    for(let key in dict1){\n        if(dict1[key] !== null && dict1[key] !== undefined && dict1[key] !== ''){\n            result[key] = dict1[key];\n        }\n    }\n    return result;\n}",
+    "    let result = {};\n    for(let [key, value] of Object.entries(dict1)){\n        if(value !== null && value !== undefined && value !== ''){\n            result[key] = value;\n        }\n    }\n    return result;\n}"
   ]
 }

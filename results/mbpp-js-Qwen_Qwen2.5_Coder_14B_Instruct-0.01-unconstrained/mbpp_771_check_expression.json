@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp",
-    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp",
-    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp"
+    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp[i] === '(' || exp[i] === '{' || exp[i] === '['){\n            stack.push(exp[i]);\n        }\n        else{\n            if(stack.length === 0) return false;\n            let top = stack.pop();\n            if((top === '(' && exp[i] !== ')') || (top === '{' && exp[i] !== '}') || (top === '[' && exp[i] !== ']')){\n                return false;\n            }\n        }\n    }\n    return stack.length === 0;\n}",
+    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp[i] === '(' || exp[i] === '{' || exp[i] === '['){\n            stack.push(exp[i]);\n        }\n        else{\n            if(stack.length === 0) return false;\n            let top = stack.pop();\n            if((top === '(' && exp[i] !== ')') || (top === '{' && exp[i] !== '}') || (top === '[' && exp[i] !== ']')){\n                return false;\n            }\n        }\n    }\n    return stack.length === 0;\n}",
+    "    let stack = [];\n    for(let i=0;i<exp.length;i++){\n        if(exp[i] === '(' || exp[i] === '{' || exp[i] === '['){\n            stack.push(exp[i]);\n        }\n        else{\n            if(stack.length === 0) return false;\n            let top = stack.pop();\n            if((top === '(' && exp[i] !== ')') || (top === '{' && exp[i] !== '}') || (top === '[' && exp[i] !== ']')){\n                return false;\n            }\n        }\n    }\n    return stack.length === 0;\n}\n"
   ]
 }

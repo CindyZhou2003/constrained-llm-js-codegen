@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return (n * (n + 1) * (n + 2)) / ",
-    "    return (n * (n + 1) * (n + 2)) / ",
-    "    return (n * (n + 1) * (n + 2)) / "
+    "    return (n * (n + 1) * (n + 2)) / 6;\n}",
+    "    return (n * (n + 1) * (n + 2)) / 6;\n}",
+    "    return (n * (n + 1) * (n + 2)) / 6;\n}\n"
   ]
 }

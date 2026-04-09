@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i",
-    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i",
-    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i"
+    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i<str.length; i++){\n        if(obj[str[i]]){\n            obj[str[i]]++;\n        }else{\n            obj[str[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] > parseInt(key)){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i<str.length; i++){\n        if(obj[str[i]]){\n            obj[str[i]]++;\n        }else{\n            obj[str[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] > parseInt(key)){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let str = n.toString();\n    let obj = {};\n    for(let i=0; i<str.length; i++){\n        if(obj[str[i]]){\n            obj[str[i]]++;\n        }else{\n            obj[str[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] > parseInt(key)){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

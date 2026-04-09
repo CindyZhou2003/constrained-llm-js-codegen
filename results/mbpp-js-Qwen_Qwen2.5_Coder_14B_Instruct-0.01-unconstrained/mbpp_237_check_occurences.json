@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys",
-    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys",
-    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys"
+    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys():\n      res[tuple(sub)] = 0\n    res[tuple(sub)] += 1\n  return (res)\n}",
+    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys():\n      res[tuple(sub)] = 0\n    res[tuple(sub)] += 1\n  return (res)\n}",
+    "  res = {}\n  for sub in test_list:\n    if tuple(sub) not in res.keys():\n      res[tuple(sub)] = 0\n    res[tuple(sub)] += 1\n  return (res)\n}"
   ]
 }

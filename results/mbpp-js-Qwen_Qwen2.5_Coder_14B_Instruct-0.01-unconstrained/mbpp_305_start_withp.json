@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i=0; i<words.length; i++){\n       ",
-    "    let result = [];\n    for(let i=0; i<words.length; i++){\n       ",
-    "    let result = [];\n    for(let i=0; i<words.length; i++){\n       "
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i].startsWith('p')){\n            result.push(words[i]);\n        }\n    }\n    return result.slice(0,2);\n}",
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i].startsWith('p')){\n            result.push(words[i]);\n        }\n    }\n    return result.slice(0,2);\n}",
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i].startsWith('p')){\n            result.push(words[i]);\n        }\n    }\n    return result.slice(0,2);\n}"
   ]
 }

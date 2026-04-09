@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i=0; i<sample_names.length;",
-    "    let sum = 0;\n    for(let i=0; i<sample_names.length;",
-    "    let sum = 0;\n    for(let i=0; i<sample_names.length;"
+    "    let sum = 0;\n    for(let i=0; i<sample_names.length; i++){\n        if(sample_names[i][0] === sample_names[i][0].toUpperCase()){\n            sum += sample_names[i].length;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=0; i<sample_names.length; i++){\n        if(sample_names[i][0] === sample_names[i][0].toUpperCase()){\n            sum += sample_names[i].length;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=0; i<sample_names.length; i++){\n        if(sample_names[i][0] === sample_names[i][0].toUpperCase()){\n            sum += sample_names[i].length;\n        }\n    }\n    return sum;\n}"
   ]
 }

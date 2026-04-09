@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length",
-    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length",
-    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length"
+    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i] < 0 && list1[i] > max_neg){\n            max_neg = list1[i];\n        }\n    }\n    return max_neg;\n}",
+    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i] < 0 && list1[i] > max_neg){\n            max_neg = list1[i];\n        }\n    }\n    return max_neg;\n}",
+    "    let max_neg = -Infinity;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i] < 0 && list1[i] > max_neg){\n            max_neg = list1[i];\n        }\n    }\n    return max_neg;\n}"
   ]
 }

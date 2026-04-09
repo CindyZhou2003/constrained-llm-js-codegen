@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let",
-    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let",
-    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let"
+    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let i=0; i<unique.length; i++){\n        product *= unique[i];\n    }\n    return product;\n}",
+    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let i=0; i<unique.length; i++){\n        product *= unique[i];\n    }\n    return product;\n}",
+    "    var unique = [...new Set(list_data)];\n    var product = 1;\n    for(let i=0; i<unique.length; i++){\n        product *= unique[i];\n    }\n    return product;\n}"
   ]
 }

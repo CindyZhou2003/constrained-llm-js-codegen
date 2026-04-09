@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let",
-    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let",
-    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let"
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] < 0){\n            [max_product, min_product] = [min_product, max_product];\n        }\n\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n\n        result = Math.max(result, max_product);\n    }\n\n    return result;\n}\n",
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] < 0){\n            [max_product, min_product] = [min_product, max_product];\n        }\n\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n\n        result = Math.max(result, max_product);\n    }\n\n    return result;\n}\n",
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] < 0){\n            [max_product, min_product] = [min_product, max_product];\n        }\n\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n\n        result = Math.max(result, max_product);\n    }\n\n    return result;\n}\n"
   ]
 }

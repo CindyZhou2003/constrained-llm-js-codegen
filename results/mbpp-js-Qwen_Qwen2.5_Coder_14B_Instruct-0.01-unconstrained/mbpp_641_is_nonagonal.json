@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return (n * (7*n - 5)) / 2;\n}",
-    "    return (7*n*n - 5*n)/2;\n}",
-    "    return (n * (7*n - 5)) / 2;\n}"
+    "    return (n * (7*n - 5)) / 2;\n}",
+    "    return (7*n*n - 5*n)/2;\n}"
   ]
 }

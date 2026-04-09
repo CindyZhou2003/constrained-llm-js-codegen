@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i",
-    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i",
-    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i"
+    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i++){\n        if(len !== Input[i].length){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i++){\n        if(len !== Input[i].length){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let len = Input[0].length;\n    for(let i=1;i<Input.length;i++){\n        if(len !== Input[i].length){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

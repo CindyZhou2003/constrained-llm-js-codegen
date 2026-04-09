@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return",
-    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return",
-    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return"
+    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return (max_val - min_val);\n}",
+    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return (max_val - min_val);\n}",
+    "    max_val = Math.max(...nums);\n    min_val = Math.min(...nums);\n    return (max_val - min_val);\n}"
   ]
 }

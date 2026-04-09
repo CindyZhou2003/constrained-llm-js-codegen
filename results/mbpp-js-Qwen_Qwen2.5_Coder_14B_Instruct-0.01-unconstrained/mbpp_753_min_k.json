@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // sort the list in ascending order\n    test_list.sort((a, b) => a",
-    "    // sort the list in ascending order\n    test_list.sort((a, b) => a",
-    "    // sort the list in ascending order\n    test_list.sort((a, b) => a"
+    "    // sort the list in ascending order\n    test_list.sort((a, b) => a - b);\n    // slice the first K elements from the sorted list\n    return test_list.slice(0, K);\n}\n",
+    "    // sort the list in ascending order\n    test_list.sort((a, b) => a - b);\n    // slice the first K elements from the sorted list\n    return test_list.slice(0, K);\n}\n",
+    "    // sort the list in ascending order\n    test_list.sort((a, b) => a - b);\n    // slice the first K elements from the sorted list\n    return test_list.slice(0, K);\n}\n"
   ]
 }

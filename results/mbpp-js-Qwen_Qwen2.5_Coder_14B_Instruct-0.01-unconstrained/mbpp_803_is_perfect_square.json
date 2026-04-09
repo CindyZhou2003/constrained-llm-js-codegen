@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n   ",
-    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n   ",
-    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n   "
+    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n    return root === Math.floor(root);\n}\n",
+    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n    return root === Math.floor(root);\n}\n",
+    "    if (n < 0) return false;\n    let root = Math.sqrt(n);\n    return root === Math.floor(root);\n}\n"
   ]
 }

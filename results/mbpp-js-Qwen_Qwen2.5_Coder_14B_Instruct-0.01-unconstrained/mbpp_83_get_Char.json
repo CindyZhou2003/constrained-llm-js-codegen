@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 0; i < strr.length;",
-    "    let sum = 0;\n    for(let i = 0; i < strr.length;",
-    "    let sum = 0;\n    for(let i=0;i<strr.length;i++){\n"
+    "    let sum = 0;\n    for(let i=0;i<strr.length;i++){\n        sum += (strr[i].charCodeAt(0) - 'A'.charCodeAt(0));\n    }\n    return String.fromCharCode((sum % 26) + 'A'.charCodeAt(0));\n}",
+    "    let sum = 0;\n    for(let i=0;i<strr.length;i++){\n        sum += (strr[i].charCodeAt(0));\n    }\n    return String.fromCharCode(sum % 26 + 'a'.charCodeAt(0));\n}",
+    "    let sum = 0;\n    for(let i = 0; i < strr.length; i++){\n        sum += (strr[i].charCodeAt(0) - 'A'.charCodeAt(0));\n    }\n    return String.fromCharCode((sum % 26) + 'A'.charCodeAt(0));\n}"
   ]
 }

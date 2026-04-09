@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = dict()\n    for idx in range(0, len(test_tup), 2",
-    "    res = dict()\n    for idx in range(0, len(test_tup), 2",
-    "    res = dict()\n    for idx in range(0, len(test_tup), 2"
+    "    res = dict()\n    for idx in range(0, len(test_tup), 2):\n        res[test_tup[idx]] = test_tup[idx + 1]\n    return (res) \ntest_tup = ('gfg', 1, 'is', 2, 'best', 3)\nprint(tuple_to_dict(test_tup))\n",
+    "    res = dict()\n    for idx in range(0, len(test_tup), 2):\n        res[test_tup[idx]] = test_tup[idx + 1]\n    return (res) \ntest_tup = ('gfg', 1, 'is', 2, 'best', 3)\nprint(tuple_to_dict(test_tup))\n",
+    "    res = dict()\n    for idx in range(0, len(test_tup), 2):\n        res[test_tup[idx]] = test_tup[idx + 1]\n    return (res) \ntest_tup = ('gfg', 1, 'is', 2, 'best', 3)\nprint(tuple_to_dict(test_tup))\n"
   ]
 }

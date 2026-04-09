@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true",
-    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true",
-    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true"
+    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true;\n    else\n        return false;\n}",
+    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true;\n    else\n        return false;\n}",
+    "    if (string.charAt(0) == string.charAt(string.length - 1))\n        return true;\n    else\n        return false;\n}"
   ]
 }

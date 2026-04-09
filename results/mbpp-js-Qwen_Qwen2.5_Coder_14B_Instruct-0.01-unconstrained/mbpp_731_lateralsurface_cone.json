@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h,",
-    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h,",
-    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h,"
+    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h, 2));\n    return Math.PI * r * slant_height;\n}\n",
+    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h, 2));\n    return Math.PI * r * slant_height;\n}\n",
+    "    let slant_height = Math.sqrt(Math.pow(r, 2) + Math.pow(h, 2));\n    return Math.PI * r * slant_height;\n}\n"
   ]
 }

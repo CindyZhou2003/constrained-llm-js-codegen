@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Your code here\n    let x = 0;\n    let y = 0;\n",
-    "    // Your code here\n    let x = 0;\n    let y = 0;\n",
-    "    // Your code here\n    let x = 0;\n    let y = 0;\n"
+    "    // Check if the equation has a solution\n    if (n % gcd(a, b) !== 0) {\n        return undefined;\n    }\n  \n    // Use the Extended Euclidean Algorithm to find a solution\n    let [x, y] = extended_gcd(a, b);\n    x *= n / gcd(a, b);\n    y *= n / gcd(a, b);\n  \n    return [x, y];\n}\n  ",
+    "    // Your code here\n    let x = 0;\n    let y = 0;\n    while (x <= n/a && y <= n/b) {\n        if (a*x + b*y === n) {\n            return [x, y];\n        }\n        x++;\n        y++;\n    }\n    return undefined;\n}\n",
+    "    // Your code here\n    let x = 0;\n    let y = 0;\n    while (x * a <= n) {\n        y = (n - x * a) / b;\n        if (y % 1 === 0) {\n            return [x, y];\n        }\n        x++;\n    }\n    return undefined;\n}\n"
   ]
 }

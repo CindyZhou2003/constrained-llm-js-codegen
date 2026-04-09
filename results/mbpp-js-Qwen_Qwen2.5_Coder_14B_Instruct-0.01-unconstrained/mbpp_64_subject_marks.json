@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return",
-    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return",
-    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return"
+    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return subjectmarks;\n}\nlet subjectmarks = [['Maths', 90], ['Science', 85], ['English', 75]];",
+    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return subjectmarks;\n}\nlet subjectmarks = [['Maths', 90], ['Science', 85], ['English', 75]];",
+    "    subjectmarks.sort((a,b) => a[1] - b[1]);\n    return subjectmarks;\n}\nlet subjectmarks = [['Maths', 90], ['Science', 85], ['English', 75]];"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n       ",
-    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n       ",
-    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n       "
+    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n        sum += list1[i];\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n        sum += list1[i];\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=m; i<=n; i++){\n        sum += list1[i];\n    }\n    return sum;\n}"
   ]
 }

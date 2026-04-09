@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  res = [ele + test_tup[idx] for idx, ele in enumerate(test_list)]\n",
-    "  res = [ele + test_tup[idx] for idx, ele in enumerate(test_list)]\n",
-    "  res = []\n  for(let idx in test_list){\n    res.push(test_list[idx] +"
+    "  res = [ele + test_tup[idx] for idx, ele in enumerate(test_list)]\n  return (res) \n}\ntest_list = [5, 6, 7, 8]\ntest_tup = (10, 4, 3, 2)\nprint(add_tuple(test_list, test_tup))\n",
+    "  res = [ele + test_tup[idx] for idx, ele in enumerate(test_list)]\n  return (res) \n}\ntest_list = [5, 6, 7, 8]\ntest_tup = (10, 4, 3, 2)\nprint(add_tuple(test_list, test_tup))\n",
+    "  res = [ele + test_tup[idx] for idx, ele in enumerate(test_list)]\n  return (res) \n}\ntest_list = [5, 6, 7, 8]\ntest_tup = (10, 4, 3, 2)\nprint(add_tuple(test_list, test_tup))\n"
   ]
 }

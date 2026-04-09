@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}\nconsole",
-    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}\nconsole",
-    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}\nconsole"
+    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}",
+    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}",
+    "  return str1.replace(/([A-Z])/g, ' $1').trim();\n}"
   ]
 }

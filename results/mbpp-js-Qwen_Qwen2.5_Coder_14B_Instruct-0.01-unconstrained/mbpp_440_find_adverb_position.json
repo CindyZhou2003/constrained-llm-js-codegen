@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match",
-    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match",
-    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match"
+    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match){\n        return [match[0],text.indexOf(match[0])];\n    }else{\n        return \"No adverb found\";\n    }\n}",
+    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match){\n        let position = text.search(pattern);\n        return `The first adverb is \"${match[0]}\" at position ${position}.`;\n    } else {\n        return \"No adverb found.\";\n    }\n}\n",
+    "    let pattern = /\\w+ly/;\n    let match = text.match(pattern);\n    if(match){\n        let position = text.search(pattern);\n        return `The first adverb is \"${match[0]}\" at position ${position}.`;\n    } else {\n        return \"No adverb found.\";\n    }\n}\n"
   ]
 }

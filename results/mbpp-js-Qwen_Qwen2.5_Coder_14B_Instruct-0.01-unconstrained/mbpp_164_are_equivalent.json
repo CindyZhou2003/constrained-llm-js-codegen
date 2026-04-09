@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i",
-    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i",
-    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i"
+    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i = 1; i <= num1; i++){\n        if(num1 % i === 0){\n            sum1 += i;\n        }\n    }\n    for(let i = 1; i <= num2; i++){\n        if(num2 % i === 0){\n            sum2 += i;\n        }\n    }\n    return sum1 === sum2;\n}",
+    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i = 1; i <= num1; i++){\n        if(num1 % i === 0){\n            sum1 += i;\n        }\n    }\n    for(let i = 1; i <= num2; i++){\n        if(num2 % i === 0){\n            sum2 += i;\n        }\n    }\n    return sum1 === sum2;\n}",
+    "    let sum1 = 0;\n    let sum2 = 0;\n    for(let i = 1; i <= num1; i++){\n        if(num1 % i === 0){\n            sum1 += i;\n        }\n    }\n    for(let i = 1; i <= num2; i++){\n        if(num2 % i === 0){\n            sum2 += i;\n        }\n    }\n    return sum1 === sum2;\n}"
   ]
 }

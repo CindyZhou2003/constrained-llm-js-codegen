@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n",
-    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n",
-    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n"
+    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}",
+    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}",
+    "  var re = /^a.*b$/;\n  if(re.test(text)){\n    return true;\n  }else{\n    return false;\n  }\n}"
   ]
 }

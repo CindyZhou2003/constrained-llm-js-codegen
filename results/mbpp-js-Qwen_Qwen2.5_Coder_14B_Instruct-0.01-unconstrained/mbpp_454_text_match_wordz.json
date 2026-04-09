@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n\nconsole",
-    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n\nconsole",
-    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n\nconsole"
+    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n",
+    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n",
+    "  let pattern = /\\w*z\\w*/g;\n  return text.match(pattern);\n}\n"
   ]
 }

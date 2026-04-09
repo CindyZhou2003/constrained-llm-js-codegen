@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //sort the items by price in descending order\n    items.sort((a,b) => b",
-    "    //sort the items by price in descending order\n    items.sort((a,b) => b",
-    "    //sort the items by price in descending order\n    items.sort((a,b) => b"
+    "    //sort the items by price in descending order\n    items.sort((a,b) => b.price - a.price);\n    //return the first n items from the sorted array\n    return items.slice(0,n);\n}\n",
+    "    //sort the items by price in descending order\n    items.sort((a,b) => b.price - a.price);\n    //return the first n items from the sorted array\n    return items.slice(0,n);\n}\n",
+    "    //sort the items by price in descending order\n    items.sort((a,b) => b.price - a.price);\n    //return the first n items from the sorted array\n    return items.slice(0,n);\n}\n"
   ]
 }

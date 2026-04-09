@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n       ",
-    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n       ",
-    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n       "
+    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n        if(list[i] % 2 !== 0){\n            odd.push(list[i]);\n        }\n    }\n    return odd;\n}",
+    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n        if(list[i] % 2 !== 0){\n            odd.push(list[i]);\n        }\n    }\n    return odd;\n}",
+    "    let odd = [];\n    for(let i=0; i<list.length; i++){\n        if(list[i] % 2 !== 0){\n            odd.push(list[i]);\n        }\n    }\n    return odd;\n}"
   ]
 }

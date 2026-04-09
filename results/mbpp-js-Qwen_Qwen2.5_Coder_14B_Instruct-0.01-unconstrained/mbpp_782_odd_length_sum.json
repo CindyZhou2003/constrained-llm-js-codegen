@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 0; i < arr.length;",
-    "    let sum = 0;\n    for(let i = 0; i < arr.length;",
-    "    let sum = 0;\n    for(let i = 0; i < arr.length;"
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let start = (i + 1);\n        let end = (arr.length - i);\n        let total_subarrays = start * end;\n        let odd_subarrays = Math.ceil(total_subarrays / 2);\n        sum += odd_subarrays * arr[i];\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let start = (i + 1);\n        let end = (arr.length - i);\n        let total_subarrays = start * end;\n        let odd_subarrays = Math.ceil(total_subarrays / 2);\n        sum += odd_subarrays * arr[i];\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let start = (i + 1);\n        let end = (arr.length - i);\n        let total_subarrays = start * end;\n        let odd_subarrays = Math.ceil(total_subarrays / 2);\n        sum += odd_subarrays * arr[i];\n    }\n    return sum;\n}\n"
   ]
 }

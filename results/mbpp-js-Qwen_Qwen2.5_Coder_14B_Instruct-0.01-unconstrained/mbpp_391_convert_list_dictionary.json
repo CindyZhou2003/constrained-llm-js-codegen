@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = {};\n    for(var i = 0; i < l1.length; i",
-    "    var result = {};\n    for(var i = 0; i < l1.length; i",
-    "    var result = {};\n    for(var i = 0; i < l1.length; i"
+    "    var result = {};\n    for(var i = 0; i < l1.length; i++){\n        result[l1[i]] = { [l2[i]]: l3[i] };\n    }\n    return result;\n}",
+    "    var result = {};\n    for(var i = 0; i < l1.length; i++){\n        result[l1[i]] = { [l2[i]]: l3[i] };\n    }\n    return result;\n}",
+    "    var result = {};\n    for(var i = 0; i < l1.length; i++){\n        result[l1[i]] = { [l2[i]]: l3[i] };\n    }\n    return result;\n}"
   ]
 }

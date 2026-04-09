@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let low = 0;\n    let high = a.length - 1;\n    while (",
-    "    let low = 0;\n    let high = a.length - 1;\n    while (",
-    "    let low = 0;\n    let high = a.length - 1;\n    while ("
+    "    let low = 0;\n    let high = a.length - 1;\n    while (low <= high) {\n        let mid = Math.floor((low + high) / 2);\n        if (a[mid] < x) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return low;\n}",
+    "    let low = 0;\n    let high = a.length - 1;\n    while (low <= high) {\n        let mid = Math.floor((low + high) / 2);\n        if (a[mid] < x) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return low;\n}",
+    "    let low = 0;\n    let high = a.length - 1;\n    while (low <= high) {\n        let mid = Math.floor((low + high) / 2);\n        if (a[mid] < x) {\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n    return low;\n}"
   ]
 }

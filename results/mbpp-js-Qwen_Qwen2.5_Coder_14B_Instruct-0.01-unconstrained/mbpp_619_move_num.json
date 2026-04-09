@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('",
-    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('",
-    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('"
+    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('') + test_str.split('').filter(ele => Number.isInteger(parseInt(ele))).join('');\n    return res;\n}",
+    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('') + test_str.split('').filter(ele => Number.isInteger(parseInt(ele))).join('');\n    return res;\n}",
+    "    let res = test_str.split('').filter(ele => !Number.isInteger(parseInt(ele))).join('') + test_str.split('').filter(ele => Number.isInteger(parseInt(ele))).join('');\n    return res;\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n",
-    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n",
-    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n"
+    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n    for (let i = 1; i <= n; i++)\n        fac = (fac * i) % 10;\n    return fac;\n}",
+    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n    for (let i = 1; i <= n; i++)\n        fac = (fac * i) % 10;\n    return fac;\n}",
+    "    if (n >= 5)\n        return 0;\n    let fac = 1;\n    for (let i = 1; i <= n; i++)\n        fac = (fac * i) % 10;\n    return fac;\n}"
   ]
 }

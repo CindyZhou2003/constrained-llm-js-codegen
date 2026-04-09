@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for (var i = 0; i < nums.length; i += 2) {\n",
-    "    for (var i = 0; i < nums.length; i += 2) {\n",
-    "    for (var i = 0; i < nums.length; i += 2) {\n"
+    "    for (var i = 0; i < nums.length; i += 2) {\n        if (nums[i] % 2 !== 0) {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for (var i = 0; i < nums.length; i += 2) {\n        if (nums[i] % 2 !== 0) {\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    for (var i = 0; i < nums.length; i += 2) {\n        if (nums[i] % 2 !== 0) {\n            return false;\n        }\n    }\n    return true;\n}\n"
   ]
 }

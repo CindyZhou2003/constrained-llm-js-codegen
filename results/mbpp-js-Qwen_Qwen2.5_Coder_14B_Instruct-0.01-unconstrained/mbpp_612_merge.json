@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i",
-    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0;i<",
-    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i"
+    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i<lst.length; i++){\n        arr1.push(lst[i][0]);\n        arr2.push(lst[i][1]);\n    }\n    return [arr1,arr2];\n}",
+    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i<lst.length; i++){\n        arr1.push(lst[i][0]);\n        arr2.push(lst[i][1]);\n    }\n    return [arr1,arr2];\n}",
+    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i<lst.length; i++){\n        arr1.push(lst[i][0]);\n        arr2.push(lst[i][1]);\n    }\n    return [arr1,arr2];\n}"
   ]
 }

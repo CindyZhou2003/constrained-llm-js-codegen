@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let ans = 0;\n    for(let i = 0; i < 32",
-    "    let ans = 0;\n    for(let i = 0; i < 32",
-    "    let ans = 0;\n    for(let i = 0; i < 32"
+    "    let ans = 0;\n    for(let i = 0; i < 32; i++){\n        let count = 0;\n        for(let j = 0; j < n; j++){\n            if((arr[j] & (1 << i)) != 0){\n                count++;\n            }\n        }\n        ans += (count * (n - count) * Math.pow(2, i));\n    }\n    return ans;\n}\nlet arr = [1, 2, 3, 4];\nlet n = arr.length;",
+    "    let ans = 0;\n    for(let i = 0; i < 32; i++){\n        let count = 0;\n        for(let j = 0; j < n; j++){\n            if((arr[j] & (1 << i)) != 0){\n                count++;\n            }\n        }\n        ans += (count * (n - count) * Math.pow(2, i));\n    }\n    return ans;\n}\nlet arr = [1, 2, 3, 4];\nlet n = arr.length;",
+    "    let ans = 0;\n    for(let i = 0; i < 32; i++){\n        let count = 0;\n        for(let j = 0; j < n; j++){\n            if((arr[j] & (1 << i)) != 0){\n                count++;\n            }\n        }\n        ans += (count * (n - count) * Math.pow(2, i));\n    }\n    return ans;\n}\nlet arr = [1, 2, 3, 4];\nlet n = arr.length;"
   ]
 }

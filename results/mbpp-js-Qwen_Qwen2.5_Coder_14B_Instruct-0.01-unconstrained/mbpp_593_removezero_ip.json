@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n       ",
-    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n       ",
-    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n       "
+    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n        arr[i] = parseInt(arr[i]);\n    }\n    return arr.join(\".\");\n}",
+    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n        arr[i] = parseInt(arr[i]);\n    }\n    return arr.join(\".\");\n}",
+    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n        arr[i] = parseInt(arr[i]);\n    }\n    return arr.join(\".\");\n}"
   ]
 }

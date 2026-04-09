@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (lst.length == 0) \n        return null;\n    max_str = lst[",
-    "    if (lst.length == 0) \n        return null;\n    max_str = lst[",
-    "    if (lst.length == 0) \n        return null;\n    max_str = lst["
+    "    if (lst.length == 0) \n        return null;\n    max_str = lst[0];\n    for (var i = 1; i < lst.length; i++) {\n        if (lst[i].length > max_str.length) {\n            max_str = lst[i];\n        }\n    }\n    return max_str;\n}",
+    "    if (lst.length == 0) \n        return null;\n    max_str = lst[0];\n    for (var i = 1; i < lst.length; i++) {\n        if (lst[i].length > max_str.length) {\n            max_str = lst[i];\n        }\n    }\n    return max_str;\n}",
+    "    if (lst.length == 0) \n        return null;\n    max_str = lst[0];\n    for (var i = 1; i < lst.length; i++) {\n        if (lst[i].length > max_str.length) {\n            max_str = lst[i];\n        }\n    }\n    return max_str;\n}"
   ]
 }

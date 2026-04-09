@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var list2 = [];\n    for (var i = 0; i < list1.length",
-    "    var list2 = [];\n    for (var i = 0; i < list1.length",
-    "    var list2 = [];\n    for (var i = 0; i < list1.length"
+    "    var list2 = [];\n    for (var i = 0; i < list1.length; i++) {\n        if (list1[i] === list1[i + 1]) {\n            list2[list2.length - 1].push(list1[i]);\n        } else {\n            list2.push([list1[i]]);\n        }\n    }\n    return list2;\n}",
+    "    var list2 = [];\n    for (var i = 0; i < list1.length; i++) {\n        if (list1[i] === list1[i+1]) {\n            list2[list2.length-1].push(list1[i]);\n        } else {\n            list2.push([list1[i]]);\n        }\n    }\n    return list2;\n}",
+    "    var list2 = [];\n    for (var i = 0; i < list1.length; i++) {\n        if (list1[i] === list1[i+1]) {\n            list2[list2.length-1].push(list1[i]);\n        } else {\n            list2.push([list1[i]]);\n        }\n    }\n    return list2;\n}"
   ]
 }

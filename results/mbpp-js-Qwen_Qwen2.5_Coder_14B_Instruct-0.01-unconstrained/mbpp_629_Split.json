@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let even = [];\n    let odd = [];\n    for(let i=0; i<list",
-    "    let even = [];\n    let odd = [];\n    for(let i=0; i<list",
-    "    let even = [];\n    let odd = [];\n    for(let i=0;i<list.length"
+    "    let even = [];\n    let odd = [];\n    for(let i=0;i<list.length;i++){\n        if(list[i]%2==0){\n            even.push(list[i]);\n        }else{\n            odd.push(list[i]);\n        }\n    }\n    return {even,odd};\n}\nlet list = [1,2,3,4,5,6,7,8,9,10];",
+    "    let even = [];\n    let odd = [];\n    for(let i=0; i<list.length; i++){\n        if(list[i] % 2 == 0){\n            even.push(list[i]);\n        }else{\n            odd.push(list[i]);\n        }\n    }\n    return {even, odd};\n}\nlet list = [1,2,3,4,5,6,7,8,9,10];",
+    "    let even = [];\n    let odd = [];\n    for(let i=0; i<list.length; i++){\n        if(list[i] % 2 == 0){\n            even.push(list[i]);\n        }else{\n            odd.push(list[i]);\n        }\n    }\n    return {even, odd};\n}\n\nlet list = [1,2,3,4,5,6,7,8,9,10];"
   ]
 }

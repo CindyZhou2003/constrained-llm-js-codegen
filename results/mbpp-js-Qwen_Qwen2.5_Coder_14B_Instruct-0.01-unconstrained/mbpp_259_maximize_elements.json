@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Create a new array by concatenating the two input arrays\n  let res = [...test",
-    "  // Create a new array by concatenating the two input arrays\n  let res = [...test",
-    "  // Create a new array by concatenating the two input arrays\n  let res = [...test"
+    "  // Create a new array by concatenating the two input arrays\n  let res = [...test_tup1, ...test_tup2];\n  // Sort the concatenated array in descending order\n  res.sort((a, b) => b - a);\n  // Return the sorted array\n  return res;\n}\n",
+    "  // Create a new array by concatenating the two input arrays\n  let res = [...test_tup1, ...test_tup2];\n  // Sort the concatenated array in descending order\n  res.sort((a, b) => b - a);\n  // Return the sorted array\n  return res;\n}\n",
+    "  // Create a new array by concatenating the two input arrays\n  let res = [...test_tup1, ...test_tup2];\n  // Sort the concatenated array in descending order\n  res.sort((a, b) => b - a);\n  // Return the sorted array\n  return res;\n}"
   ]
 }

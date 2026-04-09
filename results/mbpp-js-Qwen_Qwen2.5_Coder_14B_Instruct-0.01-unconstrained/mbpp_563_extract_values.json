@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1",
-    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1",
-    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1"
+    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1) {\n        let end = text.indexOf('\"', start + 1);\n        if (end !== -1) {\n            result.push(text.substring(start + 1, end));\n        }\n        start = text.indexOf('\"', end + 1);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1) {\n        let end = text.indexOf('\"', start + 1);\n        if (end !== -1) {\n            result.push(text.substring(start + 1, end));\n        }\n        start = text.indexOf('\"', end + 1);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let start = text.indexOf('\"');\n    while (start !== -1) {\n        let end = text.indexOf('\"', start + 1);\n        if (end !== -1) {\n            result.push(text.substring(start + 1, end));\n        }\n        start = text.indexOf('\"', end + 1);\n    }\n    return result;\n}"
   ]
 }

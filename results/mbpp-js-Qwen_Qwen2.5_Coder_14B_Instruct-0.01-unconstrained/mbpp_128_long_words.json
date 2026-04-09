@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n",
-    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n",
-    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n"
+    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n        if(word.length > n){\n            result.push(word);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n        if(word.length > n){\n            result.push(word);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    let words = str.split(\" \");\n    for(let word of words){\n        if(word.length > n){\n            result.push(word);\n        }\n    }\n    return result;\n}"
   ]
 }

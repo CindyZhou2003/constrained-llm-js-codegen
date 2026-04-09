@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    let obj = {};\n    for(let i=0; i",
-    "    let sum = 0;\n    let obj = {};\n    for(let i=0; i",
-    "    let sum = 0;\n    let obj = {};\n    for(let i=0; i"
+    "    let sum = 0;\n    let obj = {};\n    for(let i=0;i<arr.length;i++){\n        if(obj[arr[i]]){\n            obj[arr[i]]++;\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] === 1){\n            sum += parseInt(key);\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    let obj = {};\n    for(let i=0;i<arr.length;i++){\n        if(obj[arr[i]]){\n            obj[arr[i]]++;\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] === 1){\n            sum += parseInt(key);\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    let obj = {};\n    for(let i=0;i<arr.length;i++){\n        if(obj[arr[i]]){\n            obj[arr[i]]++;\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] === 1){\n            sum += parseInt(key);\n        }\n    }\n    return sum;\n}"
   ]
 }

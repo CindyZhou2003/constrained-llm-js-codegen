@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let mul = 1;\n    for(let i=0; i<arr.length; i",
-    "    let mul = 1;\n    for(let i=0; i<arr.length; i",
-    "    let mul = 1;\n    for(let i=0; i<arr.length; i"
+    "    let mul = 1;\n    for(let i=0; i<arr.length; i++){\n        mul = (mul * arr[i]) % n;\n    }\n    return mul;\n}",
+    "    let mul = 1;\n    for(let i=0; i<arr.length; i++){\n        mul = (mul * arr[i]) % n;\n    }\n    return mul;\n}",
+    "    let mul = 1;\n    for(let i=0; i<arr.length; i++){\n        mul = (mul * arr[i]) % n;\n    }\n    return mul;\n}"
   ]
 }

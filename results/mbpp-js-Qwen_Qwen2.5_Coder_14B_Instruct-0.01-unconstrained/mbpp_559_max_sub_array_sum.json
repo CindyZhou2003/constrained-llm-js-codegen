@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n   ",
-    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n   ",
-    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n   "
+    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n    for(let i = 1; i < size; i++){\n        curr_max = Math.max(a[i], curr_max+a[i]);\n        max_so_far = Math.max(max_so_far, curr_max);\n    }\n    return max_so_far;\n}\n\nlet arr = [-2, -3, 4, -1, -2, 1, 5, -3];",
+    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n    for(let i = 1; i < size; i++){\n        curr_max = Math.max(a[i], curr_max + a[i]);\n        max_so_far = Math.max(max_so_far, curr_max);\n    }\n    return max_so_far;\n}\n\nlet arr = [-2, -3, 4, -1, -2, 1, 5, -3];",
+    "    let max_so_far = a[0];\n    let curr_max = a[0];\n\n    for(let i = 1; i < size; i++){\n        curr_max = Math.max(a[i], curr_max + a[i]);\n        max_so_far = Math.max(max_so_far, curr_max);\n    }\n    return max_so_far;\n}\n\nlet arr = [-2, -3, 4, -1, -2, 1, 5, -3];"
   ]
 }

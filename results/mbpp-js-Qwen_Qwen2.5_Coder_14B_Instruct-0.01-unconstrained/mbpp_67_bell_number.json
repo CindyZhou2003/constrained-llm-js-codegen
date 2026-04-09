@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let bell = Array.from({length: n+1}, () => Array(n+1).",
-    "    let bell = Array.from({length: n+1}, () => Array(n+1).",
-    "    let bell = Array.from({length: n+1}, () => Array(n+1)."
+    "    let bell = Array.from({length: n+1}, () => Array(n+1).fill(0));\n    bell[0][0] = 1;\n    for(let i=1; i<=n; i++){\n        bell[i][0] = bell[i-1][i-1];\n        for(let j=1; j<=i; j++){\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1];\n        }\n    }\n    return bell[n][0];\n}",
+    "    let bell = Array.from({length: n+1}, () => Array(n+1).fill(0));\n    bell[0][0] = 1;\n    for(let i=1; i<=n; i++){\n        bell[i][0] = bell[i-1][i-1];\n        for(let j=1; j<=i; j++){\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1];\n        }\n    }\n    return bell[n][0];\n}",
+    "    let bell = Array.from({length: n+1}, () => Array(n+1).fill(0));\n    bell[0][0] = 1;\n    for(let i=1; i<=n; i++){\n        bell[i][0] = bell[i-1][i-1];\n        for(let j=1; j<=i; j++){\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1];\n        }\n    }\n    return bell[n][0];\n}"
   ]
 }

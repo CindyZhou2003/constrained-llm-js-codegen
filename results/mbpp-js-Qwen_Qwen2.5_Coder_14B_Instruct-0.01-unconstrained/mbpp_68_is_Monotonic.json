@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return A.every((x, i) => i === 0 || x >= A[i -",
-    "    return A.every((x, i) => i === 0 || x >= A[i -",
-    "    return A.every((x, i) => i === 0 || x >= A[i -"
+    "    return A.every((x, i) => i === 0 || x >= A[i - 1]) ||\n           A.every((x, i) => i === 0 || x <= A[i - 1]);\n}",
+    "    return A.every((x, i) => i === 0 || x >= A[i - 1]) ||\n           A.every((x, i) => i === 0 || x <= A[i - 1]);\n}",
+    "    return A.every((x, i) => i === 0 || x >= A[i - 1]) ||\n           A.every((x, i) => i === 0 || x <= A[i - 1]);\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Iterate through each sublist in the input list\n    for(let i = 0; i",
-    "    // Iterate through each sublist in the input list\n    for(let i = 0; i",
-    "    // Iterate through each sublist in the input list\n    for(let i = 0; i"
+    "    // Iterate through each sublist in the input list\n    for(let i = 0; i < input_list.length; i++){\n        // Sort the current sublist using the sort method\n        input_list[i].sort();\n    }\n    // Return the modified input list with sorted sublists\n    return input_list;\n}\n",
+    "    // Iterate through each sublist in the input list\n    for(let i = 0; i < input_list.length; i++){\n        // Sort the current sublist using the sort method\n        input_list[i].sort();\n    }\n    // Return the modified input list with sorted sublists\n    return input_list;\n}\n",
+    "    // Iterate through each sublist in the input list\n    for(let i = 0; i < input_list.length; i++){\n        // Sort the current sublist using the sort method\n        input_list[i].sort();\n    }\n    // Return the modified input list with sorted sublists\n    return input_list;\n}\n"
   ]
 }

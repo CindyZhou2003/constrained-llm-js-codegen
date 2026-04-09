@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r",
-    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r",
-    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r"
+    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r = Math.sqrt(Math.pow(numbers[i].real,2)+Math.pow(numbers[i].imaginary,2));\n        let theta = Math.atan2(numbers[i].imaginary,numbers[i].real);\n        polar.push({r: r, theta: theta});\n    }\n    return polar;\n}\nlet numbers = [{real: 1, imaginary: 1}, {real: -1, imaginary: 1}, {real: -1, imaginary: -1}, {real: 1, imaginary: -1}];",
+    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r = Math.sqrt(Math.pow(numbers[i].real,2)+Math.pow(numbers[i].imaginary,2));\n        let theta = Math.atan2(numbers[i].imaginary,numbers[i].real);\n        polar.push({r:r,theta:theta});\n    }\n    return polar;\n}\nlet numbers = [{real:1,imaginary:1},{real:-1,imaginary:1},{real:-1,imaginary:-1},{real:1,imaginary:-1}];",
+    "    let polar = [];\n    for(let i=0;i<numbers.length;i++){\n        let r = Math.sqrt(Math.pow(numbers[i].real,2)+Math.pow(numbers[i].imaginary,2));\n        let theta = Math.atan2(numbers[i].imaginary,numbers[i].real);\n        polar.push({r: r, theta: theta});\n    }\n    return polar;\n}\nlet numbers = [{real: 1, imaginary: 1}, {real: -1, imaginary: 1}, {real: -1, imaginary: -1}, {real: 1, imaginary: -1}];"
   ]
 }

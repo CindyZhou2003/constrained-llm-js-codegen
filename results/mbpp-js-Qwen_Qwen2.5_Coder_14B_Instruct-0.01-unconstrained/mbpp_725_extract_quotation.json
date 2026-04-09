@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr ===",
-    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr ===",
-    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr ==="
+    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr === null) {\n        return [];\n    }\n    return arr.map(function(val) {\n        return val.replace(/\"/g, '');\n    });\n}",
+    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr === null) {\n        return [];\n    }\n    return arr.map(function(val) {\n        return val.replace(/\"/g, '');\n    });\n}",
+    "    let arr = text1.match(/\"([^\"]+)\"/g);\n    if (arr === null) {\n        return [];\n    }\n    return arr.map(function(val) {\n        return val.replace(/\"/g, '');\n    });\n}"
   ]
 }

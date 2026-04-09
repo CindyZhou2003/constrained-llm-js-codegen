@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < list.length; i++){\n        if(list[i]",
-    "    for(let i = 0; i < list.length; i++){\n        if(list[i]",
-    "    for(let i = 0; i < list.length; i++){\n        if(list[i]"
+    "    for(let i = 0; i < list.length; i++){\n        if(list[i] !== element){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    for(let i = 0; i < list.length; i++){\n        if(list[i] !== element){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    for(let i = 0; i < list.length; i++){\n        if(list[i] !== element){\n            return false;\n        }\n    }\n    return true;\n}\n"
   ]
 }

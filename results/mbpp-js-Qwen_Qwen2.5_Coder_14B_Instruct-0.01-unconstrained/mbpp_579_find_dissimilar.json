@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup",
-    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup",
-    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup"
+    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup1);\n  // Create a set from the second tuple\n  let set2 = new Set(test_tup2);\n  \n  // Find the difference between the two sets\n  let dissimilar = [...set1].filter(x => !set2.has(x)).concat([...set2].filter(x => !set1.has(x)));\n  \n  return dissimilar;\n}\n",
+    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup1);\n  // Create a set from the second tuple\n  let set2 = new Set(test_tup2);\n  \n  // Find the difference between the two sets\n  let dissimilar = [...set1].filter(x => !set2.has(x)).concat([...set2].filter(x => !set1.has(x)));\n  \n  return dissimilar;\n}\n",
+    "  // Create a set from the first tuple\n  let set1 = new Set(test_tup1);\n  // Create a set from the second tuple\n  let set2 = new Set(test_tup2);\n  \n  // Find the difference between the two sets\n  let dissimilar = [...set1].filter(x => !set2.has(x)).concat([...set2].filter(x => !set1.has(x)));\n  \n  return dissimilar;\n}\n"
   ]
 }

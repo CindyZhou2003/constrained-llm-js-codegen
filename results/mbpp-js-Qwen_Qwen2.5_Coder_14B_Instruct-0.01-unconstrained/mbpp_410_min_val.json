@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let min = listval[0];\n    for(let i=1;i<listval.length",
-    "    let min = listval[0];\n    for(let i=1;i<listval.length",
-    "    let min = listval[0];\n    for(let i=1;i<listval.length"
+    "    let min = listval[0];\n    for(let i=1;i<listval.length;i++){\n        if(min>listval[i]){\n            min = listval[i];\n        }\n    }\n    return min;\n}",
+    "    let min = listval[0];\n    for(let i=1;i<listval.length;i++){\n        if(min>listval[i]){\n            min = listval[i];\n        }\n    }\n    return min;\n}",
+    "    let min = listval[0];\n    for(let i=1;i<listval.length;i++){\n        if(min>listval[i]){\n            min = listval[i];\n        }\n    }\n    return min;\n}"
   ]
 }

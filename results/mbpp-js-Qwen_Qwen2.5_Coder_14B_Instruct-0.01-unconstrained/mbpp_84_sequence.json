@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n === 1 || n === 2) return 1;\n    let arr =",
-    "    if(n === 1 || n === 2) return 1;\n    let arr =",
-    "    if(n === 1 || n === 2) return 1;\n    let arr ="
+    "    if(n === 1 || n === 2) return 1;\n    let arr = [0, 1, 1];\n    for(let i = 3; i <= n; i++){\n        arr[i] = arr[arr[i - 1]] + arr[i - arr[i - 1]];\n    }\n    return arr[n];\n}",
+    "    if(n === 1 || n === 2) return 1;\n    let arr = [0, 1, 1];\n    for(let i = 3; i <= n; i++){\n        arr[i] = arr[arr[i - 1]] + arr[i - arr[i - 1]];\n    }\n    return arr[n];\n}",
+    "    if(n === 1 || n === 2) return 1;\n    let arr = [0, 1, 1];\n    for(let i = 3; i <= n; i++){\n        arr[i] = arr[arr[i - 1]] + arr[i - arr[i - 1]];\n    }\n    return arr[n];\n}\n"
   ]
 }

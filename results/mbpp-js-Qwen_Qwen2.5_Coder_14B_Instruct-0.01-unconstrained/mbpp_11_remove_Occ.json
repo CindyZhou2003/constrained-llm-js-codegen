@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let i = 0;\n    let j = s.length - 1;\n    while(i",
-    "    let i = 0;\n    let j = s.length - 1;\n    while(i",
-    "    let i = 0;\n    let j = s.length - 1;\n    while(i"
+    "    let i = 0;\n    let j = s.length - 1;\n    while(i < s.length && s[i] != ch)\n        i++;\n    while(j >= 0 && s[j] != ch)\n        j--;\n    if(i < j){\n        let s1 = s.substring(0, i);\n        let s2 = s.substring(i + 1, j);\n        let s3 = s.substring(j + 1, s.length);\n        return s1 + s2 + s3;\n    }\n    return s;\n}\nlet str = \"geeksforgeeks\";\nlet ch = 'e';",
+    "    let i = 0;\n    let j = s.length - 1;\n    while(i < s.length && s[i] != ch)\n        i++;\n    while(j >= 0 && s[j] != ch)\n        j--;\n    if(i < j){\n        let s1 = s.substring(0, i);\n        let s2 = s.substring(i + 1, j);\n        let s3 = s.substring(j + 1, s.length);\n        return s1 + s2 + s3;\n    }\n    return s;\n}\nlet str = \"geeksforgeeks\";\nlet ch = 'e';",
+    "    let i = 0;\n    let j = s.length - 1;\n    while(i < s.length && s[i] != ch)\n        i++;\n    while(j >= 0 && s[j] != ch)\n        j--;\n    if(i < j){\n        let s1 = s.substring(0, i);\n        let s2 = s.substring(i + 1, j);\n        let s3 = s.substring(j + 1, s.length);\n        return s1 + s2 + s3;\n    }\n    return s;\n}\nlet str = \"geeksforgeeks\";\nlet ch = 'e';"
   ]
 }

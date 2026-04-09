@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 1; i <= limit; i",
-    "    let sum = 0;\n    for(let i = 1; i <= limit; i",
-    "    let sum = 0;\n    for(let i = 1; i <= limit; i"
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        if(is_amicable(i)){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        if(is_amicable(i)){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        if(is_amicable(i)){\n            sum += i;\n        }\n    }\n    return sum;\n}\n"
   ]
 }

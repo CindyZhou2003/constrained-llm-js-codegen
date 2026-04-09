@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n       ",
-    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n       ",
-    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n       "
+    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n        return \"Odd\";\n}",
+    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n        return \"Odd\";\n}",
+    "    if (x % 2 == 0)\n        return \"Even\";\n    else\n        return \"Odd\";\n}"
   ]
 }

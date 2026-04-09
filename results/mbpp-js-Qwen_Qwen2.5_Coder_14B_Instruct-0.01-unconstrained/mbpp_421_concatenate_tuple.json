@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup =",
-    "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup =",
-    "    res = test_tup.join('-')\n    return res\n}\ntest_tup = ['I"
+    "    res = test_tup.join('-')\n    return res\n}\ntest_tup = ['I', 'love', 'Python']\nprint(concatenate_tuple(test_tup)) // Output: I-love-Python\n",
+    "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup = ['I', 'love', 'JavaScript'];",
+    "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup = ['I', 'love', 'JavaScript'];"
   ]
 }

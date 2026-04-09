@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i",
-    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i",
-    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i"
+    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        while(start < end){\n            let temp = arr[start];\n            arr[start] = arr[end];\n            arr[end] = temp;\n            start++;\n            end--;\n        }\n    }\n    return arr[index];\n}\nlet arr = [1, 2, 3, 4, 5];\nlet ranges = [[0, 2], [0, 3]];\nlet rotations = 2;\nlet index = 1;",
+    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        while(start < end){\n            let temp = arr[start];\n            arr[start] = arr[end];\n            arr[end] = temp;\n            start++;\n            end--;\n        }\n    }\n    return arr[index];\n}\nlet arr = [1, 2, 3, 4, 5];\nlet ranges = [[0, 2], [0, 3]];\nlet rotations = 2;\nlet index = 1;",
+    "    for(let i = 0; i < rotations; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        while(start < end){\n            let temp = arr[start];\n            arr[start] = arr[end];\n            arr[end] = temp;\n            start++;\n            end--;\n        }\n    }\n    return arr[index];\n}\nlet arr = [1, 2, 3, 4, 5];\nlet ranges = [[0, 2], [0, 3]];\nlet rotations = 2;\nlet index = 1;"
   ]
 }

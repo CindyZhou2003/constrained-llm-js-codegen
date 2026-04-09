@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let cur = nums.length; cur > 1; cur--){\n        let max_idx =",
-    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index",
-    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index"
+    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index of the maximum element in nums[0..cur-1]\n        let max_idx = 0;\n        for(let i = 1; i < cur; i++){\n            if(nums[i] > nums[max_idx]){\n                max_idx = i;\n            }\n        }\n\n        // Move the maximum element to the end of the current subarray\n        if(max_idx !== cur - 1){\n            // Flip the subarray from 0 to max_idx\n            flip(nums, max_idx);\n            // Flip the subarray from 0 to cur-1\n            flip(nums, cur - 1);\n        }\n    }\n    return nums;\n}\n",
+    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index of the maximum element in nums[0..cur-1]\n        let max_idx = 0;\n        for(let i = 1; i < cur; i++){\n            if(nums[i] > nums[max_idx]){\n                max_idx = i;\n            }\n        }\n\n        // If the maximum element is not already at the end of the current subarray\n        if(max_idx !== cur - 1){\n            // Flip the maximum element to the front of the array\n            flip(nums, max_idx);\n\n            // Flip it to its correct position at the end of the current subarray\n            flip(nums, cur - 1);\n        }\n    }\n}\n",
+    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index of the maximum element in nums[0..cur-1]\n        let max_idx = 0;\n        for(let i = 1; i < cur; i++){\n            if(nums[i] > nums[max_idx]){\n                max_idx = i;\n            }\n        }\n\n        // If the maximum element is not already at the end of the current subarray\n        if(max_idx !== cur - 1){\n            // Flip the maximum element to the front if it's not already there\n            if(max_idx !== 0){\n                flip(nums, max_idx);\n            }\n            // Flip it to its correct position at the end of the current subarray\n            flip(nums, cur - 1);\n        }\n    }\n    return nums;\n}\n"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       "
+    "    let new_string = '';\n    for(let i=0; i<string.length; i++){\n        if(second_string.indexOf(string[i]) === -1){\n            new_string += string[i];\n        }\n    }\n    return new_string;\n}\n",
+    "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n        if(second_string.indexOf(string[i]) === -1){\n            new_string += string[i];\n        }\n    }\n    return new_string;\n}\n",
+    "    let new_string = '';\n    for(let i=0; i<string.length; i++){\n        if(second_string.indexOf(string[i]) === -1){\n            new_string += string[i];\n        }\n    }\n    return new_string;\n}\n"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n;",
-    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n;",
-    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n;"
+    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n; i++){\n        if(arr[i] < 0){\n            neg.push(arr[i]);\n        } else {\n            pos.push(arr[i]);\n        }\n    }\n    return [...neg, ...pos];\n}\n",
+    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n; i++){\n        if(arr[i] < 0){\n            neg.push(arr[i]);\n        } else {\n            pos.push(arr[i]);\n        }\n    }\n    return [...neg, ...pos];\n}\n",
+    "    let neg = [];\n    let pos = [];\n    for(let i=0; i<n; i++){\n        if(arr[i] < 0){\n            neg.push(arr[i]);\n        } else {\n            pos.push(arr[i]);\n        }\n    }\n    return [...neg, ...pos];\n}\n"
   ]
 }

@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return string.split(' ');\n}",
-    "    return string.split(' ');\n}\n",
+    "    return string.split(' ');\n}",
     "    return string.split(' ');\n}\n"
   ]
 }

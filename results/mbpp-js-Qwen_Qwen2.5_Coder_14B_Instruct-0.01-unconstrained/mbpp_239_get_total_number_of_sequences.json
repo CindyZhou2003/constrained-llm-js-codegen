@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i = 1; i <= m; i",
-    "    let count = 0;\n    for(let i = 1; i <= m; i",
-    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array"
+    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array.from({length: m+1}, () => Array(n+1).fill(0));\n  \n    // Base case: There is one sequence of length 0 (the empty sequence)\n    for(let i=0; i<=m; i++){\n      dp[i][0] = 1;\n    }\n  \n    // Fill in the rest of the dp array\n    for(let i=1; i<=m; i++){\n      for(let j=1; j<=n; j++){\n        // The number of sequences of length j ending with i is the sum of the number of sequences of length j-1 ending with any number less than or equal to i/2\n        for(let k=1; k<=Math.floor(i/2); k++){\n          dp[i][j] += dp[k][j-1];\n        }\n      }\n    }\n  \n    // The answer is the number of sequences of length n ending with any number between 1 and m\n    let ans = 0;\n    for(let i=1; i<=m; i++){\n      ans += dp[i][n];\n    }\n  \n    return ans;\n  }",
+    "    let count = 0;\n    for(let i = 1; i <= m; i++){\n        count += get_total_number_of_sequences_helper(m, n-1, i*2);\n    }\n    return count;\n}\n",
+    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array.from({length: m+1}, () => Array(n+1).fill(0));\n  \n    // Base case: There is one sequence of length 0 (the empty sequence)\n    for(let i=0; i<=m; i++){\n      dp[i][0] = 1;\n    }\n  \n    // Fill in the rest of the dp array\n    for(let i=1; i<=m; i++){\n      for(let j=1; j<=n; j++){\n        // The number of sequences of length j ending with i is the sum of the number of sequences of length j-1 ending with any number less than or equal to i/2\n        for(let k=1; k<=Math.floor(i/2); k++){\n          dp[i][j] += dp[k][j-1];\n        }\n      }\n    }\n  \n    // The answer is the number of sequences of length n ending with any number between 1 and m\n    let ans = 0;\n    for(let i=1; i<=m; i++){\n      ans += dp[i][n];\n    }\n  \n    return ans;\n  }"
   ]
 }

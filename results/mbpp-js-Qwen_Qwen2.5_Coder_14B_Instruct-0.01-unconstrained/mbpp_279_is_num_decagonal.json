@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n < 1) return false;\n    var x = (4 * n -",
-    "    if (n < 1) return false;\n    var x = (4 * n -",
-    "    if (n < 1) {\n        return false;\n    }\n    var x = ("
+    "    if (n < 1) {\n        return false;\n    }\n    var x = (4 * n - 2);\n    return Number.isInteger(x);\n}",
+    "    if (n < 1) return false;\n    var x = (4 * n - 2);\n    var y = Math.sqrt(x);\n    return (y - Math.floor(y)) === 0;\n}\n",
+    "    if (n < 1) return false;\n    var x = (4 * n - 2);\n    var y = Math.sqrt(x);\n    return (y - Math.floor(y)) === 0;\n}\n"
   ]
 }

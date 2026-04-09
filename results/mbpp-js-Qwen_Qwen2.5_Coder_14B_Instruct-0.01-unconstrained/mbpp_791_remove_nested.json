@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n",
-    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n",
-    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n"
+    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n            res.push(ele);\n        }\n    }\n    return res;\n}\nlet test_tup = [5, 6, (7, 8), 9, 10];",
+    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n            res.push(ele);\n        }\n    }\n    return res;\n}\nlet test_tup = [5, 6, (7, 8), 9, 10];",
+    "    res = [];\n    for(let ele of test_tup){\n        if(!Array.isArray(ele)){\n            res.push(ele);\n        }\n    }\n    return res;\n}\nlet test_tup = [5, 6, (7, 8), 9, 10];"
   ]
 }

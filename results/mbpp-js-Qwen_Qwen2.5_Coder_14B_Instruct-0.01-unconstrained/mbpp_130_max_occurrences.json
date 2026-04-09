@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = 0;\n    let count = 0;\n    let item;\n    for",
-    "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n",
-    "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n"
+    "    let max = 0;\n    let count = 0;\n    let item;\n    for(let i = 0; i < nums.length; i++){\n        for(let j = 0; j < nums.length; j++){\n            if(nums[i] === nums[j]){\n                count++;\n            }\n        }\n        if(count > max){\n            max = count;\n            item = nums[i];\n        }\n        count = 0;\n    }\n    return item;\n}",
+    "    let max = 0;\n    let count = 0;\n    let item;\n    for(let i = 0; i < nums.length; i++){\n        for(let j = 0; j < nums.length; j++){\n            if(nums[i] === nums[j]){\n                count++;\n            }\n        }\n        if(count > max){\n            max = count;\n            item = nums[i];\n        }\n        count = 0;\n    }\n    return item;\n}",
+    "    let max = 0;\n    let count = 0;\n    let item;\n    for(let i = 0; i < nums.length; i++){\n        for(let j = 0; j < nums.length; j++){\n            if(nums[i] === nums[j]){\n                count++;\n            }\n        }\n        if(count > max){\n            max = count;\n            item = nums[i];\n        }\n        count = 0;\n    }\n    return item;\n}"
   ]
 }

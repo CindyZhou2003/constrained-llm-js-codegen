@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n       "
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === ' '){\n            newString += '%20';\n        } else {\n            newString += string[i];\n        }\n    }\n    return newString;\n}\n",
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === ' '){\n            newString += '%20';\n        } else {\n            newString += string[i];\n        }\n    }\n    return newString;\n}\n",
+    "    let newString = '';\n    for(let i=0; i<string.length; i++){\n        if(string[i] === ' '){\n            newString += '%20';\n        } else {\n            newString += string[i];\n        }\n    }\n    return newString;\n}\n"
   ]
 }

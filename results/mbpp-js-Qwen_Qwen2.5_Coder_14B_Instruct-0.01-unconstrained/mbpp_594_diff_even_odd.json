@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var first_even = 0;\n    var first_odd = 0;\n    for (var",
-    "    var first_even = 0;\n    var first_odd = 0;\n    for (var",
-    "    var first_even = 0;\n    var first_odd = 0;\n    for (var"
+    "    let first_even = null;\n    let first_odd = null;\n    for(let i=0; i<list1.length; i++){\n        if(first_even == null && list1[i] % 2 == 0){\n            first_even = list1[i];\n        }\n        else if(first_odd == null && list1[i] % 2 != 0){\n            first_odd = list1[i];\n        }\n        if(first_even != null && first_odd != null){\n            break;\n        }\n    }\n    return first_even - first_odd;\n}",
+    "    var first_even = 0;\n    var first_odd = 0;\n    for (var i = 0; i < list1.length; i++) {\n        if (list1[i] % 2 == 0) {\n            first_even = list1[i];\n            break;\n        }\n    }\n    for (var i = 0; i < list1.length; i++) {\n        if (list1[i] % 2 != 0) {\n            first_odd = list1[i];\n            break;\n        }\n    }\n    return first_even - first_odd;\n}",
+    "    let first_even = null;\n    let first_odd = null;\n    for(let i=0; i<list1.length; i++){\n        if(first_even == null && list1[i] % 2 == 0){\n            first_even = list1[i];\n        }\n        else if(first_odd == null && list1[i] % 2 != 0){\n            first_odd = list1[i];\n        }\n        if(first_even != null && first_odd != null){\n            break;\n        }\n    }\n    return first_even - first_odd;\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  // use filter() method to filter out the tuples\n  // use every() method to check",
-    "  // use filter method to iterate through each tuple in the list\n  res = test_list.filter",
-    "  // use filter() method to filter out tuples where all elements are divisible by K\n  res"
+    "  // use filter method to iterate through each tuple in the list\n  res = test_list.filter(sub => sub.every(ele => ele % K == 0));\n  return res;\n}\n",
+    "  // use filter method to iterate through each tuple in the list\n  res = test_list.filter(sub => sub.every(ele => ele % K == 0));\n  return res;\n}\n",
+    "  // use filter() method to filter out tuples where all elements are divisible by K\n  res = test_list.filter(sub => sub.every(ele => ele % K == 0));\n  return res;\n}\n"
   ]
 }

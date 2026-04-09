@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n       ",
-    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n       ",
-    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n       "
+    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n        if(!isNaN(str[i])){\n            ctr++;\n        }\n    }\n    return ctr;\n}",
+    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n        if(!isNaN(str[i])){\n            ctr++;\n        }\n    }\n    return ctr;\n}",
+    "    let ctr = 0;\n    for(let i=0;i<str.length;i++){\n        if(!isNaN(str[i])){\n            ctr++;\n        }\n    }\n    return ctr;\n}"
   ]
 }

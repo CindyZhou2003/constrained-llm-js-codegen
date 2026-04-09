@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let temp = [];\n    for(let i = 0; i <",
-    "    let result = [];\n    for(let i = 0; i < S.length; i +=",
-    "    let result = [];\n    for(let i = 0; i < S.length; i +="
+    "    let result = [];\n    let temp = [];\n    for(let i = 0; i < S.length; i++){\n        if(i % step === 0 && i !== 0){\n            result.push(temp);\n            temp = [];\n        }\n        temp.push(S[i]);\n    }\n    result.push(temp);\n    return result;\n}\n",
+    "    let result = [];\n    let temp = [];\n    for(let i = 0; i < S.length; i++){\n        if(i % step === 0 && i !== 0){\n            result.push(temp);\n            temp = [];\n        }\n        temp.push(S[i]);\n    }\n    result.push(temp);\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < S.length; i += step){\n        result.push(S.slice(i, i + step));\n    }\n    return result;\n}\n"
   ]
 }

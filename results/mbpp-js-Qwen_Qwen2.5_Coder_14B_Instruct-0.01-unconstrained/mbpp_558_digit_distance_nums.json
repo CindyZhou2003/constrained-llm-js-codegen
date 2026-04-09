@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n",
-    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n",
-    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n"
+    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n    let diff = 0;\n    for(let i = 0; i < str_n1.length; i++){\n        diff += Math.abs(str_n1[i] - str_n2[i]);\n    }\n    return diff;\n}",
+    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n    let diff = 0;\n    for(let i = 0; i < str_n1.length; i++){\n        diff += Math.abs(str_n1[i] - str_n2[i]);\n    }\n    return diff;\n}",
+    "    let str_n1 = n1.toString();\n    let str_n2 = n2.toString();\n    let diff = 0;\n    for(let i = 0; i < str_n1.length; i++){\n        diff += Math.abs(str_n1[i] - str_n2[i]);\n    }\n    return diff;\n}"
   ]
 }

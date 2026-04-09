@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n\n",
-    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n\n",
-    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n\n"
+    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n",
+    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n",
+    "    list1[list1.length - 1] = list2;\n    return list1;\n}\n"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length",
-    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length",
-    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length"
+    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length && !found){\n        if (dlist[pos] == item){\n            found = true;\n        } else {\n            pos = pos + 1;\n        }\n    }\n    return [found, pos];\n}\n",
+    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length && !found){\n        if (dlist[pos] == item){\n            found = true;\n        } else {\n            pos = pos + 1;\n        }\n    }\n    return [found, pos];\n}\n",
+    "    let pos = 0;\n    let found = false;\n    while(pos < dlist.length && !found){\n        if (dlist[pos] == item){\n            found = true;\n        } else {\n            pos = pos + 1;\n        }\n    }\n    return [found, pos];\n}\n"
   ]
 }

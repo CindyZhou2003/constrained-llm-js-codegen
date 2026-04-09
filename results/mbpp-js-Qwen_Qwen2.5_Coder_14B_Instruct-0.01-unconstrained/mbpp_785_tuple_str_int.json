@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"(",
-    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"(",
-    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"("
+    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"(1, 2, 3, 4)\"",
+    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"(1, 2, 3, 4)\"",
+    "  res = test_str.split(',').map(Number);\n  return res;\n}\ntest_str = \"(1, 2, 3, 4)\""
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n",
-    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n",
-    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n"
+    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n    for(let i=0; i<n-1; i++){\n        if(arr[i+1] - arr[i] < diff){\n            diff = arr[i+1] - arr[i];\n        }\n    }\n    return diff;\n}",
+    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n    for(let i=0; i<n-1; i++){\n        if(arr[i+1] - arr[i] < diff){\n            diff = arr[i+1] - arr[i];\n        }\n    }\n    return diff;\n}\n",
+    "    arr.sort((a,b) => a-b);\n    let diff = Number.MAX_SAFE_INTEGER;\n    for(let i=0; i<n-1; i++){\n        if(arr[i+1] - arr[i] < diff){\n            diff = arr[i+1] - arr[i];\n        }\n    }\n    return diff;\n}"
   ]
 }

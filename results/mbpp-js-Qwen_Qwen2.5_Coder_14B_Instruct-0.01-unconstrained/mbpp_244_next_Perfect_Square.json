@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let root = Math.floor(Math.sqrt(N));\n    if (root * root == N) {\n",
-    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root)) {\n        return",
-    "    let root = Math.sqrt(N);\n    if (root == parseInt(root))\n        return ((root"
+    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root))\n        return N + 1;\n    else\n        return Math.pow(Math.floor(root) + 1, 2);\n}",
+    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root)) {\n        return N + 1;\n    }\n    else {\n        root = Math.floor(root) + 1;\n        return root * root;\n    }\n}",
+    "    let root = Math.sqrt(N);\n    if (root == parseInt(root)) {\n        return (parseInt(root) + 1) * (parseInt(root) + 1);\n    } else {\n        return (parseInt(root) + 1) * (parseInt(root) + 1);\n    }\n}"
   ]
 }

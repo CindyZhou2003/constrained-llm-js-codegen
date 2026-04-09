@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    while (n > 0) {\n        sum += n",
-    "    let sum = 0;\n    while (n > 0) {\n        sum += n",
-    "    let sum = 0;\n    while (n > 0) {\n        sum += n"
+    "    let sum = 0;\n    while (n > 0) {\n        sum += n % 10;\n        n = Math.floor(n / 10);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    while (n > 0) {\n        sum += n % 10;\n        n = Math.floor(n / 10);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    while (n > 0) {\n        sum += n % 10;\n        n = Math.floor(n / 10);\n    }\n    return sum;\n}"
   ]
 }

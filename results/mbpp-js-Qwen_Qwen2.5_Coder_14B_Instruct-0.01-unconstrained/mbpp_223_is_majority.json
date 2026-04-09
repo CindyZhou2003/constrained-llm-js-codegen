@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let low = 0;\n    let high = n - 1;\n    while(low <=",
-    "    let low = 0;\n    let high = n - 1;\n    while(low <=",
-    "    let low = 0;\n    let high = n - 1;\n    while(low <="
+    "    let low = 0;\n    let high = n - 1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(arr[mid] == x){\n            if(mid == 0 || arr[mid - 1] != x){\n                let count = mid + 1 + (n - mid - 1);\n                return count > n / 2;\n            }else{\n                high = mid - 1;\n            }\n        }else if(arr[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n    return false;\n}",
+    "    let low = 0;\n    let high = n - 1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(arr[mid] == x){\n            if(mid == 0 || arr[mid - 1] != x){\n                let count = mid + 1 + (n - mid - 1);\n                return count > n / 2;\n            }else{\n                high = mid - 1;\n            }\n        }else if(arr[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n    return false;\n}",
+    "    let low = 0;\n    let high = n - 1;\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n        if(arr[mid] == x){\n            if(mid == 0 || arr[mid - 1] != x){\n                let count = mid + 1 + (n - mid - 1);\n                return count > n / 2;\n            }else{\n                high = mid - 1;\n            }\n        }else if(arr[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n    return false;\n}"
   ]
 }

@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let min_length = lst[0].length;\n    for(let i = 1; i",
-    "    let min_length = lst[0].length;\n    for(let i = 1; i",
-    "    let min_length = lst[0].length;\n    for(let i = 1; i"
+    "    let min_length = lst[0].length;\n    for(let i = 1; i < lst.length; i++){\n        if(lst[i].length < min_length){\n            min_length = lst[i].length;\n        }\n    }\n    return min_length;\n}",
+    "    let min_length = lst[0].length;\n    for(let i = 1; i < lst.length; i++){\n        if(lst[i].length < min_length){\n            min_length = lst[i].length;\n        }\n    }\n    return min_length;\n}",
+    "    let min_length = lst[0].length;\n    for(let i = 1; i < lst.length; i++){\n        if(lst[i].length < min_length){\n            min_length = lst[i].length;\n        }\n    }\n    return min_length;\n}"
   ]
 }

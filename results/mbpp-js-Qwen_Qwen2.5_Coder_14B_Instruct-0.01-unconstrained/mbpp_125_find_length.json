@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_diff = -1;\n    let val = 0;\n    let min_val =",
-    "    let max_diff = -1;\n    let value = 0;\n    let min_value =",
-    "    let max_diff = -1;\n    let curr_diff = 0;\n    let prev_zero"
+    "    let max_diff = -1;\n    let curr_diff = 0;\n    let prev_zero = 0;\n    let prev_one = 0;\n\n    for(let i=0; i<string.length; i++){\n        if(string[i] == '0'){\n            prev_zero++;\n        }else{\n            prev_one++;\n        }\n\n        if(prev_zero >= prev_one){\n            curr_diff = prev_zero - prev_one;\n            if(curr_diff > max_diff){\n                max_diff = curr_diff;\n            }\n        }else{\n            prev_zero = 0;\n            prev_one = 0;\n        }\n    }\n    return max_diff;\n}\n\nlet string = \"11000010001\";",
+    "    let max_diff = -1;\n    let val = 0;\n    let min_val = 0;\n\n    for(let i=0; i<string.length; i++){\n        if(string[i] == '0'){\n            val += 1;\n        }else{\n            val -= 1;\n        }\n\n        if(val < min_val){\n            min_val = val;\n        }\n\n        if((val - min_val) > max_diff){\n            max_diff = val - min_val;\n        }\n    }\n\n    return max_diff;\n}\n",
+    "    let max_diff = -1;\n    let val = 0;\n    let min_val = 0;\n\n    for(let i=0; i<string.length; i++){\n        if(string[i] == '0'){\n            val += 1;\n        }else{\n            val -= 1;\n        }\n\n        if(val < min_val){\n            min_val = val;\n        }\n\n        if(max_diff < (val - min_val)){\n            max_diff = val - min_val;\n        }\n    }\n\n    return max_diff;\n}\n"
   ]
 }

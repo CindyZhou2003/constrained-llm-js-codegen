@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n   ",
-    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n   ",
-    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n   "
+    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n    var i = 0;\n    var j = arr.length - 1;\n    while(i < j){\n        if(vowels.indexOf(arr[i]) === -1){\n            i++;\n        }\n        else if(vowels.indexOf(arr[j]) === -1){\n            j--;\n        }\n        else{\n            var temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n            i++;\n            j--;\n        }\n    }\n    return arr.join('');\n}",
+    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n    var i = 0;\n    var j = arr.length - 1;\n    while(i < j){\n        if(vowels.indexOf(arr[i]) === -1){\n            i++;\n        }\n        else if(vowels.indexOf(arr[j]) === -1){\n            j--;\n        }\n        else{\n            var temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n            i++;\n            j--;\n        }\n    }\n    return arr.join('');\n}",
+    "    var vowels = 'aeiouAEIOU';\n    var arr = str1.split('');\n    var i = 0;\n    var j = arr.length - 1;\n    while(i < j){\n        if(vowels.indexOf(arr[i]) === -1){\n            i++;\n        }\n        else if(vowels.indexOf(arr[j]) === -1){\n            j--;\n        }\n        else{\n            var temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n            i++;\n            j--;\n        }\n    }\n    return arr.join('');\n}"
   ]
 }

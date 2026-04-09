@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n",
-    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n",
-    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n"
+    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n        let sum = stdata[i][1] + stdata[i][2];\n        if(sum > max){\n            max = sum;\n        }\n    }\n    return max;\n}\nlet stdata = [\n    [\"John\", 85, 90],\n    [\"Jane\", 78, 88],\n    [\"Doe\", 92, 85]\n];",
+    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n        let sum = stdata[i][1] + stdata[i][2];\n        if(sum > max){\n            max = sum;\n        }\n    }\n    return max;\n}\nlet stdata = [\n    [\"John\", 85, 90],\n    [\"Jane\", 78, 88],\n    [\"Doe\", 92, 85]\n];",
+    "    let max = 0;\n    for(let i=0;i<stdata.length;i++){\n        let sum = stdata[i][1] + stdata[i][2];\n        if(sum > max){\n            max = sum;\n        }\n    }\n    return max;\n}\nlet stdata = [\n    [\"John\", 85, 90],\n    [\"Jane\", 78, 88],\n    [\"Doe\", 92, 85]\n];"
   ]
 }

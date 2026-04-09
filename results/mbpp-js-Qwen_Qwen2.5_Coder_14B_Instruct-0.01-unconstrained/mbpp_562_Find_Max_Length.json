@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let maxLength = 0;\n    for(let i = 0; i < lst.length;",
-    "    let maxLength = 0;\n    for(let i = 0; i < lst.length;",
-    "    let maxLength = 0;\n    for(let i = 0; i < lst.length;"
+    "    let maxLength = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i].length > maxLength){\n            maxLength = lst[i].length;\n        }\n    }\n    return maxLength;\n}",
+    "    let maxLength = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i].length > maxLength){\n            maxLength = lst[i].length;\n        }\n    }\n    return maxLength;\n}",
+    "    let maxLength = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i].length > maxLength){\n            maxLength = lst[i].length;\n        }\n    }\n    return maxLength;\n}"
   ]
 }

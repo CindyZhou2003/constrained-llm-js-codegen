@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n",
-    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n",
-    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n"
+    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n        if(i % 2 !== 0){\n            sum += i;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n        if(i % 2 !== 0){\n            sum += i;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = l; i <= r; i++){\n        if(i % 2 !== 0){\n            sum += i;\n        }\n    }\n    return sum;\n}"
   ]
 }

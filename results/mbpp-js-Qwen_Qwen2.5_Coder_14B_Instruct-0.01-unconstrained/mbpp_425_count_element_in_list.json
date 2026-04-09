@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i=0; i<list1.length;",
-    "    let count = 0;\n    for(let i=0; i<list1.length;",
-    "    let count = 0;\n    for(let i=0; i<list1.length;"
+    "    let count = 0;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i].includes(x)){\n            count++;\n        }\n    }\n    return count;\n}\nlet list1 = [[1,2,3],[4,5,6],[7,8,9],[1,2,3]];\nlet x = 3;",
+    "    let count = 0;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i].includes(x)){\n            count++;\n        }\n    }\n    return count;\n}\nlet list1 = [[1,2,3],[4,5,6],[7,8,9],[1,2,3]];\nlet x = 3;",
+    "    let count = 0;\n    for(let i=0; i<list1.length; i++){\n        if(list1[i].includes(x)){\n            count++;\n        }\n    }\n    return count;\n}\n\nlet list1 = [[1,2,3],[4,5,6],[7,8,9],[1,2,3]];\nlet x = 3;"
   ]
 }

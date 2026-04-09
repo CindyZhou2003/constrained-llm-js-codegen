@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < list1.length - 1; i++){\n       ",
-    "    for(let i = 0; i < list1.length - 1; i++){\n       ",
-    "    for(let i = 0; i < list1.length - 1; i++){\n       "
+    "    for(let i = 0; i < list1.length - 1; i++){\n        if(list1[i] > list1[i + 1]){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for(let i = 0; i < list1.length - 1; i++){\n        if(list1[i] > list1[i + 1]){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for(let i = 0; i < list1.length - 1; i++){\n        if(list1[i] > list1[i + 1]){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

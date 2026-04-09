@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num",
-    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num",
-    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num"
+    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num);\n}",
+    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num);\n}",
+    "    var re = /^\\d+\\.\\d{1,2}$/;\n    return re.test(num);\n}"
   ]
 }

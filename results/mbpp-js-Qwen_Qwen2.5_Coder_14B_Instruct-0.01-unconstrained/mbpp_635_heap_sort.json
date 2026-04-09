@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - ",
-    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - ",
-    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - "
+    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - 1; i >= 0; i--){\n        heapify(iterable, n, i);\n    }\n    for(let i = n-1; i > 0; i--){\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n        heapify(iterable, i, 0);\n    }\n    return iterable;\n}",
+    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - 1; i >= 0; i--){\n        heapify(iterable, n, i);\n    }\n    for(let i = n-1; i > 0; i--){\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n        heapify(iterable, i, 0);\n    }\n    return iterable;\n}",
+    "    let n = iterable.length;\n    for(let i = Math.floor(n/2) - 1; i >= 0; i--){\n        heapify(iterable, n, i);\n    }\n    for(let i = n-1; i > 0; i--){\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n        heapify(iterable, i, 0);\n    }\n    return iterable;\n}"
   ]
 }
