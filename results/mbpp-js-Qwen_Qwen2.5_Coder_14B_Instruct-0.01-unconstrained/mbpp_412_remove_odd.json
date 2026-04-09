@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let even = l.filter(function(num) {\n        return num % 2 === 0;\n",
-    "    let even = l.filter(function(num) {\n        return num % 2 === 0;\n",
-    "    let even = l.filter(function(num) {\n        return num % 2 === 0;\n"
+    "    let even = [];\n    for(let i=0;i<l.length;i++){\n        if(l[i",
+    "    let even = [];\n    for(let i=0;i<l.length;i++){\n        if(l[i",
+    "    let even = [];\n    for(let i=0;i<l.length;i++){\n        if(l[i"
   ]
 }

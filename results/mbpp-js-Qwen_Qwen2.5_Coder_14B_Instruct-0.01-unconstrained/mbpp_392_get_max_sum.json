@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n<=0){\n        return 0;\n    }\n    let max_sum = Math.max",
+    "    if(n<=1){\n        return n;\n    }\n    let max_sum = 0;\n",
     "    if(n<=1){\n        return n;\n    }\n    let max_sum = 0;\n",
     "    if(n<=1){\n        return n;\n    }\n    let sum = 0;\n   "
   ]

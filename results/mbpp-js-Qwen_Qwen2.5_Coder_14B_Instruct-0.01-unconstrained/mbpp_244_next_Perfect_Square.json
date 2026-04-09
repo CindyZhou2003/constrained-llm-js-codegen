@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let root = Math.floor(Math.sqrt(N));\n    if (root * root == N) {\n",
-    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root))\n        return N",
-    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root)) {\n        return"
+    "    var root = Math.sqrt(N);\n    if (root == Math.floor(root)) {\n        return",
+    "    let root = Math.sqrt(N);\n    if (root == parseInt(root))\n        return ((root"
   ]
 }

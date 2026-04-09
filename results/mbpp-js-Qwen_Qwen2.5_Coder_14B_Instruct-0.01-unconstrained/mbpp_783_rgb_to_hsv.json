@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    // Normalize the RGB values\n    r /= 255;\n    g /= 2",
-    "    // Normalize the RGB values\n    r /= 255;\n    g /= 2",
-    "    // Normalize the RGB values\n    r /= 255;\n    g /= 2"
+    "    // Normalize the RGB values\n    r = r / 255;\n    g =",
+    "    // Normalize the RGB values\n    r = r / 255;\n    g ="
   ]
 }

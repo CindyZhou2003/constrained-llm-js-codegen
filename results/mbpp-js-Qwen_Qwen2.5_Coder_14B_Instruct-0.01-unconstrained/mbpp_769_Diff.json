@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
+    "    var i;\n    var diff = [];\n\n    for(i = 0; i < li1",
     "    var i;\n    var diff = [];\n\n    for (i = 0; i < li",
-    "    var i;\n    var diff = [];\n\n    for (i = 0; i < li",
-    "    var i;\n    var diff = [];\n\n    for (i = 0; i < li"
+    "    var i;\n    var diff = [];\n\n    for(i = 0; i < li1"
   ]
 }

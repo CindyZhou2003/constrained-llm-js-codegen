@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_tup.join('-')\n    return res\n}\ntest_tup = ['I",
+    "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup =",
     "  let res = test_tup.join('-');\n  return res;\n}\n\nlet test_tup =",
     "    res = test_tup.join('-')\n    return res\n}\ntest_tup = ['I"
   ]

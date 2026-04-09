@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return n % 2 == 0;\n}",
     "    return n % 2 === 0;\n}",
-    "    return n % 2 == 0;\n}"
+    "    return n % 2 === 0;\n}",
+    "    return n % 2 === 0;\n}"
   ]
 }

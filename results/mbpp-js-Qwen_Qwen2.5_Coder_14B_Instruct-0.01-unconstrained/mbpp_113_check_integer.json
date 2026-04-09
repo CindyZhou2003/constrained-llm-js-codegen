@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return Number.isInteger(Number(text));\n}\n",
-    "    return Number.isInteger(Number(text));\n}",
-    "    return Number.isInteger(Number(text));\n}\n"
+    "    return Number.isInteger(Number(text));\n}\n",
+    "    return Number.isInteger(Number(text));\n}"
   ]
 }

@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let count = 0;\n    for(let i = 0; i < num_list.length",
-    "    let count = 0;\n    for(let i = 0; i < num_list.length",
+    "    var count = 0;\n    for(var i = 0; i< num_list.length",
     "    let count = 0;\n    for(let i = 0; i < num_list.length"
   ]
 }

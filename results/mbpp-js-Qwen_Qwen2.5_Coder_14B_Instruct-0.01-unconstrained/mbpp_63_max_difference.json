@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  res = Math.max(...test_list) - Math.min(...test_list);\n  return res;\n",
     "    //sort the list\n    test_list.sort((a, b) => a - b);\n",
-    "    //sort the list\n    test_list.sort((a, b) => a - b);\n"
+    "    // sort the list\n    test_list.sort((a, b) => a - b);\n",
+    "    // sort the list\n    test_list.sort((a, b) => a - b);\n"
   ]
 }

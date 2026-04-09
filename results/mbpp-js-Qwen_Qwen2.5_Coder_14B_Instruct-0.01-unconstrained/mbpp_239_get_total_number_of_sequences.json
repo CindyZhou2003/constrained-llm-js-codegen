@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array",
-    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array",
-    "    let count = 0;\n    for(let i = 1; i <= m; i"
+    "    let count = 0;\n    for(let i = 1; i <= m; i",
+    "    let count = 0;\n    for(let i = 1; i <= m; i",
+    "    // Initialize a 2D array to store the number of sequences\n    let dp = Array"
   ]
 }

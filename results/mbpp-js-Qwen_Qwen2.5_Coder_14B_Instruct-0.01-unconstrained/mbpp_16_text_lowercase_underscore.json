@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let regex = /^[a-z]+(_[a-z]+)*$/;\n    return regex.test",
-    "    let regex = /^[a-z]+(_[a-z]+)*$/;\n    return regex.test",
-    "    let pattern = /^[a-z]+(_[a-z]+)*$/;\n    return pattern.test"
+    "    let pattern = /^[a-z]+(_[a-z]+)*$/;\n    return pattern.test",
+    "    let regex = /^[a-z]+(_[a-z]+)*$/;\n    return regex.test"
   ]
 }

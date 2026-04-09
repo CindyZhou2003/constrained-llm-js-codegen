@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    return (n & (n-1));\n}",
-    "    return (n & (n-1));\n}",
-    "    return (n & (n-1)) ? true : false;\n}\n"
+    "    return (n & (n-1)) ? true : false;\n}\n",
+    "    return (n & (n-1));\n}"
   ]
 }

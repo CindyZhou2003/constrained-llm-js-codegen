@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let M = A.length;\n    let N = B.length;\n    if (M > N",
     "    if (A.length > B.length)\n        return false;\n    for(let i = 0",
+    "    let M = A.length;\n    let N = B.length;\n    if (M > N",
     "    if (A.length > B.length)\n        return false;\n    for(let i = 0"
   ]
 }

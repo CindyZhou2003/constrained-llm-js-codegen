@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n",
     "    let max = 0;\n    let count = 0;\n    let item;\n    for",
+    "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n",
     "    let max_count = 0;\n    let max_item = null;\n    const counts = {};\n"
   ]
 }

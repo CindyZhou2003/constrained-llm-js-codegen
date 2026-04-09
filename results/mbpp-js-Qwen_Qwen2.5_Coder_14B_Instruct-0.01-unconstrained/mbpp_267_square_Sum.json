@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let sum = 0;\n    for(let i=1;i<=n;i++){\n        sum",
-    "    let sum = 0;\n    for(let i=1; i<=n; i++){\n",
+    "    let sum = 0;\n    for(let i=1;i<=n;i++){\n        sum",
     "    let sum = 0;\n    for(let i=1;i<=n;i++){\n        sum"
   ]
 }

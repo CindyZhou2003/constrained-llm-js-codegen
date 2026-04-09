@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
+    "    for(let cur = nums.length; cur > 1; cur--){\n        let max_idx =",
     "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index",
-    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index",
-    "    for(let cur = nums.length; cur > 1; cur--){\n        let max_idx ="
+    "    for(let cur = nums.length; cur > 1; cur--){\n        // Find the index"
   ]
 }

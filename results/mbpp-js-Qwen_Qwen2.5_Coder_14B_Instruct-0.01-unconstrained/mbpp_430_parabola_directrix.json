@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Calculate the vertex of the parabola\n    let x_vertex = -b / (",
     "    let x = -b / (2 * a);\n    let y = c - ((b",
-    "    // Calculate the vertex of the parabola\n    let x_vertex = -b / ("
+    "    // Calculate the vertex of the parabola\n    let x_vertex = -b / (",
+    "    let x = -b / (2 * a);\n    let y = c - ((b"
   ]
 }

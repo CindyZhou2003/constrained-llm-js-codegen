@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
+    "  res = []\n  for(let idx in test_list){\n    res.push((test_list[idx],",
     "  res = []\n  for(let idx in test_list){\n    res.push([test_list[idx],",
-    "  res = []\n  for(let idx in test_list){\n    res.push([test_list[idx],",
-    "  res = []\n  for(let idx in test_list){\n    res.push((test_list[idx],"
+    "  res = []\n  for(let idx in test_list){\n    res.push([test_list[idx],"
   ]
 }

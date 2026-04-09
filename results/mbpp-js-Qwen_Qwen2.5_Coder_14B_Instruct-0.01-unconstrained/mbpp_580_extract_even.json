@@ -13,7 +13,7 @@
     "\nconsole.log"
   ],
   "completions": [
-    "  let res = test_tuple.map(ele => Array.isArray(ele) ? extract_even(ele) : ele",
+    "  let res = test_tuple.map(ele => {\n    if(Array.isArray(ele)){\n      return extract_even",
     "    res = test_tuple.map(ele => {\n        if(Array.isArray(ele)){\n            return extract_even(ele",
     "  let res = test_tuple.map(ele => Array.isArray(ele) ? extract_even(ele) : ele"
   ]

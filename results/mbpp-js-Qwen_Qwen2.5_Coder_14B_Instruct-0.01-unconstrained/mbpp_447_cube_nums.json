@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let cubes = [];\n    for(let i=0; i<nums.length; i++){\n       ",
     "    return nums.map(num => num ** 3);\n}",
-    "    return nums.map(num => num ** 3);\n}"
+    "    let cubes = [];\n    for(let i=0; i<nums.length; i++){\n       ",
+    "    return nums.map(num => Math.pow(num, 3));\n}"
   ]
 }

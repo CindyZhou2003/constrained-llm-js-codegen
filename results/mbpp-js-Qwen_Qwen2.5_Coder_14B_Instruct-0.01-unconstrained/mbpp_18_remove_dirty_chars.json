@@ -14,7 +14,7 @@
   ],
   "completions": [
     "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       ",
-    "    let new_string = '';\n    for(let i=0; i<string.length; i++){\n       ",
+    "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       ",
     "    let new_string = \"\";\n    for(let i=0; i<string.length; i++){\n       "
   ]
 }

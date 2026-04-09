@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
+    "  res = list(test_tup)\n  res.append(test_dict)\n  return tuple(res)\n",
     "  res = list(test_tup)\n  res.append(test_dict)\n  return tuple(res)\n\ntest",
-    "  res = list(test_tup)\n  res.append(test_dict)\n  return tuple(res)\n\ntest",
-    "  res = list(test_tup)\n  res.append(test_dict)\n  return tuple(res)\n\ntest"
+    "  res = list(test_tup)\n  res.append(test_dict)\n  return tuple(res)\n"
   ]
 }

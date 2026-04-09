@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    let obj = {};\n    for(let i=0;i<",
     "    let sum = 0;\n    let obj = {};\n    for(let i=0; i",
-    "    let sum = 0;\n    let obj = {};\n    for(let i=0;i<"
+    "    let sum = 0;\n    let obj = {};\n    for(let i=0; i",
+    "    let sum = 0;\n    let obj = {};\n    for(let i=0; i"
   ]
 }

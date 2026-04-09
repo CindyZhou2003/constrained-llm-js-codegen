@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_diff = -1;\n    let curr_diff = 0;\n    let prev_zero",
-    "    let max_diff = -1;\n    let curr_diff = 0;\n    let prev_zero",
-    "    let max_diff = -1;\n    let val = 0;\n    let min_val ="
+    "    let max_diff = -1;\n    let val = 0;\n    let min_val =",
+    "    let max_diff = -1;\n    let value = 0;\n    let min_value =",
+    "    let max_diff = -1;\n    let curr_diff = 0;\n    let prev_zero"
   ]
 }

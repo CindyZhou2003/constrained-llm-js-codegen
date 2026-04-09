@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i in dict){\n        sum += dict[i];\n",
-    "    let sum = 0;\n    for(let i in dict){\n        sum += dict[i];\n",
-    "    let sum = 0;\n    for(let i in dict){\n        sum += dict[i];\n"
+    "    let sum = 0;\n    for(let key in dict){\n        sum += dict[key];\n",
+    "    let sum = 0;\n    for(let key in dict){\n        sum += dict[key];\n",
+    "    let sum = 0;\n    for(let key in dict){\n        sum += dict[key];\n"
   ]
 }

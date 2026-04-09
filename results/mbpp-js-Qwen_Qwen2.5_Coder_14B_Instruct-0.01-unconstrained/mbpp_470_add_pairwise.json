@@ -15,6 +15,6 @@
   "completions": [
     "    res = []\n    for(idx, ele) in enumerate(test_tup):\n        if idx !=",
     "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_t",
-    "  let res = [];\n  for(let idx in test_tup){\n    if(idx < test_t"
+    "    res = []\n    for(idx, ele) in enumerate(test_tup):\n        if idx !="
   ]
 }

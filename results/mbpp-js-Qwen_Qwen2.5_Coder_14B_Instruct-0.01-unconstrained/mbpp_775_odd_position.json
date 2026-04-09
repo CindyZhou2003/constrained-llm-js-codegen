@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for (var i = 1; i < nums.length; i += 2) {\n",
     "  for (var i = 1; i < nums.length; i += 2) {\n",
-    "    for (var i = 0; i < nums.length; i++) {\n        if (("
+    "  for (var i = 1; i < nums.length; i += 2) {\n",
+    "    for (var i = 1; i < nums.length; i += 2) {\n"
   ]
 }

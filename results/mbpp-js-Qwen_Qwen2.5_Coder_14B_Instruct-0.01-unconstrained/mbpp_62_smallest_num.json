@@ -13,8 +13,8 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let min = xs[0];\n    for(let i = 1; i < xs.length",
     "    return Math.min(...xs);\n}",
-    "    let min = xs[0];\n    for(let i = 1; i < xs.length"
+    "    let min = xs[0];\n    for(let i = 1; i < xs.length",
+    "    return Math.min(...xs);\n}"
   ]
 }

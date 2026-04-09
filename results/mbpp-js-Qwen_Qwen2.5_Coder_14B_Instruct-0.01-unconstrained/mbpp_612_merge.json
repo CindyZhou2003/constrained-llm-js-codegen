@@ -15,6 +15,6 @@
   "completions": [
     "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i",
     "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0;i<",
-    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0;i<"
+    "    let arr1 = [];\n    let arr2 = [];\n    for(let i=0; i"
   ]
 }
