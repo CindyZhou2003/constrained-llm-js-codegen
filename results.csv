@@ -8,3 +8,4 @@ mbpp-js,codellama_CodeLlama_7b_Instruct_hf,0.01,syncode,1,0.4256926952141058,397
 mbpp-js,codellama_CodeLlama_7b_Instruct_hf,0.01,unconstrained,1,0.0654911838790932,397,1,1,154.0152
 mbpp-js,codellama_CodeLlama_7b_Instruct_hf,0.01,chopchop,1,0.3879093198992443,397,1,1,33320.0805
 mbpp-js,codellama_CodeLlama_7b_Instruct_hf,0.01,chopchop-none,1,0.4256926952141058,397,1,1,33320.0805
+mbpp-js,Qwen_Qwen2.5_Coder_14B_Instruct,0.01,unconstrained,1,0.6666666666666665,397,3,3,21137.5132
