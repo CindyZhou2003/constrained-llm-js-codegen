@@ -1,8 +1,14 @@
-# ChopChop-compatible JS grammar, trimmed for MBPP function-body generation.
+# ChopChop-compatible JavaScript grammar
+#
+# Covers: arrow functions, async/await, classes, template & regex literals,
+# spread/rest, default parameters, destructuring declarations, nullish
+# coalescing, import/export, yield/generators, delete, optional chaining, etc.
 
-IDENTIFIER: /(?!(let|const|var|return|true|false|null|function|if|else|for|while|do|break|continue|throw|try|catch|finally|new|typeof|void|instanceof|in|of|switch|case|default)$)[A-Za-z_$][A-Za-z0-9_$]*/
-NUMBER: /(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/
+IDENTIFIER: /(?!(let|const|var|return|true|false|null|undefined|function|if|else|for|while|do|break|continue|throw|try|catch|finally|new|typeof|void|instanceof|in|of|switch|case|default|class|extends|super|import|export|from|as|async|await|yield|delete|static)$)[A-Za-z_$][A-Za-z0-9_$]*/
+NUMBER: /(?:0[xX][0-9a-fA-F]+|0[oO][0-7]+|0[bB][01]+|(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?)/
 STRING: /'([^'\\]|\\.)*'|"([^"\\]|\\.)*"/
+TEMPLATE_LITERAL: /`([^`\\]|\\.)*`/
+REGEX_LITERAL: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
 WS: /\s+/
 
 %ignore WS
@@ -11,6 +17,10 @@ start: stmt_seq
 
 stmt_seq: stmt
         | stmt stmt_seq {StmtSeq}
+
+# ------------------------------------------------------------------
+# Statements
+# ------------------------------------------------------------------
 
 stmt: declaration_statement
     | expression_statement
@@ -25,10 +35,62 @@ stmt: declaration_statement
     | try_catch_statement
     | compound_statement
     | function_declaration
+    | class_declaration
+    | import_statement
+    | export_statement
 
 expression_statement: expression ";" {ExprStmt}
 
+# --- Functions (sync & async, regular & generator) -----------------
+
 function_declaration: "function" IDENTIFIER function_params_postfix compound_statement {FunctionDecl}
+                    | "async" "function" IDENTIFIER function_params_postfix compound_statement {AsyncFunctionDecl}
+                    | "function" "*" IDENTIFIER function_params_postfix compound_statement {GeneratorDecl}
+
+# --- Classes -------------------------------------------------------
+
+class_declaration: "class" IDENTIFIER class_body {ClassDecl}
+                 | "class" IDENTIFIER "extends" expression class_body {ClassDeclExtends}
+
+class_body: "{" "}" {EmptyClassBody}
+          | "{" class_members "}" {ClassBody}
+
+class_members: class_member
+             | class_member class_members {ClassMembers}
+
+class_member: IDENTIFIER function_params_postfix compound_statement {ClassMethod}
+            | "static" IDENTIFIER function_params_postfix compound_statement {StaticMethod}
+            | "async" IDENTIFIER function_params_postfix compound_statement {AsyncClassMethod}
+            | IDENTIFIER "=" expression ";" {ClassField}
+            | "static" IDENTIFIER "=" expression ";" {StaticField}
+
+# --- Import / Export -----------------------------------------------
+
+import_statement: "import" STRING ";" {ImportBare}
+               | "import" IDENTIFIER "from" STRING ";" {ImportDefault}
+               | "import" "{" import_specifiers "}" "from" STRING ";" {ImportNamed}
+               | "import" IDENTIFIER "," "{" import_specifiers "}" "from" STRING ";" {ImportDefaultNamed}
+
+import_specifiers: import_specifier
+                 | import_specifier "," import_specifiers {ImportSpecSeq}
+
+import_specifier: IDENTIFIER {ImportSpec}
+                | IDENTIFIER "as" IDENTIFIER {ImportAlias}
+
+export_statement: "export" "default" expression ";" {ExportDefaultExpr}
+                | "export" declaration_statement {ExportDecl}
+                | "export" function_declaration {ExportFuncDecl}
+                | "export" class_declaration {ExportClassDecl}
+                | "export" "{" export_specifiers "}" ";" {ExportNamed}
+                | "export" "{" export_specifiers "}" "from" STRING ";" {ExportNamedFrom}
+
+export_specifiers: export_specifier
+                 | export_specifier "," export_specifiers {ExportSpecSeq}
+
+export_specifier: IDENTIFIER {ExportSpec}
+                | IDENTIFIER "as" IDENTIFIER {ExportAlias}
+
+# --- Blocks & Control Flow -----------------------------------------
 
 compound_statement: "{" "}" {EmptyBlock}
                   | "{" stmt_seq "}" {NonemptyBlock}
@@ -77,6 +139,8 @@ control_flow_statement: "break" ";" {BreakStmt}
                       | "throw" expression ";" {ThrowStmt}
 
 try_catch_statement: "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement {TryCatch}
+                   | "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement "finally" compound_statement {TryCatchFinally}
+                   | "try" compound_statement "finally" compound_statement {TryFinally}
 
 declaration_statement: "let" lvalue "=" expression ";" {LetDecl}
                      | "const" lvalue "=" expression ";" {ConstDecl}
@@ -84,9 +148,13 @@ declaration_statement: "let" lvalue "=" expression ";" {LetDecl}
 
 lvalue: member_expression
 
+# ------------------------------------------------------------------
+# Expressions
+# ------------------------------------------------------------------
+
 expression: assignment_expr
 
-ASSIGN_OP: /\*\*=|[+\-*\/%&|^]?=/
+ASSIGN_OP: />>>=|>>=|<<=|&&=|\|\|=|\?\?=|\*\*=|[+\-*\/%&|^]?=/
 
 assignment_expr: lvalue ASSIGN_OP assignment_expr {AssignExpr}
                | ternary_expr
@@ -97,6 +165,7 @@ ternary_expr: logic_expr
 logic_expr: bitwise_or_expr
           | logic_expr "||" bitwise_or_expr {LogicOr}
           | logic_expr "&&" bitwise_or_expr {LogicAnd}
+          | logic_expr "??" bitwise_or_expr {NullishCoalesce}
 
 bitwise_or_expr: bitwise_xor_expr
                | bitwise_or_expr "|" bitwise_xor_expr {BitwiseOr}
@@ -119,6 +188,7 @@ relational_expr: shift_expr
                | relational_expr ">" shift_expr {Gt}
                | relational_expr ">=" shift_expr {Gte}
                | relational_expr "instanceof" shift_expr {InstanceOf}
+               | relational_expr "in" shift_expr {InExpr}
 
 shift_expr: sum_expr
           | shift_expr "<<" sum_expr {LShift}
@@ -144,35 +214,61 @@ unary_expr: member_expression
           | "~" unary_expr {BitwiseNot}
           | "typeof" unary_expr {TypeofExpr}
           | "void" unary_expr {VoidExpr}
+          | "delete" unary_expr {DeleteExpr}
+          | "await" unary_expr {AwaitExpr}
+          | "yield" unary_expr {YieldExpr}
+          | "yield" "*" unary_expr {YieldStarExpr}
           | "++" unary_expr {PreInc}
           | "--" unary_expr {PreDec}
 
 member_expression: primary_expr
                  | member_expression "." IDENTIFIER {MemberAccess}
+                 | member_expression "?." IDENTIFIER {OptionalChain}
                  | member_expression "[" expression "]" {IndexAccess}
                  | member_expression "(" ")" {Call0}
                  | member_expression "(" arg_list ")" {CallN}
                  | member_expression "++" {PostInc}
                  | member_expression "--" {PostDec}
 
-arg_list: expression
-        | expression "," arg_list {Args}
+arg_list: arg_item
+        | arg_item "," arg_list {Args}
+
+arg_item: expression
+        | "..." expression {SpreadArg}
+
+# --- Primary Expressions -------------------------------------------
 
 primary_expr: IDENTIFIER {Var}
             | NUMBER {Num}
             | STRING {Str}
+            | TEMPLATE_LITERAL {TemplateLit}
+            | REGEX_LITERAL {RegexLit}
             | "true" {TrueLit}
             | "false" {FalseLit}
             | "null" {NullLit}
+            | "undefined" {UndefinedLit}
             | "this" {ThisLit}
+            | "super" {SuperExpr}
             | array_literal
             | object_literal
             | "(" expression ")" {Group}
             | "new" member_expression {NewExpr}
             | function_expression
+            | class_expression
+            | arrow_expression
+
+# --- Arrays --------------------------------------------------------
 
 array_literal: "[" "]" {EmptyArray}
-             | "[" arg_list "]" {ArrayLit}
+             | "[" array_items "]" {ArrayLit}
+
+array_items: array_item
+           | array_item "," array_items {ArrayItemSeq}
+
+array_item: expression
+          | "..." expression {SpreadElement}
+
+# --- Objects -------------------------------------------------------
 
 object_literal: "{" "}" {EmptyObject}
               | "{" property_list "}" {ObjectLit}
@@ -182,11 +278,41 @@ property_list: property
 
 property: IDENTIFIER ":" expression {PropertyPair}
         | STRING ":" expression {PropertyStrPair}
+        | "[" expression "]" ":" expression {ComputedPropertyPair}
+        | IDENTIFIER {ShorthandProperty}
+        | "..." expression {SpreadProperty}
+        | IDENTIFIER function_params_postfix compound_statement {MethodProperty}
+        | "async" IDENTIFIER function_params_postfix compound_statement {AsyncMethodProperty}
+
+# --- Function & Class Expressions -----------------------------------
 
 function_expression: "function" function_params_postfix compound_statement {FunctionExpr}
+                   | "async" "function" function_params_postfix compound_statement {AsyncFunctionExpr}
+                   | "function" "*" function_params_postfix compound_statement {GeneratorExpr}
+
+class_expression: "class" class_body {ClassExpr}
+                | "class" "extends" expression class_body {ClassExprExtends}
+
+# --- Arrow Expressions ----------------------------------------------
+
+arrow_expression: IDENTIFIER "=>" arrow_body {ArrowExprIdent}
+                | "(" ")" "=>" arrow_body {ArrowExprNoParams}
+                | "(" param_list ")" "=>" arrow_body {ArrowExprParams}
+                | "async" IDENTIFIER "=>" arrow_body {AsyncArrowIdent}
+                | "async" "(" ")" "=>" arrow_body {AsyncArrowNoParams}
+                | "async" "(" param_list ")" "=>" arrow_body {AsyncArrowParams}
+
+arrow_body: compound_statement
+          | assignment_expr
+
+# --- Parameters -----------------------------------------------------
 
 function_params_postfix: "(" ")" {NoParams}
                        | "(" param_list ")" {Params}
 
-param_list: IDENTIFIER {Param}
-          | IDENTIFIER "," param_list {ParamSeq}
+param_list: param_item {Param}
+          | param_item "," param_list {ParamSeq}
+
+param_item: IDENTIFIER
+          | IDENTIFIER "=" expression {DefaultParam}
+          | "..." IDENTIFIER {RestParam}
