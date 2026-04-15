@@ -75,7 +75,7 @@ expr_obj:  unary_obj  assignment_operator expression -> assignment
          | ternary_obj
 
 assignment_operator: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "**=" 
-                   | ">>=" | "<<=" | ">>>=" | "&=" | "^=" | "&&=" | "||=" | "??="
+                   | ">>=" | "<<=" | ">>>=" | "|=" | "&=" | "^=" | "&&=" | "||=" | "??="
 
 // Level 2: Ternary
 ternary_safe: logic_safe "?" expression ":" expression | logic_safe
@@ -83,31 +83,56 @@ ternary_func: logic_func "?" expression ":" expression | logic_func
 ternary_obj:  logic_obj  "?" expression ":" expression | logic_obj
 
 // Level 3: Logical (||, &&, ??)
-logic_safe: logic_safe logic_op compare_expr | compare_safe
-logic_func: logic_func logic_op compare_expr | compare_func
-logic_obj:  logic_obj  logic_op compare_expr | compare_obj
+logic_safe: logic_safe logic_op bitwise_or_expr | bitwise_or_safe
+logic_func: logic_func logic_op bitwise_or_expr | bitwise_or_func
+logic_obj:  logic_obj  logic_op bitwise_or_expr | bitwise_or_obj
 logic_op: "||" | "&&" | "??"
 
-// Level 4: Comparison (==, <, >, in)
-compare_safe: compare_safe compare_op sum_expr | sum_safe
-compare_func: compare_func compare_op sum_expr | sum_func
-compare_obj:  compare_obj  compare_op sum_expr | sum_obj
+// Level 4: Bitwise OR (|)
+bitwise_or_safe: bitwise_or_safe "|" bitwise_xor_expr | bitwise_xor_safe
+bitwise_or_func: bitwise_or_func "|" bitwise_xor_expr | bitwise_xor_func
+bitwise_or_obj:  bitwise_or_obj  "|" bitwise_xor_expr | bitwise_xor_obj
+
+// Level 5: Bitwise XOR (^)
+bitwise_xor_safe: bitwise_xor_safe "^" bitwise_and_expr | bitwise_and_safe
+bitwise_xor_func: bitwise_xor_func "^" bitwise_and_expr | bitwise_and_func
+bitwise_xor_obj:  bitwise_xor_obj  "^" bitwise_and_expr | bitwise_and_obj
+
+// Level 6: Bitwise AND (&)
+bitwise_and_safe: bitwise_and_safe "&" compare_expr | compare_safe
+bitwise_and_func: bitwise_and_func "&" compare_expr | compare_func
+bitwise_and_obj:  bitwise_and_obj  "&" compare_expr | compare_obj
+
+// Level 7: Comparison (==, <, >, in)
+compare_safe: compare_safe compare_op shift_expr | shift_safe
+compare_func: compare_func compare_op shift_expr | shift_func
+compare_obj:  compare_obj  compare_op shift_expr | shift_obj
 compare_op: "==" | "===" | "!=" | "!==" | "<" | "<=" | ">" | ">=" | "instanceof" | "in"
 
-// Level 5: Sum (+, -)
+// Level 8: Shift (<<, >>, >>>)
+shift_safe: shift_safe shift_op sum_expr | sum_safe
+shift_func: shift_func shift_op sum_expr | sum_func
+shift_obj:  shift_obj  shift_op sum_expr | sum_obj
+shift_op: "<<" | ">>" | ">>>"
+
+// Level 9: Sum (+, -)
 sum_safe: sum_safe sum_op product_expr | product_safe
 sum_func: sum_func sum_op product_expr | product_func
 sum_obj:  sum_obj  sum_op product_expr | product_obj
 sum_op: "+" | "-"
 
-// Level 6: Product (*, /, %)
+// Level 10: Product (*, /, %)
 product_safe: product_safe product_op unary_expression | unary_safe
 product_func: product_func product_op unary_expression | unary_func
 product_obj:  product_obj  product_op unary_expression | unary_obj
 product_op: "*" | SLASH | "%" | "**"
 
 // Helper to bridge the split chains back to unified expressions for the right-hand side
+bitwise_or_expr: bitwise_or_safe | bitwise_or_func | bitwise_or_obj
+bitwise_xor_expr: bitwise_xor_safe | bitwise_xor_func | bitwise_xor_obj
+bitwise_and_expr: bitwise_and_safe | bitwise_and_func | bitwise_and_obj
 compare_expr: compare_safe | compare_func | compare_obj
+shift_expr: shift_safe | shift_func | shift_obj
 sum_expr: sum_safe | sum_func | sum_obj
 product_expr: product_safe | product_func | product_obj
 
