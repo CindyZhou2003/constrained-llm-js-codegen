@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Base case: if index is equal to n-1, return the value of the element at index\n    if(index == n-1){\n        return a[index];\n    }\n    // Initialize the maximum sum to a very small number\n    let max_sum = -Infinity;\n    // Iterate through the elements from index+1 to n-1\n    for(let i = index+1; i < n; i++){\n        // Check if the current element is greater than the element at index\n        if(a[i] > a[index]){\n            // Recursively call the function for the next index and update the maximum sum\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Return the maximum sum\n    return max_sum;\n}",
+    "    // Base case: if index is equal to n-1, return the value of the element at index\n    if(index == n-1){\n        return a[index];\n    }\n    // Initialize the maximum sum to a very small number\n    let max_sum = -Infinity;\n    // Iterate through the elements from index+1 to n-1\n    for(let i = index+1; i < n; i++){\n        // Check if the current element is greater than the element at index\n        if(a[i] > a[index]){\n            // Recursively call the function for the next index and update the maximum sum\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Return the maximum sum\n    return max_sum;\n}",
+    "    // Base case: if index is equal to n-1, return the value of the element at index\n    if(index == n-1){\n        return a[index];\n    }\n    // Initialize the maximum sum to a very small number\n    let max_sum = -Infinity;\n    // Iterate through the elements from index+1 to n-1\n    for(let i = index+1; i < n; i++){\n        // Check if the current element is greater than the element at index\n        if(a[i] > a[index]){\n            // Recursively call the function for the next index and update the maximum sum\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Return the maximum sum\n    return max_sum;\n}"
+  ]
+}

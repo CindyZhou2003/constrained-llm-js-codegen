@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = arr.length;\n    let inc = new Array(n);\n    let dec = new Array(n);\n    inc[0] = arr[0];\n    dec[n-1] = arr[n-1];\n    for(let i=1;i<n;i++){\n        inc[i] = Math.max(inc[i-1],arr[i]);\n    }\n    for(let i=n-2;i>=0;i--){\n        dec[i] = Math.max(dec[i+1],arr[i]);\n    }\n    let max_sum = 0;\n    for(let i=0;i<n;i++){\n        max_sum = Math.max(max_sum,inc[i]+dec[i]-arr[i]);\n    }\n    return max_sum;\n}",
+    "    let n = arr.length;\n    let inc = new Array(n);\n    let dec = new Array(n);\n    inc[0] = arr[0];\n    dec[n-1] = arr[n-1];\n    for(let i=1;i<n;i++){\n        inc[i] = Math.max(inc[i-1],arr[i]);\n    }\n    for(let i=n-2;i>=0;i--){\n        dec[i] = Math.max(dec[i+1],arr[i]);\n    }\n    let max_sum = 0;\n    for(let i=0;i<n;i++){\n        max_sum = Math.max(max_sum,inc[i]+dec[i]-arr[i]);\n    }\n    return max_sum;\n}",
+    "    let n = arr.length;\n    let inc = new Array(n);\n    let dec = new Array(n);\n    inc[0] = arr[0];\n    dec[n-1] = arr[n-1];\n    for(let i=1;i<n;i++){\n        inc[i] = Math.max(inc[i-1],arr[i]);\n    }\n    for(let i=n-2;i>=0;i--){\n        dec[i] = Math.max(dec[i+1],arr[i]);\n    }\n    let max_sum = 0;\n    for(let i=0;i<n;i++){\n        max_sum = Math.max(max_sum,inc[i]+dec[i]-arr[i]);\n    }\n    return max_sum;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_644_reverse_Array_Upto_K",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse an array upto a given position.\nfunction reverse_Array_Upto_K(input, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_644_reverse_Array_Upto_K.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_Array_Upto_K;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], 4),[4, 3, 2, 1, 5, 6]);\n  assert.deepEqual(candidate([4, 5, 6, 7], 2),[5, 4, 6, 7]);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5], 3),[7, 8, 9, 6, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Check if k is within the bounds of the array\n    if (k < 0 || k >= input.length) {\n        return input; // Return the original array if k is out of bounds\n    }\n\n    // Reverse the array from the start to the k-th position\n    for (let i = 0; i < k / 2; i++) {\n        let temp = input[i];\n        input[i] = input[k - i - 1];\n        input[k - i - 1] = temp;\n    }\n\n    return input;\n}\n",
+    "    // Check if k is within the bounds of the array\n    if (k < 0 || k >= input.length) {\n        return input; // Return the original array if k is out of bounds\n    }\n\n    // Reverse the array from the start to the given position k\n    for (let i = 0; i < k / 2; i++) {\n        let",
+    "    // Check if k is within the bounds of the array\n    if (k < 0 || k >= input.length) {\n        return input; // Return the original array if k is out of bounds\n    }\n\n    // Reverse the array from the start to the given position k\n    for (let i = 0; i < k / 2; i++) {\n        let temp = input[i"
+  ]
+}

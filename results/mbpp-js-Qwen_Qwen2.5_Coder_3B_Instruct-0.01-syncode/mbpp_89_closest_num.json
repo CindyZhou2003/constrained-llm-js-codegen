@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var num = N;\n    while(num > 0){\n        if(num < N){\n            return num;\n        }\n        num--;\n    }\n    return num;\n}",
+    "    //Convert the number to a string to iterate over each digit\n    let num_str = N.toString();\n    //Initialize variables to keep track of the closest smaller number and the index of the digit to replace\n    let closest_num = N;\n    let replace_index = -1;\n    //Iterate over each digit in the number\n    for(let i = 0; i < num_str.length; i++){\n        //Check if the current digit is smaller than the next digit\n        if(num_str[i] < num_str[i+1]){\n            //Update the closest smaller number by replacing the current digit with the next digit\n            closest_num = parseInt(num_str.substring(0, i) + num_str[i+1] + num_str.substring(i+2));\n            //Update the index of the digit to replace\n            replace_index = i;\n            //Break out of the loop since we found the closest smaller number\n            break;\n        }\n    }\n    //If no smaller number was found, return the original number\n    if(replace_index === -1){\n        return N;\n    }\n    //Return the closest smaller number\n    return closest_num;\n}",
+    "    var num = N - 1;\n    while(num > 0){\n        if(num < N){\n            return num;\n        }\n        num--;\n    }\n    return num;\n}\n"
+  ]
+}

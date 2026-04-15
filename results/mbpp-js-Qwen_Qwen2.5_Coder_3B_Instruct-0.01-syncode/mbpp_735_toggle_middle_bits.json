@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Get the number of bits in the number\n    let num_bits = Math.floor(Math.log2(n)) + 1;\n    // Create a mask with all bits set to 1 except the first and the last bit\n    let mask = (1 <<",
+    "    // Get the number of bits in the number\n    let num_bits = Math.floor(Math.log2(n)) + 1;\n    // Create a mask with all bits set to 1 except the first and the last bit\n    let mask = (1 <<",
+    "    // Get the number of bits in the number\n    let num_bits = Math.floor(Math.log2(n)) + 1;\n    // Create a mask with all bits set to 1 except the first and the last bit\n    let mask = (1 <<"
+  ]
+}

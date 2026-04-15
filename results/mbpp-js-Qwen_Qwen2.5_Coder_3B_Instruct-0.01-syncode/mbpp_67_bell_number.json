@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_67_bell_number",
+  "language": "js",
+  "prompt": "//Write a function to find the number of ways to partition a set of Bell numbers.\nfunction bell_number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_67_bell_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bell_number;\n  assert.deepEqual(candidate(2),2);\n  assert.deepEqual(candidate(10),115975);\n  assert.deepEqual(candidate(56),6775685320645824322581483068371419745979053216268760300);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let bell = new Array(n+1).fill(0);\n    bell[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = i; j >= 1; j--){\n            bell[j] += bell[j-1];\n        }\n    }\n    return bell[n];\n}",
+    "    let bell = new Array(n+1).fill(0);\n    bell[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = i; j >= 1; j--){\n            bell[j] += bell[j-1];\n        }\n    }\n    return bell[n];\n}",
+    "    let bell = new Array(n+1).fill(0);\n    bell[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = i; j >= 1; j--){\n            bell[j] += bell[j-1];\n        }\n    }\n    return bell[n];\n}"
+  ]
+}

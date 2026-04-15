@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_244_next_Perfect_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the next perfect square greater than a given number.\nfunction next_Perfect_Square(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_244_next_Perfect_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_Perfect_Square;\n  assert.deepEqual(candidate(35),36);\n  assert.deepEqual(candidate(6),9);\n  assert.deepEqual(candidate(9),16);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest whole number\n    let rounded_sqrt = Math.ceil(sqrt);\n    // Square the rounded square root to get the next perfect square\n    let next_perfect_square = rounded_sqrt * rounded_sqrt;\n    return next_perfect_square;\n}",
+    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest integer\n    let roundedUp = Math.ceil(sqrt);\n    // Square the rounded-up integer to get the next perfect square\n    return roundedUp * roundedUp;\n}",
+    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest integer\n    let roundedUp = Math.ceil(sqrt);\n    // Square the rounded-up integer to get the next perfect square\n    return roundedUp * roundedUp;\n}"
+  ]
+}

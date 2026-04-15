@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_778_pack_consecutive_duplicates",
+  "language": "js",
+  "prompt": "//Write a function to pack consecutive duplicates of a given array elements into sublists.\nfunction pack_consecutive_duplicates(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_778_pack_consecutive_duplicates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pack_consecutive_duplicates;\n  assert.deepEqual(candidate([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]),[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]);\n  assert.deepEqual(candidate([10, 10, 15, 19, 18, 18, 17, 26, 26, 17, 18, 10]),[[10, 10], [15], [19], [18, 18], [17], [26, 26], [17], [18], [10]]);\n  assert.deepEqual(candidate([\"a\", \"a\", \"b\", \"c\", \"d\", \"d\"]),[[\"a\", \"a\"], [\"b\"], [\"c\"], [\"d\", \"d\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    var temp = [];\n    for(var i = 0; i < list1.length; i++){\n        if(temp.length === 0 || list1[i] === temp[temp.length - 1]){\n            temp.push(list1[i]);\n        }else{\n            result.push(temp);\n            temp = [list1[i]];\n        }\n    }\n    result.push(temp);\n    return result;\n}",
+    "    var result = [];\n    var temp = [];\n    for(var i = 0; i < list1.length; i++){\n        if(temp.length === 0 || temp[temp.length - 1] === list1[i]){\n            temp.push(list1[i]);\n        }else{\n            result.push(temp);\n            temp = [list1[i]];\n        }\n    }\n    result.push(temp);\n    return result;\n}\n",
+    "    var result = [];\n    var temp = [];\n    for(var i = 0; i < list1.length; i++){\n        if(temp.length === 0 || list1[i] === temp[temp.length - 1]){\n            temp.push(list1[i]);\n        }else{\n            result.push(temp);\n            temp = [list1[i]];\n        }\n    }\n    result.push(temp);\n    return result;\n}\n"
+  ]
+}

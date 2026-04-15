@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_74_is_samepatterns",
+  "language": "js",
+  "prompt": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_74_is_samepatterns.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = true;\n    for(let i = 0; i < patterns.length; i++){\n        if(colors[i] !== patterns[i]){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}\n",
+    "    // Check if the number of colors is equal to the number of patterns\n    if(colors.length !== patterns.length){\n        return false;\n    }\n    // Iterate through each color and pattern\n    for(let i = 0; i < colors.length; i++){\n        // Check if the color matches the pattern\n        if(colors[i] !== patterns[i]){\n            return false;\n        }\n    }\n    // If all colors match the patterns, return true\n    return true;\n}",
+    "    let result = true;\n    for(let i = 0; i < patterns.length; i++){\n        if(colors[i] !== patterns[i]){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_399_bitwise_xor",
+  "language": "js",
+  "prompt": "//Write a function to perform the mathematical bitwise xor operation across the given tuples.\nfunction bitwise_xor(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_399_bitwise_xor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bitwise_xor;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[15, 6, 5, 10]);\n  assert.deepEqual(candidate([11, 5, 7, 10], [6, 3, 4, 4]),[13, 6, 3, 14]);\n  assert.deepEqual(candidate([12, 6, 8, 11], [7, 4, 5, 6]),[11, 2, 13, 13]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = tuple(a ^ b for a, b in zip(test_tup1, test_tup2))\n    return res\n#Driver Code\ntest_tup1 = (4, 5, 6)\ntest_tup2 = (7, 8, 9)\nprint(bitwise_xor(test_tup1, test_tup2))",
+    "    res = tuple(a ^ b for a, b in zip(test_tup1, test_tup2))\n    return res\n#Driver Code\ntest_tup1 = (5, 6, 7)\ntest_tup2 = (3, 4, 5)\nprint(bitwise_xor(test_tup1, test_tup2))",
+    "    res = tuple(a ^ b for a, b in zip(test_tup1, test_tup2))\n    return res\n#Driver Code\ntest_tup1 = (5, 6, 7)\ntest_tup2 = (3, 4, 5)\nprint(bitwise_xor(test_tup1, test_tup2))"
+  ]
+}
