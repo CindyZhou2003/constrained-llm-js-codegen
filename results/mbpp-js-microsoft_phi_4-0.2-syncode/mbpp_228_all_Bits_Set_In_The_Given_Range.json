@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let mask = ((1 << (r - l + 1)) - 1) << (l - 1);\n    return (n & mask) === 0;\n}\n",
+    "    let left = (1 << l) - 1;\n    let right = ((1 << (r + 1)) - 1) ^ ((1 << l) - 1);\n    let mask = left | right;\n    return ((n & mask) == 0);\n}\n",
+    "    let left = 1 << l - 1;\n    let right = (1 << r) - 1;\n    let mask = left | right;\n    return ((n & mask) == 0);\n}\n```\n\nThis function `all_Bits_Set_In_The_Given_Range` takes three parameters: an integer `n`, and two integers `l` and `r` representing the range. It first calculates the left and right boundaries of the range and creates a mask. Then it checks if all the bits in the range are unset in the given number `n` by performing a bitwise AND operation between `n` and the mask. If the result is 0, it means all the bits in the range are unset, so it returns true. Otherwise, it returns false.# Advanced Guide: Enhancing Your React Project with `create-react-app`\n\nDiving deeper into the capabilities of `create-react-app`, this guide assumes you're already familiar with the basics of setting up a React project. We'll focus on leveraging the advanced features and configurations that `create-react-app` offers to streamline your development process and optimize your application.\n\n## Prerequisites\n\n- Ensure Node.js and npm are installed on your system.\n- Basic understanding of React and its ecosystem.\n\n## Step 1: Setting Up Your Project\n\nStart by creating a new React project using `create-react-app`. This tool abstracts away the configuration needed for a React application, allowing you to focus on development.\n\n```bash\nnpx create-react-app my-advanced-app\ncd my-advanced-app\n```\n\n## Step 2: Advanced Configuration\n\n`create-react-app` comes with a set of pre-configured settings, but you might need to customize it for advanced use cases. Here's how you can do it without ejecting:\n\n### Customizing Webpack and Babel\n\nTo customize Webpack and Babel configurations, you can use `react-app-rewired` and `customize-cra`. This approach allows you to override the default configurations without ejecting.\n\n1. Install `react-app-rewired` and `customize-cra`:\n\n```bash\nnpm install react-app-rewired customize-cra --save-dev\n```\n\n2. Create a `config-overrides.js` file in your project root:\n\n```javascript\nconst { override, addWebpackAlias } = require('customize-cra');\n\nmodule.exports = override(\n  addWebpackAlias({\n    ['@components']:"
+  ]
+}

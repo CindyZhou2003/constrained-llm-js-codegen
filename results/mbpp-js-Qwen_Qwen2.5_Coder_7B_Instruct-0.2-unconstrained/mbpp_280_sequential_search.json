@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_280_sequential_search",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and element and returns an array containing a boolean that indicates if the element is in the array and the index position of the element (or -1 if the element is not found).\nfunction sequential_search(dlist, item){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_280_sequential_search.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sequential_search;\n  assert.deepEqual(candidate([11, 23, 58, 31, 56, 77, 43, 12, 65, 19], 31),[true, 3]);\n  assert.deepEqual(candidate([12, 32, 45, 62, 35, 47, 44, 61], 61),[true, 7]);\n  assert.deepEqual(candidate([9, 10, 17, 19, 22, 39, 48, 56], 48),[true, 6]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    pos = 0\n    found = False\n\n    while pos < len(dlist) and not found:\n        if dlist[pos] == item:\n            found = True\n        else:\n            pos = pos + 1\n    \n    return [found, pos]\n\n#Test cases\nprint(sequential_search([1,2,3,4,5], 3)) #Expected output: [True, 2]\nprint(sequential_search(['a', 'b', 'c'], 'd')) #Expected output: [False, 3]\nprint(sequential_search([10, 20, 30, 40, 50], 25)) #Expected output: [False, 5]",
+    "    pos = 0\n    found = False\n\n    while pos < len(dlist) and not found:\n        if dlist[pos] == item:\n            found = True\n        else:\n            pos = pos + 1\n    \n    return [found, pos]\n\n#Test the function with some data points.\nprint(sequential_search([1,2,3,4,5], 3)) # Expected output: [True, 2]\nprint(sequential_search(['a', 'b', 'c'], 'd')) # Expected output: [False, 3]\nprint(sequential_search([10, 20, 30, 40, 50], 60)) # Expected output: [False, 5]",
+    "    pos = 0\n    found = False\n\n    while pos < len(dlist) and not found:\n        if dlist[pos] == item:\n            found = True\n        else:\n            pos = pos + 1\n    \n    return [found, pos]\n\n#Test the function\nprint(sequential_search([1,2,3,4,5], 3)) #Output: [True, 2]\nprint(sequential_search([1,2,3,4,5], 6)) #Output: [False, 5]"
+  ]
+}

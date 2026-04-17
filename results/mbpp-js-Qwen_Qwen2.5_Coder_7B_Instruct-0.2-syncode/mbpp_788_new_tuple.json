@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = [];\n    for(let i = 0; i < test_str.length; i++){\n        res.push([test_str[i], test_list[i]]);\n    }\n    return res;\n}\nlet test_list = [1, 2, 3, 4, 5];\nlet test_str = \"abcde\";",
+    "    let res = [];\n    for(let i = 0; i < test_list.length; i++){\n        res.push([test_list[i], test_str[i]]);\n    }\n    return res;\n}\nlet test_list = [1, 2, 3];\nlet test_str = \"abc\";",
+    "    let res = [];\n    for(let ele1 = 0; ele1 < test_list.length; ele1++){\n        for(let ele2 = 0; ele2 < test_str.length; ele2++){\n            res.push([test_list[ele1], test_str[ele2]]);\n        }\n    }\n    return res;\n}\nlet test_list = [1, 2, 3];\nlet test_str = \"abc\";"
+  ]
+}

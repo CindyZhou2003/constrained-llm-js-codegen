@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString().split('');\n    for(let i = 0; i < arr.length; i++){\n        let count = arr.filter(x => x == arr[i]).length;\n        if(count > arr[i]){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    let str = n.toString();\n    let arr = str.split('');\n    let freq = {};\n    for(let i=0; i<arr.length; i++){\n        if(arr[i] in freq){\n            freq[arr[i]]++;\n        }else{\n            freq[arr[i]] = 1;\n        }\n    }\n    for(let key [0]:",
+    "    let arr = n.toString().split('');\n    let obj = {};\n    for(let i=0;i<arr.length;i++){\n        if(obj[arr[i]]){\n            obj[arr[i]] += 1;\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    for(let key [0]:"
+  ]
+}

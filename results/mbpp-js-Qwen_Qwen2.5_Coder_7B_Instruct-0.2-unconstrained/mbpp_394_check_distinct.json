@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_394_check_distinct",
+  "language": "js",
+  "prompt": "//Write a function to check if given array contains no duplicates.\nfunction check_distinct(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_394_check_distinct.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_distinct;\n  assert.deepEqual(candidate([1, 4, 5, 6, 1, 4]),false);\n  assert.deepEqual(candidate([1, 4, 5, 6]),true);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = true;\n    for(let i=0; i<test_tup.length; i++){\n        for(let j=i+1; j<test_tup.length; j++){\n            if(test_tup[i] === test_tup[j]){\n                res = false;\n                break;\n            }\n        }\n    }\n    return res;\n}\nlet test_tup = [1, 2, 3, 4, 5];",
+    "    let res = true;\n    let temp = new Set();\n    for(let ele of test_tup){\n        if(temp.has(ele)){\n            res = false;\n            break;\n        }\n        else{\n            temp.add(ele);\n        }\n    }\n    return (res);\n}\nlet test_tup = [1, 2, 3, 4, 5];",
+    "    let res = true;\n    for(let i=0; i<test_tup.length; i++){\n        for(let j=i+1; j<test_tup.length; j++){\n            if(test_tup[i]===test_tup[j]){\n                res = false;\n                break;\n            }\n        }\n    }\n    return (res);\n}\nlet test_tup = [1, 2, 3, 4, 5];"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let is_lucid = new Array(n+1).fill(true);\n    is_lucid[1] = false;\n    for(let i = 2; i <= n; i++){\n        if(is_lucid[i]){\n            for(let j = i+i; j <= n; j += i){\n                is_lucid[j] = false;\n            }\n        }\n    }\n    let lucid_numbers = [];\n    for(let i = 2; i <= n; i++){\n        if(is_lucid[i]){\n            lucid_numbers.push(i);\n        }\n    }\n    return lucid_numbers;\n}\n",
+    "    let arr = Array(n).fill(true);\n    arr[0] = arr[1] = false;\n    let count = 2;\n    for(let i = 2; i < n; i++){\n        if(arr[i]){\n            for(let j = i + i; j < n; j += i){\n                arr[j] = false;\n            }\n            arr[count] = true;\n            count++;\n        }\n    }\n    let result = [];\n    for(let i = 0; i < n; i++){\n        if(arr[i]){\n            result.push(i);\n        }\n    }\n    return result;\n}\n",
+    "    var ludic = [];\n    for (var i = 1; i <= n; i++){\n        ludic.push(i);\n    }\n    var index = 1;\n    while (index < ludic.length){\n        var step = ludic[index];\n        ludic = ludic.filter(function(num, i){\n            return (i % step !== 0) || (i === step - 1);\n        });\n        index++;\n    }\n    return ludic;\n}\n"
+  ]
+}

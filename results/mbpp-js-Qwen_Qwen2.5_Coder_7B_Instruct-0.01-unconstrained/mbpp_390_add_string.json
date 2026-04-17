@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_390_add_string",
+  "language": "js",
+  "prompt": "//Write a function to apply a given format string to all of the elements in an array.\nfunction add_string(list_, string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_390_add_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_string;\n  assert.deepEqual(candidate([1, 2, 3, 4], \"temp{0}\"),[\"temp1\", \"temp2\", \"temp3\", \"temp4\"]);\n  assert.deepEqual(candidate([\"a\", \"b\", \"c\", \"d\"], \"python{0}\"),[\"pythona\", \"pythonb\", \"pythonc\", \"pythond\"]);\n  assert.deepEqual(candidate([5, 6, 7, 8], \"string{0}\"),[\"string5\", \"string6\", \"string7\", \"string8\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return list_.map(function(item){return item + string;});\n}\n",
+    "    return list_.map(function(item){return item + string;});\n}\n",
+    "    return list_.map(function(item){return item + string;});\n}\n"
+  ]
+}

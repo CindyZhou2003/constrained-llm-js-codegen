@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_83_get_Char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.\nfunction get_Char(strr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_83_get_Char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_Char;\n  assert.deepEqual(candidate(\"abc\"),\"f\");\n  assert.deepEqual(candidate(\"gfg\"),\"t\");\n  assert.deepEqual(candidate(\"ab\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for (let i = 0; i < strr.length; i++) {\n        sum += strr.charCodeAt(i);\n    }\n    return String.fromCharCode(sum % 26 + 97);\n}",
+    "    let sum = 0;\n    for(let i = 0; i < strr.length; i++){\n        sum += strr.charCodeAt(i);\n    }\n    let mod = sum % 26;\n    let charCode = mod === 0 ? 90 - 26 + 1 + mod  // 'Z' if mod is 0\n                // 65 is the ASCII value of 'A'\n                // 90 is the ASCII value of 'Z'\n                // 26 is the number of alphabets\n                // 1 is added because the ASCII value of 'A' is 65\n                // 26 is subtracted because we are doing modulo 26\n                // mod is added to get the ASCII value of the required character\n                // If mod is 0, we need to return 'Z'\n                // If mod is not 0, we need to return the character whose ASCII value is 64 + mod\n                // (64 is used because the ASCII value of '@' is 64 and we need to start from 'A' which is 65)\n                // So, if mod is 1, we need to return 'A' which is 64 + 1\n                // If mod is 2, we need to return 'B' which is 64 + 2\n                // and so on...\n                // So, we are adding 64 to mod to get the ASCII value of the required character\n                // If mod is 0, we need to return 'Z' which is 90 - 26 + 1 + mod\n                // If mod is not 0, we need to return the character whose ASCII value is 64 + mod\n    return String.fromCharCode(charCode);\n}",
+    "    let sum = 0;\n    for (let i = 0; i < strr.length; i++) {\n        sum += strr.charCodeAt(i);\n    }\n    return String.fromCharCode(sum % 26 + 97);\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_597_find_kth",
+  "language": "js",
+  "prompt": "//Write a function to find kth element from the given two sorted arrays.\nfunction find_kth(arr1, arr2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_597_find_kth.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_kth;\n  assert.deepEqual(candidate([2, 3, 6, 7, 9], [1, 4, 8, 10], 5),6);\n  assert.deepEqual(candidate([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7),256);\n  assert.deepEqual(candidate([3, 4, 7, 8, 10], [2, 5, 9, 11], 6),8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let i = 0;\n    let j = 0;\n    while(i < arr1.length && j < arr2.length){\n        if(k == 1){\n            return Math.min(arr1[i], arr2[j]);\n        }\n        let mid = Math.floor(k/2);\n        let a = i + mid > arr1.length ? Infinity : arr1[i + mid - 1];\n        let b = j + mid > arr2.length ? Infinity : arr2[j + mid - 1];\n        if(a < b){\n            k -= mid;\n            i += mid;\n        }else{\n            k -= mid;\n            j += mid;\n        }\n    }\n    while(i < arr1.length){\n        if(k == 1){\n            return arr1[i];\n        }\n        let mid = Math.floor(k/2);\n        let a = i + mid > arr1.length ? Infinity : arr1[i + mid - 1];\n        if(a == Infinity){\n            return arr1[arr1.length - 1];\n        }\n        if(a < arr1[i + mid]){\n            k -= mid;\n            i += mid;\n        }else{\n            i += mid - 1;\n            k -= mid - 1;\n        }\n    }\n    while(j < arr2.length){\n        if(k == 1){\n            return arr2[j];\n        }\n        let mid = Math.floor(k/2);\n        let a = j + mid > arr2.length ? Infinity : arr2[j + mid - 1];\n        if(a == Infinity){\n            return arr2[arr2.length - 1];\n        }\n        if(a < arr2[j + mid]){\n            k -= mid;\n            j += mid;\n        }else{\n            j += mid - 1;\n            k -= mid - 1;\n        }\n    }\n}\n",
+    "    if(arr1.length === 0){\n        return arr2[k];\n    }\n    if(arr2.length === 0){\n        return arr1[k];\n    }\n    if(k === 0){\n        return Math.min(arr1[0], arr2[0]);\n    }\n    var mid1 = Math.floor(arr1.length / 2);\n    var mid2 = Math.floor(arr2.length / 2);\n    if(mid1 + mid2 < k){\n        if(arr1[mid1] > arr2[mid2]){\n            return find_kth(arr1, arr2.slice(mid2 + 1), k - mid2 - 1);\n        } else {\n            return find_kth(arr1.slice(mid1 + 1), arr2, k - mid1 - 1);\n        }\n    } else {\n        if(arr1[mid1] > arr2[mid2]){\n            return find_kth(arr1.slice(0, mid1), arr2, k);\n        } else {\n            return find_kth(arr1, arr2.slice(0, mid2), k);\n        }\n    }\n}\n",
+    "    let i = 0;\n    let j = 0;\n    while(i < arr1.length && j < arr2.length){\n        if(k == 1){\n            return Math.min(arr1[i], arr2[j]);\n        }\n        if(arr1[i] < arr2[j]){\n            i++;\n        }else{\n            j++;\n        }\n        k--;\n    }\n    while(i < arr1.length){\n        if(k == 1){\n            return arr1[i];\n        }\n        i++;\n        k--;\n    }\n    while(j < arr2.length){\n        if(k == 1){\n            return arr2[j];\n        }\n        j++;\n        k--;\n    }\n}\n```\n\n"
+  ]
+}

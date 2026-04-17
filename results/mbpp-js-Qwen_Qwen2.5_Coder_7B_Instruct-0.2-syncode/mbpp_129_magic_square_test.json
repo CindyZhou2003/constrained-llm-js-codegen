@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var n = my_matrix.length;\n    var sum = 0;\n    for(var i = 0; i < n; i++){\n        sum += my_matrix[0][i];\n    }\n    for(var i = 0; i < n; i++){\n        var row_sum = 0;\n        var col_sum = 0;\n        for(var j = 0; j < n; j++){\n            row_sum += my_matrix[i][j];\n            col_sum += my_matrix[j][i];\n        }\n        if(row_sum !== sum || col_sum !== sum){\n            return false;\n        }\n    }\n    var diag_sum1 = 0;\n    var diag_sum2 = 0;\n    for(var i = 0; i < n; i++){\n        diag_sum1 += my_matrix[i][i];\n        diag_sum2 += my_matrix[i][n - 1 - i];\n    }\n    if(diag_sum1 !== sum || diag_sum2 !== sum){\n        return false;\n    }\n    return true;\n}",
+    "    var n = my_matrix.length;\n    var sum = 0;\n    var i = 0;\n    var j = 0;\n    var sum1 = 0;\n    var sum2 = 0;\n    var sum3 = 0;\n    var sum4 = 0;\n    var sum5 = 0;\n    var sum6 = 0;\n    var sum7 = 0;\n    var sum8 = 0;\n    var sum9 = 0;\n    var sum10 = 0;\n    var sum11 = 0;\n    var sum12 = 0;\n    var sum13 = 0;\n    var sum14 = 0;\n    var sum15 = 0;\n    var sum16 = 0;\n    var sum17 = 0;\n    var sum18 = 0;\n    var sum19 = 0;\n    var sum20 = 0;\n    var sum21 = 0;\n    var sum22 = 0;\n    var sum23 = 0;\n    var sum24 = 0;\n    var sum25 = 0;\n    var sum26 = 0;\n    var sum27 = 0;\n    var sum28 = 0;\n    var sum29 = 0;\n    var sum30 = 0;\n    var sum31 = 0;\n    var sum32 = 0;\n    var sum33 = 0;\n    var sum34 = 0;\n    var sum35 = 0;\n    var sum36 = 0;\n    var sum37 = 0;\n    var sum38 = 0;\n    var sum39 = 0;\n    var sum40 = 0;\n    var sum41 = 0;\n    var sum42 = 0;\n    var sum43 = 0;\n    var sum44 = 0;\n    var sum45 = 0;\n    var sum46 = 0;\n    var sum47 = 0;\n    var sum48 = 0;\n    var sum49 = 0;\n    var sum50 = 0;\n    var sum51 = 0;\n    var sum52 = 0;\n    var sum53 = 0;\n    var sum54 = 0;\n    var sum55 =",
+    "    let n = my_matrix.length;\n    let magic_sum = 0;\n    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum = 0;\n        for(let j = 0; j < n; j++){\n            sum += my_matrix[i][j];\n        }\n        if(i == 0){\n            magic_sum = sum;\n        }\n        else if(sum != magic_sum){\n            return false;\n        }\n    }\n    for(let i = 0; i < n; i++){\n        sum = 0;\n        for(let j = 0; j < n; j++){\n            sum += my_matrix[j][i];\n        }\n        if(sum != magic_sum){\n            return false;\n        }\n    }\n    sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += my_matrix[i][i];\n    }\n    if(sum != magic_sum){\n        return false;\n    }\n    sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += my_matrix[i][n - i - 1];\n    }\n    if(sum != magic_sum){\n        return false;\n    }\n    return true;\n}"
+  ]
+}

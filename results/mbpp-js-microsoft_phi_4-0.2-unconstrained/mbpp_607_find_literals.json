@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_607_find_literals",
+  "language": "js",
+  "prompt": "//Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index.\nfunction find_literals(text, pattern){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_607_find_literals.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_literals;\n  assert.deepEqual(candidate(\"The quick brown fox jumps over the lazy dog.\", \"fox\"),[\"fox\", 16, 19]);\n  assert.deepEqual(candidate(\"Its been a very crazy procedure right\", \"crazy\"),[\"crazy\", 16, 21]);\n  assert.deepEqual(candidate(\"Hardest choices required strongest will\", \"will\"),[\"will\", 35, 39]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\tvar match = text.match(pattern);\n\tif (match){\n\t\treturn {\n\t\t\tmatch: match[0],\n\t\t\tstart: text.indexOf(match[0]),\n\t\t\tend: text.indexOf(match[0]) + match[0].length\n\t\t};\n\t}\n}\n",
+    "  let result = text.match(pattern);\n  if (result) {\n    return {\n      match: result[0],\n      start: result.index,\n      end: result.index + result[0].length\n    }\n  }\n  return null;\n}\n",
+    "    let regex = new RegExp(pattern);\n    let match = regex.exec(text);\n    if (match){\n        return [match[0], match.index, match.index + match[0].length];\n    }\n    return null;\n}\n"
+  ]
+}

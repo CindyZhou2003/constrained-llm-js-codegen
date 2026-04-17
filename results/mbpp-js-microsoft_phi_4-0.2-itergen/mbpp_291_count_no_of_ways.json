@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_291_count_no_of_ways",
+  "language": "js",
+  "prompt": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_291_count_no_of_ways.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n == 1){\n        return k;\n    }\n    if(n == 2){\n        return k * k;\n    }\n    let a = k;\n    let b = k * k;\n    for(let i = 3; i <= n; i++){\n        let temp = b;\n        b = (k - 1) * (a + b);\n        a = temp;\n    }\n    return b;\n}\n\n",
+    "    if(n==0 || k==0){\n        return 0;\n    }\n    if(n==1){\n        return k;\n    }\n    if(n==2){\n        return k*k;\n    }\n    int a=0; //number of ways of painting the last two posts with different colors\n    int b=0; //number of ways of painting the last two posts with same colors\n    a=k*(k-1);\n    b=k;\n    for(int in a  \r  <span>\r   2010\r  <span>\r   study  \r  <span>\r   by  \r  <span>\r   the  \r  <span>\r   American  \r  <span>\r   College  \r  <span>\r   of",
+    "    if(n==1){\n        return k;\n    }\n    else if(n==2){\n        return k*k;\n    }\n    else{\n        let a = k;\n        let b = k*k;\n        for(let i=3;i<=n;i++){\n            let temp = (k-1)*(a+b);\n            a = b;\n            b = temp;\n        }\n        return b;\n    }\n}\n"
+  ]
+}

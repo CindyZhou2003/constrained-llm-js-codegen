@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_474_replace_char",
+  "language": "js",
+  "prompt": "//Write a function to replace characters in a string.\nfunction replace_char(str1, ch, newch){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_474_replace_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_char;\n  assert.deepEqual(candidate(\"polygon\", \"y\", \"l\"),\"pollgon\");\n  assert.deepEqual(candidate(\"character\", \"c\", \"a\"),\"aharaater\");\n  assert.deepEqual(candidate(\"python\", \"l\", \"a\"),\"python\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let result = \"\";\n  for(let",
+    "  let result = \"\";\n  for(let",
+    "  let result = \"\";\n  for(let"
+  ]
+}

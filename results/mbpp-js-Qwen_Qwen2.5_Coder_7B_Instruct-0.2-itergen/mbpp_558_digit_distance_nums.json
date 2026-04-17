@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_558_digit_distance_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sum = 0;\n    var str1 = n1.toString();\n    var str2 = n2.toString();\n    var len = Math.max(str1.length, str2.length);\n    for (var i = 0; i < len; i++) {\n        var digit1 = parseInt(str1[i] || '0');\n        var digit2 = parseInt(str2[i] || '0');\n        sum += Math.abs(digit1 - digit2);\n    }\n    return sum;\n}",
+    "    var sum = 0;\n    var str1 = n1.toString();\n    var str2 = n2.toString();\n    var len = Math.max(str1.length, str2.length);\n    for(var i = 0; i < len; i++){\n        var digit1 = parseInt(str1[i] || '0');\n        var digit2 = parseInt(str2[i] || '0');\n        sum += Math.abs(digit1 - digit2);\n    }\n    return sum;\n}\n",
+    "    var sum = 0;\n    var n1 = n1.toString();\n    var n2 = n2.toString();\n    var len = Math.max(n1.length, n2.length);\n    n1 = n1.padStart(len, '0');\n    n2 = n2.padStart(len, '0');\n    for (var i = 0; i < len; i++){\n        sum += Math.abs(parseInt(n1[i]) - parseInt(n2[i]));\n    }\n    return sum;\n}\n"
+  ]
+}

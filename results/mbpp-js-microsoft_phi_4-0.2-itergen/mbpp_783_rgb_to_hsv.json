@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    r /= 255.0; g /= 255.0; b /= 255.0;\n    let max = Math.max(r, g, b) ; let min = Math.min(r, g, b);\n    let",
+    "    r /= 255.0; g /= 255.0; b /= 255.0;\n    var max = Math.max(r, g, b) || 1;\n    var min = Math.min(r, g, b) || 0;\n    var h = 0; var s = 0; var v = max;\n    var d = max - min;\n    s = max == 0 ? 0 \t// If max is 0, then r = g = b = 0\t// s = 0, v is undefined\n       \t// So here we avoid division by zero, we return black\n       \t// s should be 0 here anyway, because there is no saturation\n       \t// if r = g = b = 0\n       \t// But in the general case, s should be \"undefined\"\n       \t// So instead we check for max == 0\n       \t// Note that this if is actually unnecessary, since\n       \t// in the general case, min != max, so d = max - min != 0\n       \t// and s = d/max = 0/0 would be NaN. But NaN != 0, so even if\n       \t// we didn't have this if, the execution would jump to the else.\n       \t// But it's better to be explicit\n       \t// Note that this if would be removed by a good compiler anyway\n       \t// since it is not reachable\n       \t// (see the definition of s above)\n       \t// But let's not rely on the compiler\n       \t// and leave it here, for clarity\n       \t// Also, this if speeds up things a bit\n       \t// since if max is 0, we don't even calculate h and d becomes 0\n       \t// so we don't have to calculate it\n       \t// Note that if max is 0, then r = g = b = 0 anyway\n       \t// so h should be undefined\n       \t// But since we don't have an undefined value in JavaScript\n       \t// we leave it at 0. It shouldn't be used anyway\n       \t// since if s is 0, the color is achromatic\n       \t// and h doesn't matter\n       \t// We don't have to test for max == 0\n       \t// since if max is 0, then min is also 0,\n       \t//",
+    "    r /= 255; g /= 255; b /= 255;\n    var max = Math.max(r, g, b)\t//Find the maximum and minimum of r, g, b\n    var min = Math.min(r, g, b)\n    var h = 0; var s = 0; var v = max\t//Initialize h, s, v\n    var d = max - min\n    s = max == 0 ? 0\t\t//If max value is 0, then s = 0\n   \t? 0\n   \t//Otherwise calculate s\n   \t<<THIS PART DELETED>>\n    if"
+  ]
+}

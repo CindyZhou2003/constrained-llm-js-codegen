@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_247_lps",
+  "language": "js",
+  "prompt": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_247_lps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = str.length;\n    let dp = Array.from(Array(n), () => Array(n).fill(0));\n    \n    for(let i=n-1; i>=0; i--){\n        dp[i][i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(str[i] === str[j]){\n                dp[i][j] = dp[i+1][j-1] + 2;\n            } else {\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    return dp[0][n-1];\n}",
+    "    let n = str.length;\n    let dp = Array.from(Array(n), () => Array(n).fill(0));\n    \n    for(let i=n-1; i>=0; i--){\n        dp[i][i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(str[i] === str[j]){\n                dp[i][j] = dp[i+1][j-1] + 2;\n            } else {\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    return dp[0][n-1];\n}",
+    "    let n = str.length;\n    let dp = Array.from(Array(n), () => Array(n).fill(0));\n    \n    for(let i=n-1; i>=0; i--){\n        dp[i][i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(str[i] === str[j]){\n                dp[i][j] = dp[i+1][j-1] + 2;\n            } else {\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    return dp[0][n-1];\n}"
+  ]
+}

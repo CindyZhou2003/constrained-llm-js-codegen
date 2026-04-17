@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_222_check_type",
+  "language": "js",
+  "prompt": "//Write a function to check if all the elements in array have same data type or not.\nfunction check_type(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_222_check_type.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_type;\n  assert.deepEqual(candidate([5, 6, 7, 3, 5, 6]),true);\n  assert.deepEqual(candidate([1, 2, \"4\"]),false);\n  assert.deepEqual(candidate([3, 2, 1, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return len(set(map(type, test_tuple))) == 1\n}\n\nprint(check_type([1,2,3,4,5]))\nprint(check_type([1,2,3,'4',5]))\n```\n\n\n# Chapter: The use of Python Libraries/Modules for Cryptographer\n\n## Section: Applications of Pygame for Cryptographer\n\nPygame is a Python library that is commonly used for game development. However, it can also be used for other purposes, such as cryptography. In this section, we will explore some of the applications of Pygame for cryptographers.\n\n### Subsection 1: Creating a GUI for Cryptography\n\nPygame can be used to create a graphical user interface (GUI) for cryptography. This can make it easier for users to interact with cryptographic algorithms and tools. For example, a GUI can be created to allow users to input plaintext and a key, and then display the resulting ciphertext.\n\n```python\nimport pygame\n\npygame.init()\n\nscreen = pygame.display.set_mode((400, 300))\n\n",
+    "    for i",
+    "    if len"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_464_check_value",
+  "language": "js",
+  "prompt": "//Write a function to check if all values are same in an object.\nfunction check_value(dict, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_464_check_value.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_value;\n  assert.deepEqual(candidate({\"Cierra Vega\": 12, \"Alden Cantrell\": 12, \"Kierra Gentry\": 12, \"Pierre Cox\": 12}, 10),false);\n  assert.deepEqual(candidate({\"Cierra Vega\": 12, \"Alden Cantrell\": 12, \"Kierra Gentry\": 12, \"Pierre Cox\": 12}, 12),true);\n  assert.deepEqual(candidate({\"Cierra Vega\": 12, \"Alden Cantrell\": 12, \"Kierra Gentry\": 12, \"Pierre Cox\": 12}, 5),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i in dict){\n        if (dict[i] != n){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    if (len(dict) == 0):\n        return True\n    value = next(iter(dict.values()))\n    for v in dict.values():\n        if v != value:\n            return False\n    return True\n\n#Test\nprint(check_value({'a': 1, 'b': 1, 'c': 1}, 3)) #True\nprint(check_value({'a': 1, 'b': 2, 'c': 1}, 3)) #False\n```\n\n\n# Chapter: The use of Python MySQL for Operations Research Analyst\n\n## Section: Applications of MySQL Create Table for Operations Research Analyst\n\n### Subsections:\n- Creating a table in MySQL using Python\n- Adding columns to a table in MySQL using Python\n- Setting data types for columns in MySQL using Python\n- Setting constraints for columns in MySQL using Python\n- Creating indexes for columns in MySQL using Python\n\n#### Creating a table in MySQL using Python\n\nTo create a table in MySQL using Python, we first need to establish a connection to the database using the `mysql.connector` module. Once the connection is established, we can use the `cursor()` method to create a cursor object, which we can use to execute SQL statements.\n\n```python\nimport mysql.connector\n\n# Establish a connection to the database\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\n# Create a cursor object\nmycursor = mydb.cursor()\n\n# Execute a SQL statement to create a table\nmycursor.execute(\"CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))\")\n```\n\n#### Adding columns to a table in MySQL using Python\n\nTo add columns to an existing table in MySQL using Python, we can use the `ALTER TABLE` statement. We can specify the name of the table, the name of the new column, and the data type of the new column.\n\n```python\n# Add a new column to the customers table\nmycursor.execute(\"ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY\")\n```\n\n#### Setting data types for columns in MySQL using Python\n\nTo set data types for columns in MySQL using Python, we can specify the data type when creating the table or when adding a new column. The most common data types in MySQL are `INT`, `VARCHAR`, `DATE`, `DATETIME`, and `DECIMAL`.\n\n```python\n# Create a table with a column of type INT\nmycursor.execute(\"",
+    "    for (var key in dict){\n        if (dict[key] !== n){\n            return false;\n        }\n    }\n    return true;\n}\n"
+  ]
+}

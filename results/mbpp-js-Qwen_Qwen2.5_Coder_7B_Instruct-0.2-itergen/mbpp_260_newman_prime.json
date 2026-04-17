@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_260_newman_prime",
+  "language": "js",
+  "prompt": "//Write a function to find the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime number.\nfunction newman_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_260_newman_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = newman_prime;\n  assert.deepEqual(candidate(3),7);\n  assert.deepEqual(candidate(4),17);\n  assert.deepEqual(candidate(5),41);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //initialize variables\n    var a = 0; //first term\n    var b = 1; //second term\n    var c = 0; //third term\n    var count = 0; //count of newman primes\n    var i = 0; //loop counter\n    //loop until nth newman prime is found\n    while(count < n){\n        //calculate next term\n        c = 2*a + b;\n        //check if term is prime\n        if(is_prime(c)){\n            //increment count if term is prime\n            count++;\n        }\n        //update terms for next iteration\n        a = b;\n        b = c;\n        i++;\n    }\n    //return nth newman prime\n    return c;\n}",
+    "  var primes = [2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 109, 157, 179, 229, 269, 347, 359, 479, 509, 641, 691, 709, 739, 853, 881, 941, 1181, 1229, 1361, 1409, 1601, 1697, 1871, 1933, 2141, 2203, 2381, 2591, 2657, 2741, 2969, 3169, 3347, 3461, 3673, 3761, 4133, 4153, 4481, 4637, 4721, 5381, 5417, 5741, 6089, 6521, 6821, 7211, 7457, 7649, 8051, 8209, 8521, 8887, 9109, 9521, 9641, 9881, 10103, 10301, 10601, 10853, 11213, 11489, 11813, 12041, 12281, 12641, 12889, 13537, 13721, 14057, 14441, 14681, 15137, 15377, 15641, 15881,",
+    "    //create an array to store the prime numbers\n    var primes = [];\n    //create a variable to store the current number\n    var num = 2;\n    //create a variable to store the current prime number\n    var prime = 2;\n    //create a variable to store the current count of prime numbers\n    var count = 0;\n    //create a loop to find the nth prime number\n    while(count < n){\n        //check if the current number is prime\n        if(is_prime(num)){\n            //if it is, add it to the array of prime numbers\n            primes.push(num);\n            //increment the count of prime numbers\n            count++;\n            //check if the count of prime numbers is equal to n\n            if(count == n){\n                //if it is, return the nth prime number\n                return num;\n            }\n        }\n        //increment the current number\n        num++;\n    }\n    //if the loop completes without finding the nth prime number, return null\n    return null;\n}"
+  ]
+}

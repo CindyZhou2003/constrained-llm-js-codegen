@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_278_count_first_elements",
+  "language": "js",
+  "prompt": "//Write a function to find the number of elements that occurs before the array element in the given array.\nfunction count_first_elements(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_278_count_first_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_first_elements;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),3);\n  assert.deepEqual(candidate([2, 9, [5, 7], 11]),2);\n  assert.deepEqual(candidate([11, 15, 5, 8, [2, 3], 8]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = 0\n    for (let i=1; i<test_tup.length; i++){\n        if (test_tup[i] < test_tup[i-1]){\n            res += 1;\n        }\n    }\n    return res;\n}",
+    "    res = 0\n    for (let ele of test_tup) {\n        if (ele == 'Gfg') break;\n        res += 1;\n    }\n    return res;\n}",
+    "    res = 0\n    for (let ele of test_tup) {\n        if (ele == 'Gfg') break;\n        res += 1;\n    }\n    return res;\n}"
+  ]
+}

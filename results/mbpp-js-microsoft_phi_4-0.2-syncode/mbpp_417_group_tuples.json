@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_417_group_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find common first element in given array of lists.\nfunction group_tuples(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_417_group_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = group_tuples;\n  assert.deepEqual(candidate([[\"x\", \"y\"], [\"x\", \"z\"], [\"w\", \"t\"]]),[[\"x\", \"y\", \"z\"], [\"w\", \"t\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"a\", \"c\"], [\"d\", \"e\"]]),[[\"a\", \"b\", \"c\"], [\"d\", \"e\"]]);\n  assert.deepEqual(candidate([[\"f\", \"g\"], [\"f\", \"g\"], [\"h\", \"i\"]]),[[\"f\", \"g\", \"g\"], [\"h\", \"i\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let dict = {};\n    for(let i=0; i<Input.length; i++){\n        let arr = Input[i];\n        for(let j=0; j<arr.length; j++){\n            let key = arr[j];\n            if(key in dict){\n                dict[key].push(i);\n            } else {\n                dict[key] = [i];\n            }\n        }\n    }\n    for(let key1=0; key1 in dict; key1++){\n        if(dict[key1].length == Input.length){\n            result.push(key1);\n        }\n    }\n    return result;\n}\n",
+    "    let result = {};\n    for(let i=0; i<Input.length; i++){\n        let first_element = Input[i][0];\n        if(first_element in result){\n            result[first_element].push(Input[i]);\n        }else{\n            result[first_element] = [Input[i]];\n        }\n    }\n    return result;\n}\n",
+    "  var result = [];\n  var count = {};\n  for(var i = 0; i < Input.length; i++){\n    var first_element = Input[i][0];\n    if(count[first_element]){\n      count[first_element]++;\n    } else {\n      count[first_element] = 1;\n    }\n  }\n  for(var key = 0; key < Object.keys(count).length; key++){\n    if(count[Object.keys(count)[key]] === Input.length){\n      result.push(Object.keys(count)[key]);\n    }\n  }\n  return result;\n}\n"
+  ]
+}

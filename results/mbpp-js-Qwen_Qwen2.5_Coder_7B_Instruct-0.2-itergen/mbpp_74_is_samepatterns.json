@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_74_is_samepatterns",
+  "language": "js",
+  "prompt": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_74_is_samepatterns.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    ",
+    "    let map = new Map();\n    for(let i=0; i<colors.length; i++){\n        if(map.has(colors[i])){\n            if(map.get(colors[i]) !== patterns[i]){\n                return false;\n            }\n        }else{\n            map.set(colors[i], patterns[i]);\n        }\n    }\n    return true;\n}\n",
+    "    var colorMap = {};\n    var patternMap = {};\n    for(var i=0; i<colors.length; i++){\n        if(colorMap[colors[i]] === undefined){\n            colorMap[colors[i]] = i;\n        }\n        if(patternMap[patterns[i]] === undefined){\n            patternMap[patterns[i]] = i;\n        }\n        if(colorMap[colors[i]] !== patternMap[patterns[i]]){\n            return false;\n        }\n    }\n    return true;\n}"
+  ]
+}

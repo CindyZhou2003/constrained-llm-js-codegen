@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return test_list + [test_str]\n}\n",
+    "    #The function takes a list and a string as input.\n    #It then creates a new tuple by adding the string to the list.\n    #The new tuple is then returned.\n    return tuple(test_list + [test_str])\n}\n\n#Test the function\nprint(new_tuple([1, 2, 3], 'four')) #Expected output: (1, 2, 3, 'four')\n```\n\n\n# Chapter: The use of Python Matplotlib for Cryptocurrency Developer\n\n## Section: Applications of Matplotlib Scatter for Cryptocurrency Developer\n\n### Subsections:\n1. Introduction to Matplotlib Scatter\n2. Scatter Plot for Cryptocurrency Data\n3. Customizing Scatter Plot\n4. Adding Labels and Legends\n5. Group Activity: Analyzing Cryptocurrency Data with Scatter Plot\n\n#### 1. Introduction to Matplotlib Scatter\nMatplotlib is a powerful data visualization library in Python. One of its most useful features is the scatter plot, which is a type of plot that displays data points as dots on a two-dimensional graph. Scatter plots are particularly useful for visualizing relationships between two variables. In this section, we will explore how to use Matplotlib scatter plot for cryptocurrency data analysis.\n\n```python\nimport matplotlib.pyplot as plt\n\nx = [1, 2, 3, 4, 5]\ny = [2, 4, 6, 8, 10]\n\nplt.scatter(x, y)\nplt.show()\n```\n\n#### 2. Scatter Plot for Cryptocurrency Data\nCryptocurrency data is often represented as time series data, where the x-axis represents time and the y-axis represents the price of the cryptocurrency. We can use scatter plot to visualize the relationship between the time and the price of a cryptocurrency. For example, we can plot the daily closing price of Bitcoin over a period of time.\n\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load Bitcoin data\nbtc_data = pd.read_csv('BTC-USD.csv')\n\n# Convert date column to datetime format\nbtc_data['Date'] = pd.to_datetime(btc_data['Date'])\n\n# Plot daily closing price of Bitcoin\nplt.scatter(btc_data['Date'], btc_data['Close'])\nplt.show()\n```\n\n#### 3. Customizing Scatter Plot\nWe can customize the scatter plot by changing the size, color, and shape of the data points. For example, we can change the size of the data points based on the trading volume of the cryptocurrency.\n\n```python\nimport pandas",
+    "    return test_list + [test_str];\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_448_cal_sum",
+  "language": "js",
+  "prompt": "//Write a function to calculate the sum of perrin numbers.\nfunction cal_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_448_cal_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cal_sum;\n  assert.deepEqual(candidate(9),49);\n  assert.deepEqual(candidate(10),66);\n  assert.deepEqual(candidate(11),88);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    ",
+    "    let a = 3; // Initialize the first Perrin number\n    let b = 0; // Initialize the second Perrin number\n    let c = 2; // Initialize the third Perrin number\n    let sum = 3; // Initialize the sum with the first Perrin number\n\n    // Loop to calculate the sum of the first n Perrin numbers\n    for(let i = 3; i <= n; i++){\n        let d = a + b; // Calculate the next Perrin number\n        sum += d; // Add the next Perrin number to the sum\n        // Update the values of a, b, and c for the next iteration\n        a = b;\n        b = c;\n        c = d;\n    }\n    return sum; // Return the calculated sum\n}\n",
+    "    let a = 3; //"
+  ]
+}

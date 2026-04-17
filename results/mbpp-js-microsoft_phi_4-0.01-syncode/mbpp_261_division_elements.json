@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_261_division_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.\nfunction division_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_261_division_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = division_elements;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[2, 2, 2, 3]);\n  assert.deepEqual(candidate([12, 6, 8, 16], [6, 3, 4, 4]),[2, 2, 2, 4]);\n  assert.deepEqual(candidate([20, 14, 36, 18], [5, 7, 6, 9]),[4, 2, 6, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The function uses the map function to apply the division operation to each pair of elements from the two tuples.\n    //The map function takes in a lambda function that performs the division operation and two tuples as arguments.\n    //The lambda function takes in two arguments x and y and returns the result of the division operation x/y.\n    //The map function applies the lambda function to each pair of elements from the two tuples and returns a list of the results.\n    //The list is then converted to a tuple using the tuple function and returned as the result of the division_elements function.\n    return tuple(map(lambda inew",
+    "    //The function uses the map function to apply the division operation to each pair of elements from the two tuples.\n    //The map function takes in a lambda function that performs the division operation and the two tuples as arguments.\n    //The lambda function takes in two arguments, x and y, and returns the result of the division operation x/y.\n    //The map function returns a map object that contains the results of the division operation for each pair of elements.\n    //The map object is then converted to a tuple using the tuple function and returned as the result of the function.\n    return tuple(map(lambda(x, y):",
+    "    //The function uses the map function to apply the division operation to each pair of elements from the two tuples.\n    //The map function takes in a lambda function that performs the division operation and the two tuples as arguments.\n    //The lambda function takes in two arguments, x and y, and returns the result of the division operation x/y.\n    //The map function returns a map object that contains the results of the division operation for each pair of elements from the two tuples.\n    //The map object is then converted to a tuple using the tuple function and returned as the result of the division_elements function.\n    return tuple(map(lambda(x,y):"
+  ]
+}

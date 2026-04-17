@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string and then to an array of digits\n    let digits = n.toString().split('').map(Number);\n    let len = digits.length;\n    \n    // Step 1: Find the largest index `i` such that digits[i] < digits[i + 1]\n    let i = len - 2;\n    while (i >= 0 && digits[i] >= digits[i + 1]) {\n        i--;\n    }\n    \n    // If no such index exists, the digits are in descending order, and no bigger number can be formed\n    if (i === -1) {\n        return -1;\n    }\n    \n    // Step 2: Find the largest index `j` greater than `i` such that digits[i] < digits[j]\n    let j = len - 1;\n    while (j > i && digits[j] <= digits[i]) {\n        j--;\n    }\n    \n    // Step 3: Swap the value of digits[i] with that of digits[j]\n    [digits[i], digits[j]] = [digits[j], digits[i]];\n    \n    // Step 4: Reverse the sequence from digits[i + 1] to the end\n    let left = i + 1;\n    let right = len - 1;\n    while (left < right) {\n        [digits[left], digits[right]] = [digits[right], digits[left]];\n        left++;\n        right--;\n    }\n    \n    // Convert the array of digits back to a number\n    let result = parseInt(digits.join(''), 10);\n    \n    // If the result is greater than 2^31 - 1, return -1\n    if (result > 2147483647) {\n        return -1;\n    }\n    \n    return result;\n}\n",
+    "    let str = n.toString();\n    let arr = str.split('');\n    let i = arr.length - 1;\n    while (i > 0 && arr[i - 1] >= arr[i]) {\n        i--;\n    }\n    if (i <= 0) {\n        return -1;\n    }\n    let j = arr.length - 1;\n    while (arr[j] <= arr[i - 1]) {\n        j--;\n    }\n    let temp = arr[i - 1];\n    arr[i - 1] = arr[j];\n    arr[j] = temp;\n    let left = arr.slice(0, i).reverse();\n    let right = arr.slice(i).reverse();\n    return parseInt(left.concat(right).join(''));\n}\n",
+    "    let digits = n.toString().split('').map(Number);\n    let i = digits.length - 1;\n    while (i > 0 && digits[i - 1] >= digits[i]) {\n        i--;\n    }\n    if (i <= 0) {\n        return -1;\n    }\n    let j = digits.length - 1;\n    while (digits[j] <= digits[i - 1]) {\n        j--;\n    }\n    [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]];\n    let left = digits.slice(0, i);\n    let right = digits.slice(i).reverse();\n    return parseInt(left.concat(right).join(''));\n}\n"
+  ]
+}

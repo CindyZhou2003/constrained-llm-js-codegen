@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //add dictionary at end of tuple\n    res = list(test_tup)\n    res.append(test_dict)\n    return (res)\n\ntest_tup = [{'a': 1}, {'b': 2}]\ntest_dict = {'c': 3}\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"The dictionary to be added : \" + str(test_dict))\nprint(\"Tuple after adding dictionary : \" + str(add_dict_to_tuple(test_tup, test_dict)))",
+    "    //add dictionary at end of tuple\n    res = list(test_tup)\n    res.append(test_dict)\n    return (res)\n\ntest_tup = [{'a': 1}, {'b': 2}]\ntest_dict = {'c': 3}\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"The dictionary to be added : \" + str(test_dict))\nprint(\"Tuple after adding dictionary : \" + str(add_dict_to_tuple(test_tup, test_dict)))",
+    "    //add dictionary at end of tuple\n    res = list(test_tup)\n    res.append(test_dict)\n    return (res)\n\ntest_tup = [{'a': 1}, {'b': 2}]\ntest_dict = {'c': 3}\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"The dictionary to be added : \" + str(test_dict))\nprint(\"Tuple after adding dictionary : \" + str(add_dict_to_tuple(test_tup, test_dict)))"
+  ]
+}

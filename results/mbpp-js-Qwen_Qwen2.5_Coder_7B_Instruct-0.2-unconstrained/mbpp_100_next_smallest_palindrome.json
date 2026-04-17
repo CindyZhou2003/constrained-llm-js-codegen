@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(mid,len);\n    if (len % 2 == 1) {\n        right = str.substring(mid+1,len);\n    }\n    let rev_right = right.split('').reverse().join('');\n    if (left < rev_right) {\n        return parseInt(left + rev_right);\n    } else {\n        let new_left = parseInt(left) + 1;\n        let new_rev_right = new_left.toString().split('').reverse().join('');\n        return parseInt(new_left + new_rev_right);\n    }\n}",
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(mid,len);\n    if (len % 2 == 1) {\n        right = str.substring(mid+1,len);\n    }\n    let rev_right = right.split('').reverse().join('');\n    if (left < rev_right) {\n        return parseInt(left + rev_right);\n    } else {\n        let new_left = parseInt(left) + 1;\n        let new_rev_right = new_left.toString().split('').reverse().join('');\n        return parseInt(new_left + new_rev_right);\n    }\n}",
+    "    //Convert num to string\n    let str = num.toString();\n    //Loop through numbers starting from num + 1\n    for(let i = num + 1; ; i++){\n        //Check if number is palindrome by comparing it with its reverse\n        if(i.toString() === i.toString().split('').reverse().join('')){\n            return i;\n        }\n    }\n}"
+  ]
+}

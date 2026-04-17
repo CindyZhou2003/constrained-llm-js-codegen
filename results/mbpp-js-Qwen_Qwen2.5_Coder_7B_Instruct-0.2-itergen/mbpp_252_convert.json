@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_252_convert",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to convert complex numbers to polar coordinates.\nfunction convert(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_252_convert.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = convert;\n  assert.deepEqual(candidate(1),[1.0, 0.0]);\n  assert.deepEqual(candidate(4),[4.0, 0.0]);\n  assert.deepEqual(candidate(5),[5.0, 0.0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    for(var i = 0; i < numbers.length; i++){\n        var real = numbers[i].real;\n        var imag = numbers[i].imag;\n        var magnitude = Math.sqrt(real * real + imag * imag);\n        var angle = Math.atan2(imag, real);\n        result.push({magnitude: magnitude, angle: angle});\n    }\n    return result;\n}\n",
+    "    var polar = [];\n    for(var i=0; i<numbers.length; i++){\n        var x = numbers[i][0];\n        var y = numbers[i][1];\n        var r = Math.sqrt(x*x + y*y);\n        var theta = Math.atan2(y, x);\n        polar.push([r, theta]);\n    }\n    return polar;\n}\n",
+    "    var real = numbers[0];\n    var imag = numbers[1];\n    var magnitude = Math.sqrt(real*real + imag*imag);\n    var angle = Math.atan2(imag, real);\n    return [magnitude, angle];\n}\n"
+  ]
+}

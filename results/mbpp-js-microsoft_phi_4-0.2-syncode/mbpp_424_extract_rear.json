@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_424_extract_rear",
+  "language": "js",
+  "prompt": "//Write a function to extract only the rear index element of each string in the given array.\nfunction extract_rear(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_424_extract_rear.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_rear;\n  assert.deepEqual(candidate([\"Mers\", \"for\", \"Vers\"]),[\"s\", \"r\", \"s\"]);\n  assert.deepEqual(candidate([\"Avenge\", \"for\", \"People\"]),[\"e\", \"r\", \"e\"]);\n  assert.deepEqual(candidate([\"Gotta\", \"get\", \"go\"]),[\"a\", \"t\", \"o\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return [x[-1] <repo_name>gitter-badger/robo<file_sep|/.travis.yml\nlanguage: node_js\nnode_js:\n  - \"0.10\"\n  - \"0.12\"\n  - \"iojs\"\nbefore_install:\n  - npm install -g grunt-cli\n  - npm install -g bower\n  - bower install\nscript:\n  - grunt test\n<|file_sep|>/**\n * @license\n * Copyright 2015 Google Inc. All Rights Reserved.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n",
+    "    return [x[-1] <iframe  // Removed the 'allowfullscreen' attribute\n  // ... rest of the iframe code remains the same\n</iframe>\n```\n\nFor the unit tests, you'll need to set up a testing framework like Jest or Mocha. Here's a basic example of how you might write a test to check the iframe's source URL:\n\n```javascript",
+    "    test_list = list(test_tuple)\n    rear_list = []\n    for i"
+  ]
+}

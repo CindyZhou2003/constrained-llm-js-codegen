@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let num_str = num.toString();\n    let len = num_str.length;\n    let mid = Math.floor(len / 2);\n    let left = num_str.slice(0, mid);\n    let right = num_str.slice(mid + len % 2, len);\n    let palindrome = left + left.slice(0, len % 2).split('').reverse().join('') + right;\n    if (parseInt(palindrome) <= num) {\n        left = (parseInt(left) - 1).toString();\n        palindrome = left + left.slice(0, len % 2).split('').reverse().join('') + right;\n    }\n    return parseInt(palindrome);\n}\n",
+    "    let num_str = num.toString();\n    let len = num_str.length;\n    let half = Math.floor(len / 2);\n    let first_half = num_str.substring(0, half);\n    let middle = len % 2 !== 0 ? num_str[half] : '';\n    let second_half = num_str.substring(half + len % 2, len);\n    let palindrome = first_half + middle + first_half.split('').reverse().join('');\n    if (parseInt(palindrome) <= num) {\n        first_half = (parseInt(first_half) - 1).toString();\n        if (first_half.length < half) {\n            first_half = '9'.repeat(half - first_half.length) + first_half;\n        }\n        palindrome = first_half + middle + first_half.split('').reverse().join('');\n    }\n    return parseInt(palindrome);\n}\n",
+    "    let num_str = num.toString();\n    let len = num_str.length;\n    let half = Math.floor(len / 2);\n    let first_half = num_str.substring(0, half);\n    let middle = len % 2 !== 0 ? num_str[half] : '';\n    let second_half = num_str.substring(half + len % 2, len);\n    let palindrome = first_half + middle + first_half.split('').reverse().join('');\n    if (parseInt(palindrome) <= num) {\n        first_half = (parseInt(first_half) - 1).toString();\n        if (first_half.length < half) {\n            first_half = '9'.repeat(half - first_half.length) + first_half;\n        }\n        palindrome = first_half + middle + first_half.split('').reverse().join('');\n    }\n    return parseInt(palindrome);\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_577_last_Digit_Factorial",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the last digit in factorial of a given number.\nfunction last_Digit_Factorial(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_577_last_Digit_Factorial.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last_Digit_Factorial;\n  assert.deepEqual(candidate(4),4);\n  assert.deepEqual(candidate(21),0);\n  assert.deepEqual(candidate(30),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n<5){\n        return n;\n    }\n    else{\n        return 0;\n    }\n}",
+    "    if(n < 5){\n        return n;\n    }\n    else{\n        return 0;\n    }\n}",
+    "    if(n < 5){\n        return n;\n    }\n    else{\n        return 0;\n    }\n}"
+  ]
+}

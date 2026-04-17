@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert the number to a string\n    let str = num.toString();\n    //Loop through the string from the end to the beginning\n    for(let i = str.length - 1; i >= 0; i--){\n        //If the current character is less than the next character, increment the current character and return the new number\n        if(str[i] < str[i + 1]){\n            let newStr = str.slice(0, i) + (parseInt(str[i]) + 1) + str.slice(i + 1);\n            return parseInt(newStr);\n        }\n    }\n    //If no such number exists, return the next smallest palindrome\n    return parseInt(str.split('').reverse().join(''));\n}",
+    "    //Convert the number to a string\n    let str = num.toString();\n    //Get the length of the string\n    let len = str.length;\n    //If the length is 1, return the next number\n    if(len == 1){\n        return num + 1;\n    }\n    //If the length is even, check if the first half is the same as the second half\n    if(len % 2 == 0){\n        let first_half = str.substring(0, len / 2);\n        let second_half = str.substring(len / 2);\n        //If the first half is the same as the second half, return the number plus 1\n        if(first_half == second_half){\n            return num + 1;\n        }\n        //If the first half is not the same as the second half, return the number plus the difference between the first half and the second half\n        else{\n            let diff = parseInt(first_half) - parseInt(second_half);\n            return num + diff;\n        }\n    }\n    //If the length is odd, check if the first half is the same as the second half (excluding the middle digit)\n    else{\n        let first_half = str.substring(0, Math.floor(len / 2));\n        let second_half = str.substring(Math.floor(len / 2) + 1);\n        //If the first half is the same as the second half, return the number plus 1\n        if(first_half == second_half){\n            return num + 1;\n        }\n        //If the first half is not the same as the second half, return the number plus the difference between the first half and the second half\n        else{\n            let diff = parseInt(first_half) - parseInt(second_half);\n            return num + diff;\n        }\n    }\n}",
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(len-mid);\n    let rev_right = right.split('').reverse().join('');\n    let next_num = parseInt(left + rev_right);\n    if(next_num >= num){\n        return next_num;\n    }else{\n        let next_left = (parseInt(left) + 1).toString();\n        let next_right = next_left.split('').reverse().join('');\n        return parseInt(next_left + next_right);\n    }\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(index >= n || k < index) return 0;\n    let result = Math.max(max_sum_increasing_subseq(a, n, index + 1, k), a[index] + max_sum_increasing_subseq(a, n, index + 1, k));\n    return result;\n}\nlet arr = [3, 4, 5, 10];",
+    "    let dp = new Array(n);\n    for(let i=0; i<n; i++){\n        dp[i] = 0;\n    }\n    dp[index] = a[index];\n    for(let i=index+1; i<n; i++){\n        if(a[i]>a[i-1]){\n            dp[i] = Math.max(dp[i], dp[i-1]+a[i]);\n        }else{\n            dp[i] = Math.max(dp[i], a[i]);\n        }\n    }\n    return dp[k];\n}\nlet a = [1, 2, 3, 4, 5];\nlet n = a.length;\nlet index = 2;\nlet k = 4;",
+    "    let dp = new Array(n).fill(0);\n    for(let i=0; i<n; i++){\n        dp[i] = a[i];\n    }\n    for(let i=1; i<n; i++){\n        for(let j=0; j<i; j++){\n            if(a[j]<a[i]){\n                dp[i] = Math.max(dp[i], dp[j]+a[i]);\n            }\n        }\n    }\n    return Math.max(dp[index], dp[k]);\n}\nlet a = [1, 101, 2, 3, 100, 4, 5];\nlet n = a.length;"
+  ]
+}

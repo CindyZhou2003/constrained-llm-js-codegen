@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let dp = new Array(n).fill(0);\n    dp[0] = a[0];\n    for(let i = 1; i < n; i++){\n        let max = 0;\n        for(let j = 0; j < i; j++){\n            if(a[i] > a[j] && max < dp[j]){\n                max = dp[j];\n            }\n        }\n        dp[i] = max + a[i];\n    }\n    let max = 0;\n    for(let i = 0; i <= index; i++){\n        if(max < dp[i]){\n            max = dp[i];\n        }\n    }\n    let max2 = 0;\n    for(let i = k; i < n; i++){\n        if(a[k] > a[i] && max2 < dp[i]){\n            max2 = dp[i];\n        }\n    }\n    return max + a[k] + max2;\n}\n",
+    "    let dp = new Array(n).fill(0);\n    dp[0] = a[0];\n    for(let i = 1; i < n; i++){\n        let max = 0;\n        for(let j = 0; j < i; j++){\n            if(a[i] > a[j] && max < dp[j]){\n                max = dp[j];\n            }\n        }\n        dp[i] = max + a[i];\n    }\n    let max = 0;\n    for(let i = 0; i <= index; i++){\n        if(max < dp[i]){\n            max = dp[i];\n        }\n    }\n    let max2 = 0;\n    for(let i = k; i < n; i++){\n        if(a[k] > a[i] && max2 < dp[i]){\n            max2 = dp[i];\n        }\n    }\n    return max + a[k] + max2;\n}\n",
+    "    let dp = new Array(n).fill(0);\n    dp[0] = a[0];\n    for(let i = 1; i < n; i++){\n        let max = 0;\n        for(let j = 0; j < i; j++){\n            if(a[i] > a[j] && max < dp[j]){\n                max = dp[j];\n            }\n        }\n        dp[i] = max + a[i];\n    }\n    let max = 0;\n    for(let i = 0; i <= index; i++){\n        if(max < dp[i]){\n            max = dp[i];\n        }\n    }\n    let max2 = 0;\n    for(let i = k; i < n; i++){\n        if(a[k] > a[i] && max2 < dp[i]){\n            max2 = dp[i];\n        }\n    }\n    return max + a[k] + max2;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //print original tuple\n    console.log(\"The original tuple is : \" + JSON.stringify(test_tup));\n    //add dictionary to tuple\n    test_tup.push(test_dict);\n    //print result\n    console.log(\"Tuple after adding dictionary: \" + JSON.stringify(test_tup));\n}\n\nlet test_tup = [{'a': 1}, {'b': 2}];\nlet test_dict = {'c': 3};\nadd_dict_to_tuple(test_tup, test_dict);",
+    "    // initializing tuple\n    res = list(test_tup)\n    // adding dictionary at end of tuple\n    res.append(test_dict)\n    return (res)\n\ntest_tup = [(10, 20), (30, 40)]\ntest_dict = {'key': 'value'}\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"The dictionary is : \" + str(test_dict))\nprint(\"Tuple after adding dictionary : \" + str(add_dict_to_tuple(test_tup, test_dict)))",
+    "    //add dictionary to tuple\n    res = list(test_tup)\n    res.append(test_dict)\n    return (res)\n\n#test cases\nprint(add_dict_to_tuple((1, 2, 3), {'a': 'A'}))\nprint(add_dict_to_tuple(('x', 'y'), {'b': 'B'}))\n\n\n\n#Output:\n#[1, 2, 3, {'a': 'A'}]\n#['x', 'y', {'b': 'B'}]"
+  ]
+}

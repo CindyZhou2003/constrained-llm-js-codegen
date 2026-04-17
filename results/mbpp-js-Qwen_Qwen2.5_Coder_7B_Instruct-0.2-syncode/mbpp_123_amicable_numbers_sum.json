@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_123_amicable_numbers_sum",
+  "language": "js",
+  "prompt": "//Write a function to sum all amicable numbers from 1 to a specified number.\nfunction amicable_numbers_sum(limit){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_123_amicable_numbers_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = amicable_numbers_sum;\n  assert.deepEqual(candidate(999),504);\n  assert.deepEqual(candidate(9999),31626);\n  assert.deepEqual(candidate(99),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sum = 0;\n    for(var i = 1; i <= limit; i++){\n        var sum1 = sum_of_divisors(i);\n        var sum2 = sum_of_divisors(sum1);\n        if(i == sum2 && i != sum1){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        let sumOfDivisors = sumOfDivisors(i);\n        if(sumOfDivisors !== i && sumOfDivisors <= limit){\n            let sumOfDivisorsOfSum = sumOfDivisors(sumOfDivisors);\n            if(sumOfDivisorsOfSum === i){\n                sum += i;\n            }\n        }\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        let sum1 = sum_of_divisors(i);\n        let sum2 = sum_of_divisors(sum1);\n        if(i === sum2 && i !== sum1){\n            sum += i;\n        }\n    }\n    return sum;\n}\n"
+  ]
+}

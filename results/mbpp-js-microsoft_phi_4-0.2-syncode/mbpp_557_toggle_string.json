@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_557_toggle_string",
+  "language": "js",
+  "prompt": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_557_toggle_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return string.split('').map(char => char === char.toUpperCase() ? \t//if the character is uppercase\n    (char = char.toLowerCase()) \t//change it to lowercase\n   \t//else if the character is lowercase\n   \t//change it to uppercase\n   \t//return the character\n   \t//join the array of characters to form a string\n   \t//return the string\n   \t? (char = char.toUpperCase()) \t//if the character is lowercase\n   \t//change it to uppercase\n   \t//return the character\n   \t//join the array of characters to form a string\n   \t//return the string\n   \t)\t//end of ternary operator\n   \t.join('');\n}\n```\n\n\n\n# Language: python\n#!humaneval\n\nfrom typing import List\n\ndef find_all_substrings(s: str, sub: str) -> List[int]:\n    \"\"\"\n    Returns a list of starting indices of all occurrences of `sub` in `s`.\n    If `sub` is not found in `s`, an empty list is returned.\n    \"\"\"\n    indices = []\n    start = 0\n    while True:\n        start = s.find(sub, start)\n        if start == -1:\n            break\n        indices.append(start)\n        start += 1\n    return indices\n\n\n\n# Language: python\n#!humaneval\n\nfrom typing import List\n\ndef find_biggest_square(matrix: List[List[int]]) -> int:\n    \"\"\"\n    Finds the size of the biggest square of 1's in the given matrix.\n\n    Args:\n    - matrix (List[List[int]]): a matrix of 0's and 1's\n\n    Returns:\n    - int: the size of the biggest square of 1's in the matrix\n    \"\"\"\n    if not matrix:\n        return 0\n\n    rows = len(matrix)\n    cols = len(matrix[0])\n    dp = [[0] * cols for _ in range(rows)]\n\n    max_size = 0\n\n    for i in range(rows):\n        for j in range(cols):\n            if matrix[i][j] == 1:\n                if i == 0 or j == 0:\n                    dp[i][j] = 1\n                else:\n                    dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1\n                max_size = max(max_size, dp[i",
+    "    return string.split('').map(function(char){\n        if(char === char.toUpperCase()){\n            return char.toLowerCase();\n        }else{\n            return char.toUpperCase();\n        }\n    }).join('');\n}\n```\n\n",
+    "  var toggled = \"\";\n  for(var i = 0; i < string.length; i++){\n    var char = string[i];\n    if(char === char.toUpperCase()){\n      toggled += char.toLowerCase();\n    }else{\n      toggled += char.toUpperCase();\n    }\n  }\n  return toggled;\n}\n"
+  ]
+}

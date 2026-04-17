@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_755_second_smallest",
+  "language": "js",
+  "prompt": "//Write a function to find the second smallest number in an array.\nfunction second_smallest(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_755_second_smallest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = second_smallest;\n  assert.deepEqual(candidate([1, 2, -8, -2, 0, -2]),-2);\n  assert.deepEqual(candidate([1, 1, -0.5, 0, 2, -2, -2]),-0.5);\n  assert.deepEqual(candidate([2, 2]),undefined);\n  assert.deepEqual(candidate([2, 2, 2]),undefined);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var min = Math.min(...numbers);\n    numbers.splice(numbers.indexOf(min), 1);\n    return Math.min(...numbers);\n}",
+    "    var min = Math.min(...numbers);\n    numbers.splice(numbers.indexOf(min), 1);\n    return Math.min(...numbers);\n}",
+    "    var min = numbers[0];\n    var sec_min = Number.MAX_VALUE;\n    for (var i=1; i < numbers.length; i++){\n        if(numbers[i] <= min){\n            sec_min = min;\n            min = numbers[i];\n        }else if(numbers[i] < sec_min && numbers[i] != min){\n            sec_min = numbers[i];\n        }\n    }\n    return sec_min;\n}"
+  ]
+}

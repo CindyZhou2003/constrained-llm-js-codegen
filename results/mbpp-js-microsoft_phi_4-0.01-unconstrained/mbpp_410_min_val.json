@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_410_min_val",
+  "language": "js",
+  "prompt": "//Write a function to find the minimum value in a given heterogeneous array.\nfunction min_val(listval){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_410_min_val.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_val;\n  assert.deepEqual(candidate([\"Python\", 3, 2, 4, 5, \"version\"]),2);\n  assert.deepEqual(candidate([\"Python\", 15, 20, 25]),15);\n  assert.deepEqual(candidate([\"Python\", 30, 20, 40, 50, \"version\"]),20);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    min = listval[0]\n    for i in range(1, len(listval)):\n        if listval[i] < min:\n            min = listval[i]\n    return min\n\n#Test the function\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(min_val(listval)) #1\n\nlistval = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\nprint(min_val(listval)) #1\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0]\nprint(min_val(listval)) #0\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1]\nprint(min_val(listval)) #-1\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2]\nprint(min_val(listval)) #-2\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2, -3]\nprint(min_val(listval)) #-3\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2, -3, -4]\nprint(min_val(listval)) #-4\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2, -3, -4, -5]\nprint(min_val(listval)) #-5\n\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2, -3, -4, -5, -6]\nprint(min_val(listval)) #-6\n\nlistval = [1, 2, 3, 4, 5, 6, 7",
+    "    min = listval[0]\n    for i in range(1, len(listval)):\n        if listval[i] < min:\n            min = listval[i]\n    return min\n\n#Test the function\nprint(min_val([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))\nprint(min_val([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))\nprint(min_val([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]))\nprint(min_val([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]))\nprint(min_val([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))\nprint(min_val([0, 9, 8, 7, 6, 5, 4, 3, 2, 1]))\nprint(min_val([1, 3, 5, 7, 9, 2, 4, 6, 8, -1]))\nprint(min_val([-1, 2, 4, 6, 8, 1, 3, 5, 7, 9]))\nprint(min_val([1, 2, 3, 4, 5, 6, 7, 8, 9, -10]))\nprint(min_val([-10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))\nprint(min_val([1, 3, 5, 7, 9, 2, 4, 6, 8, -100]))\nprint(min_val([-100, 2, 4, 6, 8, 1, 3, 5, 7, 9]))\nprint(min_val([1, 2, 3, 4, 5, 6, 7, 8, 9, -1000]))\nprint(min_val([-1000, 9, 8, 7, 6, 5, 4, 3, 2, 1]))\nprint(min_val",
+    "    min = listval[0]\n    for i in range(1, len(listval)):\n        if listval[i] < min:\n            min = listval[i]\n    return min\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_760_unique_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array of numbers contains only one distinct element or not.\nfunction unique_Element(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_760_unique_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_Element;\n  assert.deepEqual(candidate([1, 1, 1]),true);\n  assert.deepEqual(candidate([1, 2, 1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i=0;\n    var j=1;\n    while(i<arr.length){\n        if(arr[i]===arr[j]){\n            return false;\n        }\n        i++;\n        j++;\n    }\n    return true;\n}\n",
+    "    var i=0;\n    var j=1;\n    while(i<arr.length){\n        if(arr[i]===arr[j]){\n            return false;\n        }\n        i++;\n        j++;\n    }\n    return true;\n}\n",
+    "    var i=0;\n    var j=1;\n    while(i<arr.length){\n        if(arr[i]===arr[j]){\n            i++;\n            j++;\n        }\n        else{\n            return false;\n        }\n    }\n    return true;\n}\n"
+  ]
+}

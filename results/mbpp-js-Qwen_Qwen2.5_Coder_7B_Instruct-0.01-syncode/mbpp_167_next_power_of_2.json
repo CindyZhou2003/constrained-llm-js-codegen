@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_167_next_power_of_2",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the smallest power of 2 greater than or equal to n.\nfunction next_power_of_2(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_167_next_power_of_2.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_power_of_2;\n  assert.deepEqual(candidate(0),1);\n  assert.deepEqual(candidate(5),8);\n  assert.deepEqual(candidate(17),32);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n <= 1){\n        return 1;\n    }\n    let power = 2;\n    while(power < n){\n        power *= 2;\n    }\n    return power;\n}",
+    "    if(n <= 1){\n        return 1;\n    }\n    let power = 2;\n    while(power < n){\n        power *= 2;\n    }\n    return power;\n}",
+    "    if(n <= 1){\n        return 1;\n    }\n    let power = 2;\n    while(power < n){\n        power *= 2;\n    }\n    return power;\n}"
+  ]
+}

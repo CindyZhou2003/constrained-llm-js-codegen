@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_440_find_adverb_position",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb and their positions in a given sentence.\nfunction find_adverb_position(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_440_find_adverb_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverb_position;\n  assert.deepEqual(candidate(\"clearly!! we can see the sky\"),[0, 7, \"clearly\"]);\n  assert.deepEqual(candidate(\"seriously!! there are many roses\"),[0, 9, \"seriously\"]);\n  assert.deepEqual(candidate(\"unfortunately!! sita is going to home\"),[0, 13, \"unfortunately\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var regex = /\\b\\w+ly\\b/g;\n    var match;\n    while ((match = regex.exec(text)) !== null) {\n        console.log(`Adverb: ${match[0]}, Position: ${match.index}`);\n    }\n}\n\nfind_adverb_position(\"He usually walks quickly to the store.\"); // Adverb: usually, Position: 3\nfind_adverb_position(\"She sings beautifully at the concert.\"); // Adverb: beautifully, Position: 5\nfind_adverb_position(\"They run fast on the field.\"); // Adverb: fast, Position: 7\nfind_adverb_position(\"I eat slowly with my fork.\"); // Adverb: slowly, Position: 4\nfind_adverb_position(\"He speaks clearly without any mistakes.\"); // Adverb: clearly, Position: 6\nfind_adverb_position(\"She dances gracefully on the stage.\"); // Adverb: gracefully, Position: 8\nfind_adverb_position(\"He drives carefully on the highway.\"); // Adverb: carefully, Position: 6\nfind_adverb_position(\"She reads silently by herself.\"); // Adverb: silently, Position: 6\nfind_adverb_position(\"He swims smoothly across the pool.\"); // Adverb: smoothly, Position: 6\nfind_adverb_position(\"She talks loudly in the library.\"); // Adverb: loudly, Position: 6\nfind_adverb_position(\"He runs swiftly down the hill.\"); // Adverb: swiftly, Position: 6\nfind_adverb_position(\"She sings softly in the shower.\"); // Adverb: softly, Position: 6\nfind_adverb_position(\"He writes neatly on the paper.\"); // Adverb: neatly, Position: 6\nfind_adverb_position(\"She dances elegantly on the floor.\"); // Adverb: elegantly, Position: 8\nfind_adverb_position(\"He drives cautiously on the road.\"); // Adverb: cautiously, Position: 6\nfind_adverb_position(\"She reads quietly in the quiet room.\"); // Adverb: quietly, Position: 6\nfind_adverb_position(\"He swims effortlessly through the water.\"); // Adverb: effortlessly, Position: 6\nfind_adverb_position(\"She talks calmly in the calm environment.\"); // Adverb: calmly, Position: 6\nfind_adverb_position(\"He runs briskly along the path.\"); // Adverb: briskly, Position: 6\nfind_adverb_position(\"She sings melodiously in the melody.\"); // Adverb: melod",
+    "    let regex = /\\b\\w+ly\\b/g;\n    let match;\n    while((match = regex.exec(text)) !== null) {\n        console.log(`Adverb: ${match[0]}, Position: ${match.index}`);\n    }\n}\nfind_adverb_position(\"He usually walks quickly.\"); // Adverb: usually, Position: 3\n                                                // Adverb: quickly, Position: 14\n",
+    "    var regex = /\\b\\w+ly\\b/g;\n    var match;\n    while ((match = regex.exec(text)) !== null) {\n        console.log(`Adverb: ${match[0]}, Position: ${match.index}`);\n    }\n}\nfind_adverb_position(\"He usually walks quickly to the store.\"); // Adverb: usually, Position: 3"
+  ]
+}

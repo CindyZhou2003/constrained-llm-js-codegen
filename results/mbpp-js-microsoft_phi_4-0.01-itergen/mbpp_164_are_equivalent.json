@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_164_are_equivalent",
+  "language": "js",
+  "prompt": "//Write a function to determine if the sum of the divisors of two integers are the same.\nfunction are_equivalent(num1, num2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_164_are_equivalent.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = are_equivalent;\n  assert.deepEqual(candidate(36, 57),false);\n  assert.deepEqual(candidate(2, 4),false);\n  assert.deepEqual(candidate(23, 47),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Create a function to calculate the sum of divisors of a number\n    function",
+    "    //Create a function to calculate the sum of divisors of a number\n    function",
+    "    //Function to calculate the sum of divisors of a number\n    function"
+  ]
+}

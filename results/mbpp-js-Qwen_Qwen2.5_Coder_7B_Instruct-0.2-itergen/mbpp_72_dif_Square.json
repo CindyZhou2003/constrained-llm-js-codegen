@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_72_dif_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given number can be represented as the difference of two squares or not.\nfunction dif_Square(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_72_dif_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dif_Square;\n  assert.deepEqual(candidate(5),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(15),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n % 2 == 0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n",
+    "    if(n%2==0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n",
+    "    if(n%2==0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n"
+  ]
+}

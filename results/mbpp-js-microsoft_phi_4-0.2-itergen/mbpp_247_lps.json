@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_247_lps",
+  "language": "js",
+  "prompt": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_247_lps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let",
+    "    //Write your code here\n    if(str.length === 0) return 0;\n    if(str.length === 1) return 1;\n    if(str[0] === str[str.length-1]){\n        return 2 + lps(str.slice(1,str.length-1));\n    }\n    return Math.max(lps(str.slice(1)),lps(str.slice(0,str.length-1)));\n}\n\n",
+    "  if (str.length === 0) return 0;\n  if (str.length === 1) return 1;\n  if (str[0] === str[str.length - 1]) {\n    return 2 + lps(str.slice(1, str.length - 1));\n  } else {\n    return Math.max(lps(str.slice(1)), lps(str.slice(0, str.length - 1)));\n  }\n}\n\n"
+  ]
+}

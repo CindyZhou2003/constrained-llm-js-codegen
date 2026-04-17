@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(d < 0 || steps <= 0)\n        return -1;\n    var count = Math.ceil(Math.abs(d)/steps);\n    if((count * steps) == Math.abs(d))\n        return count;\n    else\n        return count + 1;\n}",
+    "    if(d<0 || steps<=0){\n        return -1;\n    }\n    var count = Math.floor((d+steps-1)/steps);\n    return count;\n}",
+    "    if(d == 0)\n        return 0;\n    else if(d < steps)\n        return -1;\n    else{\n        let x = Math.floor((d-steps)/steps);\n        if(x%2 == 0)\n            return x + 1;\n        else\n            return x + 2;\n    }\n}"
+  ]
+}

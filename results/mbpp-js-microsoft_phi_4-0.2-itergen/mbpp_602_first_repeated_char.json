@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var charSet = new Set();\n    for(var i = 0; i < str1.length; i++){\n        if(charSet.has(str1[i])){\n            return str1[i];\n        }\n        charSet.add(str1[i]);\n    }\n    return null;\n}\n\n",
+    "    var charSet = new Set();\n    for(var i = 0; i < str1.length; i++){\n        if(charSet.has(str1[i])){\n            return str1[i];\n        }\n        charSet.add(str1[i]);\n    }\n    return null;\n}\n",
+    "    var obj = {};\n    for(var i = 0; i < str1.length; i++){\n        var char = str1.charAt(i);\n        if(obj[char]){\n            return char;\n        }\n        obj[char] = 1;\n    }\n    return \"No repeated characters\";\n}\n\n"
+  ]
+}

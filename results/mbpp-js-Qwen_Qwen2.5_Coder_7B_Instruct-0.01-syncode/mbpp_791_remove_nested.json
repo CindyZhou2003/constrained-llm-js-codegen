@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_791_remove_nested",
+  "language": "js",
+  "prompt": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_791_remove_nested.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    console.log(\"The original tuple is : \" + test_tup);\n    res = []\n    for (let i = 0; i < test_tup.length; i++){\n        if (typeof test_tup[i] !== 'object'){\n            res.push(test_tup[i])\n        }\n    }\n    return res;\n}\nlet test_tup = [1, 2, [3, 4], 5, 6, [7, 8]];",
+    "    console.log(\"The original tuple is : \" + test_tup);\n    res = []\n    for (let i = 0; i < test_tup.length; i++){\n        if (typeof test_tup[i] !== 'object'){\n            res.push(test_tup[i])\n        }\n    }\n    return res;\n}\nlet test_tup = [1, 2, [3, 4], 5, 6, [7, 8]];",
+    "    console.log(\"The original tuple is : \" + test_tup);\n    res = []\n    for (let i = 0; i < test_tup.length; i++){\n        if (typeof test_tup[i] !== 'object'){\n            res.push(test_tup[i])\n        }\n    }\n    return res;\n}\nlet test_tup = [1, 2, [3, 4], 5, 6, [7, 8]];"
+  ]
+}

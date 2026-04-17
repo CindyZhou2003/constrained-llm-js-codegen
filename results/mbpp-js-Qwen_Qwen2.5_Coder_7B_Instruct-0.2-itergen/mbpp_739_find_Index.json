@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var lower_limit = Math.pow(10, n-1);\n    var upper_limit = Math.pow(10, n) - 1;\n    var i = 1;\n    while(true){\n        var triangular_number = (i * (i + 1)) / 2;\n        if(triangular_number >= lower_limit && triangular_number <= upper_limit){\n            return i;\n        }\n        i++;\n    }\n}\n",
+    "    var i = 1;\n    var triangular = 0;\n    while(true){\n        triangular = (i*(i+1))/2;\n        if(triangular.toString().length == n){\n            return i;\n        }\n        i++;\n    }\n}\n",
+    "    var low = 1; \n    var high = 1e18; \n    var mid = 0; \n    var ans = -1; \n    while (low <= high) { \n        mid = Math.floor((low + high) / 2); \n        var triangular = (mid * (mid + 1)) / 2; \n        var digits = Math.floor(Math.log10(triangular)) + 1; \n        if (digits == n) { \n            ans = mid; \n            high = mid - 1; \n        } \n        else if (digits > n) { \n            high = mid - 1; \n        } \n        else { \n            low = mid + 1; \n        } \n    } \n    return ans; \n} "
+  ]
+}

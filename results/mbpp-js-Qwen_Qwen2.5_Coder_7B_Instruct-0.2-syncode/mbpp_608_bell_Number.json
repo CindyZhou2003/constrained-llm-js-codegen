@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_608_bell_Number",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find nth bell number.\nfunction bell_Number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_608_bell_Number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bell_Number;\n  assert.deepEqual(candidate(2),2);\n  assert.deepEqual(candidate(3),5);\n  assert.deepEqual(candidate(4),15);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let b = new Array(n+1);\n    b[0] = 1;\n    for(let i=1; i<=n; i++){\n        b[i] = 0;\n        for(let j=i-1; j>=0; j--){\n            b[i] += b[j];\n        }\n    }\n    return b[n];\n}",
+    "    let arr = new Array(n + 1);\n    arr[0] = 1;\n    for(let i = 1; i <= n; i++){\n        arr[i] = 0;\n        for(let j = i - 1; j >= 0; j--){\n            arr[i] += arr[j];\n        }\n    }\n    return arr[n];\n}",
+    "    var b = new Array(n+1);\n    b[0] = 1;\n    for (var i = 1; i <= n; i++){\n        b[i] = 0;\n        for (var j = i; j >= 1; j--){\n            b[j] = b[j] + b[j-1];\n        }\n    }\n    return b[n];\n}"
+  ]
+}

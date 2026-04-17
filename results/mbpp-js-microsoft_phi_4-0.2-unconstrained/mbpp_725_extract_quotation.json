@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_725_extract_quotation",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_725_extract_quotation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = text1.match(/\"([^\"]*)\"/g);\n    return result;\n}",
+    "    var reg = /\"([^\"]*)\"/g;\n    var arr = [];\n    var match;\n    while ((match = reg.exec(text1)) !== null) {\n        arr.push(match[1]);\n    }\n    return arr;\n}",
+    "    let text2 = text1.match(/\"([^\"]*)\"/g);\n    let result = [];\n    for (let i = 0; i < text2.length; i++) {\n        result.push(text2[i].slice(1, -1));\n    }\n    return result;\n}\n"
+  ]
+}

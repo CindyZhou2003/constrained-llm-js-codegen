@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //check if x is positive integer\n    if (x <= 0 || !Number.isInteger(x)){\n        return false;\n    }\n    //check if x is power of 2\n    if ((x & (x - 1)) !== 0){\n        return false;\n    }\n    //check if x-1 is power of 3\n    let y = x - 1;\n    while (y % 3 === 0){\n        y /= 3;\n    }\n    return y === 1;\n}",
+    "    //check if x is positive integer\n    if (x <= 0 || !Number.isInteger(x)){\n        return false;\n    }\n    //check if x is power of 2\n    if ((x & (x - 1)) !== 0){\n        return false;\n    }\n    //check if x-1 is power of 3\n    let y = x - 1;\n    while (y % 3 === 0){\n        y /= 3;\n    }\n    return y === 1;\n}",
+    "    //check if x is positive integer\n    if (x <= 0 || !Number.isInteger(x)){\n        return false;\n    }\n    //check if x is power of 2\n    if ((x & (x - 1)) !== 0){\n        return false;\n    }\n    //check if x-1 is power of 3\n    let y = x - 1;\n    while (y % 3 === 0){\n        y /= 3;\n    }\n    return y === 1;\n}"
+  ]
+}

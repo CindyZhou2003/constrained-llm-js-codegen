@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_745_divisible_by_digits",
+  "language": "js",
+  "prompt": "//Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/JavaScript-exercises/lambda/JavaScript-lambda-exercise-24.php\nfunction divisible_by_digits(startnum, endnum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_745_divisible_by_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisible_by_digits;\n  assert.deepEqual(candidate(1, 22),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]);\n  assert.deepEqual(candidate(1, 15),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15]);\n  assert.deepEqual(candidate(20, 25),[22, 24]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Array.from({length: endnum - startnum + 1}, (_, i) => startnum + i)\n    .filter(n => n.toString().split('').every(digit => digit !== '0' && n % parseInt(digit) === 0));\n}",
+    "    return Array.from({length: endnum - startnum + 1}, (_, i) => startnum + i)\n    .filter(n => n.toString().split('').every(digit => digit !== '0' && n % parseInt(digit) === 0));\n}",
+    "    return Array.from({length: endnum - startnum + 1}, (_, i) => startnum + i)\n    .filter(n => n.toString().split('').every(digit => digit !== '0' && n % parseInt(digit) === 0));\n}"
+  ]
+}

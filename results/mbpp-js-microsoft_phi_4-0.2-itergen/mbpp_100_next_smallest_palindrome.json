@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var numStr = num.toString();\n    var len = numStr.length;\n    var half = Math.floor(len / 2);\n    var left = numStr.slice(0, half);\n    var right = numStr.slice(-half);\n    var middle = len % 2 ? numStr[half] + \"\" \t// If odd length, include the middle character\n\t\t\t+ \"\" \t// If even length, this will be an empty string\n\t\t+ numStr.slice(half, -1);\n    var palindrome = left + middle + left.split(\"\").reverse().join(\"\");\n    return parseInt(palindrome) < num ? parseInt(palindrome) + 1 + \"1\".repeat(len) \t// If the generated palindrome is smaller than the input, increment it and append 1s\n\t\t// Else, return the generated palindrome\n\t\t|| palindrome;\n}\n\n",
+    "  var num_str = num.toString();\n  var len = num_str.length;\n  var half = Math.floor(len / 2);\n  var left = num_str.substring(0, half);\n  var middle = len % 2 ? num_str.charAt(half) + \"\" \t// If odd length, include the middle character\n  var right = num_str.substring(len - half);\n  var new_left = (parseInt(left, 10) - 1).toString();\n  var new_num_str = new_left + middle + new_left.split('').reverse().join('');\n  var new_num = parseInt(new_num_str, 10);\n  return new_num;\n}\n\n",
+    "    var str = num.toString();\n    var len = str.length;\n    var half = Math.floor(len / 2);\n    var first_half = str.substring(0, half);\n    var second_half = str.substring(half, len);\n    var rev_first_half = first_half.split('').reverse().join('');\n    var new_num = parseInt(first_half + rev_first_half);\n    if (new_num < num) {\n        new_num = parseInt((parseInt(first_half) - 1).toString() + rev_first_half);\n    }\n    return new_num;\n}\n\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_274_even_binomial_Coeff_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that takes in a positive integer n and finds the sum of even index binomial coefficients.\nfunction even_binomial_Coeff_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_274_even_binomial_Coeff_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = even_binomial_Coeff_Sum;\n  assert.deepEqual(candidate(4),8);\n  assert.deepEqual(candidate(6),32);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Math.pow(2, n-1);\n}\n```\n\n**Explanation:**\n\nThe sum of the binomial coefficients at even indices for a given positive integer \\( n \\) can be derived from the binomial theorem. The binomial theorem states that:\n\n\\[ (1 + x)^n = \\sum_{k=0}^{n} \\binom{n}{k} x^k \\]\n\nIf we set \\( x = 1 \\) and \\( x = -1 \\), we get:\n\n\\[ (1 + 1)^n = \\sum_{k=0}^{n} \\binom{n}{k} \\]\n\\[ (1 - 1)^n = \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\nThe first equation simplifies to:\n\n\\[ 2^n = \\sum_{k=0}^{n} \\binom{n}{k} \\]\n\nThe second equation simplifies to:\n\n\\[ 0 = \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\nAdding these two equations, we get:\n\n\\[ 2^n + 0 = \\sum_{k=0}^{n} \\binom{n}{k} + \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\n\\[ 2^n = 2 \\sum_{k \\text{ even}} \\binom{n}{k} \\]\n\nThus, the sum of the binomial coefficients at even indices is:\n\n\\[ \\sum_{k \\text{ even}} \\binom{n}{k} = \\frac{2^n}{2} = 2^{n-1} \\]\n\nThis is why the function `even_binomial_Coeff_Sum(n)` returns `Math.pow(2, n-1)`.\n\n**Corner Cases:**\n\n1. When \\( n = 1 \\), the sum of even index binomial coefficients is \\( \\binom{1}{0} = 1 \\), which is \\( 2^{1-1} = 1 \\).\n2. When \\( n = 0 \\), the sum of even index binomial coefficients is \\( \\binom{0}{0} = 1 \\), which is \\( 2^{0-1} = 0.5 \\). However, since \\( n \\) is a positive integer, this case is not applicable.\n\nThe function handles",
+    "    return Math.pow(2, n-1);\n}\n```\n\n**Explanation:**\n\nThe sum of the binomial coefficients at even indices for a given \\( n \\) is \\( 2^{n-1} \\). This is derived from the binomial theorem and properties of binomial coefficients.\n\n**Example:**\n\n```javascript",
+    "    return Math.pow(2, n-1);\n}\n```\n\nThis function `even_binomial_Coeff_Sum` takes a positive integer `n` as input and returns the sum of even index binomial coefficients. It uses the `Math.pow` function to calculate 2 raised to the power of `n-1`. This is based on the mathematical property that the sum of even index binomial coefficients of a positive integer `n` is equal to 2 raised to the power of `n-1`.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we delve into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is built to handle loading states, errors, and data fetching in a reusable manner across your React components. The focus is on the logical intricacies and the advanced patterns used in the implementation.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook encapsulates the logic for fetching data, handling loading states, and errors. It leverages the `useState` and `useEffect` hooks from React to manage state and side effects, respectively.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n"
+  ]
+}

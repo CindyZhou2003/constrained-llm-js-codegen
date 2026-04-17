@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_69_is_sublist",
+  "language": "js",
+  "prompt": "//Write a function to check whether an array contains the given sublist or not.\nfunction is_sublist(l, s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_69_is_sublist.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_sublist;\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [3, 7]),false);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [4, 3]),true);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [1, 6]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if len",
+    "    if len",
+    "    for (let i = 0; i < l.length; i++) {\n        if (l[i] === s[0]) {\n            let j = 0;\n            for (let k = i; k < l.length && j < s.length; k++) {\n                if (l[k] === s[j]) {\n                    j++;\n                }\n            }\n            if (j === s.length) {\n                return true;\n            }\n        }\n    }\n    return false;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_18_remove_dirty_chars",
+  "language": "js",
+  "prompt": "//Write a function to remove characters from the first string which are present in the second string.\nfunction remove_dirty_chars(string, second_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_18_remove_dirty_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_dirty_chars;\n  assert.deepEqual(candidate(\"probasscurve\", \"pros\"),\"bacuve\");\n  assert.deepEqual(candidate(\"digitalindia\", \"talent\"),\"digiidi\");\n  assert.deepEqual(candidate(\"exoticmiles\", \"toxic\"),\"emles\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Split the second string into an array of characters\n    let dirty_chars = second_string.split('');\n    //Split the first string into an array of characters\n    let clean_chars = string.split('');\n    //Filter out the characters from the first string that are present in the second string\n    let result = clean_chars.filter(char => !dirty_chars.includes(char));\n    //Join the array of characters back into a string and return it\n    return result.join('');\n}\n",
+    "    //Split the second string into an array of characters\n    let dirty_chars = second_string.split('');\n    //Split the first string into an array of characters\n    let clean_chars = string.split('');\n    //Filter out the characters in the first string that are present in the second string\n    let result = clean_chars.filter(char => !dirty_chars.includes(char));\n    //Join the filtered characters back into a string and return it\n    return result.join('');\n}\n",
+    "    let string_array = string.split('');\n    let second_string_array = second_string.split('');\n    let result = [];\n    for(let i = 0; i < string_array.length; i++){\n        if(second_string_array.indexOf(string_array[i]) === -1){\n            result.push(string_array[i]);\n        }\n    }\n    return result.join('');\n}\n"
+  ]
+}

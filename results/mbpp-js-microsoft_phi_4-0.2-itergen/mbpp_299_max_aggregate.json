@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_299_max_aggregate",
+  "language": "js",
+  "prompt": "//Write a function to calculate the maximum aggregate from the array of tuples.\nfunction max_aggregate(stdata){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_299_max_aggregate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_aggregate;\n  assert.deepEqual(candidate([[\"Juan Whelan\", 90], [\"Sabah Colley\", 88], [\"Peter Nichols\", 7], [\"Juan Whelan\", 122], [\"Sabah Colley\", 84]]),[\"Juan Whelan\", 212]);\n  assert.deepEqual(candidate([[\"Juan Whelan\", 50], [\"Sabah Colley\", 48], [\"Peter Nichols\", 37], [\"Juan Whelan\", 22], [\"Sabah Colley\", 14]]),[\"Juan Whelan\", 72]);\n  assert.deepEqual(candidate([[\"Juan Whelan\", 10], [\"Sabah Colley\", 20], [\"Peter Nichols\", 30], [\"Juan Whelan\", 40], [\"Sabah Colley\", 50]]),[\"Sabah Colley\", 70]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The function takes in a list of tuples, where each tuple represents a test case.\n    //For each test case, it calculates the maximum aggregate of the array.\n    //The aggregate of an array is defined as the maximum sum of a non-empty subarray of the array.\n    //The function returns a list of maximum aggregates for each test case.\n    max_aggregates = []\n    for st",
+    "    //Sort the array in descending order based on the first element of each tuple\n    stdata.sort((a, b) => b[0] - a[0]);\n    let aggregate = 0;\n    //Iterate through the sorted array\n    for(let i = 0; i < stdata.length; i++){\n        //Add the second element of the tuple to the aggregate\n        aggregate += stdata[i][1];\n        //If the aggregate becomes negative, break the loop\n        if(aggregate < 0){\n            break;\n        }\n    }\n    //Return the maximum aggregate\n    return aggregate;\n}\n",
+    "    //Initialize the maximum aggregate to 0.\n    let max_aggregate = 0;\n    //Iterate over the array of tuples.\n    for(let i = 0; i < stdata.length; i++){\n        //Calculate the aggregate for the current tuple.\n        let aggregate = stdata[i][0] * stdata[i][1];\n        //If the aggregate is greater than the current maximum, update the maximum.\n        if(aggregate > max_aggregate){\n            max_aggregate = aggregate;\n        }\n    }\n    //Return the maximum aggregate.\n    return max_aggregate;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_261_division_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.\nfunction division_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_261_division_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = division_elements;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[2, 2, 2, 3]);\n  assert.deepEqual(candidate([12, 6, 8, 16], [6, 3, 4, 4]),[2, 2, 2, 4]);\n  assert.deepEqual(candidate([20, 14, 36, 18], [5, 7, 6, 9]),[4, 2, 6, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The zip function is used to combine the two tuples into a single iterable object.\n    //The map function is then used to apply the division operation to each pair of elements from the two tuples.\n    //The lambda function is used to define the division operation.\n    //Finally, the result is converted back into a tuple and returned.\n    return tuple(map(lambda in the  \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r ",
+    "    //The zip function is used to iterate over two or more lists in parallel.\n    //The map function applies a given function to each item of an iterable (list, tuple etc.) and returns a list of the results.\n    //The lambda function is a small anonymous function.\n    //The lambda function takes in two arguments and returns the result of the division of the first argument by the second.\n    return tuple(map(lambda in the  \r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r",
+    "    //The function uses the map function to apply the division operation to each pair of elements from the two tuples.\n    //The zip function is used to pair up the corresponding elements from the two tuples.\n    //The map function applies the division operation to each pair of elements and returns a new tuple with the results.\n    return tuple(map(lambda in the  \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0.0] \t[0"
+  ]
+}

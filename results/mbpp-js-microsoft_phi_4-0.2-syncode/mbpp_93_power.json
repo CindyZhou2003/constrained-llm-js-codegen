@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_93_power",
+  "language": "js",
+  "prompt": "//Write a function to calculate the value of 'a' to the power 'b'.\nfunction power(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_93_power.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = power;\n  assert.deepEqual(candidate(3, 4),81);\n  assert.deepEqual(candidate(2, 3),8);\n  assert.deepEqual(candidate(5, 5),3125);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(b === 0){\n        return 1;\n    }\n    if(b === 1){\n        return a;\n    }\n    if(b % 2 === 0){\n        return power(a * a, b / 2);\n    }\n    return a * power(a * a, (b - 1) / 2);\n}\n",
+    "    //If 'b' is 0, return 1 as any number to the power of 0 is 1.\n    if(b === 0) return 1;\n    //If 'b' is even, recursively call the function with 'a' squared and 'b' divided by 2.\n    if(b % 2 === 0) return power(a * a, b / 2);\n    //If 'b' is odd, recursively call the function with 'a' and 'b' minus 1, and multiply the result by 'a'.\n    return a * power(a, b - 1);\n}\n",
+    "    if(b === 0){\n        return 1;\n    }\n    if(b === 1){\n        return a;\n    }\n    return a * power(a, b - 1);\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_411_snake_to_camel",
+  "language": "js",
+  "prompt": "//Write a function to convert the given snake case string to camel case string.\nfunction snake_to_camel(word){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_411_snake_to_camel.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = snake_to_camel;\n  assert.deepEqual(candidate(\"android_tv\"),\"AndroidTv\");\n  assert.deepEqual(candidate(\"google_pixel\"),\"GooglePixel\");\n  assert.deepEqual(candidate(\"apple_watch\"),\"AppleWatch\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase();});\n}",
+    "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase();});\n}",
+    "    return word.replace(/(_\\w)/g, function(m){return m[1].toUpperCase();});\n}"
+  ]
+}

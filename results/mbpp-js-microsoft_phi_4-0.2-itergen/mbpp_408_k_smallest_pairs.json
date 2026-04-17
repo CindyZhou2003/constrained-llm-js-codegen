@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_408_k_smallest_pairs",
+  "language": "js",
+  "prompt": "//Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.\nfunction k_smallest_pairs(nums1, nums2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_408_k_smallest_pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = k_smallest_pairs;\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 2),[[1, 2], [1, 4]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 1),[[1, 2]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 7),[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Write your code here\n    let heap = new MinHeap();\n    let result = [];\n    for(let i = 0; i < nums1.length; i++){\n        if(nums2.length > 0){\n            heap.insert([nums1[i], nums2[0], 0]);\n        }\n    }\n    while(result.length < k && heap.size() > 0){\n        let [val1, val2, index2] = heap.extractMin();\n        result.push([val1, val2]);\n        if(index2 + 1 < nums2.length){\n            heap.insert([val1, nums2[index2 + 1], index2 + 1]);\n        }\n    }\n    return result;\n}\n\n",
+    "    //if one of the arrays is empty, return an empty array\n    if(nums1.length == 0 || nums2.length == 0) return [];\n    //initialize an empty array to store the pairs\n    let pairs = [];\n    //initialize a min heap to store the pairs\n    let minHeap = new MinHeap();\n    //add the first pair to the min heap\n    minHeap.add([nums1[0], nums2[0], 0, 0]);\n    //while the min heap is not empty and we have not found k pairs\n    while(!minHeap.isEmpty() && pairs.length < k){\n        //remove the smallest pair from the min heap\n        let [val1, val2, i, j] = minHeap.remove();\n        //add the pair to the result array\n        pairs.push([val1, val2]);\n        //if there is a next element in the first array, add the pair to the min heap\n        if(i + 1 < nums1.length){\n            minHeap.add([nums1[i + 1], val2, i + 1, j]);\n        }\n        //if there is a next element in the second array, add the pair to the min heap\n        if(j + 1 < nums2.length && i == 0){\n            minHeap.add([val1, nums2[j + 1], i, j + 1]);\n        }\n    }\n    //return the result array\n    return pairs;\n}\n\n",
+    "    var heap = [];\n    for(var i = 0; i < nums1.length && i < k; i++){\n        heap.push([nums1[i] + nums2[0], i, 0]);\n    }\n    heap.sort((a, b) => a[0] - b[0]);\n    var result = [];\n    while(heap.length && result.length < k){\n        var [sum, i, j] = heap.shift();\n        result.push([nums1[i], nums2[j]]);\n        if(j + 1 < nums2.length){\n            heap.push([nums1[i] + nums2[j+1], i, j+1]);\n            heap.sort((a, b) => a[0] - b[0]);\n        }\n    }\n    return result;\n}\n\n"
+  ]
+}

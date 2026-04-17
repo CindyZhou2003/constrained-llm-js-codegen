@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let ludic = [2];\n    let i = 3;\n    while(ludic[ludic.length - 1] <= n){\n        ludic.push(i);\n        i += 2;\n    }\n    ludic.pop();\n    return ludic;\n}",
+    "    var ludic = [2];\n    var i = 3;\n    while (i <= n){\n        if (is_ludic(i, ludic)){\n            ludic.push(i);\n        }\n        i++;\n    }\n    return ludic;\n}\n",
+    "    var ludic = [2];\n    var i = 3;\n    while(i <= n){\n        ludic.push(i);\n        i += 2;\n    }\n    var index = 1;\n    while(index < ludic.length){\n        var value = ludic[index];\n        var j = index + value;\n        while(j < ludic.length){\n            ludic[j] = ludic[j + 1];\n            j++;\n        }\n        ludic.length--;\n        index++;\n    }\n    return ludic;\n}"
+  ]
+}

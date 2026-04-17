@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_424_extract_rear",
+  "language": "js",
+  "prompt": "//Write a function to extract only the rear index element of each string in the given array.\nfunction extract_rear(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_424_extract_rear.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_rear;\n  assert.deepEqual(candidate([\"Mers\", \"for\", \"Vers\"]),[\"s\", \"r\", \"s\"]);\n  assert.deepEqual(candidate([\"Avenge\", \"for\", \"People\"]),[\"e\", \"r\", \"e\"]);\n  assert.deepEqual(candidate([\"Gotta\", \"get\", \"go\"]),[\"a\", \"t\", \"o\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    console.log( \"The original tuple is : \" + test_tuple);\n    res = [ele[-1]  + ele[-2]  + ele[-3]  + ele[-4]  + ele[-5]  + ele[-6]  + ele[-7]  + ele[-8]  + ele[-9]  + ele[-10]  + ele[-11]  + ele[-12]  + ele[-13]  + ele[-14]  + ele[-15]  + ele[-16]  + ele[-17]  + ele[-18]  + ele[-19]  + ele[-20]  + ele[-21]  + ele[-22]  + ele[-23]  + ele[-24]  + ele[-25]  + ele[-26]  + ele[-27]  + ele[-28]  + ele[-29]  + ele[-30]  + ele[-31]  + ele[-32]  + ele[-33]  + ele[-34]  + ele[-35]  + ele[-36]  + ele[-37]  + ele[-38]  + ele[-39]  + ele[-40]  + ele[-41]  + ele[-42]  + ele[-43]  + ele[-44]  + ele[-45]  + ele[-46]  + ele[-47]  + ele[-48]  + ele[-49]  + ele[-50]  + ele[-51]  + ele[-52]  + ele[-53]  + ele[-54]  + ele[-55]  + ele[-56]  + ele[-57]  + ele[-58]  + ele[-59]  + ele[-60]  + ele[-61]  + ele[-62]  + ele[-63]  + ele[-64]  + ele[-65]  + ele[-66]  + ele[-67]  + ele[-68]  + ele[-69]  + ele[-70]  + ele[-71]  + ele[-72]  + ele[-73]  + ele[-74]  + ele[-75]  + ele[-76]  + ele[-77]  + ele[-78]  + ele[-79]  + ele[-80]  + ele[-81]  + ele[-82]  + ele[-83]  + ele[-84]  + ele[-85]  + ele[-86]  + ele[-87]  + ele[-88]  + ele[-89]  + ele[-90]  + ele[-91]  + ele[-92]  + ele[-93]  + ele[-94]  + ele[-95]  + ele[-96]  + ele[-97]  + ele[-98]  + ele[-99]  + ele[-100]  + ele[-101]  + ele[-102]  + ele[-103]  + ele[-104]  + ele[-105]  + ele[-106]  + ele[-107]  + ele[-108]  + ele[-109]  + ele[-110]  + ele[-111]  + ele[-112]  + ele[-113]  + ele[-114]  + ele[-115]  + ele[-116]  + ele[-117]  + ele[-118]  + ele[-119]  + ele",
+    "    // Using list comprehension to iterate through each string in the tuple\n    // and extract the last character using negative indexing.\n    let result = test_tuple.map(str => str[str.length - 1]);\n    return result;\n}\n\n",
+    "    console.log( \"The original tuple is : \" + test_tuple);\n    res = [ele[-1]  + ele[-2]  + ele[-3]  + ele[-4]  + ele[-5]  + ele[-6]  + ele[-7]  + ele[-8]  + ele[-9]  + ele[-10]  + ele[-11]  + ele[-12]  + ele[-13]  + ele[-14]  + ele[-15]  + ele[-16]  + ele[-17]  + ele[-18]  + ele[-19]  + ele[-20]  + ele[-21]  + ele[-22]  + ele[-23]  + ele[-24]  + ele[-25]  + ele[-26]  + ele[-27]  + ele[-28]  + ele[-29]  + ele[-30]  + ele[-31]  + ele[-32]  + ele[-33]  + ele[-34]  + ele[-35]  + ele[-36]  + ele[-37]  + ele[-38]  + ele[-39]  + ele[-40]  + ele[-41]  + ele[-42]  + ele[-43]  + ele[-44]  + ele[-45]  + ele[-46]  + ele[-47]  + ele[-48]  + ele[-49]  + ele[-50]  + ele[-51]  + ele[-52]  + ele[-53]  + ele[-54]  + ele[-55]  + ele[-56]  + ele[-57]  + ele[-58]  + ele[-59]  + ele[-60]  + ele[-61]  + ele[-62]  + ele[-63]  + ele[-64]  + ele[-65]  + ele[-66]  + ele[-67]  + ele[-68]  + ele[-69]  + ele[-70]  + ele[-71]  + ele[-72]  + ele[-73]  + ele[-74]  + ele[-75]  + ele[-76]  + ele[-77]  + ele[-78]  + ele[-79]  + ele[-80]  + ele[-81]  + ele[-82]  + ele[-83]  + ele[-84]  + ele[-85]  + ele[-86]  + ele[-87]  + ele[-88]  + ele[-89]  + ele[-90]  + ele[-91]  + ele[-92]  + ele[-93]  + ele[-94]  + ele[-95]  + ele[-96]  + ele[-97]  + ele[-98]  + ele[-99]  + ele[-100]  + ele[-101]  + ele[-102]  + ele[-103]  + ele[-104]  + ele[-105]  + ele[-106]  + ele[-107]  + ele[-"
+  ]
+}

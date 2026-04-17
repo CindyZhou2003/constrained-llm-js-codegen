@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min_rotation = str.length;\n    for(let i = 1; i < str.length; i++){\n        let temp = str.slice(i) + str.slice(0, i);\n        if(temp === str){\n            min_rotation = i;\n            break;\n        }\n    }\n    return min_rotation;\n}\n",
+    "    var len = str.length;\n    var sub = str.substring(0, len / 2);\n    var cnt = 0;\n    for (var i = 1; i <= len - 1; i++) {\n        var left = str.substring(i);\n        var right = str.substring(0, i);\n        str = left + right;\n        cnt++;\n        if (str === sub + sub) {\n            break;\n        }\n    }\n    return cnt;\n}",
+    "    let rotations = 1;\n    let temp = str;\n    while (temp != str){\n        temp = temp.slice(1) + temp[0];\n        rotations++;\n    }\n    return rotations;\n}"
+  ]
+}

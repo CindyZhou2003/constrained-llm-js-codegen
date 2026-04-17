@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_291_count_no_of_ways",
+  "language": "js",
+  "prompt": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_291_count_no_of_ways.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (n == 0) return 0;\n    if (n == 1) return k;\n\n    let mod = 1e9 + 7;\n    let totalWays = k;\n    let sameColorWays = 0;\n    let diffColorWays = k;\n\n    for(let i=2; i<=n; i++){\n        sameColorWays = diffColorWays % mod;\n        diffColorWays = ((totalWays * (k - 1)) % mod);\n\n        totalWays = ((sameColorWays + diffColorWays) % mod);\n    }\n\n    return totalWays;\n}\n",
+    "    if (n == 0) return 0;\n    if (n == 1) return k;\n    let mod = 1e9 + 7;\n    let totalWays = k;\n    let sameColorWays = 0;\n    for(let i=2; i<=n; i++){\n        let temp = totalWays;\n        totalWays = ((totalWays * (k-1)) % mod + (sameColorWays * (k-1)) % mod) % mod;\n        sameColorWays = temp;\n    }\n    return totalWays;\n}",
+    "    if (n == 0) return 0;\n    if (n == 1) return k;\n\n    let mod = 1e9 + 7;\n    let totalWays = k;\n    let sameColorWays = 0;\n    let diffColorWays = k;\n\n    for(let i=2; i<=n; i++){\n        sameColorWays = diffColorWays % mod;\n        diffColorWays = ((totalWays * (k - 1)) % mod);\n\n        totalWays = ((sameColorWays + diffColorWays) % mod);\n    }\n\n    return totalWays;\n}\n"
+  ]
+}

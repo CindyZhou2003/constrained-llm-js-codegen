@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_468_max_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_468_max_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = arr.length;\n    let dp = new Array(n).fill(1);\n    let max = 1;\n    for(let i=0; i<n; i++){\n        for(let j=0; j<i; j++){\n            if(arr[i] > arr[j]){\n                dp[i] = Math.max(dp[i], dp[j]*arr[i]);\n            }\n        }\n        max = Math.max(max, dp[i]);\n    }\n    return max;\n}\n```\n\nThis function `max_product` takes an array of integers as input and returns the maximum product that can be obtained by multiplying numbers of an increasing subsequence of that array. It uses dynamic programming to solve the problem. The `dp` array stores the maximum product that can be obtained by considering the subsequence ending at each index. The `max` variable stores the maximum product found so far. For each index `i`, it checks all previous indices `j` and if `arr[i]` is greater than `arr[j]`, it updates `dp[i]` to be the maximum of its current value and `dp[j]*arr[i]`. Finally, it updates `max` to be the maximum of its current value and `dp[i]`. The function returns `max` as the result.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we're diving deep into creating a custom React hook, `useFetch`, designed for fetching data efficiently and handling loading, error, and data states seamlessly. This guide assumes you're already familiar with React hooks basics, so we'll focus on the intricacies and logical reasoning behind the implementation.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It encapsulates the logic for fetching data, handling loading states, errors, and caching responses to optimize performance and user experience.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n",
+    "    let n = arr.length;\n    let dp = new Array(n).fill(1);\n    for(let i=0; i<n; i++){\n        for(let j=0; j<i; j++){\n            if(arr[i]>arr[j] && dp[i]<dp[j]*arr[i]){\n                dp[i] = dp[j]*arr[i];\n            }\n        }\n    }\n    return Math.max(...dp);\n}\n",
+    "    let n = arr.length;\n    let dp = new Array(n).fill(1);\n    for(let i = 0; i < n; i++){\n        for(let j = 0; j < i; j++){\n            if(arr[i] > arr[j]){\n                dp[i] = Math.max(dp[i], dp[j] * arr[i]);\n            }\n        }\n    }\n    return Math.max(...dp);\n}\n"
+  ]
+}

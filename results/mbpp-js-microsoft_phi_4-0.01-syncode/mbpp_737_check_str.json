@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_737_check_str",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given string is starting with a vowel or not using regex.\nfunction check_str(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_737_check_str.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_str;\n  assert.deepEqual(candidate(\"annie\"),true);\n  assert.deepEqual(candidate(\"dawood\"),false);\n  assert.deepEqual(candidate(\"Else\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var regex = /^[aeiou]/i;\n    return regex.test(string);\n}",
+    "    var regex = /^[aeiou]/i;\n    return regex.test(string);\n}",
+    "    var regex = /^[aeiou]/i;\n    return regex.test(string);\n}\n"
+  ]
+}

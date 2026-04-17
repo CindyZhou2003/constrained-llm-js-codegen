@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_616_tuple_modulo",
+  "language": "js",
+  "prompt": "//Write a function which takes two tuples of the same length and performs the element wise modulo.\nfunction tuple_modulo(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_616_tuple_modulo.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_modulo;\n  assert.deepEqual(candidate([10, 4, 5, 6], [5, 6, 7, 5]),[0, 4, 5, 1]);\n  assert.deepEqual(candidate([11, 5, 6, 7], [6, 7, 8, 6]),[5, 5, 6, 1]);\n  assert.deepEqual(candidate([12, 6, 7, 8], [7, 8, 9, 7]),[5, 6, 7, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The function uses the map function to apply the modulo operation to each pair of elements from the two tuples.\n    //The map function takes two arguments: a function and one or more iterables.\n    //The function is applied to every item of the iterable, and a new iterable is returned that contains the results.\n    //In this case, the function is a lambda function that takes two arguments and returns the modulo of the first argument by the second.\n    //The iterables are the two tuples, which are unpacked using the * operator.\n    return tuple(map(lambda in the  [C++](httpshttps%3E",
+    "    //The function uses the map function to apply the modulo operation to each pair of elements from the two tuples.\n    //The map function takes two arguments: a function and one or more iterables.\n    //The function is applied to every item of the iterable, and a new iterable is returned that contains the results.\n    //In this case, the function is a lambda function that takes two arguments and returns the modulo of the first argument by the second.\n    //The iterables are the two tuples, which are unpacked using the * operator.\n    return tuple(map(lambda in the  [C++](httpshttps%3E",
+    "    //The function uses the map function to apply the modulo operation to each pair of elements from the two tuples.\n    //The map function takes two arguments: a function and one or more iterables.\n    //The function is applied to every item of the iterable(s) and a new iterable is returned.\n    //In this case, the function is a lambda function that takes two arguments and returns the modulo of the first argument by the second.\n    //The iterables are the two tuples.\n    //The map function returns a map object which is then converted to a tuple using the tuple function.\n    return tuple(map(lambda in the  [C++](httpshttps%3E"
+  ]
+}

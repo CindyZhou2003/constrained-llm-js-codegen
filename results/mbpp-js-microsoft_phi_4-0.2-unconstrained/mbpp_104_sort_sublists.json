@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_104_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(input_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_104_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\" red \", \"green\"], [\"blue \", \" black\"], [\" orange\", \"brown\"]]),[[\" red \", \"green\"], [\" black\", \"blue \"], [\" orange\", \"brown\"]]);\n  assert.deepEqual(candidate([[\"zilver\", \"gold\"], [\"magnesium\", \"aluminium\"], [\"steel\", \"bronze\"]]),[[\"gold\", \"zilver\"], [\"aluminium\", \"magnesium\"], [\"bronze\", \"steel\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for i in range(0, len(input_list)){\n        input_list[i] = sorted(input_list[i])\n    }\n    return input_list\n}\n\n#Test the function\nprint(sort_sublists([['apple', 'banana', 'cherry'], ['dog', 'cat', 'elephant'], ['red', 'green', 'blue']]))\n#Output: [['apple', 'banana', 'cherry'], ['cat', 'dog', 'elephant'], ['blue', 'green', 'red']]\n```\n\n\n# Chapter: The use of Python Libraries/Modules for Quantitative Analyst\n\n## Section: Applications of PyTorch for Quantitative Analyst\n\nPyTorch is a popular open-source machine learning library that is widely used in the field of deep learning. It is known for its flexibility and ease of use, making it a popular choice among researchers and developers. In this section, we will explore some of the applications of PyTorch for quantitative analysis.\n\n### Subsection 1: Time Series Analysis\n\nPyTorch can be used for time series analysis, which is a common task in quantitative analysis. Time series analysis involves analyzing data that is collected over time, such as stock prices or economic indicators. PyTorch provides a number of tools for working with time series data, including recurrent neural networks (RNNs) and long short-term memory (LSTM) networks.\n\n```python\nimport torch\nimport torch.nn as nn\n\nclass LSTM(nn.Module):\n    def __init__(self, input_size, hidden_size, num_layers, output_size):\n        super(LSTM, self).__init__()\n        self.hidden_size = hidden_size\n        self.num_layers = num_layers\n        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)\n        self.fc = nn.Linear(hidden_size, output_size)\n\n    def forward(self, x):\n        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)\n        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)\n        out, _ = self.lstm(x, (h0, c0))\n        out = self.fc(out[:, -1, :])\n        return out\n```\n\n### Subsection 2: Portfolio Optimization\n\nPyTorch can also be used for portfolio optimization, which is the process of selecting a portfolio of assets that maximizes returns while minimizing risk. PyTorch provides a number of tools for working with financial",
+    "    for (let i = 0; i < input_list.length; i++){\n        input_list[i].sort();\n    }\n    return input_list;\n}\n",
+    "    for (var i = 0; i < input_list.length; i++){\n        input_list[i].sort();\n    }\n    return input_list;\n}\n"
+  ]
+}

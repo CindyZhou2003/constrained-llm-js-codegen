@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_750_add_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add the given array to the given array.\nfunction add_tuple(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_750_add_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_tuple;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[5, 6, 7, 9, 10]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[6, 7, 8, 10, 11]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[7, 8, 9, 11, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    test_list += test_tup\n    return test_list\n}\n\n#Test\nprint(add_tuple([1,2,3], (4,5,6)))<|file_sep|>#!/usr/bin/env python\n# coding: utf-8\n\n# In[1]:\n\n\n#Write a function to check whether a given number is a perfect square or not.\ndef perfect_square(num):\n    if num < 0:\n        return False\n    else:\n        return num**0.5 == int(num**0.5)\n\n#Test\nprint(perfect_square(16))\nprint(perfect_square(15))\n\n\n# In[2]:\n\n\n#Write a function to check whether a given number is a power of two or not.\ndef power_of_two(num):\n    if num <= 0:\n        return False\n    else:\n        return num & (num-1) == 0\n\n#Test\nprint(power_of_two(16))\nprint(power_of_two(15))\n\n\n# In[3]:\n\n\n#Write a function to check whether a given number is a power of two or not.\ndef power_of_two(num):\n    if num <= 0:\n        return False\n    else:\n        return num & (num-1) == 0\n\n#Test\nprint(power_of_two(16))\nprint(power_of_two(15))\n\n\n# In[4]:\n\n\n#Write a function to check whether a given number is a power of two or not.\ndef power_of_two(num):\n    if num <= 0:\n        return False\n    else:\n        return num & (num-1) == 0\n\n#Test\nprint(power_of_two(16))\nprint(power_of_two(15))\n\n\n# In[5]:\n\n\n#Write a function to check whether a given number is a power of two or not.\ndef power_of_two(num):\n    if num <= 0:\n        return False\n    else:\n        return num & (num-1) == 0\n\n#Test\nprint(power_of_two(16))\nprint(power_of_two(15))\n\n\n# In[6]:\n\n\n#Write a function to check whether a given number is a power of two or not.\ndef power_of_two(num):\n    if num <= 0:\n        return False\n    else:\n        return num & (num-1) == 0\n\n#Test\nprint(power_of_two(16))\nprint(power_of_two(15))\n\n\n# In[7]:\n\n\n#Write a function to check whether a given number is a power of two or",
+    "    for (let i = 0; i < test_tup.length; i++) {\n        test_list.push(test_tup[i]);\n    }\n    return test_list;\n}\n",
+    "    for (let i = 0; i < test_tup.length; i++) {\n        test_list.push(test_tup[i]);\n    }\n    return test_list;\n}\n"
+  ]
+}

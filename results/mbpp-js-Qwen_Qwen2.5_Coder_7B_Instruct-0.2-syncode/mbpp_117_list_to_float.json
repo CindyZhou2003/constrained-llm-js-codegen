@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_117_list_to_float",
+  "language": "js",
+  "prompt": "//Write a function to convert all possible convertible elements in an array of lists to floats.\nfunction list_to_float(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_117_list_to_float.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_to_float;\n  assert.deepEqual(candidate([[\"3\", \"4\"], [\"1\", \"26.45\"], [\"7.32\", \"8\"], [\"4\", \"8\"]]),[[3.0, 4.0], [1.0, 26.45], [7.32, 8.0], [4.0, 8.0]]);\n  assert.deepEqual(candidate([[\"4\", \"4\"], [\"2\", \"27\"], [\"4.12\", \"9\"], [\"7\", \"11\"]]),[[4.0, 4.0], [2.0, 27.0], [4.12, 9.0], [7.0, 11.0]]);\n  assert.deepEqual(candidate([[\"6\", \"78\"], [\"5\", \"26.45\"], [\"1.33\", \"4\"], [\"82\", \"13\"]]),[[6.0, 78.0], [5.0, 26.45], [1.33, 4.0], [82.0, 13.0]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = [];\n    for(let i = 0; i < test_list.length; i++){\n        let sub_res = [];\n        for(let j = 0; j < test_list[i].length; j++){\n            if(typeof test_list[i][j] === 'string' && !isNaN(test_list[i][j])){\n                sub_res.push(parseFloat(test_list[i][j]));\n            } else if(typeof test_list[i][j] === 'number'){\n                sub_res.push(test_list[i][j]);\n            } else {\n                sub_res.push(test_list[i][j]);\n            }\n        }\n        res.push(sub_res);\n    }\n    return res;\n}",
+    "    // Initialize an empty list to store the converted elements\n    let res = [];\n    // Iterate over each sublist in the input list\n    for(let sub_list  = 0; sub_list < test_list.length; sub_list++){\n        // Initialize an empty list to store the converted elements of the current sublist\n        let temp = [];\n        // Iterate over each element in the current sublist\n        for(let ele = 0; ele < test_list[sub_list].length; ele++){\n            // Check if the current element is convertible to a float\n            if(!isNaN(test_list[sub_list][ele])){\n                // Convert the current element to a float and add it to the temporary list\n                temp.push(parseFloat(test_list[sub_list][ele]));\n            }else{\n                // If the current element is not convertible to a float, add it to the temporary list as is\n                temp.push(test_list[sub_list][ele]);\n            }\n        }\n        // Add the temporary list to the result list\n        res.push(temp);\n    }\n    // Return the result list\n    return res;\n}",
+    "    let res = [];\n    for(let i = 0; i < test_list.length; i++){\n        let temp = [];\n        for(let j = 0; j < test_list[i].length; j++){\n            if(typeof test_list[i][j] === 'number'){\n                temp.push(parseFloat(test_list[i][j]));\n            } else {\n                temp.push(test_list[i][j]);\n            }\n        }\n        res.push(temp);\n    }\n    return res;\n}\n"
+  ]
+}

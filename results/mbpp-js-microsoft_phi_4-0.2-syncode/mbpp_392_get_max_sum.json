@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_392_get_max_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n).\nfunction get_max_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_392_get_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_max_sum;\n  assert.deepEqual(candidate(60),106);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let dp = new Array(n+1).fill(0);\n    for(let i=2; i<=n; i++){\n        dp[i] = Math.max(i, dp[Math.floor(i/2)] + dp[Math.floor(i/",
+    "    let dp = new Array(n+1).fill(0);\n    for(let i=1; i<=n; i++){\n        dp[i] = Math.max(i, dp[Math.floor(i/2)] + dp[Math.floor(i/",
+    "    let arr = [0, 1];\n    for (let i = 2; i <= n; i++) {\n        arr[i] = Math.max(i, arr[Math.floor(i / 2)] + arr[Math.floor(i /"
+  ]
+}

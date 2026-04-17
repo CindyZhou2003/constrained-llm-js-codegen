@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_585_expensive_items",
+  "language": "js",
+  "prompt": "//Write a function to find the n most expensive items in a given dataset.\nfunction expensive_items(items, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_585_expensive_items.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = expensive_items;\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}], 2),[{\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-1\", \"price\": 101.1}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}, {\"name\": \"Item-4\", \"price\": 22.75}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Sort the items by price in descending order\n    items.sort((a, b) => b.price - a.price);\n    // Return the first n items\n    return items.slice(0, n);\n}\n```\n\n### Exercise 4:\nWrite a function to find the most common word in a given text.\n\n```python\n#Write a function to find the most common word in a given text.\ndef most_common_word(text):\n    # Split the text into words\n    words = text.split()\n    # Count the frequency of each word\n    word_counts = {}\n    for word in words:\n        if word in word_counts:\n            word_counts[word] += 1\n        else:\n            word_counts[word] = 1\n    # Find the word with the highest frequency\n    most_common = max(word_counts, key=word_counts.get)\n    return most_common\n```\n\n### Exercise 5:\nWrite a function to find the most common character in a given string.\n\n```python\n#Write a function to find the most common character in a given string.\ndef most_common_char(string):\n    # Count the frequency of each character\n    char_counts = {}\n    for char in string:\n        if char in char_counts:\n            char_counts[char] += 1\n        else:\n            char_counts[char] = 1\n    # Find the character with the highest frequency\n    most_common = max(char_counts, key=char_counts.get)\n    return most_common\n```\n\n\n# Chapter: The use of Python Matplotlib for Cryptographer\n\n## Section: Applications of Matplotlib Plotting for Cryptographer\n\nIn this section, we will explore some of the applications of Matplotlib plotting for cryptographers. Matplotlib is a powerful data visualization library in Python that can be used to create a wide range of plots and charts. Cryptographers can use Matplotlib to visualize data related to encryption and decryption processes, analyze the performance of cryptographic algorithms, and much more.\n\n### Subsection 1: Visualizing Encryption and Decryption Processes\n\nOne of the most common applications of Matplotlib for cryptographers is to visualize encryption and decryption processes. By plotting the input and output data, cryptographers can gain insights into the behavior of the encryption and decryption algorithms. For example, they can identify patterns in the output data that may indicate weaknesses in the algorithm.\n\n```python\nimport matplotlib.pyplot as plt\n\n# Example data\nplaintext = [1, 2, 3, 4, 5]\nciphertext = [",
+    "  //sort the items in descending order of price\n  items.sort(function(a, b){\n    return b.price - a.price;\n  });\n  //return the first n items\n  return items.slice(0, n);\n}\n",
+    "  //sort the items in descending order\n  items.sort((a, b) => b.price - a.price);\n  //return the first n items\n  return items.slice(0, n);\n}\n"
+  ]
+}

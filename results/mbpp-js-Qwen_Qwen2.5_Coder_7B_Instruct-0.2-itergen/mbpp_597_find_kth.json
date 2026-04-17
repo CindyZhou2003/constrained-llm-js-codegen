@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_597_find_kth",
+  "language": "js",
+  "prompt": "//Write a function to find kth element from the given two sorted arrays.\nfunction find_kth(arr1, arr2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_597_find_kth.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_kth;\n  assert.deepEqual(candidate([2, 3, 6, 7, 9], [1, 4, 8, 10], 5),6);\n  assert.deepEqual(candidate([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7),256);\n  assert.deepEqual(candidate([3, 4, 7, 8, 10], [2, 5, 9, 11], 6),8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let",
+    "    ",
+    "    let i = 0; //index for arr1\n    let j = 0; //index for arr2\n    let count = 0; //count of elements considered so far\n\n    while(i < arr1.length && j < arr2.length){\n        if(arr1[i] < arr2[j]){\n            i++;\n        } else {\n            j++;\n        }\n        count++;\n        if(count === k){\n            return arr1[i-1] < arr2[j-1] ? arr1[i-1]  arr2[j-1];\n        }\n    }\n\n    while(i < arr1.length){\n        count++;\n        if(count === k){\n            return arr1[i];\n        }\n        i++;\n    }\n\n    while(j < arr2.length){\n        count++;\n        if(count === k){\n            return arr2[j];\n        }\n        j++;\n    }\n\n    return -1; //if k is greater than the total number of elements in both arrays\n}"
+  ]
+}

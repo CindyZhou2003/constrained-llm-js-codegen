@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_806_max_run_uppercase",
+  "language": "js",
+  "prompt": "//Write a function to find maximum run of uppercase characters in the given string.\nfunction max_run_uppercase(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_806_max_run_uppercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_run_uppercase;\n  assert.deepEqual(candidate(\"GeMKSForGERksISBESt\"),5);\n  assert.deepEqual(candidate(\"PrECIOusMOVemENTSYT\"),6);\n  assert.deepEqual(candidate(\"GooGLEFluTTER\"),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Split the string into an array of words\n    let arr = test_str.split( \" \" );\n    let max_run = 0;\n    let current_run = 0;\n    //Iterate over each word in the array\n    for (let word_index = 0; word_index < arr.length; word_index++){\n        let word = arr[word_index];\n        //Iterate over each character in the word\n        for (let char_index = 0; char_index < word.length; char_index++){\n            let char = word[char_index];\n            //If the character is uppercase, increment the current run\n            if (char === char.toUpperCase()){\n                current_run += 1;\n            }\n            else{\n                //If the character is not uppercase, update the maximum run if the current run is greater\n                max_run = Math.max(max_run, current_run);\n                //Reset the current run\n                current_run = 0;\n            }\n        }\n        //Update the maximum run if the current run is greater\n        max_run = Math.max(max_run, current_run);\n        //Reset the current run\n        current_run = 0;\n    }\n    //Return the maximum run\n    return max_run;\n}\n```\n\nThis function works by splitting the input string into an array of words, and then iterating over each word and each character in the word. If a character is uppercase, it increments a counter for the current run of uppercase characters. If a character is not uppercase, it updates the maximum run if the current run is greater, and then resets the current run. After iterating over all the words and characters, it returns the maximum run.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we delve into creating a custom React hook, `",
+    "    var max_run = 0;\n    var current_run = 0;\n    for(var i = 0; i < test_str.length; i++){\n        if(test_str[i] === test_str[i].toUpperCase()){\n            current_run++;\n            if(current_run > max_run){\n                max_run = current_run;\n            }\n        }else{\n            current_run = 0;\n        }\n    }\n    return max_run;\n}\n\n",
+    "    //Initialize the maximum run length and current run length to 0\n    var max_run = 0;\n    var curr_run = 0;\n    //Iterate over each character in the string\n    for(var i = 0; i < test_str.length; i++){\n        //If the character is uppercase, increment the current run length\n        if(test_str[i] === test_str[i].toUpperCase()){\n            curr_run += 1;\n        }\n        else{\n            //If the character is not uppercase, update the maximum run length if the current run length is greater\n            //and reset the current run length to 0\n            max_run = Math.max(max_run, curr_run);\n            curr_run = 0;\n        }\n    }\n    //After the loop, update the maximum run length if the current run length is greater\n    max_run = Math.max(max_run, curr_run);\n    //Return the maximum run length\n    return max_run;\n}\n"
+  ]
+}

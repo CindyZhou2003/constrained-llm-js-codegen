@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_769_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_769_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var s1 = new Set(li1);\n    var s2 = new Set(li2);\n    var s3 = new Set([...s1].filter(x => !s2.has(x)));\n    return [...s3];\n}",
+    "    var s1 = new Set(li1);\n    var s2 = new Set(li2);\n    var s3 = new Set([...s1].filter(x => !s2.has(x)));\n    return [...s3];\n}\n",
+    "    var s1 = new Set(li1);\n    var s2 = new Set(li2);\n    var s3 = new Set([...s1].filter(x => !s2.has(x)));\n    var s4 = new Set([...s2].filter(x => !s1.has(x)));\n    return [...s3, ...s4];\n}\n```\n\n### Explanation:\n1. **Convert Lists to Sets**: We first convert both input lists to sets `s1` and `2` to utilize the properties of sets which allow for efficient membership testing.\n2. **Filter Elements**: We then filter out elements from `s1` that are not in `s2` and vice versa. This gives us two sets `s3` and `s4` which contain elements unique to `s1` and `s2` respectively.\n3. **Combine Results**: Finally, we combine the elements of `s3` and `s4` into a single array and return it.\n\n### Corner Cases:\n- If both lists are empty, the result should be an empty array.\n- If one list is empty and the other is not, the result should be the non-empty list.\n- If both lists contain the same elements, the result should be an empty array.\n\nThis solution ensures that all edge cases are handled correctly and efficiently.\n\n\n"
+  ]
+}

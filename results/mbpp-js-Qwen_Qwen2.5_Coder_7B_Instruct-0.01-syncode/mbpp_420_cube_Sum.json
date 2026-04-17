@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_420_cube_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the cube sum of first n even natural numbers.\nfunction cube_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_420_cube_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cube_Sum;\n  assert.deepEqual(candidate(2),72);\n  assert.deepEqual(candidate(3),288);\n  assert.deepEqual(candidate(4),800);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 1; i <= n; i++){\n        sum += Math.pow(2*i, 3);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 1; i <= n; i++){\n        sum += Math.pow(2*i, 3);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 1; i <= n; i++){\n        sum += Math.pow(2*i, 3);\n    }\n    return sum;\n}"
+  ]
+}

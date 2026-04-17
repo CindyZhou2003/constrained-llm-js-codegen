@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_759_is_decimal",
+  "language": "js",
+  "prompt": "//Write a function to check whether a given string is a decimal number with a precision of 2.\nfunction is_decimal(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_759_is_decimal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_decimal;\n  assert.deepEqual(candidate(\"123.11\"),true);\n  assert.deepEqual(candidate(\"e666.86\"),false);\n  assert.deepEqual(candidate(\"3.124587\"),false);\n  assert.deepEqual(candidate(\"1.11\"),true);\n  assert.deepEqual(candidate(\"1.1.11\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(num.count('.') == 1 && num.count(0) == 0 && num.count(9) == 0 && num.count(8) == 0 && num.count(7) == 0 && num.count(6) == 0 && num.count(5) == 0 && num.count(4) == 0 && num.count(3) == 0 && num.count(2) == 0 && num.count(1) == 0 && num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (num.count(8) == 0) and (num.count(7) == 0) and (num.count(6) == 0) and (num.count(5) == 0) and (num.count(4) == 0) and (num.count(3) == 0) and (num.count(2) == 0) and (num.count(1) == 0) and (num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (num.count(8) == 0) and (num.count(7) == 0) and (num.count(6) == 0) and (num.count(5) == 0) and (num.count(4) == 0) and (num.count(3) == 0) and (num.count(2) == 0) and (num.count(1) == 0) and (num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (num.count(8) == 0) and (num.count(7) == 0) and (num.count(6) == 0) and (num.count(5) == 0) and (num.count(4) == 0) and (num.count(3) == 0) and (num.count(2) == 0) and (num.count(1) == 0) and (num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (num.count(8) == 0) and (num.count(7) == 0) and (num.count(6) == 0) and (num.count(5) == 0) and (num.count(4) == 0) and (num.count(3) == 0) and (num.count(2) == 0) and (num.count(1) == 0) and (num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (num.count(8) == 0) and (num.count(7) == 0) and (num.count(6) == 0) and (num.count(5) == 0) and (num.count(4) == 0) and (num.count(3) == 0) and (num.count(2) == 0) and (num.count(1) == 0) and (num.count(0) == 0) and (num.count(0) == 0) and (num.count(9) == 0) and (",
+    "    if(num.count('.') > 1) return False\n    if(num.count('.') == 1) num = num.split('.')\n    if(num.count('.') == 0) num.append('')\n    if(num[1] == '') return True\n    if(len(num[1]) > 2) return False\n    for i",
+    "    if(num.count('.') == 1 && num.split('.')[1].isdigit() == True && len(num.split('.')[1]) <= 2) or (num.count('.') == 0) and num.isdigit() == True and len(num) <= 2 or (num.count('.') == 0) and num.isdigit() == True and len(num) > 2 and num[-2] == '.' and num[0] == '0' and num[1].isdigit() == True and num[2] == '0' and num[3] == '0' and num[4] == '0' and num[5] == '0' and num[6] == '0' and num[7] == '0' and num[8] == '0' and num[9] == '0' and num[10] == '0' and num[11] == '0' and num[12] == '0' and num[13] == '0' and num[14] == '0' and num[15] == '0' and num[16] == '0' and num[17] == '0' and num[18] == '0' and num[19] == '0' and num[20] == '0' and num[21] == '0' and num[22] == '0' and num[23] == '0' and num[24] == '0' and num[25] == '0' and num[26] == '0' and num[27] == '0' and num[28] == '0' and num[29] == '0' and num[30] == '0' and num[31] == '0' and num[32] == '0' and num[33] == '0' and num[34] == '0' and num[35] == '0' and num[36] == '0' and num[37] == '0' and num[38] == '0' and num[39] == '0' and num[40] == '0' and num[41] == '0' and num[42] == '0' and num[43] == '0' and num[44] == '0' and num[45] == '0' and num[46] == '0' and num[47] == '0'"
+  ]
+}

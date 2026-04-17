@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string and then to an array of digits\n    let digits = n.toString().split('').map(Number);\n    let len = digits.length;\n    let i = len - 1;\n\n    // Find the first digit that is smaller than the digit next to it\n    while (i > 0 && digits[i - 1] >= digits[i]) {\n        i--;\n    }\n\n    // If no such digit is found, the number is the largest permutation\n    if (i === 0) {\n        return -1;\n    }\n\n    // Find the smallest digit on the right side of (i-1)'th digit that is larger than digits[i-1]\n    let j = len - 1;\n    while (digits[j] <= digits[i - 1]) {\n        j--;\n    }\n\n    // Swap the found digits\n    [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]];\n\n    // Reverse the digits after (i-1) to get the next smallest lexicographical order\n    let left = digits.slice(0, i);\n    let right = digits.slice(i).reverse();\n    let result = left.concat(right);\n\n    // Convert the array back to a number\n    return parseInt(result.join( '' ));\n}\n\n",
+    "  n = n.toString().split('').sort((a, b) => a - b).join('');\n  for (let i = n.length - 1; i > 0; i--) {\n    if (n[i] > n[i - 1]) {\n      let suffix = n",
+    "    //Convert the number to a string and split it into an array of digits\n    var digits = n.toString().split('');\n    //Find the rightmost digit that is smaller than the digit to its right\n    for(var i = digits.length - 2; i >= 0; i--){\n        if(digits[i] < digits[i + 1]){\n            //Find the smallest digit to the right of the current digit that is larger than the current digit\n            var smallest_larger = i + 1;\n            for(var j = i + 2; j < digits.length; j++){\n                if(digits[j] > digits[i] && digits[j] < digits[smallest_larger]){\n                    smallest_larger = j;\n                }\n            }\n            //Swap the current digit with the smallest larger digit\n            var temp = digits[i];\n            digits[i] = digits[smallest_larger];\n            digits[smallest_larger] = temp;\n            //Sort the digits to the right of the current digit in ascending order\n            var right = digits.splice(i + 1).sort();\n            digits = digits.concat(right);\n            //Convert the array of digits back to a number and return it\n            return parseInt(digits.join( '' ));\n        }\n    }\n    //If no such digit is found, return -1\n    return -1;\n}\n\n"
+  ]
+}

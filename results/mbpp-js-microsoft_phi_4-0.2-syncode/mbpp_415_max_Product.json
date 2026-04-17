@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_415_max_Product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find a pair with highest product from a given array of integers.\nfunction max_Product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_415_max_Product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_Product;\n  assert.deepEqual(candidate([1, 2, 3, 4, 7, 0, 8, 4]),[7, 8]);\n  assert.deepEqual(candidate([0, -1, -2, -4, 5, 0, -6]),[-4, -6]);\n  assert.deepEqual(candidate([1, 2, 3]),[2, 3]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    arr.sort((a,b)=>a-b);\n    let n = arr.length;\n    if(arr[n-1]<0){\n        return arr[n-1]*arr[n-2];\n    }\n    else if(arr[0]*arr[1]>arr[n-1]*arr[n-2]){\n        return arr[0]*arr[1];\n    }\n    else{\n        return arr[n-1]*arr[n-2];\n    }\n}",
+    "    if(arr.length === 0){\n        return 0;\n    }\n    if(arr.length === 1){\n        return arr[0];\n    }\n    if(arr.length === 2){\n        return arr[0] * arr[1];\n    }\n    let max1 = Math.max(arr[0], arr[1]);\n    let max2 = Math.min(arr[0], arr[1]);\n    let min1 = min2 = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > max1){\n            max2 = max1;\n            max1 = arr[i];\n        }else if(arr[i] > max2){\n            max2 = arr[i];\n        }\n        if(arr[i] < min1){\n            min2 = min1;\n            min1 = arr[i];\n        }else if(arr[i] < min2){\n            min2 = arr[i];\n        }\n    }\n    return Math.max(max1 * max2, min1 * min2);\n}",
+    "    var max1 = -Infinity;\n    var max2 = -Infinity;\n    var min1 = Infinity;\n    var min2 = Infinity;\n    for(var i=0; i<arr.length; i++){\n        if(arr[i]>max1){\n            max2 = max1;\n            max1 = arr[i];\n        }else if(arr[i]>max2){\n            max2 = arr[i];\n        }\n        if(arr[i]<min1){\n            min2 = min1;\n            min1 = arr[i];\n        }else if(arr[i]<min2){\n            min2 = arr[i];\n        }\n    }\n    return Math.max(max1*max2, min1*min2);\n}"
+  ]
+}

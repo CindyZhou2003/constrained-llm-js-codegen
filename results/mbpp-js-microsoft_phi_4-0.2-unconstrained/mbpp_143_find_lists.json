@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_143_find_lists",
+  "language": "js",
+  "prompt": "//Write a function to find number of lists present in the given array.\nfunction find_lists(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_143_find_lists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_lists;\n  assert.deepEqual(candidate([[1, 2, 3, 4], [5, 6, 7, 8]]),2);\n  assert.deepEqual(candidate([[1, 2], [3, 4], [5, 6]]),3);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5, 4, 3, 2, 1]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count=0;\n    for(let i=0;i<Input.length;i++){\n        if(Input[i]==undefined){\n            count++;\n        }\n    }\n    return count;\n}\n```\nIn this solution, we first define a function find_lists that takes an array as an input. We initialize a count variable to 0. Then we iterate over the array. For each element, if the element is undefined, we increment the count by 1. Finally, we return the count which represents the number of lists in the array.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced guide, we delve into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, managing loading states, and handling errors, providing a reusable solution for data fetching in React applications. We'll explore the implementation details and the rationale behind the design choices.\n\n## Implementation of `useFetch` Hook\n\nThe `useFetch` hook is designed to abstract the complexities of fetching data from an API, handling loading states, and error management. Below is the complete implementation:\n\n```javascript\nimport { useState, useEffect } from \"react\";\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);\n        const data = await response.json();\n        setData(data);\n      } catch (error) {\n        setError(error.message);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, [url]);\n\n  return { data, loading, error };\n};\n\nexport default useFetch;\n```\n\n### Key Features and Logic\n\n- **Asynchronous Data Fetching**: The hook uses an asynchronous function, `fetchData`, within `useEffect` to perform the API call. This approach ensures that the data fetching logic is encapsulated and executed upon component mount or when the `url` dependency changes.\n\n- **Error Handling**: The hook gracefully handles errors by catching exceptions thrown during the fetch operation or when the response status is not OK. This error information is stored in the `error` state, allowing the consuming component to react accordingly.\n\n- **Loading State Management**: The `loading` state",
+    "    var count = 0;\n    for(var i=0; i<Input.length; i++){\n        if(Input[i] == null){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < Input.length; i++){\n        if(Input[i] === undefined){\n            count++;\n        }\n    }\n    return count;\n}\n"
+  ]
+}

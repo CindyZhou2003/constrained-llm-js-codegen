@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_417_group_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find common first element in given array of lists.\nfunction group_tuples(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_417_group_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = group_tuples;\n  assert.deepEqual(candidate([[\"x\", \"y\"], [\"x\", \"z\"], [\"w\", \"t\"]]),[[\"x\", \"y\", \"z\"], [\"w\", \"t\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"a\", \"c\"], [\"d\", \"e\"]]),[[\"a\", \"b\", \"c\"], [\"d\", \"e\"]]);\n  assert.deepEqual(candidate([[\"f\", \"g\"], [\"f\", \"g\"], [\"h\", \"i\"]]),[[\"f\", \"g\", \"g\"], [\"h\", \"i\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    var dict = {};\n    for(var i = 0; i < Input.length; i++){\n        var list = Input[i];\n        for(var j = 0; j < list.length; j++){\n            var element = list[j];\n            if(dict[element] == undefined){\n                dict[element] = 1;\n            }else{\n                dict[element] += 1;\n            }\n        }\n    }\n    for(var key1 = 0; key1 < Object.keys(dict).length; key1++){\n        var key = Object.keys(dict)[key1];\n        if(dict[key] == Input.length){\n            result.push(key);\n        }\n    }\n    return result;\n}\n\n",
+    "    var result = [];\n    var dict = {};\n    for(var i = 0; i < Input.length; i++){\n        var list = Input[i];\n        var first = list[0];\n        if(first in dict){\n            dict[first] += 1;\n        }else{\n            dict[first] = 1;\n        }\n    }\n    for(var key1 [0] \t= 0.0;\n[1] \t= 0.0;\n[2] \t= 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * 0.0 * ",
+    "    var result = [];\n    var temp = {};\n    for(var i = 0; i < Input.length; i++){\n        var first = Input[i][0];\n        if(temp[first] == undefined){\n            temp[first] = 1;\n        }else{\n            temp[first] += 1;\n        }\n    }\n    for(var key1 [0] \t= 0.0; // 0.0\n[1] \t= 0.0; // 0.0\n[2] \t= 0.0 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * 0.5 * "
+  ]
+}

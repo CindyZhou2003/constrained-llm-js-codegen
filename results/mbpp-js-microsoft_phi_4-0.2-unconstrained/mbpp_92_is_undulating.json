@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_92_is_undulating",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is undulating or not.\nfunction is_undulating(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_92_is_undulating.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_undulating;\n  assert.deepEqual(candidate(1212121),true);\n  assert.deepEqual(candidate(1991),false);\n  assert.deepEqual(candidate(121),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert the number to string for easy manipulation\n    s = str(n);\n    //Check if the length of the number is less than 3 or the first two digits are the same\n    if(len(s) < 3 or s[0] == s[1]):\n        return False;\n    //Check if the number is undulating by comparing every two consecutive digits\n    for i in range(2, len(s)):\n        if(s[i] != s[i-2] or s[i] == s[i-1]):\n            return False;\n    //If the number passed all the checks, it is undulating\n    return True;\n}\n```\n\nThis function works by first checking if the number has less than 3 digits or if the first two digits are the same. If either of these conditions is true, the function immediately returns False, as the number cannot be undulating. If the number passes these initial checks, the function then checks every two consecutive digits in the number. If any two consecutive digits are the same or if a digit is not the same as the digit two places before it, the function returns False. If the number passes all these checks, the function returns True, indicating that the number is undulating.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced guide, we delve into creating a sophisticated custom React hook, `useFetch`, designed for fetching data efficiently. This hook encapsulates complex logic for handling API requests, including loading states, error handling, and data caching. It's tailored for developers looking to streamline their data fetching processes in React applications.\n\n## Key Features of `useFetch` Hook\n\n- **Loading State Management**: Automatically tracks the loading state of the API request.\n- **Error Handling**: Gracefully handles and exposes any errors encountered during the fetch operation.\n- **Data Caching**: Implements caching to avoid redundant network requests for the same data.\n- **AbortController Support**: Utilizes `AbortController` to cancel ongoing fetch requests when the component unmounts or when a new request is initiated.\n\n## Implementation\n\nBelow is the complete code for the `useFetch` hook, showcasing its advanced features:\n\n```jsx\nimport { useState, useEffect } from 'react';\n\nconst cache = {};\n",
+    "    let s = n.toString();\n    if(s.length < 3){\n        return false;\n    }\n    for(let i = 2; i < s.length; i++){\n        if(s[i] !== s[i-2] || s[i] === s[i-1]){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    let s = n.toString();\n    if(s.length < 3) return false;\n    for(let i = 2; i < s.length; i++){\n        if(s[i] !== s[i-2] || s[i] === s[i-1]) return false;\n    }\n    return true;\n}\n"
+  ]
+}

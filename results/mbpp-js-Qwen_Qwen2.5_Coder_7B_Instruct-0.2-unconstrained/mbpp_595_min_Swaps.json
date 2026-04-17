@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_595_min_Swaps",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count minimum number of swaps required to convert one binary number represented as a string to another.\nfunction min_Swaps(str1, str2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_595_min_Swaps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Swaps;\n  assert.deepEqual(candidate(\"1101\", \"1110\"),1);\n  assert.deepEqual(candidate(\"111\", \"000\"),\"Not Possible\");\n  assert.deepEqual(candidate(\"111\", \"110\"),\"Not Possible\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = str1.length;\n    let count_0 = 0;\n    let count_1 = 0;\n\n    for(let i=0; i<n; i++){\n        if(str1[i] == '0'){\n            count_0++;\n        }\n        else{\n            count_1++;\n        }\n\n        if(str2[i] == '0'){\n            count_0--;\n        }\n        else{\n            count_1--;\n        }\n    }\n\n    if(count_0 != 0 || count_1 != 0){\n        return -1;\n    }\n\n    let swap = 0;\n    let i = 0;\n    while(i < n){\n        if(str1[i] != str2[i]){\n            let j = i+1;\n            while(j < n && str1[j] != str2[i]){\n                j++;\n            }\n            if(j == n){\n                return -1;\n            }\n            while(j > i){\n                [str1[j], str1[j-1]] = [str1[j-1], str1[j]];\n                j--;\n                swap++;\n            }\n        }\n        i++;\n    }\n    return swap;\n}\n",
+    "    let n = str1.length;\n    let count_0 = 0, count_1 = 0;\n    for(let i=0; i<n; i++){\n        if(str1[i] == '0') count_0++;\n        else count_1++;\n        if(str2[i] == '0') count_0--;\n        else count_1--;\n    }\n    if(count_0 != 0 || count_1 != 0) return -1;\n    let swap = 0;\n    let i = 0, j = 0;\n    while(i < n && j < n){\n        while(i < n && str1[i] == '0') i++;\n        while(j < n && str2[j] == '1') j++;\n        if(i < n && j < n){\n            swap++;\n            i++; j++;\n        }\n    }\n    return Math.floor(swap/2);\n}",
+    "    let n = str1.length;\n    let count_0 = 0;\n    let count_1 = 0;\n\n    for(let i=0; i<n; i++){\n        if(str1[i] == '0'){\n            count_0++;\n        }else{\n            count_1++;\n        }\n    }\n\n    if(count_0 != count_1){\n        return -1;\n    }\n\n    let swap = 0;\n    let diff = 0;\n\n    for(let i=0; i<n; i++){\n        if(str1[i] != str2[i]){\n            diff++;\n            if((diff & 1) == 0){\n                swap++;\n            }\n        }\n    }\n\n    return swap/2;\n}\n"
+  ]
+}

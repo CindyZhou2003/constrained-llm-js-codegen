@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_305_start_withp",
+  "language": "js",
+  "prompt": "//Write a function to return two words from an array of words starting with letter 'p'.\nfunction start_withp(words){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_305_start_withp.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = start_withp;\n  assert.deepEqual(candidate([\"Python PHP\", \"Java JavaScript\", \"c c++\"]),[\"Python\", \"PHP\"]);\n  assert.deepEqual(candidate([\"Python Programming\", \"Java Programming\"]),[\"Python\", \"Programming\"]);\n  assert.deepEqual(candidate([\"Pqrst Pqr\", \"qrstuv\"]),[\"Pqrst\", \"Pqr\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i][0] === 'p'){\n            result.push(words[i]);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i][0] === 'p'){\n            result.push(words[i]);\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i=0; i<words.length; i++){\n        if(words[i][0] === 'p'){\n            result.push(words[i]);\n        }\n    }\n    return result;\n}"
+  ]
+}

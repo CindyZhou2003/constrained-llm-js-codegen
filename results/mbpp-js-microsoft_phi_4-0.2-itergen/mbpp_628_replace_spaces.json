@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_628_replace_spaces",
+  "language": "js",
+  "prompt": "//Write a function to replace all spaces in the given string with '%20'.\nfunction replace_spaces(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_628_replace_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"My Name is Dawood\"),\"My%20Name%20is%20Dawood\");\n  assert.deepEqual(candidate(\"I am a Programmer\"),\"I%20am%20a%20Programmer\");\n  assert.deepEqual(candidate(\"I love Coding\"),\"I%20love%20Coding\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  //Split the string into an array of characters\n  let arr = string.split('');\n  //Iterate through the array\n  for(let i = 0; i < arr.length; i++){\n    //If the current character is a space\n    if(arr[i] === ' '){\n      //Replace it with '%20'\n      arr[i] = '%20';\n    }\n  }\n  //Join the array back into a string and return it\n  return arr.join('');\n}\n```\n\n### Explanation:\n1. **Splitting the String**: The input string is split into an array of characters.\n2. **Iterating through the Array**: We iterate through each character in the array.\n3. **Replacing Spaces**: If a character is a space (' '), it is replaced with '%20'.\n4. **Joining the Array**: The modified array is joined back into a string and returned.\n\n### Corner Cases:\n- **Empty String**: If the input string is empty, the function will return an empty string.\n- **No Spaces**: If the input string contains no spaces, the function will return the original string.\n- **Multiple Spaces**: The function correctly handles multiple consecutive spaces by replacing each one with '%20'.\n\n\n",
+    "  return string.replace( / /g, '%20' );\n}\n\n",
+    "  return string.replace( / /g, '%20');\n}\n\n"
+  ]
+}

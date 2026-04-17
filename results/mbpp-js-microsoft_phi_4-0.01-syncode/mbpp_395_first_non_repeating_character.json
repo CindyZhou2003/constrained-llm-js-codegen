@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_395_first_non_repeating_character",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first non-repeated character in a given string.\nfunction first_non_repeating_character(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_395_first_non_repeating_character.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_non_repeating_character;\n  assert.deepEqual(candidate(\"abcabc\"),undefined);\n  assert.deepEqual(candidate(\"abc\"),\"a\");\n  assert.deepEqual(candidate(\"ababc\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < str1.length; i++) {\n        let char = str1[i];\n        if (str1.indexOf(char) === str1.lastIndexOf(char)) {\n            return char;\n        }\n    }\n    return null;\n}\n",
+    "    for (let i = 0; i < str1.length; i++) {\n        let char = str1[i];\n        if (str1.indexOf(char) === str1.lastIndexOf(char)) {\n            return char;\n        }\n    }\n    return null;\n}\n",
+    "    for (let i = 0; i < str1.length; i++) {\n        let char = str1[i];\n        if (str1.indexOf(char) === str1.lastIndexOf(char)) {\n            return char;\n        }\n    }\n    return null;\n}\n"
+  ]
+}

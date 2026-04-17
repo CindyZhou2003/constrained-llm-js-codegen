@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let x = 0;\n    let y = 0;\n    let count = 0;\n    while (x < d || y < 0) {\n        count++;\n        x += steps[count % steps.length];\n        y += steps[(count + 1) % steps.length];\n    }\n    return count;\n}\n",
+    "    let x = Math.ceil(d / steps[0]);\n    let y = Math.ceil(d / steps[1]);\n    return Math.min(x, y);\n}\n",
+    "    let x = 0;\n    let y = 0;\n    let count = 0;\n    while (x < d || y != 0) {\n        count++;\n        x += steps[count % steps.length];\n        y += steps[(count + 1) % steps.length];\n    }\n    return count;\n}\n"
+  ]
+}

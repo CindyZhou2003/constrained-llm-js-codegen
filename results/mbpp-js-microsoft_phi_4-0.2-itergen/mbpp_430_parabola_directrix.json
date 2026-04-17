@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_430_parabola_directrix",
+  "language": "js",
+  "prompt": "//Write a function to find the directrix of a parabola.\nfunction parabola_directrix(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_430_parabola_directrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parabola_directrix;\n  assert.deepEqual(candidate(5, 3, 2),-198);\n  assert.deepEqual(candidate(9, 8, 4),-2336);\n  assert.deepEqual(candidate(2, 4, 6),-130);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return -1 * (b * b + 1) / (4 * a) + c;\n}\n\n",
+    "    //The directrix of a parabola is given by the formula y = c - (b^2 + 1) / (4a).\n    //This formula is derived from the standard form of a parabola, y = ax^2 + bx + c,\n    //and the fact that the vertex of the parabola is at the point (-b/2a, c - (b^2 - 1) / (4a)).\n    //The directrix is a horizontal line that passes through the vertex and is perpendicular to the axis of symmetry of the parabola.\n    //The distance between the vertex and the directrix is equal to the distance between the vertex and the focus of the parabola,\n    //which is given by the formula 1/(4a).\n    //Therefore, the directrix is given by the formula y = c - (b^2 + 1) / (4a).\n    return c - (b**2 + 1) / (4*a)\n}\n\n",
+    "    return -1 * (b * b + 1) / (4 * a) + c;\n}\n\n"
+  ]
+}

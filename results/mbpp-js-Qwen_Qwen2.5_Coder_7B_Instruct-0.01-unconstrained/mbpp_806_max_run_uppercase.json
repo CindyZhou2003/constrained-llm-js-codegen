@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_806_max_run_uppercase",
+  "language": "js",
+  "prompt": "//Write a function to find maximum run of uppercase characters in the given string.\nfunction max_run_uppercase(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_806_max_run_uppercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_run_uppercase;\n  assert.deepEqual(candidate(\"GeMKSForGERksISBESt\"),5);\n  assert.deepEqual(candidate(\"PrECIOusMOVemENTSYT\"),6);\n  assert.deepEqual(candidate(\"GooGLEFluTTER\"),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = 0;\n    let temp_res = 0;\n    for (let i = 0; i < test_str.length; i++) {\n        if (test_str[i] === test_str[i].toUpperCase()) {\n            temp_res += 1;\n        } else {\n            res = Math.max(res, temp_res);\n            temp_res = 0;\n        }\n    }\n    return Math.max(res, temp_res);\n}",
+    "    let res = 0;\n    let temp_res = 0;\n    for(let i=0; i<test_str.length; i++){\n        if(test_str[i] === test_str[i].toUpperCase()){\n            temp_res += 1;\n        }\n        else{\n            res = Math.max(res, temp_res);\n            temp_res = 0;\n        }\n    }\n    return Math.max(res, temp_res);\n}",
+    "    let res = 0;\n    let temp_res = 0;\n    for(let i=0; i<test_str.length; i++){\n        if(test_str[i] === test_str[i].toUpperCase()){\n            temp_res += 1;\n        }\n        else{\n            res = Math.max(res, temp_res);\n            temp_res = 0;\n        }\n    }\n    return Math.max(res, temp_res);\n}"
+  ]
+}

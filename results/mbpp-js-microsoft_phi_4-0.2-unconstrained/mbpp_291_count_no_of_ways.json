@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_291_count_no_of_ways",
+  "language": "js",
+  "prompt": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_291_count_no_of_ways.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let a = new Array(n + 1).fill(0);\n    let b = new Array(n + 1).fill(0);\n    a[1] = k;\n    b[1] = k * (k - 1);\n    for (let i = 2; i <= n; i++) {\n        a[i] = (a[i - 1] + b[i - 1]) * (k - 1);\n        b[i] = (a[i - 1] + b[i - 1]) * (k - 2);\n    }\n    return a[n] + b[n];\n}\n",
+    "    if (n == 1) return k;\n    if (n == 2) return k * k;\n    let a = k;\n    let b = k * k;\n    for (let i = 3; i <= n; i++){\n        let temp = b;\n        b = (k - 1) * (a + b);\n        a = temp;\n    }\n    return b;\n}\n",
+    "    if(n == 0 || k == 0) return 0;\n    let a = new Array(n).fill(0);\n    let b = new Array(n).fill(0);\n    a[0] = k;\n    a[1] = k * k;\n    b[0] = k;\n    b[1] = k * (k - 1);\n    for(let i = 2; i < n; i++){\n        a[i] = b[i - 1] * (k - 1) + a[i - 1] * (k - 1);\n        b[i] = b[i - 1] * (k - 1) + a[i - 1] * (k - 1);\n    }\n    return a[n - 1];\n}\n```\n\nThis function `count_no_of_ways` takes two parameters `n` and `k` where `n` is the number of posts in the fence and `k` is the number of available colors. It returns the number of ways to paint the fence such that at most 2 adjacent posts have the same color.# Advanced Programming Tutorial\n\nThis tutorial delves deep into the advanced concepts of programming, focusing on complex logical reasoning and fully functional code implementations. It is designed for experts who seek to enhance their understanding and application of sophisticated programming techniques.\n\n## Complex Data Manipulation\n\nOne of the advanced topics covered is complex data manipulation, which involves handling nested data structures, applying transformations, and efficiently managing data flow.\n\n### Example: Nested Data Transformation\n\nConsider a scenario where you need to transform a deeply nested data structure, applying specific operations based on the data type and structure.\n\n```python\ndef transform_data(data):\n    if isinstance(data, dict):\n        return {k: transform_data(v) for k, v in data.items()}\n    elif isinstance(data, list):\n        return [transform_data(item) for item in data]\n    elif isinstance(data, str):\n        return data.upper()\n    else:\n        return data\n\n# Sample nested data\nnested_data = {\n    \"level1\": {\n        \"level2\": {\n            \"level3\": [\"hello\", \"world\", {\"deep\": \"value\"}]\n        }\n    }\n}\n\n# Transforming the data\ntransformed_data = transform_data(nested_data)\nprint(transformed_data)\n```\n\nThis function recursively traverses the data structure, applying transformations based on the type of each element. Strings are converted to uppercase, while lists"
+  ]
+}

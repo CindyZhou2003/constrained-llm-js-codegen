@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_237_check_occurences",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array of tuples and returns an object mapping each unique array to the number of times it occurs in the array.\nfunction check_occurences(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_237_check_occurences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_occurences;\n  assert.deepEqual(candidate([[3, 1], [1, 3], [2, 5], [5, 2], [6, 3]]),{[1, 3]: 2, [2, 5]: 2, [3, 6]: 1});\n  assert.deepEqual(candidate([[4, 2], [2, 4], [3, 6], [6, 3], [7, 4]]),{[2, 4]: 2, [3, 6]: 2, [4, 7]: 1});\n  assert.deepEqual(candidate([[13, 2], [11, 23], [12, 25], [25, 12], [16, 23]]),{[2, 13]: 1, [11, 23]: 1, [12, 25]: 2, [16, 23]: 1});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    result = {}\n    for i",
+    "    occurences = {}\n    for (let i = 0; i < test_list.length; i++) {\n        let test = JSON.stringify(test_list[i])\n        if (test in occurences){\n            occurences[test] += 1\n        } else {\n            occurences[test] = 1\n        }\n    }\n    return occurences\n}\n",
+    "    //Create an empty object to store the results\n    result = {}\n    //Iterate over each tuple in the input array\n    for (let i = 0; i < test_list.length; i++){\n        //Convert the tuple to a string so it can be used as a key in the object\n        key = JSON.stringify(test_list[i])\n        //If the key is already in the object, increment its value by 1\n        if (key in result){\n            result[key] += 1\n        }\n        //If the key is not in the object, add it with a value of 1\n        else{\n            result[key] = 1\n        }\n    }\n    //Return the resulting object\n    return result\n}\n```\n\nThis function works by iterating over each tuple in the input array and converting it to a string so it can be used as a key in the resulting object. If the key is already in the object, its value is incremented by 1. If the key is not in the object, it is added with a value of 1. The resulting object is then returned.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll delve into creating a sophisticated custom React hook named `useFetch` for fetching data from an API. This hook is designed to handle loading states, errors, and the fetched data seamlessly. We'll leverage `useState` and `useEffect` hooks from React to manage the state and side effects, respectively. This guide assumes you're already familiar with the basics of React hooks.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data from an API. It encapsulates the logic for initiating the fetch request, handling loading states, errors, and storing the fetched data. Here's the complete implementation:\n\n```javascript\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) =>"
+  ]
+}

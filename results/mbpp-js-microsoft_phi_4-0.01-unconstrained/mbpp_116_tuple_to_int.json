@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_116_tuple_to_int",
+  "language": "js",
+  "prompt": "//Write a function to convert a given array of positive integers into a single integer.\nfunction tuple_to_int(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_116_tuple_to_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_to_int;\n  assert.deepEqual(candidate([1, 2, 3]),123);\n  assert.deepEqual(candidate([4, 5, 6]),456);\n  assert.deepEqual(candidate([5, 6, 7]),567);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = 0;\n    for(let i = 0; i < nums.length; i++){\n        result = result * 10 + nums[i];\n    }\n    return result;\n}\n```\n\nIn this solution, we define a function `tuple_to_int` that takes an array of positive integers as input. We initialize a variable `result` to 0. Then, for each number in the array, we multiply `result` by 10 and add the current number to it. This effectively concatenates the numbers in the array into a single integer. Finally, we return `result`.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses to optimize performance. This guide assumes you're already familiar with React hooks and their basic usage.\n\n## Implementing `useFetch` Hook\n\nThe `useFetch` hook we're about to create will be a versatile tool for fetching data, managing loading states, and caching responses. It leverages `useState`, `useEffect`, and `useRef` hooks from React to achieve its functionality.\n\n### Step 1: Setting Up State and Refs\n\nFirst, we initialize state for storing the fetched data, loading status, and any errors. We also use a ref to keep track of the latest request URL to prevent race conditions.\n\n```jsx\nimport { useState, useEffect, useRef } from 'react';\n",
+    "    let result = 0;\n    for(let i = 0; i < nums.length; i++){\n        result = result * 10 + nums[i];\n    }\n    return result;\n}\n",
+    "    let result = 0;\n    for(let i = 0; i < nums.length; i++){\n        result = result * 10 + nums[i];\n    }\n    return result;\n}\n```\n\nIn this solution, we define a function `tuple_to_int` that takes an array of positive integers as input. We initialize a variable `result` to 0. Then, for each number in the array, we multiply `result` by 10 and add the current number to it. This effectively concatenates the numbers in the array into a single integer. Finally, we return `result`.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and the fetched data. It's a powerful abstraction that can be reused across components, making your codebase cleaner and more maintainable.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is built on top of React's `useState` and `useEffect` hooks. It takes a URL as its argument and returns an object containing the data, loading state, and any error that might occur during the fetch operation.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n"
+  ]
+}

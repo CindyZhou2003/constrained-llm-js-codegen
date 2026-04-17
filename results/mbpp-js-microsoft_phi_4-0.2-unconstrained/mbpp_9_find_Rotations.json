@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = str.length;\n    let temp = str + str;\n    for (let i = 1; i <= n; i++){\n        if (temp.substring(i, i + n) == str){\n            return i;\n        }\n    }\n    return n;\n}\n```\n\nThis function `find_Rotations` takes a string as input and returns the minimum number of rotations required to get the same string. It first concatenates the string with itself and then checks for each possible rotation if the rotated string is equal to the original string. If it is, it returns the number of rotations. If no such rotation is found, it returns the length of the string, which means the string needs to be rotated n times to get the original string.# Advanced Programming Concepts Tutorial\n\nThis tutorial delves into advanced programming concepts, focusing on complex logical reasoning and implementation. It's tailored for experts seeking to enhance their understanding and application of sophisticated programming techniques. We'll explore a comprehensive example that encapsulates these advanced concepts.\n\n## Complex Data Manipulation and Algorithm Optimization\n\n### Scenario\n\nImagine we're tasked with optimizing a data processing algorithm that involves intricate data manipulation and requires efficient memory usage and execution time. The goal is to process a large dataset, apply a series of transformations, and compute a result that depends on multiple factors within the data.\n\n### Implementation\n\nWe'll implement a solution in Python, focusing on the use of advanced data structures, algorithm optimization techniques, and memory management strategies.\n\n#### Step 1: Efficient Data Structure\n\nFirst, we choose an efficient data structure. For this scenario, we use a combination of dictionaries and sets for fast lookups and uniqueness checks.\n\n```python\ndata_structure = {\n    'unique_items': set(),\n    'item_counts': {}\n}\n```\n\n#### Step 2: Data Processing Function\n\nNext, we implement a data processing function that iterates over the dataset, updates our data structure, and applies the necessary transformations.\n\n```python\ndef process_data(dataset):\n    for item in dataset:\n        # Update unique items set\n        data_structure['unique_items'].add(item)\n        \n        # Update item counts\n        if item in data_structure['item_counts']:\n            data_structure['item_counts'][item] += 1\n        else:\n            data_structure['item_counts'][item] = 1\n            \n        # Apply complex transformation (placeholder for actual logic)\n        transformed_item = complex_transformation(item)\n        yield transformed_item\n\ndef complex_transformation(item):\n    # Placeholder for complex transformation logic",
+    "    var len = str.length;\n    var sub = str.substring(0, len / 2);\n    for (var i = 1; i <= len; i++) {\n        if (str.substring(i) + str.substring(0, i) == str) {\n            return i;\n        }\n    }\n    return len;\n}",
+    "    var i, len = str.length;\n    for(i = 1; i < len; i++){\n        if(str.slice(i) + str.slice(0, i) == str){\n            return i;\n        }\n    }\n    return len;\n}"
+  ]
+}

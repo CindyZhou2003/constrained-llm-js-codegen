@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_18_remove_dirty_chars",
+  "language": "js",
+  "prompt": "//Write a function to remove characters from the first string which are present in the second string.\nfunction remove_dirty_chars(string, second_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_18_remove_dirty_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_dirty_chars;\n  assert.deepEqual(candidate(\"probasscurve\", \"pros\"),\"bacuve\");\n  assert.deepEqual(candidate(\"digitalindia\", \"talent\"),\"digiidi\");\n  assert.deepEqual(candidate(\"exoticmiles\", \"toxic\"),\"emles\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let string_array = string.split('');\n    let second_string_array = second_string.split('');\n    let new_string = '';\n    for(let i = 0; i < string_array.length; i++){\n        if(second_string_array.includes(string_array[i])){\n            string_array.splice(i, 1);\n            i--;\n        }\n    }\n    for(let i = 0; i < string_array.length; i++){\n        new_string += string_array[i];\n    }\n    return new_string;\n}\n",
+    "    //Split the second string into an array of characters\n    let dirty_chars = second_string.split('');\n    //Split the first string into an array of characters\n    let clean_chars = string.split('');\n    //Filter the clean_chars array to only include characters not present in the dirty_chars array\n    let result = clean_chars.filter(char => !dirty_chars.includes(char));\n    //Join the filtered array back into a string and return it\n    return result.join('');\n}\n",
+    "  return string.split('').filter(char => !second_string.includes(char)).join('');\n}\n"
+  ]
+}

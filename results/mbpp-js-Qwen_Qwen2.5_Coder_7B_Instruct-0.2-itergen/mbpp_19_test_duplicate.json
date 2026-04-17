@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_19_test_duplicate",
+  "language": "js",
+  "prompt": "//Write a function to find whether a given array of integers contains any duplicate element.\nfunction test_duplicate(arraynums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_19_test_duplicate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = test_duplicate;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 4]),true);\n  assert.deepEqual(candidate([1, 1, 2, 2, 3, 3, 4, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var object = {};\n  var result = false;\n  arraynums.forEach(function(item) {\n    if(object[item]) {\n      result = true;\n    }\n    object[item] = true;\n  });\n  return result;\n}\n",
+    "    var len = arraynums.length;\n    var sort_nums = arraynums.sort();\n    for(var i = 0; i < len; i++){\n        if(sort_nums[i] == sort_nums[i - 1]){\n            return true;\n        }\n    }\n    return false;\n}\n",
+    "    var object = {};\n    var result = false;\n    for (var i = 0; i < arraynums.length; i++) {\n       object[arraynums[i]] = object[arraynums[i]] + 1 || 1;\n       if (object[arraynums[i]] > 1) {\n          result = true;\n          break;\n       }\n    }\n    return result;\n }\n"
+  ]
+}

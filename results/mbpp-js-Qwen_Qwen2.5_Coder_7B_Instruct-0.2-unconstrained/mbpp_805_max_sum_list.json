@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_805_max_sum_list",
+  "language": "js",
+  "prompt": "//Write a function that returns the array in an array of lists whose sum of elements is the highest.\nfunction max_sum_list(lists){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_805_max_sum_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_list;\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]),[10, 11, 12]);\n  assert.deepEqual(candidate([[3, 2, 1], [6, 5, 4], [12, 11, 10]]),[12, 11, 10]);\n  assert.deepEqual(candidate([[2, 3, 1]]),[2, 3, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    for(let i=0; i<lists.length; i++){\n        let currentSum = 0;\n        for(let j=0; j<lists[i].length; j++){\n            currentSum += lists[i][j];\n        }\n        if(currentSum > maxSum){\n            maxSum = currentSum;\n            maxList = lists[i];\n        }\n    }\n    return maxList;\n}",
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    \n    for(let i = 0; i < lists.length; i++){\n        let currentSum = lists[i].reduce((a, b) => a + b, 0);\n        \n        if(currentSum > maxSum){\n            maxSum = currentSum;\n            maxList = lists[i];\n        }\n    }\n    \n    return [maxList];\n}\n",
+    "    let maxSum = -Infinity;\n    let maxList = [];\n    \n    for(let i = 0; i < lists.length; i++){\n        let currentSum = lists[i].reduce((acc, curr) => acc + curr, 0);\n        \n        if(currentSum > maxSum){\n            maxSum = currentSum;\n            maxList = lists[i];\n        }\n    }\n    \n    return [maxList];\n}\n"
+  ]
+}

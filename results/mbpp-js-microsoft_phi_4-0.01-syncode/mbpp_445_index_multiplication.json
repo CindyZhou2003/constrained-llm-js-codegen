@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_445_index_multiplication",
+  "language": "js",
+  "prompt": "//Write a function to perform index wise multiplication of array elements in the given two lists.\nfunction index_multiplication(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_445_index_multiplication.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_multiplication;\n  assert.deepEqual(candidate([[1, 3], [4, 5], [2, 9], [1, 10]], [[6, 7], [3, 9], [1, 1], [7, 3]]),[[6, 21], [12, 45], [2, 9], [7, 30]]);\n  assert.deepEqual(candidate([[2, 4], [5, 6], [3, 10], [2, 11]], [[7, 8], [4, 10], [2, 2], [8, 4]]),[[14, 32], [20, 60], [6, 20], [16, 44]]);\n  assert.deepEqual(candidate([[3, 5], [6, 7], [4, 11], [3, 12]], [[8, 9], [5, 11], [3, 3], [9, 5]]),[[24, 45], [30, 77], [12, 33], [27, 60]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Your code here\n    return list(map(lambda in the  [C++](https//github.com/IBM/ibm-capi1-samples/tree/master/cpp)  and  [Java](https://github.com/IBM/ibm-capi1-samples/tree/master/java)  samples.\n\n**Note**:",
+    "    //Your code here\n    return list(map(lambda in the  [C++](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-cpp.md)  and  [Go](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-go.md)  SDKs.  The  [Java](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-java.md)  SDK is also available, but it is not yet supported by the IBM Cloud CLI.  The  [Python](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-python.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [Node.js](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-nodejs.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [Ruby](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-ruby.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [Swift](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-swift.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [PHP](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-php.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [Perl](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-perl.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [.NET](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-dotnet.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [R](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-r.md)  SDK is available, but it is not yet supported by the IBM Cloud CLI.  The  [Objective-C](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ci/ci-objective-c.md)  SDK is available,",
+    "    //Your code here\n    return list(map(lambda in the  [C++](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ibmcloud_commands_container.md#cs_cluster_create)  and  [Go](https//github.com/IBM/ibmcloud-cli/blob/master/docs/ibmcloud_commands_container.md#cs_cluster_create)  SDKs.\n\n**Note**:"
+  ]
+}

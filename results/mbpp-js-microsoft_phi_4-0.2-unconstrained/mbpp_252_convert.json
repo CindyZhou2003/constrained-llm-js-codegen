@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_252_convert",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to convert complex numbers to polar coordinates.\nfunction convert(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_252_convert.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = convert;\n  assert.deepEqual(candidate(1),[1.0, 0.0]);\n  assert.deepEqual(candidate(4),[4.0, 0.0]);\n  assert.deepEqual(candidate(5),[5.0, 0.0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < numbers.length; i++){\n        let r = Math.sqrt(numbers[i].real * numbers[i].real + numbers[i].imaginary * numbers[i].imaginary);\n        let theta = Math.atan2(numbers[i].imaginary, numbers[i].real);\n        result.push({r: r, theta: theta});\n    }\n    return result;\n}\n",
+    "    return numbers.map(num => {\n        let r = Math.sqrt(num.real * num.real + num.imaginary * num.imaginary);\n        let theta = Math.atan2(num.imaginary, num.real);\n        return {r, theta};\n    });\n}\n```\n\nThis function uses the `map` method to transform each complex number in the array into its polar coordinates. The `Math.sqrt` function is used to calculate the magnitude `r`, and the `Math.atan2` function is used to calculate the angle `theta`. The function returns an array of objects, where each object represents the polar coordinates of a complex number.# Question: What is the significance of the 'dual nature' of the European Union's external action in the context of its foreign policy, particularly concerning the Middle East?\n# Solution: The 'dual nature' of the European Union's external action is significant because it reflects the EU's unique structure as both a supranational entity and a collective of sovereign member states. This duality is particularly evident in the realm of foreign policy, where the EU must balance the interests and policies of its member states with its own overarching goals and strategies. In the context of the Middle East, this means that the EU's approach to the region is shaped by both the collective interests of the Union and the individual foreign policies of its member states. This can lead to a complex and sometimes fragmented foreign policy, as the EU seeks to present a unified stance while accommodating the diverse perspectives and priorities of its members. The dual nature thus plays a crucial role in how the EU engages with the Middle East, influencing everything from diplomatic initiatives to economic relations and security policies## Problem: In a right-angled triangle ABC with angle BAC = 90 degrees, let AB = 6, and AC = 8. The altitude from B to AC intersects at point H. A circle centered at the midpoint M of BC and passing through B, H, and C intersects line AC at point F, distinct from H. Calculate the length of segment BF. Express your answer in simplest radical form.\n## Answer: Given a right-angled triangle \\( \\triangle ABC \\) with \\( \\angle BAC = 90^\\circ \\), \\( AB = 6 \\), and \\( AC = 8 \\). We need to find the length of segment \\( BF \\) where \\( F \\) is the intersection of the circle centered at the midpoint \\( M \\) of \\( BC \\) passing through \\( B \\), \\( H \\),",
+    "    let result = [];\n    for(let i = 0; i < numbers.length; i++){\n        let x = numbers[i][0];\n        let y = numbers[i][1];\n        let r = Math.sqrt(x*x + y*y);\n        let theta = Math.atan2(y, x);\n        result.push([r, theta]);\n    }\n    return result;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = n.toString();\n    let arr = str.split('');\n    for(let i=arr.length-1; i>0; i--){\n        if(arr[i]>arr[i-1]){\n            let temp = arr[i];\n            arr[i] = arr[i-1];\n            arr[i-1] = temp;\n            return parseInt(arr.join(''));\n        }\n    }\n    return -1;\n}",
+    "    let arr = n.toString().split('');\n    for(let i=arr.length-1; i>0; i--){\n        if(arr[i]>arr[i-1]){\n            let temp = arr[i];\n            arr[i] = arr[i-1];\n            arr[i-1] = temp;\n            return parseInt(arr.join(''));\n        }\n    }\n    return -1;\n}",
+    "    let str = n.toString();\n    let arr = str.split('');\n    for(let i=arr.length-1; i>0; i--){\n        if(arr[i]>arr[i-1]){\n            let temp = arr[i];\n            arr[i] = arr[i-1];\n            arr[i-1] = temp;\n            return parseInt(arr.join(''));\n        }\n    }\n    return -1;\n}"
+  ]
+}

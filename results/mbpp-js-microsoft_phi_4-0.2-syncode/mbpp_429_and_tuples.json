@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < test_tup1.length; i++){\n        result.push(test_tup1[i] & test_tup2[i]);\n    }\n    return result;\n}\n",
+    "    //Initialize an empty list to store the result\n    let result = [];\n    //Iterate over the elements of the first tuple\n    for(let i = 0; i < test_tup1.length; i++){\n        //Check if the element in the first tuple is a tuple\n        if(Array.isArray(test_tup1[i])){\n            //If it is a tuple, then iterate over the elements of the tuple\n            for(let j = 0; j < test_tup1[i].length; j++){\n                //Check if the corresponding element in the second tuple is also a tuple\n                if(Array.isArray(test_tup2[i][j])){\n                    //If it is a tuple, then iterate over the elements of the tuple\n                    for(let k = 0; k < test_tup1[i][j].length; k++){\n                        //Check if the corresponding element in the second tuple is also a tuple\n                        if(Array.isArray(test_tup2[i][j][k])){\n                            //If it is a tuple, then iterate over the elements of the tuple\n                            for(let l = 0; l < test_tup1[i][j][k].length; l++){\n                                //Check if the corresponding element in the second tuple is also a tuple\n                                if(Array.isArray(test_tup2[i][j][k][l])){\n                                    //If it is a tuple, then iterate over the elements of the tuple\n                                    for(let m = 0; m < test_tup1[i][j][k][l].length; m++){\n                                        //Check if the corresponding element in the second tuple is also a tuple\n                                        if(Array.isArray(test_tup2[i][j][k][l][m])){\n                                            //If it is a tuple, then iterate over the elements of the tuple\n                                            for(let n = 0; n < test_tup1[i][j][k][l][m].length; n++){\n                                                //Check if the corresponding element in the second tuple is also a tuple\n                                                if(Array.isArray(test_tup2[i][j][k][l][m][n])){\n                                                    //If it is a tuple, then iterate over the elements of the tuple\n                                                    for(let o = 0; o < test_tup1[i][j][k][l][m][n].length; o++){\n                                                        //Check if the corresponding element in the second tuple is also a tuple\n                                                        if(Array.isArray(test_tup2[i][j][k][",
+    "    return test_tup1.map((element, index) => element && test_tup2[index]);\n}\n"
+  ]
+}

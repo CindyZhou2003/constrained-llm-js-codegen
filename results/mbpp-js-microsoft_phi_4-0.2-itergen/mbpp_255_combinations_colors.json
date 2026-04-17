@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_255_combinations_colors",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and length n, and generates all combinations (with repetition) of the elements of the array and returns an array with an array for each combination.\nfunction combinations_colors(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_255_combinations_colors.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = combinations_colors;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 1),[[\"Red\"], [\"Green\"], [\"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 2),[[\"Red\", \"Red\"], [\"Red\", \"Green\"], [\"Red\", \"Blue\"], [\"Green\", \"Green\"], [\"Green\", \"Blue\"], [\"Blue\", \"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 3),[[\"Red\", \"Red\", \"Red\"], [\"Red\", \"Red\", \"Green\"], [\"Red\", \"Red\", \"Blue\"], [\"Red\", \"Green\", \"Green\"], [\"Red\", \"Green\", \"Blue\"], [\"Red\", \"Blue\", \"Blue\"], [\"Green\", \"Green\", \"Green\"], [\"Green\", \"Green\", \"Blue\"], [\"Green\", \"Blue\", \"Blue\"], [\"Blue\", \"Blue\", \"Blue\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    var colors = l;\n    var length = n;\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var temp = [];\n\n    function",
+    "    var colors = l;\n    var result = [];\n    var temp = [];\n    var i = 0;\n    while(i < n){\n        temp.push(colors[0]);\n        i++;\n    }\n    result.push(temp);\n    while(true){\n        i = n - 1;\n        while(i >= 0 && temp[i] === colors[colors.length - 1]){\n            i--;\n        }\n        if(i < 0){\n            break;\n        }\n        temp[i] = colors[colors.indexOf(temp[i]) + 1];\n        for(var j = i + 1; j < n; j++){\n            temp[j] = colors[0];\n        }\n        result.push(temp.slice());\n    }\n    return result;\n}\n\n",
+    "    var result = [];\n    var arr = [];\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var m = 0;\n    var x = 0;\n    var y = 0;\n    var z = 0;\n    var p = 0;\n    var q = 0;\n    var r = 0;\n    var s = 0;\n    var t = 0;\n    var u = 0;\n    var v = 0;\n    var w = 0;\n    var a = 0;\n    var b = 0;\n    var c = 0;\n    var d = 0;\n    var e = 0;\n    var f = 0;\n    var g = 0;\n    var h = 0;\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var m = 0;\n    var n = 0;\n    var o = 0;\n    var p = 0;\n    var q = 0;\n    var r = 0;\n    var s = 0;\n    var t = 0;\n    var u = 0;\n    var v = 0;\n    var w = 0;\n    var x = 0;\n    var y = 0;\n    var z = 0;\n    var A = 0;\n    var B = 0;\n    var C = 0;\n    var D = 0;\n    var E = 0;\n    var F = 0;\n    var G = 0;\n    var H = 0;\n    var I = 0;\n    var J = 0;\n    var K = 0;\n    var L = 0;\n    var M = 0;\n    var N = 0;\n    var O = 0;\n    var P = 0;\n    var Q = 0;\n    var R = 0;\n    var S = 0;\n    var T = 0;\n    var U = 0;\n    var V = 0;\n    var W = 0;\n    var X = 0;\n    var Y = 0;\n    var Z = 0;\n    var AA = 0;\n    var AB = 0;\n    var AC = 0;\n    var AD = 0;\n    var AE = 0;\n    var AF = 0;\n    var AG = 0;\n    var AH = 0;\n    var AI = 0;\n    var AJ = 0;\n    var AK = 0;\n    var AL = 0;\n    var AM = 0;\n    var AN = 0;\n    var AO = 0;\n    var AP = 0;\n    var AQ = 0;\n    var AR = 0;\n    var AS = 0;\n    var AT = 0;\n    var AU = 0;\n    var AV = 0;\n    var AW = 0;\n    var AX"
+  ]
+}

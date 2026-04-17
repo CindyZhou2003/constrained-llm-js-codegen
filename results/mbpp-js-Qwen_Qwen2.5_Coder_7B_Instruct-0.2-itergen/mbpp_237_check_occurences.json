@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_237_check_occurences",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array of tuples and returns an object mapping each unique array to the number of times it occurs in the array.\nfunction check_occurences(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_237_check_occurences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_occurences;\n  assert.deepEqual(candidate([[3, 1], [1, 3], [2, 5], [5, 2], [6, 3]]),{[1, 3]: 2, [2, 5]: 2, [3, 6]: 1});\n  assert.deepEqual(candidate([[4, 2], [2, 4], [3, 6], [6, 3], [7, 4]]),{[2, 4]: 2, [3, 6]: 2, [4, 7]: 1});\n  assert.deepEqual(candidate([[13, 2], [11, 23], [12, 25], [25, 12], [16, 23]]),{[2, 13]: 1, [11, 23]: 1, [12, 25]: 2, [16, 23]: 1});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = {};\n    for(var i = 0; i < test_list.length; i++){\n        var key = test_list[i].toString();\n        if(result[key]){\n            result[key] += 1;\n        } else {\n            result[key] = 1;\n        }\n    }\n    return result;\n}\n",
+    "    var result = {};\n    for(var i = 0; i < test_list.length; i++){\n        var key = test_list[i].join(',');\n        if(result[key]){\n            result[key]++;\n        }else{\n            result[key] = 1;\n        }\n    }\n    return result;\n}\n",
+    "    var result = {};\n    for(var i=0; i<test_list.length; i++){\n        var key = test_list[i].toString();\n        if(result[key]){\n            result[key]++;\n        } else {\n            result[key] = 1;\n        }\n    }\n    return result;\n}\n"
+  ]
+}

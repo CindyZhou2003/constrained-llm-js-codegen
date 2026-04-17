@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //convert num to string\n    let str = num.toString();\n    //loop through numbers starting from num+1\n    for(let i=num+1; ;i++){\n        //check if number is palindrome\n        if(isPalindrome(i)){\n            return i;\n        }\n    }\n}\n",
+    "    let str = num.toString();\n    let len = str.length;\n    if(len === 1) return num + 1;\n    let mid = Math.floor(len / 2);\n    let left = str.substring(0, mid);\n    let right = str.substring(mid, len);\n    let rev_right = right.split('').reverse().join('');\n    let candidate = parseInt(left + rev_right);\n    if(candidate > num) return candidate;\n    else{\n        let new_left = (parseInt(left) + 1).toString();\n        let new_rev_right = new_left.split('').reverse().join('');\n        let new_candidate = parseInt(new_left + new_rev_right);\n        return new_candidate;\n    }\n}",
+    "    let str = num.toString();\n    let len = str.length;\n    if(len === 1) return num + 1;\n    let mid = Math.floor(len / 2);\n    let left = str.substring(0, mid);\n    let right = str.substring(mid, len);\n    let rev_right = right.split('').reverse().join('');\n    let candidate = parseInt(left + rev_right);\n    if(candidate > num) return candidate;\n    else{\n        let new_left = (parseInt(left) + 1).toString();\n        let new_rev_right = new_left.split('').reverse().join('');\n        let new_candidate = parseInt(new_left + new_rev_right);\n        return new_candidate;\n    }\n}"
+  ]
+}

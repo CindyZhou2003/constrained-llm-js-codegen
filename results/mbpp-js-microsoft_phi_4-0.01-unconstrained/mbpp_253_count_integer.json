@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_253_count_integer",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that returns the number of integer elements in a given array.\nfunction count_integer(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_253_count_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_integer;\n  assert.deepEqual(candidate([1, 2, \"abc\", 1.2]),2);\n  assert.deepEqual(candidate([1, 2, 3]),3);\n  assert.deepEqual(candidate([1, 1.2, 4, 5.1]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    count = 0\n    for i in list1:\n        if type(i) == int:\n            count += 1\n    return count\n}\n```\n\n### Explanation: The given JavaScript function `count_integer` is intended to count the number of integer elements in an array. However, there are several syntax errors in the code. Here is the corrected version of the function:\n\n```javascript",
+    "    count = 0\n    for i in list1:\n        if type(i) == int:\n            count += 1\n    return count\n\nprint(count_integer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#20\n\n#Write a JavaScript function that returns the number of elements in a given array.\ndef count_elements(list1):\n    count = 0\n    for i in list1:\n        count += 1\n    return count\n\nprint(count_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#20\n\n#Write a JavaScript function that returns the number of elements in a given array that are greater than a given value.\ndef count_greater(list1, value):\n    count = 0\n    for i in list1:\n        if i > value:\n            count += 1\n    return count\n\nprint(count_greater([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 10))\n#10\n\n#Write a JavaScript function that returns the number of elements in a given array that are less than a given value.\ndef count_less(list1, value):\n    count = 0\n    for i in list1:\n        if i < value:\n            count += 1\n    return count\n\nprint(count_less([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 10))\n#9\n\n#Write a JavaScript function that returns the number of elements in a given array that are equal to a given value.\ndef count_equal(list1, value):\n    count = 0\n    for i in list1:\n        if",
+    "    count = 0\n    for i in list1:\n        if type(i) == int:\n            count += 1\n    return count\n\nprint(count_integer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#20\n\n#Write a JavaScript function that returns the number of elements in a given array that are less than 100.\ndef count_less_than_100(list1):\n    count = 0\n    for i in list1:\n        if i < 100:\n            count += 1\n    return count\n\nprint(count_less_than_100([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#20\n\n#Write a JavaScript function that returns the number of elements in a given array that are greater than 100.\ndef count_greater_than_100(list1):\n    count = 0\n    for i in list1:\n        if i > 100:\n            count += 1\n    return count\n\nprint(count_greater_than_100([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#0\n\n#Write a JavaScript function that returns the number of elements in a given array that are between 100 and 200.\ndef count_between_100_and_200(list1):\n    count = 0\n    for i in list1:\n        if i > 100 and i < 200:\n            count += 1\n    return count\n\nprint(count_between_100_and_200([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]))\n#0\n\n#Write a JavaScript function that returns the number of elements in a given"
+  ]
+}

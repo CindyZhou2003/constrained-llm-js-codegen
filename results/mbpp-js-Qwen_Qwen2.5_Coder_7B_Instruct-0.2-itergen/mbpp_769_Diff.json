@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_769_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_769_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var a = li1.filter(function(i) { return li2.indexOf(i) < 0; });\n  var b = li2.filter(function(i) { return li1.indexOf(i) < 0; });\n  return a.concat(b);\n}\n",
+    "    var a = new Array();\n    for(var i = 0; i < li1.length; i++){\n        a.push(li1[i]);\n    }\n    for(var i = 0; i < li2.length; i++){\n        for(var j = 0; j < a.length; j++){\n            if(a[j] == li2[i]){\n                a.splice(j, 1);\n                j--;\n            }\n        }\n    }\n    return a;\n}\n",
+    "    var a = li1.filter(function(i) { return li2.indexOf(i) < 0; });\n    var b = li2.filter(function(i) { return li1.indexOf(i) < 0; });\n    return a.concat(b);\n}\n"
+  ]
+}

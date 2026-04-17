@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = arr.length;\n    let lis = new Array(n).fill(0);\n    let lds = new Array(n).fill(0);\n\n    // Compute LIS values from left to right\n    for(let i=0; i<n; i++){\n        lis[i] = 1;\n        for(let j=0; j<i; j++){\n            if(arr[i]>arr[j] && lis[i]<lis[j]+1){\n                lis[i] = lis[j] + 1;\n            }\n        }\n    }\n\n    // Compute LDS values from right to left\n    for(let i=n-1; i>=0; i--){\n        lds[i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(arr[i]>arr[j] && lds[i]<lds[j]+1){\n                lds[i] = lds[j] + 1;\n            }\n        }\n    }\n\n    // Find the maximum sum of bitonic subsequence\n    let maxSum = 0;\n    for(let i=0; i<n; i++){\n        maxSum = Math.max(maxSum, lis[i] + lds[i] - arr[i]);\n    }\n\n    return maxSum;\n}\n",
+    "    let n = arr.length;\n    let lis = new Array(n).fill(0);\n    let lds = new Array(n).fill(0);\n\n    // Compute LIS values from left to right\n    for(let i=0; i<n; i++){\n        lis[i] = 1;\n        for(let j=0; j<i; j++){\n            if(arr[i]>arr[j] && lis[i]<lis[j]+1){\n                lis[i] = lis[j] + 1;\n            }\n        }\n    }\n\n    // Compute LDS values from right to left\n    for(let i=n-1; i>=0; i--){\n        lds[i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(arr[i]>arr[j] && lds[i]<lds[j]+1){\n                lds[i] = lds[j] + 1;\n            }\n        }\n    }\n\n    // Find the maximum sum of bitonic subsequence\n    let maxSum = 0;\n    for(let i=0; i<n; i++){\n        maxSum = Math.max(maxSum, lis[i] + lds[i] - arr[i]);\n    }\n\n    return maxSum;\n}\n",
+    "    let n = arr.length;\n    let lis = new Array(n).fill(0);\n    let lds = new Array(n).fill(0);\n\n    // Compute LIS values from left to right\n    for(let i=0; i<n; i++){\n        lis[i] = 1;\n        for(let j=0; j<i; j++){\n            if(arr[i]>arr[j] && lis[i]<lis[j]+1){\n                lis[i] = lis[j] + 1;\n            }\n        }\n    }\n\n    // Compute LDS values from right to left\n    for(let i=n-1; i>=0; i--){\n        lds[i] = 1;\n        for(let j=i+1; j<n; j++){\n            if(arr[i]>arr[j] && lds[i]<lds[j]+1){\n                lds[i] = lds[j] + 1;\n            }\n        }\n    }\n\n    // Find the maximum sum of bitonic subsequence\n    let maxSum = 0;\n    for(let i=0; i<n; i++){\n        maxSum = Math.max(maxSum, lis[i] + lds[i] - arr[i]);\n    }\n\n    return maxSum;\n}\n"
+  ]
+}

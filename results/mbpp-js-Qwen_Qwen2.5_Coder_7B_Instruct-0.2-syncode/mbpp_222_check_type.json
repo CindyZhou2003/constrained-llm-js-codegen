@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_222_check_type",
+  "language": "js",
+  "prompt": "//Write a function to check if all the elements in array have same data type or not.\nfunction check_type(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_222_check_type.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_type;\n  assert.deepEqual(candidate([5, 6, 7, 3, 5, 6]),true);\n  assert.deepEqual(candidate([1, 2, \"4\"]),false);\n  assert.deepEqual(candidate([3, 2, 1, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var res = Array.isArray(test_tuple) && test_tuple.every(function(val){\n        return typeof val === typeof test_tuple[0];\n    });\n    return res;\n}",
+    "    let res = Array.isArray(test_tuple) && test_tuple.every((ele) =>",
+    "    let res = true;\n    let first_type = typeof test_tuple[0];\n    for(let ele = 1; ele < test_tuple.length; ele++){\n        if(typeof test_tuple[ele] !== first_type){\n            res = false;\n            break;\n        }\n    }\n    return res;\n}\n\nlet test_tuple = [1, 2, 3, 4, 5];"
+  ]
+}

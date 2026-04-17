@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert the number to an array of digits\n    let digits = n.toString().split('').map(Number);\n    //Find the rightmost digit that is smaller than the digit to its right\n    let i = digits.length - 2;\n    while (i >= 0 && digits[i] >= digits[i + 1]) {\n        i--;\n    }\n    //If no such digit is found, the number is the largest possible\n    if (i < 0) {\n        return -1;\n    }\n    //Find the smallest digit to the right of i that is larger than digits[i]\n    let j = digits.length - 1;\n    while (digits[j] <= digits[i]) {\n        j--;\n    }\n    //Swap digits[i] and digits[j]\n    [digits[i], digits[j]] = [digits[j], digits[i]];\n    //Reverse the digits to the right of i\n    let left = digits.slice(0, i + 1);\n    let right = digits.slice(i + 1).reverse();\n    //Combine the left and right parts and convert back to a number\n    let result = parseInt(left.concat(right).join(''));\n    return result;\n}\n",
+    "    let digits = n.toString().split('').map(Number);\n    let i = digits.length - 1;\n    while (i > 0 && digits[i - 1] >= digits[i]) {\n        i--;\n    }\n    if (i <= 0) {\n        return -1;\n    }\n    let j = digits.length - 1;\n    while (digits[j] <= digits[i - 1]) {\n        j--;\n    }\n    [digits[i - 1], digits[j]] = [digits[j], digits[i - 1]];\n    let left = digits.slice(0, i);\n    let right = digits.slice(i).reverse();\n    return parseInt(left.concat(right).join(''));\n}\n",
+    "    n = n.toString().split('').map(Number);\n    let i = n.length - 1;\n    while (i > 0 && n[i - 1] >= n[i]) {\n        i--;\n    }\n    if (i <= 0) {\n        return -1;\n    }\n    let j = n.length - 1;\n    while (n[j] <= n[i - 1]) {\n        j--;\n    }\n    let temp = n[i - 1];\n    n[i - 1] = n[j];\n    n[j] = temp;\n    j = n.length - 1;\n    while (i < j) {\n        temp = n[i];\n        n[i] = n[j];\n        n[j] = temp;\n        i++;\n        j--;\n    }\n    return parseInt(n.join(''));\n}\n"
+  ]
+}

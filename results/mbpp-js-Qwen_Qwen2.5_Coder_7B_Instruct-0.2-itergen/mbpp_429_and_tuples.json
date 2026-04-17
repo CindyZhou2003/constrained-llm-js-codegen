@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    console.log( \"The original tuple 1 : \" + test_tup1);\n    console.log( \"The original tuple 2 : \" + test_tup2);\n    res = []\n    for(var i = 0; i < test_tup1.length; i++){\n        res.push(test_tup1[i] & test_tup2[i])\n    }\n    console.log( \"The elementwise AND of tuples : \" + res);\n    res = []\n    for(var i = 0; i < test_tup1.length; i++){\n        res.push([test_tup1[i], test_tup2[i]])\n    }\n    console.log( \"The tuple-wise AND of tuples : \" + res);\n}\nand_tuples((1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 9",
+    "    console.log( \"The original tuple 1 : \" + test_tup1);\n    console.log( \"The original tuple 2 : \" + test_tup2);\n    var res = [];\n    for(var i = 0; i < test_tup1.length; i++){\n        res.push([test_tup1[i], test_tup2[i]]);\n    }\n    return res;\n}\n",
+    "    console.log( \"The original tuple 1 : \" + test_tup1);\n    console.log( \"The original tuple 2 : \" + test_tup2);\n    var res = [];\n    for (var i = 0; i < test_tup1.length; i++) {\n        res.push([test_tup1[i], test_tup2[i]]);\n    }\n    return res;\n}\n"
+  ]
+}

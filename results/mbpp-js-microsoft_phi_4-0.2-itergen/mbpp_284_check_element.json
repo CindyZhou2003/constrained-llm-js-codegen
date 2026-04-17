@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_284_check_element",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and element and checks whether all items in the array are equal to the given element.\nfunction check_element(list, element){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_284_check_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_element;\n  assert.deepEqual(candidate([\"green\", \"orange\", \"black\", \"white\"], \"blue\"),false);\n  assert.deepEqual(candidate([1, 2, 3, 4], 7),false);\n  assert.deepEqual(candidate([\"green\", \"green\", \"green\", \"green\"], \"green\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (i in list[0] == element[0] && list[1] == element[1] && list[2] == element[2] && list[3] == element[3] && list[4] == element[4] && list[5] == element[5] && list[6] == element[6] && list[7] == element[7] && list[8] == element[8] && list[9] == element[9] && list[10] == element[10] && list[11] == element[11] && list[12] == element[12] && list[13] == element[13] && list[14] == element[14] && list[15] == element[15] && list[16] == element[16] && list[17] == element[17] && list[18] == element[18] && list[19] == element[19] && list[20] == element[20] && list[21] == element[21] && list[22] == element[22] && list[23] == element[23] && list[24] == element[24] && list[25] == element[25] && list[26] == element[26] && list[27] == element[27] && list[28] == element[28] && list[29] == element[29] && list[30] == element[30] && list[31] == element[31] && list[32] == element[32] && list[33] == element[33] && list[34] == element[34] && list[35] == element[35] && list[36] == element[36] && list[37] == element[37] && list[38] == element[38] && list[39] == element[39] && list[40] == element[40] && list[41] == element[41] && list[42] == element[42] && list[43] == element[43] && list[44] == element[44] && list[45] == element[45] && list[46] == element[46] && list[47] == element[47] && list[48] == element[48] && list[49] == element[49] && list[50] == element[50] && list[51] == element[51] && list[52] == element[52] && list[53] == element[53] && list[54] == element[54] && list[55] == element[55] && list[56] == element[56] && list[57] == element[57] && list[58] == element[58] && list[59] == element[59] && list[60] == element[60] && list[61] == element[61] && list[62] == element[62] && list[63] == element[63] && list[64] == element[64] && list[65] == element[65] && list[66] == element[66] && list[67] == element[67] && list[68",
+    "    for (let i = 0; i < list.length; i++){\n        if (list[i] != element){\n            ",
+    "    for (let i = 0; i < list.length; i++) {\n        if (list[i] !== element) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+  ]
+}

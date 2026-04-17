@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var num = \"\";\n    var str = \"\";\n    for(var i=0;i<test_str.length;i++){\n        if(!isNaN(test_str[i])){\n            num += test_str[i];\n        }else{\n            str += test_str[i];\n        }\n    }\n    return str + num;\n}",
+    "    //Write your code here\n    let num = '';\n    let str = '';\n    for(let i = 0; i < test_str.length; i++){\n        if(!isNaN(test_str[i])){\n            num += test_str[i];\n        }else{\n            str += test_str[i];\n        }\n    }\n    return str + num;\n}",
+    "    //Split the string into an array of characters\n    let arr = test_str.split('');\n    //Create two empty arrays to store numbers and non-numbers\n    let num = [];\n    let non_num = [];\n    //Iterate over the array of characters\n    for(let i = 0; i < arr.length; i++){\n        //If the character is a number, push it to the num array\n        if(!isNaN(arr[i])){\n            num.push(arr[i]);\n        }else{\n            //If the character is not a number, push it to the non_num array\n            non_num.push(arr[i]);\n        }\n    }\n    //Join the non_num array into a string and append the num array joined into a string\n    return non_num.join('') + num.join('');\n}\n"
+  ]
+}

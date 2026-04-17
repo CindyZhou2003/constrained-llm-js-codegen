@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (x % 2 == 0){\n        return false;\n    }\n    else{\n        return true;\n    }\n}\n",
+    "    if(x%2==0){\n        return false;\n    }\n    else{\n        y=0;\n        while(x>0){\n            y=y+(x%10)**3;\n            x=x//10;\n        }\n        if(y==x){\n            return true;\n        }\n        else return false;\n    }\n}\n",
+    "    //Check if the number is divisible by 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97\n    if(x % 2 == 0 || x % 3 == 0 || x % 5 == 0 || x % 7 == 0 || x % 11 == 0 || x % 13 == 0 || x % 17 == 0 || x % 19 == 0 || x % 23 == 0 || x % 29 == 0 || x % 31 == 0 || x % 37 == 0 || x % 41 == 0 || x % 43 == 0 || x % 47 == 0 || x % 53 == 0 || x % 59 == 0 || x % 61 == 0 || x % 67 == 0 || x % 71 == 0 || x % 73 == 0 || x % 79 == 0 || x % 83 == 0 || x % 89 == 0 || x % 97 == 0){\n        return false;\n    }\n    else{\n        return true;\n    }\n}\n"
+  ]
+}

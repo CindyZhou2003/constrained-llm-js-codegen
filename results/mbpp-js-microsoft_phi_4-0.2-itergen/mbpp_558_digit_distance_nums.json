@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_558_digit_distance_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var n1_str = n1.toString();\n    var n2_str = n2.toString();\n    var n1_len = n1_str.length;\n    var n2_len = n2_str.length;\n    var max_len = Math.max(n1_len, n2_len);\n    var sum = 0;\n    for (var i = 0; i < max_len; i++) {\n        var n1_digit = i < n1_len ? parseInt(n1_str.charAt(n1_len - 1 - i)) || 0  //if i is greater than n1_len, then n1_digit will be 0\n            var n2_digit = i < n2_len ? parseInt(n2_str.charAt(n2_len - 1 - i)) || 0  //if i is greater than n2_len, then n2_digit will be 0\n            sum += Math.abs(n1_digit - n2_digit);\n    }\n    return sum;\n}",
+    "    var sum = 0;\n    var n1_str = n1.toString();\n    var n2_str = n2.toString();\n    var len = Math.max(n1_str.length, n2_str.length);\n    for(var i = 0; i < len; i++){\n        var n1_digit = i < n1_str.length ? parseInt(n1_str.charAt(i))  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0  || 0 ",
+    "    var diff = 0;\n    var n1_str = n1.toString();\n    var n2_str = n2.toString();\n    var n1_len = n1_str.length;\n    var n2_len = n2_str.length;\n    var max_len = Math.max(n1_len, n2_len);\n    for(var i = 0; i < max_len; i++){\n        var n1_digit = i < n1_len ? parseInt(n1_str.charAt(i)) || 0  // Handle cases where n1 has fewer digits\n                n2_digit = i < n2_len ? parseInt(n2_str.charAt(i)) || 0; // Handle cases where n2 has fewer digits\n        diff += Math.abs(n1_digit - n2_digit);\n    }\n    return diff;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string\n    let str =",
+    "    // Convert the number to a string\n    var str = num.toString();\n    // Loop through the numbers starting from the next number after the given number\n    for (var i = num + 1; i < Infinity; i++){\n        // Convert the current number to a string\n        var str2 = i.toString();\n        // Check if the string is a palindrome\n        if (str2 === str2.split('').reverse().join( '' )){\n            // If it is, return the number\n            return i;\n        }\n    }\n}\n",
+    "    // Convert the number to a string\n    let str = num.toString();\n    // Find the length of the string\n    let len = str.length;\n    // If the length is 1, return the next number\n    if(len == 1){\n        return num + 1;\n    }\n    // If the length is even, check if the first half is the same as the second half\n    if(len % 2 == 0){\n        let first_half = str.substring(0, len / 2);\n        let second_half = str.substring(len / 2);\n        // If the first half is the same as the second half, return the number\n        if(first_half == second_half){\n            return num;\n        }\n        // If the first half is not the same as the second half, return the number plus 1\n        else{\n            return num + 1;\n        }\n    }\n    // If the length is odd, check if the first half is the same as the second half\n    else{\n        let"
+  ]
+}

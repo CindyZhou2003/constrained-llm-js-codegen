@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_252_convert",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to convert complex numbers to polar coordinates.\nfunction convert(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_252_convert.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = convert;\n  assert.deepEqual(candidate(1),[1.0, 0.0]);\n  assert.deepEqual(candidate(4),[4.0, 0.0]);\n  assert.deepEqual(candidate(5),[5.0, 0.0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    for(var i = 0; i < numbers.length; i++){\n        var x = numbers[i].real;\n        var y = numbers[i].imaginary;\n        var r = Math.sqrt(x*x + y*y);\n        var theta = Math.atan2(y, x);\n        result.push({r: r, theta: theta});\n    }\n    return result;\n}\n\n",
+    "    var result = [];\n    for(var i = 0; i < numbers.length; i++){\n        var r = Math.sqrt(numbers[i][0]*numbers[i][0] + numbers[i][1]*numbers[i][1]);\n        var theta = Math.atan2(numbers[i][1], numbers[i][0]);\n        result.push([r, theta]);\n    }\n    return result;\n}\n\n",
+    "    var result = [];\n    for(var i = 0; i < numbers.length; i++){\n        var r = Math.sqrt(numbers[i].real * numbers[i].real + numbers[i].imaginary * numbers[i].imaginary);\n        var theta = Math.atan2(numbers[i].imaginary, numbers[i].real);\n        result.push({r: r, theta: theta});\n    }\n    return result;\n}\n\n"
+  ]
+}

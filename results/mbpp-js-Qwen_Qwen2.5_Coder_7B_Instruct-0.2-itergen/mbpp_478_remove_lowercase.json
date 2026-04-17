@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_478_remove_lowercase",
+  "language": "js",
+  "prompt": "//Write a function to remove lowercase substrings from a given string.\nfunction remove_lowercase(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_478_remove_lowercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_lowercase;\n  assert.deepEqual(candidate(\"PYTHon\"),\"PYTH\");\n  assert.deepEqual(candidate(\"FInD\"),\"FID\");\n  assert.deepEqual(candidate(\"STRinG\"),\"STRG\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return str1.replace(",
+    "    return str1.replace(",
+    "    return str1.replace("
+  ]
+}

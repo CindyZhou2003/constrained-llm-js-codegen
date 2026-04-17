@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_616_tuple_modulo",
+  "language": "js",
+  "prompt": "//Write a function which takes two tuples of the same length and performs the element wise modulo.\nfunction tuple_modulo(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_616_tuple_modulo.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_modulo;\n  assert.deepEqual(candidate([10, 4, 5, 6], [5, 6, 7, 5]),[0, 4, 5, 1]);\n  assert.deepEqual(candidate([11, 5, 6, 7], [6, 7, 8, 6]),[5, 5, 6, 1]);\n  assert.deepEqual(candidate([12, 6, 7, 8], [7, 8, 9, 7]),[5, 6, 7, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return tuple(map(lambda in the  \r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r\r",
+    "    return tuple(map(lambda in the  (a)  \r  (b)  \r  (c)  \r  (d)  \r  (e)  \r  (f)  \r  (g)  \r  (h)  \r  (i)  \r  (j)  \r  (k)  \r  (l)  \r  (m)  \r  (n)  \r  (o)  \r  (p)  \r  (q)  \r  (r)  \r  (s)  \r  (t)  \r  (u)  \r  (v)  \r  (w)  \r  (x)  \r  (y)  \r  (z)  \r  (aa)  \r  (ab)  \r  (ac)  \r  (ad)  \r  (ae)  \r  (af)  \r  (ag)  \r  (ah)  \r  (ai)  \r  (aj)  \r  (ak)  \r  (al)  \r  (am)  \r  (an)  \r  (ao)  \r  (ap)  \r  (aq)  \r  (ar)  \r  (asarXiv_identifier. arXiv_version\n- ID  \t- start_line \t- end_line \t- information_type \t- brief_description\n- 1 \t- 7 \t- methodology \t- Description \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t- The \t-",
+    "    return tuple(map(lambda in the  \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r \r"
+  ]
+}

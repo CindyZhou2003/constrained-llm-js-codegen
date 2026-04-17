@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_475_sort_counter",
+  "language": "js",
+  "prompt": "//Write a function to sort an object by value.\nfunction sort_counter(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_475_sort_counter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_counter;\n  assert.deepEqual(candidate({\"Math\": 81, \"Physics\": 83, \"Chemistry\": 87}),[[\"Chemistry\", 87], [\"Physics\", 83], [\"Math\", 81]]);\n  assert.deepEqual(candidate({\"Math\": 400, \"Physics\": 300, \"Chemistry\": 250}),[[\"Math\", 400], [\"Physics\", 300], [\"Chemistry\", 250]]);\n  assert.deepEqual(candidate({\"Math\": 900, \"Physics\": 1000, \"Chemistry\": 1250}),[[\"Chemistry\", 1250], [\"Physics\", 1000], [\"Math\", 900]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sorted = [];\n    for (var key1  = 0; key1 < dict1.length; key1++){\n        sorted.push([key1, dict1[key1]]);\n    }\n    sorted.sort(function(a, b){\n        return b[1] - a[1];\n    });\n    return sorted;\n}\n",
+    "    var sorted = [];\n    for (var key1  = 0; key1 < dict1.length; key1++){\n        sorted.push([key1, dict1[key1]]);\n    }\n    sorted.sort(function(a, b){\n        return b[1] - a[1];\n    });\n    return sorted;\n}\n",
+    "    var sorted = [];\n    for (var key1  = 0; key1 < dict1.length; key1++){\n        sorted.push([key1, dict1[key1]]);\n    }\n    sorted.sort(function(a, b){\n        return b[1] - a[1];\n    });\n    return sorted;\n}\n"
+  ]
+}

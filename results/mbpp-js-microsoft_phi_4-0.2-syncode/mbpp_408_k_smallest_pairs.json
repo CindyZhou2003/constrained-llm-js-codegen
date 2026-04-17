@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_408_k_smallest_pairs",
+  "language": "js",
+  "prompt": "//Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.\nfunction k_smallest_pairs(nums1, nums2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_408_k_smallest_pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = k_smallest_pairs;\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 2),[[1, 2], [1, 4]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 1),[[1, 2]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 7),[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let heap = [];\n    for(let i = 0; i < Math.min(nums1.length, k); i++){\n        heap.push([nums1[i] + nums2[0], i, 0]);\n    }\n    build_heap(heap);\n    while(k > 0 && heap.length > 0){\n        let [sum, i, j] = heap.shift();\n        result.push([nums1[i], nums2[j]]);\n        if(j + 1 < nums2.length){\n            heap.push([nums1[i] + nums2[j + 1], i, j + 1]);\n            build_heap(heap);\n        }\n        k--;\n    }\n    return result;\n}\n",
+    "    let heap = [];\n    let result = [];\n    let i = 0;\n    let j = 0;\n    let len1 = nums1.length;\n    let len2 = nums2.length;\n    while(i < len1 && j < len2){\n        let sum = nums1[i] + nums2[j];\n        if(heap.length < k){\n            heap.push([sum, i, j]);\n        }else{\n            if(sum < heap[0][0]){\n                heap[0] = [sum, i, j];\n                heapify(heap, 0);\n            }\n        }\n        j++;\n        if(j == len2){\n            j = 0;\n            i++;\n        }\n    }\n    while(heap.length > 0){\n        let [sum, i, j] = heap[0];\n        result.push([nums1[i], nums2[j]]);\n        heap[0] = heap[heap.length - 1];\n        heap.pop();\n        heapify(heap, 0);\n        j++;\n        if(j < len2){\n            let sum = nums1[i] + nums2[j];\n            heap[0] = [sum, i, j];\n            heapify(heap, 0);\n        }\n    }\n    return result;\n}\n",
+    "    //create a min heap\n    let minHeap = new MinHeap();\n    //add the first pair to the min heap\n    minHeap.add([nums1[0], nums2[0], 0, 0]);\n    let result = [];\n    while (k > 0 && !minHeap.isEmpty()) {\n        let [val1, val2, i, j] = minHeap.poll();\n        result.push([val1, val2]);\n        if (i + 1 < nums1.length) {\n            minHeap.add([nums1[i + 1], nums2[j], i + 1, j]);\n        }\n        if (i === 0 && j + 1 < nums2.length) {\n            minHeap.add([nums1[i], nums2[j + 1], i, j + 1]);\n        }\n        k--;\n    }\n    return result;\n}\n"
+  ]
+}

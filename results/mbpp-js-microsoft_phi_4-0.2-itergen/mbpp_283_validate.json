@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString",
+    "    var s = n.toString();\n    var arr = s.split('');\n    for(var i=0;i<arr.length;i++){\n        var count = 0;\n        for(var j=0;j<arr.length;j++){\n            if(arr[i] == arr[j]){\n                count++;\n            }\n        }\n        if(count > Number(arr[i])){\n            return false;\n        }\n    }\n    return true;\n}\n\n",
+    "    let str = n.toString"
+  ]
+}

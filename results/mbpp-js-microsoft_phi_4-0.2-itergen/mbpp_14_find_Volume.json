@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_14_find_Volume",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the volume of a triangular prism.\nfunction find_Volume(l, b, h){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_14_find_Volume.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Volume;\n  assert.deepEqual(candidate(10, 8, 6),240);\n  assert.deepEqual(candidate(3, 2, 2),6);\n  assert.deepEqual(candidate(1, 2, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (l*b*h)/2;\n}\n",
+    "    return (l*b*h)/2;\n}\n",
+    "    return (l * b * h) / 2;\n}\n\n"
+  ]
+}

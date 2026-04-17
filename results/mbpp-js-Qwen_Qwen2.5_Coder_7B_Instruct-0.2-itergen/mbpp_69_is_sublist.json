@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_69_is_sublist",
+  "language": "js",
+  "prompt": "//Write a function to check whether an array contains the given sublist or not.\nfunction is_sublist(l, s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_69_is_sublist.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_sublist;\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [3, 7]),false);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [4, 3]),true);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [1, 6]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sub_set = false;\n    if (s.length == 0)\n        sub_set = true;\n    else if (s.length > l.length)\n        sub_set = false;\n    else {\n        for (var i = 0; i < l.length; i++) {\n            if (l[i] == s[0]) {\n                var n = 1;\n                while (n < s.length && l[i + n] == s[n])\n                    n++;\n                if (n == s.length)\n                    sub_set = true;\n            }\n        }\n    }\n    return sub_set;\n}\n",
+    "    var sub_set = false;\n    if (s.length == 0)\n        sub_set = true;\n    else if (s.length > l.length)\n        sub_set = false;\n    else {\n        for (var i = 0; i < l.length; i++) {\n            if (l[i] == s[0]) {\n                var n = 1;\n                while (n < s.length && l[i + n] == s[n])\n                    n++;\n                if (n == s.length)\n                    sub_set = true;\n            }\n        }\n    }\n    return sub_set;\n}\n",
+    "    var is_sublist = false;\n    if (s.length == 0)\n        is_sublist = true;\n    else if (s.length > l.length)\n        is_sublist = false;\n    else {\n        for (var i = 0; i < l.length; i++) {\n            if (l[i] == s[0]) {\n                var n = 1;\n                while (n < s.length && l[i + n] == s[n])\n                    n++;\n                if (n == s.length)\n                    is_sublist = true;\n            }\n        }\n    }\n    return is_sublist;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_803_is_perfect_square",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is a perfect square or not. https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/\nfunction is_perfect_square(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_803_is_perfect_square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_perfect_square;\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(36),true);\n  assert.deepEqual(candidate(14),false);\n  assert.deepEqual(candidate(196),true);\n  assert.deepEqual(candidate(125),false);\n  assert.deepEqual(candidate(15625),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n<0){\n        return false;\n    }\n    if(n==0 || n==1){\n        return true;\n    }\n    int i=1;\n    while(i*i<=n){\n        if(i*i==n){\n            return true;\n        }\n        i++;\n    }\n    return false;\n}\n",
+    "    if(n<0){\n        return false;\n    }\n    if(n==0 || n==1){\n        return true;\n    }\n    int i=1;\n    while(i*i<=n){\n        if(i*i==n){\n            return true;\n        }\n        i++;\n    }\n    return false;\n}",
+    "    if(n<0){\n        return false;\n    }\n    if(n==0 || n==1){\n        return true;\n    }\n    int start=1;\n    int end=n;\n    while(start<=end){\n        int mid=start+(end-start)/2;\n        if(mid*mid==n){\n            return true;\n        }\n        else if(mid*mid<n){\n            start=mid+1;\n        }\n        else{\n            end=mid-1;\n        }\n    }\n    return false;\n}"
+  ]
+}
