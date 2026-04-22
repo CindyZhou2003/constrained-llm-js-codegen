@@ -34,7 +34,7 @@ expression_statement: expr_safe ";"?
 function_declaration: "async"? "function" "*"? IDENTIFIER function_params_postfix compound_statement
 class_declaration: "class" IDENTIFIER ("extends" expression)? class_body
 class_body: "{" class_member* "}"
-class_member: ("static" | "getter" | "setter" | "public" | "private")? (class_method | class_property)
+class_member: ("static" | "get" | "set" | "async" | "public" | "private")? "*"? (class_method | class_property)
 class_property: "#"? IDENTIFIER ("=" expression)? ";"?
 class_method: "#"? IDENTIFIER function_params_postfix compound_statement
 compound_statement: "{" statement* "}"
@@ -42,23 +42,26 @@ compound_statement: "{" statement* "}"
 export_statement: "export" "default"? (declaration_statement | function_declaration | class_declaration)
                 | "export" "default" expression ";"
                 | "export" module_element ("from" module_element)? ";"?
+                | "export" "*" ("as" IDENTIFIER)? "from" module_element ";"?
 import_statement: "import" module_element ";"?
                 | "import" paren_enclosed_string ";"?
                 | "import" module_element "from" module_element ";"?
+                | "import" "*" "as" IDENTIFIER "from" module_element ";"?
+                | "import" IDENTIFIER "," curly_enclosed_module_names "from" module_element ";"?
 
 with_statement: "with" "(" expression ")" compound_statement
 try_catch_finally_statement: "try" compound_statement ("catch" ("(" expression ")")? compound_statement)? ("finally" compound_statement)?
-control_flow_statement: "break" ";"? | "continue" ";"? | "return" expression ";"? | "throw" expression ";"?
+control_flow_statement: "break" IDENTIFIER? ";"? | "continue" IDENTIFIER? ";"? | "return" expression? ";"? | "throw" expression ";"?
 do_while_statement: "do" statement "while" "(" expression ")" ";"?
 while_statement: "while" "(" expression ")" statement
-for_of_statement: "for" "(" expression "of" expression ")" statement
-for_in_statement: "for" "(" expression "in" expression ")" statement
+for_of_statement: "for" "(" (var_decl | expression) "of" expression ")" statement
+for_in_statement: "for" "(" (var_decl | expression) "in" expression ")" statement
 for_statement: "for" "(" (var_decl | expression)? ";" expression? ";" expression? ")" statement
 switch_statement: "switch" "(" expression ")" "{" case_clause* "}"
 case_clause: "case" expression ":" statement* | "default" ":" statement*
 if_statement: "if" "(" expression ")" statement ("else" statement)?
 declaration_statement: var_decl ";"?
-var_decl: ("var" | "let" | "const" | "static") lvalue "=" expression
+var_decl: ("var" | "let" | "const") lvalue ("=" expression)?
 
 lvalue: member_expression
 
@@ -180,7 +183,12 @@ paren_enclosed_expression: "(" expression? ")"
 
 object_literal: "{" comma_separated_properties? "}"
 comma_separated_properties: property ("," property)*
-property: "..." expression | (IDENTIFIER ":")? expression
+property: "..." expression
+        | "[" expression "]" ":" expression
+        | (IDENTIFIER | STRING_LITERAL | INTEGER_LITERAL) ":" expression
+        | ("get" | "set") IDENTIFIER function_params_postfix compound_statement
+        | IDENTIFIER function_params_postfix compound_statement
+        | IDENTIFIER
 
 function_expression: "async"? "function" function_params_postfix compound_statement
 class_expression: "class" class_body
@@ -204,7 +212,9 @@ spread_expr: "..."? expression
 
 function_params_postfix: "(" comma_separated_function_params? ")"
 comma_separated_function_params: function_parameter ("," function_parameter)*
-function_parameter: IDENTIFIER ("=" expression)? | object_literal
+function_parameter: "..."? IDENTIFIER ("=" expression)?
+                  | object_literal ("=" expression)?
+                  | array_literal ("=" expression)?
 
 module_element: module_names | curly_enclosed_module_names
 paren_enclosed_string: "(" STRING_LITERAL ")"
@@ -221,7 +231,7 @@ SLASH: "/"
 BIGINT_LITERAL: /\d+n/
 FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/ | /\d+\./
 INTEGER_LITERAL: /0[bB][01]+/ | /0[oO][0-7]+/ | /0[xX][0-9a-fA-F]+/ | /\d+/
-STRING_LITERAL: /'[^']*'/ | /"[^"]*"/
+STRING_LITERAL: /'([^'\\]|\\.)*'/ | /"([^"\\]|\\.)*"/
 TEMPLATE_LITERAL: /`([^`\\]*(\\.[^`\\]*)*)`/
 
 LINE_COMMENT: /\/\/[^\n\r]*/
