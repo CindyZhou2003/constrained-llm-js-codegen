@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_68_is_Monotonic",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array is monotonic or not.\nfunction is_Monotonic(A){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_68_is_Monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Monotonic;\n  assert.deepEqual(candidate([6, 5, 4, 4]),true);\n  assert.deepEqual(candidate([1, 2, 2, 3]),true);\n  assert.deepEqual(candidate([1, 3, 2]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (A.every((val, i) => i === 0 || A[i - 1] <= val) || A.every((val, i) => i === 0 || A[i - 1] >= val));\n}\n"
+  ]
+}

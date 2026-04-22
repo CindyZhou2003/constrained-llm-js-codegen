@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_643_text_match_wordz_middle",
+  "language": "js",
+  "prompt": "//Write a function that checks if a strings contains 'z', except at the start and end of the word.\nfunction text_match_wordz_middle(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_643_text_match_wordz_middle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_wordz_middle;\n  assert.deepEqual(candidate(\"pythonzabc.\"),true);\n  assert.deepEqual(candidate(\"zxyabc.\"),false);\n  assert.deepEqual(candidate(\"  lang  .\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let regex = /\\b\\w*z\\w*\\b/g;\n    return text.match(regex);\n}\n"
+  ]
+}

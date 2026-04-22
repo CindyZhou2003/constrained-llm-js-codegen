@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_463_max_subarray_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product subarray of the given array.\nfunction max_subarray_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_463_max_subarray_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_subarray_product;\n  assert.deepEqual(candidate([1, -2, -3, 0, 7, -8, -2]),112);\n  assert.deepEqual(candidate([6, -3, -10, 0, 2]),180);\n  assert.deepEqual(candidate([-2, -40, 0, -2, -3]),80);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_end_here = arr[0];\n    let min_end_here = arr[0];\n    let max_so_far = arr[0];\n    let max_product = null;\n\n    for(let i=1; i<arr.length; i++){\n        let temp = max_end_here;\n        max_end_here = Math.max(arr[i], max_end_here*arr[i], min_end_here*arr[i]);\n        min_end_here = Math.min(arr[i], temp*arr[i], min_end_here*arr[i]);\n        max_so_far = Math.max(max_so_far, max_end_here);\n    }\n\n    return max_so_far;\n}\n"
+  ]
+}

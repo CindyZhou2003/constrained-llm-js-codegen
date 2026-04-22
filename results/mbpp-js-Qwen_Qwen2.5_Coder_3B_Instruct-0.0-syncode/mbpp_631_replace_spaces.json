@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_631_replace_spaces",
+  "language": "js",
+  "prompt": "//Write a function to replace whitespaces with an underscore and vice versa in a given string.\nfunction replace_spaces(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_631_replace_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"Jumanji The Jungle\"),\"Jumanji_The_Jungle\");\n  assert.deepEqual(candidate(\"The_Avengers\"),\"The Avengers\");\n  assert.deepEqual(candidate(\"Fast and Furious\"),\"Fast_and_Furious\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newText = text.split(' ').join('_');\n    newText = newText.split('_').join(' ');\n    return newText;\n}\n"
+  ]
+}

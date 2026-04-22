@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_580_extract_even",
+  "language": "js",
+  "prompt": "//Write a function to remove uneven elements in the nested mixed array.\nfunction extract_even(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_580_extract_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_even;\n  assert.deepEqual(candidate([4, 5, [7, 6, [2, 4]], 6, 8]),[4, [6, [2, 4]], 6, 8]);\n  assert.deepEqual(candidate([5, 6, [8, 7, [4, 8]], 7, 9]),[6, [8, [4, 8]]]);\n  assert.deepEqual(candidate([5, 6, [9, 8, [4, 6]], 8, 10]),[6, [8, [4, 6]], 8, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_tuple.filter(ele => ele % 2 == 0);\n    return res;\n}\ntest_tuple = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nprint(extract_even(test_tuple));"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_558_digit_distance_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert numbers to strings and pad with zeros to ensure same length\n    let str1 = n1.toString().padStart(n2.toString().length, '0');\n    let str2 = n2.toString().padStart(n1.toString().length, '0');\n\n    // Initialize sum variable\n    let sum = 0;\n\n    // Loop through each character in the strings\n    for(let i = 0; i < str1.length; i++){\n        // Calculate absolute difference between corresponding characters\n        let diff = Math.abs(str1[i] - str2[i]);\n\n        // Add difference to sum\n        sum += diff;\n    }\n\n    return sum;\n}\n"
+  ]
+}

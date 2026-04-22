@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_785_tuple_str_int",
+  "language": "js",
+  "prompt": "//Write a function to convert array string to integer array.\nfunction tuple_str_int(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_785_tuple_str_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_str_int;\n  assert.deepEqual(candidate(\"(7, 8, 9)\"),[7, 8, 9]);\n  assert.deepEqual(candidate(\"(1, 2, 3)\"),[1, 2, 3]);\n  assert.deepEqual(candidate(\"(4, 5, 6)\"),[4, 5, 6]);\n  assert.deepEqual(candidate(\"(7, 81, 19)\"),[7, 81, 19]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split(',').map(int);\n    return res;\n}\ntest_str = \"1,2,3,4,5\";\nprint(\"The original string : \" + test_str);\nprint(\"The converted tuple : \" + tuple_str_int(test_str));import java.1.0;\nimport java.2.0;\nimport java.3.0;\nimport java.4.0;\nimport java.5.0;\nimport java.6.0;\nimport java.7.0;\nimport java.8.0;\nimport java.9.0;\nimport java.10.0;\nimport java.11.0;\nimport java.12.0;\nimport java.13.0;\nimport java.14.0;\nimport java.15.0;\nimport java.16.0;\nimport java.17.0;\nimport java.18.0;\nimport java.19.0;\nimport java.20.0;\nimport java.21.0;\nimport java.22.0;\nimport java.23.0;\nimport java.24.0;\nimport java.25.0;\nimport java.26.0;\nimport java.27.0;\nimport java.28.0;\nimport java.29.0;\nimport java.30.0;\nimport java.31.0;\nimport java.32.0;\nimport java.33.0;\nimport java.34.0;\nimport java.35.0;\nimport java.36.0;\nimport java.37.0;\nimport java.38.0;\nimport java.39.0;\nimport java.40.0;\nimport java.41.0;\nimport java.42.0;\nimport java.43.0;\nimport java.44.0;\nimport java.45.0;\nimport java.46.0;\nimport java.47.0;\nimport java.48.0;\nimport java.49.0;\nimport java.50.0;\nimport java.51.0;\nimport java.52.0;\nimport java.53.0;\nimport java.54.0;\nimport java.55.0;\nimport java.56.0;\nimport java.57.0;\nimport java.58.0;\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_395_first_non_repeating_character",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first non-repeated character in a given string.\nfunction first_non_repeating_character(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_395_first_non_repeating_character.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_non_repeating_character;\n  assert.deepEqual(candidate(\"abcabc\"),undefined);\n  assert.deepEqual(candidate(\"abc\"),\"a\");\n  assert.deepEqual(candidate(\"ababc\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = {};\n    var str = str1.split('');\n    for(var i = 0; i < str.length; i++){\n        if(count[str[i]]){\n            count[str[i]]++;\n        } else {\n            count[str[i]] = 1;\n        }\n    }\n    for(var j = 0; j < str.length; j++){\n        if(count[str[j]] === 1){\n            return str[j];\n        }\n    }\n    return null;\n}"
+  ]
+}

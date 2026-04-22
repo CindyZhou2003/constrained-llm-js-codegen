@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_635_heap_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort the given array.\nfunction heap_sort(iterable){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_635_heap_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_sort;\n  assert.deepEqual(candidate([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]),[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 25, 58]),[14, 22, 25, 25, 35, 58, 65, 75, 85]);\n  assert.deepEqual(candidate([7, 1, 9, 5]),[1, 5, 7, 9]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert iterable to list\n    iterable = list(iterable)\n    #Get length of iterable\n    n = len(iterable)\n    #Build max heap\n    for i in range(n//2 - 1, -1, -1):\n        heapify(iterable, n, i)\n    #Extract elements from heap one by one\n    for i in range(n-1, 0, -1):\n        iterable[i], iterable[0] = iterable[0], iterable[i]\n        heapify(iterable, i, 0)\n    return iterable\n\ndef heapify(iterable, n, i):\n    #Initialize largest as root\n    largest = i\n    #Left child index\n    left = 2*i + 1\n    #Right child index\n    right = 2*i + 2\n    #Check if left child exists and is greater than root\n    if left < n and iterable[left] > iterable[largest]:\n        largest = left\n    #Check if right child exists and is greater than root\n    if right < n and iterable[right] > iterable[largest]:\n        largest = right\n    #Change root, if needed\n    if largest != i:\n        iterable[i], iterable[largest] = iterable[largest], iterable[i]\n        #Heapify the root.\n        heapify(iterable, n, largest)\n\n#Test the function\nprint(heap_sort([3, 6, 8, 10, 1, 2, 1])) #Output: [1, 1, 2, 3, 6, 8, 10]"
+  ]
+}

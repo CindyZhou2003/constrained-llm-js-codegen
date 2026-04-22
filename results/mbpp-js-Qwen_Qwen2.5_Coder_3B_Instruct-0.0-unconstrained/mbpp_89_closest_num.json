@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert N to string\n    let str = N.toString();\n    //Initialize an empty array to store the digits of N\n    let digits = [];\n    //Loop through each character in the string\n    for(let i = 0; i < str.length; i++){\n        //Push the character to the digits array\n        digits.push(str[i]);\n    }\n    //Initialize a variable to store the closest smaller number\n    let closest = -1;\n    //Loop through each digit in the digits array\n    for(let i = 0; i < digits.length; i++){\n        //If the current digit is less than the previous digit, update the closest variable\n        if(digits[i] < digits[i-1]){\n            //Convert the closest variable to a string and push it to the digits array\n            digits.splice(i, 0, closest.toString());\n            //Break out of the loop\n            break;\n        }\n    }\n    //Convert the digits array back to a string and return it\n    return digits.join('');\n}"
+  ]
+}

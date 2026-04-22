@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Get the mask for the middle bits\n    let mask = (n >> 1) & ((1 << (n - 2)) - 1);\n    // Toggle the middle bits\n    return n ^ mask;\n}"
+  ]
+}

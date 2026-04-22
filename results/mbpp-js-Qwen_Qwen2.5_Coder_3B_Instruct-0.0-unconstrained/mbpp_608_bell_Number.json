@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_608_bell_Number",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find nth bell number.\nfunction bell_Number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_608_bell_Number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bell_Number;\n  assert.deepEqual(candidate(2),2);\n  assert.deepEqual(candidate(3),5);\n  assert.deepEqual(candidate(4),15);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var dp = new Array(n+1);\n    for(var i=0;i<=n;i++){\n        dp[i] = new Array(i+1);\n    }\n    dp[0][0] = 1;\n    for(var i=1;i<=n;i++){\n        dp[i][0] = dp[i-1][i-1];\n        for(var j=1;j<=i;j++){\n            dp[i][j] = dp[i-1][j-1] + dp[i][j-1];\n        }\n    }\n    return dp[n][0];\n}"
+  ]
+}

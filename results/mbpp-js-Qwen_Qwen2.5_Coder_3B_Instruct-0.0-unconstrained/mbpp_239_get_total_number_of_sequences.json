@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_239_get_total_number_of_sequences",
+  "language": "js",
+  "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let dp = new Array(n+1).fill(0);\n    dp[0] = 1;\n    for(let i=1; i<=n; i++){\n        for(let j=1; j<=m; j++){\n            if(j >= 2*dp[i-1]){\n                dp[i] += dp[i-1];\n            }\n        }\n    }\n    return dp[n];\n}"
+  ]
+}

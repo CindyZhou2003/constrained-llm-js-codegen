@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string\n    let str = num.toString();\n    // Initialize the next smallest palindrome\n    let next_palindrome = num + 1;\n    // Loop until we find the next smallest palindrome\n    while (true) {\n        // Convert the next palindrome to a string\n        let next_str = next_palindrome.toString();\n        // Check if the next palindrome is a palindrome\n        if (next_str === next_str.split('').reverse().join('')) {\n            // Return the next smallest palindrome\n            return next_palindrome;\n        }\n        // Increment the next palindrome\n        next_palindrome++;\n    }\n}"
+  ]
+}

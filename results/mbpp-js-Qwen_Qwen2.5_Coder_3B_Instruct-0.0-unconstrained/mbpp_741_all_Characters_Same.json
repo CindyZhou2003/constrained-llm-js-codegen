@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_741_all_Characters_Same",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the characters are same or not.\nfunction all_Characters_Same(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_741_all_Characters_Same.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Characters_Same;\n  assert.deepEqual(candidate(\"python\"),false);\n  assert.deepEqual(candidate(\"aaa\"),true);\n  assert.deepEqual(candidate(\"data\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return new Set(s).size === 1;\n}"
+  ]
+}

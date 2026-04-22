@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_726_multiply_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes as input an array of numbers (t_1,...,t_{N+1}) and returns an array of length N where the i-th element of the array is equal to t_i * t_{i+1}.\nfunction multiply_elements(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_726_multiply_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = multiply_elements;\n  assert.deepEqual(candidate([1, 5, 7, 8, 10]),[5, 35, 56, 80]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 7]),[8, 20, 30, 42]);\n  assert.deepEqual(candidate([12, 13, 14, 9, 15]),[156, 182, 126, 135]);\n  assert.deepEqual(candidate([12]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = []\n    for i in range(len(test_tup)-1):\n        res.append(test_tup[i] * test_tup[i+1])\n    return res\n#Example usage:\ntest_tup = [1, 2, 3, 4]\nprint(multiply_elements(test_tup)) # Output: [2, 6, 12]\n```\n\n\nIn this code, we define a function `multiply_elements` that takes an array of numbers as input. We initialize an empty list `res` to store the results. We then iterate over the input array using a for loop, multiplying each element with its next element and appending the result to the `res` list. Finally, we return the `res` list.\n\nWe then demonstrate how to use this function by passing a sample input array `[1, 2, 3, 4]` to the function. The function returns a new array `[2, 6, 12]`, which contains the products of consecutive elements from the input array. This output is printed to the console. ```\n\n\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Create a new array by concatenating the string and array\n    res = [test_str] + test_list\n    return res\n\n# Example usage\ntest_list = [10, 20, 30]\ntest_str = \"Hello\"\nresult = new_tuple(test_list, test_str)\nprint(result)  # Output: ['Hello', 10, 20, 30]\n```\n\n\nIn this solution, we define a function `new_tuple` that takes two parameters: `test_list` (an array) and `test_str` (a string). The function creates a new array by concatenating the string and the array using the `+` operator. The resulting array is then returned.\n\nWe demonstrate the usage of the `new_tuple` function with an example where `test_list` contains the numbers `[10, 20, 30]` and `test_str` contains the string `\"Hello\"`. The function returns a new array `['Hello', 10, 20, 30]`, which is printed to the console. This shows how the function successfully combines the string and array into a single array."
+  ]
+}

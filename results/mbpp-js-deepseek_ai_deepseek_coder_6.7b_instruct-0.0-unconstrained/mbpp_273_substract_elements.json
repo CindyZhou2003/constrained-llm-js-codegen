@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_273_substract_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and subtracts the elements of the first array by the elements of the second array with the same index.\nfunction substract_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_273_substract_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = substract_elements;\n  assert.deepEqual(candidate([10, 4, 5], [2, 5, 18]),[8, -1, -13]);\n  assert.deepEqual(candidate([11, 2, 3], [24, 45, 16]),[-13, -43, -13]);\n  assert.deepEqual(candidate([7, 18, 9], [10, 11, 12]),[-3, 7, -3]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return tuple(x_i - y_i for x_i, y_i in zip(test_tup1, test_tup2))\n}\n\ntest_tup1 = (10, 15, 20, 25, 30)\ntest_tup2 = (5, 10, 15, 20, 25)\nprint(substract_elements(test_tup1, test_tup2))\n\n#Output: (5, 5, 5, 5, 5)\n\n#Explanation: The elements of the first tuple (10, 15, 20, 25, 30) are subtracted by the elements of the second tuple (5, 10, 15, 20, 25) with the same index.\n#The result is (10-5, 15-10, 20-15, 25-20, 30-25) which is (5, 5, 5, 5, 5).\n\n#Note: The function assumes that the two tuples have the same length. If they don't, the function will only subtract the elements that exist in both tuples.\n\n#Note: The function uses the built-in zip function to iterate over the two tuples simultaneously. The built-in tuple function is used to create a new tuple that contains the results of the subtraction.\n\n#Note: The function uses the built-in function for subtraction (-).\n\n#Note: The function uses the built-in function for tuple creation (tuple).\n\n#Note: The function uses the built-in function for iterating over two sequences simultaneously (zip).\n\n#Note: The function uses the built-in function for generating a sequence of results (generator expression).\n\n#Note: The function uses the built-in function for iterating over a sequence (for).\n\n#Note: The function uses the built-in function for creating a new sequence (list).\n\n#Note: The function uses the built-in function for creating a new sequence (map).\n\n#Note: The function uses the built-in function for creating a new sequence (iter).\n\n"
+  ]
+}

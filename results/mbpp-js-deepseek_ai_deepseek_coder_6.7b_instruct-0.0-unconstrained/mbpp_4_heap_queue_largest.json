@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let heap = new MinHeap();\n    for(let num of nums){\n        heap.insert(num);\n        if(heap.size() > n){\n            heap.extractMin();\n        }\n    }\n    let result = [];\n    while(heap.size() > 0){\n        result.unshift(heap.extractMin());\n    }\n    return result;\n}\n\nclass MinHeap{\n    constructor(){\n        this.heap = [];\n    }\n    parent(i){\n        return Math.floor((i-1)/2);\n    }\n    leftChild(i){\n        return 2*i + 1;\n    }\n    rightChild(i){\n        return 2*i + 2;\n    }\n    size(){\n        return this.heap.length;\n    }\n    insert(val){\n        this.heap.push(val);\n        this.heapifyUp(this.heap.length - 1);\n    }\n    heapifyUp(i){\n        if(i !== 0 && this.heap[this.parent(i)] > this.heap[i]){\n            let temp = this.heap[this.parent(i)];\n            this.heap[this.parent(i)] = this.heap[i];\n            this.heap[i] = temp;\n            this.heapifyUp(this.parent(i));\n        }\n    }\n    extractMin(){\n        if(this.heap.length === 1){\n            return this.heap.pop();\n        }\n        let root = this.heap[0];\n        this.heap[0] = this.heap.pop();\n        this.heapifyDown(0);\n        return root;\n    }\n    heapifyDown(i){\n        let left = this.leftChild(i);\n        let right = this.rightChild(i);\n        let smallest = i;\n        if(left < this.heap.length && this.heap[left] < this.heap[smallest]){\n            smallest = left;\n        }\n        if(right < this.heap."
+  ]
+}

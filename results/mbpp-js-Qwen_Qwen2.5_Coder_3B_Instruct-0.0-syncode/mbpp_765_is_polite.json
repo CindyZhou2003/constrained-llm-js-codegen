@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_765_is_polite",
+  "language": "js",
+  "prompt": "//Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/\nfunction is_polite(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_765_is_polite.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_polite;\n  assert.deepEqual(candidate(7),11);\n  assert.deepEqual(candidate(4),7);\n  assert.deepEqual(candidate(9),13);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n%2==0){\n        return true;\n    }\n    return false;\n}"
+  ]
+}

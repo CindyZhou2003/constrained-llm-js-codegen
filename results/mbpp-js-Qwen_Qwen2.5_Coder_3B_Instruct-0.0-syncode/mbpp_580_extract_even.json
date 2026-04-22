@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_580_extract_even",
+  "language": "js",
+  "prompt": "//Write a function to remove uneven elements in the nested mixed array.\nfunction extract_even(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_580_extract_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_even;\n  assert.deepEqual(candidate([4, 5, [7, 6, [2, 4]], 6, 8]),[4, [6, [2, 4]], 6, 8]);\n  assert.deepEqual(candidate([5, 6, [8, 7, [4, 8]], 7, 9]),[6, [8, [4, 8]]]);\n  assert.deepEqual(candidate([5, 6, [9, 8, [4, 6]], 8, 10]),[6, [8, [4, 6]], 8, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_tuple.filter(ele => ele % 2 == 0);\n    return res;\n}\ntest_tuple = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nprint(extract_even(test_tuple));import java.1;\nimport java.2;\nimport java.3;\nimport java.4;\nimport java.5;\nimport java.6;\nimport java.7;\nimport java.8;\nimport java.9;\nimport java.10;\nimport java.11;\nimport java.12;\nimport java.13;\nimport java.14;\nimport java.15;\nimport java.16;\nimport java.17;\nimport java.18;\nimport java.19;\nimport java.20;\nimport java.21;\nimport java.22;\nimport java.23;\nimport java.24;\nimport java.25;\nimport java.26;\nimport java.27;\nimport java.28;\nimport java.29;\nimport java.30;\nimport java.31;\nimport java.32;\nimport java.33;\nimport java.34;\nimport java.35;\nimport java.36;\nimport java.37;\nimport java.38;\nimport java.39;\nimport java.40;\nimport java.41;\nimport java.42;\nimport java.43;\nimport java.44;\nimport java.45;\nimport java.46;\nimport java.47;\nimport java.48;\nimport java.49;\nimport java.50;\nimport java.51;\nimport java.52;\nimport java.53;\nimport java.54;\nimport java.55;\nimport java.56;\nimport java.57;\nimport java.58;\nimport java.59;\nimport java.60;\nimport java.61;\nimport java.62;\nimport java.63;\nimport java.64;\nimport java.65;\nimport java.66;\nimport java.67;\nimport java.68;\nimport java.69;\nimport java.70;\nimport java.71;\nimport java.72;\nimport java.73;\nimport java.74;\nimport java.75;\nimport java.76;\nimport java"
+  ]
+}

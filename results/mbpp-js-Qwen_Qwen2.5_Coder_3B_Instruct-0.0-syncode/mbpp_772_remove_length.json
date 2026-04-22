@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_772_remove_length",
+  "language": "js",
+  "prompt": "//Write a function to remove all the words with k length in the given string.\nfunction remove_length(test_str, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_772_remove_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_length;\n  assert.deepEqual(candidate(\"The person is most value tet\", 3),\"person is most value\");\n  assert.deepEqual(candidate(\"If you told me about this ok\", 4),\"If you me about ok\");\n  assert.deepEqual(candidate(\"Forces of darkeness is come into the play\", 4),\"Forces of darkeness is the\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split(\" \").filter(ele => ele.length != K);\n    return res.join(\" \");\n}\ntest_str = \"Geeks for Geeks\";\nK = 5;\nprint(remove_length(test_str, K));import java.1.8.0_202;\nimport java.1.8.0_202.util.Arrays;\nimport java.1.8.0_202.util.List;\nimport java.1.8.0_202.util.stream.Collectors;\npublic class RemoveWordsWithKLength {\n    public static void main(String[] args) {\n        String testStr = \"Geeks for Geeks\";\n        int K = 5;\n        String result = removeWordsWithKLength(testStr, K);\n        System.out.println(result);\n    }\n    public static String removeWordsWithKLength(String testStr, int K) {\n        List<String> words = Arrays.asList(testStr.split(\" \"));\n        List<String> filteredWords = words.stream()\n                .filter(word -> word.length() != K)\n                .collect(Collectors.toList());\n        return String.join(\" \", filteredWords);\n    }\n}\n```\n\nThis code defines a function `remove_length` that takes a string and an integer `K` as input. It splits the string into words, filters out the words with length `K`, and then joins the remaining words back into a string. The `main` method demonstrates how to use this function with a sample string and integer. The `RemoveWordsWithKLength` class in Java uses the `Stream` API to achieve the same result. The `removeWordsWithKLength` method splits the input string into words, filters out the words with length `K`, and then joins the remaining words back into a string. The `main` method demonstrates how to use this function with a sample string and integer. The `RemoveWordsWithKLength` class in Java uses the `Stream` API to achieve the same result. The `removeWordsWithKLength` method splits the input string into words, filters out the words with length `K`, and then joins the remaining words back into a string. The `main` method demonstrates how to use this function with a sample string and integer. The `RemoveWordsWithKLength` class in Java uses the `Stream` API to achieve the same result. The `removeWordsWithKLength` method splits the input string into words, filters out the words with length `K`, and then joins the remaining words back"
+  ]
+}
