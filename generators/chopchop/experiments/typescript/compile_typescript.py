@@ -2,8 +2,11 @@ import concurrent.futures
 import subprocess
 import tempfile
 import os
+import shutil
 
 # # # GPT generated code below
+
+TSC = shutil.which('tsc') or r'C:\Users\Cindy\AppData\Roaming\npm\tsc.cmd'
 
 
 def compile_typescript(ts_code: str) -> bool:
@@ -16,7 +19,7 @@ def compile_typescript(ts_code: str) -> bool:
     try:
         # Run the TypeScript compiler (tsc) on the temp file
         result = subprocess.run(
-            ['tsc', '--target', 'es2016', '--module', 'commonjs', temp_file_path],
+            [TSC, '--target', 'es2016', '--module', 'commonjs', temp_file_path],
             capture_output=True, text=True
         )
 
@@ -47,7 +50,7 @@ def batch_compile_typescript_to_file(
             return True
         try:
             compile_result = subprocess.run(
-                ["tsc", "--target", "es2016", "--module", "commonjs", ts_path],
+                [TSC, "--target", "es2016", "--module", "commonjs", ts_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True

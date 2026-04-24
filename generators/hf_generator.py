@@ -17,13 +17,16 @@ class HFGenerator(BaseGenerator):
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
         input_len = inputs.input_ids.shape[1]
         
-        temp= kwargs.get("temperature")
+        temp = kwargs.get("temperature")
+        do_sample = temp > 0
         model_params = {
             "max_new_tokens": kwargs.get("max_new_tokens"),
-            "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
+            "do_sample": do_sample,
+            "temperature": temp if do_sample else None,
+            "top_p": None,
+            "top_k": None,
+            "repetition_penalty": None,
         }
-        if temp > 0:
-            model_params["temperature"] = temp
         
         with torch.no_grad():
             outputs = self.model.generate(

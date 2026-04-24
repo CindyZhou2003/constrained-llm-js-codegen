@@ -20,20 +20,46 @@ class ItergenGenerator(BaseGenerator):
         self.itergen = IterGen(
             **itergen_params
         )
+        # dev_mode=True (the IterGen default) causes grammar parsing exceptions
+        # to be re-raised from forward(), which makes the outer loop break on any
+        # incremental parse failure (e.g. partial regex literals, complex
+        # expressions). Disable it so failures are handled gracefully instead.
+        self.itergen.dev_mode = False
         
+    def _post_process_stop_itergen(self, text: str, stop_tokens, prompt_brace_depth: int) -> str:
+        """Like _post_process_stop, but skips \\n// and \\n/* when they appear inside
+        a function body (brace depth > 0).  Grammar-constrained generation cannot start
+        a new function declaration inside the body, so those comment markers are safe."""
+        if not stop_tokens:
+            return text
+        min_stop_index = len(text)
+        found = False
+        for stop in stop_tokens:
+            idx = text.find(stop)
+            if idx == -1:
+                continue
+            if stop in ('\n//', '\n/*'):
+                # Only apply if the comment is at the top level (brace depth == 0)
+                pre = text[:idx]
+                depth = prompt_brace_depth + pre.count('{') - pre.count('}')
+                if depth > 0:
+                    continue
+            min_stop_index = min(min_stop_index, idx)
+            found = True
+        return text[:min_stop_index] if found else text
+
     def generate(self, prompt: str, stop_tokens, **kwargs) -> str:
-        
-        temp= kwargs.get("temperature")
-        itergen_params = {
-            "model_id": self.itergen.model_id,
-            "grammar": self.itergen.grammar,
-            "parse_output_only": True,            
-            "recurrence_penalty": 0.0,
+
+        temp = kwargs.get("temperature")
+        # Only pass generation-time params to forward() — NOT model_id, grammar,
+        # parse_output_only, or recurrence_penalty, which are init-time concerns
+        # and would be forwarded to GenerationConfig.update() where they are invalid.
+        forward_params = {
             "max_new_tokens": kwargs.get("max_new_tokens"),
-            "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
+            "do_sample": temp > 0,
         }
         if temp > 0:
-            itergen_params["temperature"] = temp
+            forward_params["temperature"] = temp
         
         self.itergen.start(prompt=prompt)
         
@@ -79,18 +105,14 @@ class ItergenGenerator(BaseGenerator):
         except Exception:
             pass
         
-        # print(f"DEBUG: Starting generation. Max tokens: {kwargs.get('max_new_tokens')}")
-        
         # Count opening braces in prompt to track when the function body is complete
         prompt_brace_depth = prompt.count('{') - prompt.count('}')
-        
+
         # Increase loop limit significantly. Assuming 1 step ~= 1 token roughly, use max_new_tokens + buffer
         max_steps = kwargs.get("max_new_tokens", 512)
 
         for step in range(max_steps):
-            
-            # self.itergen.forward(unit="statement", num=1, **intergen_params)
-            # print(f"Step {step+1}:{self.itergen.structured_gen[0] if self.itergen.structured_gen else ''}\n")
+
             # semantic checks
             pre_counts = {}
 
@@ -101,32 +123,33 @@ class ItergenGenerator(BaseGenerator):
                 except Exception:
                     pre_counts[cat] = 0
 
-
             # forward 1 step
             try:
-                self.itergen.forward(unit="statement", num=1, **itergen_params)
+                self.itergen.forward(unit="statement", num=1, **forward_params)
             except Exception as e:
-                # Simply log and break on any error - don't try complex recovery
-                print(f"DEBUG: Forward step failed: {e}")
                 break
 
             current_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
-            # print(f"DEBUG: Step {step+1} code len: {len(current_code)}")
-            print(f"DEBUG: Step {step+1} current code:\n{current_code}\n---")
 
             # --- Early termination checks ---
             generated_so_far = current_code[len(prompt):] if current_code.startswith(prompt) else current_code
             
-            # Check 1: Stop tokens — if any stop token appears in generated text, stop immediately
+            # Check 1: Stop tokens — if any stop token appears in generated text, stop immediately.
+            # Skip comment-style stop tokens (\n// and \n/*) when inside a function body
+            # (brace depth > 0), since the grammar already prevents new function declarations
+            # there and IterGen allows comments anywhere via %ignore.
             if stop_tokens and generated_so_far:
                 should_stop = False
+                gen_depth = prompt_brace_depth + generated_so_far.count('{') - generated_so_far.count('}')
                 for stop in stop_tokens:
                     if stop in generated_so_far:
+                        if stop in ('\n//', '\n/*') and gen_depth > 0:
+                            continue  # Comments inside function body are fine for grammar-constrained gen
                         should_stop = True
                         break
                 if should_stop:
                     break
-            
+
             # Check 2: Brace depth — if the function body is complete (all braces balanced), stop
             if generated_so_far and prompt_brace_depth > 0:
                 gen_open = generated_so_far.count('{')
@@ -146,109 +169,146 @@ class ItergenGenerator(BaseGenerator):
             # semantic validation rules
             is_valid = True
             violation_reason = ""
+
+            # Build a scope-aware declaration map by scanning the generated text.
+            # decl_at_depth[var_name] = list of (brace_depth, keyword) for every
+            # declaration of that name seen so far.  Starting depth is 1 because the
+            # prompt already opened the function body with '{'.
+            #
+            # This lets us distinguish legitimate inner-scope shadowing
+            #   (outer `let i = 0`; inner `for (let i = 0; ...)` at a deeper depth)
+            # from true same-scope redeclarations.
+            full_gen_so_far = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+            decl_at_depth: dict = {}   # var_name -> [(depth, keyword), ...]
+            const_identifiers: set = set()
             current_identifiers = base_identifiers.copy()
-            const_identifiers = set() # Track consts separately
-            
-            # 1. Track Declarations and Const Immutability
-            decl_start_idx = pre_counts.get("var_decl", 0)
-            for idx, decl_str in enumerate(post_items["var_decl"]):
-                match = re.search(r'\s*(?:var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)', decl_str)
-                if match:
-                    var_name = match.group(1)
-                    decl_keyword = decl_str.strip().split()[0]  # 'var', 'let', or 'const'
-                    
-                    # Rule 1a: Check for Redeclaration (Only for let/const, var allows redeclaration)
-                    if idx >= decl_start_idx and decl_keyword in ('let', 'const'):
-                        if var_name in current_identifiers:
-                            violation_reason = f"Redeclared variable: '{var_name}'"
-                            is_valid = False
-                            break
 
-                    current_identifiers.add(var_name)
-                    # Identify if this is a 'const' declaration
-                    if decl_str.strip().startswith("const"):
-                        const_identifiers.add(var_name)
-            
-
-            for param_str in post_items["function_parameter"]:
-                # simple split for now
-                if "=" in param_str:
-                     p_name = param_str.split('=')[0].strip()
+            scan_depth = 1
+            scan_i = 0
+            scan_text = generated_so_far  # only the generated portion
+            _IDENT = re.compile(r'(var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)')
+            _FOR_PAREN = re.compile(r'for\s*\($')  # matches 'for(' at end of a slice
+            paren_depth = 0        # track '(' nesting
+            in_for_header = False  # True while inside a for(...) header
+            for_paren_depth = 0   # the paren_depth at which the for-header opened
+            while scan_i < len(scan_text):
+                ch = scan_text[scan_i]
+                if ch == '{':
+                    scan_depth += 1
+                    scan_i += 1
+                elif ch == '}':
+                    scan_depth = max(1, scan_depth - 1)
+                    scan_i += 1
+                elif ch == '(':
+                    paren_depth += 1
+                    # Check if the text up to and including this '(' ends with 'for('
+                    if _FOR_PAREN.search(scan_text[:scan_i + 1]):
+                        in_for_header = True
+                        for_paren_depth = paren_depth
+                    scan_i += 1
+                elif ch == ')':
+                    if in_for_header and paren_depth == for_paren_depth:
+                        in_for_header = False
+                    paren_depth = max(0, paren_depth - 1)
+                    scan_i += 1
+                elif ch in ('"', "'"):          # skip string literals
+                    q = ch; scan_i += 1
+                    while scan_i < len(scan_text) and scan_text[scan_i] != q:
+                        if scan_text[scan_i] == '\\':
+                            scan_i += 1
+                        scan_i += 1
+                    scan_i += 1
+                elif scan_text[scan_i:scan_i+2] == '//':  # skip line comments
+                    while scan_i < len(scan_text) and scan_text[scan_i] != '\n':
+                        scan_i += 1
+                elif scan_text[scan_i:scan_i+2] == '/*':  # skip block comments
+                    scan_i += 2
+                    while scan_i < len(scan_text) - 1 and scan_text[scan_i:scan_i+2] != '*/':
+                        scan_i += 1
+                    scan_i += 2
                 else:
-                     p_name = param_str.strip()
+                    m = _IDENT.match(scan_text, scan_i)
+                    # Only match at a word boundary (not mid-identifier)
+                    if m and (scan_i == 0 or not (scan_text[scan_i-1].isalnum() or scan_text[scan_i-1] == '_')):
+                        kw, vname = m.group(1), m.group(2)
+                        current_identifiers.add(vname)
+                        if not in_for_header:
+                            # for(let i) / for(const x) have their own per-iteration scope;
+                            # exclude from same-scope redeclaration tracking and const tracking.
+                            decl_at_depth.setdefault(vname, []).append((scan_depth, kw))
+                            if kw == 'const':
+                                const_identifiers.add(vname)
+                        scan_i = m.end()
+                    else:
+                        scan_i += 1
+
+            # Also collect function parameters into current_identifiers
+            for param_str in post_items["function_parameter"]:
+                p_name = (param_str.split('=')[0].strip() if '=' in param_str else param_str.strip())
                 if p_name:
                     current_identifiers.add(p_name)
 
-            # Heuristic: Scan for implicit declarations (catch, for-in/of, arrow functions) that might be missed by simple views
-            # Since we re-enable strict checking, we must ensure these valid declaring contexts are captured.
-            full_gen_so_far = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
-            
-            # 1. catch(e)
+            # Implicit declarations (catch, for-in/of, arrow params)
             current_identifiers.update(re.findall(r'catch\s*\(\s*([a-zA-Z_$][a-zA-Z0-9_$]*)', full_gen_so_far))
-            # 2. for (x of y) / for (x in y)
             current_identifiers.update(re.findall(r'for\s*\(\s*(?:var|let|const\s+)?([a-zA-Z_$][a-zA-Z0-9_$]*)\s+(?:of|in)', full_gen_so_far))
-            # 3. Arrow function params (simple Identifier => ...)
             current_identifiers.update(re.findall(r'(?:^|[\W])([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=>', full_gen_so_far))
 
-            # DISABLED: Undeclared variable check causes too many false positives
-            # The parser extracts identifiers from comments, property accesses, etc.
-            # which falsely triggers this check (e.g., 'ray' from 'array' in comments).
-            # Grammar constraints ensure syntactic validity; semantic checks are over-engineering.
-            # for prim_str in post_items["primary_safe_non_numeric"][pre_counts.get("primary_safe_non_numeric", 0):]:
-            #     token = prim_str.strip()
-            #     if re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token):
-            #             if token not in current_identifiers:
-            #                violation_reason = f"Undeclared var: '{token}'"
-            #                is_valid = False
-            #                break
+            # 1. Redeclaration: `let`/`const x` at brace depth D conflicts only when
+            # another declaration of `x` already exists at the same depth D.
+            decl_start_idx = pre_counts.get("var_decl", 0)
+            new_decls = post_items["var_decl"][decl_start_idx:]
+            for decl_str in new_decls:
+                m = re.search(r'(var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)', decl_str)
+                if not m:
+                    continue
+                kw, var_name = m.group(1), m.group(2)
+                if kw not in ('let', 'const'):
+                    continue
+                entries = decl_at_depth.get(var_name, [])
+                if len(entries) >= 2:
+                    new_depth = entries[-1][0]
+                    if any(d == new_depth for (d, _) in entries[:-1]):
+                        violation_reason = f"Redeclared '{var_name}' at depth {new_depth}"
+                        is_valid = False
+                        break
 
-            # 2. Check Assignments (Const reassignment & Literal assignment)
+            # 2. Undeclared variable: pure identifier that hasn't been declared yet.
+            # SPM's primary_safe_non_numeric only captures variable-position identifiers,
+            # not property names (.prop) or method names, so false positives are low.
+            if is_valid:
+                for prim_str in post_items["primary_safe_non_numeric"][pre_counts.get("primary_safe_non_numeric", 0):]:
+                    token = prim_str.strip()
+                    if re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token) and token not in current_identifiers:
+                        violation_reason = f"Undeclared: '{token}'"
+                        is_valid = False
+                        break
+
+            # 3. Const reassignment: `constVar = ...` where LHS is not a member access.
             if is_valid:
                 assignment_ops = ["=", "+=", "-=", "*=", "/=", "%=", "**=", ">>=", "<<=", ">>>=", "&=", "^=", "&&=", "||=", "??="]
-                assignment_ops.sort(key=len, reverse=True) # Longest first
+                assignment_ops.sort(key=len, reverse=True)
                 ops_pattern = '|'.join(map(re.escape, assignment_ops))
-                
                 for expr_str in post_items["expr_safe"][pre_counts.get("expr_safe", 0):]:
-                    match_assign = re.match(r'^\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(' + ops_pattern + ')', expr_str)
-                    
-                    if match_assign:
-                        left_side_token = match_assign.group(1)
-                            
-                        # Rule 2a: Prevent reassigning a const variable
-                        if left_side_token in const_identifiers:
-                            violation_reason = f"Reassigned const: '{left_side_token}'"
-                            is_valid = False
-                            break
-                                
-                        # Rule 2b: Prevent assigning to literals (e.g., 5 = x, true = y)
-                        is_literal = (
-                            left_side_token in {"true", "false", "null", "undefined"} or 
-                            re.match(r'^\d', left_side_token) or 
-                            left_side_token.startswith('"') or 
-                            left_side_token.startswith("'")
-                        )
-                        if is_literal:
-                            violation_reason = f"Invalid assignment to literal: '{left_side_token}'"
+                    m = re.match(r'^\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(' + ops_pattern + ')', expr_str)
+                    if m:
+                        lhs = m.group(1)
+                        is_member_access = bool(re.match(r'^\s*[a-zA-Z_$][a-zA-Z0-9_$]*\s*[.\[]', expr_str.lstrip()))
+                        if lhs in const_identifiers and not is_member_access:
+                            violation_reason = f"Reassigned const: '{lhs}'"
                             is_valid = False
                             break
 
-            # 3. Check for Orphaned Loop Controls
+            # 4. Orphaned break/continue outside any loop.
             if is_valid:
                 for cf_str in post_items["control_flow_statement"][pre_counts.get("control_flow_statement", 0):]:
-                    token_first = cf_str.strip().split()[0] if cf_str.strip() else ""
-                    if token_first in {"break", "continue"}:
-                        # Heuristic: Check if a loop keyword exists anywhere in the text generated so far
-                        full_gen_so_far = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
-                        if not any(loop_kw in full_gen_so_far for loop_kw in ["for", "while"]):
-                            violation_reason = f"Orphaned '{token_first}' outside of loop"
-                            is_valid = False
-                            break
+                    first = cf_str.strip().split()[0] if cf_str.strip() else ""
+                    if first in {"break", "continue"} and not re.search(r'\b(for|while|do)\b', full_gen_so_far):
+                        violation_reason = f"Orphaned '{first}' outside loop"
+                        is_valid = False
+                        break
 
             # backtrack if any violation is found
             if not is_valid:
-                # print(f"DEBUG: Violation found: {violation_reason}. Backtracking...")
-                current_state = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
-                print(f"DEBUG: Step {step} current code before backtrack:\n{current_state}\n---")
                 self.itergen.backward(unit="statement", num=1)
                 continue
 
@@ -262,4 +322,5 @@ class ItergenGenerator(BaseGenerator):
             # But let's try to return full text if prompt checking fails to be safe, though unexpected.
             generated_only = full_text 
             
-        return self._post_process_stop(generated_only, stop_tokens)
+        result = self._post_process_stop_itergen(generated_only, stop_tokens, prompt_brace_depth)
+        return result
