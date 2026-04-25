@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n === 0) return \"0\";\n    let binary = \"\";\n    while(n > 0){\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}"
+    "    if(n === 0){\n        return \"0\";\n    }\n    let binary = \"\";\n    while(n > 0){\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}"
   ]
 }

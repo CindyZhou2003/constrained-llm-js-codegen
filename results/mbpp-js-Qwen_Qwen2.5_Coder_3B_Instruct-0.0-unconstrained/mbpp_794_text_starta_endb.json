@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var re = /ab$/;\n    return re.test(text);\n}"
+    "    var re = /a.*b$/;\n    return re.test(text);\n}"
   ]
 }

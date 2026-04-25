@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(i=0; i<=l.length-s.length; i++){\n        if(l.slice(i,i+s.length).join('') === s.join('')){\n            return true;\n        }\n    }\n    return false;\n}"
+    "    for(i=0; i<=l.length-s.length; i++){\n        if(l.slice(i, i+s.length).join('') === s.join('')){\n            return true;\n        }\n    }\n    return false;\n}"
   ]
 }

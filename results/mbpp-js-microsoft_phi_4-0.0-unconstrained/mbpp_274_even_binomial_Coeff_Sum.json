@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_274_even_binomial_Coeff_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that takes in a positive integer n and finds the sum of even index binomial coefficients.\nfunction even_binomial_Coeff_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_274_even_binomial_Coeff_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = even_binomial_Coeff_Sum;\n  assert.deepEqual(candidate(4),8);\n  assert.deepEqual(candidate(6),32);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Math.pow(2, n-1);\n}\n```\n\n**Explanation:**\n\nThe sum of the binomial coefficients at even indices for a given positive integer \\( n \\) can be derived from the binomial theorem. The binomial theorem states that:\n\n\\[ (1 + x)^n = \\sum_{k=0}^{n} \\binom{n}{k} x^k \\]\n\nIf we set \\( x = 1 \\) and \\( x = -1 \\), we get:\n\n\\[ (1 + 1)^n = \\sum_{k=0}^{n} \\binom{n}{k} \\]\n\\[ (1 - 1)^n = \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\nThe first equation simplifies to:\n\n\\[ 2^n = \\sum_{k=0}^{n} \\binom{n}{k} \\]\n\nThe second equation simplifies to:\n\n\\[ 0 = \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\nAdding these two equations, we get:\n\n\\[ 2^n + 0 = \\sum_{k=0}^{n} \\binom{n}{k} + \\sum_{k=0}^{n} \\binom{n}{k} (-1)^k \\]\n\n\\[ 2^n = 2 \\sum_{k \\text{ even}} \\binom{n}{k} \\]\n\nThus, the sum of the binomial coefficients at even indices is:\n\n\\[ \\sum_{k \\text{ even}} \\binom{n}{k} = \\frac{2^n}{2} = 2^{n-1} \\]\n\nThis is why the function `even_binomial_Coeff_Sum(n)` returns `Math.pow(2, n-1)`.\n\n**Corner Cases:**\n\n1. When \\( n = 0 \\), the sum of even index binomial coefficients is \\( 1 \\) (since \\( \\binom{0}{0} = 1 \\)).\n2. When \\( n = 1 \\), the sum of even index binomial coefficients is \\( 1 \\) (since \\( \\binom{1}{0} = 1 \\)).\n\nThe function handles these cases correctly as \\( 2^{0-1} = 2^{-1} = 0.5 \\) is not a valid result for \\( n = "
+  ]
+}

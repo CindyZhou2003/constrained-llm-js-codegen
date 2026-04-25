@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let median = (base1 + base2) / 2;\n    return median * height;\n}"
+    "    let median = (base1 + base2) / 2;\n    return median;\n}\n"
   ]
 }

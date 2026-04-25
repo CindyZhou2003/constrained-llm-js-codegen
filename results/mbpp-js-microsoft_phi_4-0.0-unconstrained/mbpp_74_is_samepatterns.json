@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_74_is_samepatterns",
+  "language": "js",
+  "prompt": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_74_is_samepatterns.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Initialize a variable to keep track of the current pattern index\n    let pattern_index = 0;\n    // Initialize a variable to keep track of the current color index\n    let color_index = 0;\n    // Initialize a variable to keep track of the current pattern length\n    let pattern_length = 0;\n    // Initialize a variable to keep track of the current color length\n    let color_length = 0;\n    // Initialize a variable to keep track of the previous pattern\n    let prev_pattern = '';\n    // Loop through the colors array\n    while(color_index < colors.length){\n        // If the current pattern is the same as the previous pattern\n        if(patterns[pattern_index] == prev_pattern){\n            // Increment the current pattern length\n            pattern_length += 1;\n        }else{\n            // If the current pattern length is not equal to the current color length\n            if(pattern_length != color_length){\n                // Return false\n                return false;\n            }\n            // Update the previous pattern\n            prev_pattern = patterns[pattern_index];\n            // Update the current pattern length\n            pattern_length = 1;\n        }\n        // Increment the current color length\n        color_length += 1;\n        // If the current color is the same as the current pattern\n        if(colors[color_index] == patterns[pattern_index]){\n            // Increment the current pattern index\n            pattern_index += 1;\n        }\n        // Increment the current color index\n        color_index += 1;\n    }\n    // If the current pattern length is not equal to the current color length\n    if(pattern_length != color_length){\n        // Return false\n        return false;\n    }\n    // If the current pattern index is not equal to the length of the patterns array\n    if(pattern_index != patterns.length){\n        // Return false\n        return false;\n    }\n    // Return true\n    return true;\n}\n```\n\nThis function takes in two arrays, `colors` and `patterns`, and checks whether the `colors` array follows the sequence given in the `patterns` array. It does this by iterating through the `colors` array and keeping track of the current pattern and color indices, as well as the current pattern and color lengths. If the current pattern is the same as the previous pattern, it increments the current pattern length. If the current pattern length is not equal to the current color length, it returns false. If the current color is the same as the current pattern, it increments the"
+  ]
+}

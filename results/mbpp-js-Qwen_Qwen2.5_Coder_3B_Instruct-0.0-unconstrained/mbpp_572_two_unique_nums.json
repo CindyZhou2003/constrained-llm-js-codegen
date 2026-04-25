@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let unique_nums = [];\n    for(let i=0; i<nums.length; i++){\n        if(!unique_nums.includes(nums[i])){\n            unique_nums.push(nums[i]);\n        }\n    }\n    return unique_nums;\n}"
+    "    let unique_nums = [];\n    for(let i = 0; i < nums.length; i++){\n        let num = nums[i];\n        if(!unique_nums.includes(num)){\n            unique_nums.push(num);\n        }\n    }\n    return unique_nums;\n}"
   ]
 }

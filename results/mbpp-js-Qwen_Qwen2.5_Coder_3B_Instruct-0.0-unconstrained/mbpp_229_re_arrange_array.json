@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let left = 0;\n    let right = n - 1;\n\n    while(left < right){\n        if(arr[left] >= 0 && arr[right] < 0){\n            [arr[left], arr[right]] = [arr[right], arr[left]];\n            left++;\n            right--;\n        }else if(arr[left] < 0){\n            left++;\n        }else{\n            right--;\n        }\n    }\n\n    return arr;\n}\n"
+    "    let left = 0;\n    let right = n - 1;\n    while(left < right){\n        if(arr[left] < 0 && arr[right] < 0){\n            left++;\n        }else if(arr[left] > 0 && arr[right] > 0){\n            right--;\n        }else if(arr[left] < 0 && arr[right] > 0){\n            let temp = arr[left];\n            arr[left] = arr[right];\n            arr[right] = temp;\n            left++;\n            right--;\n        }\n    }\n    return arr;\n}"
   ]
 }

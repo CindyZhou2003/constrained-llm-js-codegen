@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i=0; i<str1.length; i++){\n        if(str1[i].includes(sub_str)){\n            return true;\n        }\n    }\n    return false;\n}"
+    "    if(str1.includes(sub_str)){\n        return true;\n    }else{\n        return false;\n    }\n}"
   ]
 }

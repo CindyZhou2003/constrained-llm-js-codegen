@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var arr = dt.split(\"-\");\n    return arr[2] + \"-\" + arr[1] + \"-\" + arr[0];\n}"
+    "    var date = new Date(dt);\n    var day = date.getDate();\n    var month = date.getMonth() + 1;\n    var year = date.getFullYear();\n    return day + \"-\" + month + \"-\" + year;\n}"
   ]
 }

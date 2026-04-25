@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_616_tuple_modulo",
+  "language": "js",
+  "prompt": "//Write a function which takes two tuples of the same length and performs the element wise modulo.\nfunction tuple_modulo(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_616_tuple_modulo.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_modulo;\n  assert.deepEqual(candidate([10, 4, 5, 6], [5, 6, 7, 5]),[0, 4, 5, 1]);\n  assert.deepEqual(candidate([11, 5, 6, 7], [6, 7, 8, 6]),[5, 5, 6, 1]);\n  assert.deepEqual(candidate([12, 6, 7, 8], [7, 8, 9, 7]),[5, 6, 7, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The function uses the map function to apply the modulo operation to each pair of elements from the two tuples.\n    //The map function takes two arguments: a function and one or more iterables.\n    //The function is applied to every item of the iterable, and a new iterable is returned that contains the results.\n    //In this case, the function is a lambda function that takes two arguments and returns the modulo of the first argument by the second.\n    //The iterables are the two tuples, which are unpacked using the * operator.\n    return tuple(map(lambda x, y: x % y, test_tup1, test_tup2))\n}\n```\n\nThis function can be used as follows:\n\n```python\nprint(tuple_modulo((1, 2, 3), (4, 5, 6)))  # Output: (1, 2, 3)\nprint(tuple_modulo((10, 20, 30), (3, 5, 7)))  # Output: (1, 0, 2)\n```# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by handling the loading state, errors, and the fetched data itself. Here's the complete implementation:\n\n```javascript\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        const data = await response.json();\n        setData(data);\n        setLoading(false);\n      } catch (error) {\n        setError(error.message);\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, [url]);\n\n  return {"
+  ]
+}

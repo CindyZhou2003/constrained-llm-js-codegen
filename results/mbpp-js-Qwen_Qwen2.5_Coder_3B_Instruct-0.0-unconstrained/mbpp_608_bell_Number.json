@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var dp = new Array(n+1);\n    for(var i=0;i<=n;i++){\n        dp[i] = new Array(i+1);\n    }\n    dp[0][0] = 1;\n    for(var i=1;i<=n;i++){\n        dp[i][0] = dp[i-1][i-1];\n        for(var j=1;j<=i;j++){\n            dp[i][j] = dp[i-1][j-1] + dp[i][j-1];\n        }\n    }\n    return dp[n][0];\n}"
+    "    var bell = new Array(n+1);\n    bell[0] = 1;\n    for(var i = 1; i <= n; i++){\n        bell[i] = 0;\n        for(var j = 0; j < i; j++){\n            bell[i] += bell[j] * bell[i-1-j];\n        }\n    }\n    return bell[n];\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_list[0]\n    for i in range(1,len(test_list)):\n        if(test_list[i][1] < res[1]):\n            res = test_list[i]\n    return res\ntest_list = [(4, 5), (2, 3), (6, 7)]\nprint(index_minimum(test_list))"
+    "    res = test_list[0]\n    for i in range(1,len(test_list)):\n        if(test_list[i][1] < res[1]):\n            res = test_list[i]\n    return res\ntest_list = [(4, 1), (2, 3), (3, 2)]\nprint(index_minimum(test_list))"
   ]
 }

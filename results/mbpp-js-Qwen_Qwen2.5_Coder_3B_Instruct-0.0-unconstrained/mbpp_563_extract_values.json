@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    let start = text.indexOf('\"');\n    while(start !== -1){\n        let end = text.indexOf('\"', start + 1);\n        if(end !== -1){\n            result.push(text.substring(start + 1, end));\n            start = end + 1;\n        }else{\n            break;\n        }\n    }\n    return result;\n}"
+    "    let values = [];\n    let start = text.indexOf('\"');\n    while(start !== -1){\n        let end = text.indexOf('\"', start + 1);\n        if(end !== -1){\n            values.push(text.substring(start + 1, end));\n            start = end + 1;\n        }else{\n            break;\n        }\n    }\n    return values;\n}\n"
   ]
 }

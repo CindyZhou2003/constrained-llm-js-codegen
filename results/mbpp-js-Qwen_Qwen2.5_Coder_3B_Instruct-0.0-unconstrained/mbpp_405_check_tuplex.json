@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(i in tuplex){\n        if(tuplex[i] == tuple1){\n            return true;\n        }\n    }\n    return false;\n}\ntuplex = [1, 2, 3, 4, 5];\ntuple1 = 3;\nprint(check_tuplex(tuplex, tuple1));"
+    "    for(i in tuplex){\n        if(tuplex[i] == tuple1){\n            return true;\n        }\n    }\n    return false;\n}\ntuplex = [1, 2, 3, 4, 5, 6];\ntuple1 = 5;\nprint(check_tuplex(tuplex, tuple1));"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_750_add_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add the given array to the given array.\nfunction add_tuple(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_750_add_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_tuple;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[5, 6, 7, 9, 10]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[6, 7, 8, 10, 11]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[7, 8, 9, 11, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return test_list + list(test_tup)\n}\n\n#Test\nprint(add_tuple([1,2,3], (4,5,6))) # [1, 2, 3, 4, 5, 6]\nprint(add_tuple([1,2,3], (4,5,6,7))) # [1, 2, 3, 4, 5, 6, 7]\nprint(add_tuple([1,2,3], (4,5))) # [1, 2, 3, 4, 5]\nprint(add_tuple([1,2,3], (4,5,6,7,8))) # [1, 2, 3, 4, 5, 6, 7, 8]\nprint(add_tuple([1,2,3], ())) # [1, 2, 3]\nprint(add_tuple([], (4,5,6))) # [4, 5, 6]\nprint(add_tuple([], ())) # []\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Table for Cryptographer\n\nIn this section, we will explore the various applications of MySQL Create Table for Cryptographer. We will learn how to create tables in MySQL using Python and how to use these tables to store and retrieve encrypted data.\n\n### Subsection 1: Creating a Table for Storing Encrypted Data\n\nTo store encrypted data in MySQL, we need to create a table with columns that can hold the encrypted data. We can use the CREATE TABLE statement to create a table in MySQL. The CREATE TABLE statement takes the name of the table and the columns as arguments.\n\n```python\nimport mysql.connector\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\nmycursor = mydb.cursor()\n\nmycursor.execute(\"CREATE TABLE encrypted_data (id INT AUTO_INCREMENT PRIMARY KEY, data BLOB)\")\n```\n\nIn the above example, we have created a table named \"encrypted_data\" with two columns - \"id\" and \"data\". The \"id\" column is an auto-incrementing primary key, and the \"data\" column is of type BLOB, which can hold binary data.\n\n### Subsection 2: Inserting Encrypted Data into the Table\n\nOnce we have created the table, we can insert encrypted data into it using"
+  ]
+}

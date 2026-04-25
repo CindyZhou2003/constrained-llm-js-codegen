@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = str.length;\n    for(let i = 1; i < n; i++){\n        if(str.slice(i) + str.slice(0, i) === str){\n            return i;\n        }\n    }\n    return n;\n}"
+    "    let n = str.length;\n    let rotations = 0;\n    for(let i = 1; i < n; i++){\n        if(str.slice(i) + str.slice(0, i) === str){\n            rotations = i;\n            break;\n        }\n    }\n    return rotations;\n}"
   ]
 }

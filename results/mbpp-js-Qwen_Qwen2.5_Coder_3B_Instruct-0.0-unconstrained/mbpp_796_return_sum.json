@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    sum = 0\n    for key in dict:\n        sum += dict[key]\n    return sum\n}\nprint(return_sum({'a':1,'b':2,'c':3}))"
+    "    sum = 0\n    for key in dict:\n        sum += dict[key]\n    return sum\n}\nprint(return_sum({'a': 1, 'b': 2, 'c': 3})) # Output: 6\nprint(return_sum({'x': 10, 'y': 20, 'z': 30})) # Output: 60\nprint(return_sum({'p': 5, 'q': 15, 'r': 25})) # Output: 45\nprint(return_sum({'m': 100, 'n': 200, 'o': 300})) # Output: 600\nprint(return_sum({'a': 10, 'b': 20, 'c': 30, 'd': 40, 'e': 50})) # Output: 150\nprint(return_sum({'a': 100, 'b': 200, 'c': 300, 'd': 400, 'e': 500, 'f': 600})) # Output: 2100\nprint(return_sum({'a': 1000, 'b': 2000, 'c': 3000, 'd': 4000, 'e': 5000, 'f': 6000, 'g': 7000})) # Output: 28000\nprint(return_sum({'a': 10000, 'b': 20000, 'c': 30000, 'd': 40000, 'e': 50000, 'f': 60000, 'g': 70000, 'h': 80000})) # Output: 360000\nprint(return_sum({'a': 100000, 'b': 200000, 'c': 300000, 'd': 400000, 'e': 500000, 'f': 600000, 'g': 700000, 'h': 800000"
   ]
 }

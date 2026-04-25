@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var i = 0;\n    while(i < a.length && a[i] <= x){\n        i++;\n    }\n    return i;\n}\n"
+    "    var i = 0;\n    while(i < a.length && a[i] < x){\n        i++;\n    }\n    return i;\n}\n"
   ]
 }

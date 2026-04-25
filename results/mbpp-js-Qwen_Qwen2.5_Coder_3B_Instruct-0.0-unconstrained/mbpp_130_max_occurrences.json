@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = {};\n    for(let i=0; i<nums.length; i++){\n        if(count[nums[i]]){\n            count[nums[i]]++;\n        }else{\n            count[nums[i]] = 1;\n        }\n    }\n    let max = 0;\n    let max_item = null;\n    for(let key in count){\n        if(count[key] > max){\n            max = count[key];\n            max_item = key;\n        }\n    }\n    return max_item;\n}"
+    "    let max = 0;\n    let max_item = 0;\n    let count = {};\n    for(let i = 0; i < nums.length; i++){\n        if(count[nums[i]]){\n            count[nums[i]]++;\n        }else{\n            count[nums[i]] = 1;\n        }\n        if(count[nums[i]] > max){\n            max = count[nums[i]];\n            max_item = nums[i];\n        }\n    }\n    return max_item;\n}"
   ]
 }

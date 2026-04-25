@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_120_max_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum absolute product between numbers in pairs of tuples within a given array.\nfunction max_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_120_max_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),36);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),200);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),484);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_product = 0;\n    for(let i=0; i<list1.length; i++){\n        let product = Math.abs(list1[i][0] * list1[i][1]);\n        if(product > max_product){\n            max_product = product;\n        }\n    }\n    return max_product;\n}"
+  ]
+}

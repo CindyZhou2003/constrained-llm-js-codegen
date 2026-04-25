@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = str1.length;\n    if(n !== str2.length) return -1;\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        if(str1[i] !== str2[i]) count++;\n    }\n    if(count % 2 !== 0) return -1;\n    return Math.floor(count / 2);\n}"
+    "    let n = str1.length;\n    if(n !== str2.length){\n        return -1;\n    }\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        if(str1[i] !== str2[i]){\n            count++;\n        }\n    }\n    if(count % 2 !== 0){\n        return -1;\n    }\n    return count / 2;\n}"
   ]
 }

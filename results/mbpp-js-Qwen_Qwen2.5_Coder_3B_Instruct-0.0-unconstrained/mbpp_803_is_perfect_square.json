@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n<0) return false;\n    let s = Math.sqrt(n);\n    return (s*s == n);\n}"
+    "    if(n<0){\n        return false;\n    }\n    let s = Math.sqrt(n);\n    return s*s == n;\n}"
   ]
 }

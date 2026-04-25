@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_so_far = -Infinity;\n    let max_ending_here = 0;\n\n    for(let i = 0; i < size; i++){\n        max_ending_here += a[i];\n        if(max_so_far < max_ending_here){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n    return max_so_far;\n}\n"
+    "    let max_so_far = a[0];\n    let max_ending_here = a[0];\n    for(let i = 1; i < size; i++){\n        max_ending_here = Math.max(a[i], max_ending_here + a[i]);\n        max_so_far = Math.max(max_so_far, max_ending_here);\n    }\n    return max_so_far;\n}"
   ]
 }

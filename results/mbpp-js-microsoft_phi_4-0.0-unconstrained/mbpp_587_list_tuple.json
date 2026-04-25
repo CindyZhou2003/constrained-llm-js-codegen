@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_587_list_tuple",
+  "language": "js",
+  "prompt": "//Write a function to convert an array to an array.\nfunction list_tuple(listx){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_587_list_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_tuple;\n  assert.deepEqual(candidate([5, 10, 7, 4, 15, 3]),[5, 10, 7, 4, 15, 3]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 2, 3, 4, 4, 7]),[2, 4, 5, 6, 2, 3, 4, 4, 7]);\n  assert.deepEqual(candidate([58, 44, 56]),[58, 44, 56]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return tuple(listx)\n}\nprint(list_tuple([1,2,3,4,5]))\n\n#Write a function to convert a tuple to an array.\ndef tuple_list(tuplex):\n    return list(tuplex)\nprint(tuple_list((1,2,3,4,5)))\n\n#Write a function to convert an array to a set.\ndef list_set(listx):\n    return set(listx)\nprint(list_set([1,2,3,4,5]))\n\n#Write a function to convert a set to an array.\ndef set_list(setx):\n    return list(setx)\nprint(set_list({1,2,3,4,5}))\n\n#Write a function to convert an array to a dictionary.\ndef list_dict(listx):\n    return dict(enumerate(listx))\nprint(list_dict([1,2,3,4,5]))\n\n#Write a function to convert a dictionary to an array.\ndef dict_list(dictx):\n    return list(dictx.values())\nprint(dict_list({1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'}))\n\n#Write a function to convert a tuple to a dictionary.\ndef tuple_dict(tuplex):\n    return dict(enumerate(tuplex))\nprint(tuple_dict((1,2,3,4,5)))\n\n#Write a function to convert a dictionary to a tuple.\ndef dict_tuple(dictx):\n    return tuple(dictx.values())\nprint(dict_tuple({1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'}))\n\n#Write a function to convert a set to a dictionary.\ndef set_dict(setx):\n    return dict(enumerate(setx))\nprint(set_dict({1,2,3,4,5}))\n\n#Write a function to convert a dictionary to a set.\ndef dict_set(dictx):\n    return set(dictx.values())\nprint(dict_set({1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'}))\n\n#Write a function to convert a tuple to a set.\ndef tuple_set(tuplex):\n    return set(tuplex)\nprint(tuple_set((1,2,3,4,5)))\n\n#Write a function to convert a set to a tuple.\ndef set_tuple(setx):\n    return tuple(setx)\nprint(set_tuple({1,2,3,4,5}))\n\n#Write a function"
+  ]
+}

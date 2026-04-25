@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_444_trim_tuple",
+  "language": "js",
+  "prompt": "//Write a function to trim each array by k in the given lists.\nfunction trim_tuple(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_444_trim_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = trim_tuple;\n  assert.deepEqual(candidate([[5, 3, 2, 1, 4], [3, 4, 9, 2, 1], [9, 1, 2, 3, 5], [4, 8, 2, 1, 7]], 2),[[2], [9], [2], [2]]);\n  assert.deepEqual(candidate([[5, 3, 2, 1, 4], [3, 4, 9, 2, 1], [9, 1, 2, 3, 5], [4, 8, 2, 1, 7]], 1),[[3, 2, 1], [4, 9, 2], [1, 2, 3], [8, 2, 1]]);\n  assert.deepEqual(candidate([[7, 8, 4, 9], [11, 8, 12, 4], [4, 1, 7, 8], [3, 6, 9, 7]], 1),[[8, 4], [8, 12], [1, 7], [6, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Using list comprehension to trim each element by K\n    result = [ele[K]  + ele[K+1]  + ele[K+2]  + ele[K+3]  + ele[K+4]  + ele[K+5]  + ele[K+6]  + ele[K+7]  + ele[K+8]  + ele[K+9]  + ele[K+10]  + ele[K+11]  + ele[K+12]  + ele[K+13]  + ele[K+14]  + ele[K+15]  + ele[K+16]  + ele[K+17]  + ele[K+18]  + ele[K+19]  + ele[K+20]  + ele[K+21]  + ele[K+22]  + ele[K+23]  + ele[K+24]  + ele[K+25]  + ele[K+26]  + ele[K+27]  + ele[K+28]  + ele[K+29]  + ele[K+30]  + ele[K+31]  + ele[K+32]  + ele[K+33]  + ele[K+34]  + ele[K+35]  + ele[K+36]  + ele[K+37]  + ele[K+38]  + ele[K+39]  + ele[K+40]  + ele[K+41]  + ele[K+42]  + ele[K+43]  + ele[K+44]  + ele[K+45]  + ele[K+46]  + ele[K+47]  + ele[K+48]  + ele[K+49]  + ele[K+50]  + ele[K+51]  + ele[K+52]  + ele[K+53]  + ele[K+54]  + ele[K+55]  + ele[K+56]  + ele[K+57]  + ele[K+58]  + ele[K+59]  + ele[K+60]  + ele[K+61]  + ele[K+62]  + ele[K+6"
+  ]
+}

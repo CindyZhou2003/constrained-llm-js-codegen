@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var len = str1.length;\n    for(var i=0; i<len; i++){\n        for(var j=i+1; j<len; j++){\n            if(str1[i] == str1[j]){\n                return str1[i];\n            }\n        }\n    }\n    return \"No Repeated Character\";\n}"
+    "    var len = str1.length;\n    var char_map = {};\n    for(var i = 0; i < len; i++){\n        var char = str1[i];\n        if(char_map[char]){\n            return char;\n        }\n        char_map[char] = true;\n    }\n    return null;\n}"
   ]
 }

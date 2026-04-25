@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_tup[0];\n    for i in range(1, len(test_tup)):\n        res += test_tup[i]\n    return res\ntest_tup = [\"G\", \"e\", \"e\", \"k\", \"s\"]\nprint(concatenate_tuple(test_tup))"
+    "    res = test_tup[0];\n    for i in range(1, len(test_tup)):\n        res += test_tup[i];\n    return res;\n}\ntest_tup = [\"G\", \"e\", \"e\", \"k\", \"s\"]\nprint(concatenate_tuple(test_tup))"
   ]
 }

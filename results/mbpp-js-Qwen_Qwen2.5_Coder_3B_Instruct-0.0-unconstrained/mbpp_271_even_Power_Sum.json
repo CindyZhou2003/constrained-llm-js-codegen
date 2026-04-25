@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 1; i <= n; i++){\n        let even_num = 2 * i - 2;\n        sum += Math.pow(even_num, 5);\n    }\n    return sum;\n}"
+    "    let sum = 0;\n    for(let i = 1; i <= n; i++){\n        let even = 2 * i;\n        sum += Math.pow(even, 5);\n    }\n    return sum;\n}"
   ]
 }

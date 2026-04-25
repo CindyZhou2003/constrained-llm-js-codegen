@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let left = 0;\n    let right = arr.length - 1;\n\n    while(left < right){\n        let mid = Math.floor((left + right) / 2);\n\n        if(mid % 2 === 0){\n            if(arr[mid] === arr[mid + 1]){\n                left = mid + 2;\n            } else {\n                right = mid;\n            }\n        } else {\n            if(arr[mid] === arr[mid - 1]){\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n    }\n\n    return arr[left];\n}\n"
+    "    let left = 0;\n    let right = arr.length - 1;\n    while(left < right){\n        let mid = Math.floor((left + right) / 2);\n        if(arr[mid] === arr[mid + 1]){\n            if((mid - left) % 2 === 0){\n                left = mid + 2;\n            }else{\n                right = mid;\n            }\n        }else if(arr[mid] === arr[mid - 1]){\n            if((right - mid) % 2 === 0){\n                right = mid - 2;\n            }else{\n                left = mid;\n            }\n        }else{\n            return arr[mid];\n        }\n    }\n    return arr[left];\n}"
   ]
 }

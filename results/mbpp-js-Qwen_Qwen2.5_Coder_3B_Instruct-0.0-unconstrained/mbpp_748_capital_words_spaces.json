@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str2 = str1.split(' ');\n    var result = '';\n    for(var i=0; i<str2.length; i++){\n        if(i>0 && str2[i].charAt(0) === str2[i].charAt(0).toUpperCase()){\n            result += ' ';\n        }\n        result += str2[i];\n    }\n    return result;\n}"
+    "    var str2 = str1.split(' ');\n    var str3 = '';\n    for(var i=0; i<str2.length; i++){\n        if(str2[i].charAt(0) == str2[i].charAt(0).toUpperCase()){\n            str3 += str2[i] + ' ';\n        }\n        else{\n            str3 += str2[i];\n        }\n    }\n    return str3;\n}"
   ]
 }

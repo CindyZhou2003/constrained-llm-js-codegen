@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    let a = 3, b = 0, c = 2;\n    for(let i = 1; i <= n; i++){\n        sum += a;\n        let temp = a;\n        a = b + c;\n        b = temp;\n        c = a - b;\n    }\n    return sum;\n}"
+    "    let sum = 0;\n    let a = 0, b = 1, c = 2;\n    for(let i = 0; i < n; i++){\n        sum += a;\n        let next = a + b;\n        a = b;\n        b = c;\n        c = next;\n    }\n    return sum;\n}"
   ]
 }

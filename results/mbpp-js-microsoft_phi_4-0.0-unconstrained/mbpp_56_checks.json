@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_56_checks",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check if a given number is one less than twice its reverse.\nfunction checks(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_56_checks.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = checks;\n  assert.deepEqual(candidate(70),false);\n  assert.deepEqual(candidate(23),false);\n  assert.deepEqual(candidate(73),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let rev = 0;\n    let temp = n;\n    while(temp > 0){\n        rev = rev * 10 + temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return 2 * rev - 1 === n;\n}"
+  ]
+}

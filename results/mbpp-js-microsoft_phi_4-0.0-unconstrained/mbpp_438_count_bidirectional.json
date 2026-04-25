@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_438_count_bidirectional",
+  "language": "js",
+  "prompt": "//Write a function to count bidirectional array pairs.\nfunction count_bidirectional(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_438_count_bidirectional.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_bidirectional;\n  assert.deepEqual(candidate([[5, 6], [1, 2], [6, 5], [9, 1], [6, 5], [2, 1]]),3);\n  assert.deepEqual(candidate([[5, 6], [1, 3], [6, 5], [9, 1], [6, 5], [2, 1]]),2);\n  assert.deepEqual(candidate([[5, 6], [1, 2], [6, 5], [9, 2], [6, 5], [2, 1]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for test in test_list:\n        n = test[0]\n        a = test[1]\n        b = test[2]\n        c = 0\n        for i in range(n):\n            for j in range(i+1,n):\n                if a[i] == b[j] and a[j] == b[i]:\n                    c += 1\n        print(c)\n}\n\n#Example usage:\n#count_bidirectional([(3,[1,2,3],[2,1,3]),(2,[1,2],[1,2]),(4,[1,1,2,2],[2,2,1,1])])\n```\nIn the function `count_bidirectional`, we iterate over each test case. For each test case, we iterate over each pair of elements in the arrays. If the elements at the same index in both arrays are equal, we increment the counter. Finally, we print the counter for each test case.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is not just about fetching data; it's about managing the entire lifecycle of a request, including loading states, error handling, and data caching. This guide assumes you're already familiar with React hooks and their basic usage.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses to optimize performance and user experience.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n\nconst cache = {};\n"
+  ]
+}

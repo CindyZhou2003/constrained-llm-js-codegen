@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var max = listval[0];\n    for(var i=1;i<listval.length;i++){\n        if(listval[i]>max){\n            max = listval[i];\n        }\n    }\n    return max;\n}"
+    "    var max = listval[0];\n    for(var i = 1; i < listval.length; i++){\n        if(listval[i] > max){\n            max = listval[i];\n        }\n    }\n    return max;\n}"
   ]
 }

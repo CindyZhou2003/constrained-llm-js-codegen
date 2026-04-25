@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_400_extract_freq",
+  "language": "js",
+  "prompt": "//Write a function to extract the number of unique tuples in the given array.\nfunction extract_freq(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_400_extract_freq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_freq;\n  assert.deepEqual(candidate([[3, 4], [1, 2], [4, 3], [5, 6]]),3);\n  assert.deepEqual(candidate([[4, 15], [2, 3], [5, 4], [6, 7]]),4);\n  assert.deepEqual(candidate([[5, 16], [2, 3], [6, 5], [6, 9]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    #initialize an empty dictionary\n    freq_dict = {}\n    #iterate over the test_list\n    for i in test_list:\n        #if the tuple is already in the dictionary, increment its count\n        if i in freq_dict:\n            freq_dict[i] += 1\n        #if the tuple is not in the dictionary, add it with a count of 1\n        else:\n            freq_dict[i] = 1\n    #return the number of unique tuples\n    return len(freq_dict)\n}\n```\nThis function works by iterating over the given list of tuples and storing each tuple as a key in a dictionary. If a tuple is already in the dictionary, its count is incremented. If a tuple is not in the dictionary, it is added with a count of 1. The function then returns the number of unique keys in the dictionary, which corresponds to the number of unique tuples in the list.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React, and introduce `axios` for making HTTP requests due to its wide adoption and ease of use.\n\n## Prerequisites\n\n- Proficiency in React and its core concepts (hooks, components).\n- Familiarity with `axios` for making HTTP requests.\n- Understanding of asynchronous JavaScript (Promises, async/await).\n\n## Setting Up\n\nFirst, ensure you have `axios` installed in your project:\n\n```bash\nnpm install axios\n```\n\n## Creating the `useFetch` Hook\n\nThe `useFetch` hook will accept a URL as its argument and return an object containing the data, loading state, and any error encountered during the fetch operation.\n\n```jsx\nimport { useState, useEffect } from 'react';\nimport axios from 'axios';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await axios.get(url);\n        setData(response.data);\n        setLoading(false);\n      } catch (error) {\n       "
+  ]
+}

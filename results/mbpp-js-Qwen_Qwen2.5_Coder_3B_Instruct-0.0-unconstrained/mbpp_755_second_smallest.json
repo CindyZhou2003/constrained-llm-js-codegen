@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(numbers.length < 2){\n        return \"Array must contain at least two elements\";\n    }\n    let smallest = numbers[0];\n    let second_smallest = Infinity;\n    for(let i = 1; i < numbers.length; i++){\n        if(numbers[i] < smallest){\n            second_smallest = smallest;\n            smallest = numbers[i];\n        }else if(numbers[i] < second_smallest && numbers[i] !== smallest){\n            second_smallest = numbers[i];\n        }\n    }\n    return second_smallest;\n}"
+    "    if(numbers.length < 2){\n        return \"Array must contain at least two elements\";\n    }\n    let smallest = numbers[0];\n    let second_smallest = numbers[1];\n    for(let i = 2; i < numbers.length; i++){\n        if(numbers[i] < smallest){\n            second_smallest = smallest;\n            smallest = numbers[i];\n        }else if(numbers[i] < second_smallest && numbers[i] !== smallest){\n            second_smallest = numbers[i];\n        }\n    }\n    return second_smallest;\n}"
   ]
 }

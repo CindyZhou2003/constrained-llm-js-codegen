@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i=0; i<nums.length; i++){\n        if(i === 0 || nums[i] !== nums[i-1]){\n            result.push(nums[i]);\n        }\n    }\n    return result;\n}"
+    "    let result = [];\n    for(let i = 0; i < nums.length; i++){\n        if(nums[i] !== nums[i+1]){\n            result.push(nums[i]);\n        }\n    }\n    return result;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Calculate the sum of each row\n    let row_sums = M.map(row => row.reduce((acc, val) => acc + val, 0));\n    \n    // Sort the matrix based on the row sums\n    M.sort((a, b) => row_sums.indexOf(a.reduce((acc, val) => acc + val, 0)) - row_sums.indexOf(b.reduce((acc, val) => acc + val, 0)));\n    \n    return M;\n}\n"
+    "    // Calculate the sum of each row\n    let row_sums = M.map(row => row.reduce((acc, val) => acc + val, 0));\n    // Sort the matrix based on the row sums\n    M.sort((a, b) => row_sums.indexOf(a.reduce((acc, val) => acc + val, 0)) - row_sums.indexOf(b.reduce((acc, val) => acc + val, 0)));\n    return M;\n}\n"
   ]
 }

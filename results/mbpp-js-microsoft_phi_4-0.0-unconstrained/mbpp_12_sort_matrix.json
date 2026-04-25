@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # M is a list of lists, where each list represents a row in the matrix\n    # The function returns a new matrix sorted in ascending order according to the sum of its rows\n    return sorted(M, key=sum)\n}\n```\n\nSolution in Python:\n\n```python\ndef sort_matrix(M):\n    \"\"\"\n    This function takes a matrix M, where M is a list of lists, and each inner list represents a row in the matrix.\n    It returns a new matrix sorted in ascending order based on the sum of the elements in each row.\n    \"\"\"\n    return sorted(M, key=sum)\n\n# Example usage:\n# matrix = [[1, 7, 3], [3, 2, 1, 6], [2, 2]]\n# sorted_matrix = sort_matrix(matrix)\n# print(sorted_matrix)  # Output: [[2, 2], [3, 2, 1, 6], [1, 7, 3]]\n```\n\nThis solution maintains the core logic of sorting based on the sum of elements in each row, as demonstrated in the original solution. The function `sort_matrix` is self-contained and can be used to sort any matrix provided to it in the specified manner.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by encapsulating the fetching logic, including loading state management, error handling, and data storage. Here's how to implement it:\n\n```jsx\nimport { useState, useEffect } from 'react';\n"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i=0; i<text.length; i++){\n        if(text.substring(i, i+pattern.length) === pattern){\n            result.push({position: i, count: 1});\n        }\n    }\n    return result;\n}\n"
+    "    let result = [];\n    let index = text.indexOf(pattern);\n    while(index !== -1){\n        result.push({index: index, count: 1});\n        index = text.indexOf(pattern, index + 1);\n    }\n    return result;\n}\n"
   ]
 }

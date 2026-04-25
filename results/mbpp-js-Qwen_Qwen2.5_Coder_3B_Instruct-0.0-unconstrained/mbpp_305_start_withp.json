@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = [];\n    for(var i=0; i<words.length; i++){\n        if(words[i].charAt(0) === 'p'){\n            result.push(words[i]);\n        }\n    }\n    return result;\n}"
+    "    var result = [];\n    for(var i = 0; i < words.length; i++){\n        if(words[i].charAt(0) === 'p'){\n            result.push(words[i]);\n        }\n    }\n    return result;\n}"
   ]
 }

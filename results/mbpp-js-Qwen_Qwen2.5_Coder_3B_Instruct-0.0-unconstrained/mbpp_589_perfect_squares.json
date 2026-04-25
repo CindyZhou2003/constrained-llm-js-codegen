@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = [];\n    for(let i = Math.ceil(Math.sqrt(a)); i <= Math.floor(Math.sqrt(b)); i++){\n        result.push(i * i);\n    }\n    return result;\n}"
+    "    let perfect_squares = [];\n    for(let i = a; i <= b; i++){\n        if(Math.sqrt(i) % 1 === 0){\n            perfect_squares.push(i);\n        }\n    }\n    return perfect_squares;\n}"
   ]
 }

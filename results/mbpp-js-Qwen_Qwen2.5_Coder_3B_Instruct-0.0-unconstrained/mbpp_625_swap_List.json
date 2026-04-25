@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let temp = newList[0];\n    newList[0] = newList[newList.length-1];\n    newList[newList.length-1] = temp;\n    return newList;\n}"
+    "    let first = newList[0];\n    let last = newList[newList.length-1];\n    newList[0] = last;\n    newList[newList.length-1] = first;\n    return newList;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var sorted = Object.keys(dict1).sort(function(a,b){return dict1[a]-dict1[b]});\n    var result = {};\n    for(var i=0;i<sorted.length;i++){\n        result[sorted[i]] = dict1[sorted[i]];\n    }\n    return result;\n}"
+    "    var sorted = Object.keys(dict1).sort(function(a,b){return dict1[a]-dict1[b]});\n    var sorted_dict = {};\n    for(var i=0;i<sorted.length;i++){\n        sorted_dict[sorted[i]] = dict1[sorted[i]];\n    }\n    return sorted_dict;\n}"
   ]
 }

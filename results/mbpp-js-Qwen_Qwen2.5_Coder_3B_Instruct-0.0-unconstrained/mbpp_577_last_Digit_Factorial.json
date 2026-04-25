@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (n === 0 || n === 1) {\n        return 1;\n    }\n    let last_digit = 1;\n    for (let i = 2; i <= n; i++) {\n        last_digit = (last_digit * i) % 10;\n    }\n    return last_digit;\n}"
+    "    if(n === 0 || n === 1){\n        return 1;\n    }\n    let last_digit = 1;\n    for(let i = 2; i <= n; i++){\n        last_digit = (last_digit * i) % 10;\n    }\n    return last_digit;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var count = 0;\n    for(var i=0; i<str.length; i++){\n        if(str[i] >= 'A' && str[i] <= 'Z'){\n            count++;\n        }\n    }\n    return count;\n}"
+    "    var count = 0;\n    for(var i = 0; i < str.length; i++){\n        if(str[i] >= 'A' && str[i] <= 'Z'){\n            count++;\n        }\n    }\n    return count;\n}"
   ]
 }

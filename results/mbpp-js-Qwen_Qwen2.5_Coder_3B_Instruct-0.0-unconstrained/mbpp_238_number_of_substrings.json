@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i=0; i<str.length; i++){\n        for(let j=i+1; j<=str.length; j++){\n            count++;\n        }\n    }\n    return count;\n}"
+    "    let count = 0;\n    for(let i = 0; i < str.length; i++){\n        for(let j = i + 1; j <= str.length; j++){\n            count++;\n        }\n    }\n    return count;\n}"
   ]
 }

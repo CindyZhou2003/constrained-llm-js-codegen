@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return /^[a-z]+_[a-z]+$/.test(text);\n}"
+    "    return text.match(/^[a-z]+_[a-z]+$/);\n}"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_792_count_list",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of lists in a given number of lists.\nfunction count_list(input_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_792_count_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_list;\n  assert.deepEqual(candidate([[1, 3], [5, 7], [9, 11], [13, 15, 17]]),4);\n  assert.deepEqual(candidate([[1, 2], [2, 3], [4, 5]]),3);\n  assert.deepEqual(candidate([[1, 0], [2, 0]]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    count = 0\n    for i in input_list:\n        count += 1\n    return count\n}\n```\n\n### Explanation: The provided JavaScript function `count_list` is designed to count the number of lists (arrays in JavaScript) within a given list of lists. The function takes one argument, `input_list`, which is expected to be an array of arrays. It initializes a variable `count` to 0, which is used to keep track of the number of lists encountered.\n\nThe function then iterates over each element `i` in `input_list` using a `for...in` loop. For each iteration, it increments the `count` by 1. After the loop has finished executing, the function returns the value of `count`, which represents the total number of lists in the input.\n\nIt's important to note that the `for...in` loop is generally used for iterating over the properties of an object, not for iterating over array elements. For arrays, it's more common to use a `for` loop, `forEach` method, or other array iteration methods like `for...of`. However, in this context, since the function is expected to receive an array of arrays, the `for...in` loop will work correctly to count the number of arrays.\n\nHere is a corrected version of the function using a `for` loop, which is more appropriate for iterating over array elements:\n\n```javascript"
+  ]
+}

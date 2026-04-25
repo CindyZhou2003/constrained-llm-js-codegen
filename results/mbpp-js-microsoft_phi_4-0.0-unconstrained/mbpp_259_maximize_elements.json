@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_259_maximize_elements",
+  "language": "js",
+  "prompt": "//Write a function to maximize the given two lists.\nfunction maximize_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_259_maximize_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = maximize_elements;\n  assert.deepEqual(candidate([[1, 3], [4, 5], [2, 9], [1, 10]], [[6, 7], [3, 9], [1, 1], [7, 3]]),[[6, 7], [4, 9], [2, 9], [7, 10]]);\n  assert.deepEqual(candidate([[2, 4], [5, 6], [3, 10], [2, 11]], [[7, 8], [4, 10], [2, 2], [8, 4]]),[[7, 8], [5, 10], [3, 10], [8, 11]]);\n  assert.deepEqual(candidate([[3, 5], [6, 7], [4, 11], [3, 12]], [[8, 9], [5, 11], [3, 3], [9, 5]]),[[8, 9], [6, 11], [4, 11], [9, 12]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Extract the number of test cases\n    $t = $test_tup1[0];\n    //Extract the list of test cases\n    $test_cases = array_slice($test_tup1, 1);\n    $results = [];\n    for($i = 0; $i < $t; $i++){\n        //Extract the number of elements in the lists\n        $n = $test_cases[$i][0];\n        //Extract the lists\n        $a = $test_cases[$i][1];\n        $b = $test_cases[$i][2];\n        //Sort the lists\n        sort($a);\n        sort($b);\n        //Initialize the result\n        $res = 0;\n        //Iterate over the lists\n        for($j = 0; $j < $n; $j++){\n            //Calculate the maximum possible sum\n            $res += max($a[$j], $b[$n - $j - 1]);\n        }\n        //Add the result to the results list\n        array_push($results, $res);\n    }\n    //Return the results\n    return $results;\n}\n?>\n```\nThis function takes two parameters: an array of test cases and an array of lists. It returns an array of maximum possible sums for each test case. The function first extracts the number of test cases and the list of test cases. Then, for each test case, it extracts the number of elements in the lists and the lists themselves. It sorts the lists and initializes the result. It then iterates over the lists, calculating the maximum possible sum for each pair of elements. Finally, it adds the result to the results list and returns the results.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is not just about fetching data; it's about managing the state of the request, handling loading states, errors, and caching responses to optimize performance. This guide assumes you're already familiar with React hooks and their basic usage.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses. Here's the complete implementation:\n\n```jsx\nimport { useState, useEffect } from 'react';\n\nconst cache = {};\n"
+  ]
+}

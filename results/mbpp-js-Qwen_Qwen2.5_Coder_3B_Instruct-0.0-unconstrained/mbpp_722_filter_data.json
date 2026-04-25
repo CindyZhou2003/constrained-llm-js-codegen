@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var filtered_students = {};\n    for(var student in students){\n        if(students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\nvar students = {\n    \"John\": [175, 68],\n    \"Jane\": [165, 58],\n    \"Mike\": [180, 72],\n    \"Sarah\": [170, 65]\n};\n\nvar min_height = 170;\nvar min_weight = 60;\n\nvar filtered_students = filter_data(students, min_height, min_weight);"
+    "    var filtered_students = {};\n    for(var student in students){\n        if(students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\nvar students = {\n    \"John\": [170, 65],\n    \"Jane\": [160, 55],\n    \"Mike\": [180, 70],\n    \"Sarah\": [175, 60]\n};\n\nvar filtered_students = filter_data(students, 170, 60);"
   ]
 }

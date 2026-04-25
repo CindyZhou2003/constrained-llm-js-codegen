@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_91_find_substring",
+  "language": "js",
+  "prompt": "//Write a function to check if a string is present as a substring in a given array of string values.\nfunction find_substring(str1, sub_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_91_find_substring.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_substring;\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ack\"),true);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"abc\"),false);\n  assert.deepEqual(candidate([\"red\", \"black\", \"white\", \"green\", \"orange\"], \"ange\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i=0;\n    if (sub_str.length === 0) return true;\n    while(i < str1.length){\n        if (str1[i] === sub_str[0]){\n            var j=1;\n            while (j < sub_str.length){\n                if (str1[i+j] !== sub_str[j]) break;\n                j++;\n            }\n            if (j === sub_str.length) return true;\n        }\n        i++;\n    }\n    return false;\n}"
+  ]
+}

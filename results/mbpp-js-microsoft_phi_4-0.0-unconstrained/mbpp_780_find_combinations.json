@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let sum = 0;\n    let temp = [];\n    let n = test_list.length;\n    let i = 0;\n    let j = 0;\n    let k = 0;\n    let l = 0;\n    let m = 0;\n    let p = 0;\n    let q = 0;\n    let r = 0;\n    let s = 0;\n    let t = 0;\n    let u = 0;\n    let v = 0;\n    let w = 0;\n    let x = 0;\n    let y = 0;\n    let z = 0;\n    for(i = 0; i < n; i++){\n        for(j = i + 1; j < n; j++){\n            for(k = j + 1; k < n; k++){\n                for(l = k + 1; l < n; l++){\n                    for(m = l + 1; m < n; m++){\n                        for(p = m + 1; p < n; p++){\n                            for(q = p + 1; q < n; q++){\n                                for(r = q + 1; r < n; r++){\n                                    for(s = r + 1; s < n; s++){\n                                        for(t = s + 1; t < n; t++){\n                                            for(u = t + 1; u < n; u++){\n                                                for(v = u + 1; v < n; v++){\n                                                    for(w = v + 1; w < n; w++){\n                                                        for(x = w + 1; x < n; x++){\n                                                            for(y = x + 1; y < n; y++){\n                                                                for(z = y + 1; z < n; z++){\n                                                                    sum = test_list[i] + test_list[j] + test_list[k] + test_list[l] + test_list[m] + test_list[p] + test_list[q] + test_list[r] + test_list[s] + test_list[t] + test_list[u] + test_list[v] + test_list[w] + test_list[x] + test_list[y] + test_list[z];\n                                                                    temp = [test_list[i], test_list[j], test_list[k], test_list[l], test_list[m], test_list[p], test_list[q], test_list[r], test_list[s], test_list[t], test_list[u], test_list[v], test_list[w"
+  ]
+}

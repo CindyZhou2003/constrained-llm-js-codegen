@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_440_find_adverb_position",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb and their positions in a given sentence.\nfunction find_adverb_position(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_440_find_adverb_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverb_position;\n  assert.deepEqual(candidate(\"clearly!! we can see the sky\"),[0, 7, \"clearly\"]);\n  assert.deepEqual(candidate(\"seriously!! there are many roses\"),[0, 9, \"seriously\"]);\n  assert.deepEqual(candidate(\"unfortunately!! sita is going to home\"),[0, 13, \"unfortunately\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Split the text into words\n    words = text.split(' ')\n    //Initialize an empty list to store the positions of adverbs\n    adverb_positions = []\n    //Iterate over the words\n    for i"
+  ]
+}

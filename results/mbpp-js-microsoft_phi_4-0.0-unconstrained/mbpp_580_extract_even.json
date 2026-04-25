@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_580_extract_even",
+  "language": "js",
+  "prompt": "//Write a function to remove uneven elements in the nested mixed array.\nfunction extract_even(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_580_extract_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_even;\n  assert.deepEqual(candidate([4, 5, [7, 6, [2, 4]], 6, 8]),[4, [6, [2, 4]], 6, 8]);\n  assert.deepEqual(candidate([5, 6, [8, 7, [4, 8]], 7, 9]),[6, [8, [4, 8]]]);\n  assert.deepEqual(candidate([5, 6, [9, 8, [4, 6]], 8, 10]),[6, [8, [4, 6]], 8, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    result = []\n    for i in test_tuple:\n        if type(i) == list:\n            result.append(extract_even(i))\n        elif i % 2 == 0:\n            result.append(i)\n    return result\nprint(extract_even([1,2,[3,4,[5,6]]]))\n```\n\n\n# Chapter: The use of Python MongoDB for Web Scraping Specialist\n\n## Section: Applications of MongoDB Create Database for Web Scraping Specialist\n\nIn this section, we will explore the various applications of MongoDB in creating databases for web scraping specialists. MongoDB is a popular NoSQL database that is widely used for web scraping projects due to its flexibility and scalability. We will cover the following subsections:\n\n1. Creating a MongoDB database for web scraping\n2. Storing scraped data in MongoDB\n3. Querying data from MongoDB\n4. Updating data in MongoDB\n5. Deleting data from MongoDB\n\n### 1. Creating a MongoDB database for web scraping\n\nTo create a MongoDB database for web scraping, we first need to install the PyMongo library, which is a Python driver for MongoDB. We can install it using pip:\n\n```python\n!pip install pymongo\n```\n\nOnce we have installed PyMongo, we can create a connection to a MongoDB server using the MongoClient class:\n\n```python\nfrom pymongo import MongoClient\n\nclient = MongoClient('mongodb://localhost:27017/')\n```\n\nThis creates a connection to a MongoDB server running on the local machine on port 27017. We can then create a new database using the client object:\n\n```python\ndb = client['mydatabase']\n```\n\nThis creates a new database called \"mydatabase\". We can also create a new collection within the database:\n\n```python\ncollection = db['mycollection']\n```\n\nThis creates a new collection called \"mycollection\" within the \"mydatabase\" database.\n\n### 2. Storing scraped data in MongoDB\n\nOnce we have created a database and collection, we can store scraped data in MongoDB using the insert_one() or insert_many() methods. For example, let's say we have scraped some data from a website and stored it in a list of dictionaries:\n\n```python\ndata = [\n    {'name': 'John', 'age': 30},\n    {'name': 'Jane', 'age': 25},\n    {'name': 'Bob', 'age': 40}\n]\n```\n\nWe can insert this data into our MongoDB collection using the insert_many() method:\n\n```python\ncollection.insert_many(data)\n"
+  ]
+}

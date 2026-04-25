@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = {}\n    for i in test_list:\n        if i in res:\n            res[i] += 1\n        else:\n            res[i] = 1\n    return res\ntest_list = [(1,2),(3,4),(1,2),(5,6),(3,4)]\nprint(check_occurences(test_list))"
+    "    res = {}\n    for i in test_list:\n        if i in res:\n            res[i] += 1\n        else:\n            res[i] = 1\n    return res\ntest_list = [(1, 2), (3, 4), (1, 2), (5, 6), (3, 4), (3, 4)]\nprint(\"Original list : \" + str(test_list))\nprint(\"Number of occurrences of each unique array : \" + str(check_occurences(test_list)))"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var gap = nums.length;\n    var swapped = true;\n\n    while(gap > 1 || swapped){\n        gap = Math.floor(gap / 1.3);\n        swapped = false;\n\n        for(var i = 0; i < nums.length - gap; i++){\n            if(nums[i] > nums[i + gap]){\n                var temp = nums[i];\n                nums[i] = nums[i + gap];\n                nums[i + gap] = temp;\n                swapped = true;\n            }\n        }\n    }\n\n    return nums;\n}\n"
+    "    var gap = nums.length;\n    var swapped = true;\n    while(gap > 1 || swapped){\n        gap = Math.floor(gap / 1.3);\n        swapped = false;\n        for(var i = 0; i < nums.length - gap; i++){\n            if(nums[i] > nums[i + gap]){\n                var temp = nums[i];\n                nums[i] = nums[i + gap];\n                nums[i + gap] = temp;\n                swapped = true;\n            }\n        }\n    }\n    return nums;\n}"
   ]
 }

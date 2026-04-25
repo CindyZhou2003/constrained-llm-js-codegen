@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // XOR the two numbers\n    let xor = a ^ b;\n    // Check if the number of set bits in the result is 1\n    return (xor & (xor - 1)) === 0;\n}"
+    "    // XOR the two numbers\n    let xor = a ^ b;\n    // Check if the XOR result has exactly one bit set\n    return xor && !(xor & (xor - 1));\n}"
   ]
 }

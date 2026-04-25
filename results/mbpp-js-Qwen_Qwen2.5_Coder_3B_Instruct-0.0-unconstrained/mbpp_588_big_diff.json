@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(nums.length === 0) return 0;\n    let min = nums[0];\n    let max = nums[0];\n    for(let i = 1; i < nums.length; i++){\n        if(nums[i] < min) min = nums[i];\n        if(nums[i] > max) max = nums[i];\n    }\n    return max - min;\n}"
+    "    if(nums.length === 0){\n        return 0;\n    }\n    let min = nums[0];\n    let max = nums[0];\n    for(let i = 1; i < nums.length; i++){\n        if(nums[i] < min){\n            min = nums[i];\n        }\n        if(nums[i] > max){\n            max = nums[i];\n        }\n    }\n    return max - min;\n}"
   ]
 }

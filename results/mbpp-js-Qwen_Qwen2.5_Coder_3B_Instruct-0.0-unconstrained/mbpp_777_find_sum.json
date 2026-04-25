@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i=0; i<arr.length; i++){\n        if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])){\n            sum += arr[i];\n        }\n    }\n    return sum;\n}"
+    "    let sum = 0;\n    let count = {};\n    for(let i = 0; i < arr.length; i++){\n        if(count[arr[i]]){\n            count[arr[i]]++;\n        }else{\n            count[arr[i]] = 1;\n        }\n    }\n    for(let i = 0; i < arr.length; i++){\n        if(count[arr[i]] === 1){\n            sum += arr[i];\n        }\n    }\n    return sum;\n}"
   ]
 }

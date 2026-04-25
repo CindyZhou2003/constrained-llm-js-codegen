@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    let str = n.toString();\n    for(let i=0; i<str.length; i++){\n        if(str[i] == str[i+1]){\n            count++;\n        }\n    }\n    return count <= str.length;\n}"
+    "    let count = 0;\n    let str = n.toString();\n    for(let i = 0; i < str.length; i++){\n        let digit = parseInt(str[i]);\n        if(digit > 0){\n            count++;\n        }\n    }\n    return count;\n}"
   ]
 }

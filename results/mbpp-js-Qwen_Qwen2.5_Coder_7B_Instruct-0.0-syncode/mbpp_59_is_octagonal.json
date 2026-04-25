@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_59_is_octagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth octagonal number.\nfunction is_octagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_59_is_octagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_octagonal;\n  assert.deepEqual(candidate(5),65);\n  assert.deepEqual(candidate(10),280);\n  assert.deepEqual(candidate(15),645);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return n === 1 || n === 8 || n === 21 || n === 40 || n === 65 || n === 96 || n === 133 || n === 176 || n === 225 || n === 280 || n === 341 || n === 408 || n === 481 || n === 560 || n === 645 || n === 736 || n === 833 || n === 936 || n === 1045 || n === 1160 || n === 1281 || n === 1408 || n === 1541 || n === 1680 || n === 1825 || n === 1976 || n === 2133 || n === 2296 || n === 2465 || n === 2640 || n === 2821 || n === 3008 || n === 3201 || n === 3400 || n === 3605 || n === 3816 || n === 4033 || n === 4256 || n === 4485 || n === 4720 || n === 4961 || n === 5208 || n === 5461 || n === 5720 || n === 5985 || n === 6256 || n === 6533 || n === 6816 || n === 7105 || n === 7400 || n === 7701 || n === 8008 || n === 8321 || n === 8640 || n === 8965 || n === 9296 || n === 9633 || n === 9976 || n === 10325 || n === 10680 || n === 11041 || n === 11408 || n === 11781 || n === 12160 || n === 12545 || n === 12936 ||"
+  ]
+}

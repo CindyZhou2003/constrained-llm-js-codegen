@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let result = 0;\n    for(let i=0; i<sample_names.length; i++){\n        if(sample_names[i][0] !== sample_names[i][0].toUpperCase()){\n            continue;\n        }\n        result += sample_names[i].length;\n    }\n    return result;\n}"
+    "    let result = sample_names.filter(name => name[0] === name[0].toUpperCase()).map(name => name.length).reduce((acc, curr) => acc + curr, 0);\n    return result;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_tup == undefined\n    return res\n}\ntest_tup = [1, 2, 3]\nprint(\"The original tuple is : \" + str(test_tup))\nres = check_none(test_tup)\nprint(\"Is tuple None ? : \" + str(res))"
+    "    res = test_tup == undefined\n    return res\n}\ntest_tup = [1, 2, 3, 4, 5]\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"Is tuple undefined ? : \" + str(check_none(test_tup)))"
   ]
 }

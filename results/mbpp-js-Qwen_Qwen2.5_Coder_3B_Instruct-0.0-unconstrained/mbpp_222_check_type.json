@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = True\n    for i in test_tuple:\n        if type(i) != type(test_tuple[0]):\n            res = False\n            break\n    return res\ntest_tuple = (1, 2, 3, 4)\nprint(\"Original tuple:\", test_tuple)\nprint(\"Check if all the elements in array have same data type or not:\", check_type(test_tuple))"
+    "    res = True\n    for i in test_tuple:\n        if type(i) != type(test_tuple[0]):\n            res = False\n            break\n    return res\ntest_tuple = (1, 2, 3, 4, 5)\nprint(\"Original tuple:\", test_tuple)\nprint(\"Check if all the elements in array have same data type or not:\", check_type(test_tuple))"
   ]
 }

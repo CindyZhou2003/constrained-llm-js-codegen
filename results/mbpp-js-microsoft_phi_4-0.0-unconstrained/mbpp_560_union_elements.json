@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_560_union_elements",
+  "language": "js",
+  "prompt": "//Write a function to find the union of the elements of two given lists and output them in sorted order.\nfunction union_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_560_union_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = union_elements;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 4, 5, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [3, 4, 5, 6]),[1, 2, 3, 4, 5, 6]);\n  assert.deepEqual(candidate([11, 12, 13, 14], [13, 15, 16, 17]),[11, 12, 13, 14, 15, 16, 17]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Convert the tuples to sets to remove duplicates\n    set1 = set(test_tup1)\n    set2 = set(test_tup2)\n    \n    # Find the union of the two sets\n    union_set = set1.union(set2)\n    \n    # Convert the set back to a list and sort it\n    sorted_list = sorted(list(union_set))\n    \n    # Return the sorted list\n    return sorted_list\n}\n\n# Example usage:\n# test_tup1 = (1, 2, 3, 4)\n# test_tup2 = (3, 4, 5, 6)\n# print(union_elements(test_tup1, test_tup2))  # Output: [1, 2, 3, 4, 5, 6]\n```\n\nThis R function `union_elements` takes two tuples as input, converts them to sets to remove any duplicates, finds the union of these sets, converts the result back to a list, sorts it, and then returns the sorted list. The logic of the function is the same as the original Python solution provided, but it has been adapted to R syntax and uses tuples instead of lists.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by encapsulating the fetching logic, including loading state management, error handling, and data storage. Here's how to implement it:\n\n```jsx\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        const data = await response.json();\n        setData(data);\n        setLoading(false"
+  ]
+}

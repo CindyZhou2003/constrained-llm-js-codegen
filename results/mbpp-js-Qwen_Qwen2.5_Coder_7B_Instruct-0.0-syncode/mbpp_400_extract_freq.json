@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_400_extract_freq",
+  "language": "js",
+  "prompt": "//Write a function to extract the number of unique tuples in the given array.\nfunction extract_freq(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_400_extract_freq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_freq;\n  assert.deepEqual(candidate([[3, 4], [1, 2], [4, 3], [5, 6]]),3);\n  assert.deepEqual(candidate([[4, 15], [2, 3], [5, 4], [6, 7]]),4);\n  assert.deepEqual(candidate([[5, 16], [2, 3], [6, 5], [6, 9]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = new Map();\n    for(let ele of test_list){\n        let key = ele.join('-');\n        res.set(key, (res.get(key) || 0) + 1);\n    }\n    return res.size;\n}\nlet test_list = [[1, 2], [3, 4], [1, 2], [5, 6], [3, 4]];"
+  ]
+}

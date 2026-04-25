@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = []\n    for i in range(len(test_list)):\n        flag = True\n        for j in range(len(test_list[i])):\n            if test_list[i][j] % K != 0:\n                flag = False\n                break\n        if flag == True:\n            res.append(test_list[i])\n    return res\n\n#Test the function\ntest_list = [(10, 20, 30), (40, 50, 60), (70, 80, 90)]\nK = 10\nprint(find_tuples(test_list, K)) #Output: [(10, 20, 30), (40, 50, 60), (70, 80, 90)]"
+    "    res = []\n    for i in range(len(test_list)):\n        flag = True\n        for j in range(len(test_list[i])):\n            if test_list[i][j] % K != 0:\n                flag = False\n                break\n        if flag:\n            res.append(test_list[i])\n    return res\ntest_list = [(10, 20, 30), (40, 50, 60), (70, 80, 90)]\nK = 10\nprint(find_tuples(test_list, K))"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_726_multiply_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes as input an array of numbers (t_1,...,t_{N+1}) and returns an array of length N where the i-th element of the array is equal to t_i * t_{i+1}.\nfunction multiply_elements(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_726_multiply_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = multiply_elements;\n  assert.deepEqual(candidate([1, 5, 7, 8, 10]),[5, 35, 56, 80]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 7]),[8, 20, 30, 42]);\n  assert.deepEqual(candidate([12, 13, 14, 9, 15]),[156, 182, 126, 135]);\n  assert.deepEqual(candidate([12]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    $N = count(test_tup);\n    $result = [];\n    for($i=0; $i<$N-1; $i++){\n        $result[] = $test_tup[$i] * $test_tup[$i+1];\n    }\n    return $result;\n}\n?>\n```\nThis function `multiply_elements` takes an array of numbers as input and returns an array of length N-1 where the i-th element of the array is equal to the product of the i-th and (i+1)-th elements of the input array.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses to optimize performance. This guide assumes you're already familiar with React hooks and their basic usage.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It leverages `useState`, `useEffect`, and `useRef` hooks to manage the fetch lifecycle, cache responses, and prevent unnecessary network requests.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect, useRef } from 'react';\n\nconst cache = {};\n"
+  ]
+}

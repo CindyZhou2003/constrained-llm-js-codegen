@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_405_check_tuplex",
+  "language": "js",
+  "prompt": "//Write a function to check whether an element exists within an array.\nfunction check_tuplex(tuplex, tuple1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_405_check_tuplex.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_tuplex;\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], \"r\"),true);\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], \"5\"),false);\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], 3),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(var i = 0; i < tuplex.length; i++){\n        if(tuplex[i] === tuple1){\n            return true;\n        }\n    }\n    return false;\n}"
+  ]
+}

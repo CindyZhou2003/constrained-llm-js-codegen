@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var even = 0;\n    var odd = 0;\n    for(var i=0;i<list1.length;i++){\n        if(list1[i]%2==0){\n            even = list1[i];\n            break;\n        }\n    }\n    for(var i=0;i<list1.length;i++){\n        if(list1[i]%2!=0){\n            odd = list1[i];\n            break;\n        }\n    }\n    return even-odd;\n}"
+    "    var even = 0;\n    var odd = 0;\n    for(var i = 0; i < list1.length; i++){\n        if(list1[i] % 2 == 0){\n            even = list1[i];\n            break;\n        }\n    }\n    for(var i = 0; i < list1.length; i++){\n        if(list1[i] % 2 != 0){\n            odd = list1[i];\n            break;\n        }\n    }\n    return even - odd;\n}"
   ]
 }

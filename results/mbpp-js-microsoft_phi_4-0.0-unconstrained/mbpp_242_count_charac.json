@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_242_count_charac",
+  "language": "js",
+  "prompt": "//Write a function to count the total number of characters in a string.\nfunction count_charac(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_242_count_charac.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_charac;\n  assert.deepEqual(candidate(\"python programming\"),18);\n  assert.deepEqual(candidate(\"language\"),8);\n  assert.deepEqual(candidate(\"words\"),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        count++;\n    }\n    return count;\n}"
+  ]
+}

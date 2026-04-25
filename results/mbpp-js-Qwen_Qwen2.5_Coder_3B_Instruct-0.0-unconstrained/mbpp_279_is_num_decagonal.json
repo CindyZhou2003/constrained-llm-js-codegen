@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n<1){\n        return false;\n    }\n    let decagonal_number = (5*n*(n-1)+1)/2;\n    return decagonal_number;\n}"
+    "    if(n<1){\n        return false;\n    }\n    return (8*n*n-4*n+1)/10;\n}"
   ]
 }

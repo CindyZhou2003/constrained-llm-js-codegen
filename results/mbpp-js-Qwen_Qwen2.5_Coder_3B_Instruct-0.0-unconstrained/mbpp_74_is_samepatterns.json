@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for(let i = 0; i < colors.length; i++){\n        if(colors[i] !== patterns[i]){\n            return false;\n        }\n    }\n    return true;\n}\n"
+    "    for(let i = 0; i < patterns.length; i++){\n        if(colors[i] !== patterns[i]){\n            return false;\n        }\n    }\n    return true;\n}\n"
   ]
 }

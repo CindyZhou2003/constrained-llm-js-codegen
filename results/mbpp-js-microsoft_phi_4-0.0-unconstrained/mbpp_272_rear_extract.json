@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_272_rear_extract",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array of tuples and returns an array containing the rear element of each array.\nfunction rear_extract(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_272_rear_extract.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rear_extract;\n  assert.deepEqual(candidate([[1, \"Rash\", 21], [2, \"Varsha\", 20], [3, \"Kil\", 19]]),[21, 20, 19]);\n  assert.deepEqual(candidate([[1, \"Sai\", 36], [2, \"Ayesha\", 25], [3, \"Salman\", 45]]),[36, 25, 45]);\n  assert.deepEqual(candidate([[1, \"Sudeep\", 14], [2, \"Vandana\", 36], [3, \"Dawood\", 56]]),[14, 36, 56]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Initialize an empty list to store the rear elements\n    rear_elements = []\n    //Iterate over the input list\n    for i in range(len(test_list)):\n        //Append the last element of each tuple to the rear_elements list\n        rear_elements.append(test_list[i][-1])\n    //Return the list of rear elements\n    return rear_elements\n}\n```\n\nThis function `rear_extract` takes in a list of tuples `test_list` as input. It initializes an empty list `rear_elements` to store the rear elements of each tuple. It then iterates over the input list, and for each tuple, it appends the last element (i.e., the rear element) to the `rear_elements` list. Finally, it returns the `rear_elements` list.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by encapsulating the fetching logic, including loading state, error handling, and data storage. Here's the complete implementation:\n\n```javascript\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        const data = await response.json();\n        setData(data);\n        setLoading(false);\n      } catch (error) {\n        setError(error.message);\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, [url]);\n\n  return { data, loading, error };\n};\n```\n\n### Key Features and Logic\n\n- **Asynchronous Data Fetching**: The hook uses an asynchronous function, `fetchData`, to perform the API request. This function is called within a `useEffect` hook to ensure it runs"
+  ]
+}

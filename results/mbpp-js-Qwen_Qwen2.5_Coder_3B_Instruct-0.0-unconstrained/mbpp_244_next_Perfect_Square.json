@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest whole number\n    let rounded_sqrt = Math.ceil(sqrt);\n    // Square the rounded square root to get the next perfect square\n    let next_perfect_square = rounded_sqrt * rounded_sqrt;\n    return next_perfect_square;\n}"
+    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest whole number\n    let next_sqrt = Math.ceil(sqrt);\n    // Calculate the next perfect square\n    let next_perfect_square = next_sqrt * next_sqrt;\n    return next_perfect_square;\n}"
   ]
 }

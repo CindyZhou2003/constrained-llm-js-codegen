@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_172_count_occurance",
+  "language": "js",
+  "prompt": "//Write a function to count the number of occurence of the string 'std' in a given string.\nfunction count_occurance(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_172_count_occurance.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_occurance;\n  assert.deepEqual(candidate(\"letstdlenstdporstd\"),3);\n  assert.deepEqual(candidate(\"truststdsolensporsd\"),1);\n  assert.deepEqual(candidate(\"makestdsostdworthit\"),2);\n  assert.deepEqual(candidate(\"stds\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    count = 0\n    for i in range(len(s)-2):\n        if s[i:i+3] == 'std':\n            count += 1\n    return count\n\n#Test\nprint(count_occurance('stdstdstd')) #3\nprint(count_occurance('stdstdsstd')) #3\nprint(count_occurance('stdsstd')) #2\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Database for Cryptographer\n\nIn this section, we will explore the applications of MySQL Create Database for Cryptographer. We will learn how to create a database using Python MySQL and how to use it for storing and retrieving encrypted data.\n\n### Subsection 1: Creating a Database\n\nTo create a database using Python MySQL, we first need to establish a connection to the MySQL server. We can do this using the `mysql.connector` module. Once we have established a connection, we can create a new database using the `CREATE DATABASE` statement.\n\n```python\nimport mysql.connector\n\n# Establish a connection to the MySQL server\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\"\n)\n\n# Create a new database\nmycursor = mydb.cursor()\nmycursor.execute(\"CREATE DATABASE mydatabase\")\n```\n\n### Subsection 2: Creating a Table\n\nOnce we have created a database, we can create a table to store our encrypted data. We can do this using the `CREATE TABLE` statement. We need to specify the name of the table and the columns it will contain.\n\n```python\nimport mysql.connector\n\n# Establish a connection to the MySQL server\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\n# Create a new table\nmycursor = mydb.cursor()\nmycursor.execute(\"CREATE TABLE encrypted_data (id INT AUTO_INCREMENT PRIMARY KEY, data VARCHAR(255))\")\n```\n\n### Subsection 3: Inserting Data\n\nTo insert encrypted data into our table, we can use the `INSERT INTO` statement. We need to specify the table name and the values we want to insert.\n\n```python\nimport mysql.connector\n\n# Establish a connection to the MySQL server\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\n# Insert encrypted data into"
+  ]
+}

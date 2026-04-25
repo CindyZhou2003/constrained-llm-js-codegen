@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var len = arraynums.length;\n    for(var i=0;i<len;i++){\n        for(var j=i+1;j<len;j++){\n            if(arraynums[i] == arraynums[j]){\n                return true;\n            }\n        }\n    }\n    return false;\n}"
+    "    var len = arraynums.length;\n    for(var i = 0; i < len; i++){\n        for(var j = i + 1; j < len; j++){\n            if(arraynums[i] == arraynums[j]){\n                return true;\n            }\n        }\n    }\n    return false;\n}"
   ]
 }

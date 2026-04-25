@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_299_max_aggregate",
+  "language": "js",
+  "prompt": "//Write a function to calculate the maximum aggregate from the array of tuples.\nfunction max_aggregate(stdata){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_299_max_aggregate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_aggregate;\n  assert.deepEqual(candidate([[\"Juan Whelan\", 90], [\"Sabah Colley\", 88], [\"Peter Nichols\", 7], [\"Juan Whelan\", 122], [\"Sabah Colley\", 84]]),[\"Juan Whelan\", 212]);\n  assert.deepEqual(candidate([[\"Juan Whelan\", 50], [\"Sabah Colley\", 48], [\"Peter Nichols\", 37], [\"Juan Whelan\", 22], [\"Sabah Colley\", 14]]),[\"Juan Whelan\", 72]);\n  assert.deepEqual(candidate([[\"Juan Whelan\", 10], [\"Sabah Colley\", 20], [\"Peter Nichols\", 30], [\"Juan Whelan\", 40], [\"Sabah Colley\", 50]]),[\"Sabah Colley\", 70]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Initialize the maximum aggregate to 0\n    let max_aggregate = 0;\n    //Iterate over each tuple in the array\n    for(let i=0; i<stdata.length; i++){\n        //Calculate the aggregate of the current tuple\n        let aggregate = stdata[i][0]*stdata[i][1] + stdata[i][2]*stdata[i][3];\n        //If the current aggregate is greater than the maximum aggregate, update the maximum aggregate\n        if(aggregate > max_aggregate){\n            max_aggregate = aggregate;\n        }\n    }\n    //Return the maximum aggregate\n    return max_aggregate;\n}\n```\nThis function takes an array of tuples as input, where each tuple contains four integers. It calculates the aggregate of each tuple and keeps track of the maximum aggregate. Finally, it returns the maximum aggregate.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is not just about fetching data; it's about managing the state of the request, handling errors, and optimizing performance with memoization. We'll leverage `useReducer` for state management and `useCallback` to memoize the fetch function, ensuring our component re-renders only when necessary.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook encapsulates the logic for fetching data, handling loading states, errors, and the fetched data itself. It uses `useReducer` for state management, providing a more scalable solution for complex state logic compared to `useState`.\n\n### State Management with `useReducer`\n\n```javascript\nimport { useReducer, useCallback, useEffect } from 'react';\n\nconst initialState = {\n  data: null,\n  isLoading: false,\n  error: null,\n};\n"
+  ]
+}

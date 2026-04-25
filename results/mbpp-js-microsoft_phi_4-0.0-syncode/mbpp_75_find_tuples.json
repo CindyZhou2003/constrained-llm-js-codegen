@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_75_find_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find tuples which have all elements divisible by k from the given array of tuples.\nfunction find_tuples(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_75_find_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_tuples;\n  assert.deepEqual(candidate([[6, 24, 12], [7, 9, 6], [12, 18, 21]], 6),[[6, 24, 12]]);\n  assert.deepEqual(candidate([[5, 25, 30], [4, 2, 3], [7, 8, 9]], 5),[[5, 25, 30]]);\n  assert.deepEqual(candidate([[7, 9, 16], [8, 16, 4], [19, 17, 18]], 4),[[8, 16, 4]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < test_list.length; i++) {\n        let tuple = test_list[i];\n        let flag = 0;\n        for (let j = 0; j < tuple.length; j++) {\n            if (tuple[j] % K != 0) {\n                flag = 1;\n                break;\n            }\n        }\n        if (flag == 0) {\n            console.log(\"YES\");\n        } else {\n            console.log(\"NO\");\n        }\n    }\n}\n```\nIn the above JavaScript function, `find_tuples`, we are iterating over each tuple in the test list. For each tuple, we are checking if all elements are divisible by `K`. If all elements are divisible, we print \"YES\", otherwise we print \"NO\".# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It returns an object containing the data, loading state, and any error that might occur during the fetch operation. This makes it incredibly versatile for any component that needs to fetch data from an API.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) =>"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let bell = new Array(n+1).fill(0);\n    bell[0] = 1;\n    for(let i=1;i<=n;i++){\n        for(let j=0;j<i;j++){\n            bell[i] += bell[j];\n        }\n    }\n    return bell[n];\n}"
+    "    let bell = new Array(n+1).fill(0);\n    bell[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = i; j >= 1; j--){\n            bell[j] += bell[j-1];\n        }\n    }\n    return bell[n];\n}"
   ]
 }

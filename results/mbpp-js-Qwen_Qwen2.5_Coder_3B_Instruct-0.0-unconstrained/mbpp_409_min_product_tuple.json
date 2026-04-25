@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let min_product = Infinity;\n    for(let i=0;i<list1.length;i++){\n        for(let j=i+1;j<list1.length;j++){\n            let product = list1[i][0] * list1[j][1];\n            if(product < min_product){\n                min_product = product;\n            }\n        }\n    }\n    return min_product;\n}"
+    "    let min_product = Infinity;\n    for(let i = 0; i < list1.length; i++){\n        for(let j = i + 1; j < list1.length; j++){\n            let product = list1[i][0] * list1[j][1];\n            if(product < min_product){\n                min_product = product;\n            }\n        }\n    }\n    return min_product;\n}"
   ]
 }

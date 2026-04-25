@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = [];\n    for(var i=0; i<nums1.length; i++){\n        if(nums2[i] != 0){\n            result.push(nums1[i]/nums2[i]);\n        }else{\n            result.push(\"undefined\");\n        }\n    }\n    return result;\n}"
+    "    var result = [];\n    for(var i = 0; i < nums1.length; i++){\n        if(nums2[i] != 0){\n            result.push(nums1[i] / nums2[i]);\n        }else{\n            result.push(\"undefined\");\n        }\n    }\n    return result;\n}"
   ]
 }

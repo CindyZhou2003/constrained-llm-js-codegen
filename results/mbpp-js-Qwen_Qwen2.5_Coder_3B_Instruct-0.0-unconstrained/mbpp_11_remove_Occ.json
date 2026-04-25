@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str = s.split(ch);\n    return str.join(ch);\n}"
+    "    var first = s.indexOf(ch);\n    var last = s.lastIndexOf(ch);\n    var newStr = s.slice(0, first) + s.slice(last + 1);\n    return newStr;\n}"
   ]
 }

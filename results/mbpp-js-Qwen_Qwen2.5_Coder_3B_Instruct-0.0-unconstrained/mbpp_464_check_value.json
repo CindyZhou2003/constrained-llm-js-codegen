@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    for (let key in dict) {\n        if (dict[key] !== n) {\n            return false;\n        }\n    }\n    return true;\n}\n"
+    "    for (let key in dict){\n        if (dict[key] != n){\n            return false;\n        }\n    }\n    return true;\n}\n\ndict = {'a': 1, 'b': 1, 'c': 1}\nn = 1\nprint(check_value(dict, n))"
   ]
 }

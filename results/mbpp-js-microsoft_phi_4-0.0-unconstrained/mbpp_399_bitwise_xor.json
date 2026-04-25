@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_399_bitwise_xor",
+  "language": "js",
+  "prompt": "//Write a function to perform the mathematical bitwise xor operation across the given tuples.\nfunction bitwise_xor(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_399_bitwise_xor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bitwise_xor;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[15, 6, 5, 10]);\n  assert.deepEqual(candidate([11, 5, 7, 10], [6, 3, 4, 4]),[13, 6, 3, 14]);\n  assert.deepEqual(candidate([12, 6, 8, 11], [7, 4, 5, 6]),[11, 2, 13, 13]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Initialize an empty list to store the results\n    result = []\n    //Iterate over the tuples\n    for i in range(len(test_tup1)):\n        #Perform the bitwise xor operation and append the result to the list\n        result.append(test_tup1[i] ^ test_tup2[i])\n    //Return the result list\n    return result\n}\n```\n\nThis function takes two tuples as input, performs the bitwise xor operation on each corresponding pair of elements, and returns a new tuple with the results. The bitwise xor operation is performed using the '^' operator in Python.# Advanced Guide to Creating a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is not just about fetching data; it's about creating a reusable, efficient, and robust solution that can be integrated into any React project. We'll cover error handling, loading states, and how to use this hook in a component.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is designed to abstract the logic of fetching data from an API, handling loading states, and errors. It returns the data, loading state, and any error that might occur during the fetch operation. This makes it incredibly versatile for any component that needs to fetch data.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect } from 'react';\n"
+  ]
+}

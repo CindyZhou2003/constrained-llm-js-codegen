@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let stack = [];\n    for(let i=0; i<exp.length; i++){\n        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){\n            stack.push(exp[i]);\n        }else{\n            if(stack.length == 0){\n                return false;\n            }\n            let top = stack.pop();\n            if((exp[i] == ')' && top != '(') || (exp[i] == '}' && top != '{') || (exp[i] == ']' && top != '[')){\n                return false;\n            }\n        }\n    }\n    return stack.length == 0;\n}\n"
+    "    let stack = [];\n    for(let i = 0; i < exp.length; i++){\n        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){\n            stack.push(exp[i]);\n        }else{\n            if(stack.length == 0){\n                return false;\n            }\n            let top = stack.pop();\n            if((exp[i] == ')' && top != '(') || (exp[i] == '}' && top != '{') || (exp[i] == ']' && top != '[')){\n                return false;\n            }\n        }\n    }\n    return stack.length == 0;\n}\n"
   ]
 }

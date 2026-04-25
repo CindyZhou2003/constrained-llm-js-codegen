@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    let i = 1;\n    while(count < n){\n        let triangularNumber = (i * (i + 1)) / 2;\n        let numDigits = triangularNumber.toString().length;\n        if(numDigits === n){\n            return count;\n        }\n        count++;\n        i++;\n    }\n}"
+    "    let count = 0;\n    let triangular = 0;\n    let index = 0;\n    while(count < n){\n        triangular = (index * (index + 1)) / 2;\n        let digits = triangular.toString().length;\n        if(digits === n){\n            count++;\n            index++;\n        }else{\n            index++;\n        }\n    }\n    return index;\n}"
   ]
 }

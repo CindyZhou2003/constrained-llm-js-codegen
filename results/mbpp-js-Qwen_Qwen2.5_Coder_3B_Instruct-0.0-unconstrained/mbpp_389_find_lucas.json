@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n === 0) return 2;\n    if(n === 1) return 1;\n    return find_lucas(n-1) + find_lucas(n-2);\n}\n"
+    "    if(n === 0){\n        return 2;\n    }\n    if(n === 1){\n        return 1;\n    }\n    return find_lucas(n-1) + find_lucas(n-2);\n}\n"
   ]
 }

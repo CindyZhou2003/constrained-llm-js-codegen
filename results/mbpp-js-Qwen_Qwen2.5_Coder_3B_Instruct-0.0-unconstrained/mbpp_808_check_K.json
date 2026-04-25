@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = False\n    for ele in test_tup:\n        if K in ele:\n            res = True\n            break\n    return res\n\n#Driver Code\ntest_tup = [(1, 2), (3, 4), (5, 6)]\nK = 4\nprint(check_K(test_tup, K))"
+    "    res = False\n    for ele in test_tup:\n        if K in ele:\n            res = True\n            break\n    return res\ntest_tup = (1, 2, 3), (4, 5, 6), (7, 8, 9)\nK = 5\nprint(check_K(test_tup, K))"
   ]
 }

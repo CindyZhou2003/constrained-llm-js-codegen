@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var reversed_list = [];\n    for(var i=0; i<stringlist.length; i++){\n        reversed_list.push(stringlist[i].split('').reverse().join(''));\n    }\n    return reversed_list;\n}"
+    "    var reversed_list = [];\n    for(var i = 0; i < stringlist.length; i++){\n        reversed_list.push(stringlist[i].split('').reverse().join(''));\n    }\n    return reversed_list;\n}\n"
   ]
 }

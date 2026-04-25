@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_439_multiple_to_single",
+  "language": "js",
+  "prompt": "//Write a function to join an array of multiple integers into a single integer.\nfunction multiple_to_single(L){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_439_multiple_to_single.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = multiple_to_single;\n  assert.deepEqual(candidate([11, 33, 50]),113350);\n  assert.deepEqual(candidate([-1, 2, 3, 4, 5, 6]),-123456);\n  assert.deepEqual(candidate([10, 15, 20, 25]),10152025);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return int(''.join(map(str,L)))\n}\n\n#Test the function\nprint(multiple_to_single([1,2,3,4,5])) #Expected output: 12345\n```\n\n2. Write a function that takes a list of integers and returns a list of their squares.\n\n```python\n#Write a function that takes a list of integers and returns a list of their squares.\ndef square_list(L):\n    return [i**2 for i in L]\n\n#Test the function\nprint(square_list([1,2,3,4,5])) #Expected output: [1, 4, 9, 16, 25]\n```\n\n3. Write a function that takes a list of integers and returns a list of their cubes.\n\n```python\n#Write a function that takes a list of integers and returns a list of their cubes.\ndef cube_list(L):\n    return [i**3 for i in L]\n\n#Test the function\nprint(cube_list([1,2,3,4,5])) #Expected output: [1, 8, 27, 64, 125]\n```\n\n4. Write a function that takes a list of integers and returns a list of their factorials.\n\n```python\n#Write a function that takes a list of integers and returns a list of their factorials.\ndef factorial_list(L):\n    def factorial(n):\n        if n == 0:\n            return 1\n        else:\n            return n * factorial(n-1)\n    return [factorial(i) for i in L]\n\n#Test the function\nprint(factorial_list([1,2,3,4,5])) #Expected output: [1, 2, 6, 24, 120]\n```\n\n5. Write a function that takes a list of integers and returns a list of their squares and cubes.\n\n```python\n#Write a function that takes a list of integers and returns a list of their squares and cubes.\ndef square_cube_list(L):\n    return [(i**2, i**3) for i in L]\n\n#Test the function\nprint(square_cube_list([1,2,3,4,5])) #Expected output: [(1, 1), (4, 8), (9, 27), (16, 64), (25, 125)]\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Table for Cryptographer\n\nIn"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    #Using set() to remove duplicates\n    res = len(test_tup) == len(set(test_tup))\n    return res\n#Driver code\ntest_tup = [1, 2, 3, 4, 5]\nprint(\"Original tuple:\", test_tup)\nprint(\"Check for distinct elements:\", check_distinct(test_tup))"
+    "    #Using set() to remove duplicates\n    res = len(test_tup) == len(set(test_tup))\n    return res\n#Driver code\ntest_tup = [1, 2, 3, 4, 5]\nprint(\"Original array:\", test_tup)\nprint(\"Check if array contains no duplicates:\", check_distinct(test_tup))"
   ]
 }

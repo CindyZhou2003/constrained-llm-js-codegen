@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //using sort() method to sort the list in ascending order\n    test_list.sort((a,b) => a-b);\n    //using slice() method to get the first K elements from the sorted list\n    res = test_list.slice(0,K);\n    return res;\n}"
+    "    //using sort function to sort the array in ascending order\n    test_list.sort((a, b) => a - b);\n    //using slice function to get the first k elements from the sorted array\n    res = test_list.slice(0, K);\n    return res;\n}"
   ]
 }

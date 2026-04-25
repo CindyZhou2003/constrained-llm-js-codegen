@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max_so_far = -Infinity;\n    let max_ending_here = 0;\n\n    for(let i = 0; i < n * k; i++){\n        max_ending_here += a[i % n];\n        if(max_so_far < max_ending_here){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n\n    return max_so_far;\n}\n\nlet a = [1, -2, 3, -4, 5];\nlet n = a.length;\nlet k = 3;"
+    "    let max_so_far = -Infinity;\n    let max_ending_here = 0;\n    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += a[i];\n        max_ending_here += a[i];\n        if(max_ending_here > max_so_far){\n            max_so_far = max_ending_here;\n        }\n        if(max_ending_here < 0){\n            max_ending_here = 0;\n        }\n    }\n    let total_sum = sum * k;\n    let max_sum = max_so_far;\n    for(let i = 0; i < n; i++){\n        total_sum -= a[i];\n        max_sum = Math.max(max_sum, total_sum + max_so_far);\n    }\n    return max_sum;\n}\nlet a = [1, 2, 3];\nlet n = a.length;\nlet k = 3;"
   ]
 }

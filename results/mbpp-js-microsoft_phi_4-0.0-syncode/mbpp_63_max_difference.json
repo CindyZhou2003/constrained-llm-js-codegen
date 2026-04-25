@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_63_max_difference",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum difference between available pairs in the given array array.\nfunction max_difference(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_63_max_difference.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_difference;\n  assert.deepEqual(candidate([[3, 5], [1, 7], [10, 3], [1, 2]]),7);\n  assert.deepEqual(candidate([[4, 6], [2, 17], [9, 13], [11, 12]]),15);\n  assert.deepEqual(candidate([[12, 35], [21, 27], [13, 23], [41, 22]]),23);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < test_list.length; i++){\n        let n = test_list[i][0];\n        let arr = test_list[i][1];\n        arr.sort((a, b) => a - b);\n        let max_diff = arr[n-1] - arr[0];\n        for (let j = 1; j < n; j++){\n            max_diff = Math.max(max_diff, arr[n-1-j] - arr[j]);\n        }\n        console.log(max_diff);\n    }\n}\n```\nIn the above solution, we first sort the array in ascending order. Then we calculate the difference between the last and first element of the array. After that, we iterate over the array and calculate the difference between the elements from the end and the start of the array. We keep track of the maximum difference we have found so far. Finally, we print the maximum difference.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook is not just about fetching data; it's about managing the state of the request, handling errors, and optimizing performance with memoization. This guide assumes you're already familiar with React hooks, so we'll focus on the complex logic and patterns that make `useFetch` a powerful tool in your React arsenal.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is designed to abstract the logic of fetching data from an API, handling loading states, errors, and caching responses to optimize performance. Here's the complete code for the hook:\n\n```jsx\nimport { useState, useEffect, useCallback } from 'react';\n\nconst useFetch = (url, options = {}) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  const fetchData = useCallback(async () => {\n    setLoading(true);\n    try {\n      const response = await fetch(url, options);\n      if (!response.ok) throw new Error('"
+  ]
+}

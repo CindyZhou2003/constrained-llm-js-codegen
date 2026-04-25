@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  sum = 0\n  for (i in 1(length(sample_names))){\n    if (substr(sample_names[i],1,1)"
+  ]
+}

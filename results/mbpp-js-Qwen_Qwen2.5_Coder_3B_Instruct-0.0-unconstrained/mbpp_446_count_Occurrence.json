@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var count = 0;\n    for(var i = 0; i < lst.length; i++){\n        if(lst[i] == tup){\n            count++;\n        }\n    }\n    return count;\n}\n\nvar arr = [1,2,3,4,5,6,7,8,9,10];"
+    "    var count = 0;\n    for(var i = 0; i < lst.length; i++){\n        if(lst[i] == tup){\n            count++;\n        }\n    }\n    return count;\n}\n\nvar tup = 2;\nvar lst = [1, 2, 3, 2, 4, 2, 5];"
   ]
 }

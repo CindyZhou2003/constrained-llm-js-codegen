@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = []\n    for i in range(len(test_tup1)):\n        res.append(test_tup1[i] % test_tup2[i])\n    return res\ntest_tup1 = (4, 5, 6)\ntest_tup2 = (3, 2, 1)\nprint(\"The original tuple 1 : \" + str(test_tup1))\nprint(\"The original tuple 2 : \" + str(test_tup2))\nprint(\"Tuple after element wise modulo : \" + str(tuple_modulo(test_tup1, test_tup2)))"
+    "    res = tuple(map(lambda x, y: x % y, test_tup1, test_tup2))\n    return res\ntest_tup1 = (1, 2, 3, 4)\ntest_tup2 = (2, 3, 4, 5)\nprint(\"The original tuple 1 : \" + str(test_tup1))\nprint(\"The original tuple 2 : \" + str(test_tup2))\nprint(\"Tuple after element wise modulo : \" + str(tuple_modulo(test_tup1, test_tup2)))"
   ]
 }

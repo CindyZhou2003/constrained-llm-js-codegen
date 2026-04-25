@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var min = lst[0].length;\n    for(var i=1;i<lst.length;i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}"
+    "    var min = lst[0].length;\n    for(var i = 1; i < lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}"
   ]
 }

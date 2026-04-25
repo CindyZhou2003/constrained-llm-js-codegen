@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_457_Find_Min",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sublist having minimum length.\nfunction Find_Min(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_457_Find_Min.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Min;\n  assert.deepEqual(candidate([[1], [1, 2], [1, 2, 3]]),[1]);\n  assert.deepEqual(candidate([[1, 1], [1, 1, 1], [1, 2, 7, 8]]),[1, 1]);\n  assert.deepEqual(candidate([[\"x\"], [\"x\", \"y\"], [\"x\", \"y\", \"z\"]]),[\"x\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    min = lst[0]\n    for i in lst:\n        if len(i) < len(min):\n            min = i\n    return min\nlst = [[1,2,3],[1,2],[1,2,3,4,5],[1,2,3,4]]\nprint(Find_Min(lst))\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Database for Cryptographer\n\nIn this section, we will explore the various applications of MySQL Create Database for Cryptographer. We will discuss how to create a database, tables, and insert data into the database. We will also cover how to retrieve data from the database and perform various operations on the data.\n\n### Subsection 1: Creating a Database\n\nTo create a database in MySQL, we use the `CREATE DATABASE` statement. This statement creates a new database with the specified name. Here is an example:\n\n```python\nimport mysql.connector\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\"\n)\n\nmycursor = mydb.cursor()\n\nmycursor.execute(\"CREATE DATABASE mydatabase\")\n```\n\n### Subsection 2: Creating Tables\n\nOnce we have created a database, we can create tables within the database. To create a table, we use the `CREATE TABLE` statement. This statement creates a new table with the specified name and columns. Here is an example:\n\n```python\nimport mysql.connector\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\nmycursor = mydb.cursor()\n\nmycursor.execute(\"CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))\")\n```\n\n### Subsection 3: Inserting Data\n\nTo insert data into a table, we use the `INSERT INTO` statement. This statement inserts a new row into the specified table with the specified values. Here is an example:\n\n```python\nimport mysql.connector\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\nmycursor = mydb.cursor()\n\nsql = \"INSERT INTO customers (name, address) VALUES (%s, %s)\"\nval = (\"John\", \"Highway 21\")\nmycursor.execute(sql, val)\n\nmydb.commit()\n\nprint(mycursor.rowcount, \"record inserted.\")\n```\n\n### Subsection"
+  ]
+}

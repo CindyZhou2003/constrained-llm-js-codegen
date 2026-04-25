@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Sort the array in descending order\n    arr.sort((a, b) => b - a);\n    // Join the sorted array into a string\n    let max_num = arr.join('');\n    // Return the maximum number as a number\n    return parseInt(max_num);\n}"
+    "    // Sort the array in descending order\n    arr.sort((a, b) => b - a);\n    // Join the sorted array into a string\n    let max_num = arr.join('');\n    // Return the largest number as a number\n    return parseInt(max_num);\n}"
   ]
 }

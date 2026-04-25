@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_446_count_Occurrence",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the occurence of all elements of array in an array.\nfunction count_Occurrence(tup, lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_446_count_Occurrence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Occurrence;\n  assert.deepEqual(candidate([\"a\", \"a\", \"c\", \"b\", \"d\"], [\"a\", \"b\"]),3);\n  assert.deepEqual(candidate([1, 2, 3, 1, 4, 6, 7, 1, 4], [1, 4, 7]),6);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [1, 2]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    count = {}\n    for i in lst:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    return count[tup]\n}\n```\n\n### Exercise 2: \nWrite a Python function to find the most frequent element in an array.\n\n```python\n#Write a Python function to find the most frequent element in an array.\ndef most_frequent(lst):\n    count = {}\n    for i in lst:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    return max(count, key=count.get)\n```\n\n### Exercise 3: \nWrite a Python function to find the least frequent element in an array.\n\n```python\n#Write a Python function to find the least frequent element in an array.\ndef least_frequent(lst):\n    count = {}\n    for i in lst:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    return min(count, key=count.get)\n```\n\n### Exercise 4: \nWrite a Python function to find the second most frequent element in an array.\n\n```python\n#Write a Python function to find the second most frequent element in an array.\ndef second_most_frequent(lst):\n    count = {}\n    for i in lst:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    sorted_count = sorted(count.items(), key=lambda x: x[1], reverse=True)\n    return sorted_count[1][0]\n```\n\n### Exercise 5: \nWrite a Python function to find the second least frequent element in an array.\n\n```python\n#Write a Python function to find the second least frequent element in an array.\ndef second_least_frequent(lst):\n    count = {}\n    for i in lst:\n        if i in count:\n            count[i] += 1\n        else:\n            count[i] = 1\n    sorted_count = sorted(count.items(), key=lambda x: x[1])\n    return sorted_count[1][0]\n```\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Table for Cryptographer\n\nIn this section, we will explore the various applications of MySQL Create Table for Cryptographer. We will learn how to create tables in MySQL using Python and how to use these tables to store and retrieve encrypted data"
+  ]
+}

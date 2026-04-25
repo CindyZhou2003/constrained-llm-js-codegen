@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var count = 0;\n    for(var i = 0; i < arr.length; i++){\n        for(var j = i + 1; j < arr.length; j++){\n            if(arr[i] + arr[j] === sum){\n                count++;\n            }\n        }\n    }\n    return count;\n}"
+    "    var count = 0;\n    var i, j;\n    for(i = 0; i < arr.length; i++){\n        for(j = i + 1; j < arr.length; j++){\n            if(arr[i] + arr[j] == sum){\n                count++;\n            }\n        }\n    }\n    return count;\n}"
   ]
 }

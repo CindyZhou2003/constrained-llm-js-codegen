@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n%2==0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}"
+    "    if(n%2==0){\n        return true;\n    }\n    return false;\n}"
   ]
 }

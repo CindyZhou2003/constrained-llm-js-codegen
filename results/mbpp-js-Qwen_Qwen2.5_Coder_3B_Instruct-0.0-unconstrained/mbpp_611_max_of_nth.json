@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = 0\n    for i in range(len(test_list)):\n        if test_list[i][N] > res:\n            res = test_list[i][N]\n    return res\n\n#Test the function\ntest_list = [[1, 4, 3], [2, 5, 6], [7, 8, 9]]\nN = 1\nprint(max_of_nth(test_list, N)) # Output: 8\n```\n\n\nIn this code, we define a function `max_of_nth` that takes two arguments: `test_list`, which is the matrix represented as an array of lists, and `N`, which is the index of the column we want to find the maximum value of. We initialize a variable `res` to 0, which will store the maximum value found in the specified column. We then iterate over each row in the matrix using a for loop. For each row, we check if the value at the specified column index is greater than the current value of `res`. If it is, we update `res` with the new value. Finally, we return the value of `res`, which is the maximum value found in the specified column.\n\nWe then test the function by passing in a sample matrix `test_list` and specifying the column index `N` as 1. The expected output is 8, which is the maximum value found in the second column of the matrix. ```"
+    "    res = max(test_list, N)\n    return res\n}\ntest_list = [[1, 4, 5], [2, 5, 6], [3, 7, 8]]\nN = 2\nprint(max_of_nth(test_list, N))"
   ]
 }

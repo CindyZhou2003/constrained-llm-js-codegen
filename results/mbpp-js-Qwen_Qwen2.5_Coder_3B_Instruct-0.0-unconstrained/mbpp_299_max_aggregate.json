@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let max = 0;\n    for(let i=0; i<stdata.length; i++){\n        if(stdata[i][1] > max){\n            max = stdata[i][1];\n        }\n    }\n    return max;\n}\nlet stdata = [\n    [\"Rahul\", 98],\n    [\"Shubham\", 95],\n    [\"Sagar\", 97]\n];"
+    "    let max = 0;\n    for(let i = 0; i < stdata.length; i++){\n        if(stdata[i][1] > max){\n            max = stdata[i][1];\n        }\n    }\n    return max;\n}\nlet stdata = [\n    [\"Rahul\", 85],\n    [\"Raj\", 90],\n    [\"Ravi\", 88],\n    [\"Rajesh\", 92]\n];"
   ]
 }

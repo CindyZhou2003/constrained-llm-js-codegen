@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_630_get_coordinates",
+  "language": "js",
+  "prompt": "//Write a function to extract all the adjacent coordinates of the given coordinate array.\nfunction get_coordinates(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_630_get_coordinates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_coordinates;\n  assert.deepEqual(candidate([3, 4]),[[2, 3], [2, 4], [2, 5], [3, 3], [3, 4], [3, 5], [4, 3], [4, 4], [4, 5]]);\n  assert.deepEqual(candidate([4, 5]),[[3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 4], [5, 5], [5, 6]]);\n  assert.deepEqual(candidate([5, 6]),[[4, 5], [4, 6], [4, 7], [5, 5], [5, 6], [5, 7], [6, 5], [6, 6], [6, 7]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    #test_tup is a tuple of two integers representing the coordinates\n    x, y = test_tup\n    #Create a list of all possible adjacent coordinates\n    adjacent_coordinates = [(x+1, y), (x-1, y), (x, y+1), (x, y-1), (x+1, y+1), (x-1, y-1), (x+1, y-1), (x-1, y+1)]\n    return adjacent_coordinates\n}\n\n#Example usage:\nprint(get_coordinates((1, 2)))\n#Output: [(2, 2), (0, 2), (1, 3), (1, 1), (2, 3), (0, 1), (2, 1), (0, 3)]\n```\n\nIn this solution, we first unpack the tuple into two variables, x and y. Then, we create a list of tuples representing all possible adjacent coordinates. This is done by adding or subtracting 1 from x and/or y. Finally, we return the list of adjacent coordinates.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by encapsulating the fetching logic, loading state, error handling, and data storage. Here's how to implement it:\n\n```javascript\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) throw new Error('Data could not be fetched!');\n        const data = await response.json();\n        setData(data);\n        setLoading(false);\n      } catch (error) {\n        setError(error.message);\n        setLoading(false);\n      }\n    };\n\n    fetchData"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_448_cal_sum",
+  "language": "js",
+  "prompt": "//Write a function to calculate the sum of perrin numbers.\nfunction cal_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_448_cal_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cal_sum;\n  assert.deepEqual(candidate(9),49);\n  assert.deepEqual(candidate(10),66);\n  assert.deepEqual(candidate(11),88);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let a = 3, b = 0, c = 2, sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += a;\n        let temp = a;\n        a = a + b;\n        b = c;\n        c = temp;\n    }\n    return sum;\n}\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_470_add_pairwise",
+  "language": "js",
+  "prompt": "//Write a function to find the pairwise addition of the neighboring elements of the given array.\nfunction add_pairwise(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_470_add_pairwise.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_pairwise;\n  assert.deepEqual(candidate([1, 5, 7, 8, 10]),[6, 12, 15, 18]);\n  assert.deepEqual(candidate([2, 6, 8, 9, 11]),[8, 14, 17, 20]);\n  assert.deepEqual(candidate([3, 7, 9, 10, 12]),[10, 16, 19, 22]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for i in range(test_tup[0]):\n        n = test_tup[i+1][0]\n        arr = test_tup[i+1][1]\n        print(*[arr[i]+arr[i+1] for i in range(n-1)])\n}\n```\n\nIn the function `add_pairwise`, the first argument `test_tup` is a tuple where the first element is the number of test cases and the rest of the elements are tuples where the first element is the length of the array and the second element is the array itself. The function prints the pairwise addition of the neighboring elements of the array for each test case.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses to optimize performance. This guide assumes you're already familiar with React hooks and their basic usage.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It leverages `useState`, `useEffect`, and `useRef` hooks to manage the fetch lifecycle, cache responses, and prevent unnecessary network requests.\n\n### Implementation\n\n```jsx\nimport { useState, useEffect, useRef } from 'react';\n\nconst cache = {};\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_94_index_minimum",
+  "language": "js",
+  "prompt": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_94_index_minimum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = Math.min(...test_list.map(x => x[1]));\n    return test_list.filter(x => x[1] == res)[0][0];\n}"
+  ]
+}

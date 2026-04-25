@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Reverse the entire list\n    list.reverse();\n    // Reverse the first m elements\n    for(let i = 0; i < m; i++){\n        let temp = list[i];\n        list[i] = list[m + i];\n        list[m + i] = temp;\n    }\n    // Reverse the remaining elements\n    for(let i = m; i < list.length; i++){\n        let temp = list[i];\n        list[i] = list[list.length - 1 - (i - m)];\n        list[list.length - 1 - (i - m)] = temp;\n    }\n    return list;\n}\n\nlet arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];"
+    "    // Reverse the entire list\n    list.reverse();\n    // Reverse the first m elements\n    for(let i = 0; i < m; i++){\n        list[i] = list[i].reverse();\n    }\n    // Reverse the remaining elements\n    for(let i = m; i < list.length; i++){\n        list[i] = list[i].reverse();\n    }\n    return list;\n}\n"
   ]
 }

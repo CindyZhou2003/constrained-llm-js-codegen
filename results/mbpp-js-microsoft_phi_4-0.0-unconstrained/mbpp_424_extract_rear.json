@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_424_extract_rear",
+  "language": "js",
+  "prompt": "//Write a function to extract only the rear index element of each string in the given array.\nfunction extract_rear(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_424_extract_rear.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_rear;\n  assert.deepEqual(candidate([\"Mers\", \"for\", \"Vers\"]),[\"s\", \"r\", \"s\"]);\n  assert.deepEqual(candidate([\"Avenge\", \"for\", \"People\"]),[\"e\", \"r\", \"e\"]);\n  assert.deepEqual(candidate([\"Gotta\", \"get\", \"go\"]),[\"a\", \"t\", \"o\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return [i[-1] for i in test_tuple]\n}\nprint(extract_rear(['abc', 'xyz', 'aba', '1221']))\n```\n\n**Exercise 2:**\n\n```python\n#Write a function to extract the first element of each string in the given array.\ndef extract_first(test_tuple):\n    return [i[0] for i in test_tuple]\nprint(extract_first(['abc', 'xyz', 'aba', '1221']))\n```\n\n**Exercise 3:**\n\n```python\n#Write a function to extract the first and last element of each string in the given array.\ndef extract_first_last(test_tuple):\n    return [i[0]+i[-1] for i in test_tuple]\nprint(extract_first_last(['abc', 'xyz', 'aba', '1221']))\n```\n\n**Exercise 4:**\n\n```python\n#Write a function to extract the first two elements of each string in the given array.\ndef extract_first_two(test_tuple):\n    return [i[:2] for i in test_tuple]\nprint(extract_first_two(['abc', 'xyz', 'aba', '1221']))\n```\n\n**Exercise 5:**\n\n```python\n#Write a function to extract the last two elements of each string in the given array.\ndef extract_last_two(test_tuple):\n    return [i[-2:] for i in test_tuple]\nprint(extract_last_two(['abc', 'xyz', 'aba', '1221']))\n```\n\n\n# Chapter: The use of Python Libraries/Modules for Cryptocurrency Developer\n\n## Section: Applications of PyOpenGL for Cryptocurrency Developer\n\nPyOpenGL is a Python library that provides bindings to OpenGL, a cross-platform graphics API. It is widely used in computer graphics, game development, and scientific visualization. In the context of cryptocurrency development, PyOpenGL can be used to create visualizations of blockchain data, such as transaction graphs, blockchains, and mining pools. In this section, we will explore some of the applications of PyOpenGL for cryptocurrency developers.\n\n### Subsection 1: Visualizing Blockchain Data\n\nOne of the most common applications of PyOpenGL in cryptocurrency development is visualizing blockchain data. This can be done by creating a 3D model of the blockchain, where each block is represented by a cube or a sphere, and the connections between blocks are represented by lines or tubes. This visualization can help developers understand the structure of the blockchain and identify patterns or anomalies in the data.\n\n```python\nimport numpy as np\n"
+  ]
+}

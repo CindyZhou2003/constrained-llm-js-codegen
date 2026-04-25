@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var increasing = true;\n    var decreasing = true;\n\n    for(var i=1; i<A.length; i++){\n        if(A[i] > A[i-1]){\n            decreasing = false;\n        }\n        else if(A[i] < A[i-1]){\n            increasing = false;\n        }\n    }\n\n    return increasing || decreasing;\n}\n"
+    "    var increasing = true;\n    var decreasing = true;\n    for(var i = 1; i < A.length; i++){\n        if(A[i] > A[i - 1]){\n            decreasing = false;\n        }\n        if(A[i] < A[i - 1]){\n            increasing = false;\n        }\n    }\n    return increasing || decreasing;\n}"
   ]
 }

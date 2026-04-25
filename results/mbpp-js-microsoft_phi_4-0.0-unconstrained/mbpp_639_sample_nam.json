@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  #initialize the sum to 0\n  sum = 0\n  #iterate over the names in the array\n  for(name in sample_names){\n    #check if the first letter of the name is uppercase\n    if(grepl(\"^[A-Z]\", name)){\n      #if it is, add the length of the name to the sum\n      sum = sum + nchar(name)\n    }\n  }\n  #return the sum\n  return(sum)\n}\n```\nThis function takes an array of names as input and returns the sum of the lengths of the names that start with an uppercase letter. It uses the `grepl` function to check if the first letter of each name is uppercase, and the `nchar` function to get the length of each name. The sum is initialized to 0 and is updated for each name that meets the condition.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React, and introduce `axios` for making HTTP requests due to its wide adoption and ease of use.\n\n## Prerequisites\n\n- Proficiency in React and its core concepts (hooks, components).\n- Familiarity with `axios` for making HTTP requests.\n- Understanding of asynchronous JavaScript (Promises, async/await).\n\n## Setting Up\n\nFirst, ensure you have `axios` installed in your project:\n\n```bash\nnpm install axios\n```\n\n## Creating the `useFetch` Hook\n\nThe `useFetch` hook will accept a URL as its argument and return an object containing the data, loading state, and any error encountered during the fetch operation.\n\n```jsx\nimport { useState, useEffect } from 'react';\nimport axios from 'axios';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await axios.get(url);\n        setData(response.data);\n        setLoading(false);\n      } catch (error) {\n        setError(error);\n        setLoading(false);\n      }\n   "
+  ]
+}

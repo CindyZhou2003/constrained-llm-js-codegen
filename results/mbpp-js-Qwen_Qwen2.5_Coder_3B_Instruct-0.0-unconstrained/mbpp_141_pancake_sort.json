@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = nums.length;\n    for(let i = 0; i < n - 1; i++){\n        let max_index = i;\n        for(let j = i + 1; j < n; j++){\n            if(nums[j] > nums[max_index]){\n                max_index = j;\n            }\n        }\n        if(max_index !== i){\n            // Flip the array from index i to max_index\n            reverse(nums, i, max_index);\n            // Flip the array from index 0 to i\n            reverse(nums, 0, i);\n        }\n    }\n    return nums;\n}\n"
+    "    let n = nums.length;\n    for(let i = n-1; i > 0; i--){\n        let maxIndex = 0;\n        for(let j = 1; j <= i; j++){\n            if(nums[j] > nums[maxIndex]){\n                maxIndex = j;\n            }\n        }\n        if(maxIndex !== i){\n            // Flip the array from 0 to maxIndex\n            nums = nums.slice(0, maxIndex+1).reverse().concat(nums.slice(maxIndex+1));\n            // Flip the array from 0 to i\n            nums = nums.slice(0, i+1).reverse().concat(nums.slice(i+1));\n        }\n    }\n    return nums;\n}\n"
   ]
 }

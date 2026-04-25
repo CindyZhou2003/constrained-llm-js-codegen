@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i=1; i<=n; i++){\n        sum += (i * (i + 1)) / 2;\n    }\n    return sum;\n}"
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += (i+1) * (n-i);\n    }\n    return sum;\n}"
   ]
 }

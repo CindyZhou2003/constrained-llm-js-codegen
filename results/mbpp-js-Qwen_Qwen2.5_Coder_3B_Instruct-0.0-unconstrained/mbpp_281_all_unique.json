@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return (test_list.length === new Set(test_list).size);\n}"
+    "    return (test_list.length === new Set(test_list).size);\n}\ntest_list = [1, 2, 3, 4, 5];"
   ]
 }

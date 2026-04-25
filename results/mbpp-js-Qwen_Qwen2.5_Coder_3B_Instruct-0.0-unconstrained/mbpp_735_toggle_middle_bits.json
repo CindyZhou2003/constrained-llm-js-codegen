@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Get the mask for the middle bits\n    let mask = (n >> 1) & ((1 << (n - 2)) - 1);\n    // Toggle the middle bits\n    return n ^ mask;\n}"
+    "    // Get the number of bits in the number\n    let num_bits = Math.floor(Math.log2(n)) + 1;\n    // Create a mask with all bits set to 1 except the first and the last bit\n    let mask = (1 << (num_bits - 2)) - 1;\n    // Toggle the middle bits of the number\n    return n ^ mask;\n}"
   ]
 }

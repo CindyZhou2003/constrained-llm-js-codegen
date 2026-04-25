@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var dictionary = {};\n    for(var i=0; i<l1.length; i++){\n        dictionary[l1[i]] = {};\n        dictionary[l1[i]][l2[i]] = l3[i];\n    }\n    return dictionary;\n}"
+    "    var dictionary = {};\n    for(var i = 0; i < l1.length; i++){\n        dictionary[l1[i]] = {};\n        dictionary[l1[i]][l2[i]] = l3[i];\n    }\n    return dictionary;\n}"
   ]
 }

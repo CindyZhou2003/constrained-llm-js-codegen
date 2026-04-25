@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newip = ip.split('.');\n    for(let i=0;i<newip.length;i++){\n        if(newip[i] == 0){\n            newip[i] = '';\n        }\n    }\n    return newip.join('.');\n}"
+    "    let ip_array = ip.split('.');\n    let new_ip_array = [];\n    for(let i=0;i<ip_array.length;i++){\n        if(ip_array[i] == '0'){\n            continue;\n        }\n        new_ip_array.push(ip_array[i]);\n    }\n    return new_ip_array.join('.');\n}"
   ]
 }

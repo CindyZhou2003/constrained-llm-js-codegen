@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str2 = str1.split('');\n    var vowels = 'aeiouAEIOU';\n    var i = 0;\n    var j = str2.length - 1;\n\n    while(i < j){\n        if(vowels.indexOf(str2[i]) === -1){\n            i++;\n        }else if(vowels.indexOf(str2[j]) === -1){\n            j--;\n        }else{\n            var temp = str2[i];\n            str2[i] = str2[j];\n            str2[j] = temp;\n            i++;\n            j--;\n        }\n    }\n\n    return str2.join('');\n}\n"
+    "    var vowels = \"aeiouAEIOU\";\n    var str2 = \"\";\n    var str3 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(vowels.indexOf(str1[i]) !== -1){\n            str2 += str1[i];\n        }\n    }\n    str2 = str2.split(\"\").reverse().join(\"\");\n    var j = 0;\n    for(var i = 0; i < str1.length; i++){\n        if(vowels.indexOf(str1[i]) !== -1){\n            str3 += str2[j];\n            j++;\n        }\n        else{\n            str3 += str1[i];\n        }\n    }\n    return str3;\n}"
   ]
 }

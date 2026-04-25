@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_294_max_val",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum value in a given heterogeneous array.\nfunction max_val(listval){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_294_max_val.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_val;\n  assert.deepEqual(candidate([\"Python\", 3, 2, 4, 5, \"version\"]),5);\n  assert.deepEqual(candidate([\"Python\", 15, 20, 25]),25);\n  assert.deepEqual(candidate([\"Python\", 30, 20, 40, 50, \"version\"]),50);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    max = listval[0]\n    for i in range(1, len(listval)):\n        if listval[i] > max:\n            max = listval[i]\n    return max\n\n#Test the function\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(max_val(listval)) #10\n```\n\n2. Write a Python function to find the minimum value in a given heterogeneous array.\n\n```python\n#Write a function to find the minimum value in a given heterogeneous array.\ndef min_val(listval):\n    min = listval[0]\n    for i in range(1, len(listval)):\n        if listval[i] < min:\n            min = listval[i]\n    return min\n\n#Test the function\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(min_val(listval)) #1\n```\n\n3. Write a Python function to find the sum of all the elements in a given heterogeneous array.\n\n```python\n#Write a function to find the sum of all the elements in a given heterogeneous array.\ndef sum_val(listval):\n    sum = 0\n    for i in range(len(listval)):\n        sum += listval[i]\n    return sum\n\n#Test the function\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(sum_val(listval)) #55\n```\n\n4. Write a Python function to find the average of all the elements in a given heterogeneous array.\n\n```python\n#Write a function to find the average of all the elements in a given heterogeneous array.\ndef avg_val(listval):\n    sum = 0\n    for i in range(len(listval)):\n        sum += listval[i]\n    avg = sum/len(listval)\n    return avg\n\n#Test the function\nlistval = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(avg_val(listval)) #5.5\n```\n\n5. Write a Python function to find the median of all the elements in a given heterogeneous array.\n\n```python\n#Write a function to find the median of all the elements in a given"
+  ]
+}

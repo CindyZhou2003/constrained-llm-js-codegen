@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var low = 0;\n    var high = a.length - 1;\n    while(low <= high){\n        var mid = Math.floor((low + high) / 2);\n        if(a[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n    return low;\n}"
+    "    var low = 0;\n    var high = a.length - 1;\n    var mid;\n    while(low <= high){\n        mid = Math.floor((low + high) / 2);\n        if(a[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n    return low;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = []\n    for ele in test_list:\n        res.append([float(i) for i in ele])\n    return res\ntest_list = [[1, 2], [3, 4], ['a', 'b']]\nprint(list_to_float(test_list))"
+    "    res = []\n    for ele in test_list:\n        res.append([float(i) for i in ele])\n    return res\ntest_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nprint(list_to_float(test_list))"
   ]
 }

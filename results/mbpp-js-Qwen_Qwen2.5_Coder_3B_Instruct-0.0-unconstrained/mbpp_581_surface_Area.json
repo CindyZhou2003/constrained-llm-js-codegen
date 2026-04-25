@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return (b*b) + (4*(b*s));\n}"
+    "    return (b*b) + (4*b*s);\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = {}\n    for i in range(0, len(test_tup), 2):\n        res[test_tup[i]] = test_tup[i+1]\n    return res\ntest_tup = [1, 'a', 2, 'b', 3, 'c']\nprint(tuple_to_dict(test_tup))"
+    "    res = {}\n    for i in range(0, len(test_tup), 2):\n        res[test_tup[i]] = test_tup[i+1]\n    return res\ntest_tup = [1, 2, 3, 4, 5, 6]\nprint(tuple_to_dict(test_tup))"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(num === 0 || num === 1){\n        return 1;\n    }\n    let catalan = 0;\n    for(let i=0; i<num; i++){\n        catalan += catalan_number(i) * catalan_number(num-i-1);\n    }\n    return catalan;\n}"
+    "    if(num === 0 || num === 1){\n        return 1;\n    }\n    let catalan = 0;\n    for(let i = 0; i < num; i++){\n        catalan += catalan_number(i) * catalan_number(num - i - 1);\n    }\n    return catalan;\n}"
   ]
 }

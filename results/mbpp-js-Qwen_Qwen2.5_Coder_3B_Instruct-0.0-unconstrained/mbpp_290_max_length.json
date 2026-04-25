@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var max = 0;\n    for(var i=0;i<list1.length;i++){\n        if(list1[i].length > max){\n            max = list1[i].length;\n        }\n    }\n    return max;\n}\nvar list1 = [[1,2,3],[4,5],[6,7,8,9]];"
+    "    var max = 0;\n    var max_list = [];\n    for(var i = 0; i < list1.length; i++){\n        if(list1[i].length > max){\n            max = list1[i].length;\n            max_list = list1[i];\n        }\n    }\n    return max_list;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if (x === y && y === z) {\n        return 3;\n    } else if (x === y || y === z || x === z) {\n        return 2;\n    } else {\n        return 0;\n    }\n}"
+    "    if(x === y && y === z){\n        return 3;\n    }else if(x === y || y === z || x === z){\n        return 2;\n    }else{\n        return 0;\n    }\n}"
   ]
 }

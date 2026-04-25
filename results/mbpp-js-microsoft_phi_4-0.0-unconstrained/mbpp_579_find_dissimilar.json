@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_579_find_dissimilar",
+  "language": "js",
+  "prompt": "//Write a function to find the dissimilar elements in the given two tuples.\nfunction find_dissimilar(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_579_find_dissimilar.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_dissimilar;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [7, 2, 3, 9]),[1, 4, 7, 9]);\n  assert.deepEqual(candidate([21, 11, 25, 26], [26, 34, 21, 36]),[34, 36, 11, 25]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert the tuples to sets\n    set1 = set(test_tup1)\n    set2 = set(test_tup2)\n    #Find the symmetric difference between the two sets\n    dissimilar = set1 ^ set2\n    #Convert the set back to a list and sort it\n    dissimilar = sorted(list(dissimilar))\n    #Return the sorted list\n    return dissimilar\n}\n```\n\nThis function `find_dissimilar` takes two tuples as input, converts them to sets, finds the symmetric difference between the two sets (which gives the dissimilar elements), converts the set back to a list, sorts the list, and returns the sorted list.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and data management, making it reusable across your React components. We'll leverage the power of `useState` and `useEffect` hooks from React to achieve this.\n\n## The `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for fetching data. It simplifies data fetching in your components by handling the loading state, errors, and the fetched data itself. Here's the complete implementation:\n\n```javascript\nimport { useState, useEffect } from 'react';\n\nconst useFetch = (url) => {\n  const [data, setData] = useState(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      try {\n        const response = await fetch(url);\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        const data = await response.json();\n        setData(data);\n        setLoading(false);\n      } catch (error) {\n        setError(error.message);\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, [url]);\n\n  return { data, loading, error };\n};\n```\n\n### Key Features and Logic\n\n- **Asynchronous Data Fetching**: The hook uses an asynchronous function, `fetchData`, to perform the API request. This function is called within a `useEffect` hook to ensure it runs when the component mounts or the `url` changes.\n- **Error Handling**: It gracefully handles errors by catching them and setting"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Iterate over each rotation range\n    for(let i = 0; i < ranges.length; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        \n        // Check if the given index is within the current rotation range\n        if(index >= start && index <= end){\n            // Calculate the effective index after rotations\n            let effectiveIndex = (index - start + rotations) % (end - start + 1);\n            \n            // Return the element at the calculated effective index\n            return arr[effectiveIndex];\n        }\n    }\n    \n    // If the index is not found in any rotation range, return undefined\n    return undefined;\n}\n"
+    "    // Iterate over each rotation range\n    for(let i = 0; i < ranges.length; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        // Check if the given index is within the current rotation range\n        if(index >= start && index <= end){\n            // Calculate the new index after rotation\n            let new_index = (index - start + rotations[i]) % (end - start + 1) + start;\n            return arr[new_index];\n        }\n    }\n    // If the index is not within any rotation range, return -1\n    return -1;\n}\n"
   ]
 }

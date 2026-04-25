@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var str2 = \"\";\n    for(var i=0; i<str1.length; i++){\n        if(i%2==0){\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}"
+    "    var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(i % 2 == 0){\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}"
   ]
 }

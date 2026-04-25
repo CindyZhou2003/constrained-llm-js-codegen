@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var arr = [];\n    for(var i=0; i<li1.length; i++){\n        if(li2.indexOf(li1[i]) === -1) arr.push(li1[i]);\n    }\n    return arr;\n}"
+    "    var li1 = li1.sort();\n    var li2 = li2.sort();\n    var result = li1.filter(function(i){\n        return li2.indexOf(i) == -1;\n    });\n    return result;\n}"
   ]
 }

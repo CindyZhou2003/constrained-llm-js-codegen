@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = arr.length;\n    let sum = 0;\n    for(let i=0; i<n; i++){\n        let prod = 1;\n        for(let j=i; j<n; j++){\n            prod *= arr[j];\n            sum += prod;\n        }\n    }\n    return sum;\n}"
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let prod = 1;\n        for(let j = i; j < arr.length; j++){\n            prod *= arr[j];\n            sum += prod;\n        }\n    }\n    return sum;\n}"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    let temp = number;\n    while(temp > 0){\n        let digit = temp % 10;\n        sum += Math.pow(digit, 3);\n        temp = Math.floor(temp / 10);\n    }\n    if(sum === number){\n        return true;\n    }else{\n        return false;\n    }\n}"
+    "    let sum = 0;\n    let temp = number;\n    while(temp > 0){\n        let digit = temp % 10;\n        sum += digit ** 3;\n        temp = Math.floor(temp / 10);\n    }\n    if(sum === number){\n        return true;\n    }else{\n        return false;\n    }\n}"
   ]
 }

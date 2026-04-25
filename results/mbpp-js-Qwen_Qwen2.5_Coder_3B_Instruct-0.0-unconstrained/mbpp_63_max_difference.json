@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = 0\n    for i in range(len(test_list)-1):\n        res = max(res, test_list[i+1] - test_list[i])\n    return res\ntest_list = [2, 3, 10, 6, 4, 8, 1]\nprint(max_difference(test_list))"
+    "    res = 0\n    for i in range(len(test_list)-1):\n        res = max(res, test_list[i+1] - test_list[i])\n    return res\ntest_list = [1, 5, 3, 10, 8]\nprint(max_difference(test_list))"
   ]
 }

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = [];\n    for(var i=0; i<nums.length; i++){\n        var sum = 0;\n        for(var j=0; j<nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        result.push(sum/nums[i].length);\n    }\n    return result;\n}\n"
+    "    var result = [];\n    for(var i = 0; i < nums.length; i++){\n        var sum = 0;\n        for(var j = 0; j < nums[i].length; j++){\n            sum += nums[i][j];\n        }\n        result.push(sum / nums[i].length);\n    }\n    return result;\n}\n"
   ]
 }

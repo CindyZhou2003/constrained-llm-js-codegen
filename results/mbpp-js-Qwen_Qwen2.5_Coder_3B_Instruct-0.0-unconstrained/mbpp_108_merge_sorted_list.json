@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let merged = [];\n    let i = 0;\n    let j = 0;\n    let k = 0;\n\n    while(i < num1.length && j < num2.length && k < num3.length){\n        if(num1[i] <= num2[j] && num1[i] <= num3[k]){\n            merged.push(num1[i]);\n            i++;\n        }else if(num2[j] <= num1[i] && num2[j] <= num3[k]){\n            merged.push(num2[j]);\n            j++;\n        }else{\n            merged.push(num3[k]);\n            k++;\n        }\n    }\n\n    while(i < num1.length){\n        merged.push(num1[i]);\n        i++;\n    }\n\n    while(j < num2.length){\n        merged.push(num2[j]);\n        j++;\n    }\n\n    while(k < num3.length){\n        merged.push(num3[k]);\n        k++;\n    }\n\n    return merged;\n}\n"
+    "    let merged_list = num1.concat(num2, num3);\n    merged_list.sort((a, b) => a - b);\n    return merged_list;\n}\n"
   ]
 }

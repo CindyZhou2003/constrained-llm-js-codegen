@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let rev = 0;\n    while(n>0){\n        rev = rev*10 + n%10;\n        n = Math.floor(n/10);\n    }\n    return (rev - 2*n) == 1;\n}"
+    "    let reverse = parseInt(n.toString().split('').reverse().join(''));\n    return n === 2 * reverse - 1;\n}"
   ]
 }

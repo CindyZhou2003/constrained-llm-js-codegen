@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //Check if the range is valid\n    if(l > r || l < 0 || r >= 32){\n        return false;\n    }\n    //Create a mask with all bits set in the given range\n    let mask = (1 << (r - l + 1)) - 1;\n    //Shift the mask to the left by l bits\n    mask = mask << l;\n    //Check if the mask is equal to n\n    return (n & mask) === mask;\n}"
+    "    //Check if the range is valid\n    if(l > r || l < 0 || r >= 32){\n        return false;\n    }\n    //Check if all the bits in the range are unset\n    for(let i = l; i <= r; i++){\n        if((n & (1 << i)) !== 0){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

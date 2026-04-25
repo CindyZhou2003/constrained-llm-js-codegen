@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //The area of the largest triangle that can be inscribed in a semicircle is half the area of the semicircle\n    return (Math.PI * r * r) / 2;\n}"
+    "    //The area of the largest triangle that can be inscribed in a semicircle is half the area of the semicircle.\n    return (Math.PI * r * r) / 2;\n}"
   ]
 }

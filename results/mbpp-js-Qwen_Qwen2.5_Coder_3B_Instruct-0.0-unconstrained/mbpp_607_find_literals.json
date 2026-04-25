@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let match = text.match(pattern);\n    if(match){\n        return {\n            substring: match[0],\n            startIndex: match.index,\n            endIndex: match.index + match[0].length\n        };\n    } else {\n        return null;\n    }\n}\n"
+    "    let regex = new RegExp(pattern);\n    let match = regex.exec(text);\n    if(match){\n        return {\n            match: match[0],\n            start: match.index,\n            end: match.index + match[0].length\n        };\n    } else {\n        return null;\n    }\n}\n"
   ]
 }

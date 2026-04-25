@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Initialize the count to 0\n    let count = 0;\n    // Iterate through each element in the array\n    for(let i = 0; i < n; i++){\n        // Iterate through the remaining elements in the array\n        for(let j = i + 1; j < n; j++){\n            // Check if the elements are unequal\n            if(arr[i] != arr[j]){\n                // Increment the count\n                count++;\n            }\n        }\n    }\n    // Return the count\n    return count;\n}"
+    "    // Initialize the count of pairs\n    let count = 0;\n    // Iterate through the array\n    for(let i = 0; i < n; i++){\n        // Iterate through the array again\n        for(let j = i + 1; j < n; j++){\n            // Check if the elements are unequal\n            if(arr[i] != arr[j]){\n                // Increment the count of pairs\n                count++;\n            }\n        }\n    }\n    // Return the count of pairs\n    return count;\n}"
   ]
 }

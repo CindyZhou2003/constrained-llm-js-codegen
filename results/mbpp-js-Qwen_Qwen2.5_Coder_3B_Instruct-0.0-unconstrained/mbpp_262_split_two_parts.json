@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var list2 = [];\n    for(var i = 0; i < L; i++){\n        list2.push(list1[i]);\n    }\n    return [list2, list1.slice(L)];\n}\n"
+    "    var list2 = list1.slice(L);\n    return [list1.slice(0, L), list2];\n}\n"
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var n = my_matrix.length;\n    var sum = 0;\n    for(var i = 0; i < n; i++){\n        sum += my_matrix[0][i];\n    }\n    for(var i = 0; i < n; i++){\n        var row_sum = 0;\n        var col_sum = 0;\n        for(var j = 0; j < n; j++){\n            row_sum += my_matrix[i][j];\n            col_sum += my_matrix[j][i];\n        }\n        if(row_sum !== sum || col_sum !== sum){\n            return false;\n        }\n    }\n    var diag_sum1 = 0;\n    var diag_sum2 = 0;\n    for(var i = 0; i < n; i++){\n        diag_sum1 += my_matrix[i][i];\n        diag_sum2 += my_matrix[i][n - 1 - i];\n    }\n    if(diag_sum1 !== sum || diag_sum2 !== sum){\n        return false;\n    }\n    return true;\n}"
+  ]
+}

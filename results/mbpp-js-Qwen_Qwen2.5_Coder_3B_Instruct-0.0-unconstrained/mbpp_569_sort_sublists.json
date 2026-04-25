@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //Iterate through each sublist in the array\n    for(let i=0; i<list1.length; i++){\n        //Sort the strings in the sublist using the sort() method\n        list1[i].sort();\n    }\n    return list1;\n}\n"
+    "    //Iterate through each sublist in the array\n    for(let i=0; i<list1.length; i++){\n        //Sort the strings in the sublist\n        list1[i].sort();\n    }\n    return list1;\n}\n"
   ]
 }

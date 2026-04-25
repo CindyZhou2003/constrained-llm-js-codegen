@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var new_list = [];\n    for(var i = 0; i < list_.length; i++){\n        new_list.push(string + list_[i]);\n    }\n    return new_list;\n}\n"
+    "    var new_list = [];\n    for(var i = 0; i < list_.length; i++){\n        new_list.push(list_[i] + string);\n    }\n    return new_list;\n}\n"
   ]
 }

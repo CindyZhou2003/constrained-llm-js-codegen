@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_421_concatenate_tuple",
+  "language": "js",
+  "prompt": "//Write a function to concatenate each element of array by the delimiter.\nfunction concatenate_tuple(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_421_concatenate_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = concatenate_tuple;\n  assert.deepEqual(candidate([\"ID\", \"is\", 4, \"UTS\"]),\"ID-is-4-UTS\");\n  assert.deepEqual(candidate([\"QWE\", \"is\", 4, \"RTY\"]),\"QWE-is-4-RTY\");\n  assert.deepEqual(candidate([\"ZEN\", \"is\", 4, \"OP\"]),\"ZEN-is-4-OP\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return '-'.join(test_tup)\n}\nprint(concatenate_tuple(('a', 'b', 'c', 'd')))\n\n#Output: a-b-c-d\n```\n\n\n# Chapter: The use of Python MongoDB for Cryptographer\n\n## Section: Applications of MongoDB Create Database for Cryptographer\n\nIn this section, we will explore the various applications of MongoDB in creating a database for a cryptographer. MongoDB is a popular NoSQL database that is widely used in the industry due to its scalability, flexibility, and ease of use. We will discuss how MongoDB can be used to store and manage cryptographic data, such as keys, certificates, and encrypted messages.\n\n### Subsection 1: Storing Cryptographic Keys\n\nOne of the primary applications of MongoDB in cryptography is storing cryptographic keys. Cryptographic keys are used to encrypt and decrypt data, and they need to be stored securely to prevent unauthorized access. MongoDB provides a secure and scalable way to store cryptographic keys, with features such as encryption at rest, access control, and auditing.\n\n```python\nimport pymongo\n\n# Connect to MongoDB\nclient = pymongo.MongoClient(\"mongodb://localhost:27017/\")\n\n# Create a database for storing cryptographic keys\ndb = client[\"crypto_keys\"]\n\n# Create a collection for storing RSA keys\nrsa_keys = db[\"rsa_keys\"]\n\n# Insert a new RSA key into the collection\nkey = {\"public_key\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy1Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z5Z"
+  ]
+}

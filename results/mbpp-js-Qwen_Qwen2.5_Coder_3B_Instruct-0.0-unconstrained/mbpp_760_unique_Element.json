@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i=0; i<arr.length; i++){\n        if(arr[i] === arr[0]){\n            count++;\n        }\n    }\n    return count === arr.length ? true : false;\n}"
+    "    let unique = [...new Set(arr)];\n    return unique.length === 1;\n}"
   ]
 }

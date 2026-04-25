@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_394_check_distinct",
+  "language": "js",
+  "prompt": "//Write a function to check if given array contains no duplicates.\nfunction check_distinct(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_394_check_distinct.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_distinct;\n  assert.deepEqual(candidate([1, 4, 5, 6, 1, 4]),false);\n  assert.deepEqual(candidate([1, 4, 5, 6]),true);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    test_tup = list(test_tup)\n    test_tup.sort()\n    for i in range(len(test_tup)-1):\n        if test_tup[i] == test_tup[i+1]:\n            return False\n    return True\n\n#Test\nprint(check_distinct((1,2,3,4,5))) #True\nprint(check_distinct((1,2,3,4,5,5))) #False\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Table for Cryptographer\n\nIn this section, we will explore the various applications of MySQL Create Table for Cryptographer. We will learn how to create tables in MySQL using Python and how to use these tables to store and retrieve encrypted data.\n\n### Subsection 1: Creating a Table for Storing Encrypted Data\n\nTo store encrypted data in MySQL, we need to create a table with columns that can hold the encrypted data. We can use the CREATE TABLE statement to create a table in MySQL. The CREATE TABLE statement takes the name of the table and the columns as arguments.\n\n```python\nimport mysql.connector\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\nmycursor = mydb.cursor()\n\nmycursor.execute(\"CREATE TABLE encrypted_data (id INT AUTO_INCREMENT PRIMARY KEY, data BLOB)\")\n```\n\nIn the above example, we have created a table named \"encrypted_data\" with two columns - \"id\" and \"data\". The \"id\" column is an auto-incrementing primary key, and the \"data\" column is of type BLOB, which can hold binary data.\n\n### Subsection 2: Inserting Encrypted Data into the Table\n\nOnce we have created the table, we can insert encrypted data into it using the INSERT INTO statement. We can use Python to encrypt the data before inserting it into the table.\n\n```python\nimport mysql.connector\nfrom cryptography.fernet import Fernet\n\nmydb = mysql.connector.connect(\n  host=\"localhost\",\n  user=\"yourusername\",\n  password=\"yourpassword\",\n  database=\"mydatabase\"\n)\n\nmycursor = mydb.cursor()\n\nkey = Fernet.generate_key()\ncipher_suite = Fernet(key)\n\ndata = b\"Hello, World!\"\nencrypted_data = cipher_suite.encrypt(data)\n\nsql = \"INSERT INTO encrypted_data (data) VALUES (%s)\"\nval = (encrypted_data,)\n\nmycursor"
+  ]
+}

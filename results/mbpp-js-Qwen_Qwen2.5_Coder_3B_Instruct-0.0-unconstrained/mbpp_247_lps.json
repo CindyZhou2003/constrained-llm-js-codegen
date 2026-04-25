@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let n = str.length;\n    let dp = Array.from({length: n}, () => Array(n).fill(0));\n    \n    for(let i = 0; i < n; i++){\n        dp[i][i] = 1;\n    }\n    \n    for(let len = 2; len <= n; len++){\n        for(let i = 0; i <= n - len; i++){\n            let j = i + len - 1;\n            if(str[i] === str[j]){\n                dp[i][j] = 2 + dp[i+1][j-1];\n            }else{\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    \n    return dp[0][n-1];\n}\n"
+    "    let n = str.length;\n    let dp = Array.from({length: n}, () => Array(n).fill(0));\n    for(let i = 0; i < n; i++){\n        dp[i][i] = 1;\n    }\n    for(let len = 2; len <= n; len++){\n        for(let i = 0; i <= n - len; i++){\n            let j = i + len - 1;\n            if(str[i] === str[j]){\n                dp[i][j] = 2 + dp[i + 1][j - 1];\n            }else{\n                dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);\n            }\n        }\n    }\n    return dp[0][n - 1];\n}"
   ]
 }

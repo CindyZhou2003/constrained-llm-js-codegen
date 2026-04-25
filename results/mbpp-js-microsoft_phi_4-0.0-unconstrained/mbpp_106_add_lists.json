@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_106_add_lists",
+  "language": "js",
+  "prompt": "//Write a function to append the given array to the given tuples.\nfunction add_lists(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_106_add_lists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_lists;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[9, 10, 5, 6, 7]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[10, 11, 6, 7, 8]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[11, 12, 7, 8, 9]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    #Convert the tuple to a list\n    test_list.extend(test_tup)\n    #Convert the list back to a tuple\n    test_tup = tuple(test_list)\n    return test_tup\n}\n\n#Test the function\nprint(add_lists([1, 2, 3], (4, 5, 6))) #Expected output: (1, 2, 3, 4, 5, 6)\n```\n\n2. Write a function that takes a list of tuples and returns a new list of tuples where each tuple is sorted in ascending order.\n\n```python\n#Write a function to sort the tuples in a list of tuples\ndef sort_tuples(test_list):\n    #Create an empty list to store the sorted tuples\n    sorted_list = []\n    #Iterate over the list of tuples\n    for tup in test_list:\n        #Sort the tuple and append it to the sorted list\n        sorted_list.append(tuple(sorted(tup)))\n    return sorted_list\n\n#Test the function\nprint(sort_tuples([(3, 2, 1), (6, 5, 4), (9, 8, 7)])) #Expected output: [(1, 2, 3), (4, 5, 6), (7, 8, 9)]\n```\n\n3. Write a function that takes a list of tuples and returns a new list of tuples where each tuple is reversed.\n\n```python\n#Write a function to reverse the tuples in a list of tuples\ndef reverse_tuples(test_list):\n    #Create an empty list to store the reversed tuples\n    reversed_list = []\n    #Iterate over the list of tuples\n    for tup in test_list:\n        #Reverse the tuple and append it to the reversed list\n        reversed_list.append(tuple(reversed(tup)))\n    return reversed_list\n\n#Test the function\nprint(reverse_tuples([(1, 2, 3), (4, 5, 6), (7, 8, 9)])) #Expected output: [(3, 2, 1), (6, 5, 4), (9, 8, 7)]\n```\n\n\n# Chapter: The use of Python MySQL for Cryptographer\n\n## Section: Applications of MySQL Create Table for Cryptographer\n\nIn this section, we will explore the various applications of MySQL Create Table for Cryptographer. We will learn how to create tables in MySQL using Python and how to use these tables"
+  ]
+}

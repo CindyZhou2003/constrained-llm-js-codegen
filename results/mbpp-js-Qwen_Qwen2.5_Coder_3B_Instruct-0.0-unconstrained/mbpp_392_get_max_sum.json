@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(n <= 1){\n        return n;\n    }\n    let max_sum = -Infinity;\n    for(let i = 2; i <= Math.floor(n/2); i++){\n        max_sum = Math.max(max_sum, get_max_sum(i));\n    }\n    return Math.max(max_sum + n, n);\n}\n"
+    "    if(n <= 5){\n        return n;\n    }\n    let max_sum = 0;\n    for(let i = 1; i <= 5; i++){\n        max_sum = Math.max(max_sum, get_max_sum(Math.floor(n/i)));\n    }\n    return Math.max(max_sum + n, n);\n}\n"
   ]
 }

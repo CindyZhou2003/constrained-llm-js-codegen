@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Check if a and b are both non-zero\n    if (a === 0 && b === 0) {\n        return undefined;\n    }\n    \n    // Calculate the greatest common divisor of a and b\n    const gcd = (x, y) => {\n        while (y !== 0) {\n            const temp = y;\n            y = x % y;\n            x = temp;\n        }\n        return x;\n    };\n    \n    // Calculate the greatest common divisor of a and b\n    const divisor = gcd(a, b);\n    \n    // Check if n is divisible by the greatest common divisor of a and b\n    if (n % divisor !== 0) {\n        return undefined;\n    }\n    \n    // Calculate the value of x and y\n    const x = n / divisor * (b / divisor);\n    const y = n / divisor * (-a / divisor);\n    \n    // Return the solution as an array\n    return [x, y];\n}\n"
+    "    // Check if a and b are both non-zero\n    if (a === 0 && b === 0) {\n        return undefined;\n    }\n    // Check if n is divisible by the greatest common divisor of a and b\n    if (n % gcd(a, b) !== 0) {\n        return undefined;\n    }\n    // Calculate the greatest common divisor of a and b\n    let gcd_ab = gcd(a, b);\n    // Calculate the value of x and y\n    let x = n / gcd_ab * (b / gcd_ab);\n    let y = n / gcd_ab * (-a / gcd_ab);\n    // Return the solution as an array\n    return [x, y];\n}"
   ]
 }

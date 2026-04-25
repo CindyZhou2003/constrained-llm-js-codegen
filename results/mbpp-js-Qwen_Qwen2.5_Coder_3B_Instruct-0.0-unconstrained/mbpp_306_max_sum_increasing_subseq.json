@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Base case: if index is equal to n-1, return the value at that index\n    if(index == n-1){\n        return a[index];\n    }\n    // Initialize the maximum sum to negative infinity\n    let max_sum = -Infinity;\n    // Iterate through all elements after index\n    for(let i = index+1; i < n; i++){\n        // Check if the current element is greater than the previous element\n        if(a[i] > a[index]){\n            // Recursively call the function for the next index and update the maximum sum\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Return the maximum sum found\n    return max_sum;\n}"
+    "    // Base case: if index is equal to n, return 0\n    if(index == n){\n        return 0;\n    }\n    // Initialize the maximum sum to a very small number\n    let max_sum = -Infinity;\n    // Iterate through the array from index to k\n    for(let i = index; i < k; i++){\n        // Calculate the sum of the current element and the maximum sum of the increasing subsequence from index to i\n        let sum = a[i] + max_sum_increasing_subseq(a, n, i + 1, k);\n        // Update the maximum sum if the current sum is greater\n        max_sum = Math.max(max_sum, sum);\n    }\n    // Return the maximum sum\n    return max_sum;\n}"
   ]
 }

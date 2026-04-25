@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //If d is even then we can reach the point by taking steps of 2\n    if(d%2 == 0){\n        return d/2;\n    }\n    //If d is odd then we can reach the point by taking steps of 2 and 1\n    else{\n        return Math.floor(d/2) + 1;\n    }\n}\n"
+    "    //If d is even, then we can reach the point (d, 0) in minimum 2 steps.\n    if(d % 2 == 0){\n        return 2;\n    }\n    //If d is odd, then we can reach the point (d, 0) in minimum 3 steps.\n    else{\n        return 3;\n    }\n}"
   ]
 }

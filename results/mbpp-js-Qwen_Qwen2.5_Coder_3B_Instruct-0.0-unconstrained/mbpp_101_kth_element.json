@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(k < 1 || k > arr.length){\n        return \"Invalid index\";\n    }\n    return arr[k-1];\n}\n"
+    "    if(k < 1 || k > arr.length){\n        return \"Invalid k value\";\n    }\n    return arr[k-1];\n}\n"
   ]
 }

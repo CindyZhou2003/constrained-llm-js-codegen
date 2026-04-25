@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_222_check_type",
+  "language": "js",
+  "prompt": "//Write a function to check if all the elements in array have same data type or not.\nfunction check_type(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_222_check_type.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_type;\n  assert.deepEqual(candidate([5, 6, 7, 3, 5, 6]),true);\n  assert.deepEqual(candidate([1, 2, \"4\"]),false);\n  assert.deepEqual(candidate([3, 2, 1, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Initialize a set to store the types of elements in the tuple\n    type_set = set()\n    # Iterate over each element in the tuple\n    for element in test_tuple:\n        # Add the type of the element to the set\n        type_set.add(type(element))\n    # If the size of the set is 1, it means all elements have the same type\n    if len(type_set) == 1:\n        return True\n    else:\n        return False\n```\n\nThis function works by creating a set of the types of all elements in the tuple. Since a set only contains unique elements, if all elements in the tuple are of the same type, the set will only contain one element. If the set contains more than one element, it means the tuple contains elements of different types.# Advanced Guide to Building a Custom React Hook for Fetching Data\n\nIn this advanced tutorial, we'll dive deep into creating a custom React hook, `useFetch`, designed for fetching data from an API. This hook encapsulates the logic for making HTTP requests, handling loading states, errors, and caching responses to optimize performance. This guide assumes you're already familiar with React hooks and focuses on the intricate details and optimizations of the `useFetch` hook.\n\n## Implementing `useFetch` Hook\n\nThe `useFetch` hook is a powerful abstraction for data fetching in React applications. It leverages `useState`, `useEffect`, and `useRef` hooks to manage the fetch lifecycle, cache responses, and prevent unnecessary network requests.\n\n### Code Implementation\n\n```jsx\nimport { useState, useEffect, useRef } from 'react';\n\nconst cache = {};\n"
+  ]
+}

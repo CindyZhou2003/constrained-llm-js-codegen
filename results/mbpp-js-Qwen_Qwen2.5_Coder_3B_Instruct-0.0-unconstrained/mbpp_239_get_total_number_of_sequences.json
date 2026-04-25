@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let dp = new Array(n+1).fill(0);\n    dp[0] = 1;\n    for(let i=1; i<=n; i++){\n        for(let j=1; j<=m; j++){\n            if(j >= 2*dp[i-1]){\n                dp[i] += dp[i-1];\n            }\n        }\n    }\n    return dp[n];\n}"
+    "    let dp = new Array(n+1).fill(0);\n    dp[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = 1; j <= m; j++){\n            if(j >= 2 * dp[i-1]){\n                dp[i] += dp[i-1];\n            }\n        }\n    }\n    return dp[n];\n}"
   ]
 }

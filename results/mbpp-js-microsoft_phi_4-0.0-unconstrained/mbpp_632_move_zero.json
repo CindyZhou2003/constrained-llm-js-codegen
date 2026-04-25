@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_632_move_zero",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to move all zeroes to the end of the given array.\nfunction move_zero(num_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_632_move_zero.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_zero;\n  assert.deepEqual(candidate([1, 0, 2, 0, 3, 4]),[1, 2, 3, 4, 0, 0]);\n  assert.deepEqual(candidate([2, 3, 2, 0, 0, 4, 0, 5, 0]),[2, 3, 2, 4, 5, 0, 0, 0, 0]);\n  assert.deepEqual(candidate([0, 1, 0, 1, 1]),[1, 1, 1, 0, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    zero_list = []\n    for i in num_list:\n        if i == 0:\n            zero_list.append(i)\n        else:\n            num_list.append(i)\n    num_list = num_list[:-len(zero_list)]\n    num_list.extend(zero_list)\n    return num_list\n\n#Write a JavaScript function to find the largest number in the given array.\ndef largest_num(num_list):\n    largest = num_list[0]\n    for i in num_list:\n        if i > largest:\n            largest = i\n    return largest\n\n#Write a JavaScript function to find the smallest number in the given array.\ndef smallest_num(num_list):\n    smallest = num_list[0]\n    for i in num_list:\n        if i < smallest:\n            smallest = i\n    return smallest\n\n#Write a JavaScript function to find the second largest number in the given array.\ndef second_largest_num(num_list):\n    largest = num_list[0]\n    second_largest = num_list[0]\n    for i in num_list:\n        if i > largest:\n            second_largest = largest\n            largest = i\n        elif i > second_largest and i != largest:\n            second_largest = i\n    return second_largest\n\n#Write a JavaScript function to find the second smallest number in the given array.\ndef second_smallest_num(num_list):\n    smallest = num_list[0]\n    second_smallest = num_list[0]\n    for i in num_list:\n        if i < smallest:\n            second_smallest = smallest\n            smallest = i\n        elif i < second_smallest and i != smallest:\n            second_smallest = i\n    return second_smallest\n\n#Write a JavaScript function to find the third largest number in the given array.\ndef third_largest_num(num_list):\n    largest = num_list[0]\n    second_largest = num_list[0]\n    third_largest = num_list[0]\n    for i in num_list:\n        if i > largest:\n            third_largest = second_largest\n            second_largest = largest\n            largest = i\n        elif i > second_largest and i != largest:\n            third_largest = second_largest\n            second_largest = i\n        elif i > third_largest and i != largest and i != second_largest:\n            third_largest = i\n    return third_largest\n\n#Write a JavaScript function to find the third smallest number in the given array.\ndef third_smallest_num(num"
+  ]
+}
