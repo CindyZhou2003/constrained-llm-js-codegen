@@ -158,10 +158,12 @@ member_func: primary_func postfix_modifier*
 member_obj:  primary_obj  postfix_modifier*
 
 postfix_modifier: postfix_modifier_dot | postfix_modifier_no_dot
-postfix_modifier_dot: "." IDENTIFIER
+postfix_modifier_dot: "." IDENTIFIER | "?." IDENTIFIER
 postfix_modifier_no_dot: "[" expression "]"
+                | "?." "[" expression "]"
                 | "(" comma_separated_expressions? ")"
-                | "++" | "--" | "?"
+                | "?." "(" comma_separated_expressions? ")"
+                | "++" | "--"
 
 // --- Primary ---
 

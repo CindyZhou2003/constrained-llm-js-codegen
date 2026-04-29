@@ -1,0 +1,26 @@
+Comparison: mbpp-js-Qwen_Qwen2.5_Coder_3B_Instruct-0.0-syncode vs mbpp-js-Qwen_Qwen2.5_Coder_3B_Instruct-0.0-unconstrained
+================================================================================
+
+Total changed test cases: 21
+
+mbpp_160_find_solution: SyntaxError -> ReferenceError
+mbpp_230_replace_blank: SyntaxError -> OK
+mbpp_404_minimum: SyntaxError -> OK
+mbpp_405_check_tuplex: SyntaxError -> ReferenceError
+mbpp_424_extract_rear: SyntaxError -> ReferenceError
+mbpp_451_remove_whitespaces: SyntaxError -> OK
+mbpp_454_text_match_wordz: SyntaxError -> OK
+mbpp_464_check_value: SyntaxError -> ReferenceError
+mbpp_580_extract_even: SyntaxError -> ReferenceError
+mbpp_611_max_of_nth: SyntaxError -> ReferenceError
+mbpp_619_move_num: SyntaxError -> ReferenceError
+mbpp_640_remove_parenthesis: SyntaxError -> Exception
+mbpp_744_check_none: SyntaxError -> ReferenceError
+mbpp_750_add_tuple: AssertionError -> ReferenceError
+mbpp_767_get_pairs_count: AssertionError -> OK
+mbpp_772_remove_length: SyntaxError -> ReferenceError
+mbpp_776_count_vowels: SyntaxError -> ReferenceError
+mbpp_780_find_combinations: SyntaxError -> ReferenceError
+mbpp_785_tuple_str_int: SyntaxError -> ReferenceError
+mbpp_791_remove_nested: SyntaxError -> ReferenceError
+mbpp_800_remove_all_spaces: SyntaxError -> OK

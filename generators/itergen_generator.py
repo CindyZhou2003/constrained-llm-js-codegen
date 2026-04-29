@@ -25,44 +25,24 @@ class ItergenGenerator(BaseGenerator):
         # incremental parse failure (e.g. partial regex literals, complex
         # expressions). Disable it so failures are handled gracefully instead.
         self.itergen.dev_mode = False
-        
-    def _post_process_stop_itergen(self, text: str, stop_tokens, prompt_brace_depth: int) -> str:
-        """Like _post_process_stop, but skips \\n// and \\n/* when they appear inside
-        a function body (brace depth > 0).  Grammar-constrained generation cannot start
-        a new function declaration inside the body, so those comment markers are safe."""
-        if not stop_tokens:
-            return text
-        min_stop_index = len(text)
-        found = False
-        for stop in stop_tokens:
-            idx = text.find(stop)
-            if idx == -1:
-                continue
-            if stop in ('\n//', '\n/*'):
-                # Only apply if the comment is at the top level (brace depth == 0)
-                pre = text[:idx]
-                depth = prompt_brace_depth + pre.count('{') - pre.count('}')
-                if depth > 0:
-                    continue
-            min_stop_index = min(min_stop_index, idx)
-            found = True
-        return text[:min_stop_index] if found else text
 
     def generate(self, prompt: str, stop_tokens, **kwargs) -> str:
 
         temp = kwargs.get("temperature")
-        # Only pass generation-time params to forward() — NOT model_id, grammar,
-        # parse_output_only, or recurrence_penalty, which are init-time concerns
-        # and would be forwarded to GenerationConfig.update() where they are invalid.
+
+        # Do NOT pass max_new_tokens to forward(): start() already set max_length as an
+        # absolute token-count ceiling (prompt_len + max_new_tokens). Re-passing it each
+        # call would trigger generation_config.update(max_new_tokens=N) which does NOT
+        # recalculate max_length, so the ceiling never slides and long functions get
+        # truncated once the early statements consume the budget.
         forward_params = {
-            "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0,
         }
         if temp > 0:
             forward_params["temperature"] = temp
-        
+
         self.itergen.start(prompt=prompt)
-        
+
         tracking_categories = [
             "var_decl", "function_declaration", "function_parameter", "primary_safe_non_numeric",
             "expr_safe", "control_flow_statement"
@@ -108,8 +88,13 @@ class ItergenGenerator(BaseGenerator):
         # Count opening braces in prompt to track when the function body is complete
         prompt_brace_depth = prompt.count('{') - prompt.count('}')
 
-        # Increase loop limit significantly. Assuming 1 step ~= 1 token roughly, use max_new_tokens + buffer
-        max_steps = kwargs.get("max_new_tokens", 512)
+        # Loop until the model hits its own token budget (enforced by start()'s max_length)
+        # or our early-termination checks fire. Using a large fixed bound avoids the old
+        # bug where max_steps == max_new_tokens caused premature exit: each forward() call
+        # consumes *multiple* tokens (a whole statement), so 512 steps ≠ 512 tokens.
+        max_steps = 4096
+
+        prev_gen_len = len(prompt)  # track generation length to detect stalls
 
         for step in range(max_steps):
 
@@ -130,6 +115,14 @@ class ItergenGenerator(BaseGenerator):
                 break
 
             current_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+
+            # If nothing was generated this step (EOS/max_length already reached), stop.
+            # This prevents an infinite loop when the model is done but 'statement' never
+            # completes (e.g. the model only emitted comments, which %ignore discards).
+            current_len = len(current_code) if current_code.startswith(prompt) else len(prompt) + len(current_code)
+            if current_len <= prev_gen_len:
+                break
+            prev_gen_len = current_len
 
             # --- Early termination checks ---
             generated_so_far = current_code[len(prompt):] if current_code.startswith(prompt) else current_code
@@ -310,6 +303,9 @@ class ItergenGenerator(BaseGenerator):
             # backtrack if any violation is found
             if not is_valid:
                 self.itergen.backward(unit="statement", num=1)
+                # Reset prev_gen_len after backtracking so the stall detector stays accurate.
+                backtracked_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+                prev_gen_len = len(backtracked_code)
                 continue
 
         full_text = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
@@ -322,5 +318,24 @@ class ItergenGenerator(BaseGenerator):
             # But let's try to return full text if prompt checking fails to be safe, though unexpected.
             generated_only = full_text 
             
-        result = self._post_process_stop_itergen(generated_only, stop_tokens, prompt_brace_depth)
-        return result
+        return self._post_process_stop(generated_only, stop_tokens, prompt_brace_depth)
+
+    def _post_process_stop(self, text: str, stop_tokens, prompt_brace_depth: int = 0) -> str:
+        # Skip \n// and \n/* when still inside a function body (brace depth > 0):
+        # grammar-constrained gen allows comments anywhere via %ignore, so these
+        # don't signal a new top-level declaration.
+        if not stop_tokens:
+            return text
+        min_stop_index = len(text)
+        found = False
+        for stop in stop_tokens:
+            idx = text.find(stop)
+            if idx == -1:
+                continue
+            if stop in ('\n//', '\n/*'):
+                depth = prompt_brace_depth + text[:idx].count('{') - text[:idx].count('}')
+                if depth > 0:
+                    continue
+            min_stop_index = min(min_stop_index, idx)
+            found = True
+        return text[:min_stop_index] if found else text

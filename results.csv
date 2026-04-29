@@ -27,5 +27,7 @@ mbpp-js,microsoft_phi_4,0.2,syncode,1,0.524769101595298,397,3,3,13059.0299
 mbpp-js,microsoft_phi_4,0.2,unconstrained,1,0.5348446683459277,397,3,3,22295.7604
 mbpp-js,deepseek_ai_deepseek_coder_6.7b_instruct,0.0,syncode,1,0.5919395465994962,397,1,1,1849.4610
 mbpp-js,deepseek_ai_deepseek_coder_6.7b_instruct,0.0,unconstrained,1,0.6020151133501259,397,1,1,5232.4856
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.0,syncode,1,0.5314861460957179,397,1,1,2505.4130
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.0,unconstrained,1,0.5440806045340051,397,1,1,2543.6195
+mbpp-js,microsoft_phi_4,0.0,syncode,1,0.5314861460957179,397,1,1,3970.7374
+mbpp-js,microsoft_phi_4,0.0,unconstrained,1,0.5491183879093199,397,1,1,6712.0109
+mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.0,unconstrained,1,0.5465994962216625,397,1,1,2453.5157
+mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.0,syncode,1,0.5314861460957179,397,1,1,2102.7539
