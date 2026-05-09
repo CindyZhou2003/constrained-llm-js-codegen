@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_556_find_Odd_Pair",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of pairs whose xor value is odd.\nfunction find_Odd_Pair(A, N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_556_find_Odd_Pair.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Odd_Pair;\n  assert.deepEqual(candidate([5, 4, 7, 2, 1], 5),6);\n  assert.deepEqual(candidate([7, 2, 8, 1, 0, 5, 11], 7),12);\n  assert.deepEqual(candidate([1, 2, 3], 3),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let odd_count = 0;\n    for(let i = 0; i < N; i++){\n        for(let j = i + 1; j < N; j++){\n            if((A[i] ^ A[j]) % 2 != 0){\n                odd_count++;\n            }\n        }\n    }\n    return odd_count;\n}",
+    "    // Initialize the count of odd pairs\n    var count = 0;\n    // Iterate through the array\n    for(var i = 0; i < N; i++){\n        // Iterate through the array again\n        for(var j = i + 1; j < N; j++){\n            // Calculate the xor of the two numbers\n            var xor = A[i] ^ A[j];\n            // Check if the xor value is odd\n            if(xor % 2 != 0){\n                // Increment the count of odd pairs\n                count++;\n            }\n        }\n    }\n    // Return the count of odd pairs\n    return count;\n}",
+    "    let odd = 0;\n    for(let i = 0; i < N; i++){\n        for(let j = i + 1; j < N; j++){\n            if((A[i] ^ A[j]) % 2 != 0){\n                odd++;\n            }\n        }\n    }\n    console.log(odd);\n}\n",
+    "    var count = 0;\n    var oddCount = 0;\n    for(var i = 0; i < N; i++){\n        if(A[i] % 2 != 0){\n            oddCount++;\n        }\n    }\n    count = oddCount * (N - oddCount);\n    return count;\n}\n",
+    "    let odd_count = 0;\n    for(let i = 0; i < N; i++){\n        for(let j = i + 1; j < N; j++){\n            if((A[i] ^ A[j]) % 2 != 0){\n                odd_count++;\n            }\n        }\n    }\n    return odd_count;\n}\n"
+  ]
+}

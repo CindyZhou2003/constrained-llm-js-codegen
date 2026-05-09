@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_765_is_polite",
+  "language": "js",
+  "prompt": "//Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/\nfunction is_polite(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_765_is_polite.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_polite;\n  assert.deepEqual(candidate(7),11);\n  assert.deepEqual(candidate(4),7);\n  assert.deepEqual(candidate(9),13);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n%2==0){\n        return true;\n    }\n    return false;\n}",
+    "    let count=0;\n    while(n>0){\n        n=n&(n-1);\n        count++;\n    }\n    return count%2==0;\n}",
+    "    if(n<=0){\n        return false;\n    }\n    if(n==1){\n        return true;\n    }\n    if(n%2==0){\n        return is_polite(n/2);\n    }\n    else{\n        return is_polite((n-1)/2);\n    }\n}",
+    "    //Check if n is even or odd\n    if(n%2 == 0){\n        //If n is even, check if it is divisible by 3\n        if(n%3 == 0){\n            //If n is divisible by 3, it is not polite\n            return false;\n        }else{\n            //If n is not divisible by 3, it is polite\n            return true;\n        }\n    }else{\n        //If n is odd, it is always polite\n        return true;\n    }\n}\n",
+    "    if(n<2) return false;\n    if(n%2==0) return true;\n    if(n%2!=0){\n        let even = n-1;\n        while(even>0){\n            even = even-2;\n            if(even==0) return true;\n        }\n    }\n    return false;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_138_is_Sum_Of_Powers_Of_Two",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given number can be represented as sum of non-zero powers of 2 or not.\nfunction is_Sum_Of_Powers_Of_Two(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_138_is_Sum_Of_Powers_Of_Two.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sum_Of_Powers_Of_Two;\n  assert.deepEqual(candidate(10),true);\n  assert.deepEqual(candidate(7),false);\n  assert.deepEqual(candidate(14),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Check if the number is less than 1\n    if(n < 1){\n        return false;\n    }\n    //Check if the number is a power of 2\n    while(n % 2 === 0){\n        n /= 2;\n    }\n    //Check if the number is 1\n    return n === 1;\n}",
+    "    if(n <= 0){\n        return false;\n    }\n    while(n > 1){\n        if(n % 2 !== 0){\n            return false;\n        }\n        n = n / 2;\n    }\n    return true;\n}",
+    "    if(n === 0) return false;\n    while(n !== 1){\n        if(n % 2 !== 0) return false;\n        n = n / 2;\n    }\n    return true;\n}\n",
+    "    if(n <= 0){\n        return false;\n    }\n    while(n > 0){\n        if((n & (n - 1)) !== 0){\n            return false;\n        }\n        n >>= 1;\n    }\n    return true;\n}\n",
+    "    //If n is 0, return false\n    if(n == 0){\n        return false;\n    }\n    //While n is greater than 0\n    while(n > 0){\n        //If n is not divisible by 2, return false\n        if(n % 2 != 0){\n            return false;\n        }\n        //Divide n by 2\n        n = n / 2;\n    }\n    //If n is 1, return true\n    if(n == 1){\n        return true;\n    }\n    //If n is not 1, return false\n    return false;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_808_check_K",
+  "language": "js",
+  "prompt": "//Write a function to check if the given tuples contain the k or not.\nfunction check_K(test_tup, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_808_check_K.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_K;\n  assert.deepEqual(candidate([10, 4, 5, 6, 8], 6),true);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], 7),false);\n  assert.deepEqual(candidate([7, 8, 9, 44, 11, 12], 11),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  res = False\n  test_tup = list(test_tup)\n  for ele in test_tup:\n    if K in ele:\n      res = True\n      break\n  return res\ntest_tup = (5, 6, 7, 8, 9, 10)\nK = 7\nprint(check_K(test_tup, K))",
+    "    flag = 0\n    for i in range(len(test_tup)):\n        if K in test_tup[i]:\n            flag = 1\n            break\n    return flag\ntest_tup = [('gfg', 'is', 'best'), ('for', 'geeks'), ('geeksforgeeks')]\nK = 'best'\nprint(check_K(test_tup, K))",
+    "    # Using any() to check if any element of the tuple contains K\n    res = any(K in sub for sub in test_tup)\n    return res\n\n# Driver Code\ntest_tup = (1, 2, 3, 4), (5, 6, 7, 8), (9, 10, 11, 12)\nK = 2\nprint(\"Does any tuple contain K:\", check_K(test_tup, K))",
+    "    for (let i = 0; i < test_tup.length; i++){\n        for (let j = 0; j < test_tup[i].length; j++){\n            if (test_tup[i][j] === K){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n",
+    "    res = test_tup[0].count(K) or test_tup[1].count(K)\n    return res\n}\ntest_tup = (\"Gfg\", \"is\", \"best\")\nK = \"is\"\nprint(check_K(test_tup, K))"
+  ]
+}

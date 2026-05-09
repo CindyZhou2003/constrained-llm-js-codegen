@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_145_max_Abs_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the maximum difference between any two elements in a given array.\nfunction max_Abs_Diff(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_145_max_Abs_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_Abs_Diff;\n  assert.deepEqual(candidate([2, 1, 5, 3]),4);\n  assert.deepEqual(candidate([9, 3, 2, 5, 1]),8);\n  assert.deepEqual(candidate([3, 2, 1]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = arr[0];\n    let min = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > max){\n            max = arr[i];\n        }\n        if(arr[i] < min){\n            min = arr[i];\n        }\n    }\n    return max - min;\n}",
+    "    if(arr.length < 2){\n        return \"Array must contain at least two elements\";\n    }\n    let maxDiff = 0;\n    let minElement = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > maxDiff){\n            maxDiff = arr[i];\n        }\n        if(arr[i] < minElement){\n            minElement = arr[i];\n        }\n    }\n    return maxDiff - minElement;\n}",
+    "    let max_diff = 0;\n    let min_element = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > min_element){\n            max_diff = Math.max(max_diff, arr[i] - min_element);\n        }else{\n            min_element = arr[i];\n        }\n    }\n    return max_diff;\n}"
+  ]
+}

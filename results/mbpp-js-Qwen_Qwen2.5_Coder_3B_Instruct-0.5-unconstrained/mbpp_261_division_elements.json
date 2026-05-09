@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_261_division_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.\nfunction division_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_261_division_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = division_elements;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[2, 2, 2, 3]);\n  assert.deepEqual(candidate([12, 6, 8, 16], [6, 3, 4, 4]),[2, 2, 2, 4]);\n  assert.deepEqual(candidate([20, 14, 36, 18], [5, 7, 6, 9]),[4, 2, 6, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Using zip to iterate through both tuples simultaneously\n    res = tuple(a / b for a, b in zip(test_tup1, test_tup2))\n    return res\n\n# Test the function\ntest_tup1 = (10, 20, 30)\ntest_tup2 = (2, 4, 5)\nprint(division_elements(test_tup1, test_tup2))  # Output: (5.0, 5.0, 6.0)\n```\n\nIn this solution, the function `division_elements` takes two tuples as input, `test_tup1` and `test_tup2`. It uses the `zip` function to iterate through both tuples simultaneously. For each pair of elements `(a, b)` from the tuples, it performs division `a / b` and stores the result in a new tuple. Finally, it returns the resulting tuple. The function is tested with two example tuples, `(10, 20, 30)` and `(2, 4, 5)`, and the output is `(5.0, 5.0, 6.0)`. This demonstrates how the function performs element-wise division across the given tuples.",
+    "    res = tuple(map(lambda x, y: x / y if y != 0 else None, test_tup1, test_tup2))\n    return res\n#Driver code\ntest_tup1 = (4, 5, 6, 8)\ntest_tup2 = (2, 5, 0, 4)\nprint(\"Original tuples:\", test_tup1, test_tup2)\nprint(\"Result:\", division_elements(test_tup1, test_tup2))",
+    "    res = tuple(map(lambda x, y: x / y, test_tup1, test_tup2))\n    return res\ntest_tup1 = (4, 5, 6)\ntest_tup2 = (2, 3, 4)\nprint(division_elements(test_tup1, test_tup2))",
+    "    res = tuple(map(lambda x, y: x / y, test_tup1, test_tup2))\n    return res\n#Driver code\ntest_tup1 = (4, 2, 6)\ntest_tup2 = (2, 2, 3)\nprint(\"Original Tuple 1: \" + str(test_tup1))\nprint(\"Original Tuple 2: \" + str(test_tup2))\nprint(\"Resultant Tuple after performing division element-wise: \" + str(division_elements(test_tup1, test_tup2)))",
+    "    res = tuple(map(lambda x, y: x / y, test_tup1, test_tup2))\n    return res\n# Driver Code\ntest_tup1 = (6, 8, 10)\ntest_tup2 = (2, 4, 5)\nprint(\"The tuple 1 is : \" + str(test_tup1))\nprint(\"The tuple 2 is : \" + str(test_tup2))\nprint(\"The division of elements in tuple 1 and tuple 2 : \" + str(division_elements(test_tup1, test_tup2)))"
+  ]
+}

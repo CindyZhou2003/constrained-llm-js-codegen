@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_767_get_pairs_count",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of pairs whose sum is equal to \u00e2\u20ac\u02dcsum\u00e2\u20ac\u2122. The funtion gets as input an array of numbers and the sum,\nfunction get_pairs_count(arr, sum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_767_get_pairs_count.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_pairs_count;\n  assert.deepEqual(candidate([1, 1, 1, 1], 2),6);\n  assert.deepEqual(candidate([1, 5, 7, -1, 5], 6),3);\n  assert.deepEqual(candidate([1, -2, 3], 1),1);\n  assert.deepEqual(candidate([-1, -2, 3], -3),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var pairs_count = 0;\n    var map = {};\n    for(var i = 0; i < arr.length; i++){\n        if(map[sum-arr[i]]){\n            pairs_count++;\n        }\n        map[arr[i]] = true;\n    }\n    return pairs_count;\n}",
+    "    let count = 0;\n    let seen = new Set();\n    for(let i = 0; i < arr.length; i++){\n        let complement = sum - arr[i];\n        if(seen.has(complement)){\n            count++;\n        }\n        seen.add(arr[i]);\n    }\n    return count;\n}",
+    "    var count = 0;\n    var i = 0;\n    var j = arr.length - 1;\n    arr.sort(function(a, b){return a - b});\n    while(i < j){\n        if(arr[i] + arr[j] == sum){\n            count++;\n            i++;\n            j--;\n        }\n        else if(arr[i] + arr[j] < sum){\n            i++;\n        }\n        else{\n            j--;\n        }\n    }\n    return count;\n}",
+    "    var pairs = 0;\n    var seen = {};\n    for(var i = 0; i < arr.length; i++){\n        var complement = sum - arr[i];\n        if(seen[complement]){\n            pairs++;\n        }\n        seen[arr[i]] = true;\n    }\n    return pairs;\n}",
+    "    let pairs_count = 0;\n    let seen = new Set();\n    \n    for(let i = 0; i < arr.length; i++){\n        let complement = sum - arr[i];\n        if(seen.has(complement)){\n            pairs_count++;\n        }\n        seen.add(arr[i]);\n    }\n    return pairs_count;\n}"
+  ]
+}

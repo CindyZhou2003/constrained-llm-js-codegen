@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //get the first and last bit\n    let first_bit = n & 1;\n    let last_bit = n & (1 << (n.toString(2).length - 1));\n    //get the middle bits\n    let middle_bits = n & (~first_bit) & (~last_bit);\n    //toggle the middle bits\n    middle_bits = ~middle_bits;\n    //set the first and last bit\n    n = (first_bit << (n.toString(2).length - 1)) | (last_bit | middle_bits);\n    return n;\n}",
+    "    // Get the first and last bits of the number\n    let first_bit = n & 1;\n    let last_bit = n & (1 << (n.toString(2).length - 1));\n    \n    // Toggle all bits except the first and last bit\n    let middle_bits = n ^ ((1 << (n.toString(2).length - 1)) - 1) ^ 1;\n    \n    // Combine the first, middle, and last bits\n    return first_bit | middle_bits | last_bit;\n}\n",
+    "    //Get the first and last bit of the number\n    let first_bit = n & 1;\n    let last_bit = n & (1 << (n.toString(2).length - 1));\n    \n    //Get the middle bits of the number\n    let middle_bits = n & (~(first_bit | last_bit));\n    \n    //Toggle the middle bits\n    middle_bits = ~middle_bits;\n    \n    //Set the first and last bit of the number\n    n = (n & ~(first_bit | last_bit)) | (first_bit | last_bit);\n    \n    //Set the middle bits of the number\n    n = (n & ~(middle_bits)) | middle_bits;\n    \n    return n;\n}"
+  ]
+}

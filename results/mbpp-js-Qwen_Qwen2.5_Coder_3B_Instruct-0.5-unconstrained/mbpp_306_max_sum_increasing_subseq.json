@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let dp = new Array(n).fill(0);\n    dp[index] = a[index];\n    for(let i = index+1; i < n; i++){\n        for(let j = index; j < i; j++){\n            if(a[j] < a[i]){\n                dp[i] = Math.max(dp[i], dp[j] + a[i]);\n            }\n        }\n    }\n    return dp[k];\n}\nlet a = [10, 1, 12, 3, 11, 5, 6];\nlet n = a.length;\nlet index = 0;\nlet k = 6;",
+    "  let max_sum = 0;\n  let max_index = 0;\n  for(let i = index; i < n; i++){\n    if(a[i] > a[max_index]){\n      max_sum = Math.max(max_sum, a[i] + max_sum_increasing_subseq(a, n, i+1, k));\n      max_index = i;\n    }\n  }\n  return max_sum;\n}",
+    "    let dp = new Array(n).fill(0);\n    dp[index] = a[index];\n    let max = a[index];\n    for(let i = index + 1; i < n; i++){\n        max = Math.max(max, a[i]);\n        dp[i] = Math.max(dp[i - 1], dp[i]);\n        if(i + k < n){\n            dp[i + k] = Math.max(dp[i + k], max + dp[i]);\n        }\n    }\n    return dp[n - 1];\n}\n",
+    "    if(index == n){\n        return 0;\n    }\n    var max = 0;\n    for(var i = index + 1; i < n; i++){\n        if(a[i] > a[index]){\n            max = Math.max(max, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    return max;\n}\nvar a = [10, 9, 2, 5, 3, 7, 101, 18];\nvar n = a.length;\nvar index = 0;\nvar k = 8;",
+    "    //Base case: if index is equal to n, return 0\n    if(index == n){\n        return 0;\n    }\n    //Initialize max_sum to a very small number\n    let max_sum = -1000000000;\n    //Iterate over all elements after index and including k\n    for(let i = index + 1; i < n && i <= k; i++){\n        //If the current element is greater than the element at index, update max_sum\n        if(a[i] > a[index]){\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    //Return the maximum sum\n    return max_sum;\n}\n"
+  ]
+}

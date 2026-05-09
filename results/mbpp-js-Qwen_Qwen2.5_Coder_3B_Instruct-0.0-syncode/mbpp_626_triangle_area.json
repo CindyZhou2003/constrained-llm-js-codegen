@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //The area of the largest triangle that can be inscribed in a semicircle is half the area of the semicircle.\n    return (Math.PI * r * r) / 2;\n}"
+    "    // The largest triangle that can be inscribed in a semicircle is an isosceles right triangle.\n    // The base of the triangle is the diameter of the semicircle, which is 2r.\n    // The height of the triangle is the radius of the semicircle, which is r.\n    // The area of the triangle is (1/2) * base * height.\n    return (1/2) * (2*r) * r;\n}"
   ]
 }

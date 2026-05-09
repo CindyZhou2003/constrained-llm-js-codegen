@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_95_Find_Min_Length",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the length of the smallest array in an array of lists.\nfunction Find_Min_Length(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_95_Find_Min_Length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Min_Length;\n  assert.deepEqual(candidate([[1], [1, 2]]),1);\n  assert.deepEqual(candidate([[1, 2], [1, 2, 3], [1, 2, 3, 4]]),2);\n  assert.deepEqual(candidate([[3, 3, 3], [4, 4, 4, 4]]),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min_length = lst[0].length;\n    for(let i = 1; i < lst.length; i++){\n        if(lst[i].length < min_length){\n            min_length = lst[i].length;\n        }\n    }\n    return min_length;\n}",
+    "    // Initialize min_length with a very large number\n    let min_length = Infinity;\n    // Iterate through each list in the array\n    for(let i = 0; i < lst.length; i++){\n        // Get the length of the current list\n        let current_length = lst[i].length;\n        // Update min_length if the current list is shorter\n        if(current_length < min_length){\n            min_length = current_length;\n        }\n    }\n    // Return the length of the smallest list\n    return min_length;\n}\n",
+    "    // Initialize the minimum length to a large value\n    let min = lst[0].length;\n    // Iterate through each array in the list\n    for(let i = 1; i < lst.length; i++){\n        // Update the minimum length if the current array is shorter\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    // Return the minimum length\n    return min;\n}",
+    "    var min_len = lst[0].length;\n    for(var i = 1; i < lst.length; i++){\n        if(lst[i].length < min_len){\n            min_len = lst[i].length;\n        }\n    }\n    return min_len;\n}",
+    "    let min = lst[0].length;\n    for(let i=1; i<lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_586_split_Arr",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to split an array at the nth eelment and add the first part to the end.\nfunction split_Arr(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_586_split_Arr.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_Arr;\n  assert.deepEqual(candidate([12, 10, 5, 6, 52, 36], 2),[5, 6, 52, 36, 12, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], 1),[2, 3, 4, 1]);\n  assert.deepEqual(candidate([0, 1, 2, 3, 4, 5, 6, 7], 3),[3, 4, 5, 6, 7, 0, 1, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var splitIndex = n - 1;\n    var firstPart = l.slice(0, splitIndex);\n    var secondPart = l.slice(splitIndex);\n    var result = secondPart.concat(firstPart);\n    return result;\n}",
+    "    var first = l.slice(0, n); //first part\n    var last = l.slice(n); //last part\n    var new_arr = last.concat(first); //new array\n    return new_arr;\n}",
+    "    //l is the array and n is the nth element at which to split\n    var arr = l.slice(0,n); //slices the array from the start to the nth element\n    var arr2 = l.slice(n); //slices the array from the nth element to the end\n    var arr3 = arr.concat(arr2); //concatenates the two arrays\n    return arr3; //returns the concatenated array\n}\n",
+    "    var arr = l.slice(n); //Extracts the array from the nth element\n    var arr1 = l.slice(0, n); //Extracts the array from the 0th element to the nth element\n    var arr2 = arr.concat(arr1); //Concatenates the two arrays\n    return arr2;\n}",
+    "    var split = l.slice(0, n);\n    var rest = l.slice(n);\n    return rest.concat(split);\n}"
+  ]
+}

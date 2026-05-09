@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_753_min_k",
+  "language": "js",
+  "prompt": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_753_min_k.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //using sort() function to sort the elements in ascending order\n    test_list.sort((a, b) => a - b);\n    //using slice() function to slice the elements from 0 to K-1\n    res = test_list.slice(0, K);\n    return res;\n}\n",
+    "    //using sort and slice to find min k records\n    min_k = test_list.sort((a, b) => a - b).slice(0, K);\n    return min_k;\n}",
+    "    // using sort() to sort test_list \n    test_list.sort((a, b) => a - b);\n    // using splice() to get min K elements \n    result = test_list.splice(0, K);\n    // printing result \n    return result; \n}",
+    "    min_list = test_list.slice(0, K);\n    return min_list;\n}",
+    "    //using sort function and slice method to find minimum k records from array array\n    test_list.sort((a,b) => a-b);\n    return test_list.slice(0,K);\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_48_is_palindrome",
+  "language": "js",
+  "prompt": "//Checks if given string is a palindrome\n// >>> is_palindrome(\"\")\n// true\n// >>> is_palindrome(\"aba\")\n// true\n// >>> is_palindrome(\"aaaaa\")\n// true\n// >>> is_palindrome(\"zbcd\")\n// false\nfunction is_palindrome(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_48_is_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_palindrome;\n  assert.deepEqual(candidate(\"\"),true);\n  assert.deepEqual(candidate(\"aba\"),true);\n  assert.deepEqual(candidate(\"aaaaa\"),true);\n  assert.deepEqual(candidate(\"zbcd\"),false);\n  assert.deepEqual(candidate(\"xywyx\"),true);\n  assert.deepEqual(candidate(\"xywyz\"),false);\n  assert.deepEqual(candidate(\"xywzx\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let word = text.toLowerCase();\n    let len = word.length;\n    for(let i=0; i<len/2; i++){\n        if(word[i] != word[len-1-i]){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    let len = text.length;\n    for(let i=0; i<len/2; i++){\n        if(text[i] !== text[len-i-1]) return false;\n    }\n    return true;\n}\n",
+    "    // Check if the string is empty or has only one character\n    if(text.length <= 1){\n        return true;\n    }\n    // Initialize two pointers, one at the start and one at the end of the string\n    let start = 0;\n    let end = text.length - 1;\n    // Loop through the string while the start pointer is less than the end pointer\n    while(start < end){\n        // If the characters at the start and end pointers are not the same, return false\n        if(text[start] !== text[end]){\n            return false;\n        }\n        // Move the start pointer one character to the right and the end pointer one character to the left\n        start++;\n        end--;\n    }\n    // If the loop completes without returning false, the string is a palindrome\n    return true;\n}",
+    "    return text === text.split('').reverse().join('');\n}\n\nmodule.exports = is_palindrome;",
+    "  var str = text.toLowerCase();\n  var len = str.length;\n  var i;\n  for(i=0; i<len/2; i++){\n    if(str[i] !== str[len-1-i]){\n      return false;\n    }\n  }\n  return true;\n}\n"
+  ]
+}

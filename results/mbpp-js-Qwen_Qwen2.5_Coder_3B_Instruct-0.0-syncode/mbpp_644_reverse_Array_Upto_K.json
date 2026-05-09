@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Check if k is within the bounds of the array\n    if (k < 0 || k >= input.length) {\n        return input; // Return the original array if k is out of bounds\n    }\n\n    // Reverse the array from the start to the k-th position\n    for (let i = 0; i < k / 2; i++) {\n        let temp = input[i];\n        input[i] = input[k - i - 1];\n        input[k - i - 1] = temp;\n    }\n\n    return input;\n}\n"
+    "    // Check if the input is an array and k is a valid index\n    if (!Array.isArray(input) || k < 0 || k >= input.length) {\n        return \"Invalid input\";\n    }\n    \n    // Reverse the array up to the given position k\n    let reversedArray = input.slice(0, k).reverse().concat(input.slice(k));\n    \n    return reversedArray;\n}\n"
   ]
 }

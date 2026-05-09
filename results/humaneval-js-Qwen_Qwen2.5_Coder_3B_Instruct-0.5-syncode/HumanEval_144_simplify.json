@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_144_simplify",
+  "language": "js",
+  "prompt": "//Your task is to implement a function that will simplify the expression\n// x * n. The function returns true if x * n evaluates to a whole number and false\n// otherwise. Both x and n, are string representation of a fraction, and have the following format,\n// <numerator>/<denominator> where both numerator and denominator are positive whole numbers.\n// You can assume that x, and n are valid fractions, and do not have zero as denominator.\n// >>> simplify(\"1/5\", \"5/1\")\n// true\n// >>> simplify(\"1/6\", \"2/1\")\n// false\n// >>> simplify(\"7/10\", \"10/2\")\n// false\nfunction simplify(x, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_144_simplify.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = simplify;\n  assert.deepEqual(candidate(\"1/5\", \"5/1\"),true);\n  assert.deepEqual(candidate(\"1/6\", \"2/1\"),false);\n  assert.deepEqual(candidate(\"5/1\", \"3/1\"),true);\n  assert.deepEqual(candidate(\"7/10\", \"10/2\"),false);\n  assert.deepEqual(candidate(\"2/10\", \"50/10\"),true);\n  assert.deepEqual(candidate(\"7/2\", \"4/2\"),true);\n  assert.deepEqual(candidate(\"11/6\", \"6/1\"),true);\n  assert.deepEqual(candidate(\"2/3\", \"5/2\"),false);\n  assert.deepEqual(candidate(\"5/2\", \"3/5\"),false);\n  assert.deepEqual(candidate(\"2/4\", \"8/4\"),true);\n  assert.deepEqual(candidate(\"2/4\", \"4/2\"),true);\n  assert.deepEqual(candidate(\"1/5\", \"5/1\"),true);\n  assert.deepEqual(candidate(\"1/5\", \"1/5\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let [num1, den1] = x.split('/').map(Number);\n    let [num2, den2] = n.split('/').map(Number);\n    return (num1 * den2) % (num2 * den1) === 0;\n}",
+    "    // Split the fractions into numerator and denominator\n    const [xNum, xDen] = x.split('/').map(Number);\n    const [nNum, nDen] = n.split('/').map(Number);\n\n    // Calculate the product of the two fractions\n    const productNum = xNum * nNum;\n    const productDen = xDen * nDen;\n\n    // Check if the product is a whole number\n    return productNum % productDen === 0;\n}",
+    "  let xArr = x.split('/')\n  let nArr = n.split('/')\n  let xNum = parseInt(xArr[0])\n  let xDen = parseInt(xArr[1])\n  let nNum = parseInt(nArr[0])\n  let nDen = parseInt(nArr[1])\n  return (xNum*nDen) === (xDen*nNum)\n}",
+    "  // Split the fractions into numerators and denominators\n  const [xNum, xDen] = x.split('/').map(Number);\n  const [nNum, nDen] = n.split('/').map(Number);\n\n  // Multiply the numerators and denominators\n  const newNum = xNum * nNum;\n  const newDen = xDen * nDen;\n\n  // Check if the result is a whole number\n  return newNum % newDen === 0;\n}\n",
+    "  let [numX, denX] = x.split('/').map(Number);\n  let [numN, denN] = n.split('/').map(Number);\n\n  // Calculate the simplified fraction\n  let simplifiedNum = numX * numN;\n  let simplifiedDen = denX * denN;\n\n  // Check if the simplified fraction is a whole number\n  return simplifiedNum % simplifiedDen === 0;\n}\n"
+  ]
+}

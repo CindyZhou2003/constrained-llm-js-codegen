@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Get all middle bits of the number\n    let middle_bits = n & ((1 << (n - 2)) - 1);\n    // Toggle middle bits\n    middle_bits = ~middle_bits;\n    // Set first and last bit\n    let result = (1 << (n - 1)) | (1 << 0) | middle_bits;\n    return result;\n}",
+    "    let first = (n & 1);\n    let last = (n & 1 << (n.toString(2).length - 1));\n    let mask = -1;\n    mask = mask ^ first;\n    mask = mask ^ last;\n    mask = mask ^ (n & mask);\n    return mask;\n}",
+    "    // if the length of the number is less than 3, return the number as it is\n    if(n.toString(2).length < 3){\n        return n;\n    }\n    // get the number of bits in the number\n    const bit_length = n.toString(2).length;\n    // get the mask for the middle bits\n    const mask = (1 << (bit_length - 2)) - 1;\n    // toggle the middle bits\n    return n ^ mask;\n}",
+    "    //count the number of bits in the number\n    var count = n.toString(2).length;\n    //create a mask with all bits except the first and the last bit set to 1\n    var mask = (1 << (count - 2)) - 1;\n    //toggle the middle bits by XORing the number with the mask\n    var result = n ^ mask;\n    //return the result\n    return result;\n}",
+    "    //Get the first and last bits\n    let first_bit = n & 1;\n    let last_bit = n & (1 << (n.toString(2).length - 1));\n    \n    //Get the middle bits\n    let middle_bits = n ^ (first_bit | last_bit);\n    \n    //Toggle the middle bits\n    let result = first_bit | middle_bits | last_bit;\n    \n    return result;\n}\n"
+  ]
+}

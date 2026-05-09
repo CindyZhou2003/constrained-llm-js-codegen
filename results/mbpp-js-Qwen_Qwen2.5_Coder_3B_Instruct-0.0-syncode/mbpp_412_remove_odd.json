@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return l.filter(function(x){\n        return x%2==0;\n    });\n}"
+    "    return l.filter(x => x % 2 == 0);\n}"
   ]
 }

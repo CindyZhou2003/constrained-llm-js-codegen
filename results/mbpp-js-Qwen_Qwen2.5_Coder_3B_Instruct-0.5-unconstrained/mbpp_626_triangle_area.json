@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_626_triangle_area",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.\nfunction triangle_area(r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_626_triangle_area.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triangle_area;\n  assert.deepEqual(candidate(-1),undefined);\n  assert.deepEqual(candidate(0),0);\n  assert.deepEqual(candidate(2),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // The largest triangle that can be inscribed in a semicircle is an equilateral triangle.\n    // The side length of this equilateral triangle is equal to the diameter of the semicircle.\n    let side = 2 * r;\n    // The area of an equilateral triangle is given by (sqrt(3)/4) * side^2.\n    let area = (Math.sqrt(3)/4) * side * side;\n    return area;\n}",
+    "    //The area of the largest triangle that can be inscribed in a semicircle is half the area of the semicircle.\n    return (Math.PI * r * r) / 2 / 2;\n}",
+    "    let area = 0.75 * r * r;\n    return area;\n}\nlet radius = 5;",
+    "    // The largest triangle that can be inscribed in a semicircle has its base as the diameter of the semicircle and its height as the radius of the semicircle.\n    let base = 2 * r;\n    let height = r;\n    // The area of the triangle can be calculated using the formula: 0.5 * base * height\n    let area = 0.5 * base * height;\n    return area;\n}",
+    "    // The largest triangle inscribed in a semicircle is an isosceles triangle with the base as the diameter of the semicircle and the height as the radius of the semicircle.\n    let base = 2 * r;\n    let height = r;\n    let area = (1/2) * base * height;\n    return area;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_265_list_split",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and an integer n and splits an array for every nth element, returning an array of the resulting lists.\nfunction list_split(S, step){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_265_list_split.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_split;\n  assert.deepEqual(candidate([\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\", \"i\", \"j\", \"k\", \"l\", \"m\", \"n\"], 3),[[\"a\", \"d\", \"g\", \"j\", \"m\"], [\"b\", \"e\", \"h\", \"k\", \"n\"], [\"c\", \"f\", \"i\", \"l\"]]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 3),[[1, 4, 7, 10, 13], [2, 5, 8, 11, 14], [3, 6, 9, 12]]);\n  assert.deepEqual(candidate([\"python\", \"java\", \"C\", \"C++\", \"DBMS\", \"SQL\"], 2),[[\"python\", \"C\", \"DBMS\"], [\"java\", \"C++\", \"SQL\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    var current_list = [];\n    for(var i = 0; i < S.length; i++){\n        current_list.push(S[i]);\n        if((i + 1) % step === 0){\n            result.push(current_list);\n            current_list = [];\n        }\n    }\n    if(current_list.length > 0){\n        result.push(current_list);\n    }\n    return result;\n}\n",
+    "    var result = [];\n    var current = [];\n    for (var i = 0; i < S.length; i++) {\n        current.push(S[i]);\n        if ((i + 1) % step === 0) {\n            result.push(current);\n            current = [];\n        }\n    }\n    if (current.length > 0) {\n        result.push(current);\n    }\n    return result;\n}\n",
+    "    var result = [];\n    var current = [];\n    for(var i = 0; i < S.length; i++){\n        current.push(S[i]);\n        if((i + 1) % step === 0){\n            result.push(current);\n            current = [];\n        }\n    }\n    if(current.length > 0){\n        result.push(current);\n    }\n    return result;\n}\n"
+  ]
+}

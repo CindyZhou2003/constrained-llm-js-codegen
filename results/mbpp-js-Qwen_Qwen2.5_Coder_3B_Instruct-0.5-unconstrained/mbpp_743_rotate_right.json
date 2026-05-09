@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_743_rotate_right",
+  "language": "js",
+  "prompt": "//Write a function to rotate a given array by specified number of items to the right direction. https://www.geeksforgeeks.org/JavaScript-program-right-rotate-array-n/\nfunction rotate_right(list, m){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_743_rotate_right.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rotate_right;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3),[8, 9, 10, 1, 2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2),[9, 10, 1, 2, 3, 4, 5, 6, 7, 8]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5),[6, 7, 8, 9, 10, 1, 2, 3, 4, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // store the last m elements of the array\n    let temp = list.slice(-m);\n    // remove the last m elements from the array\n    list.splice(-m);\n    // add the elements stored in temp to the start of the array\n    list.unshift(...temp);\n    return list;\n}\n",
+    "    for(let i=0; i<m; i++){\n        let last = list.pop();\n        list.unshift(last);\n    }\n    return list;\n}\n",
+    "    // Print the array before rotation\n    console.log(\"Array before rotation: \" + list);\n    // Print the array after rotation\n    console.log(\"Array after rotation: \" + list.slice(-m).concat(list.slice(0, list.length - m)));\n    return list.slice(-m).concat(list.slice(0, list.length - m));\n}\n",
+    "    let n = list.length;\n    let temp = new Array(m);\n    for(let i=0; i<m; i++){\n        temp[i] = list[n-m+i];\n    }\n    for(let i=n-m-1; i>=0; i--){\n        list[i+m] = list[i];\n    }\n    for(let i=0; i<m; i++){\n        list[i] = temp[i];\n    }\n    return list;\n}\nlet list = [1,2,3,4,5,6];\nlet m = 2;",
+    "    //Reverse the array from 0 to m-1\n    let temp = list.slice(0, m);\n    temp.reverse();\n    //Reverse the array from m to n-1\n    let temp2 = list.slice(m);\n    temp2.reverse();\n    //Reverse the array from 0 to n-1\n    list.reverse();\n    //Merge the two reversed arrays\n    list = temp.concat(temp2);\n    return list;\n}\n"
+  ]
+}

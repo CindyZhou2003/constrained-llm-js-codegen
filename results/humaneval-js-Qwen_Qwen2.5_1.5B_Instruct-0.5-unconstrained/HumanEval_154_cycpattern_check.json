@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(b.length > a.length) return false;\n    let str = b + b;\n    return str.includes(a);\n}",
+    "    if(a.indexOf(b) > -1)\n        return true;\n    for(let i = 1; i < b.length; i++){\n        if(a.indexOf(b[i]) > -1)\n            return true;\n    }\n    return false;\n}",
+    "  a = a.toLowerCase();\n  b = b.toLowerCase();\n  if (a.indexOf(b) >= 0 || a.indexOf(b.toLowerCase()) >= 0) return true;\n  for (let i = 0; i < b.length; i++) {\n    if (a.indexOf(b[i]) >= 0 || a.indexOf(b[i].toLowerCase()) >= 0) return true;\n  }\n  return false;\n}",
+    "    if (a.indexOf(b) !== -1) return true;\n    if (a.indexOf(b.split('').reverse().join('')) !== -1) return true;\n    return false;\n}",
+    "  let lenA = a.length\n  let lenB = b.length\n  let count = 0\n  for (let i = 0; i < lenA; i++) {\n    if (a[i] === b[0]) {\n      let temp = a.slice(i, i + lenB)\n      if (temp === b) return true\n      let j = 0\n      while (j < lenB) {\n        temp = temp.slice(1) + a[i + j]\n        j++\n      }\n      if (temp === b) return true\n    }\n  }\n  return false\n}"
+  ]
+}

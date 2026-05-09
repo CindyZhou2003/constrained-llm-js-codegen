@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_57_find_Max_Num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the largest number that can be formed with the given array of digits.\nfunction find_Max_Num(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_57_find_Max_Num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Max_Num;\n  assert.deepEqual(candidate([1, 2, 3]),321);\n  assert.deepEqual(candidate([4, 5, 6, 1]),6541);\n  assert.deepEqual(candidate([1, 2, 3, 9]),9321);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Sort the array in descending order\n    arr.sort((a, b) => b - a);\n    // Join the sorted array into a string\n    let str = arr.join('');\n    // Convert the string to a number\n    let num = Number(str);\n    // Return the number\n    return num;\n}",
+    "    var max_num = 0;\n    var max_num_str = '';\n    arr.sort(function(a, b) {\n        return b - a;\n    });\n    for (var i = 0; i < arr.length; i++) {\n        max_num_str += arr[i];\n    }\n    max_num = parseInt(max_num_str);\n    return max_num;\n}",
+    "    let max_num = 0;\n    let count = 0;\n    let max_count = 0;\n    let max_num_index = 0;\n    for(let i=0;i<arr.length;i++){\n        if(arr[i]>max_num){\n            max_num = arr[i];\n            max_num_index = i;\n        }\n    }\n    for(let i=0;i<arr.length;i++){\n        if(arr[i]==max_num){\n            count++;\n        }\n    }\n    for(let i=0;i<arr.length;i++){\n        if(arr[i]==max_num){\n            max_count++;\n        }\n    }\n    if(count>max_count){\n        max_num = arr[max_num_index];\n    }\n    return max_num;\n}",
+    "    // Convert the array of digits to a string\n    let str = arr.join('');\n    // Sort the string in descending order\n    let sorted_str = str.split('').sort((a, b) => b - a).join('');\n    // Return the largest number as a string\n    return sorted_str;\n}",
+    "    //Convert the array of digits to a string\n    let str = arr.join('');\n    //Sort the string in descending order\n    let sorted_str = str.split('').sort((a, b) => b - a).join('');\n    //Return the largest number as a string\n    return sorted_str;\n}\n"
+  ]
+}

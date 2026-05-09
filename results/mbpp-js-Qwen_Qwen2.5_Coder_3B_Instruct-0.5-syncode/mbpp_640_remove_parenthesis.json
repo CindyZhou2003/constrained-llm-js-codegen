@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_640_remove_parenthesis",
+  "language": "js",
+  "prompt": "//Write a function to remove the parenthesis and what is inbetween them from a string.\nfunction remove_parenthesis(items){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_640_remove_parenthesis.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_parenthesis;\n  assert.deepEqual(candidate([\"python (chrome)\"]),\"python\");\n  assert.deepEqual(candidate([\"string(.abc)\"]),\"string\");\n  assert.deepEqual(candidate([\"alpha(num)\"]),\"alpha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "   //Split the string into an array of characters\n   let items_array = items.split('');\n   //Create an empty array to store the characters that are not in between parentheses\n   let result_array = [];\n   //Create a variable to keep track of whether we are inside of parentheses\n   let inside_parentheses = false;\n   //Loop through each character in the array\n   for(let i = 0; i < items_array.length; i++){\n      //If the character is an opening parenthesis, set inside_parentheses to true\n      if(items_array[i] === '('){\n         inside_parentheses = true;\n      }\n      //If the character is a closing parenthesis, set inside_parentheses to false\n      if(items_array[i] === ')'){\n         inside_parentheses = false;\n      }\n      //If inside_parentheses is false, add the character to the result_array\n      if(!inside_parentheses){\n         result_array.push(items_array[i]);\n      }\n   }\n   //Join the result_array into a string and return it\n   return result_array.join('');\n}",
+    "    var result = items.replace(/\\([^)]*\\)/g, \"\");\n    return result;\n}\n",
+    "    var i = items.indexOf(\"(\");\n    var j = items.indexOf(\")\");\n    var result = items.slice(0,i) + items.slice(j+1);\n    return result;\n}",
+    "    let result = items.split('');\n    let counter = 0;\n    for(let i = 0; i < result.length; i++){\n        if(result[i] === '('){\n            counter++;\n        }\n        if(result[i] === ')'){\n            counter--;\n        }\n        if(counter === 0){\n            result.splice(i, 1);\n            result.splice(i, 1);\n        }\n    }\n    return result.join('');\n}\n",
+    "    var result = items.replace(/\\([^)]*\\)/g, '');\n    return result;\n}\n"
+  ]
+}

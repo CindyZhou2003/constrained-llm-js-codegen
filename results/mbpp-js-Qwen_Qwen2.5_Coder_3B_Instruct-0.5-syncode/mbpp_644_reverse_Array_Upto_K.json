@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_644_reverse_Array_Upto_K",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse an array upto a given position.\nfunction reverse_Array_Upto_K(input, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_644_reverse_Array_Upto_K.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_Array_Upto_K;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], 4),[4, 3, 2, 1, 5, 6]);\n  assert.deepEqual(candidate([4, 5, 6, 7], 2),[5, 4, 6, 7]);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5], 3),[7, 8, 9, 6, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    for(var i = k; i >= 0; i--){\n        result.push(input[i]);\n    }\n    return result;\n}",
+    "    // Create a copy of the array\n    let reversedArray = [...input];\n    // Reverse the array up to the given position k\n    for(let i = 0; i < k; i++){\n        reversedArray[i] = input[input.length - 1 - i];\n    }\n    return reversedArray;\n}",
+    "    //Check if the input array is empty or k is out of bounds\n    if (input.length === 0 || k < 0 || k >= input.length) {\n        return input;\n    }\n\n    //Reverse the array from the start to the given position k\n    let reversedArray = input.slice(0, k).reverse();\n\n    //Concatenate the reversed array with the remaining elements of the original array\n    return reversedArray.concat(input.slice(k));\n}\n",
+    "    if(k > input.length - 1){\n        return \"Given position is out of range.\";\n    }\n    let reversed_array = [];\n    for(let i = 0; i <= k; i++){\n        reversed_array.push(input[i]);\n    }\n    for(let i = input.length - 1; i >= k + 1; i--){\n        reversed_array.push(input[i]);\n    }\n    return reversed_array;\n}\n",
+    "    var temp = [];\n    for(var i = 0; i <= k; i++){\n        temp.push(input[i]);\n    }\n    for(var j = k; j < input.length; j++){\n        input[j - k] = input[j];\n    }\n    for(var i = 0; i < temp.length; i++){\n        input[input.length - temp.length + i] = temp[i];\n    }\n    return input;\n}"
+  ]
+}

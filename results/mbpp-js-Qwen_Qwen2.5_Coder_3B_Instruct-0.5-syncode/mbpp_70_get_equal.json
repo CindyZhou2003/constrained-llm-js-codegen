@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_70_get_equal",
+  "language": "js",
+  "prompt": "//Write a function to find whether all the given lists have equal length or not.\nfunction get_equal(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_70_get_equal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_equal;\n  assert.deepEqual(candidate([[11, 22, 33], [44, 55, 66]]),true);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6, 7]]),false);\n  assert.deepEqual(candidate([[1, 2], [3, 4]]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var equal = true;\n    for(var i = 0; i < Input.length; i++){\n        if(Input[i].length != Input[0].length){\n            equal = false;\n        }\n    }\n    return equal;\n}",
+    "    var flag = true;\n    for(var i = 0; i < Input.length; i++){\n        if(Input[i].length != Input[0].length){\n            flag = false;\n            break;\n        }\n    }\n    return flag;\n}",
+    "    //variable to store the length of the first input list\n    let first = Input[0].length;\n    //variable to store the length of the second input list\n    let second = Input[1].length;\n    //variable to store the length of the third input list\n    let third = Input[2].length;\n    //if the first and second list have equal length and the first and third list have equal length, then return true\n    if(first === second && first === third){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let length = Input.length;\n    let i = 0;\n    let flag = true;\n    while(i < length){\n        if(Input[i].length != Input[i+1].length){\n            flag = false;\n            break;\n        }\n        i++;\n    }\n    return flag;\n}",
+    "    var result = false;\n    if(Input.length === 0){\n        return false;\n    }\n    for(var i=0;i<Input.length;i++){\n        if(Input[i].length === Input[0].length){\n            result = true;\n        }\n        else{\n            result = false;\n            break;\n        }\n    }\n    return result;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_109_odd_Equivalent",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the number of numbers with an odd value when rotating a binary string the given number of times.\nfunction odd_Equivalent(s, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_109_odd_Equivalent.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = odd_Equivalent;\n  assert.deepEqual(candidate(\"011001\", 6),3);\n  assert.deepEqual(candidate(\"11011\", 5),4);\n  assert.deepEqual(candidate(\"1010\", 4),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    var result = [];\n    var len = s.length;\n    for(var i = 0; i < n; i++){\n        var temp = s.charAt(len - 1);\n        for(var j = len - 2; j >= 0; j--){\n            s = s.charAt(j) + s;\n        }\n        s = temp + s;\n        result.push(s);\n    }\n    for(var k = 0; k < result.length; k++){\n        if(result[k].indexOf('1') % 2 !== 0){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    // Initialize the count of odd numbers\n    let count = 0;\n    // Convert the binary string to an array of characters\n    let arr = s.split('');\n    // Iterate over the array of characters\n    for(let i = 0; i < arr.length; i++){\n        // If the character is '1', increment the count of odd numbers\n        if(arr[i] === '1'){\n            count++;\n        }\n    }\n    // Return the count of odd numbers\n    return count;\n}",
+    "    s = s.split(''); // Convert the binary string into an array of characters\n    let count = 0; // Initialize a counter to keep track of the number of odd values\n    let oddCount = 0; // Initialize a counter to keep track of the number of odd values in the current rotation\n    \n    // Iterate through the array of characters\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === '1'){ // If the character is '1', increment the oddCount\n            oddCount++;\n        }\n    }\n    \n    // If the oddCount is odd, increment the count\n    if(oddCount % 2 !== 0){\n        count++;\n    }\n    \n    // Iterate through the array of characters n times\n    for(let j = 0; j < n; j++){\n        let temp = s.shift(); // Remove the first character from the array\n        s.push(temp); // Add the removed character to the end of the array\n        oddCount = 0; // Reset the oddCount to 0 for the current rotation\n        \n        // Iterate through the array of characters in the current rotation\n        for(let k = 0; k < s.length; k++){\n            if(s[k] === '1'){ // If the character is '1', increment the oddCount\n                oddCount++;\n            }\n        }\n        \n        // If the oddCount is odd, increment the count\n        if(oddCount % 2 !== 0){\n            count++;\n        }\n    }\n    \n    return count; // Return the final count of numbers with an odd value\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < n; i++){\n        let odd = 0;\n        for(let j = 0; j < s.length; j++){\n            if(s[j] === '1'){\n                odd++;\n            }\n        }\n        if(odd % 2 !== 0){\n            count++;\n        }\n        s = s.slice(1) + s[0];\n    }\n    return count;\n}",
+    "    var count = 0;\n    var bin = parseInt(s, 2);\n    var bin1 = bin;\n    var bin2 = bin;\n    for(var i = 0; i < n; i++){\n        bin1 = bin1 << 1;\n        bin2 = bin2 >> 1;\n        if(bin1 & 1 == 1){\n            count++;\n        }\n        if(bin2 & 1 == 1){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

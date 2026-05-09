@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    if(x<1){\n        return false;\n    }\n    let i=1;\n    let sum=0;\n    while(sum<x){\n        sum+=i;\n        i++;\n    }\n    return sum==x;\n}"
+    "    if(x<1){\n        return false;\n    }\n    let sum = 0;\n    for(let i=1; i<=x; i++){\n        sum += i;\n        if(sum == x){\n            return true;\n        }\n    }\n    return false;\n}"
   ]
 }

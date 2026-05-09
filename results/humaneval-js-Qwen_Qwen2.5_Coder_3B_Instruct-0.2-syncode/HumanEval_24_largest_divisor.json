@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_24_largest_divisor",
+  "language": "js",
+  "prompt": "//For a given number n, find the largest number that divides n evenly, smaller than n\n// >>> largest_divisor(15)\n// 5\nfunction largest_divisor(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_24_largest_divisor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_divisor;\n  assert.deepEqual(candidate(3),1);\n  assert.deepEqual(candidate(7),1);\n  assert.deepEqual(candidate(10),5);\n  assert.deepEqual(candidate(100),50);\n  assert.deepEqual(candidate(49),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i = n-1; i >= 1; i--){\n        if(n % i === 0){\n            return i;\n        }\n    }\n}\n",
+    "    for(let i = n-1; i > 0; i--){\n        if(n % i === 0){\n            return i;\n        }\n    }\n}\n",
+    "    for(let i = n - 1; i > 0; i--){\n        if(n % i === 0){\n            return i;\n        }\n    }\n}\n"
+  ]
+}

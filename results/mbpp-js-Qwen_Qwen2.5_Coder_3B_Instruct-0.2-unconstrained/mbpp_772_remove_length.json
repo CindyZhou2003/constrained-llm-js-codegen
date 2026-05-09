@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_772_remove_length",
+  "language": "js",
+  "prompt": "//Write a function to remove all the words with k length in the given string.\nfunction remove_length(test_str, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_772_remove_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_length;\n  assert.deepEqual(candidate(\"The person is most value tet\", 3),\"person is most value\");\n  assert.deepEqual(candidate(\"If you told me about this ok\", 4),\"If you me about ok\");\n  assert.deepEqual(candidate(\"Forces of darkeness is come into the play\", 4),\"Forces of darkeness is the\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split(\" \").filter(ele => ele.length != K);\n    return res.join(\" \");\n}\ntest_str = \"Geeks for Geeks\";\nK = 5;\nprint(remove_length(test_str, K));",
+    "    res = test_str.split(\" \").filter(ele => ele.length != K);\n    return res.join(\" \");\n}\ntest_str = \"GeeksforGeeks is best for programming\";\nK = 2;\nprint(remove_length(test_str, K));",
+    "    res = test_str.split(' ').filter(ele => ele.length != K);\n    return res.join(' ');\n}\ntest_str = \"Geeks for Geeks\";\nK = 5;\nprint(remove_length(test_str, K));"
+  ]
+}

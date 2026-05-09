@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_635_heap_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort the given array.\nfunction heap_sort(iterable){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_635_heap_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_sort;\n  assert.deepEqual(candidate([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]),[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 25, 58]),[14, 22, 25, 25, 35, 58, 65, 75, 85]);\n  assert.deepEqual(candidate([7, 1, 9, 5]),[1, 5, 7, 9]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = iterable.slice();\n    let n = arr.length;\n    let i = Math.floor(n / 2) - 1;\n\n    while(i >= 0){\n        heapify(arr, n, i);\n        i--;\n    }\n\n    while(n > 1){\n        arr[0] = arr[n - 1];\n        arr.pop();\n        n = arr.length;\n        heapify(arr, n, 0);\n    }\n\n    return arr;\n}\n",
+    "    let n = iterable.length;\n\n    // Build max heap.\n    for(let i = Math.floor(n / 2) - 1; i >= 0; i--){\n        heapify(iterable, n, i);\n    }\n\n    // Extract elements one by one.\n    for(let i = n - 1; i >= 0; i--){\n        // Move current root to end.\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n\n        // Call max heapify on the reduced heap.\n        heapify(iterable, i, 0);\n    }\n\n    return iterable;\n}\n",
+    "    let array = iterable.slice();\n    let length = array.length;\n    let start = Math.floor(length/2);\n    let end = length-1;\n    while(start >= 0){\n        heapify(array, start, end);\n        start--;\n    }\n    while(end > 0){\n        swap(array, 0, end);\n        end--;\n        heapify(array, 0, end);\n    }\n    return array;\n}\n",
+    "    let n = iterable.length;\n    // Build a maxheap.\n    for(let i = Math.floor(n / 2) - 1; i >= 0; i--){\n        heapify(iterable, n, i);\n    }\n    // Extract elements one by one\n    for(let i = n - 1; i > 0; i--){\n        // Move current root to end\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n        // call max heapify on the reduced heap\n        heapify(iterable, i, 0);\n    }\n    return iterable;\n}\n",
+    "    let size = iterable.length;\n    for(let i = Math.floor(size / 2) - 1; i >= 0; i--){\n        heapify(iterable, size, i);\n    }\n    for(let i = size - 1; i >= 0; i--){\n        [iterable[0], iterable[i]] = [iterable[i], iterable[0]];\n        heapify(iterable, i, 0);\n    }\n    return iterable;\n}"
+  ]
+}

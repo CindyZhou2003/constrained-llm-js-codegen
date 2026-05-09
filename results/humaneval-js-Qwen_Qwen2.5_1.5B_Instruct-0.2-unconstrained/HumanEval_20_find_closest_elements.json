@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_20_find_closest_elements",
+  "language": "js",
+  "prompt": "//From a supplied array of numbers (of length at least two) select and return two that are the closest to each\n// other and return them in order (smaller number, larger number).\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n// [2.0, 2.2]\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n// [2.0, 2.0]\nfunction find_closest_elements(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_20_find_closest_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_closest_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]),[3.9, 4.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0]),[5.0, 5.9]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]),[2.0, 2.2]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]),[2.0, 2.0]);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1]),[2.2, 3.1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let closest = [];\n    let min = Infinity;\n    let minIndex = -1;\n    let secondMin = Infinity;\n    let secondMinIndex = -1;\n\n    for(let i = 0; i < numbers.length; i++){\n        if(numbers[i] < min){\n            min = numbers[i];\n            minIndex = i;\n        }\n        if(numbers[i] < secondMin && numbers[i] !== min){\n            secondMin = numbers[i];\n            secondMinIndex = i;\n        }\n    }\n\n    if(secondMinIndex === -1){\n        return [min, min];\n    }\n\n    if(minIndex === secondMinIndex){\n        return [min, secondMin];\n    }\n\n    return [min, secondMin];\n}\n",
+    "    let min = Math.min(...numbers);\n    let max = Math.max(...numbers);\n    let closest = [];\n    let closestDistance = Infinity;\n    for(let i = 0; i < numbers.length; i++){\n        for(let j = i + 1; j < numbers.length; j++){\n            let distance = Math.abs(numbers[i] - numbers[j]);\n            if(distance < closestDistance){\n                closestDistance = distance;\n                closest = [numbers[i], numbers[j]];\n            }\n        }\n    }\n    return closest;\n}",
+    "    let min = Math.min(...numbers);\n    let max = Math.max(...numbers);\n    let closest = [];\n    let closestDiff = Infinity;\n    for(let i = 0; i < numbers.length; i++){\n        for(let j = i + 1; j < numbers.length; j++){\n            let diff = Math.abs(numbers[i] - numbers[j]);\n            if(diff < closestDiff){\n                closestDiff = diff;\n                closest = [numbers[i], numbers[j]];\n            }\n        }\n    }\n    return closest;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string\n    let str = num.toString();\n    // Check if the string is already a palindrome\n    if(str === str.split('').reverse().join('')){\n        // If it is, add 1 to the number and convert it back to a string\n        str = (num + 1).toString();\n    }\n    // Loop through the string until we find a palindrome\n    while(str !== str.split('').reverse().join('')){\n        // Add 1 to the number and convert it back to a string\n        str = (num + 1).toString();\n    }\n    // Convert the palindrome string back to a number\n    return parseInt(str, 10);\n}",
+    "    if(num<=10){\n        return num+1;\n    }\n    let str=num.toString();\n    let len=str.length;\n    let mid=Math.floor(len/2);\n    let left=str.slice(0,mid);\n    let right=str.slice(mid,len);\n    let leftRev=left.split('').reverse().join('');\n    if(len%2===0){\n        return parseInt(leftRev+right);\n    }else{\n        let midChar=right[0];\n        right=right.slice(1,len);\n        rightRev=right.split('').reverse().join('');\n        return parseInt(leftRev+midChar+rightRev);\n    }\n}",
+    "  let nextPalindrome = num + 1;\n  while (!isPalindrome(nextPalindrome)) {\n    nextPalindrome++;\n  }\n  return nextPalindrome;\n}",
+    "    //Convert the number to a string\n    var num_str = num.toString();\n    //Create a new array to hold the digits of the number\n    var digits = num_str.split('');\n    //Create a new array to hold the digits of the palindrome\n    var palindrome_digits = [];\n    //Loop through the digits of the number\n    for(var i = 0; i < digits.length; i++){\n        //If the digit is less than 5, add it to the palindrome digits array\n        if(digits[i] < 5){\n            palindrome_digits.push(digits[i]);\n        }\n        //If the digit is 5 or greater, add the digit and its complement to the palindrome digits array\n        else{\n            palindrome_digits.push(digits[i]);\n            palindrome_digits.push(9 - digits[i]);\n        }\n    }\n    //Reverse the palindrome digits array\n    palindrome_digits.reverse();\n    //Convert the palindrome digits array to a string\n    var palindrome_str = palindrome_digits.join('');\n    //Convert the palindrome string to an integer\n    var palindrome = parseInt(palindrome_str, 10);\n    //Return the palindrome\n    return palindrome;\n}",
+    "    // Convert the number to a string to easily reverse it\n    let str = num.toString();\n    // Iterate over the string from the middle to the end\n    for(let i = Math.floor(str.length / 2); i < str.length; i++){\n        // If the character at the current index is not equal to the character at the corresponding index from the end\n        if(str[i] !== str[str.length - 1 - i]){\n            // Find the next smallest palindrome by incrementing the number at the current index\n            let j = i;\n            while(str[j] === '9'){\n                // If all characters in the current half are '9', increment the character at the previous index\n                j--;\n            }\n            str = str.substring(0, j) + (parseInt(str[j]) + 1).toString() + str.substring(j + 1);\n            // Reverse the second half of the string\n            str = str.substring(0, Math.floor(str.length / 2)) + str.substring(Math.floor(str.length /"
+  ]
+}

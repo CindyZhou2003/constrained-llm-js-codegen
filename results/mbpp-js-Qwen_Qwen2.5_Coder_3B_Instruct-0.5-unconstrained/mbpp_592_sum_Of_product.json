@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_592_sum_Of_product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the product of consecutive binomial co-efficients.\nfunction sum_Of_product(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_592_sum_Of_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sum_Of_product;\n  assert.deepEqual(candidate(3),15);\n  assert.deepEqual(candidate(4),56);\n  assert.deepEqual(candidate(1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += Math.pow(2, i);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 1; i<=n; i++){\n        sum += (i-1)*(i);\n    }\n    return sum;\n}",
+    "    let sum=0;\n    for(let i=0;i<=n;i++){\n        sum+=((n-i)*Math.pow(n-i+1,2))/((i+1)*Math.pow(i+2,2));\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 0; i <= n; i++){\n        let product = 1;\n        for(let j = 0; j <= i; j++){\n            product *= (n - j) / (j + 1);\n        }\n        sum += product;\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += (Math.pow(2, i) * Math.pow(2, n-1-i));\n    }\n    return sum;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_143_words_in_sentence",
+  "language": "js",
+  "prompt": "//You are given a string representing a sentence,\n// the sentence contains some words separated by a space,\n// and you have to return a string that contains the words from the original sentence,\n// whose lengths are prime numbers,\n// the order of the words in the new string should be the same as the original one.\n// Example 1:\n// >>> words_in_sentence(\"This is a test\")\n// \"is\"\n// Example 2:\n// >>> words_in_sentence(\"lets go for swimming\")\n// \"go for\"\n// Constraints:\n// * 1 <= len(sentence) <= 100\n// * sentence contains only letters\nfunction words_in_sentence(sentence){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_143_words_in_sentence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = words_in_sentence;\n  assert.deepEqual(candidate(\"This is a test\"),\"is\");\n  assert.deepEqual(candidate(\"lets go for swimming\"),\"go for\");\n  assert.deepEqual(candidate(\"there is no place available here\"),\"there is no place\");\n  assert.deepEqual(candidate(\"Hi I am Hussein\"),\"Hi am Hussein\");\n  assert.deepEqual(candidate(\"go for it\"),\"go for it\");\n  assert.deepEqual(candidate(\"here\"),\"\");\n  assert.deepEqual(candidate(\"here is\"),\"is\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Helper function to check if a number is prime\n    function is_prime(num) {\n        if (num <= 1) return false;\n        if (num <= 3) return true;\n        if (num % 2 === 0 || num % 3 === 0) return false;\n        for (let i = 5; i * i <= num; i += 6) {\n            if (num % i === 0 || num % (i + 2) === 0) return false;\n        }\n        return true;\n    }\n\n    // Split the sentence into words\n    const words = sentence.split(' ');\n\n    // Filter words whose lengths are prime numbers\n    const prime_length_words = words.filter(word => is_prime(word.length));\n\n    // Join the filtered words back into a string\n    return prime_length_words.join(' ');\n}\n",
+    "    let words = sentence.split(\" \");\n    let primeWords = words.filter(word => isPrime(word.length));\n    return primeWords.join(\" \");\n}\n",
+    "    let words = sentence.split(' ');\n    let primeWords = words.filter(word => isPrime(word.length));\n    return primeWords.join(' ');\n}\n"
+  ]
+}

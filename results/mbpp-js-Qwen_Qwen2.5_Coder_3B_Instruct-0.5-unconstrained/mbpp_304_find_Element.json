@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_304_find_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find element at a given index after number of rotations.\nfunction find_Element(arr, ranges, rotations, index){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_304_find_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Element;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [[0, 2], [0, 3]], 2, 1),3);\n  assert.deepEqual(candidate([1, 2, 3, 4], [[0, 1], [0, 2]], 1, 2),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [[0, 1], [0, 2]], 1, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var temp = arr.slice();\n    for(let i = 0; i < ranges.length; i++){\n        for(let j = 0; j < rotations[i]; j++){\n            if(ranges[i][0] <= index && ranges[i][1] >= index){\n                temp = temp.slice(index + 1, temp.length).concat(temp.slice(0, index + 1));\n                break;\n            }\n        }\n    }\n    return temp[index];\n}",
+    "    var i, j, k, temp;\n    //var arr = [1, 2, 3, 4, 5, 6];\n    //var ranges = [[0, 2], [3, 5]];\n    //var rotations = 3;\n    //var index = 2;\n    var n = arr.length;\n    var m = ranges.length;\n    //console.log(n, m);\n    //console.log(arr, ranges, rotations, index);\n    //console.log(\"Rotations: \", rotations);\n    for(i = 0; i < rotations; i++){\n        //console.log(\"Iteration: \", i);\n        temp = arr[0];\n        for(j = 0; j < n - 1; j++){\n            arr[j] = arr[j+1];\n        }\n        arr[n-1] = temp;\n        //console.log(\"Array after rotation: \", arr);\n    }\n    //console.log(\"Array after rotations: \", arr);\n    for(i = 0; i < m; i++){\n        var start = ranges[i][0];\n        var end = ranges[i][1];\n        //console.log(\"Start: \", start, \"End: \", end);\n        if(index >= start && index <= end){\n            //console.log(\"Index is within range: \", index);\n            return arr[index];\n        }\n    }\n    //console.log(\"Index is outside range: \", index);\n    return -1;\n}\n\nvar arr = [1, 2, 3, 4, 5, 6];\nvar ranges = [[0, 2], [3, 5]];\nvar rotations = 3;\nvar index = 2;",
+    "    //Calculate the total number of rotations\n    let total_rotations = 0;\n    for(let i = 0; i < ranges.length; i++){\n        total_rotations += ranges[i];\n    }\n    //Calculate the effective number of rotations\n    let effective_rotations = rotations % total_rotations;\n    //If effective rotations is 0, return the element at the given index\n    if(effective_rotations === 0){\n        return arr[index];\n    }\n    //Calculate the new index after rotations\n    let new_index = (index + effective_rotations) % arr.length;\n    //Return the element at the new index\n    return arr[new_index];\n}",
+    "    // Calculate the effective number of rotations\n    let effective_rotations = rotations % ranges.length;\n    \n    // Create a new array to store the rotated elements\n    let rotated_array = arr.slice();\n    \n    // Perform the rotations\n    for(let i = 0; i < effective_rotations; i++){\n        // Rotate the array to the right by one position\n        let last_element = rotated_array.pop();\n        rotated_array.unshift(last_element);\n    }\n    \n    // Return the element at the given index\n    return rotated_array[index];\n}\n",
+    "    for(let i = 0; i < rotations; i++){\n        if(ranges[i] === index){\n            arr = arr.slice(ranges[i]);\n            arr = arr.concat(arr.slice(0, ranges[i]));\n            break;\n        }\n    }\n    return arr[index];\n}"
+  ]
+}

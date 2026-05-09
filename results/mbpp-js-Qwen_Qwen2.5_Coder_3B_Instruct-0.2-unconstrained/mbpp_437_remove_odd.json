@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_437_remove_odd",
+  "language": "js",
+  "prompt": "//Write a function to remove odd characters in a string.\nfunction remove_odd(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_437_remove_odd.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_odd;\n  assert.deepEqual(candidate(\"python\"),\"yhn\");\n  assert.deepEqual(candidate(\"program\"),\"rga\");\n  assert.deepEqual(candidate(\"language\"),\"agae\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(i % 2 == 0){\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}",
+    "    var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(i % 2 == 0){\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}",
+    "    var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(i % 2 == 0){\n            str2 += str1[i];\n        }\n    }\n    return str2;\n}"
+  ]
+}

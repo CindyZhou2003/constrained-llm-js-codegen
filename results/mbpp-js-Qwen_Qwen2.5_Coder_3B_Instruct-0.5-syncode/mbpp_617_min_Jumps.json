@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let jumps = 0;\n    let x = 0;\n    let y = 0;\n    while (x < d || y > 0) {\n        if (x < d) {\n            x += steps;\n            jumps++;\n        } else if (y > 0) {\n            y -= steps;\n            jumps++;\n        }\n    }\n    return jumps;\n}\n",
+    "    if(d === 0){\n        return 0;\n    }\n    var count = 0;\n    while(d > 0){\n        if(d > steps){\n            d = d - steps;\n            count++;\n        }\n        else{\n            d = 0;\n            count++;\n        }\n    }\n    return count;\n}",
+    "    //Check if d is even or not\n    if(d % 2 == 0){\n        //If d is even, then number of jumps required will be d/2\n        return d/2;\n    }else{\n        //If d is odd, then number of jumps required will be (d+1)/2\n        return (d+1)/2;\n    }\n}",
+    "    return Math.floor((d + steps - 1) / steps);\n}\n",
+    "    if(steps < 1 || d < 1){\n        return -1;\n    }else if(steps === 1 && d === 1){\n        return 1;\n    }else if(steps === 1 || d === 1){\n        return steps;\n    }else if(steps === d){\n        return 1;\n    }else if(steps % d === 0){\n        return steps / d;\n    }else{\n        return steps + min_Jumps(steps - d, d);\n    }\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_626_triangle_area",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.\nfunction triangle_area(r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_626_triangle_area.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triangle_area;\n  assert.deepEqual(candidate(-1),undefined);\n  assert.deepEqual(candidate(0),0);\n  assert.deepEqual(candidate(2),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let s = r * Math.sqrt(3);\n    return (s * s) / 4;\n}",
+    "    // The largest triangle that can be inscribed in a semicircle with radius r is an equilateral triangle.\n    // The height of this equilateral triangle is r.\n    // The base of this equilateral triangle is r * sqrt(3).\n    // The area of this equilateral triangle is (r * sqrt(3)) / 2.\n    return (r * Math.sqrt(3)) / 2;\n}",
+    "    var area = (r * r * Math.sqrt(3)) / 4;\n    return area;\n}",
+    "  // The largest triangle that can be inscribed in a semicircle is an isosceles right triangle.\n  // The base and height of this triangle are both equal to the radius of the semicircle.\n  let base = r;\n  let height = r;\n  // The area of a triangle is given by (base * height) / 2.\n  let area = (base * height) / 2;\n  return area;\n}",
+    "    //The largest triangle that can be inscribed in a semicircle is a right triangle with its hypotenuse being the diameter of the semicircle.\n    //The area of this triangle is given by (1/2) * base * height.\n    //The base of the triangle is the diameter of the semicircle, which is 2r.\n    //The height of the triangle is the radius of the semicircle, which is r.\n    return (1/2) * 2 * r * r;\n}"
+  ]
+}

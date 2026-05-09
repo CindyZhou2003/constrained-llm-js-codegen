@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_17_parse_music",
+  "language": "js",
+  "prompt": "//Input to this function is a string representing musical notes in a special ASCII format.\n// Your task is to parse this string and return array of integers corresponding to how many beats does each\n// not last.\n// Here is a legend:\n// 'o' - whole note, lasts four beats\n// 'o|' - half note, lasts two beats\n// '.|' - quater note, lasts one beat\n// >>> parse_music(\"o o| .| o| o| .| .| .| .| o o\")\n// [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\nfunction parse_music(music_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_17_parse_music.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parse_music;\n  assert.deepEqual(candidate(\"\"),[]);\n  assert.deepEqual(candidate(\"o o o o\"),[4, 4, 4, 4]);\n  assert.deepEqual(candidate(\".| .| .| .|\"),[1, 1, 1, 1]);\n  assert.deepEqual(candidate(\"o| o| .| .| o o o o\"),[2, 2, 1, 1, 4, 4, 4, 4]);\n  assert.deepEqual(candidate(\"o| .| o| .| o o| o o|\"),[2, 1, 2, 1, 4, 2, 4, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let beats = music_string.match(/o|o|.|.|o|o|.|.|.|.|o|o/g);\n  return beats.map((beat, index) => beats.indexOf(beat) === index ? 4 : beats.indexOf(beat) === index + 1 ? 2 : beats.indexOf(beat) === index + 2 ? 1 : beats.indexOf(beat) === index + 3 ? 1 : beats.indexOf(beat) === index + 4 ? 1 : beats.indexOf(beat) === index + 5 ? 1 : beats.indexOf(beat) === index + 6 ? 1 : beats.indexOf(beat) === index + 7 ? 1 : beats.indexOf(beat) === index + 8 ? 1 : beats.indexOf(beat) === index + 9 ? 1 : beats.indexOf(beat) === index + 10 ? 1 : beats.indexOf(beat) === index + 11 ? 1 : beats.indexOf(beat) === index + 12 ? 1 : beats.indexOf(beat) === index + 13 ? 1 : beats.indexOf(beat) === index + 14 ? 1 : beats.indexOf(beat) === index + 15 ? 1 : beats.indexOf(beat) === index + 16 ? 1 : beats.indexOf(beat) === index + 17 ? 1 : beats.indexOf(beat) === index + 18 ? 1 : beats.indexOf(beat) === index + 19 ? 1 : beats.indexOf(beat) === index + 20 ? 1 : beats.indexOf(beat) === index + 21 ? 1 : beats.indexOf(beat) === index + 22 ? 1 : beats.indexOf(beat) === index + 23 ? 1 : beats.indexOf(beat) === index + 24 ? 1 : beats.indexOf(beat) === index + 25 ? 1 : beats.indexOf(beat) === index + 26 ? 1 : beats.indexOf(beat) === index + 27 ? 1 : beats.indexOf(beat) === index + 28 ? 1 : beats.indexOf(beat) === index + 29 ? 1 : beats.indexOf(beat) === index + 30 ? 1 : beats.indexOf(beat) === index + 31 ? 1 : beats.indexOf(beat) === index +",
+    "    let notes = music_string.split(\" \");\n    let notes_array = [];\n    let i = 0;\n    let j = 0;\n    let counter = 0;\n    for (let i = 0; i < notes.length; i++) {\n        if (notes[i] === \"o\") {\n            notes_array.push(4);\n        } else if (notes[i] === \"o|\") {\n            notes_array.push(2);\n        } else if (notes[i] === \".|\") {\n            notes_array.push(1);\n        }\n    }\n    return notes_array;\n}\n",
+    "    let beats = [];\n\n    for(let i = 0; i < music_string.length; i++){\n        let current_beat = music_string[i];\n        if(current_beat === 'o' || current_beat === 'o|' || current_beat === '.|'){\n            beats.push(current_beat.length);\n        }\n    }\n    return beats;\n}",
+    "    let notes = music_string.split(\" \");\n    let result = [];\n    for(let i = 0; i < notes.length; i++){\n        if(notes[i] === \"o\"){\n            result.push(4);\n        } else if(notes[i] === \"o|\"){\n            result.push(2);\n        } else if(notes[i] === \".|\"){\n            result.push(1);\n        }\n    }\n    return result;\n}\n",
+    "    var output = [];\n    for(var i = 0; i < music_string.length; i++){\n        if(music_string[i] === 'o'){\n            output.push(4);\n        } else if(music_string[i] === 'o|'){\n            output.push(2);\n        } else if(music_string[i] === '.|'){\n            output.push(1);\n        }\n    }\n    return output;\n}\n"
+  ]
+}

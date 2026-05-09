@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_131_reverse_vowels",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse only the vowels of a given string (where y is not a vowel).\nfunction reverse_vowels(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_131_reverse_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_vowels;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"USA\"),\"ASU\");\n  assert.deepEqual(candidate(\"ab\"),\"ab\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var vowels = \"aeiouAEIOU\";\n    var newStr = \"\";\n    var str2 = str1.split(\"\");\n    for(var i = 0; i < str2.length; i++){\n        if(vowels.indexOf(str2[i]) != -1){\n            newStr += str2[i];\n        }\n    }\n    newStr = newStr.split(\"\").reverse().join(\"\");\n    var index = 0;\n    for(var i = 0; i < str1.length; i++){\n        if(vowels.indexOf(str1[i]) != -1){\n            str2[i] = newStr[index];\n            index++;\n        }\n    }\n    return str2.join(\"\");\n}",
+    "    //find all vowels in the string\n    //reverse the vowels\n    //replace the vowels in the original string with the reversed vowels\n    let vowels = str1.match(/[aeiouAEIOU]/g);\n    let reversed_vowels = vowels.reverse();\n    let result = str1.split('');\n    let vowel_index = 0;\n    for(let i = 0; i < result.length; i++){\n        if(result[i] === vowels[vowel_index]){\n            result[i] = reversed_vowels[vowel_index];\n            vowel_index++;\n        }\n    }\n    return result.join('');\n}",
+    "    let vowels = \"aeiouAEIOU\";\n    let result = \"\";\n    let vowel_indices = [];\n  \n    // Collect the indices of vowels in the string\n    for (let i = 0; i < str1.length; i++) {\n      if (vowels.includes(str1[i])) {\n        vowel_indices.push(i);\n      }\n    }\n  \n    // Reverse the vowels\n    for (let i = vowel_indices.length - 1; i >= 0; i--) {\n      result += str1[vowel_indices[i]];\n    }\n  \n    // Replace the original vowels with the reversed ones\n    let vowel_index = 0;\n    for (let i = 0; i < str1.length; i++) {\n      if (vowels.includes(str1[i])) {\n        result += result[vowel_index++];\n      } else {\n        result += str1[i];\n      }\n    }\n  \n    return result;\n  }\n  \n  console.log(reverse_vowels(\"hello\")); // Output: \"holle\"\n  console.log(reverse_vowels(\"programming\")); // Output: \"prigrammong\"\n  console.log(reverse_vowels(\"yogurt\")); // Output: \"yogurt\" (y is not a vowel)\n  console.log(reverse_vowels(\"rhythm\")); // Output: \"rhythm\" (no vowels)",
+    "    var vowels = 'aeiouAEIOU';\n    var str_array = str1.split('');\n    var left = 0;\n    var right = str_array.length - 1;\n    while(left < right){\n        if(vowels.indexOf(str_array[left]) === -1){\n            left++;\n        }\n        if(vowels.indexOf(str_array[right]) === -1){\n            right--;\n        }\n        if(vowels.indexOf(str_array[left]) !== -1 && vowels.indexOf(str_array[right]) !== -1){\n            var temp = str_array[left];\n            str_array[left] = str_array[right];\n            str_array[right] = temp;\n            left++;\n            right--;\n        }\n    }\n    return str_array.join('');\n}\n",
+    "    // Define the vowels set\n    const vowels = 'aeiouAEIOU';\n    // Convert the string to an array of characters\n    const str1_arr = str1.split('');\n    // Initialize two pointers, one at the start and one at the end of the array\n    let start = 0;\n    let end = str1_arr.length - 1;\n\n    // Loop until the two pointers meet\n    while (start < end) {\n        // Move the start pointer until it points to a vowel\n        while (start < end && !vowels.includes(str1_arr[start])) {\n            start++;\n        }\n        // Move the end pointer until it points to a vowel\n        while (start < end && !vowels.includes(str1_arr[end])) {\n            end--;\n        }\n        // Swap the vowels at the start and end pointers\n        [str1_arr[start], str1_arr[end]] = [str1_arr[end], str1_arr[start]];\n        // Move the pointers towards the center\n        start++;\n        end--;\n    }\n    // Convert the array of characters back to a string and return it\n    return str1_arr.join('');\n}\n"
+  ]
+}

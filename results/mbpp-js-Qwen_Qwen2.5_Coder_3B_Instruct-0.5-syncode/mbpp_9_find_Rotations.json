@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let rotations = 0;\n    let len = str.length;\n    let temp = str;\n    let found = false;\n\n    while(!found) {\n        rotations++;\n        temp = temp.slice(1) + temp[0];\n        if(temp === str) {\n            found = true;\n        }\n    }\n    return rotations;\n}",
+    "    let rotations = 0;\n    let len = str.length;\n    let temp = str;\n    \n    while(rotations < len){\n        temp = temp.slice(1) + temp[0];\n        rotations++;\n        if(temp === str){\n            return rotations;\n        }\n    }\n    return -1;\n}\n",
+    "    let n = str.length;\n    for(let i = 1; i < n; i++){\n        let rotated_str = str.slice(i) + str.slice(0, i);\n        if(rotated_str === str){\n            return i;\n        }\n    }\n    return n;\n}",
+    "    let count = 0;\n    let len = str.length;\n    for(let i = 1; i < len; i++){\n        if(str.slice(i) + str.slice(0,i) === str){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let rotations = 0;\n    let n = str.length;\n\n    for(let i = 1; i < n; i++){\n        let rotated = str.slice(i) + str.slice(0, i);\n        if(rotated === str){\n            rotations = i;\n            break;\n        }\n    }\n    return rotations;\n}"
+  ]
+}

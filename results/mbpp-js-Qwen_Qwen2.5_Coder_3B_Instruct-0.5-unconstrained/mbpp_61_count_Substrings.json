@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_61_count_Substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    var sum = 0;\n    var length = s.length;\n    var substrings = [];\n    for (var i = 0; i < length; i++) {\n        sum += parseInt(s[i]);\n        substrings.push(s.substring(i));\n        if (sum === length) {\n            count++;\n        }\n        if (sum > length) {\n            while (sum > length) {\n                sum -= parseInt(substrings[0][0]);\n                substrings.shift();\n            }\n            if (sum === length) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let sum = 0;\n    let length = s.length;\n    let substrings = [];\n    for(let i = 0; i < length; i++){\n        sum = 0;\n        substrings = [];\n        for(let j = i; j < length; j++){\n            sum += parseInt(s[j]);\n            substrings.push(s.substring(i, j+1));\n            if(sum === j-i+1){\n                count++;\n            }\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    let n = s.length;\n    for (let i = 0; i < n; i++) {\n        let sum = 0;\n        for (let j = i; j < n; j++) {\n            sum += parseInt(s[j]);\n            if (sum === j - i + 1) {\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let sum = 0;\n    let length = s.length;\n    for(let i = 0; i < length; i++){\n        sum += parseInt(s[i]);\n        if(sum === i + 1){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let sum = 0;\n    let substrings = [];\n    for(let i = 0; i < s.length; i++){\n        sum += parseInt(s[i]);\n        substrings.push(s.substring(0, i+1));\n        if(sum === i+1){\n            count++;\n        }\n    }\n    return count;\n}\n"
+  ]
+}

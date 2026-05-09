@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_604_reverse_words",
+  "language": "js",
+  "prompt": "//Write a function to reverse words seperated by spaces in a given string.\nfunction reverse_words(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_604_reverse_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_words;\n  assert.deepEqual(candidate(\"python program\"),\"program python\");\n  assert.deepEqual(candidate(\"java language\"),\"language java\");\n  assert.deepEqual(candidate(\"indian man\"),\"man indian\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let words = s.split(' ');\n    let reversed_words = words.reverse();\n    let reversed_string = reversed_words.join(' ');\n    return reversed_string;\n}",
+    "    let words = s.split(' ');\n    let reversed_words = words.reverse();\n    let reversed_string = reversed_words.join(' ');\n    return reversed_string;\n}",
+    "    var words = s.split(\" \");\n    var reversed_words = words.reverse();\n    var reversed_string = reversed_words.join(\" \");\n    return reversed_string;\n}\n",
+    "    var words = s.split(' ');\n    var reversed_words = words.reverse();\n    var reversed_string = reversed_words.join(' ');\n    return reversed_string;\n}\n",
+    "    var words = s.split(\" \");\n    var reversed_words = words.reverse();\n    var reversed_string = reversed_words.join(\" \");\n    return reversed_string;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_724_power_base_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.\nfunction power_base_sum(base, power){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_724_power_base_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = power_base_sum;\n  assert.deepEqual(candidate(2, 100),115);\n  assert.deepEqual(candidate(8, 10),37);\n  assert.deepEqual(candidate(8, 15),62);\n  assert.deepEqual(candidate(3, 3),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var result = Math.pow(base, power);\n  var sum = 0;\n  while(result > 0){\n    sum += result % 10;\n    result = Math.floor(result / 10);\n  }\n  return sum;\n}",
+    "    let result = Math.pow(base, power);\n    let sum = 0;\n    result.toString().split('').forEach(digit => sum += parseInt(digit));\n    return sum;\n}\n",
+    "    let result = Math.pow(base, power);\n    let sum = 0;\n    while(result > 0){\n        sum += result % 10;\n        result = Math.floor(result / 10);\n    }\n    return sum;\n}\n",
+    "  let sum = 0;\n  let num = Math.pow(base, power);\n  while (num > 0) {\n    sum += num % 10;\n    num = Math.floor(num / 10);\n  }\n  return sum;\n}\n",
+    "    let sum = 0;\n    let num = Math.pow(base, power);\n    num.toString().split('').forEach(digit => {\n        sum += parseInt(digit);\n    });\n    return sum;\n}\n"
+  ]
+}

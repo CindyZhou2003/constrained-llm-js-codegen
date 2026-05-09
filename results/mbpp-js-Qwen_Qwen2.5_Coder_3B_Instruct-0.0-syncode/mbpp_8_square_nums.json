@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return nums.map(num => num * num);\n}"
+    "    return nums.map(function(num){\n        return num*num;\n    });\n}"
   ]
 }

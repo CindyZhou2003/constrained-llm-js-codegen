@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_244_next_Perfect_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the next perfect square greater than a given number.\nfunction next_Perfect_Square(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_244_next_Perfect_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_Perfect_Square;\n  assert.deepEqual(candidate(35),36);\n  assert.deepEqual(candidate(6),9);\n  assert.deepEqual(candidate(9),16);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sqrt = Math.sqrt(N);\n    let next = Math.ceil(sqrt);\n    return next * next;\n}",
+    "    // Find the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest whole number\n    let next_sqrt = Math.ceil(sqrt);\n    // Square the rounded-up square root to get the next perfect square\n    return next_sqrt * next_sqrt;\n}",
+    "    var num = Math.sqrt(N);\n    var next_Perfect_Square = Math.pow(Math.ceil(num),2);\n    return next_Perfect_Square;\n}",
+    "    // Calculate the square root of the given number\n    let sqrt = Math.sqrt(N);\n    // Find the smallest integer greater than or equal to the square root\n    let ceil_sqrt = Math.ceil(sqrt);\n    // Calculate the square of the ceil_sqrt\n    let next_square = ceil_sqrt * ceil_sqrt;\n    // Return the next perfect square\n    return next_square;\n}",
+    "    //Calculate the square root of the given number\n    var square_root = Math.sqrt(N);\n    //Round up the square root to the next whole number\n    var next_square_root = Math.ceil(square_root);\n    //Calculate the next perfect square\n    var next_perfect_square = Math.pow(next_square_root, 2);\n    return next_perfect_square;\n}"
+  ]
+}

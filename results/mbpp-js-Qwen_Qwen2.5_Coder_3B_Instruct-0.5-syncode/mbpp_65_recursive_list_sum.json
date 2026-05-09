@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_65_recursive_list_sum",
+  "language": "js",
+  "prompt": "//Write a function to flatten an array and sum all of its elements.\nfunction recursive_list_sum(data_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_65_recursive_list_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = recursive_list_sum;\n  assert.deepEqual(candidate([1, 2, [3, 4], [5, 6]]),21);\n  assert.deepEqual(candidate([7, 10, [15, 14], [19, 41]]),106);\n  assert.deepEqual(candidate([10, 20, [30, 40], [50, 60]]),210);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let sum = 0;\n  for(let i = 0; i < data_list.length; i++){\n    if(Array.isArray(data_list[i])){\n      sum += recursive_list_sum(data_list[i]);\n    } else {\n      sum += data_list[i];\n    }\n  }\n  return sum;\n}",
+    "    //base case: if the list is empty, return 0\n    if(data_list.length === 0){\n        return 0;\n    }\n    //recursive case: sum the first element of the list with the sum of the rest of the list\n    else{\n        return data_list[0] + recursive_list_sum(data_list.slice(1));\n    }\n}\n",
+    "    //base case: if the list is empty, return 0\n    if(data_list.length === 0){\n        return 0;\n    }\n    //recursive case: if the first element of the list is a number, add it to the sum of the rest of the list\n    //if the first element of the list is a list, add the sum of the rest of the list to the sum of the recursive call on the first element of the list\n    return data_list[0] + recursive_list_sum(data_list.slice(1));\n}\n",
+    "    //base case\n    if(data_list.length === 0){\n        return 0;\n    }\n    //recursive case\n    else{\n        return data_list[0] + recursive_list_sum(data_list.slice(1));\n    }\n}\n",
+    "    if(data_list.length == 0){ //Base case\n        return 0;\n    }\n    return data_list[0] + recursive_list_sum(data_list.slice(1)); //Recursive case\n}"
+  ]
+}

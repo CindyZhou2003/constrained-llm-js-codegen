@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Create a max heap\n    let heap = new MaxHeap(nums);\n    // Extract the n largest elements from the heap\n    let largest = [];\n    for (let i = 0; i < n; i++) {\n        largest.push(heap.extractMax());\n    }\n    return largest;\n}",
+    "    var largest=0;\n    var largestarr=[];  \n    for(var i=0;i<n;i++){\n        for(var j=i+1;j<nums.length;j++){\n            if(nums[j]>nums[i]){\n                largest=nums[j];\n                nums[j]=nums[i];\n                nums[i]=largest;\n            }\n        }\n        largestarr.push(nums[i]);\n    }\n    return largestarr;\n}",
+    "    if (n > nums.length) {\n        return \"n is greater than the length of the array\";\n    }\n\n    // Create a max-heap from the input array\n    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {\n        heapify(nums, n, i);\n    }\n\n    // Extract the largest elements from the heap\n    let largest = [];\n    for (let i = n - 1; i >= 0; i--) {\n        largest.push(nums[0]);\n        nums[0] = nums[i];\n        heapify(nums, i, 0);\n    }\n\n    return largest;\n}\n",
+    "    // Create a min heap with the first n elements\n    let minHeap = nums.slice(0, n);\n    minHeap.sort((a, b) => a - b);\n    \n    // Iterate over the rest of the elements\n    for (let i = n; i < nums.length; i++) {\n        // If the current element is greater than the smallest element in the heap\n        if (nums[i] > minHeap[0]) {\n            // Replace the smallest element with the current element\n            minHeap[0] = nums[i];\n            // Heapify the heap\n            minHeap.sort((a, b) => a - b);\n        }\n    }\n    \n    // Return the heap in descending order\n    return minHeap.sort((a, b) => b - a);\n}\n",
+    "    if (n > nums.length) {\n        return \"n is greater than the length of the array\";\n    }\n    // Create a max heap\n    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {\n        heapify(nums, n, i);\n    }\n    // Extract the largest elements\n    let largest_nums = [];\n    for (let i = n - 1; i >= 0; i--) {\n        largest_nums.push(nums[i]);\n        swap(nums, 0, i);\n        heapify(nums, i, 0);\n    }\n    return largest_nums;\n}\n"
+  ]
+}

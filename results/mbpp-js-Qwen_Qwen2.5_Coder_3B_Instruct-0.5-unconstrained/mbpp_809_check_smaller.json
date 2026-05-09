@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_809_check_smaller",
+  "language": "js",
+  "prompt": "//Write a function to check if each element of second array is smaller than its corresponding element in the first array.\nfunction check_smaller(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_809_check_smaller.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_smaller;\n  assert.deepEqual(candidate([1, 2, 3], [2, 3, 4]),false);\n  assert.deepEqual(candidate([4, 5, 6], [3, 4, 5]),true);\n  assert.deepEqual(candidate([11, 12, 13], [10, 11, 12]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  res = all(ele1 > ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n  return res\nprint(check_smaller([1, 2, 3], [2, 3, 4])) \nprint(check_smaller([1, 2, 3], [1, 3, 4]))",
+    "    res = all(ele1 > ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n    return res\ntest_tup1 = (4, 5, 6)\ntest_tup2 = (3, 4, 5)\nprint(\"The first tuple is : \" + str(test_tup1))\nprint(\"The second tuple is : \" + str(test_tup2))\nprint(\"Are all elements of second tuple smaller than their corresponding elements in the first tuple? : \" + str(check_smaller(test_tup1, test_tup2)))",
+    "    res = all(ele1 > ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n    return res\n\n#Driver Code\ntest_tup1 = (10, 20, 30, 40)\ntest_tup2 = (5, 15, 25, 35)\nprint(check_smaller(test_tup1, test_tup2))",
+    "    res = all(ele1 > ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\n    return res\ntest_tup1 = (1, 2, 3, 4)\ntest_tup2 = (4, 3, 2, 1)\nprint(\"Original tuples: \", test_tup1, test_tup2)\nprint(\"Check if each element of second tuple is smaller than its corresponding element in the first tuple: \", check_smaller(test_tup1, test_tup2))",
+    "    res = all(x > y for x, y in zip(test_tup1, test_tup2))\n    return res\n\n#Driver Code\ntest_tup1 = [10, 20, 30, 40]\ntest_tup2 = [5, 15, 25, 35]\nprint(check_smaller(test_tup1, test_tup2))"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let digitCount = {};\n    let count = 0;\n    for(let i = 0; i < n.toString().length; i++){\n        count = n.toString().split('').filter((x) =>",
+    "    var num=n.toString().split(\"\").sort();\n    var flag=true;\n    for(var i=0;i<num.length;i++){\n        if(num[i]!==i+1){\n            flag=false;\n            break;\n        }\n    }\n    return flag;\n}",
+    "    let count = 0;\n    let str = n.toString();\n    let obj = {};\n    for(let i = 0; i < str.length; i++){\n        if(obj[str[i]]){\n            obj[str[i]]++;\n        }else{\n            obj[str[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] <= Number(key)){\n            count++;\n        }\n    }\n    return count === str.length;\n}",
+    "  n=n.toString();\n  var freq={};\n  for(var i=0;i<n.length;i++){\n    if(freq[n[i]]){\n      freq[n[i]]++;\n    }\n    else{\n      freq[n[i]]=1;\n    }\n  }\n  for(var key in freq){\n    if(freq[key]>key){\n      return false;\n    }\n  }\n  return true;\n}",
+    "    var count = {};\n    //Count the frequency of each digit\n    while(n){\n        var digit = n % 10;\n        count[digit] = (count[digit] || 0) + 1;\n        n = Math.floor(n / 10);\n    }\n    //Check if the frequency of each digit is less than or equal to the digit itself\n    for(var digit in count){\n        if(count[digit] > digit){\n            return false;\n        }\n    }\n    return true;\n}"
+  ]
+}

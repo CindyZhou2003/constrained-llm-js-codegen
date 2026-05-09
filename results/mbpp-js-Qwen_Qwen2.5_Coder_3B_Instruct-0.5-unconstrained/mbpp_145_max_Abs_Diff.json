@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_145_max_Abs_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the maximum difference between any two elements in a given array.\nfunction max_Abs_Diff(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_145_max_Abs_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_Abs_Diff;\n  assert.deepEqual(candidate([2, 1, 5, 3]),4);\n  assert.deepEqual(candidate([9, 3, 2, 5, 1]),8);\n  assert.deepEqual(candidate([3, 2, 1]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(arr.length < 2){\n        return 0;\n    }\n    let maxDiff = 0;\n    let min = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] - min > maxDiff){\n            maxDiff = arr[i] - min;\n        }\n        if(arr[i] < min){\n            min = arr[i];\n        }\n    }\n    return maxDiff;\n}",
+    "    let max_diff = 0; // Initialize max difference to 0\n    let min_ele = arr[0]; // Initialize min element to the first element of the array\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] < min_ele){ // If current element is less than min element\n            min_ele = arr[i]; // Update min element\n        }\n        let diff = arr[i] - min_ele; // Calculate difference between current element and min element\n        if(diff > max_diff){ // If difference is greater than max difference\n            max_diff = diff; // Update max difference\n        }\n    }\n    return max_diff; // Return max difference\n}",
+    "    if(arr.length < 2){\n        return 0;\n    }\n    let min = arr[0];\n    let max = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] < min){\n            min = arr[i];\n        }\n        if(arr[i] > max){\n            max = arr[i];\n        }\n    }\n    return max - min;\n}",
+    "    if(arr.length === 0){\n        return 0;\n    }\n    let max = arr[0];\n    let min = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > max){\n            max = arr[i];\n        }\n        if(arr[i] < min){\n            min = arr[i];\n        }\n    }\n    return max - min;\n}",
+    "  if(arr.length < 2) return 0; // If there are less than 2 elements, the max difference is 0\n\n  let min = arr[0];\n  let max = arr[0];\n\n  for(let i = 1; i < arr.length; i++){\n    if(arr[i] < min) min = arr[i];\n    if(arr[i] > max) max = arr[i];\n  }\n\n  return max - min;\n}\n"
+  ]
+}

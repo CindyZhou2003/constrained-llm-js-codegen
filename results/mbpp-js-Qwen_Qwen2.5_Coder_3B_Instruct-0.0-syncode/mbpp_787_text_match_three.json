@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let regex = /ab{3}/;\n    return regex.test(text);\n}"
+    "    let regex = /abbb/;\n    return regex.test(text);\n}\n"
   ]
 }

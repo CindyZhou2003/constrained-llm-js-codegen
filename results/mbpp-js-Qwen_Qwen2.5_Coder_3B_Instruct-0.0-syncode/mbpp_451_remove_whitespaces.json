@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return text1.replace(/\\//**Question  **Write  **a  **function  /***to  **remove  **all  **whitespaces  **from  **the  **given  **string.  **\n"
+    "    return text1.replace(/\\s+/g, '');\n}"
   ]
 }

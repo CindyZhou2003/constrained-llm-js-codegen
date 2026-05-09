@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_list + list(test_tup)\n    return res\n}\ntest_list = [1, 2, 3]\ntest_tup = (4, 5, 6)\n  \n    // printing original lists\n    // print(\"The original list is : \" + str(test_list))\n    // print(\"The original tuple is : \" + str(test_tup))\n  \n    // using + operator to append lists\n    // res = test_list + list(test_tup)\n  \n    // printing result\n    // print(\"The appended list is : \" + str(res))<|fim_prefix|># Python3 code to demonstrate working of\n    // Adding list to tuple\n    // Using + operator\n  \n    // initializing list\n    // test_list = [1, 2, 3]\n  \n    // initializing tuple\n    // test_tup = (4, 5, 6)\n  \n    // printing original lists\n    // print(\"The original list is : \" + str(test_list))\n    // print(\"The original tuple is : \" + str(test_tup))\n  \n    // using + operator to append lists\n    // res = test_list + list(test_tup)\n  \n    // printing result\n    // print(\"The appended list is : \" + str(res))\n\n\n"
+    "    res = test_list + list(test_tup)\n    return res\n}"
   ]
 }

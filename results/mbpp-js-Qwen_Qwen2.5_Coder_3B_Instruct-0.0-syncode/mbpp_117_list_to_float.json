@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = []\n    for ele"
+    "    res = []\n    for i"
   ]
 }

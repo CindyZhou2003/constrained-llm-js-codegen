@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_163_generate_integers",
+  "language": "js",
+  "prompt": "//Given two positive integers a and b, return the even digits between a\n// and b, in ascending order.\n// For example:\n// >>> generate_integers(2, 8)\n// [2, 4, 6, 8]\n// >>> generate_integers(8, 2)\n// [2, 4, 6, 8]\n// >>> generate_integers(10, 14)\n// []\nfunction generate_integers(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_163_generate_integers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = generate_integers;\n  assert.deepEqual(candidate(2, 10),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(10, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(132, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(17, 89),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let array = [];\n    for(let i = a; i <= b; i++){\n        let string = i.toString();\n        let even = string.split('').filter(item => item % 2 === 0);\n        if(even.length > 0){\n            array.push(even);\n        }\n    }\n    return array.flat();\n}",
+    "    let result = []\n    for(let i = a; i <= b; i++){\n        if(i % 2 === 0){\n            result.push(i)\n        }\n    }\n    return result\n}",
+    "  // your code here\n  var arr = [];\n  for(var i = a; i <= b; i++){\n    if(i % 2 == 0){\n      arr.push(i);\n    }\n  }\n  return arr;\n}",
+    "    let result = [];\n    for(let i = a; i <= b; i++){\n        let num = i.toString();\n        let even = [];\n        for(let j = 0; j < num.length; j++){\n            if(num[j] % 2 === 0){\n                even.push(num[j]);\n            }\n        }\n        if(even.length > 0){\n            result.push(even);\n        }\n    }\n    return result.sort((a, b) => a - b);\n}",
+    "    let result = [];\n    for(let i = a; i <= b; i++){\n        let str = i.toString();\n        let even = [];\n        for(let j = 0; j < str.length; j++){\n            if(str[j] % 2 == 0){\n                even.push(str[j]);\n            }\n        }\n        if(even.length > 0){\n            result.push(even);\n        }\n    }\n    return result;\n}"
+  ]
+}

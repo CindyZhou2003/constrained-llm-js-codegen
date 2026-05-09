@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_136_largest_smallest_integers",
+  "language": "js",
+  "prompt": "//Create a function that returns an array (a, b), where 'a' is\n// the largest of negative integers, and 'b' is the smallest\n// of positive integers in an array.\n// If there is no negative or positive integers, return them as undefined.\n// Examples:\n// >>> largest_smallest_integers([2, 4, 1, 3, 5, 7])\n// [undefined, 1]\n// >>> largest_smallest_integers([])\n// [undefined, undefined]\n// >>> largest_smallest_integers([0])\n// [undefined, undefined]\nfunction largest_smallest_integers(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_136_largest_smallest_integers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_smallest_integers;\n  assert.deepEqual(candidate([2, 4, 1, 3, 5, 7]),[undefined, 1]);\n  assert.deepEqual(candidate([2, 4, 1, 3, 5, 7, 0]),[undefined, 1]);\n  assert.deepEqual(candidate([1, 3, 2, 4, 5, 6, -2]),[-2, 1]);\n  assert.deepEqual(candidate([4, 5, 3, 6, 2, 7, -7]),[-7, 2]);\n  assert.deepEqual(candidate([7, 3, 8, 4, 9, 2, 5, -9]),[-9, 2]);\n  assert.deepEqual(candidate([]),[undefined, undefined]);\n  assert.deepEqual(candidate([0]),[undefined, undefined]);\n  assert.deepEqual(candidate([-1, -3, -5, -6]),[-1, undefined]);\n  assert.deepEqual(candidate([-1, -3, -5, -6, 0]),[-1, undefined]);\n  assert.deepEqual(candidate([-6, -4, -4, -3, 1]),[-3, 1]);\n  assert.deepEqual(candidate([-6, -4, -4, -3, -100, 1]),[-3, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let neg = lst.filter(num => num < 0);\n  let pos = lst.filter(num => num > 0);\n  let a = neg.length > 0 ? Math.max(...neg) : undefined;\n  let b = pos.length > 0 ? Math.min(...pos) : undefined;\n  return [a, b];\n}",
+    "    let largest_negative = undefined;\n    let smallest_positive = undefined;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i] < 0){\n            if(largest_negative === undefined || lst[i] > largest_negative){\n                largest_negative = lst[i];\n            }\n        }else if(lst[i] > 0){\n            if(smallest_positive === undefined || lst[i] < smallest_positive){\n                smallest_positive = lst[i];\n            }\n        }\n    }\n    return [largest_negative, smallest_positive];\n}",
+    "    let a = undefined;\n    let b = undefined;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i] < 0){\n            if(a === undefined || lst[i] > a){\n                a = lst[i];\n            }\n        }else if(lst[i] > 0){\n            if(b === undefined || lst[i] < b){\n                b = lst[i];\n            }\n        }\n    }\n    return [a, b];\n}"
+  ]
+}

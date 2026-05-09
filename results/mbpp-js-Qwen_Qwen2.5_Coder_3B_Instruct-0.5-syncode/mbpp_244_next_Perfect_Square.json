@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_244_next_Perfect_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the next perfect square greater than a given number.\nfunction next_Perfect_Square(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_244_next_Perfect_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_Perfect_Square;\n  assert.deepEqual(candidate(35),36);\n  assert.deepEqual(candidate(6),9);\n  assert.deepEqual(candidate(9),16);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  // Increment the number by 1 to make it greater than the given number\n  let next = N + 1;\n  // Check if the next number is a perfect square\n  while(Math.sqrt(next) !== Math.floor(Math.sqrt(next))){\n    // If it's not a perfect square, increment the number by 1\n    next++;\n  }\n  // Return the next perfect square\n  return next;\n}",
+    "    // Increment the given number by 1\n    let nextNumber = N + 1;\n    // Find the square root of the next number\n    let sqrt = Math.sqrt(nextNumber);\n    // Round up the square root to the nearest integer\n    let nextPerfectSquare = Math.ceil(sqrt);\n    // Return the square of the rounded-up integer\n    return nextPerfectSquare * nextPerfectSquare;\n}\n",
+    "    //Calculate the square root of N\n    var sqrt = Math.sqrt(N);\n    //Find the next perfect square greater than sqrt\n    var next_perfect_square = Math.pow(Math.ceil(sqrt) + 1, 2);\n    return next_perfect_square;\n}",
+    "    // Find the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the nearest integer\n    let nextInt = Math.ceil(sqrt);\n    // Calculate the next perfect square\n    let nextSquare = nextInt * nextInt;\n    return nextSquare;\n}",
+    "    // Calculate the square root of N\n    let sqrt = Math.sqrt(N);\n    // Round up the square root to the next whole number\n    let nextPerfect = Math.ceil(sqrt);\n    // Calculate the next perfect square by squaring the next whole number\n    let nextSquare = nextPerfect * nextPerfect;\n    return nextSquare;\n}"
+  ]
+}

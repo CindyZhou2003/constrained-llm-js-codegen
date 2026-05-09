@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_445_index_multiplication",
+  "language": "js",
+  "prompt": "//Write a function to perform index wise multiplication of array elements in the given two lists.\nfunction index_multiplication(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_445_index_multiplication.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_multiplication;\n  assert.deepEqual(candidate([[1, 3], [4, 5], [2, 9], [1, 10]], [[6, 7], [3, 9], [1, 1], [7, 3]]),[[6, 21], [12, 45], [2, 9], [7, 30]]);\n  assert.deepEqual(candidate([[2, 4], [5, 6], [3, 10], [2, 11]], [[7, 8], [4, 10], [2, 2], [8, 4]]),[[14, 32], [20, 60], [6, 20], [16, 44]]);\n  assert.deepEqual(candidate([[3, 5], [6, 7], [4, 11], [3, 12]], [[8, 9], [5, 11], [3, 3], [9, 5]]),[[24, 45], [30, 77], [12, 33], [27, 60]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = [(a*b) \n            //perform multiplication of elements at corresponding indices\n            //from both lists\n            //for example, 2*5, 3*6, 4*7\n            //or 5*2, 6*3, 7*4\n            //or 10*1, 18*2, 28*3\n            //or 15*3, 24*4, 33*5\n            //or 20*5, 28*6, 36*7\n            //or 25*7, 30*8, 35*9\n            //or 30*9, 36*10, 42*11\n            //or 35*11, 42*12, 48*13\n            //or 40*13, 48*14, 56*15\n            //or 45*15, 54*16, 63*17\n            //or 50*17, 58*18, 66*19\n            //or 55*19, 63*20, 71*21\n            //or 60*21, 69*22, 77*23\n            //or 65*23, 74*24, 82*25\n            //or 70*25, 78*26, 86*27\n            //or 75*27, 84*28, 92*29\n            //or 80*29, 88*30, 96*31\n            //or 85*31, 94*32, 102*33\n            //or 90*33, 99*34, 108*35\n            //or 95*35, 104*36, 112*37\n            //or 100*37, 108*38, 116*39",
+    "    res = []\n    for i",
+    "    res = []\n    for i",
+    "    res = []\n    for i",
+    "    res = []\n    for i"
+  ]
+}

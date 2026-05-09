@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_94_index_minimum",
+  "language": "js",
+  "prompt": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_94_index_minimum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_list[0]\n    for i in range(1,len(test_list)):\n        if(test_list[i][1] < res[1]):\n            res = test_list[i]\n    return res\ntest_list = [(4, 1), (2, 2), (3, 3), (1, 4)]\nprint(index_minimum(test_list))",
+    "    # Using min() + list comprehension\n    res = min(test_list, key = lambda ele: ele[1])[0]\n    return res\n# Driver code\ntest_list = [(4, 5), (7, 1), (3, 9), (2, 6)]\nprint(\"The minimum value tuple is : \" + str(index_minimum(test_list)))",
+    "    res = test_list[0]\n    for i in range(1,len(test_list)):\n        if(test_list[i][1] < res[1]):\n            res = test_list[i]\n    return res\ntest_list = [(4, 5), (7, 1), (2, 3), (9, 0)]\nprint(index_minimum(test_list))"
+  ]
+}

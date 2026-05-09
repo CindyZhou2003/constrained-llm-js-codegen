@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_37_sort_even",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the odd indicies, while its values at the even indicies are equal\n// to the values of the even indicies of l, but sorted.\n// >>> sort_even([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_even([5, 6, 3, 4])\n// [3, 6, 5, 4]\nfunction sort_even(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_37_sort_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_even;\n  assert.deepEqual(candidate([1, 2, 3]),[1, 2, 3]);\n  assert.deepEqual(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]),[-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123]);\n  assert.deepEqual(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]),[-12, 8, 3, 4, 5, 2, 12, 11, 23, -10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var even_values = [];\n  var even_indices = [];\n  var sorted_even_values = [];\n  var l_prime = [];\n  \n  //Get the even values and even indices in l\n  for (var i = 0; i < l.length; i++){\n    if (i % 2 === 0){\n      even_values.push(l[i]);\n      even_indices.push(i);\n    }\n  }\n  \n  //Sort the even values\n  sorted_even_values = even_values.sort(function(a, b){return a - b});\n  \n  //Create a new array l_prime that is identical to l in the odd indicies,\n  // while its values at the even indicies are equal to the values of the even indicies of l,\n  // but sorted.\n  for (var i = 0; i < l.length; i++){\n    if (i % 2 === 0){\n      l_prime.push(sorted_even_values.shift());\n    }\n    else {\n      l_prime.push(l[i]);\n    }\n  }\n  \n  return l_prime;\n}",
+    "    var even = [];\n    for (var i = 0; i < l.length; i+=2){\n        even.push(l[i]);\n    }\n    even.sort(function(a,b){return a-b});\n    var l_prime = [];\n    var even_index = 0;\n    for (var i = 0; i < l.length; i++){\n        if (i % 2 == 0){\n            l_prime.push(even[even_index]);\n            even_index++;\n        } else {\n            l_prime.push(l[i]);\n        }\n    }\n    return l_prime;\n}\n",
+    "    var even = [];\n    for (var i = 0; i < l.length; i += 2){\n        even.push(l[i]);\n    }\n    even.sort(function(a, b){ return a - b });\n    for (var i = 0; i < even.length; i += 2){\n        l[i] = even[i];\n    }\n    return l;\n}\n",
+    "    var even = [];\n    var odd = [];\n    for (var i = 0; i < l.length; i++){\n        if (i % 2 === 0){\n            even.push(l[i]);\n        } else {\n            odd.push(l[i]);\n        }\n    }\n    even.sort(function(a,b){return a-b});\n    var result = [];\n    for (var i = 0; i < l.length; i++){\n        if (i % 2 === 0){\n            result.push(even[i/2]);\n        } else {\n            result.push(odd[i/2]);\n        }\n    }\n    return result;\n}",
+    "  let even = [];\n  let odd = [];\n  for(i = 0; i < l.length; i++){\n    if(i % 2 == 0){\n      even.push(l[i]);\n    } else {\n      odd.push(l[i]);\n    }\n  }\n  even.sort((a, b) => a - b);\n  let res = [];\n  let evenIndex = 0;\n  let oddIndex = 0;\n  for(i = 0; i < l.length; i++){\n    if(i % 2 == 0){\n      res.push(even[evenIndex]);\n      evenIndex++;\n    } else {\n      res.push(odd[oddIndex]);\n      oddIndex++;\n    }\n  }\n  return res;\n}"
+  ]
+}

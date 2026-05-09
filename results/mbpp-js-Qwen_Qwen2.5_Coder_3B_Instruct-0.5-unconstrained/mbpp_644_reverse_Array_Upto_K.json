@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_644_reverse_Array_Upto_K",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse an array upto a given position.\nfunction reverse_Array_Upto_K(input, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_644_reverse_Array_Upto_K.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_Array_Upto_K;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], 4),[4, 3, 2, 1, 5, 6]);\n  assert.deepEqual(candidate([4, 5, 6, 7], 2),[5, 4, 6, 7]);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5], 3),[7, 8, 9, 6, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //reverse the array upto k\n    for(let i = 0; i < k; i++){\n        let temp = input[i];\n        input[i] = input[k - i - 1];\n        input[k - i - 1] = temp;\n    }\n    return input;\n}",
+    "    let reversedArray = [];\n    for(let i = 0; i < k; i++){\n        reversedArray.push(input[i]);\n    }\n    for(let i = k; i < input.length; i++){\n        reversedArray.push(input[input.length - 1 - i]);\n    }\n    return reversedArray;\n}\n\nlet inputArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nlet k = 5;",
+    "    if (k > input.length) {\n        return input;\n    }\n    let left = 0;\n    let right = k - 1;\n    while (left < right) {\n        let temp = input[left];\n        input[left] = input[right];\n        input[right] = temp;\n        left++;\n        right--;\n    }\n    return input;\n}\n",
+    "    if(k >= input.length){\n        return input;\n    }\n    var start = 0;\n    var end = k - 1;\n    while(start < end){\n        var temp = input[start];\n        input[start] = input[end];\n        input[end] = temp;\n        start++;\n        end--;\n    }\n    return input;\n}\n",
+    "    let output = input.slice(0, k).reverse().concat(input.slice(k));\n    return output;\n}"
+  ]
+}

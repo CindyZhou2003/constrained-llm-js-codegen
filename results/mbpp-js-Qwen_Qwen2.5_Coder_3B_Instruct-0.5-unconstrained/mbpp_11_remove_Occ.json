@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_11_remove_Occ",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to remove first and last occurrence of a given character from the string.\nfunction remove_Occ(s, ch){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_11_remove_Occ.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_Occ;\n  assert.deepEqual(candidate(\"hello\", \"l\"),\"heo\");\n  assert.deepEqual(candidate(\"abcda\", \"a\"),\"bcd\");\n  assert.deepEqual(candidate(\"PHP\", \"P\"),\"H\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var first = s.indexOf(ch);\n  var last = s.lastIndexOf(ch);\n  if (first != last){\n    return s.substr(0, first) + s.substr(last + 1);\n  }\n  return s;\n}",
+    "    let str = s.split(\"\"); //Split the string into an array of characters\n    let first = str.indexOf(ch); //Find the index of the first occurrence of the character\n    let last = str.lastIndexOf(ch); //Find the index of the last occurrence of the character\n    str.splice(first, 1); //Remove the first occurrence of the character\n    str.splice(last, 1); //Remove the last occurrence of the character\n    return str.join(\"\"); //Join the array of characters back into a string\n}",
+    "    let str = s;\n    let first = str.indexOf(ch);\n    let last = str.lastIndexOf(ch);\n\n    str = str.substring(0, first) + str.substring(first + 1, last) + str.substring(last + 1);\n\n    console.log(str);\n}\n\nremove_Occ(\"aabbcc\", \"b\");",
+    "    let str1 = s.substring(1, s.length-1);\n    return str1.replace(ch, \"\");\n}",
+    "    let first, last;\n    for(let i=0; i<s.length; i++){\n        if(s[i] == ch){\n            first = i;\n            break;\n        }\n    }\n    for(let i=s.length-1; i>=0; i--){\n        if(s[i] == ch){\n            last = i;\n            break;\n        }\n    }\n    return s.slice(0, first) + s.slice(last+1);\n}"
+  ]
+}

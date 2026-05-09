@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_750_add_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add the given array to the given array.\nfunction add_tuple(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_750_add_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_tuple;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[5, 6, 7, 9, 10]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[6, 7, 8, 10, 11]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[7, 8, 9, 11, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    #Return the result of tuple addition\n    res = tuple(map(lambda x, y: x + y, test_list, test_tup))\n    return res\n#Driver code\ntest_list = [4, 5, 6]\ntest_tup = (7, 8, 9)\nprint(add_tuple(test_list, test_tup))",
+    "    res = test_list + test_tup\n    return res\n\n#Driver Code\ntest_list = [4, 5, 6]\ntest_tup = (7, 8, 9)\nprint(\"Original List: \" + str(test_list))\nprint(\"Original Tuple: \" + str(test_tup))\nprint(\"Tuple after addition: \" + str(add_tuple(test_list, test_tup)))",
+    "    res = test_list + test_tup\n    return res\n    }\n    \ntest_list = [1, 2, 3]\ntest_tup = (4, 5)\nprint(\"Original list: \", test_list)\nprint(\"Original tuple: \", test_tup)\nprint(\"Resultant list: \", add_tuple(test_list, test_tup))",
+    "    res = test_list + test_tup\n    return res\n}\ntest_list = [5, 6, 7]\ntest_tup = (8, 9)\nprint(add_tuple(test_list, test_tup))",
+    "    #Adding tuple to list using + \n    res = test_list + list(test_tup)\n    return res\n#Driver code \ntest_list = [1, 2, 3]\ntest_tup = (4, 5, 6)\nprint(add_tuple(test_list, test_tup))"
+  ]
+}

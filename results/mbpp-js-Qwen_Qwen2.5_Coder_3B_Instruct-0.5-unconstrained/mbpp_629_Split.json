@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_629_Split",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find even numbers from an array of numbers.\nfunction Split(list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_629_Split.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Split;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),[2, 4]);\n  assert.deepEqual(candidate([4, 5, 6, 7, 8, 0, 1]),[4, 6, 8, 0]);\n  assert.deepEqual(candidate([8, 12, 15, 19]),[8, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let even = list.filter(num => num % 2 === 0);\n    return even;\n}",
+    "    var even = list.filter(function(item){\n        return item % 2 === 0;\n    });\n    return even;\n}",
+    "    var evenNumbers = [];\n    var oddNumbers = [];\n    for(var i = 0; i < list.length; i++){\n        if(list[i] % 2 === 0){\n            evenNumbers.push(list[i]);\n        }else{\n            oddNumbers.push(list[i]);\n        }\n    }\n    return {evenNumbers, oddNumbers};\n}",
+    "    var even = list.filter(function(item){\n        return item % 2 === 0;\n    });\n    var odd = list.filter(function(item){\n        return item % 2 !== 0;\n    });\n    return [even, odd];\n}",
+    "    var even_list = [];\n    var odd_list = [];\n    for(var i=0; i<list.length; i++){\n        if(list[i]%2 == 0){\n            even_list.push(list[i]);\n        }\n        else{\n            odd_list.push(list[i]);\n        }\n    }\n    return even_list;\n}"
+  ]
+}

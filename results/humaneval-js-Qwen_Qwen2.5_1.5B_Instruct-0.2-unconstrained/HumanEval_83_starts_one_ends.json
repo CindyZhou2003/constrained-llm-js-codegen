@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_83_starts_one_ends",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the count of the numbers of n-digit\n// positive integers that start or end with 1.\nfunction starts_one_ends(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_83_starts_one_ends.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = starts_one_ends;\n  assert.deepEqual(candidate(1),1);\n  assert.deepEqual(candidate(2),18);\n  assert.deepEqual(candidate(3),180);\n  assert.deepEqual(candidate(4),1800);\n  assert.deepEqual(candidate(5),18000);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 1; i <= n; i++){\n        if(i == 1){\n            count++;\n        }\n        if(i == 10){\n            count++;\n        }\n        if(i == 100){\n            count++;\n        }\n        if(i == 1000){\n            count++;\n        }\n        if(i == 10000){\n            count++;\n        }\n        if(i == 100000){\n            count++;\n        }\n        if(i == 1000000){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 1; i < Math.pow(10, n); i++){\n        if(i.toString().startsWith('1') || i.toString().endsWith('1')){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 1; i <= 9; i++){\n        if(i === 1){\n            count += Math.pow(10, n - 1);\n        } else {\n            count += Math.pow(10, n - 1) - 1;\n        }\n    }\n    return count;\n}\n"
+  ]
+}

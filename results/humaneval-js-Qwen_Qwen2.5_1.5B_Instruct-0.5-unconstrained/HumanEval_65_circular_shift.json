@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_65_circular_shift",
+  "language": "js",
+  "prompt": "//Circular shift the digits of the integer x, shift the digits right by shift\n// and return the result as a string.\n// If shift > number of digits, return digits reversed.\n// >>> circular_shift(12, 1)\n// \"21\"\n// >>> circular_shift(12, 2)\n// \"12\"\nfunction circular_shift(x, shift){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_65_circular_shift.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = circular_shift;\n  assert.deepEqual(candidate(100, 2),\"001\");\n  assert.deepEqual(candidate(12, 2),\"12\");\n  assert.deepEqual(candidate(97, 8),\"79\");\n  assert.deepEqual(candidate(12, 1),\"21\");\n  assert.deepEqual(candidate(11, 101),\"11\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let y = String(x);\n  let len = y.length;\n  if(shift > len){\n    return y.split('').reverse().join('');\n  }\n  return y.slice(-shift) + y.slice(0, -shift);\n}",
+    "  if(shift > x.toString().length){\n    return x.toString().split('').reverse().join('');\n  }\n  let shift = shift % x.toString().length;\n  let start = x.toString().length - shift;\n  return x.toString().slice(start) + x.toString().slice(0, start);\n}",
+    "  // check if shift is greater than number of digits\n  if(shift > 8){\n    // reverse x\n    return x.toString().split(\"\").reverse().join(\"\");\n  }\n  // get number of digits\n  const num_digits = Math.floor(Math.log10(x)) + 1;\n  // shift x right by shift\n  return x.toString().split(\"\").reverse().slice(shift, shift + num_digits).join(\"\");\n}",
+    "    let num = x.toString();\n    let len = num.length;\n    if(shift > len){\n        return num.split('').reverse().join('');\n    }\n    let shift = shift % len;\n    return num.slice(-shift) + num.slice(0,-shift);\n}",
+    "  let digits = Math.abs(shift).toString().split('').reverse()\n  let result = ''\n  for (let i = 0; i < Math.abs(shift); i++) {\n    result += digits.shift()\n  }\n  return result + x.toString().split('').reverse()\n}"
+  ]
+}

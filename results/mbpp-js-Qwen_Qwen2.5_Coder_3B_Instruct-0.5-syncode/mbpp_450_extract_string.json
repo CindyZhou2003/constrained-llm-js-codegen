@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_450_extract_string",
+  "language": "js",
+  "prompt": "//Write a function to extract specified size of strings from a given array of string values.\nfunction extract_string(str, l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_450_extract_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_string;\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 8),[\"practice\", \"solution\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 6),[\"Python\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 9),[\"exercises\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Initialize an empty array to store the extracted strings\n    var extracted = [];\n    // Loop through the array of strings\n    for(var i = 0; i < str.length; i++){\n        // Check if the length of the current string is equal to the specified length\n        if(str[i].length === l){\n            // If it is, add the string to the extracted array\n            extracted.push(str[i]);\n        }\n    }\n    // Return the extracted array\n    return extracted;\n}",
+    "    let result = [];\n    for(let i = 0; i < str.length; i++){\n        if(str[i].length <= l){\n            result.push(str[i]);\n        }\n    }\n    return result;\n}\n",
+    "    var result = [];\n    for (var i = 0; i < str.length; i++) {\n        if (str[i].length == l) {\n            result.push(str[i]);\n        }\n    }\n    return result;\n}",
+    "    var result = [];\n    for(var i=0; i<str.length; i++){\n        if(str[i].length <= l){\n            result.push(str[i]);\n        }\n    }\n    return result;\n}\n",
+    "    var result = [];\n    for(var i = 0; i < l; i++){\n        result.push(str[i]);\n    }\n    return result;\n}"
+  ]
+}

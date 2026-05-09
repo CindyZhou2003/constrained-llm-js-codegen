@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_463_max_subarray_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product subarray of the given array.\nfunction max_subarray_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_463_max_subarray_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_subarray_product;\n  assert.deepEqual(candidate([1, -2, -3, 0, 7, -8, -2]),112);\n  assert.deepEqual(candidate([6, -3, -10, 0, 2]),180);\n  assert.deepEqual(candidate([-2, -40, 0, -2, -3]),80);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n\n    for(let i=1; i<arr.length; i++){\n        if(arr[i]<0){\n            let temp = max_product;\n            max_product = min_product;\n            min_product = temp;\n        }\n\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n\n        result = Math.max(result, max_product);\n    }\n\n    return result;\n}\n",
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n    for(let i=1;i<arr.length;i++){\n        if(arr[i]<0){\n            let temp = max_product;\n            max_product = min_product;\n            min_product = temp;\n        }\n        max_product = Math.max(arr[i],max_product*arr[i]);\n        min_product = Math.min(arr[i],min_product*arr[i]);\n        result = Math.max(result,max_product);\n    }\n    return result;\n}",
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] < 0){\n            let temp = max_product;\n            max_product = min_product;\n            min_product = temp;\n        }\n\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n\n        result = Math.max(result, max_product);\n    }\n\n    return result;\n}\n"
+  ]
+}

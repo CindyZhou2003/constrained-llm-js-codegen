@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_769_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_769_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr1 = li1, arr2 = li2;\n    var newArr = arr1.filter(function(i){\n        return arr2.indexOf(i) < 0;\n    });\n    return newArr;\n}\n",
+    "    var li1 = li1.map(function (item) { return item.toLowerCase(); });\n    var li2 = li2.map(function (item) { return item.toLowerCase(); });\n    var a = li1.filter(function (item) { return li2.indexOf(item) === -1; });\n    var b = li2.filter(function (item) { return li1.indexOf(item) === -1; });\n    return a.concat(b);\n}\n",
+    "    return li1.filter(function(i){\n        return li2.indexOf(i) == -1;\n    });\n}\n",
+    "    var li1 = li1.sort();\n    var li2 = li2.sort();\n    var result = [];\n    var i = 0;\n    var j = 0;\n\n    while(i < li1.length && j < li2.length){\n        if(li1[i] < li2[j]){\n            result.push(li1[i]);\n            i++;\n        }\n        else if(li1[i] > li2[j]){\n            j++;\n        }\n        else{\n            i++;\n            j++;\n        }\n    }\n    while(i < li1.length){\n        result.push(li1[i]);\n        i++;\n    }\n    return result;\n}\n",
+    "    var li1 = li1.sort();\n    var li2 = li2.sort();\n    var newArr = [];\n    var i = 0;\n    var j = 0;\n    \n    while(i < li1.length && j < li2.length){\n        if(li1[i] < li2[j]){\n            newArr.push(li1[i]);\n            i++;\n        }\n        else if(li1[i] > li2[j]){\n            newArr.push(li2[j]);\n            j++;\n        }\n        else{\n            i++;\n            j++;\n        }\n    }\n    \n    while(i < li1.length){\n        newArr.push(li1[i]);\n        i++;\n    }\n    while(j < li2.length){\n        newArr.push(li2[j]);\n        j++;\n    }\n    return newArr;\n}"
+  ]
+}

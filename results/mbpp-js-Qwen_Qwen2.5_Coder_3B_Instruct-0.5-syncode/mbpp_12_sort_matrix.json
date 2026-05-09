@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let row_sums = M.map(row => row.reduce((acc, curr) => acc + curr, 0));\n    let sorted_indices = row_sums.map((_, index) => index).sort((a, b) => row_sums[a] - row_sums[b]);\n    return sorted_indices.map(index => M[index]);\n}\n",
+    "    //Create an array to store the sums of the rows\n    var sums = [];\n    //Iterate over the rows of the matrix\n    for(var i = 0; i < M.length; i++){\n        //Calculate the sum of the row\n        var sum = 0;\n        for(var j = 0; j < M[i].length; j++){\n            sum += M[i][j];\n        }\n        //Store the sum in the array\n        sums.push(sum);\n    }\n    //Sort the array of sums in ascending order\n    sums.sort(function(a, b){return a - b});\n    //Create a new matrix to store the sorted rows\n    var sorted_matrix = [];\n    //Iterate over the sorted sums\n    for(var i = 0; i < sums.length; i++){\n        //Find the row with the corresponding sum\n        for(var j = 0; j < M.length; j++){\n            if(sums[i] == M[j].reduce(function(a, b){return a + b})){\n                //Add the row to the sorted matrix\n                sorted_matrix.push(M[j]);\n                break;\n            }\n        }\n    }\n    //Return the sorted matrix\n    return sorted_matrix;\n}\n",
+    "    M.sort((a,b) => a.reduce((acc,val) => acc + val, 0) - b.reduce((acc,val) => acc + val, 0));\n    return M;\n}\n",
+    "    let sum = 0;\n    for(let i = 0; i < M.length; i++){\n        sum += M[i].reduce((acc, curr) => acc + curr, 0);\n    }\n    M.sort((a, b) => sumOfRows(a) - sumOfRows(b));\n    return M;\n}\n",
+    "    // Sort the matrix based on the sum of rows in ascending order\n    M.sort((a, b) => {\n        let sumA = a.reduce((acc, row) => acc + row, 0);\n        let sumB = b.reduce((acc, row) => acc + row, 0);\n        return sumA - sumB;\n    });\n    return M;\n}\n"
+  ]
+}

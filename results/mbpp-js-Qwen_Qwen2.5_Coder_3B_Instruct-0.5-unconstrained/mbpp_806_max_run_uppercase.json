@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_806_max_run_uppercase",
+  "language": "js",
+  "prompt": "//Write a function to find maximum run of uppercase characters in the given string.\nfunction max_run_uppercase(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_806_max_run_uppercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_run_uppercase;\n  assert.deepEqual(candidate(\"GeMKSForGERksISBESt\"),5);\n  assert.deepEqual(candidate(\"PrECIOusMOVemENTSYT\"),6);\n  assert.deepEqual(candidate(\"GooGLEFluTTER\"),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split('').reduce((res, ele) => {\n        if(ele >= 'A' && ele <= 'Z'){\n            res[0]++;\n        }else{\n            res[0] = 0;\n        }\n        return res;\n    }, [0]);\n    return res[0];\n}\ntest_str = \"geeksforgeeks\";\nprint(max_run_uppercase(test_str));",
+    "    res = 0\n    for i in range(len(test_str)):\n        if(test_str[i].isupper()):\n            res += 1\n        else:\n            res = 0\n    return res\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"geeksforgeeks\")) #Output: 0\nprint(max_run_uppercase(\"geeksGeeks\")) #Output: 5\nprint(max_run_uppercase(\"GEEks\")) #Output: 3\nprint(max_run_uppercase(\"GEEKS\")) #Output: 5\nprint(max_run_uppercase(\"geeks\")) #Output: 0\nprint(max_run_uppercase(\"GEEKSforGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"GEEKSFORGEEKS\")) #Output: 7\nprint(max_run_uppercase(\"G",
+    "    res = test_str.split('').reduce((res, ele) => {\n        if(ele >= 'A' && ele <= 'Z'){\n            res.count += 1;\n            res.max = Math.max(res.max, res.count);\n        } else {\n            res.count = 0;\n        }\n        return res;\n    }, {count: 0, max: 0});\n    return res.max;\n}",
+    "    res = 0;\n    temp = 0;\n    for(let i in test_str){\n        if(test_str[i] >= 'A' && test_str[i] <= 'Z'){\n            temp += 1;\n        }\n        else{\n            temp = 0;\n        }\n        if(temp > res){\n            res = temp;\n        }\n    }\n    return res;\n}\ntest_str = \"geeksforgeeks\";\nprint(\"Maximum run of uppercase characters in the given string is : \" + max_run_uppercase(test_str));",
+    "    res = 0;\n    cnt = 0;\n    for(let i of test_str){\n        if(i>= 'A' && i<= 'Z'){\n            cnt+=1;\n        }else{\n            cnt=0;\n        }\n        res = Math.max(res,cnt);\n    }\n    return res;\n}\ntest_str = \"GEEKSFORGEEKS\";\nprint(\"Maximum run of uppercase characters in the given string is : \"+max_run_uppercase(test_str));"
+  ]
+}

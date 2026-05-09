@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var len = str1.length;\n    var map = new Object();\n    for(var i = 0; i < len; i++){\n        if(map[str1[i]]){\n            return str1[i];\n        }else{\n            map[str1[i]] = 1;\n        }\n    }\n    return \"No repeated character found\";\n}\n",
+    "    let seen = new Set();\n    for(let i=0;i<str1.length;i++){\n        if(seen.has(str1[i])){\n            return str1[i];\n        }\n        seen.add(str1[i]);\n    }\n    return null;\n}",
+    "    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        for(var j = i + 1; j < str1.length; j++){\n            if(str1[i] === str1[j]){\n                count++;\n                return str1[i];\n            }\n        }\n    }\n    if(count === 0){\n        return -1;\n    }\n}\n",
+    "    var str=str1.toLowerCase();\n    var char_count={};\n    for(var i=0;i<str.length;i++){\n        if(char_count[str[i]]){\n            return str[i];\n        }\n        char_count[str[i]]=1;\n    }\n    return \"No Repeated Characters Found\";\n}",
+    "    var char_map = {};\n    var first_repeated_char = \"\";\n    for (var i = 0; i < str1.length; i++){\n        var char = str1[i];\n        if (char in char_map){\n            first_repeated_char = char;\n            break;\n        } else {\n            char_map[char] = true;\n        }\n    }\n    return first_repeated_char;\n}"
+  ]
+}

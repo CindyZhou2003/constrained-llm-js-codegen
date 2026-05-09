@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_128_prod_signs",
+  "language": "js",
+  "prompt": "//You are given an array arr of integers and you need to return\n// sum of magnitudes of integers multiplied by product of all signs\n// of each number in the array, represented by 1, -1 or 0.\n// Note: return undefined for empty arr.\n// Example:\n// >>> prod_signs([1, 2, 2, -4])\n// -9\n// >>> prod_signs([0, 1])\n// 0\n// >>> prod_signs([])\n// undefined\nfunction prod_signs(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_128_prod_signs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = prod_signs;\n  assert.deepEqual(candidate([1, 2, 2, -4]),-9);\n  assert.deepEqual(candidate([0, 1]),0);\n  assert.deepEqual(candidate([1, 1, 1, 2, 3, -1, 1]),-10);\n  assert.deepEqual(candidate([]),undefined);\n  assert.deepEqual(candidate([2, 4, 1, 2, -1, -1, 9]),20);\n  assert.deepEqual(candidate([-1, 1, -1, 1]),4);\n  assert.deepEqual(candidate([-1, 1, 1, 1]),-4);\n  assert.deepEqual(candidate([-1, 1, 1, 0]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(arr.length === 0) return undefined;\n    let sum = 0;\n    let sign = 1;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === 0) return 0;\n        if(arr[i] > 0){\n            sign *= 1;\n            sum += arr[i];\n        } else {\n            sign *= -1;\n            sum += arr[i] * sign;\n        }\n    }\n    return sum;\n}",
+    "    if(arr.length === 0){\n        return undefined;\n    }\n    let sign = 1;\n    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === 0){\n            return 0;\n        }\n        if(arr[i] < 0){\n            sign *= -1;\n        }\n        sum += arr[i] * sign;\n    }\n    return sum;\n}",
+    "    if(arr.length === 0){\n        return undefined;\n    }\n    let sum = 0;\n    let product = 1;\n    let sign = 1;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === 0){\n            return 0;\n        }\n        if(arr[i] < 0){\n            sign *= -1;\n            sum += Math.abs(arr[i])\n        }\n        product *= arr[i];\n    }\n    return sum * product * sign;\n}",
+    "    if(arr.length === 0){\n        return undefined;\n    }\n    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === 0){\n            return 0;\n        }\n        if(arr[i] < 0){\n            sum -= arr[i];\n        } else if(arr[i] > 0){\n            sum += arr[i];\n        }\n    }\n    return sum;\n}",
+    "    if(arr.length === 0) return undefined;\n\n    let sum = 0;\n    let sign = 1;\n\n    for(let i = 0; i < arr.length; i++){\n        const num = arr[i];\n        sum += Math.abs(num) * sign;\n        sign *= num < 0 ? -1 : 1;\n    }\n\n    return sum;\n}"
+  ]
+}

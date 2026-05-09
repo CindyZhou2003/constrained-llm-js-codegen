@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_593_removezero_ip",
+  "language": "js",
+  "prompt": "//Write a function to remove leading zeroes from an ip address.\nfunction removezero_ip(ip){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_593_removezero_ip.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = removezero_ip;\n  assert.deepEqual(candidate(\"216.08.094.196\"),\"216.8.94.196\");\n  assert.deepEqual(candidate(\"12.01.024\"),\"12.1.24\");\n  assert.deepEqual(candidate(\"216.08.094.0196\"),\"216.8.94.196\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let new_ip = ip.replace(/(^0+|0+$)/g, '');\n    console.log(new_ip);\n}\n",
+    "    let new_ip = ip.replace(/^0+/, '');\n    return new_ip;\n}\n",
+    "    let new_ip = ip.split('.').map(num => num.replace(/^0+/, ''));\n    return new_ip.join('.');\n}\nlet ip = \"0000192.168.0.1\";",
+    "    var ip1 = ip.replace(/^0+/, '');\n    return ip1;\n}",
+    "    let arr = ip.split(\".\");\n    for(let i=0;i<arr.length;i++){\n        if(arr[i][0] == 0){\n            arr[i] = arr[i].slice(1);\n        }\n    }\n    return arr.join(\".\");\n}"
+  ]
+}

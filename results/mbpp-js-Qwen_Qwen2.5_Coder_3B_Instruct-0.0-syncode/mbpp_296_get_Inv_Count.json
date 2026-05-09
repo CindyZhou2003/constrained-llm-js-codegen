@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let inv_count = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                inv_count++;\n            }\n        }\n    }\n    return inv_count;\n}\nlet arr = [1, 20, 6, 4, 5];"
+    "    let inv_count = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                inv_count++;\n            }\n        }\n    }\n    return inv_count;\n}"
   ]
 }

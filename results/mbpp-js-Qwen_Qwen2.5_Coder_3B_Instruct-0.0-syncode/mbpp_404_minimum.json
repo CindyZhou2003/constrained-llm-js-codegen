@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return a < b ? a  b;\n}"
+    "    return Math.min(a, b);\n}"
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_259_maximize_elements",
+  "language": "js",
+  "prompt": "//Write a function to maximize the given two lists.\nfunction maximize_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_259_maximize_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = maximize_elements;\n  assert.deepEqual(candidate([[1, 3], [4, 5], [2, 9], [1, 10]], [[6, 7], [3, 9], [1, 1], [7, 3]]),[[6, 7], [4, 9], [2, 9], [7, 10]]);\n  assert.deepEqual(candidate([[2, 4], [5, 6], [3, 10], [2, 11]], [[7, 8], [4, 10], [2, 2], [8, 4]]),[[7, 8], [5, 10], [3, 10], [8, 11]]);\n  assert.deepEqual(candidate([[3, 5], [6, 7], [4, 11], [3, 12]], [[8, 9], [5, 11], [3, 3], [9, 5]]),[[8, 9], [6, 11], [4, 11], [9, 12]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Initialize the result list\n    res = []\n    # Iterate through the elements of both lists\n    for i in range(len(test_tup1)):\n        # Append the maximum of the current elements to the result list\n        res.append(max(test_tup1[i], test_tup2[i]))\n    # Return the result list\n    return res\n# Test the function\ntest_tup1 = [1, 2, 3]\ntest_tup2 = [4, 5, 6]\nprint(maximize_elements(test_tup1, test_tup2))\n# Output: [4, 5, 6]```\n\n\nIn this code, we define a function `maximize_elements` that takes two lists `test_tup1` and `test_tup2` as input. The function initializes an empty list `res` to store the result. It then iterates through the elements of both lists using a for loop. For each pair of elements from `test_tup1` and `test_tup2`, it appends the maximum of the two elements to the `res` list. Finally, it returns the `res` list, which contains the maximized elements from both input lists. We test the function with two example lists and print the result. The output is `[4, 5, 6]`, which is the maximum of each pair of elements from the input lists. ```\n\n\nIn this code, we define a function `maximize_elements` that takes two lists `test_tup1` and `test_tup2` as input. The function initializes an empty list `res` to store the result. It then iterates through the elements of both lists using a for loop. For each pair of elements from `test_tup1` and `test_tup2`, it appends the maximum of the two elements to the `res` list. Finally, it returns the `res` list, which contains the maximized elements from both input lists. We test the function with two example lists and print the result. The output is `[4, 5, 6]`, which is the maximum of each pair of elements from the input lists. ```\n\n\nIn this code, we define a function `maximize_elements` that takes two lists `test_tup1` and `test_tup2` as input. The function initializes an empty list `res` to store the result. It then iterates through the elements of both lists using",
+    "    res = []\n    for i in range(len(test_tup1)):\n        res.append(max(test_tup1[i], test_tup2[i]))\n    return res\ntest_tup1 = [1, 4, 6, 7]\ntest_tup2 = [3, 5, 8, 9]\nprint(maximize_elements(test_tup1, test_tup2))",
+    "    # Initialize the result list\n    res = []\n    # Iterate through the elements of both lists\n    for i in range(len(test_tup1)):\n        # Append the maximum of the current elements to the result list\n        res.append(max(test_tup1[i], test_tup2[i]))\n    return res\n# Test the function\ntest_tup1 = [1, 2, 3]\ntest_tup2 = [4, 5, 6]\nprint(maximize_elements(test_tup1, test_tup2)) # Output: [4, 5, 6]"
+  ]
+}

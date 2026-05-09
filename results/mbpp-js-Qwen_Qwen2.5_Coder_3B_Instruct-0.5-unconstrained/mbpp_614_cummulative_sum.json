@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_614_cummulative_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the cumulative sum of all the values that are present in the given array of lists.\nfunction cummulative_sum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_614_cummulative_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cummulative_sum;\n  assert.deepEqual(candidate([[1, 3], [5, 6, 7], [2, 6]]),30);\n  assert.deepEqual(candidate([[2, 4], [6, 7, 8], [3, 7]]),37);\n  assert.deepEqual(candidate([[3, 5], [7, 8, 9], [4, 8]]),44);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = 0\n    for i in test_list:\n        res+=i\n    return res\n}\nprint(cummulative_sum([[4, 5], [7, 8], [9, 10]]))",
+    "    result = 0\n    for i in range(len(test_list)):\n        for j in range(len(test_list[i])):\n            result = result + test_list[i][j]\n    return result\ntest_list = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]\nprint(cummulative_sum(test_list))",
+    "    res = 0\n    for sublist in test_list:\n        for ele in sublist:\n            res += ele\n    return res\ntest_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nprint(cummulative_sum(test_list))",
+    "    res = 0\n    for i in test_list:\n        for j in i:\n            res += j\n    return res\ntest_list = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]\nprint(cummulative_sum(test_list))",
+    "    # Initialize the cumulative sum to 0\n    cum_sum = 0\n    # Iterate over each sublist in the test list\n    for sublist in test_list:\n        # Iterate over each value in the sublist\n        for value in sublist:\n            # Add the value to the cumulative sum\n            cum_sum += value\n    # Return the cumulative sum\n    return cum_sum\n# Example usage\ntest_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nprint(cummulative_sum(test_list))  # Output: 45\n```\n\n\nIn this example, we define a function `cummulative_sum` that takes a list of lists `test_list` as input. We initialize a variable `cum_sum` to 0, which will store the cumulative sum of all the values in the input list. We then iterate over each sublist in the input list using a for loop. For each sublist, we iterate over each value in the sublist using another for loop. For each value, we add it to the `cum_sum` variable. Finally, we return the `cum_sum` variable, which contains the cumulative sum of all the values in the input list. We then test the function with an example input list `[[1, 2, 3], [4, 5, 6], [7, 8, 9]]` and print the result, which is `45`. This means that the cumulative sum of all the values in the input list is `45`. This is because the values in the input list are `1, 2, 3, 4, 5, 6, 7, 8, 9`, and their sum is `45`.`\n\n\nIn summary, we defined a function `cummulative_sum` that takes a list of lists as input and returns the cumulative sum of all the values in the input list. We used nested for loops to iterate over each sublist and each value in the sublist, and we added each value to a cumulative sum variable. Finally, we returned the cumulative sum variable. We then tested the function with an example input list and printed the result, which is `45`. This means that the cumulative sum of all the values in the input list is `45`. This is because the values in the input list are `1, 2, 3, 4, 5, 6"
+  ]
+}

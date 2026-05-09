@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_440_find_adverb_position",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb and their positions in a given sentence.\nfunction find_adverb_position(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_440_find_adverb_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverb_position;\n  assert.deepEqual(candidate(\"clearly!! we can see the sky\"),[0, 7, \"clearly\"]);\n  assert.deepEqual(candidate(\"seriously!! there are many roses\"),[0, 9, \"seriously\"]);\n  assert.deepEqual(candidate(\"unfortunately!! sita is going to home\"),[0, 13, \"unfortunately\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let adverb_positions = [];\n    let words = text.split(\" \");\n    for(let i=0; i<words.length; i++){\n        if(words[i].endsWith(\"ly\")){\n            adverb_positions.push({word: words[i], position: i});\n        }\n    }\n    return adverb_positions;\n}\nlet sentence = \"The quickly brown fox jumps over the lazy dog\";\nlet adverb_positions = find_adverb_position(sentence);",
+    "    var adverbs = [];\n    var positions = [];\n    var words = text.split(\" \");\n    for(var i = 0; i < words.length; i++){\n        var word = words[i];\n        var is_adverb = is_adverb_word(word);\n        if(is_adverb){\n            adverbs.push(word);\n            positions.push(i);\n        }\n    }\n    return {adverbs: adverbs, positions: positions};\n}",
+    "    const adverb_pattern = /\\b([A-Za-z]+ly)\\b/g;\n    let positions = [];\n    let match;\n    while((match = adverb_pattern.exec(text)) !== null){\n        positions.push([match.index, match.index + match[1].length]);\n    }\n    return positions;\n}\n",
+    "    let adverb_positions = [];\n    let adverbs = [];\n    let words = text.split(\" \");\n    for(let i = 0; i < words.length; i++){\n        if(words[i].endsWith(\"ly\")){\n            adverbs.push(words[i]);\n            adverb_positions.push(i);\n        }\n    }\n    return {adverbs, adverb_positions};\n}\nlet text = \"She quicklyly ran to the store\";\nlet result = find_adverb_position(text);",
+    "    const adverbs = text.match(/\\b([A-Za-z]+ly)\\b/g);\n    if(adverbs){\n        adverbs.forEach((adverb, index) => {\n            console.log(`Adverb: ${adverb}, Position: ${index}`);\n        });\n    } else {\n        console.log(\"No adverbs found in the sentence.\");\n    }\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_475_sort_counter",
+  "language": "js",
+  "prompt": "//Write a function to sort an object by value.\nfunction sort_counter(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_475_sort_counter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_counter;\n  assert.deepEqual(candidate({\"Math\": 81, \"Physics\": 83, \"Chemistry\": 87}),[[\"Chemistry\", 87], [\"Physics\", 83], [\"Math\", 81]]);\n  assert.deepEqual(candidate({\"Math\": 400, \"Physics\": 300, \"Chemistry\": 250}),[[\"Math\", 400], [\"Physics\", 300], [\"Chemistry\", 250]]);\n  assert.deepEqual(candidate({\"Math\": 900, \"Physics\": 1000, \"Chemistry\": 1250}),[[\"Chemistry\", 1250], [\"Physics\", 1000], [\"Math\", 900]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //convert the object to an array of objects\n    var arr = Object.keys(dict1).map(function(key){\n        return {key: key, value: dict1[key]};\n    });\n    //sort the array of objects by value\n    arr.sort(function(a, b){\n        return a.value - b.value;\n    });\n    //convert the sorted array of objects back to an object\n    var sorted_dict = {};\n    for(var i = 0; i < arr.length; i++){\n        sorted_dict[arr[i].key] = arr[i].value;\n    }\n    return sorted_dict;\n}",
+    "    // Create an array from the dictionary entries\n    let array1 = Object.entries(dict1);\n    // Sort the array based on the values in descending order\n    array1.sort((a, b) => b[1] - a[1]);\n    // Convert the sorted array back to a dictionary\n    let dict2 = Object.fromEntries(array1);\n    // Return the sorted dictionary\n    return dict2;\n}\n",
+    "    var dict2 = {};\n    Object.keys(dict1).forEach(function(key){\n        dict2[key] = dict1[key];\n    });\n    var sorted_dict = Object.keys(dict2).sort(function(a,b){\n        return dict2[a] - dict2[b];\n    });\n    var sorted_dict2 = {};\n    sorted_dict.forEach(function(key){\n        sorted_dict2[key] = dict2[key];\n    });\n    return sorted_dict2;\n}\n",
+    "    var dict2 = {};\n    var dict3 = [];\n    for(var key in dict1){\n        dict3.push([key, dict1[key]]);\n    }\n    dict3.sort(function(a,b){\n        return a[1] - b[1];\n    });\n    for(var i in dict3){\n        dict2[dict3[i][0]] = dict3[i][1];\n    }\n    return dict2;\n}",
+    "    var sorted_keys = Object.keys(dict1).sort(function(a,b){return dict1[a] - dict1[b]});\n    var sorted_dict = {};\n    sorted_keys.forEach(function(key){\n        sorted_dict[key] = dict1[key];\n    });\n    return sorted_dict;\n}"
+  ]
+}

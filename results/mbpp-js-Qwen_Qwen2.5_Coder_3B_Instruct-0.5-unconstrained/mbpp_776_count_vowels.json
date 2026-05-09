@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_776_count_vowels",
+  "language": "js",
+  "prompt": "//Write a function to count those characters which have vowels as their neighbors in the given string.\nfunction count_vowels(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_776_count_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_vowels;\n  assert.deepEqual(candidate(\"bestinstareels\"),7);\n  assert.deepEqual(candidate(\"partofthejourneyistheend\"),12);\n  assert.deepEqual(candidate(\"amazonprime\"),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    vowels = 'aeiouAEIOU';\n    res = 0;\n    for (i in test_str){\n        if (vowels.includes(test_str[i]) && vowels.includes(test_str[i-1]) && vowels.includes(test_str[i+1])){\n            res += 1;\n        }\n    }\n    return res;\n}\n\ntest_str = \"aebiio\"\nprint(\"The original string is : \", test_str)\nprint(\"The count of vowels having adjacent vowels : \", count_vowels(test_str))",
+    "    vowels = ['a','e','i','o','u','A','E','I','O','U']\n    count = 0\n    for i in range(0,len(test_str)-1):\n        if test_str[i] in vowels and test_str[i+1] in vowels:\n            count += 1\n    return count\ntest_str = \"Hello World\"\nprint(count_vowels(test_str))",
+    "    vowels = 'aeiouAEIOU';\n    res = 0;\n    for(i = 0; i < test_str.length - 1; i++){\n        if(vowels.includes(test_str[i]) && vowels.includes(test_str[i + 1])){\n            res += 1;\n        }\n    }\n    return res;\n}",
+    "    vowels = \"aeiouAEIOU\";\n    count = 0;\n    for(i in test_str){\n        if(vowels.includes(test_str[i]) && vowels.includes(test_str[i-1]) && vowels.includes(test_str[i+1])){\n            count += 1;\n        }\n    }\n    return count;\n}\ntest_str = \"geeksforgeeks\";\nprint(count_vowels(test_str));",
+    "    vowels = 'aeiouAEIOU'\n    res = 0\n    for i in range(len(test_str)-1):\n        if test_str[i] in vowels and test_str[i+1] in vowels:\n            res += 1\n    return res\n#Test the function\nprint(count_vowels(\"geeksforgeeks\"))\nprint(count_vowels(\"python\"))"
+  ]
+}

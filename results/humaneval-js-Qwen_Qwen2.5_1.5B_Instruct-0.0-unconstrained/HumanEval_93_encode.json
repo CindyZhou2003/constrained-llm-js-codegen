@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_93_encode",
+  "language": "js",
+  "prompt": "//Write a function that takes a message, and encodes in such a \n// way that it swaps case of all letters, replaces all vowels in \n// the message with the letter that appears 2 places ahead of that \n// vowel in the english alphabet. \n// Assume only letters. \n// Examples:\n// >>> encode(\"test\")\n// \"TGST\"\n// >>> encode(\"This is a message\")\n// \"tHKS KS C MGSSCGG\"\nfunction encode(message){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_93_encode.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encode;\n  assert.deepEqual(candidate(\"TEST\"),\"tgst\");\n  assert.deepEqual(candidate(\"Mudasir\"),\"mWDCSKR\");\n  assert.deepEqual(candidate(\"YES\"),\"ygs\");\n  assert.deepEqual(candidate(\"This is a message\"),\"tHKS KS C MGSSCGG\");\n  assert.deepEqual(candidate(\"I DoNt KnOw WhAt tO WrItE\"),\"k dQnT kNqW wHcT Tq wRkTg\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = \"\";\n    for(let i = 0; i < message.length; i++){\n        if(message[i] === message[i].toLowerCase()){\n            result += message[i].toUpperCase();\n        } else {\n            result += message[i].toLowerCase();\n        }\n        if(message[i] === \"a\" || message[i] === \"e\" || message[i] === \"i\" || message[i] === \"o\" || message[i] === \"u\" || message[i] === \"A\" || message[i] === \"E\" || message[i] === \"I\" || message[i] === \"O\" || message[i] === \"U\"){\n            result += \"q\";\n        } else if(message[i] === \"A\" || message[i] === \"E\" || message[i] === \"I\" || message[i] === \"O\" || message[i] === \"U\"){\n            result += \"Q\";\n        } else if(message[i] === \"a\" || message[i] === \"e\" || message[i] === \"i\" || message[i] === \"o\" || message[i] === \"u\"){\n            result += \"Q\";\n        } else if(message[i] === \"A\" || message[i] === \"E\" || message[i] === \"I\" || message[i] === \"O\" || message[i] === \"U\"){\n            result += \"q\";\n        } else if(message[i] === \"a\" || message[i] === \"e\" || message[i] === \"i\" || message[i] === \"o\" || message[i] === \"u\"){\n            result += \"Q\";\n        } else if(message[i] === \"A\" || message[i] === \"E\" || message[i] === \"I\" || message[i] === \"O\" || message[i] === \"U\"){\n            result += \"q\";\n        } else if(message[i] === \"a\" || message[i] === \"e\" || message[i] === \"i\" || message[i] === \"o\" || message[i] === \"u\"){\n            result += \"Q\";\n        } else if(message[i] === \"A\" || message[i] === \"E\" || message[i] === \"I\" || message[i] === \"O\" || message[i] === \"U\"){\n            result += \"q\";\n        } else if(message[i] === \"a\" || message[i] === \"e\" || message[i] === \"i\" || message"
+  ]
+}

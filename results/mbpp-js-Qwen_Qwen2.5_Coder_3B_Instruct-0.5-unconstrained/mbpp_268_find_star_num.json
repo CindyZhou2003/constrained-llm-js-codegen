@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_268_find_star_num",
+  "language": "js",
+  "prompt": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_268_find_star_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (5*n*n-5*n+2)/2;\n}",
+    "    //Formula to calculate n'th star number\n    let star_num = 8 * n * (n - 1) + 1;\n    return star_num;\n}\n",
+    "    return (5 * n * n - 5 * n + 2) / 2;\n}\n",
+    "    return (5*n*n - 5*n + 2)/2;\n}",
+    "    let num=1;\n    for(let i=1;i<=n;i++){\n        num=num+(6*(i-1));\n    }\n    return num;\n}"
+  ]
+}

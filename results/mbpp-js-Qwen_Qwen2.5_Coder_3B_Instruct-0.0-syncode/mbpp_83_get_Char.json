@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 0; i < strr.length; i++){\n        sum += strr.charCodeAt(i);\n    }\n    return String.fromCharCode(sum % 26 + 65);\n}"
+    "    var sum = 0;\n    for(var i = 0; i < strr.length; i++){\n        sum += strr.charCodeAt(i);\n    }\n    return String.fromCharCode(sum % 26 + 65);\n}"
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_722_filter_data",
+  "language": "js",
+  "prompt": "//The input is given as - an object with a student name as a key and an array of float (student_height, student_weight) as a value, - minimal height, - minimal weight. Write a function to filter students that have height and weight above the minimum.\nfunction filter_data(students, h, w){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_722_filter_data.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = filter_data;\n  assert.deepEqual(candidate({\"Cierra Vega\": [6.2, 70], \"Alden Cantrell\": [5.9, 65], \"Kierra Gentry\": [6.0, 68], \"Pierre Cox\": [5.8, 66]}, 6.0, 70),{\"Cierra Vega\": [6.2, 70]});\n  assert.deepEqual(candidate({\"Cierra Vega\": [6.2, 70], \"Alden Cantrell\": [5.9, 65], \"Kierra Gentry\": [6.0, 68], \"Pierre Cox\": [5.8, 66]}, 5.9, 67),{\"Cierra Vega\": [6.2, 70], \"Kierra Gentry\": [6.0, 68]});\n  assert.deepEqual(candidate({\"Cierra Vega\": [6.2, 70], \"Alden Cantrell\": [5.9, 65], \"Kierra Gentry\": [6.0, 68], \"Pierre Cox\": [5.8, 66]}, 5.7, 64),{\"Cierra Vega\": [6.2, 70], \"Alden Cantrell\": [5.9, 65], \"Kierra Gentry\": [6.0, 68], \"Pierre Cox\": [5.8, 66]});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let filtered = [];\n    for(let key in students){\n        if(students[key][0] > h && students[key][1] > w){\n            filtered.push(key);\n        }\n    }\n    return filtered;\n}\nlet students = {\n    'Alice': [160, 55],\n    'Bob': [170, 60],\n    'Charlie': [165, 58],\n    'David': [180, 70],\n    'Eve': [155, 50]\n};\nlet min_height = 160;\nlet min_weight = 55;",
+    "    let filtered_students = {};\n    for (let student in students){\n        if (students[student][0] > h && students[student][1] > w){\n            filtered_students[student] = students[student];\n        }\n    }\n    return filtered_students;\n}\n\n",
+    "    var filtered = students.filter(function(student){\n        var height = student[1];\n        var weight = student[2];\n        return height > h && weight > w;\n    });\n    return filtered;\n}\n\nvar students = {\n    \"Alice\": [170, 55],\n    \"Bob\": [165, 50],\n    \"Charlie\": [180, 60],\n    \"David\": [175, 58]\n};\n",
+    "    var filtered_students = [];\n    for(var key in students){\n        if(students[key][0] > h && students[key][1] > w){\n            filtered_students.push(key);\n        }\n    }\n    return filtered_students;\n}\n\nvar students = {\"John\": [175, 60], \"Jane\": [165, 55], \"Mike\": [180, 70]};",
+    "    let filtered_students = students.filter(student => student.value[0] > h && student.value[1] > w);\n    return filtered_students;\n}\nconst students = {\n    'John': [170, 70],\n    'Jane': [160, 55],\n    'Doe': [180, 80]\n};\nconst h = 170;\nconst w = 60;\nlet result = filter_data(students, h, w);"
+  ]
+}

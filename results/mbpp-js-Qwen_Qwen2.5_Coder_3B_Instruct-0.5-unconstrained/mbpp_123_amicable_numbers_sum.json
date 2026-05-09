@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_123_amicable_numbers_sum",
+  "language": "js",
+  "prompt": "//Write a function to sum all amicable numbers from 1 to a specified number.\nfunction amicable_numbers_sum(limit){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_123_amicable_numbers_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = amicable_numbers_sum;\n  assert.deepEqual(candidate(999),504);\n  assert.deepEqual(candidate(9999),31626);\n  assert.deepEqual(candidate(99),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 1; i <= limit; i++){\n        let sum1 = 0;\n        for(let j = 1; j < i; j++){\n            if(i % j === 0){\n                sum1 += j;\n            }\n        }\n        let sum2 = 0;\n        for(let j = 1; j < sum1; j++){\n            if(sum1 % j === 0){\n                sum2 += j;\n            }\n        }\n        if(sum1 === sum2 && sum1 != i){\n            sum += i;\n            sum += sum1;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=1; i<=limit; i++){\n        if(amicable_numbers(i)){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    var sum = 0;\n    for (var i = 2; i <= limit; i++){\n        if (is_amicable(i)){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    // Helper function to calculate the sum of divisors of a number\n    function sum_of_divisors(n){\n        let sum = 0;\n        for(let i=1; i<=Math.sqrt(n); i++){\n            if(n%i===0){\n                sum += i;\n                if(i !== n/i){\n                    sum += n/i;\n                }\n            }\n        }\n        return sum;\n    }\n    \n    let sum = 0;\n    for(let i=1; i<limit; i++){\n        let divisor_sum = sum_of_divisors(i);\n        if(divisor_sum !== i && sum_of_divisors(divisor_sum) === i){\n            sum += i;\n        }\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    for(let i = 2; i <= limit; i++){\n        let sum1 = 0, sum2 = 0;\n        for(let j = 1; j < i; j++){\n            if(i % j === 0){\n                sum1 += j;\n            }\n        }\n        for(let k = 1; k < sum1; k++){\n            if(sum1 % k === 0){\n                sum2 += k;\n            }\n        }\n        if(sum2 === i){\n            sum += i;\n        }\n    }\n    return sum;\n}"
+  ]
+}

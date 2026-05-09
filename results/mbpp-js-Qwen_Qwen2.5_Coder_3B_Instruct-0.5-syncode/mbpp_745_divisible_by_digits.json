@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_745_divisible_by_digits",
+  "language": "js",
+  "prompt": "//Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/JavaScript-exercises/lambda/JavaScript-lambda-exercise-24.php\nfunction divisible_by_digits(startnum, endnum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_745_divisible_by_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisible_by_digits;\n  assert.deepEqual(candidate(1, 22),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]);\n  assert.deepEqual(candidate(1, 15),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15]);\n  assert.deepEqual(candidate(20, 25),[22, 24]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let divisible_numbers = [];\n    for(let i = startnum; i <= endnum; i++){\n        let digits = i.toString().split('');\n        let divisible = true;\n        for(let j = 0; j < digits.length; j++){\n            if(i % parseInt(digits[j]) !== 0){\n                divisible = false;\n                break;\n            }\n        }\n        if(divisible){\n            divisible_numbers.push(i);\n        }\n    }\n    return divisible_numbers;\n}",
+    "    let result = [];\n    for (let i = startnum; i <= endnum; i++) {\n        if (isDivisibleByDigits(i)) {\n            result.push(i);\n        }\n    }\n    return result;\n}\n",
+    "    let result = [];\n    for(let i=startnum; i<=endnum; i++){\n        let digits = i.toString().split('');\n        let divisible = true;\n        for(let j=0; j<digits.length; j++){\n            if(i % parseInt(digits[j]) !== 0){\n                divisible = false;\n                break;\n            }\n        }\n        if(divisible){\n            result.push(i);\n        }\n    }\n    return result;\n}",
+    "    return [...Array(endnum - startnum + 1)].map((_,i) => startnum + i).filter((num) =>",
+    "    let result = [];\n\n    for(let num = startnum; num <= endnum; num++){\n        let digits = num.toString().split('');\n        let divisible = true;\n\n        for(let digit of digits){\n            if(digit === '0' || num % parseInt(digit) !== 0){\n                divisible = false;\n                break;\n            }\n        }\n\n        if(divisible){\n            result.push(num);\n        }\n    }\n\n    return result;\n}\n"
+  ]
+}

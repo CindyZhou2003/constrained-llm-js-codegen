@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = \"\";\n    for(var i = 0; i < string.length; i++){\n        var char = string[i];\n        if(second_string.indexOf(char) == -1){\n            result += char;\n        }\n    }\n    return result;\n}\n"
+    "    var result = \"\";\n    for(var i = 0; i < string.length; i++){\n        var char = string[i];\n        if(second_string.indexOf(char) == -1){\n            result += char;\n        }\n    }\n    return result;\n}"
   ]
 }

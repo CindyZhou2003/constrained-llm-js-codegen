@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_587_list_tuple",
+  "language": "js",
+  "prompt": "//Write a function to convert an array to an array.\nfunction list_tuple(listx){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_587_list_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_tuple;\n  assert.deepEqual(candidate([5, 10, 7, 4, 15, 3]),[5, 10, 7, 4, 15, 3]);\n  assert.deepEqual(candidate([2, 4, 5, 6, 2, 3, 4, 4, 7]),[2, 4, 5, 6, 2, 3, 4, 4, 7]);\n  assert.deepEqual(candidate([58, 44, 56]),[58, 44, 56]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return listx.map(x => [x])\n}",
+    "    return listx;\n}",
+    "    tuplex = tuple(listx)\n    return tuplex\n}\nprint(list_tuple([1,2,3,4,5]))\nprint(list_tuple([1,3,5,7,9]))\n\n\n#Write a function to convert an array to a tuple.\ndef list_tuple(listx):\n    tuplex = tuple(listx)\n    return tuplex\n\nprint(list_tuple([1,2,3,4,5]))\nprint(list_tuple([1,3,5,7,9]))\n\n\n#Write a function to convert a tuple to a list.\ndef tuple_list(tuplex):\n    listx = list(tuplex)\n    return listx\nprint(tuple_list((1,2,3,4,5)))\nprint(tuple_list((1,3,5,7,9)))",
+    "    var listy = [];\n    for(var i = 0; i < listx.length; i++){\n        listy.push([listx[i], i]);\n    }\n    return listy;\n}",
+    "    result = [];\n    for (let i = 0; i < listx.length; i++) {\n        result.push([listx[i]]);\n    }\n    return result;\n}"
+  ]
+}

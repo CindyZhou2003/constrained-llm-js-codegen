@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_446_count_Occurrence",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the occurence of all elements of array in an array.\nfunction count_Occurrence(tup, lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_446_count_Occurrence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Occurrence;\n  assert.deepEqual(candidate([\"a\", \"a\", \"c\", \"b\", \"d\"], [\"a\", \"b\"]),3);\n  assert.deepEqual(candidate([1, 2, 3, 1, 4, 6, 7, 1, 4], [1, 4, 7]),6);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [1, 2]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Create a dictionary to store the count of each element\n    var dict = {};\n    //Iterate through the list\n    for(var i = 0; i < lst.length; i++){\n        //If the element is already in the dictionary, increment its count\n        if(lst[i] in dict){\n            dict[lst[i]]++;\n        }\n        //Otherwise, add the element to the dictionary with a count of 1\n        else{\n            dict[lst[i]] = 1;\n        }\n    }\n    //Iterate through the tuple\n    for(var i = 0; i < tup.length; i++){\n        //If the element is in the dictionary, print its count\n        if(tup[i] in dict){\n            console.log(tup[i] + \": \" + dict[tup[i]]);\n        }\n        //Otherwise, print a message indicating that the element is not in the list\n        else{\n            console.log(tup[i] + \" is not in the list\");\n        }\n    }\n}",
+    "  var count = 0;\n  for(var i = 0; i < lst.length; i++){\n    if(tup == lst[i]){\n      count++;\n    }\n  }\n  return count;\n}\n\nvar arr = [1, 2, 3, 4, 5, 3, 2, 3, 1];",
+    "    var count = 0;\n    for (var i = 0; i < lst.length; i++){\n        if (tup[i] == lst[i]){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    var count = 0;\n    for(var i=0; i<lst.length; i++){\n        if(lst[i] == tup){\n            count++;\n        }\n    }\n    return count;\n}\nvar array = [1, 2, 3, 4, 5, 2, 3, 1, 2, 3];\nvar element = 2;",
+    "    //Initialize the count to 0\n    var count = 0;\n    //Iterate through the list\n    for(var i = 0; i < lst.length; i++){\n        //Check if the current element in the list is equal to the tuple element\n        if(lst[i] == tup){\n            //Increment the count\n            count++;\n        }\n    }\n    //Return the count\n    return count;\n}"
+  ]
+}

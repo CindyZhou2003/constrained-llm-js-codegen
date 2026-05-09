@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return new Set(s).size === 1;\n}"
+    "    var first_char = s.charAt(0);\n    for(var i = 1; i < s.length; i++){\n        if(s.charAt(i) !== first_char){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

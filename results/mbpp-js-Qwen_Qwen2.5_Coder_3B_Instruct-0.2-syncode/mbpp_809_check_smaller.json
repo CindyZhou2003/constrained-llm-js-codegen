@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_809_check_smaller",
+  "language": "js",
+  "prompt": "//Write a function to check if each element of second array is smaller than its corresponding element in the first array.\nfunction check_smaller(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_809_check_smaller.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_smaller;\n  assert.deepEqual(candidate([1, 2, 3], [2, 3, 4]),false);\n  assert.deepEqual(candidate([4, 5, 6], [3, 4, 5]),true);\n  assert.deepEqual(candidate([11, 12, 13], [10, 11, 12]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = True\n    for i",
+    "    res = True\n    for i",
+    "    res = all(ele1 > ele2 \n        //for all elements in both arrays\n        //where ele1 is from test_tup1 and ele2 is from test_tup2\n        //if all elements are true, then res is true\n        //else res is false\n        //all() returns true if all elements are true\n        //else it returns false\n        //all() is a built-in function in Python\n        //all() takes an iterable as an argument\n        //all() returns true if all elements in the iterable are true\n        //else it returns false\n        //all() is used to check if all elements in an iterable are true\n        //all() is used to check if all elements in an iterable are false\n        //all() is used to check if all elements in an iterable are equal\n        //all() is used to check if all elements in an iterable are not equal\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific order\n        //all() is used to check if all elements in an iterable are in a specific"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_573_unique_product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to calculate the product of the unique numbers in a given array.\nfunction unique_product(list_data){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_573_unique_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_product;\n  assert.deepEqual(candidate([10, 20, 30, 40, 20, 50, 60, 40]),720000000);\n  assert.deepEqual(candidate([1, 2, 3, 1]),6);\n  assert.deepEqual(candidate([7, 8, 9, 0, 1, 1]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Create a set to store unique numbers\n    let unique_numbers = new Set(list_data);\n    //Initialize product to 1\n    let product = 1;\n    //Iterate over unique numbers and calculate product\n    unique_numbers.forEach(number => {\n        product *= number;\n    });\n    //Return the product\n    return product;\n}\n",
+    "    var unique_array = [];\n    for(var i=0; i<list_data.length; i++){\n        if(unique_array.indexOf(list_data[i]) == -1){\n            unique_array.push(list_data[i]);\n        }\n    }\n    var product = 1;\n    for(var i=0; i<unique_array.length; i++){\n        product *= unique_array[i];\n    }\n    return product;\n}",
+    "    let unique_numbers = new Set(list_data);\n    let product = 1;\n    unique_numbers.forEach(function(number){\n        product *= number;\n    });\n    return product;\n}",
+    "    // Convert the array to a Set to remove duplicates\n    let unique_numbers = new Set(list_data);\n    // Calculate the product of the unique numbers\n    let product = 1;\n    unique_numbers.forEach(num => {\n        product *= num;\n    });\n    return product;\n}",
+    "    return list_data.filter((item, index) => list_data.indexOf(item) === index).reduce((a, b) => a * b);\n}\n"
+  ]
+}

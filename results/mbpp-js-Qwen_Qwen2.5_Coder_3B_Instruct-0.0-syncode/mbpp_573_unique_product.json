@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Convert the array to a Set to remove duplicates\n    const unique_numbers = new Set(list_data);\n    // Initialize the product to 1\n    let product = 1;\n    // Iterate over the unique numbers and multiply them\n    for (let num of unique_numbers) {\n        product *= num;\n    }\n    // Return the product\n    return product;\n}"
+    "    // Create a Set to store unique numbers\n    const unique_numbers = new Set(list_data);\n    // Initialize the product to 1\n    let product = 1;\n    // Iterate over the unique numbers and multiply them\n    unique_numbers.forEach(num => {\n        product *= num;\n    });\n    // Return the product\n    return product;\n}"
   ]
 }

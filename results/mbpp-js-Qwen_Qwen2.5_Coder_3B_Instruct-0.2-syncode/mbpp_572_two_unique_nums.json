@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_572_two_unique_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to remove duplicate numbers from a given number of lists.\nfunction two_unique_nums(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_572_two_unique_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = two_unique_nums;\n  assert.deepEqual(candidate([1, 2, 3, 2, 3, 4, 5]),[1, 4, 5]);\n  assert.deepEqual(candidate([1, 2, 3, 2, 4, 5]),[1, 3, 4, 5]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),[1, 2, 3, 4, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let unique_nums = [];\n    for(let i = 0; i < nums.length; i++){\n        let unique = true;\n        for(let j = 0; j < unique_nums.length; j++){\n            if(nums[i] === unique_nums[j]){\n                unique = false;\n                break;\n            }\n        }\n        if(unique){\n            unique_nums.push(nums[i]);\n        }\n    }\n    return unique_nums;\n}",
+    "    // Initialize an empty set to store unique numbers\n    let unique_nums = new Set();\n    // Iterate over each list in the input array\n    for(let i = 0; i < nums.length; i++){\n        // Iterate over each number in the current list\n        for(let j = 0; j < nums[i].length; j++){\n            // Add the current number to the set\n            unique_nums.add(nums[i][j]);\n        }\n    }\n    // Convert the set back to an array and return it\n    return Array.from(unique",
+    "    let unique_nums = [];\n    for(let i = 0; i < nums.length; i++){\n        let num = nums[i];\n        if(!unique_nums.includes(num)){\n            unique_nums.push(num);\n        }\n    }\n    return unique_nums;\n}\n"
+  ]
+}

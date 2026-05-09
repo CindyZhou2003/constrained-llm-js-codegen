@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_104_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(input_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_104_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\" red \", \"green\"], [\"blue \", \" black\"], [\" orange\", \"brown\"]]),[[\" red \", \"green\"], [\" black\", \"blue \"], [\" orange\", \"brown\"]]);\n  assert.deepEqual(candidate([[\"zilver\", \"gold\"], [\"magnesium\", \"aluminium\"], [\"steel\", \"bronze\"]]),[[\"gold\", \"zilver\"], [\"aluminium\", \"magnesium\"], [\"bronze\", \"steel\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Use the map function to apply the sort function to each sublist\n    return input_list.map(sublist => {\n        //Use the sort function with a custom comparator to sort the strings\n        return sublist.sort((a, b) => {\n            //Convert the strings to lowercase for case-insensitive comparison\n            const lowerA = a.toLowerCase();\n            const lowerB = b.toLowerCase();\n            //Compare the strings and return the result\n            if (lowerA < lowerB) {\n                return -1;\n            } else if (lowerA > lowerB) {\n                return 1;\n            } else {\n                return 0;\n            }\n        });\n    });\n}\n",
+    "    //Use the map function to apply the sort function to each sublist.\n    return input_list.map(sublist => sublist.sort());\n}\n",
+    "    //Iterate through each sublist in the input list\n    for(let i = 0; i < input_list.length; i++){\n        //Sort the current sublist in ascending order\n        input_list[i].sort();\n    }\n    //Return the modified input list\n    return input_list;\n}\n",
+    "    // Create a new array to store the sorted sublists\n    let sorted_list = [];\n    // Iterate over each sublist in the input list\n    for (let sublist of input_list) {\n        // Sort the strings in the sublist\n        let sorted_sublist = sublist.sort();\n        // Add the sorted sublist to the sorted list\n        sorted_list.push(sorted_sublist);\n    }\n    // Return the sorted list of sublists\n    return sorted_list;\n}\n",
+    "    // Iterate over each sublist in the input list\n    for(let i = 0; i < input_list.length; i++){\n        // Sort the strings in the current sublist\n        input_list[i].sort();\n    }\n    return input_list;\n}\n"
+  ]
+}

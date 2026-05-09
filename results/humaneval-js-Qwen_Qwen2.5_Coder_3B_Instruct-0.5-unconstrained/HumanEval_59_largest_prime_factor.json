@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_59_largest_prime_factor",
+  "language": "js",
+  "prompt": "//Return the largest prime factor of n. Assume n > 1 and is not a prime.\n// >>> largest_prime_factor(13195)\n// 29\n// >>> largest_prime_factor(2048)\n// 2\nfunction largest_prime_factor(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_59_largest_prime_factor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_prime_factor;\n  assert.deepEqual(candidate(15),5);\n  assert.deepEqual(candidate(27),3);\n  assert.deepEqual(candidate(63),7);\n  assert.deepEqual(candidate(330),11);\n  assert.deepEqual(candidate(13195),29);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var largest = 1;\n    //start with 2, and keep dividing n by the largest factor found\n    for(var i = 2; i <= n; i++){\n        while(n % i == 0){\n            n /= i;\n            largest = i;\n        }\n    }\n    return largest;\n}",
+    "    var factor = 2;\n    while(n > 1){\n        if(n % factor === 0){\n            n /= factor;\n        }else{\n            factor++;\n        }\n    }\n    return factor;\n}",
+    "    let largest = 1;\n    for(let i = 2; i <= n; i++){\n        if(n % i === 0){\n            largest = i;\n            while(n % i === 0){\n                n /= i;\n            }\n        }\n    }\n    return largest;\n}",
+    "  var largest = 1;\n  while(n % 2 === 0){\n    largest = 2;\n    n = n / 2;\n  }\n  for(var i = 3; i <= Math.sqrt(n); i += 2){\n    while(n % i === 0){\n      largest = i;\n      n = n / i;\n    }\n  }\n  if(n > 2){\n    largest = n;\n  }\n  return largest;\n}",
+    "    let largestFactor = 1;\n    // Divide n by 2 until it is odd\n    while (n % 2 === 0) {\n        largestFactor = 2;\n        n /= 2;\n    }\n    // Divide n by odd numbers starting from 3\n    for (let i = 3; i <= Math.sqrt(n); i += 2) {\n        while (n % i === 0) {\n            largestFactor = i;\n            n /= i;\n        }\n    }\n    // If n is still greater than 2, then it is a prime number\n    if (n > 2) {\n        largestFactor = n;\n    }\n    return largestFactor;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_252_convert",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to convert complex numbers to polar coordinates.\nfunction convert(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_252_convert.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = convert;\n  assert.deepEqual(candidate(1),[1.0, 0.0]);\n  assert.deepEqual(candidate(4),[4.0, 0.0]);\n  assert.deepEqual(candidate(5),[5.0, 0.0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var polarNumbers = [];\n    for(var i = 0; i < numbers.length; i++){\n        var real = numbers[i].real;\n        var imaginary = numbers[i].imaginary;\n        var modulus = Math.sqrt(real*real + imaginary*imaginary);\n        var angle = Math.atan2(imaginary, real);\n        polarNumbers.push({modulus: modulus, angle: angle});\n    }\n    return polarNumbers;\n}\n\nvar complexNumbers = [\n    {real: 3, imaginary: 4},\n    {real: -1, imaginary: 1},\n    {real: 0, imaginary: 0}\n];\n\nvar polarNumbers = convert(complexNumbers);",
+    "    let polar = [];\n    for(let i = 0; i < numbers.length; i++){\n        let real = numbers[i].real;\n        let imag = numbers[i].imag;\n        let magnitude = Math.sqrt(real * real + imag * imag);\n        let angle = Math.atan2(imag, real);\n        polar.push({magnitude: magnitude, angle: angle});\n    }\n    return polar;\n}",
+    "    let polar = numbers.map((num) => {\n        let magnitude = Math.sqrt(num.real * num.real + num.imaginary * num.imaginary);\n        let angle = Math.atan2(num.imaginary, num.real);\n        return {magnitude, angle};\n    });\n    return polar;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < numbers.length; i++){\n        let real = numbers[i][0];\n        let imaginary = numbers[i][1];\n        let magnitude = Math.sqrt(real * real + imaginary * imaginary);\n        let angle = Math.atan2(imaginary, real);\n        result.push([magnitude, angle]);\n    }\n    return result;\n}",
+    "    return numbers.map((num) => {\n        const real = num.real;\n        const imaginary = num.imaginary;\n        const magnitude = Math.sqrt(real * real + imaginary * imaginary);\n        const angle = Math.atan2(imaginary, real);\n        return {magnitude, angle};\n    });\n}\n"
+  ]
+}

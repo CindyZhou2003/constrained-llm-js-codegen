@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_454_text_match_wordz",
+  "language": "js",
+  "prompt": "//Write a function that matches a word containing 'z'.\nfunction text_match_wordz(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_454_text_match_wordz.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_wordz;\n  assert.deepEqual(candidate(\"pythonz.\"),true);\n  assert.deepEqual(candidate(\"xyz.\"),true);\n  assert.deepEqual(candidate(\"  lang  .\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var regex = /\\b\\w*z\\w*\\b/;\n    return regex.test(text);\n}",
+    "    let pattern = /\\b\\w*z\\w*\\b/g;\n    return text.match(pattern);\n}",
+    "    //Regular expression to match a word containing 'z'\n    var regex = /[a-z]*z[a-z]*/;\n    //Test the regular expression against the input text\n    if(regex.test(text)){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let regex = /\\b\\w*z\\w*\\b/;\n    return regex.test(text);\n}",
+    "  var regex = /\\b\\w*z\\w*\\b/;\n  return regex.test(text);\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_131_reverse_vowels",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse only the vowels of a given string (where y is not a vowel).\nfunction reverse_vowels(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_131_reverse_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_vowels;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"USA\"),\"ASU\");\n  assert.deepEqual(candidate(\"ab\"),\"ab\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = str1.toLowerCase();\n    var vowels = [\"a\",\"e\",\"i\",\"o\",\"u\"];\n    var arr = str.split(\"\");\n    var j = arr.length - 1;\n    for(var i = 0; i < arr.length; i++){\n        if(vowels.indexOf(arr[i]) !== -1){\n            while(vowels.indexOf(arr[j]) === -1 && j > i){\n                j--;\n            }\n            var temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n            j--;\n        }\n    }\n    return arr.join(\"\");\n}",
+    "    var str1 = str1.split('');\n    var vowels = [];\n    var result = [];\n    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        if(str1[i] === 'a' || str1[i] === 'e' || str1[i] === 'i' || str1[i] === 'o' || str1[i] === 'u' || str1[i] === 'A' || str1[i] === 'E' || str1[i] === 'I' || str1[i] === 'O' || str1[i] === 'U'){\n            vowels.push(str1[i]);\n            count++;\n        }\n    }\n    for(var i = 0; i < str1.length; i++){\n        if(str1[i] === 'a' || str1[i] === 'e' || str1[i] === 'i' || str1[i] === 'o' || str1[i] === 'u' || str1[i] === 'A' || str1[i] === 'E' || str1[i] === 'I' || str1[i] === 'O' || str1[i] === 'U'){\n            result.push(vowels[count-1]);\n            count--;\n        }\n        else{\n            result.push(str1[i]);\n        }\n    }\n    return result.join('');\n}",
+    "    let str2 = str1.split('');\n    let vowels = 'aeiouAEIOU';\n    let i = 0;\n    let j = str2.length - 1;\n    while(i < j){\n        if(vowels.includes(str2[i]) && vowels.includes(str2[j])){\n            let temp = str2[i];\n            str2[i] = str2[j];\n            str2[j] = temp;\n            i++;\n            j--;\n        }\n        else if(!vowels.includes(str2[i])){\n            i++;\n        }\n        else{\n            j--;\n        }\n    }\n    return str2.join('');\n}",
+    "    let vowels = 'aeiouAEIOU';\n    let str2 = str1.split('');\n\n    // Find all vowels in the string\n    let vowel_indices = str2.map((char, index) => vowels.includes(char) ? index : -1).filter(index => index !== -1);\n\n    // Reverse the vowels\n    for(let i = 0; i < vowel_indices.length / 2; i++){\n        let temp = str2[vowel_indices[i]];\n        str2[vowel_indices[i]] = str2[vowel_indices[vowel_indices.length - 1 - i]];\n        str2[vowel_indices[vowel_indices.length - 1 - i]] = temp;\n    }\n\n    return str2.join('');\n}\n",
+    "    var str2 = str1.split(\"\");\n    var vowels = \"aeiouAEIOU\";\n    var i = 0;\n    var j = str2.length - 1;\n    var temp;\n    while(i < j){\n        if(vowels.indexOf(str2[i]) === -1){\n            i++;\n        }else if(vowels.indexOf(str2[j]) === -1){\n            j--;\n        }else{\n            temp = str2[i];\n            str2[i] = str2[j];\n            str2[j] = temp;\n            i++;\n            j--;\n        }\n    }\n    return str2.join(\"\");\n}"
+  ]
+}

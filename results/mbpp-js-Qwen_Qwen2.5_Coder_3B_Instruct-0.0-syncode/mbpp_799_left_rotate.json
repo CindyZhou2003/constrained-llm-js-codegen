@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    //d = d % 32; //if d is greater than 32, we can use this line to reduce the number of rotations\n    return (n << d) | (n >> (32 - d));\n}\n"
+    "    //d = d % 32; //if d is greater than 32, we can use this line to make it within 32 bits\n    return (n << d) | (n >> (32 - d));\n}\n"
   ]
 }

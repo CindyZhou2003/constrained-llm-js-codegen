@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_65_circular_shift",
+  "language": "js",
+  "prompt": "//Circular shift the digits of the integer x, shift the digits right by shift\n// and return the result as a string.\n// If shift > number of digits, return digits reversed.\n// >>> circular_shift(12, 1)\n// \"21\"\n// >>> circular_shift(12, 2)\n// \"12\"\nfunction circular_shift(x, shift){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_65_circular_shift.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = circular_shift;\n  assert.deepEqual(candidate(100, 2),\"001\");\n  assert.deepEqual(candidate(12, 2),\"12\");\n  assert.deepEqual(candidate(97, 8),\"79\");\n  assert.deepEqual(candidate(12, 1),\"21\");\n  assert.deepEqual(candidate(11, 101),\"11\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to a string\n    let str = x.toString();\n    // Get the length of the string\n    let len = str.length;\n    // If shift is greater than the length of the string, return the reversed string\n    if (shift > len) {\n        return str.split('').reverse().join('');\n    }\n    // Calculate the effective shift\n    let effectiveShift = shift % len;\n    // If effective shift is 0, return the original string\n    if (effectiveShift === 0) {\n        return str;\n    }\n    // Split the string into two parts\n    let part1 = str.slice(-effectiveShift);\n    let part2 = str.slice(0, len - effectiveShift);\n    // Concatenate the two parts\n    return part1 + part2;\n}",
+    "    let str = x.toString();\n    let length = str.length;\n    shift = shift % length;\n\n    if (shift === 0) {\n        return str;\n    } else if (shift === length) {\n        return str.split('').reverse().join('');\n    } else {\n        return str.slice(-shift) + str.slice(0, length - shift);\n    }\n}\n",
+    "    var string = x.toString();\n    var length = string.length;\n    if (length <= shift){\n        return string.split('').reverse().join('');\n    }\n    else{\n        var num = (shift % length);\n        var left = string.slice(-num);\n        var right = string.slice(0, length - num);\n        return left + right;\n    }\n}",
+    "    // Convert the integer to a string\n    let str = x.toString();\n    let len = str.length;\n    \n    // If shift is greater than the length of the string, reverse the string\n    if(shift > len){\n        return str.split('').reverse().join('');\n    }\n    \n    // Calculate the effective shift\n    let effectiveShift = shift % len;\n    \n    // Perform the circular shift\n    let shiftedStr = str.slice(-effectiveShift) + str.slice(0, len - effectiveShift);\n    \n    return shiftedStr;\n}\n",
+    "  var str = x.toString();\n  var len = str.length;\n  shift = shift % len;\n  if (shift === 0) return str;\n  var left = str.slice(-shift);\n  var right = str.slice(0, len - shift);\n  return left + right;\n}"
+  ]
+}

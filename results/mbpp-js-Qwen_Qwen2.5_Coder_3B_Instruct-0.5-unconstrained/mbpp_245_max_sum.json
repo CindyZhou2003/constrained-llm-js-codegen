@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = arr.length;\n    let inc = new Array(n);\n    let dec = new Array(n);\n    let max_sum = 0;\n\n    for(let i = 0; i < n; i++){\n        inc[i] = arr[i];\n        for(let j = 0; j < i; j++){\n            if(arr[j] < arr[i] && inc[j] + arr[i] > inc[i]){\n                inc[i] = inc[j] + arr[i];\n            }\n        }\n    }\n\n    for(let i = n - 1; i >= 0; i--){\n        dec[i] = arr[i];\n        for(let j = n - 1; j > i; j--){\n            if(arr[j] < arr[i] && dec[j] + arr[i] > dec[i]){\n                dec[i] = dec[j] + arr[i];\n            }\n        }\n    }\n\n    for(let i = 0; i < n; i++){\n        max_sum = Math.max(max_sum, inc[i] + dec[i] - arr[i]);\n    }\n\n    return max_sum;\n}\n",
+    "    let n = arr.length;\n    let max_ending_here = 0;\n    let max_so_far = 0;\n    for(let i = 0; i < n; i++){\n        max_ending_here = Math.max(0, max_ending_here + arr[i]);\n        max_so_far = Math.max(max_so_far, max_ending_here);\n    }\n    return max_so_far;\n}",
+    "    // Initialize the maximum sum and the length of the array\n    var max_sum = 0;\n    var n = arr.length;\n\n    // Create two arrays to store the maximum sum of a bitonic subsequence ending at each position\n    var inc = new Array(n);\n    var dec = new Array(n);\n\n    // Initialize the first element of the inc array to the first element of the array\n    inc[0] = arr[0];\n\n    // Initialize the first element of the dec array to the first element of the array\n    dec[n-1] = arr[n-1];\n\n    // Fill the inc array\n    for(var i=1; i<n; i++){\n        if(arr[i] > arr[i-1]){\n            inc[i] = arr[i] + inc[i-1];\n        } else{\n            inc[i] = arr[i];\n        }\n    }\n\n    // Fill the dec array\n    for(var i=n-2; i>=0; i--){\n        if(arr[i] > arr[i+1]){\n            dec[i] = arr[i] + dec[i+1];\n        } else{\n            dec[i] = arr[i];\n        }\n    }\n\n    // Find the maximum sum of a bitonic subsequence\n    for(var i=0; i<n; i++){\n        max_sum = Math.max(max_sum, inc[i] + dec[i] - arr[i]);\n    }\n\n    return max_sum;\n}\n",
+    "    // Initialize the variables to store the maximum sum of increasing and decreasing subsequence\n    let inc = new Array(arr.length).fill(0);\n    let dec = new Array(arr.length).fill(0);\n    let res = 0;\n    for(let i = 0; i < arr.length; i++){\n        // Find the maximum sum of increasing subsequence ending at index i\n        for(let j = 0; j < i; j++){\n            if(arr[i] > arr[j]){\n                inc[i] = Math.max(inc[i], inc[j] + arr[i]);\n            }\n        }\n        // Find the maximum sum of decreasing subsequence starting at index i\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                dec[i] = Math.max(dec[i], dec[j] + arr[i]);\n            }\n        }\n        // Update the result with the maximum sum of bitonic subsequence ending at index i\n        res = Math.max(res, inc[i] + dec[i] - arr[i]);\n    }\n    return res;\n}",
+    "    let n = arr.length;\n    if(n === 0){\n        return 0;\n    }\n    let inc = new Array(n).fill(0);\n    let dec = new Array(n).fill(0);\n    inc[0] = arr[0];\n    dec[n-1] = arr[n-1];\n    for(let i = 1; i < n; i++){\n        inc[i] = Math.max(inc[i-1], arr[i]);\n    }\n    for(let i = n-2; i >= 0; i--){\n        dec[i] = Math.max(dec[i+1], arr[i]);\n    }\n    let max = 0;\n    for(let i = 0; i < n; i++){\n        max = Math.max(max, inc[i] + dec[i] - arr[i]);\n    }\n    return max;\n}"
+  ]
+}

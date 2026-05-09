@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let polarCoordinates = [];\n    for(let i = 0; i < numbers.length; i++){\n        let real = numbers[i][0];\n        let imaginary = numbers[i][1];\n        let magnitude = Math.sqrt(real * real + imaginary * imaginary);\n        let angle = Math.atan2(imaginary, real);\n        polarCoordinates.push([magnitude, angle]);\n    }\n    return polarCoordinates;\n}"
+    "    let polar = [];\n    for(let i = 0; i < numbers.length; i++){\n        let real = numbers[i][0];\n        let imaginary = numbers[i][1];\n        let magnitude = Math.sqrt(real * real + imaginary * imaginary);\n        let angle = Math.atan2(imaginary, real);\n        polar.push([magnitude, angle]);\n    }\n    return polar;\n}"
   ]
 }

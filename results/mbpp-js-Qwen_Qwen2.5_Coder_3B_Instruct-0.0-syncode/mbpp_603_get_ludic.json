@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var ludic = [1];\n    var i = 1;\n    while(ludic.length < n){\n        var j = 0;\n        while(ludic[j] < ludic[i] * 2){\n            j++;\n        }\n        ludic.push(ludic[i] * 2);\n        i++;\n    }\n    return ludic;\n}"
+    "    var ludic = [2];\n    var i = 2;\n    while(ludic.length < n){\n        var j = 0;\n        while(ludic[j] * i <= n){\n            j++;\n        }\n        ludic.push(ludic[j] * i);\n        i++;\n    }\n    return ludic;\n}"
   ]
 }

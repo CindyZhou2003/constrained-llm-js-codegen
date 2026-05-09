@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the number to an array of digits\n    let digits = n.toString().split('').map(Number);\n    // Find the first digit from the right that is smaller than the digit to its right\n    let i = digits.length - 2;\n    while(i >= 0 && digits[i] >= digits[i + 1]){\n        i--;\n    }\n    // If no such digit is found, the number is already the largest possible\n    if(i === -1){\n        return -1;\n    }\n    // Find the smallest digit to the right of i that is larger than digits[i]\n    let j = digits.length - 1;\n    while(digits[j] <= digits[i]){\n        j--;\n    }\n    // Swap digits[i] and digits[j]\n    [digits[i], digits[j]] = [digits[j], digits[i]];\n    // Sort the digits to the right of i in ascending order\n    let right = digits.splice(i + 1).sort((a, b) => a - b);\n    // Concatenate the digits and return the result\n    return parseInt(digits.concat(right).join(''));\n}",
+    "    // Convert the number to a string to easily manipulate the digits\n    let str = n.toString();\n    // Find the first digit from the right that is smaller than the digit to its right\n    let i = str.length - 2;\n    while (i >= 0 && str[i] >= str[i + 1]) {\n        i--;\n    }\n    // If no such digit is found, return -1 as the number cannot be rearranged to form a bigger number\n    if (i === -1) {\n        return -1;\n    }\n    // Find the smallest digit to the right of str[i] that is larger than str[i]\n    let j = str.length - 1;\n    while (str[j] <= str[i]) {\n        j--;\n    }\n    // Swap the digits at str[i] and str[j]\n    let temp = str[i];\n    str = str.substring(0, i) + str[j] + str.substring(i + 1, j) + temp + str.substring(j + 1);\n    // Convert the string back to a number and return it\n    return parseInt(str);\n}",
+    "  let s = n.toString().split('');\n  let i = s.length - 2;\n  while(i >= 0 && s[i] >= s[i + 1]){\n    i--;\n  }\n  if(i < 0){\n    return -1;\n  }\n  let j = s.length - 1;\n  while(s[j] <= s[i]){\n    j--;\n  }\n  [s[i], s[j]] = [s[j], s[i]];\n  s = s.slice(0, i + 1).concat(s.slice(i + 1).sort());\n  return parseInt(s.join(''), 10);\n}",
+    "  // Convert the number to a string\n  let str = n.toString();\n  // Find the first digit that is smaller than the digit to its right\n  let i = str.length - 2;\n  while(i >= 0 && str[i] >= str[i + 1]){\n    i--;\n  }\n  // If no such digit is found, return the original number\n  if(i === -1){\n    return n;\n  }\n  // Find the smallest digit to the right of the digit found in the previous step\n  let j = str.length - 1;\n  while(str[j] <= str[i]){\n    j--;\n  }\n  // Swap the two digits\n  let temp = str[i];\n  str = str.substring(0, i) + str[j] + str.substring(i + 1, j) + temp + str.substring(j + 1);\n  // Convert the string back to a number and return it\n  return parseInt(str);\n}\n",
+    "  let arr = n.toString().split('');\n  let i = arr.length - 1;\n  while(i > 0){\n    if(arr[i - 1] < arr[i]){\n      let j = arr.length - 1;\n      while(arr[j] <= arr[i - 1]){\n        j--;\n      }\n      let temp = arr[i - 1];\n      arr[i - 1] = arr[j];\n      arr[j] = temp;\n      let right = arr.splice(i);\n      arr = arr.concat(right.sort((a,b) => a - b));\n      return parseInt(arr.join(''));\n    }\n    i--;\n  }\n  return -1;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = [];\n    for (var i = 0; i < test_list.length; i++){\n        for (var j = i + 1; j < test_list.length; j++){\n            for (var k = j + 1; k < test_list.length; k++){\n                res.push([test_list[i], test_list[j], test_list[k]]);\n            }\n        }\n    }\n    return res;\n}",
+    "    res = [];\n    for (sub in test_list[0])",
+    "    res = [];\n    for(let i = 0; i < test_list.length; i++){\n        for(let j = 0; j < test_list.length; j++){\n            res.push([test_list[i], test_list[j]]);\n        }\n    }\n    return res;\n}",
+    "    result = [];\n    for (var i = 0; i < test_list.length; i++){\n        var temp = [];\n        for (var j = 0; j < test_list.length; j++){\n            if (i != j){\n                temp.push(test_list[i] + test_list[j]);\n            }\n        }\n        result.push(temp);\n    }\n    return result;\n}",
+    "    res = []\n    n = test_list.length\n    for(i in range(n)):\n"
+  ]
+}

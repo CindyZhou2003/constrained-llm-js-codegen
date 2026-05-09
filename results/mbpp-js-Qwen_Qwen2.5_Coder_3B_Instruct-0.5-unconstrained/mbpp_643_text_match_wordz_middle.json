@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_643_text_match_wordz_middle",
+  "language": "js",
+  "prompt": "//Write a function that checks if a strings contains 'z', except at the start and end of the word.\nfunction text_match_wordz_middle(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_643_text_match_wordz_middle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_wordz_middle;\n  assert.deepEqual(candidate(\"pythonzabc.\"),true);\n  assert.deepEqual(candidate(\"zxyabc.\"),false);\n  assert.deepEqual(candidate(\"  lang  .\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "//Using regular expression to check for 'z' in the middle of a word, excluding the start and end of the word.\n  return text.match(/(?<!\\b)z(?!\\b)/g);\n}\n",
+    "    //Use a regular expression to match the pattern\n    //The pattern looks for 'z' that is not at the start or end of the word\n    //The '^' and '$' characters are used to match the start and end of the word respectively\n    //The '?=' and '?=' are used to match the presence of 'z' before and after the word\n    //The 'g' flag is used to match all occurrences of the pattern in the string\n    const regex = /(?<!^)z(?<!z)/g;\n    //Use the test method to check if the pattern matches the string\n    return regex.test(text);\n}\n",
+    "  let re = /\\b[a-z]*z[a-z]*\\b/g;\n  return text.match(re);\n}",
+    "    let regEx = /\\Bz\\B/g;\n    return regEx.test(text);\n}\n",
+    "    let regex = /(?<!^)(?!$)[^z]z[^z]/g;\n    return text.match(regex);\n}\n"
+  ]
+}

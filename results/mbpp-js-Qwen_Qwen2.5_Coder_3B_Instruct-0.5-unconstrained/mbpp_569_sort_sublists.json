@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_569_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_569_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\"], [\"green\", \"orange\"], [\"white\"]]),[[\"green\", \"orange\"], [\"black\"], [\"green\", \"orange\"], [\"white\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"d\", \"c\"], [\"g\", \"h\"], [\"f\", \"e\"]]),[[\"a\", \"b\"], [\"c\", \"d\"], [\"g\", \"h\"], [\"e\", \"f\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Iterate through each sublist in the given array of lists\n    for(let i=0;i<list1.length;i++){\n        //Sort the current sublist in ascending order\n        list1[i].sort((a,b)=>a.localeCompare(b));\n    }\n    return list1;\n}",
+    "    //sort each sublist in the given array of lists\n    return list1.map(sublist => sublist.sort());\n}",
+    "    //Sort each sublist in the given array of lists\n    list1.forEach(sublist => sublist.sort());\n    return list1;\n}\n",
+    "    let result = list1.map(sublist => sublist.sort());\n    return result;\n}\n",
+    "    //Iterate through each sublist in the array\n    for(let i = 0; i < list1.length; i++){\n        //Sort the sublist using the sort method with a comparison function\n        list1[i].sort(function(a, b){\n            //Compare the string lengths of a and b\n            if(a.length < b.length){\n                return -1; //Return -1 to sort a before b\n            } else if(a.length > b.length){\n                return 1; //Return 1 to sort b before a\n            } else{\n                return 0; //Return 0 to keep the order as it is\n            }\n        });\n    }\n    //Return the modified array of lists\n    return list1;\n}\n"
+  ]
+}

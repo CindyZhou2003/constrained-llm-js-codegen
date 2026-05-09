@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_158_find_max",
+  "language": "js",
+  "prompt": "//Write a function that accepts an array of strings.\n// The array contains different words. Return the word with maximum number\n// of unique characters. If multiple strings have maximum number of unique\n// characters, return the one which comes first in lexicographical order.\n// >>> find_max([\"name\", \"of\", \"string\"])\n// \"string\"\n// >>> find_max([\"name\", \"enam\", \"game\"])\n// \"enam\"\n// >>> find_max([\"aaaaaaa\", \"bb\", \"cc\"])\n// \"aaaaaaa\"\nfunction find_max(words){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_158_find_max.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_max;\n  assert.deepEqual(candidate([\"name\", \"of\", \"string\"]),\"string\");\n  assert.deepEqual(candidate([\"name\", \"enam\", \"game\"]),\"enam\");\n  assert.deepEqual(candidate([\"aaaaaaa\", \"bb\", \"cc\"]),\"aaaaaaa\");\n  assert.deepEqual(candidate([\"abc\", \"cba\"]),\"abc\");\n  assert.deepEqual(candidate([\"play\", \"this\", \"game\", \"of\", \"footbott\"]),\"footbott\");\n  assert.deepEqual(candidate([\"we\", \"are\", \"gonna\", \"rock\"]),\"gonna\");\n  assert.deepEqual(candidate([\"we\", \"are\", \"a\", \"mad\", \"nation\"]),\"nation\");\n  assert.deepEqual(candidate([\"this\", \"is\", \"a\", \"prrk\"]),\"this\");\n  assert.deepEqual(candidate([\"b\"]),\"b\");\n  assert.deepEqual(candidate([\"play\", \"play\", \"play\"]),\"play\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let maxUniqueChars = 0;\n    let result = \"\";\n    for(let i = 0; i < words.length; i++){\n        let uniqueChars = new Set(words[i]);\n        if(uniqueChars.size > maxUniqueChars || (uniqueChars.size === maxUniqueChars && words[i] < result)){\n            maxUniqueChars = uniqueChars.size;\n            result = words[i];\n        }\n    }\n    return result;\n}",
+    "    let max_word = \"\";\n    let max_unique_chars = 0;\n\n    for(let word of words){\n        let unique_chars = new Set(word);\n        let unique_count = unique_chars.size;\n\n        if(unique_count > max_unique_chars || \n            (unique_count === max_unique_chars && word < max_word)){\n            max_word = word;\n            max_unique_chars = unique_count;\n        }\n    }\n\n    return max_word;\n}\n",
+    "    let max = \"\";\n    for(let i = 0; i < words.length; i++){\n        let uniqueChars = new Set(words[i]);\n        if(uniqueChars.size > max.length || (uniqueChars.size === max.length && words[i] < max)){\n            max = words[i];\n        }\n    }\n    return max;\n}"
+  ]
+}

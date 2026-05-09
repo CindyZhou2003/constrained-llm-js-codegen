@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_394_check_distinct",
+  "language": "js",
+  "prompt": "//Write a function to check if given array contains no duplicates.\nfunction check_distinct(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_394_check_distinct.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_distinct;\n  assert.deepEqual(candidate([1, 4, 5, 6, 1, 4]),false);\n  assert.deepEqual(candidate([1, 4, 5, 6]),true);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    #The set() function is used to convert the list into a set, which automatically removes any duplicates.\n    test_set = set(test_tup)\n    #The len() function is used to check the length of the set. If the length is equal to the length of the list, then the list contains no duplicates.\n    return len(test_set) == len(test_tup)\n#Test the function with different inputs\nprint(check_distinct([1, 2, 3, 4, 5])) #Output: True\nprint(check_distinct([1, 2, 2, 3, 4])) #Output: False\nprint(check_distinct([10, 20, 30])) #Output: True\nprint(check_distinct([10, 20, 20, 30])) #Output: False\n```",
+    "    res = all(i != j for i, j in zip(test_tup, test_tup[1:]))\n    return res\n}\n\n# Driver Code\ntest_tup = [1, 2, 3, 4, 5]\nprint(\"Original Tuple : \", test_tup)\nprint(\"Check if all elements are distinct : \", check_distinct(test_tup))",
+    "    # Using set()\n    res = len(test_tup) == len(set(test_tup))\n    return res\n# Driver code\ntest_tup = [1, 2, 3, 4, 5]\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"Are all elements distinct ? : \" + str(check_distinct(test_tup)))",
+    "    # Use set to check for duplicates\n    res = len(test_tup) == len(set(test_tup))\n    return res\n# Driver Code\ntest_tup = [1, 2, 3, 4, 5]\nprint(check_distinct(test_tup))\ntest_tup = [1, 2, 3, 4, 4]\nprint(check_distinct(test_tup))",
+    "    # Finding all distinct elements using set\n    res = len(test_tup) == len(set(test_tup))\n    return res\n# Driver code\ntest_tup = [1, 2, 3, 4, 5]\nprint(check_distinct(test_tup)) # Output: True\ntest_tup = [1, 2, 3, 4, 4]\nprint(check_distinct(test_tup)) # Output: False"
+  ]
+}

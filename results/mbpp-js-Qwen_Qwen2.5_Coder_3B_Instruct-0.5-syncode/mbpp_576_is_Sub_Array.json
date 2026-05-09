@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_576_is_Sub_Array",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array is sublist of another or not.\nfunction is_Sub_Array(A, B){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_576_is_Sub_Array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sub_Array;\n  assert.deepEqual(candidate([1, 4, 3, 5], [1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 1], [1, 2, 1]),true);\n  assert.deepEqual(candidate([1, 0, 2, 2], [2, 2, 0]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    for(var i = 0; i < B.length; i++){\n        if(A[count] == B[i]){\n            count++;\n        }\n        if(count == A.length){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    var i = 0;\n    var j = 0;\n    while(i < A.length && j < B.length){\n        if(A[i] == B[j]){\n            i++;\n            j++;\n        }else{\n            j++;\n        }\n    }\n    return i == A.length;\n}",
+    "    var index = B.indexOf(A[0]);\n    if(index != -1){\n        for(var i = 0; i < A.length; i++){\n            if(B[index+i] != A[i]){\n                return false;\n            }\n        }\n        return true;\n    }\n    return false;\n}",
+    "    let result = B.filter(element => A.includes(element));\n    return result.length == A.length;\n}",
+    "    var i = 0;\n    var j = 0;\n    var lenA = A.length;\n    var lenB = B.length;\n    while(i<lenA && j<lenB){\n        if(A[i] == B[j]){\n            i++;\n            j++;\n        }\n        else{\n            i++;\n        }\n    }\n    return j == lenB;\n}"
+  ]
+}

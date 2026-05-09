@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_304_find_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find element at a given index after number of rotations.\nfunction find_Element(arr, ranges, rotations, index){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_304_find_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Element;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [[0, 2], [0, 3]], 2, 1),3);\n  assert.deepEqual(candidate([1, 2, 3, 4], [[0, 1], [0, 2]], 1, 2),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [[0, 1], [0, 2]], 1, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let len = arr.length;\n    let start = 0;\n    let end = len - 1;\n    let mid = 0;\n    let result = 0;\n    let flag = 0;\n    let i = 0;\n    while(start <= end){\n        i = (start + end) / 2;\n        mid = Math.floor(i);\n        let diff = (ranges[mid] - ranges[start]) % len;\n        if(diff == index){\n            result = arr[mid];\n            flag = 1;\n            break;\n        }\n        if(diff > index){\n            end = mid - 1;\n        }\n        else{\n            start = mid + 1;\n        }\n    }\n    if(flag == 1){\n        return result;\n    }\n    else{\n        return -1;\n    }\n}",
+    "    let result = arr[index];\n    for(let i = 0; i < ranges.length; i++){\n        let range = ranges[i];\n        let start = range[0];\n        let end = range[1];\n        let len = end - start + 1;\n        if(index >= start && index <= end){\n            let new_index = (index - start + len) % len + start;\n            result = arr[new_index];\n            break;\n        }\n    }\n    return result;\n}",
+    "    var temp_arr = arr;\n    for(var i = 0; i < ranges.length; i++){\n        var temp = temp_arr[arr[ranges[i][0]]];\n        temp_arr[arr[ranges[i][0]]] = temp_arr[arr[ranges[i][1]]];\n        temp_arr[arr[ranges[i][1]]] = temp;\n    }\n    for(var i = 0; i < rotations; i++){\n        temp = temp_arr[0];\n        for(var j = 0; j < temp_arr.length - 1; j++){\n            temp_arr[j] = temp_arr[j + 1];\n        }\n        temp_arr[temp_arr.length - 1] = temp;\n    }\n    return temp_arr[index];\n}\n",
+    "    var i = 0;\n    var len = ranges.length;\n    while(i < len){\n        var range = ranges[i];\n        if(range[0] <= index && index <= range[1]){\n            var start = range[0];\n            var end = range[1];\n            var range_len = end - start + 1;\n            var rotated_index = (index - start + rotations) % range_len;\n            return arr[start + rotated_index];\n        }\n        i++;\n    }\n    return arr[index];\n}\n",
+    "    let len = arr.length;\n    let sum = 0;\n    for(let i = 0; i < ranges.length; i++){\n        let start = ranges[i][0];\n        let end = ranges[i][1];\n        let temp = 0;\n        for(let j = start; j <= end; j++){\n            temp += arr[j];\n        }\n        sum += temp;\n    }\n    let new_index = index % len;\n    let rotation_index = (new_index - rotations) % len;\n    if(rotation_index < 0){\n        rotation_index += len;\n    }\n    return arr[rotation_index];\n}\n"
+  ]
+}

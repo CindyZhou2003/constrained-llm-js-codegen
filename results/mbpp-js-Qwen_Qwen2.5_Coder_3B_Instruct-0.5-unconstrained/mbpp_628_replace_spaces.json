@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_628_replace_spaces",
+  "language": "js",
+  "prompt": "//Write a function to replace all spaces in the given string with '%20'.\nfunction replace_spaces(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_628_replace_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = replace_spaces;\n  assert.deepEqual(candidate(\"My Name is Dawood\"),\"My%20Name%20is%20Dawood\");\n  assert.deepEqual(candidate(\"I am a Programmer\"),\"I%20am%20a%20Programmer\");\n  assert.deepEqual(candidate(\"I love Coding\"),\"I%20love%20Coding\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    string = string.split(' ');\n    string = string.join('%20');\n    return string;\n}\n",
+    "    return string.replace(/ /g,'%20');\n}",
+    "    //split string into array of characters\n    let charArray = string.split('');\n    //count number of spaces in array\n    let spaceCount = charArray.filter(char => char === ' ').length;\n    //calculate number of characters needed to replace spaces\n    let newLength = charArray.length + spaceCount * 2;\n    //create new array of characters with new length\n    let newCharArray = new Array(newLength);\n    //iterate over original array and add characters to new array\n    for(let i = 0; i < charArray.length; i++){\n        if(charArray[i] === ' '){\n            newCharArray[i * 3] = '%';\n            newCharArray[i * 3 + 1] = '2';\n            newCharArray[i * 3 + 2] = '0';\n        }else{\n            newCharArray[i * 3] = charArray[i];\n        }\n    }\n    //join new array into string and return\n    return newCharArray.join('');\n}\n",
+    "    let new_string = string.split(' ').join('%20');\n    return new_string;\n}\n",
+    "    return string.split(\" \").join(\"%20\");\n}"
+  ]
+}

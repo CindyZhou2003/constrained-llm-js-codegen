@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_99_closest_integer",
+  "language": "js",
+  "prompt": "//Create a function that takes a value (string) representing a number\n// and returns the closest integer to it. If the number is equidistant\n// from two integers, round it away from zero.\n// Examples\n// >>> closest_integer(\"10\")\n// 10\n// >>> closest_integer(\"15.3\")\n// 15\n// Note:\n// Rounding away from zero means that if the given number is equidistant\n// from two integers, the one you should return is the one that is the\n// farthest from zero. For example closest_integer(\"14.5\") should\n// return 15 and closest_integer(\"-14.5\") should return -15.\nfunction closest_integer(value){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_99_closest_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_integer;\n  assert.deepEqual(candidate(\"10\"),10);\n  assert.deepEqual(candidate(\"14.5\"),15);\n  assert.deepEqual(candidate(\"-15.5\"),-16);\n  assert.deepEqual(candidate(\"15.3\"),15);\n  assert.deepEqual(candidate(\"0\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var num = parseFloat(value);\n    var r = Math.floor(num);\n    if(Math.abs(num - r) === 0.5){\n        return num > 0 ? Math.ceil(num) : Math.floor(num);\n    }\n    return r;\n}\n",
+    "    var rounded = Math.round(value);\n    if(Math.abs(value-rounded) === 0.5) {\n        return value > 0 ? Math.ceil(value) : Math.floor(value);\n    } else {\n        return rounded;\n    }\n}\n",
+    "  return Math.round(value);\n}\n",
+    "    return Math.sign(value) * Math.round(Math.abs(value));\n}",
+    "    let num = Number(value);\n    let rounded = Math.round(num);\n    let diff = Math.abs(num - rounded);\n    let next = Math.abs(num - (rounded + 1));\n    let prev = Math.abs(num - (rounded - 1));\n    if (next < prev){\n        return rounded + 1;\n    }\n    else if (prev < next){\n        return rounded - 1;\n    }\n    else {\n        return rounded;\n    }\n}"
+  ]
+}

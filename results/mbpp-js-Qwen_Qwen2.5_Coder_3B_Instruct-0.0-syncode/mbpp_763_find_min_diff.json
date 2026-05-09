@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Sort the array\n    arr.sort((a, b) => a - b);\n    let min_diff = arr[n - 1] - arr[0];\n    for(let i = 1; i < n - 1; i++){\n        min_diff = Math.min(min_diff, arr[i + 1] - arr[i]);\n    }\n    return min_diff;\n}\nlet arr = [4, 9, 1, 3, 2];\nlet n = arr.length;"
+    "    // Sort the array\n    arr.sort((a, b) => a - b);\n    // Initialize the minimum difference to a large number\n    let min_diff = Number.MAX_VALUE;\n    // Iterate through the array and find the minimum difference\n    for(let i = 0; i < n - 1; i++){\n        if(arr[i + 1] - arr[i] < min_diff){\n            min_diff = arr[i + 1] - arr[i];\n        }\n    }\n    // Return the minimum difference\n    return min_diff;\n}"
   ]
 }

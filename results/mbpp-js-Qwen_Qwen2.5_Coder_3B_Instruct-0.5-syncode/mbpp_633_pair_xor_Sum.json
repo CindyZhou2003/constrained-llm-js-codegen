@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_633_pair_xor_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of xor of all pairs of numbers in the given array.\nfunction pair_xor_Sum(arr, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_633_pair_xor_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pair_xor_Sum;\n  assert.deepEqual(candidate([5, 9, 7, 6], 4),47);\n  assert.deepEqual(candidate([7, 3, 5], 3),12);\n  assert.deepEqual(candidate([7, 3], 2),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            sum += (arr[i] ^ arr[j]);\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            sum += (arr[i] ^ arr[j]);\n        }\n    }\n    return sum;\n}",
+    "    let ans = 0;\n    // Iterate through each element in the array\n    for(let i = 0; i < n; i++){\n        // Iterate through each element after the current one\n        for(let j = i + 1; j < n; j++){\n            // Calculate the xor of the current pair and add it to the sum\n            ans += arr[i] ^ arr[j];\n        }\n    }\n    return ans;\n}",
+    "    // Initialize the sum of xor to 0\n    let sum = 0;\n    // Iterate over the array\n    for(let i = 0; i < n; i++){\n        // Iterate over the array again\n        for(let j = 0; j < n; j++){\n            // Calculate the xor of the current pair of numbers\n            let xor = arr[i] ^ arr[j];\n            // Add the xor to the sum\n            sum += xor;\n        }\n    }\n    // Return the sum of xor of all pairs of numbers\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            sum += arr[i] ^ arr[j];\n        }\n    }\n    return sum;\n}"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let regex = /\\// Create a function that matches a word containing 'z'."
+    "    let regex = /\\b\\w*z\\w*\\b/;\n    return regex.test(text);\n}"
   ]
 }

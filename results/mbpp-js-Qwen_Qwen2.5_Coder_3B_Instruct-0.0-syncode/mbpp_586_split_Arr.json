@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var arr = l.slice(0, n);\n    var arr2 = l.slice(n);\n    arr2.push(arr);\n    return arr2;\n}"
+    "    var arr = l.slice(0, n);\n    var arr2 = l.slice(n);\n    var arr3 = arr2.concat(arr);\n    return arr3;\n}"
   ]
 }

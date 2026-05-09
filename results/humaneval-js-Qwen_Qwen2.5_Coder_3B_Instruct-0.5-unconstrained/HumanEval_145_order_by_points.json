@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_145_order_by_points",
+  "language": "js",
+  "prompt": "//Write a function which sorts the given array of integers\n// in ascending order according to the sum of their digits.\n// Note: if there are several items with similar sum of their digits,\n// order them based on their index in original array.\n// For example:\n// >>> order_by_points([1, 11, -1, -11, -12])\n// [-1, -11, 1, -12, 11]\n// >>> order_by_points([])\n// []\nfunction order_by_points(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_145_order_by_points.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = order_by_points;\n  assert.deepEqual(candidate([1, 11, -1, -11, -12]),[-1, -11, 1, -12, 11]);\n  assert.deepEqual(candidate([1234, 423, 463, 145, 2, 423, 423, 53, 6, 37, 3457, 3, 56, 0, 46]),[0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, -11, -32, 43, 54, -98, 2, -3]),[-3, -32, -98, -11, 1, 2, 43, 54]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),[1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]);\n  assert.deepEqual(candidate([0, 6, 6, -76, -21, 23, 4]),[-76, -21, 0, 4, 23, 6, 6]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  return nums.sort((a, b) => {\n    let sumA = a.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n    let sumB = b.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n\n    if (sumA === sumB) {\n      return nums.indexOf(a) - nums.indexOf(b);\n    }\n\n    return sumA - sumB;\n  });\n}\n",
+    "    return nums.sort((a,b)=>{\n        let sumA = a.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);\n        let sumB = b.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);\n        if(sumA === sumB){\n            return nums.indexOf(a) - nums.indexOf(b);\n        }\n        return sumA - sumB;\n    });\n}",
+    "    return nums.sort((a, b) => {\n        let sumA = a.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n        let sumB = b.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n        if (sumA === sumB) {\n            return nums.indexOf(a) - nums.indexOf(b);\n        }\n        return sumA - sumB;\n    });\n}\n",
+    "    // if the array is empty, return an empty array\n    if (nums.length === 0) {\n        return [];\n    }\n    // create a new array to store the original indices of the numbers\n    let indices = [...Array(nums.length).keys()];\n    // sort the numbers based on the sum of their digits and their original indices\n    return nums.sort((a, b) => {\n        let sumA = a.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);\n        let sumB = b.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);\n        if (sumA === sumB) {\n            return indices[nums.indexOf(a)] - indices[nums.indexOf(b)];\n        }\n        return sumA - sumB;\n    });\n}",
+    "    return nums.sort((a, b) => {\n        const sumA = a.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n        const sumB = b.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);\n        if (sumA === sumB) return nums.indexOf(a) - nums.indexOf(b);\n        return sumA - sumB;\n    });\n}\n"
+  ]
+}

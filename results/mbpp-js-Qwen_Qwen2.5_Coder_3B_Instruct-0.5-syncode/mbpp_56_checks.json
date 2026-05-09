@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_56_checks",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check if a given number is one less than twice its reverse.\nfunction checks(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_56_checks.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = checks;\n  assert.deepEqual(candidate(70),false);\n  assert.deepEqual(candidate(23),false);\n  assert.deepEqual(candidate(73),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let reverse = 0;\n    let temp = n;\n    while(temp > 0){\n        reverse = reverse * 10 + temp % 10;\n        temp = Math.floor(temp / 10);\n    }\n    return n === 2 * reverse - 1;\n}",
+    "    let reverse=n.toString().split('').reverse().join('');\n    let twice=reverse*2;\n    if(twice-n==1){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    var reverse = 0;\n    var temp = n;\n    while(temp > 0){\n        var digit = temp % 10;\n        reverse = reverse * 10 + digit;\n        temp = Math.floor(temp / 10);\n    }\n    return n === 2 * reverse - 1;\n}",
+    "    var x = n.toString();\n    var y = x.split('').reverse().join('');\n    y = parseInt(y);\n    if(n === 2 * y - 1){\n        return true;\n    }\n    return false;\n}",
+    "    let r = n.toString().split('').reverse().join('');\n    let t = (n*2)-1;\n    return r == t;\n}"
+  ]
+}

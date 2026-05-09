@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_737_check_str",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given string is starting with a vowel or not using regex.\nfunction check_str(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_737_check_str.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_str;\n  assert.deepEqual(candidate(\"annie\"),true);\n  assert.deepEqual(candidate(\"dawood\"),false);\n  assert.deepEqual(candidate(\"Else\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Define the regex pattern to match strings starting with a vowel\n    let regex = /^[aeiouAEIOU]/;\n    // Check if the string matches the regex pattern\n    if(regex.test(string)){\n        return true;\n    } else {\n        return false;\n    }\n}\n",
+    "    let regex = /^[aeiouAEIOU]/;\n    if(regex.test(string)){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    var str = string.match(/[aeiouAEIOU]/g);\n    if(str != null){\n        console.log(\"String starts with vowel\");\n    }\n    else{\n        console.log(\"String does not starts with vowel\");\n    }\n}\ncheck_str(\"Apple\");\ncheck_str(\"Banana\");",
+    "    //regex to check whether the given string is starting with a vowel or not\n    let regex=/^[aeiou]/;\n    //check whether the given string is starting with a vowel or not\n    if(regex.test(string)){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    //regex to check if string starts with a vowel\n    let regex = /^[aeiou]/;\n    //check if string starts with a vowel\n    if(regex.test(string)){\n        console.log(\"The string starts with a vowel\");\n    }else{\n        console.log(\"The string does not start with a vowel\");\n    }\n}"
+  ]
+}

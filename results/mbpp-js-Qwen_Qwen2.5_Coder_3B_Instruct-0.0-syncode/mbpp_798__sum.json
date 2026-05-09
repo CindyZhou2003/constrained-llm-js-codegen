@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    return arr.reduce((acc, curr) => acc + curr, 0);\n}\n"
+    "    var sum = 0;\n    for(var i = 0; i < arr.length; i++){\n        sum += arr[i];\n    }\n    return sum;\n}"
   ]
 }

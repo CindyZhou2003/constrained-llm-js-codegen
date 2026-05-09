@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_40_triples_sum_to_zero",
+  "language": "js",
+  "prompt": "//triples_sum_to_zero takes an array of integers as an input.\n// it returns true if there are three distinct elements in the array that\n// sum to zero, and false otherwise.\n// >>> triples_sum_to_zero([1, 3, 5, 0])\n// false\n// >>> triples_sum_to_zero([1, 3, -2, 1])\n// true\n// >>> triples_sum_to_zero([1, 2, 3, 7])\n// false\n// >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n// true\n// >>> triples_sum_to_zero([1])\n// false\nfunction triples_sum_to_zero(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_40_triples_sum_to_zero.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triples_sum_to_zero;\n  assert.deepEqual(candidate([1, 3, 5, 0]),false);\n  assert.deepEqual(candidate([1, 3, 5, -1]),false);\n  assert.deepEqual(candidate([1, 3, -2, 1]),true);\n  assert.deepEqual(candidate([1, 2, 3, 7]),false);\n  assert.deepEqual(candidate([1, 2, 5, 7]),false);\n  assert.deepEqual(candidate([2, 4, -5, 3, 9, 7]),true);\n  assert.deepEqual(candidate([1]),false);\n  assert.deepEqual(candidate([1, 3, 5, -100]),false);\n  assert.deepEqual(candidate([100, 3, 5, -100]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var len=l.length;\n    if(len<3){\n        return false;\n    }\n    for(var i=0;i<len-2;i++){\n        for(var j=i+1;j<len-1;j++){\n            for(var k=j+1;k<len;k++){\n                if(l[i]+l[j]+l[k]==0){\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n\n",
+    "    // sort the array\n    l.sort((a,b) => a - b);\n    // iterate through the array\n    for(let i = 0; i < l.length - 2; i++){\n        // use two pointers to find the other two elements\n        let left = i + 1;\n        let right = l.length - 1;\n        while(left < right){\n            let sum = l[i] + l[left] + l[right];\n            if(sum === 0){\n                return true;\n            } else if(sum < 0){\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return false;\n}",
+    "    // your code here\n    let len = l.length;\n    if(len < 3) return false;\n    for(let i = 0; i < len; i++){\n        for(let j = i + 1; j < len; j++){\n            for(let k = j + 1; k < len; k++){\n                if(l[i] + l[j] + l[k] === 0){\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}\n",
+    "    // your code here\n}",
+    "    var n = l.length;\n    if(n < 3) return false;\n    l.sort(function(a,b){\n        return a-b;\n    });\n    for(var i = 0; i < n-2; i++){\n        var left = i+1;\n        var right = n-1;\n        while(left < right){\n            var sum = l[i] + l[left] + l[right];\n            if(sum === 0){\n                return true;\n            }else if(sum < 0){\n                left++;\n            }else{\n                right--;\n            }\n        }\n    }\n    return false;\n}"
+  ]
+}

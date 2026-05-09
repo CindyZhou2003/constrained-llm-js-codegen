@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let mask = (1 << r) - (1 << l - 1);\n    return (n & mask) === 0;\n}",
+    "    let mask = ((1 << r) - 1) ^ ((1 << (l - 1)) - 1);\n    return (n & mask) === 0;\n}",
+    "    //Check if all bits are unset in the given range\n    if((n & ((1 << (r - l + 1)) - 1)) == 0){\n        return true;\n    }\n    return false;\n}"
+  ]
+}

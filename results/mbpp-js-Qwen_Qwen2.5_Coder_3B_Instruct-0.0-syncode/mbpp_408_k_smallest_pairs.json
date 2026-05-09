@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let pairs = [];\n    let heap = [];\n    let i = 0;\n    let j = 0;\n    let sum = nums1[i] + nums2[j];\n    heap.push([sum, i, j]);\n    while(k > 0 && heap.length > 0){\n        let [sum, i, j] = heap.shift();\n        pairs.push([nums1[i], nums2[j]]);\n        if(i + 1 < nums1.length){\n            heap.push([nums1[i + 1] + nums2[j], i + 1, j]);\n        }\n        if(j + 1 < nums2.length){\n            heap.push([nums1[i] + nums2[j + 1], i, j + 1]);\n        }\n        k--;\n    }\n    return pairs;\n}"
+    "    let result = [];\n    let heap = [];\n    let i = 0;\n    let j = 0;\n    let sum = nums1[i] + nums2[j];\n    heap.push([sum, i, j]);\n    while(result.length < k && heap.length > 0){\n        let [sum, i, j] = heap.shift();\n        result.push([nums1[i], nums2[j]]);\n        if(i + 1 < nums1.length){\n            heap.push([nums1[i + 1] + nums2[j], i + 1, j]);\n        }\n        if(j + 1 < nums2.length){\n            heap.push([nums1[i] + nums2[j + 1], i, j + 1]);\n        }\n    }\n    return result;\n}"
   ]
 }

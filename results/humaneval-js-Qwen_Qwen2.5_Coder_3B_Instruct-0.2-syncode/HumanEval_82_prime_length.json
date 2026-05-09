@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_82_prime_length",
+  "language": "js",
+  "prompt": "//Write a function that takes a string and returns true if the string\n// length is a prime number or false otherwise\n// Examples\n// >>> prime_length(\"Hello\")\n// true\n// >>> prime_length(\"abcdcba\")\n// true\n// >>> prime_length(\"kittens\")\n// true\n// >>> prime_length(\"orange\")\n// false\nfunction prime_length(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_82_prime_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = prime_length;\n  assert.deepEqual(candidate(\"Hello\"),true);\n  assert.deepEqual(candidate(\"abcdcba\"),true);\n  assert.deepEqual(candidate(\"kittens\"),true);\n  assert.deepEqual(candidate(\"orange\"),false);\n  assert.deepEqual(candidate(\"wow\"),true);\n  assert.deepEqual(candidate(\"world\"),true);\n  assert.deepEqual(candidate(\"MadaM\"),true);\n  assert.deepEqual(candidate(\"Wow\"),true);\n  assert.deepEqual(candidate(\"\"),false);\n  assert.deepEqual(candidate(\"HI\"),true);\n  assert.deepEqual(candidate(\"go\"),true);\n  assert.deepEqual(candidate(\"gogo\"),false);\n  assert.deepEqual(candidate(\"aaaaaaaaaaaaaaa\"),false);\n  assert.deepEqual(candidate(\"Madam\"),true);\n  assert.deepEqual(candidate(\"M\"),false);\n  assert.deepEqual(candidate(\"0\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(string.length === 1 || string.length === 0){\n        return false;\n    }\n    for(let i = 2; i <= Math.sqrt(string.length); i++){\n        if(string.length % i === 0){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    // Helper function to check if a number is prime\n    function is_prime(num){\n        if(num <= 1) return false;\n        if(num <= 3) return true;\n        if(num % 2 === 0 || num % 3 === 0) return false;\n        for(let i = 5; i * i <= num; i += 6){\n            if(num % i === 0 || num % (i + 2) === 0) return false;\n        }\n        return true;\n    }\n    // Check if the length of the string is a prime number\n    return is_prime(string.length);\n}",
+    "    // Helper function to check if a number is prime\n    function is_prime(num){\n        if (num <= 1) return false;\n        if (num <= 3) return true;\n        if (num % 2 === 0 || num % 3 === 0) return false;\n        for (let i = 5; i * i <= num; i += 6){\n            if (num % i === 0 || num % (i + 2) === 0) return false;\n        }\n        return true;\n    }\n\n    // Get the length of the string\n    const length = string.length;\n\n    // Check if the length is a prime number\n    return is_prime(length);\n}\n"
+  ]
+}

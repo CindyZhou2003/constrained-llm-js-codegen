@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Sort the arrays in descending order\n    nums1.sort((a, b) => b - a);\n    nums2.sort((a, b) => b - a);\n    // Initialize an array to store the largest products\n    let largest_products = [];\n    // Iterate over the first N elements of each array\n    for(let i = 0; i < N; i++){\n        // Calculate the product of the current elements\n        let product = nums1[i] * nums2[i];\n        // Add the product to the largest_products array\n        largest_products.push(product);\n    }\n    // Return the largest_products array\n    return largest_products;\n}"
+    "    // Sort the arrays in descending order\n    nums1.sort((a, b) => b - a);\n    nums2.sort((a, b) => b - a);\n    // Initialize an array to store the largest products\n    let largest_products = [];\n    // Iterate over the first N elements of each array\n    for(let i = 0; i < N; i++){\n        // Calculate the product of the current elements from each array\n        let product = nums1[i] * nums2[i];\n        // Add the product to the largest_products array\n        largest_products.push(product);\n    }\n    // Return the largest_products array\n    return largest_products;\n}"
   ]
 }

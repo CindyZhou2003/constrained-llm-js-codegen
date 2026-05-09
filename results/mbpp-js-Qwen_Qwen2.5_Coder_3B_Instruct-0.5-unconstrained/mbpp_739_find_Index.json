@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    var triangular_number = 0;\n    var i = 1;\n    while (true) {\n        triangular_number = (i * (i + 1)) / 2;\n        var digits = triangular_number.toString().length;\n        if (digits === n) {\n            return count;\n        }\n        count++;\n        i++;\n    }\n}",
+    "    var count = 0, i = 1, triangular = 0;\n    while(count < n){\n        triangular = (i * (i + 1)) / 2;\n        i++;\n        var numDigits = triangular.toString().length;\n        if(numDigits === n){\n            count++;\n        }\n    }\n    return i - 1;\n}\n",
+    "  let a = 1;\n  let b = 0;\n  let count = 0;\n  while (true){\n    b = a + b;\n    a = b;\n    count++;\n    if (b.toString().length === n){\n      return count;\n    }\n  }\n}",
+    "    let index = 0;\n    let triangularNumber = 1;\n    while(triangularNumber.toString().length !== n){\n        index++;\n        triangularNumber += index + 1;\n    }\n    return index;\n}",
+    "    var d = 1;\n    var count = 0;\n    var triangular = 0;\n    var index = 0;\n    while(count < n){\n        triangular = (d*(d+1))/2;\n        d++;\n        count = triangular.toString().length;\n        index++;\n    }\n    return index;\n}"
+  ]
+}

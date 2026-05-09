@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let unique = [...new Set(arr)];\n    return unique.length === 1;\n}"
+    "    return arr.length === 1;\n}"
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_118_get_closest_vowel",
+  "language": "js",
+  "prompt": "//You are given a word. Your task is to find the closest vowel that stands between \n// two consonants from the right side of the word (case sensitive).\n// Vowels in the beginning and ending doesn't count. Return empty string if you didn't\n// find any vowel met the above condition. \n// You may assume that the given string contains English letter only.\n// Example:\n// >>> get_closest_vowel(\"yogurt\")\n// \"u\"\n// >>> get_closest_vowel(\"FULL\")\n// \"U\"\n// >>> get_closest_vowel(\"quick\")\n// \"\"\n// >>> get_closest_vowel(\"ab\")\n// \"\"\nfunction get_closest_vowel(word){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_118_get_closest_vowel.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_closest_vowel;\n  assert.deepEqual(candidate(\"yogurt\"),\"u\");\n  assert.deepEqual(candidate(\"full\"),\"u\");\n  assert.deepEqual(candidate(\"easy\"),\"\");\n  assert.deepEqual(candidate(\"eAsy\"),\"\");\n  assert.deepEqual(candidate(\"ali\"),\"\");\n  assert.deepEqual(candidate(\"bad\"),\"a\");\n  assert.deepEqual(candidate(\"most\"),\"o\");\n  assert.deepEqual(candidate(\"ab\"),\"\");\n  assert.deepEqual(candidate(\"ba\"),\"\");\n  assert.deepEqual(candidate(\"quick\"),\"\");\n  assert.deepEqual(candidate(\"anime\"),\"i\");\n  assert.deepEqual(candidate(\"Asia\"),\"\");\n  assert.deepEqual(candidate(\"Above\"),\"o\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let vowels = ['a', 'e', 'i', 'o', 'u'];\n    let result = '';\n    let index = 0;\n    let consonantIndex = 0;\n    let consonantIndex2 = 0;\n    let vowelIndex = 0;\n\n    for(let i = word.length - 1; i >= 0; i--){\n        if(vowels.includes(word[i])){\n            vowelIndex = i;\n        } else if (vowels.includes(word[i-1])){\n            consonantIndex = i;\n        } else if (vowels.includes(word[i+1])){\n            consonantIndex2 = i;\n        }\n        if(vowelIndex > 0 && consonantIndex > 0 && consonantIndex2 > 0){\n            result = word[vowelIndex];\n            break;\n        }\n    }\n    return result;\n}",
+    "    //Your code here\n    //let vowels = ['a', 'e', 'i', 'o', 'u']\n    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']\n    let str = ''\n    for(let i = word.length - 1; i >= 0; i--){\n        if(vowels.includes(word[i])){\n            str = word[i]\n            break\n        }\n    }\n    return str\n}",
+    "    let vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"];\n    let arr = word.split('');\n    let closestVowel = '';\n    for (let i = arr.length - 1; i >= 0; i--) {\n        arr[i] === vowels[0] ? closestVowel = arr[i] : closestVowel = '';\n        if (arr[i] === vowels[0] && arr[i - 1] === vowels[1] && arr[i + 1] === vowels[2]) {\n            return closestVowel;\n        }\n    }\n    return closestVowel;\n}",
+    "    let vowels = \"aeiouAEIOU\";\n    let res = \"\";\n    let prev = word[word.length - 1];\n    let curr = word[word.length - 2];\n    let next = word[word.length - 3];\n    let temp = curr;\n    let prevTemp = prev;\n    let nextTemp = next;\n    for(let i = word.length - 3; i >= 0; i--){\n        if(vowels.indexOf(temp) === -1){\n            prev = temp;\n            temp = curr;\n            curr = next;\n            next = nextTemp;\n            nextTemp = prevTemp;\n            prevTemp = prev;\n        }\n        else{\n            res = temp;\n            return res;\n        }\n    }\n    return res;\n}",
+    "    // your code here\n    let vowels = ['a', 'e', 'i', 'o', 'u'];\n    let min = 1000000;\n    let result = '';\n    for (let i = word.length - 2; i >= 0; i--) {\n        if (vowels.includes(word[i]) && vowels.includes(word[i + 1])) {\n            if (i < min) {\n                min = i;\n                result = word[i];\n            }\n        }\n    }\n    return result;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert N to string to iterate over each digit\n    let str = N.toString();\n    //Initialize variables to store the closest smaller number and the index of the last digit\n    let closest = -1;\n    let index = str.length - 1;\n    //Iterate over each digit in the string\n    for(let i = 0; i < str.length; i++){\n        //If the current digit is smaller than the closest smaller number found so far, update the closest smaller number and the index\n        if(str[i] < closest){\n            closest = str[i];\n            index = i;\n        }\n    }\n    //If the closest smaller number is found, return it as a string\n    if(closest != -1){\n        return closest.toString();\n    }\n    //If no smaller number is found, return -1\n    else{\n        return -1;\n    }\n}",
+    "    //Convert the number to a string\n    let num_str = N.toString();\n    //Initialize the closest number to N\n    let closest = N;\n    //Iterate over the string\n    for(let i = 0; i < num_str.length; i++){\n        //Convert the character to a number\n        let char_num = parseInt(num_str[i]);\n        //If the character is less than the closest number, update the closest number\n        if(char_num < closest){\n            closest = char_num;\n        }\n    }\n    //Return the closest number\n    return closest;\n}",
+    "    //If N is less than 10, return N-1\n    if(N<10){\n        return N-1;\n    }\n    //If N is greater than or equal to 10, return N-10\n    else{\n        return N-10;\n    }\n}"
+  ]
+}

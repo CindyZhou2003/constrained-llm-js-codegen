@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_229_re_arrange_array",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.\nfunction re_arrange_array(arr, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_229_re_arrange_array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = re_arrange_array;\n  assert.deepEqual(candidate([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9),[-1, -3, -7, 4, 5, 6, 2, 8, 9]);\n  assert.deepEqual(candidate([12, -14, -26, 13, 15], 5),[-14, -26, 12, 13, 15]);\n  assert.deepEqual(candidate([10, 24, 36, -42, -39, -78, 85], 7),[-42, -39, -78, 10, 24, 36, 85]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let left = 0;\n    let right = n-1;\n    while(left < right){\n        while(arr[left] < 0 && left < right){\n            left++;\n        }\n        while(arr[right] >= 0 && left < right){\n            right--;\n        }\n        if(left < right){\n            [arr[left], arr[right]] = [arr[right], arr[left]];\n            left++;\n            right--;\n        }\n    }\n    return arr;\n}\n",
+    "    let left = 0;\n    let right = n - 1;\n    while(left < right){\n        if(arr[left] < 0 && arr[right] >= 0){\n            let temp = arr[left];\n            arr[left] = arr[right];\n            arr[right] = temp;\n            left++;\n            right--;\n        } else if(arr[left] < 0 && arr[right] < 0){\n            left++;\n        } else if(arr[left] >= 0 && arr[right] >= 0){\n            right--;\n        } else {\n            left++;\n            right--;\n        }\n    }\n    return arr;\n}\n",
+    "    let left = 0;\n    let right = n - 1;\n    while(left < right){\n        if(arr[left] < 0 && arr[right] < 0){\n            left++;\n        }\n        else if(arr[left] > 0 && arr[right] > 0){\n            right--;\n        }\n        else if(arr[left] < 0 && arr[right] > 0){\n            let temp = arr[left];\n            arr[left] = arr[right];\n            arr[right] = temp;\n            left++;\n            right--;\n        }\n    }\n    return arr;\n}\n",
+    "    let i = 0;\n    let j = n - 1;\n    while(i <= j){\n        if(arr[i] < 0 && arr[j] > 0){\n            [arr[i], arr[j]] = [arr[j], arr[i]];\n            i++;\n            j--;\n        }else if(arr[i] < 0 && arr[j] < 0){\n            i++;\n        }else if(arr[i] > 0 && arr[j] > 0){\n            j--;\n        }else{\n            i++;\n            j--;\n        }\n    }\n    return arr;\n}\n",
+    "    let left = 0;\n    let right = n - 1;\n    while(left < right){\n        if(arr[left] < 0){\n            left++;\n        }else if(arr[right] > 0){\n            right--;\n        }else{\n            [arr[left], arr[right]] = [arr[right], arr[left]];\n        }\n    }\n    return arr;\n}\n"
+  ]
+}

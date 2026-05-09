@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var ludic = [2];\n    var i = 1;\n    while (ludic.length < n){\n        var next_ludic = ludic[i] + 1;\n        while (next_ludic % ludic[i] === 0){\n            next_ludic += 1;\n        }\n        ludic.push(next_ludic);\n        i++;\n    }\n    return ludic;\n}",
+    "    var ludic = [1];\n    var i = 2;\n    while(i <= n){\n        if(i > ludic[ludic.length - 1]){\n            ludic.push(i);\n        }\n        i++;\n    }\n    return ludic;\n}",
+    "    // Create an array to store the lucid numbers\n    var lucid = [];\n    // Create an array to store the non-lucid numbers\n    var non_lucid = [];\n    // Create a counter to keep track of the current number\n    var count = 0;\n    // Create a variable to store the current lucid number\n    var lucid_num = 2;\n    // Create a variable to store the current non-lucid number\n    var non_lucid_num = 3;\n    // Loop until the count reaches n\n    while(count < n){\n        // If the current lucid number is less than or equal to the current non-lucid number\n        if(lucid_num <= non_lucid_num){\n            // Add the current lucid number to the lucid array\n            lucid.push(lucid_num);\n            // Increment the count\n            count++;\n            // Increment the current lucid number\n            lucid_num = non_lucid_num + 1;\n        }\n        // If the current non-lucid number is less than the current lucid number\n        else{\n            // Add the current non-lucid number to the non-lucid array\n            non_lucid.push(non_lucid_num);\n            // Increment the count\n            count++;\n            // Increment the current non-lucid number\n            non_lucid_num = lucid_num + 1;\n        }\n    }\n    // Return the lucid array\n    return lucid;\n}\n",
+    "    var ludic = [];\n    var i = 2;\n    while(ludic.length < n){\n        var j = 0;\n        while(j < ludic.length && ludic[j] < i){\n            j++;\n        }\n        if(j == ludic.length){\n            ludic.push(i);\n        }\n        i++;\n    }\n    return ludic;\n}",
+    "    //Create an array of length n+1 with all elements set to 0\n    let lucid = new Array(n+1).fill(0);\n    //Initialize the first two elements of the array to 1\n    lucid[0] = lucid[1] = 1;\n    //Initialize a variable to keep track of the current position in the array\n    let pos = 2;\n    //Initialize a variable to keep track of the current number to be added to the array\n    let num = 2;\n    //Initialize a variable to keep track of the current index in the array\n    let index = 2;\n    //Initialize a variable to keep track of the number of elements added to the array\n    let count = 2;\n    //Loop until we have added n-1 elements to the array\n    while(count < n){\n        //Check if the current number is a lucid number\n        if(lucid[index] == 0){\n            //Add the current number to the array\n            lucid[index] = num;\n            //Increment the count of elements added to the array\n            count++;\n        }\n        //Increment the index and the current number\n        index++;\n        num++;\n    }\n    //Return the array of lucid numbers\n    return lucid;\n}"
+  ]
+}

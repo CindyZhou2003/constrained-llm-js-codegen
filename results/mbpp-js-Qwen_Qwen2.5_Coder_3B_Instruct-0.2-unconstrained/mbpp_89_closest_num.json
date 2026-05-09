@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var closest = N - 1;\n    while(closest >= 0){\n        if(closest < N){\n            return closest;\n        }\n        closest--;\n    }\n    return closest;\n}",
+    "    var closest = N - 1;\n    while(closest > 0){\n        if(closest % 2 == 0){\n            return closest;\n        }\n        closest--;\n    }\n    return closest;\n}",
+    "    let closest = N - 1;\n    while (closest > 0 && closest % 2 !== 0) {\n        closest--;\n    }\n    return closest;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //left shift 1 by (r-l+1) bits and subtract 1\n    let mask = ((1 << (r - l + 1)) - 1);\n    //right shift n by l bits and mask it with mask\n    let result = (n >> l) & mask;\n    //if result is 0, all bits are unset in the given range\n    return (result === 0);\n}",
+    "    //If l is greater than r then return false\n    if(l > r){\n        return false;\n    }\n    //If l is 0 then all the bits are set in the given range\n    if(l === 0){\n        return true;\n    }\n    //If r is n-1 then all the bits are set in the given range\n    if(r === n - 1){\n        return true;\n    }\n    //If l is 1 and r is n-2 then all the bits are set in the given range\n    if(l === 1 && r === n - 2){\n        return true;\n    }\n    //If l is 2 and r is n-3 then all the bits are set in the given range\n    if(l === 2 && r === n - 3){\n        return true;\n    }\n    //If l is 3 and r is n-4 then all the bits are set in the given range\n    if(l === 3 && r === n - 4){\n        return true;\n    }\n    //If l is 4 and r is n-5 then all the bits are set in the given range\n    if(l === 4 && r === n - 5){\n        return true;\n    }\n    //If l is 5 and r is n-6 then all the bits are set in the given range\n    if(l === 5 && r === n - 6){\n        return true;\n    }\n    //If l is 6 and r is n-7 then all the bits are set in the given range\n    if(l === 6 && r === n - 7){\n        return true;\n    }\n    //If l is 7 and r is n-8 then all the bits are set in the given range\n    if(l === 7 && r === n - 8){\n        return true;\n    }\n    //If l is 8 and r is n-9 then all the bits are set in the given range\n    if(l === 8 && r === n - 9){\n        return true;\n    }\n    //If l is 9 and r is n-10 then all the bits are set in the given range\n    if(l === 9 && r === n - 10){\n        return true;\n    }\n    //If l is 10 and r is n-11 then all the bits are set in the given range",
+    "    // Clear bits in the range [l, r]\n    n = n & ((1 << l) - 1);\n    n = n | ((1 << (r + 1)) - 1);\n    // Check if all bits are clear\n    return n === 0;\n}",
+    "    let num = (1 << r) - 1;\n    let mask = num ^ ((1 << l) - 1);\n    return (n & mask) === 0;\n}\n",
+    "    //Create a mask to unset all the bits in the given range\n    let mask = ((1 << r) - 1) ^ ((1 << (l - 1)) - 1);\n    //Check if the bits in the given range are all unset\n    return (n & mask) === 0;\n}\n"
+  ]
+}

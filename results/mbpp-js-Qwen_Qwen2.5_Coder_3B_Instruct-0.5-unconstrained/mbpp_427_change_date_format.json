@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_427_change_date_format",
+  "language": "js",
+  "prompt": "//Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.\nfunction change_date_format(dt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_427_change_date_format.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = change_date_format;\n  assert.deepEqual(candidate(\"2026-01-02\"),\"02-01-2026\");\n  assert.deepEqual(candidate(\"2020-11-13\"),\"13-11-2020\");\n  assert.deepEqual(candidate(\"2021-04-26\"),\"26-04-2021\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var date = new Date(dt);\n    var day = date.getDate();\n    var month = date.getMonth()+1;\n    var year = date.getFullYear();\n    return day+\"-\"+month+\"-\"+year;\n}",
+    "    let date = dt.split(\"-\");\n    let new_date = date[2]+\"-\"+date[1]+\"-\"+date[0];\n    return new_date;\n}",
+    "    //Split the date on the hyphen\n    let date = dt.split('-');\n    //Return the date in the desired format\n    return date[2]+'-'+date[1]+'-'+date[0];\n}",
+    "    var date = new Date(dt);\n    var dd = String(date.getDate()).padStart(2, '0');\n    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!\n    var yyyy = date.getFullYear();\n    return dd + '-' + mm + '-' + yyyy;\n}",
+    "    var date = new Date(dt);\n    var dd = date.getDate();\n    var mm = date.getMonth() + 1;\n    var yyyy = date.getFullYear();\n    if (dd < 10) dd = '0' + dd;\n    if (mm < 10) mm = '0' + mm;\n    return dd + '-' + mm + '-' + yyyy;\n}"
+  ]
+}

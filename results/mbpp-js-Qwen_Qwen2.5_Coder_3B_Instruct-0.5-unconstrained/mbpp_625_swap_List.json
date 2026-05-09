@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_625_swap_List",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to interchange the first and last element in a given array.\nfunction swap_List(newList){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_625_swap_List.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = swap_List;\n  assert.deepEqual(candidate([1, 2, 3]),[3, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 4]),[4, 2, 3, 4, 1]);\n  assert.deepEqual(candidate([4, 5, 6]),[6, 5, 4]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //check if the array is empty\n    if(newList.length === 0){\n        console.log(\"The array is empty\");\n        return;\n    }\n    //swap the first and last elements\n    let temp = newList[0];\n    newList[0] = newList[newList.length - 1];\n    newList[newList.length - 1] = temp;\n    //return the modified array\n    return newList;\n}",
+    "    var first = newList[0];\n    var last = newList[newList.length-1];\n    newList[0] = last;\n    newList[newList.length-1] = first;\n    return newList;\n}",
+    "    if(newList.length==0){\n        return \"List is empty\";\n    }\n    let temp = newList[0];\n    newList[0] = newList[newList.length-1];\n    newList[newList.length-1] = temp;\n    return newList;\n}",
+    "    let firstElement = newList[0];\n    let lastElement = newList[newList.length-1];\n    newList[0] = lastElement;\n    newList[newList.length-1] = firstElement;\n    return newList;\n}\n\nlet arr = [1,2,3,4,5];",
+    "    let first=newList[0];\n    let last=newList[newList.length-1];\n    newList[0]=last;\n    newList[newList.length-1]=first;\n    return newList;\n}"
+  ]
+}

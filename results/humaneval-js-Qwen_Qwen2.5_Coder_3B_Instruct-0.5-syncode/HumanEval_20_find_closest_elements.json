@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_20_find_closest_elements",
+  "language": "js",
+  "prompt": "//From a supplied array of numbers (of length at least two) select and return two that are the closest to each\n// other and return them in order (smaller number, larger number).\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n// [2.0, 2.2]\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n// [2.0, 2.0]\nfunction find_closest_elements(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_20_find_closest_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_closest_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]),[3.9, 4.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0]),[5.0, 5.9]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]),[2.0, 2.2]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]),[2.0, 2.0]);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1]),[2.2, 3.1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Sort the numbers array in ascending order\n    numbers.sort((a, b) => a - b);\n    // Initialize variables to store the minimum difference and the closest pair\n    let min_diff = Infinity;\n    let closest_pair = [numbers[0], numbers[1]];\n    // Iterate through the sorted array and find the pair with the smallest difference\n    for (let i = 0; i < numbers.length - 1; i++) {\n        let diff = numbers[i + 1] - numbers[i];\n        if (diff < min_diff) {\n            min_diff = diff;\n            closest_pair = [numbers[i], numbers[i + 1]];\n        }\n    }\n    // Return the closest pair\n    return closest_pair;\n}",
+    "    numbers.sort((a,b) => a - b);\n    let closest_pair = [numbers[0], numbers[1]];\n    let min_diff = Math.abs(numbers[1] - numbers[0]);\n\n    for(let i = 1; i < numbers.length - 1; i++){\n        let diff = Math.abs(numbers[i + 1] - numbers[i]);\n        if(diff < min_diff){\n            min_diff = diff;\n            closest_pair = [numbers[i], numbers[i + 1]];\n        }\n    }\n    return closest_pair;\n}\n",
+    "    let closest_pair = [numbers[0], numbers[1]];\n    let smallest_diff = Math.abs(numbers[0] - numbers[1]);\n\n    for(let i = 0; i < numbers.length; i++){\n        for(let j = i + 1; j < numbers.length; j++){\n            let current_diff = Math.abs(numbers[i] - numbers[j]);\n            if(current_diff < smallest_diff){\n                smallest_diff = current_diff;\n                closest_pair = [numbers[i], numbers[j]].sort((a, b) => a - b);\n            }\n        }\n    }\n\n    return closest_pair;\n}\n",
+    "    let closest_pair = [numbers[0], numbers[1]];\n    let smallest_difference = Math.abs(numbers[0] - numbers[1]);\n\n    for(let i = 0; i < numbers.length - 1; i++){\n        for(let j = i + 1; j < numbers.length; j++){\n            let current_difference = Math.abs(numbers[i] - numbers[j]);\n            if(current_difference < smallest_difference){\n                smallest_difference = current_difference;\n                closest_pair = [numbers[i], numbers[j]];\n            }\n        }\n    }\n\n    return closest_pair;\n}",
+    "    numbers.sort((a,b) => a - b);\n    let closest_pair = [numbers[0], numbers[1]];\n    let min_diff = Math.abs(numbers[1] - numbers[0]);\n\n    for(let i = 1; i < numbers.length - 1; i++){\n        let diff = Math.abs(numbers[i + 1] - numbers[i]);\n        if(diff < min_diff){\n            min_diff = diff;\n            closest_pair = [numbers[i], numbers[i + 1]];\n        }\n    }\n\n    return closest_pair;\n}\n"
+  ]
+}

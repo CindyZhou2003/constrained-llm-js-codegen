@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = test_tuple.map(str => str[str.length - 1]);\n    return res;\n}\ntest_tuple = [\"Gfg\", \"is\", \"best\"];\nprint(extract_rear(test_tuple));import java.1.8.0_202;\nimport java.1.8.0_202.util.Arrays;\nimport java.1.8.0_202.util.List;\nimport java.1.8.0_202.util.stream.Collectors;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<String> list = Arrays.asList(\"Gfg\", \"is\", \"best\");\n        List<Character> result = list.stream()\n                .map(str -> str.charAt(str.length() - 1))\n                .collect(Collectors.toList());\n        System.out.println(result);\n    }\n}\n```\n\nThis code snippet demonstrates how to extract the rear index element of each string in the given array using Java. It utilizes the `map` function to apply a lambda expression that extracts the last character of each string. The `collect` function then collects the results into a list. The `Main` class contains the `main` method, which initializes a list of strings, applies the transformation using Java Streams, and prints the resulting list of characters. This approach is efficient and leverages Java's functional programming capabilities."
+    "    res = test_tuple.map(str => str[str.length - 1]);\n    return res;\n}"
   ]
 }

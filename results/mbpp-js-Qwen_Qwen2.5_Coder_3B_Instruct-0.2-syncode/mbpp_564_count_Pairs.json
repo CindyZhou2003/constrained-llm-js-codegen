@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_564_count_Pairs",
+  "language": "js",
+  "prompt": "//Write a JavaScript function which takes an array of integers and counts the number of possible unordered pairs where both elements are unequal.\nfunction count_Pairs(arr, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_564_count_Pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Pairs;\n  assert.deepEqual(candidate([1, 2, 1], 3),2);\n  assert.deepEqual(candidate([1, 1, 1, 1], 4),0);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], 5),10);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Initialize the count of pairs\n    let count = 0;\n    // Iterate through the array\n    for(let i = 0; i < n; i++){\n        // Iterate through the array again\n        for(let j = i + 1; j < n; j++){\n            // Check if the elements are unequal\n            if(arr[i] != arr[j]){\n                // Increment the count of pairs\n                count++;\n            }\n        }\n    }\n    // Return the count of pairs\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            if(arr[i] != arr[j]){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    // Initialize a counter to keep track of the number of pairs\n    let count = 0;\n    // Iterate through the array using two nested loops\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            // Check if the elements at indices i and j are unequal\n            if(arr[i] != arr[j]){\n                // If they are unequal, increment the counter\n                count++;\n            }\n        }\n    }\n    // Return the total count of pairs\n    return count;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_744_check_none",
+  "language": "js",
+  "prompt": "//Write a function to check if the given array has any undefined value or not.\nfunction check_none(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_744_check_none.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_none;\n  assert.deepEqual(candidate([10, 4, 5, 6, undefined]),true);\n  assert.deepEqual(candidate([7, 8, 9, 11, 14]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, undefined]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = all(test_tup)\n    return res\n#Driver code\ntest_tup = [1, 2, 3, 4]\nprint(\"The original tuple is : \"+str(test_tup))\nres = check_none(test_tup)\nprint(\"All values are defined : \"+str(res))",
+    "    for(i in test_tup){\n        if(test_tup[i] == undefined){\n            return \"undefined\"\n        }\n    }\n    return \"defined\"\n}\ntest_tup = [1, 2, undefined, 4]\nprint(check_none(test_tup))\ntest_tup = [1, 2, 4]\nprint(check_none(test_tup))",
+    "    res = test_tup == undefined\n    return res\ntest_tup = [1,2,3,4,5]\nprint(check_none(test_tup))\ntest_tup = undefined\nprint(check_none(test_tup))",
+    "    for(ele in test_tup){\n        if(test_tup[ele] === undefined){\n            return true\n        }\n    }\n    return false\n}\ntest_tup = [5, 6, 7, 8, undefined, 10]\nprint(check_none(test_tup))",
+    "    res = test_tup == undefined\n    return res\n}\ntest_tup = [1,2,3,4]\nprint(\"The original tuple is : \" + str(test_tup))\nprint(\"Is tuple undefined? : \" + str(check_none(test_tup)))"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_430_parabola_directrix",
+  "language": "js",
+  "prompt": "//Write a function to find the directrix of a parabola.\nfunction parabola_directrix(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_430_parabola_directrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parabola_directrix;\n  assert.deepEqual(candidate(5, 3, 2),-198);\n  assert.deepEqual(candidate(9, 8, 4),-2336);\n  assert.deepEqual(candidate(2, 4, 6),-130);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //The directrix of a parabola given by the equation ax^2 + bx + c = 0 is y = -1/(4a) + c/a\n    return -1/(4*a) + c/a;\n}\n",
+    "    //Directrix of a parabola in the form y = ax^2 + bx + c is given by y = -1/(4a) + c\n    return -1/(4*a) + c;\n}\n",
+    "    //The directrix of a parabola is given by the formula x = -b/(2a)\n    return -b/(2*a);\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_475_sort_counter",
+  "language": "js",
+  "prompt": "//Write a function to sort an object by value.\nfunction sort_counter(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_475_sort_counter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_counter;\n  assert.deepEqual(candidate({\"Math\": 81, \"Physics\": 83, \"Chemistry\": 87}),[[\"Chemistry\", 87], [\"Physics\", 83], [\"Math\", 81]]);\n  assert.deepEqual(candidate({\"Math\": 400, \"Physics\": 300, \"Chemistry\": 250}),[[\"Math\", 400], [\"Physics\", 300], [\"Chemistry\", 250]]);\n  assert.deepEqual(candidate({\"Math\": 900, \"Physics\": 1000, \"Chemistry\": 1250}),[[\"Chemistry\", 1250], [\"Physics\", 1000], [\"Math\", 900]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var dict2 = {};\n    var keys = Object.keys(dict1);\n    keys.sort(function(a,b){return dict1[b]-dict1[a]});\n    for(var i=0;i<keys.length;i++){\n        dict2[keys[i]] = dict1[keys[i]];\n    }\n    return dict2;\n}",
+    "    let dict2 = Object.entries(dict1).sort((a,b) => a[1] - b[1]);\n    let dict3 = Object.fromEntries(dict2);\n    return dict3;\n}\n",
+    "    var arr = [];\n    for(var key in dict1){\n        arr.push([key, dict1[key]]);\n    }\n    arr.sort(function(a, b){\n        return a[1] - b[1];\n    });\n    var dict2 = {};\n    for(var i = 0; i < arr.length; i++){\n        dict2[arr[i][0]] = arr[i][1];\n    }\n    return dict2;\n}"
+  ]
+}

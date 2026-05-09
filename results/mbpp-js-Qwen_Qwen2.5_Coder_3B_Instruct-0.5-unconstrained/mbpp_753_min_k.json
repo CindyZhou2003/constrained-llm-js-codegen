@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_753_min_k",
+  "language": "js",
+  "prompt": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_753_min_k.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Using sort to sort the array in ascending order\n    test_list.sort((a, b) => a - b);\n    //Using slice to return the first k elements of the sorted array\n    return test_list.slice(0, K);\n}\n",
+    "    // initializing min element as first element\n    min = test_list[0];\n    for(i in test_list){\n        // updating min if current element is less than min\n        if(test_list[i] < min){\n            min = test_list[i];\n        }\n    }\n    // initializing count of min element\n    count = 0;\n    for(i in test_list){\n        // updating count if current element is equal to min\n        if(test_list[i] == min){\n            count += 1;\n        }\n    }\n    // initializing result list\n    res = [];\n    // appending min element to result list K times\n    for(i in range(K)){\n        res.append(min);\n    }\n    return res;\n}",
+    "    //using sort function to sort the array\n    test_list.sort((a, b) => a - b);\n    //using slice function to get the minimum k records\n    result = test_list.slice(0, K);\n    //returning the result\n    return result;\n}",
+    "    //using sort() function to sort the array in ascending order\n    test_list.sort((a,b) => a - b);\n    //using slice() function to slice the array from 0 to K\n    res = test_list.slice(0, K);\n    //returning the result\n    return res;\n}",
+    "    //Using sort() to sort the list in ascending order\n    test_list.sort((a,b) => a-b);\n    //Using slice() to get the first k elements of the list\n    res = test_list.slice(0, K);\n    return res;\n}\n"
+  ]
+}

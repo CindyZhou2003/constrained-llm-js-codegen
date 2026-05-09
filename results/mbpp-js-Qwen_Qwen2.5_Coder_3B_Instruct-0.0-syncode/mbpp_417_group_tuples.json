@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = [];\n    for(var i = 0; i < Input.length; i++){\n        for(var j = 0; j < Input[i].length; j++){\n            if(result.length == 0){\n                result.push(Input[i][j]);\n            }else{\n                if(result[0] == Input[i][j]){\n                    break;\n                }else{\n                    result.push(Input[i][j]);\n                }\n            }\n        }\n    }\n    return result;\n}\n"
+    "    var result = [];\n    for(var i = 0; i < Input.length; i++){\n        for(var j = 0; j < Input[i].length; j++){\n            if(result.length == 0){\n                result.push(Input[i][j]);\n            }else{\n                if(result[0] == Input[i][j]){\n                    break;\n                }else{\n                    result.push(Input[i][j]);\n                }\n            }\n        }\n    }\n    return result;\n}"
   ]
 }

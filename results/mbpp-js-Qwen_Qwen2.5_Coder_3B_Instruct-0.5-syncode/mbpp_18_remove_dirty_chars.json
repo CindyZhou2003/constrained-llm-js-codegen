@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_18_remove_dirty_chars",
+  "language": "js",
+  "prompt": "//Write a function to remove characters from the first string which are present in the second string.\nfunction remove_dirty_chars(string, second_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_18_remove_dirty_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_dirty_chars;\n  assert.deepEqual(candidate(\"probasscurve\", \"pros\"),\"bacuve\");\n  assert.deepEqual(candidate(\"digitalindia\", \"talent\"),\"digiidi\");\n  assert.deepEqual(candidate(\"exoticmiles\", \"toxic\"),\"emles\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = '';\n    for(let i = 0; i < string.length; i++){\n        let found = false;\n        for(let j = 0; j < second_string.length; j++){\n            if(string[i] === second_string[j]){\n                found = true;\n                break;\n            }\n        }\n        if(!found){\n            result += string[i];\n        }\n    }\n    return result;\n}",
+    "    var result = \"\";\n    for(var i = 0; i < string.length; i++){\n        if(second_string.indexOf(string[i]) == -1){\n            result += string[i];\n        }\n    }\n    return result;\n}",
+    "    var result = string.split('');\n    var index;\n    for(var i=0; i<second_string.length; i++){\n        index = result.indexOf(second_string[i]);\n        if(index != -1){\n            result.splice(index, 1);\n        }\n    }\n    return result.join('');\n}\n",
+    "    let result = [];\n    for(let i = 0; i < string.length; i++){\n        if(second_string.indexOf(string[i]) === -1){\n            result.push(string[i]);\n        }\n    }\n    return result.join('');\n}",
+    "    let result = string.split('');\n    let second_string_arr = second_string.split('');\n    let set ="
+  ]
+}

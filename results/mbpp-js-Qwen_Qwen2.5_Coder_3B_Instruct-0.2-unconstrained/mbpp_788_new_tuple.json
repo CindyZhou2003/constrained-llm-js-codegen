@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Create a new array by concatenating the string and array\n    res = test_str + test_list\n    return res\n# Test the function\ntest_list = [1, 2, 3]\ntest_str = \"Hello\"\nprint(new_tuple(test_list, test_str))  # Output: Hello[1, 2, 3]```\n\n\nThis function takes two arguments, a list and a string, and returns a new array by concatenating the string and the list. The `+` operator is used to concatenate the two arguments. The function is tested with a list `[1, 2, 3]` and a string `\"Hello\"`, and the output is `Hello[1, 2, 3]`. ```python\n```python\n#Write a function to create a new array from the given string and array.\ndef new_tuple(test_list, test_str):\n    # Create a new array by concatenating the string and array\n    res = test_str + test_list\n    return res\n# Test the function\ntest_list = [1, 2, 3]\ntest_str = \"Hello\"\nprint(new_tuple(test_list, test_str))  # Output: Hello[1, 2, 3]```\n\n\nThis function takes two arguments, a list and a string, and returns a new array by concatenating the string and the list. The `+` operator is used to concatenate the two arguments. The function is tested with a list `[1, 2, 3]` and a string `\"Hello\"`, and the output is `Hello[1, 2, 3]`. ```python\n```python\n#Write a function to create a new array from the given string and array.\ndef new_tuple(test_list, test_str):\n    # Create a new array by concatenating the string and array\n    res = test_str + test_list\n    return res\n# Test the function\ntest_list = [1, 2, 3]\ntest_str = \"Hello\"\nprint(new_tuple(test_list, test_str))  # Output: Hello[1, 2, 3]```\n\n\nThis function takes two arguments, a list and a string, and returns a new array by concatenating the string and the list. The `+` operator is used to concatenate the two arguments. The function is tested with a list `[1, 2, 3]` and a string `\"Hello\"`, and the output is",
+    "    # Using list comprehension to create a new array\n    res = [ele for ele in test_str if ele in test_list]\n    return res\n# Driver code\ntest_list = [1, 2, 3, 4, 5]\ntest_str = \"geeksforgeeks\"\nprint(new_tuple(test_list, test_str))",
+    "    # Create a new array by concatenating the string and array\n    new_tuple = test_str + test_list\n    return new_tuple\n# Example usage\ntest_list = [1, 2, 3]\ntest_str = \"Hello\"\nresult = new_tuple(test_list, test_str)\nprint(result)  # Output: Hello[1, 2, 3]\n```\n\n\nIn this code, we define a function `new_tuple` that takes two parameters: `test_list` and `test_str`. The function concatenates the string `test_str` with the array `test_list` and returns the resulting tuple. We then demonstrate how to use this function with an example list `[1, 2, 3]` and a string `\"Hello\"`. The output is `Hello[1, 2, 3]`, which shows the string and array concatenated together. This approach is useful when you need to combine different data types into a single tuple for further processing or storage."
+  ]
+}

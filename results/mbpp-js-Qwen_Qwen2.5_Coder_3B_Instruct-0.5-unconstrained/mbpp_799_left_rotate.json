@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_799_left_rotate",
+  "language": "js",
+  "prompt": "//Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.\nfunction left_rotate(n, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_799_left_rotate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = left_rotate;\n  assert.deepEqual(candidate(16, 2),64);\n  assert.deepEqual(candidate(10, 2),40);\n  assert.deepEqual(candidate(99, 3),792);\n  assert.deepEqual(candidate(99, 3),792);\n  assert.deepEqual(candidate(1, 3),8);\n  assert.deepEqual(candidate(5, 3),40);\n  assert.deepEqual(candidate(29, 3),232);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //left shifting n by d bits\n    let result = n << d;\n    //right shifting result by (32 - d) bits to get the left rotated result\n    result = result >> (32 - d);\n    return result;\n}\n",
+    "    var left = n << d;\n    var right = n >> (32 - d);\n    return left | right;\n}\n",
+    "    var a = Math.floor(n/(Math.pow(2,d)))%Math.pow(2,d);\n    var b = Math.floor(n%(Math.pow(2,d)));\n    return a*Math.pow(2,(32-d))+b;\n}\n",
+    "    return (n << d) | (n >>> (32 - d));\n}\n",
+    "    //If d is greater than 32, then we need to take the remainder of d with 32.\n    if(d > 32){\n        d = d % 32;\n    }\n    //We can use bitwise operations to rotate the bits.\n    //We can use the left shift operator to shift the bits to the left by d bits.\n    //We can use the right shift operator to shift the bits to the right by (32 - d) bits.\n    //We can use the bitwise OR operator to combine the two shifted bits.\n    return (n << d) | (n >> (32 - d));\n}\n"
+  ]
+}

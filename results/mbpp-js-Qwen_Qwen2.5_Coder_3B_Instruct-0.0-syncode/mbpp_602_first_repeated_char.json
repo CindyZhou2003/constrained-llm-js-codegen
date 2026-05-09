@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var len = str1.length;\n    var char_map = {};\n    for(var i = 0; i < len; i++){\n        var char = str1[i];\n        if(char_map[char]){\n            return char;\n        }\n        char_map[char] = true;\n    }\n    return null;\n}"
+    "    var len = str1.length;\n    var char_map = {};\n    for(var i = 0; i < len; i++){\n        if(char_map[str1[i]]){\n            return str1[i];\n        }\n        char_map[str1[i]] = 1;\n    }\n    return null;\n}"
   ]
 }

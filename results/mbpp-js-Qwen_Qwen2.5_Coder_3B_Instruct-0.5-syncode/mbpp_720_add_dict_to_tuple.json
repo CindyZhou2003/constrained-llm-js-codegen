@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_tup + tuple([test_dict])\n    return res\ntest_tup = (1, 2, 3)\n \n \t// printing original tuple\n \t// printing original dictionary\n \t// printing result\n \t// print(add_dict_to_tuple(test_tup, test_dict)) # Output: (1, 2, 3, {1: 2, 3: 4})from collections import defaultdict\n\t// Define a function to add a dictionary to a tuple\n\t// The function takes a tuple and a dictionary as arguments\n\t// It returns a new tuple with the dictionary added as a list\n\t// The dictionary is converted to a list using the items() method\n\t// The function uses the defaultdict class to handle the case where the tuple is empty\n\t// The defaultdict class initializes the dictionary with an empty list\n\t// The function returns the new tuple with the dictionary added as a list\n\t// The function is tested with a sample tuple and dictionary\n\t// The output is printed to the console\n\t// The output is (1, 2, 3, {1: 2, 3: 4})\n\t// The function is also tested with an empty tuple and dictionary\n\t// The output is ()\n\t// The function is also tested with a non-empty tuple and a non-empty dictionary\n\t// The output is (1, 2, 3, {1: 2, 3: 4})\n\t// The function is also tested with a non-empty tuple and an empty dictionary\n\t// The output is (1, 2, 3, [])\n\t// The function is also tested with an empty tuple and a non-empty dictionary\n\t// The output is ([1, 2, 3], {1: 2, 3: 4})\n\t// The function is also tested with an empty tuple and an empty dictionary\n\t// The output is ([1, 2, 3], [])\n\t// The function is also tested with a non-empty tuple and a non-empty dictionary\n\t// The output is (1, 2, 3, {1: 2, 3: 4})\n\t// The function is also tested with a non-empty tuple and an empty dictionary\n\t// The output is (1, 2, 3, [])\n\t// The function is also tested with an empty tuple and a non-empty dictionary\n\t//",
+    "    res = test_tup + (test_dict,)\n",
+    "    res = test_tup + (test_dict,)\n",
+    "    res = test_tup + (test_dict,)\n",
+    "    res = test_tup + (test_dict,)\n"
+  ]
+}

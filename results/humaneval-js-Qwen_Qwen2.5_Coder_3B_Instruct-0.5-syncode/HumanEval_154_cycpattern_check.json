@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // your code here\n    // check if b is a substring of a\n    if(a.includes(b)){\n        return true;\n    }\n    // check if any rotation of b is a substring of a\n    // get all rotations of b\n    let rotations = [];\n    for(let i = 0; i < b.length; i++){\n        rotations.push(b.slice(i) + b.slice(0, i));\n    }\n    // check if any rotation is a substring of a\n    for(let rotation of rotations){\n        if(a.includes(rotation)){\n            return true;\n        }\n    }\n    // if none of the rotations is a substring of a, return false\n    return false;\n}",
+    "    // if the length of b is greater than a, return false\n    if(b.length > a.length){\n        return false;\n    }\n    // create a new string that is the concatenation of a and a\n    let newString = a + a;\n    // check if b is a substring of newString\n    return newString.includes(b);\n}",
+    "  return (a.length >= b.length) && a.includes(b) || a.includes(b.slice(1) + b.slice(0,1));\n}",
+    "    for(let i = 0; i < b.length; i++){\n        if(a.indexOf(b.slice(i) + b.slice(0, i)) !== -1){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    let temp = b;\n    let len = b.length;\n    for(let i=0; i<len; i++){\n        let sub = temp.substring(1) + temp.substring(0,1);\n        if(a.includes(sub)){\n            return true;\n        }\n        temp = sub;\n    }\n    return false;\n}"
+  ]
+}

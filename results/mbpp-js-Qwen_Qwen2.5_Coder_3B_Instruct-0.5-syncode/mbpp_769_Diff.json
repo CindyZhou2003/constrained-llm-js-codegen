@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_769_Diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to get the difference between two lists.\nfunction Diff(li1, li2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_769_Diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Diff;\n  assert.deepEqual(candidate([10, 15, 20, 25, 30, 35, 40], [25, 40, 35]),[10, 20, 30, 15]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 1]),[2, 3, 4, 5, 6, 7]);\n  assert.deepEqual(candidate([1, 2, 3], [6, 7, 1]),[2, 3, 6, 7]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr1 = li1.concat();\n    var arr2 = li2.concat();\n    arr1.push(...arr2);\n    var newArr = arr1.filter(function(item, index, self) {\n        return self.indexOf(item) === index;\n    });\n    return newArr;\n}\n",
+    "    var li1Set = new Set(li1);\n    var li2Set = new Set(li2);\n    var intersection = new Set([...li1Set].filter(x => li2Set.has(x)));\n    var difference = new Set([...li1Set].filter(x => !li2Set.has(x)).concat([...li2Set].filter(x => !li1Set.has(x))));\n    return [difference, intersection];\n}",
+    "    let _i = li1.length;\n    while(_i--){\n        li2.indexOf(li1[_i]) > -1 && li1.splice(_i, 1);\n    }\n    return li1;\n}",
+    "    return li1.filter(x => li2.indexOf(x) == -1);\n}",
+    "    var li1Set = new Set(li1);\n    var li2Set = new Set(li2);\n    var intersection = new Set([...li1Set].filter(x => li2Set.has(x)));\n    var difference = new Set([...li1Set].filter(x => !li2Set.has(x)));\n    return [difference, intersection];\n}"
+  ]
+}

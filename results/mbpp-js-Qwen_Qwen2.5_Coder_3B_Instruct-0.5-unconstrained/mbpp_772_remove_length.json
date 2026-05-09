@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_772_remove_length",
+  "language": "js",
+  "prompt": "//Write a function to remove all the words with k length in the given string.\nfunction remove_length(test_str, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_772_remove_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_length;\n  assert.deepEqual(candidate(\"The person is most value tet\", 3),\"person is most value\");\n  assert.deepEqual(candidate(\"If you told me about this ok\", 4),\"If you me about ok\");\n  assert.deepEqual(candidate(\"Forces of darkeness is come into the play\", 4),\"Forces of darkeness is the\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split(\" \")\n    res = res.filter(ele => ele.length != K)\n    res = res.join(\" \")\n    return res\n}\ntest_str = \"Python is good and easy to learn\"\nK = 3\nprint(remove_length(test_str, K))",
+    "    test_str = test_str.split(\" \");\n    res = [];\n    for(ele of test_str){\n        if(ele.length != K){\n            res.push(ele);\n        }\n    }\n    return res.join(\" \");\n}",
+    "    result = test_str.split(\" \").filter(ele => ele.length != K);\n    return result.join(\" \");\n}\ntest_str = \"Geeks for Geeks\";\nK = 5;",
+    "\t//Split the string into words\n\twords = test_str.split(\" \");\n\t//Filter the words that are not equal to K\n\tfiltered_words = words.filter(word => word.length != K);\n\t//Join the filtered words back into a string\n\tresult = filtered_words.join(\" \");\n\treturn result;\n}",
+    "    res = test_str.split(\" \");\n    res = res.filter(ele => ele.length != K);\n    return res.join(\" \");\n}\ntest_str = \"geeks for geeks\";\nK = 4;\nprint(remove_length(test_str, K));"
+  ]
+}

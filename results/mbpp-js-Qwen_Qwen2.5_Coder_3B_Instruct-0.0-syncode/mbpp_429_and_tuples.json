@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = []\n    for i"
+    "    res = tuple(map(lambda iname"
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_111_histogram",
+  "language": "js",
+  "prompt": "//Given a string representing a space separated lowercase letters, return an object\n// of the letter with the most repetition and containing the corresponding count.\n// If several letters have the same occurrence, return all of them.\n// Example:\n// >>> histogram(\"a b c\")\n// {\"a\": 1, \"b\": 1, \"c\": 1}\n// >>> histogram(\"a b b a\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"a b c a b\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"b b b b a\")\n// {\"b\": 4}\n// >>> histogram(\"\")\n// {}\nfunction histogram(test){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_111_histogram.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = histogram;\n  assert.deepEqual(candidate(\"a b b a\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c a b\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c d g\"),{\"a\": 1, \"b\": 1, \"c\": 1, \"d\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"b b b b a\"),{\"b\": 4});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"\"),{});\n  assert.deepEqual(candidate(\"a\"),{\"a\": 1});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  // your code here\n  var testArray = test.split(\" \");\n  var testObject = {};\n  var testCount = 0;\n  var testCount2 = 0;\n  var testCount3 = 0;\n  var testCount4 = 0;\n  var testCount5 = 0;\n  var testCount6 = 0;\n  var testCount7 = 0;\n  var testCount8 = 0;\n  var testCount9 = 0;\n  var testCount10 = 0;\n  var testCount11 = 0;\n  var testCount12 = 0;\n  var testCount13 = 0;\n  var testCount14 = 0;\n  var testCount15 = 0;\n  var testCount16 = 0;\n  var testCount17 = 0;\n  var testCount18 = 0;\n  var testCount19 = 0;\n  var testCount20 = 0;\n  var testCount21 = 0;\n  var testCount22 = 0;\n  var testCount23 = 0;\n  var testCount24 = 0;\n  var testCount25 = 0;\n  var testCount26 = 0;\n  var testCount27 = 0;\n  var testCount28 = 0;\n  var testCount29 = 0;\n  var testCount30 = 0;\n  var testCount31 = 0;\n  var testCount32 = 0;\n  var testCount33 = 0;\n  var testCount34 = 0;\n  var testCount35 = 0;\n  var testCount36 = 0;\n  var testCount37 = 0;\n  var testCount38 = 0;\n  var testCount39 = 0;\n  var testCount40 = 0;\n  var testCount41 = 0;\n  var testCount42 = 0;\n  var testCount43 = 0;\n  var testCount44 = 0;\n  var testCount45 = 0;\n  var testCount46 = 0;\n  var testCount47 = 0;\n  var testCount48 = 0;\n  var testCount49 = 0;\n  var testCount50 = 0;\n ",
+    "    var obj = {};\n    var arr = test.split(\" \");\n    for(var i = 0; i < arr.length; i++){\n        if(obj[arr[i]]){\n            obj[arr[i]]++;\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    return obj;\n}\n\nmodule.exports = histogram;",
+    "    var testArr = test.split(\" \");\n    var histogramObj = {};\n    var maxCount = 0;\n    for(var i = 0; i < testArr.length; i++){\n        if(histogramObj[testArr[i]]){\n            histogramObj[testArr[i]]++;\n        }else{\n            histogramObj[testArr[i]] = 1;\n        }\n        if(histogramObj[testArr[i]] > maxCount){\n            maxCount = histogramObj[testArr[i]];\n        }\n    }\n    var outputObj = {};\n    for(var key in histogramObj){\n        if(histogramObj[key] === maxCount){\n            outputObj[key] = maxCount;\n        }\n    }\n    return outputObj;\n}",
+    "  let obj = {};\n  let arr = test.split(' ');\n  arr.forEach((item) => {\n    if(obj[item] == undefined) {\n      obj[item] = 1;\n    } else {\n      obj[item] += 1;\n    }\n  });\n  return obj;\n}",
+    "    let obj = {};\n    test.split(' ').forEach(element => {\n        if(obj[element] == undefined){\n            obj[element] = 1;\n        }else{\n            obj[element]++;\n        }\n    });\n    return obj;\n}\n\nmodule.exports = histogram;"
+  ]
+}

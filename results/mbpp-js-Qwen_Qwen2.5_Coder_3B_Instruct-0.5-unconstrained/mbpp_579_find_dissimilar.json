@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_579_find_dissimilar",
+  "language": "js",
+  "prompt": "//Write a function to find the dissimilar elements in the given two tuples.\nfunction find_dissimilar(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_579_find_dissimilar.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_dissimilar;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [7, 2, 3, 9]),[1, 4, 7, 9]);\n  assert.deepEqual(candidate([21, 11, 25, 26], [26, 34, 21, 36]),[34, 36, 11, 25]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = []\n    for i in test_tup1:\n        if i not in test_tup2:\n            res.append(i)\n    for i in test_tup2:\n        if i not in test_tup1:\n            res.append(i)\n    return res\ntest_tup1 = (1, 2, 3, 4)\ntest_tup2 = (4, 5, 6, 7)\nprint(find_dissimilar(test_tup1, test_tup2))",
+    "    res = []\n    for i in test_tup1:\n        if i not in test_tup2:\n            res.append(i)\n    for i in test_tup2:\n        if i not in test_tup1:\n            res.append(i)\n    return res\ntest_tup1 = (\"G\", \"a\", \"s\")\ntest_tup2 = (\"G\", \"e\", \"s\")\nprint(find_dissimilar(test_tup1, test_tup2))",
+    "    res = list(set(test_tup1) ^ set(test_tup2))\n    return res\ntest_tup1 = (4, 5, 6, 7, 8)\ntest_tup2 = (5, 6, 7, 9, 10)\nprint(find_dissimilar(test_tup1, test_tup2))",
+    "    res = []\n    for ele in test_tup1:\n        if ele not in test_tup2:\n            res.append(ele)\n    for ele in test_tup2:\n        if ele not in test_tup1:\n            res.append(ele)\n    return res\n#Driver Code\ntest_tup1 = (1, 4, 5, 6)\ntest_tup2 = (3, 4, 5, 7)\nprint(find_dissimilar(test_tup1, test_tup2))",
+    "    res = []\n    for i in test_tup1:\n        if i not in test_tup2:\n            res.append(i)\n    for i in test_tup2:\n        if i not in test_tup1:\n            res.append(i)\n    return res\ntest_tup1 = (5, 3, 2, 8, 1)\ntest_tup2 = (2, 8, 9, 1, 6)\nprint(find_dissimilar(test_tup1, test_tup2))"
+  ]
+}

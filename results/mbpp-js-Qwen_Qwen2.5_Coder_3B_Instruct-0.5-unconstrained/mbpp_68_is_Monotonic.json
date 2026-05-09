@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_68_is_Monotonic",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array is monotonic or not.\nfunction is_Monotonic(A){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_68_is_Monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Monotonic;\n  assert.deepEqual(candidate([6, 5, 4, 4]),true);\n  assert.deepEqual(candidate([1, 2, 2, 3]),true);\n  assert.deepEqual(candidate([1, 3, 2]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let increasing = true;\n    let decreasing = true;\n    for(let i = 1; i < A.length; i++){\n        if(A[i] > A[i - 1]){\n            decreasing = false;\n        }\n        if(A[i] < A[i - 1]){\n            increasing = false;\n        }\n    }\n    return increasing || decreasing;\n}",
+    "    let increasing = true;\n    let decreasing = true;\n    for(let i = 1; i < A.length; i++){\n        if(A[i] > A[i-1]){\n            decreasing = false;\n        }\n        if(A[i] < A[i-1]){\n            increasing = false;\n        }\n    }\n    return increasing || decreasing;\n}",
+    "    let is_increasing = true;\n    let is_decreasing = true;\n    for(let i = 1; i < A.length; i++){\n        if(A[i] > A[i-1]){\n            is_decreasing = false;\n        }\n        if(A[i] < A[i-1]){\n            is_increasing = false;\n        }\n    }\n    return is_increasing || is_decreasing;\n}",
+    "    if(A.length <= 1){\n        return true;\n    }\n    let increasing = false;\n    let decreasing = false;\n    for(let i = 1; i < A.length; i++){\n        if(A[i] > A[i - 1]){\n            increasing = true;\n        }\n        if(A[i] < A[i - 1]){\n            decreasing = true;\n        }\n        if(increasing && decreasing){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    return A.every((x,y)=>y==0||A[y-1]<=x||A[y-1]>=x);\n}"
+  ]
+}

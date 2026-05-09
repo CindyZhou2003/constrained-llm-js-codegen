@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_239_get_total_number_of_sequences",
+  "language": "js",
+  "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let dp = new Array(n+1).fill(0);\n    dp[0] = 1; // Base case: there is one way to form a sequence of length 0 (the empty sequence)\n    for(let i = 1; i <= n; i++){\n        for(let j = 1; j <= m; j++){\n            if(j >= 2 * dp[i-1]){\n                dp[i] += dp[i-1];\n            }\n        }\n    }\n    return dp[n];\n}\n",
+    "    // Create a 2D array to store the number of sequences\n    let dp = new Array(n + 1).fill(0).map(() => new Array(m + 1).fill(0));\n    // Initialize the base case\n    dp[0][0] = 1;\n    // Fill the dp array\n    for(let i = 1; i <= n; i++){\n        for(let j = 1; j <= m; j++){\n            // If the current element is 1, then there is only one way to reach it\n            if(j === 1){\n                dp[i][j] = 1;\n            }\n            // If the current element is greater than 1, then there are two ways to reach it\n            // Either by adding the current element to the previous element or by adding the current element to the previous element multiplied by 2\n            else{\n                dp[i][j] = dp[i - 1][j] + dp[i - 1][Math.floor(j / 2)];\n            }\n        }\n    }\n    // Return the total number of sequences\n    return dp[n][m];\n}",
+    "    //create an array to store the number of possible sequences for each length\n    let dp = new Array(n + 1).fill(0);\n    //base case: there is one possible sequence of length 0\n    dp[0] = 1;\n    //loop through each length from 1 to n\n    for(let i = 1; i <= n; i++){\n        //loop through each possible value for the first element in the sequence\n        for(let j = 1; j <= m; j++){\n            //if the current length is greater than the first element, add the number of possible sequences for the remaining length\n            if(i >= j){\n                dp[i] += dp[i - j];\n            }\n        }\n    }\n    //return the number of possible sequences for length n\n    return dp[n];\n}",
+    "    let dp = new Array(n+1).fill(0);\n    dp[0] = 1;\n    for(let i=1; i<=n; i++){\n        for(let j=2; j<=m; j++){\n            if(j>=i*2){\n                dp[i] += dp[i-1];\n            }\n        }\n    }\n    return dp[n];\n}",
+    "    let dp = new Array(n + 1).fill(0);\n    dp[0] = 1;\n    for(let i = 1; i <= n; i++){\n        for(let j = 1; j <= m; j++){\n            if(j >= 2 * (i - 1)){\n                dp[i] += dp[i - 1];\n            }\n        }\n    }\n    return dp[n];\n}"
+  ]
+}

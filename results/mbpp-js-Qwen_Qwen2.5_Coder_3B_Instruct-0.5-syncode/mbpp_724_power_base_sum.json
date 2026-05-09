@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_724_power_base_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.\nfunction power_base_sum(base, power){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_724_power_base_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = power_base_sum;\n  assert.deepEqual(candidate(2, 100),115);\n  assert.deepEqual(candidate(8, 10),37);\n  assert.deepEqual(candidate(8, 15),62);\n  assert.deepEqual(candidate(3, 3),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = Math.pow(base, power);\n    var sum = 0;\n    var str = result.toString();\n    for(var i = 0; i < str.length; i++){\n        sum += parseInt(str[i]);\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    let result = Math.pow(base, power);\n    while(result > 0){\n        sum += result % 10;\n        result = Math.floor(result / 10);\n    }\n    return sum;\n}\n",
+    "    let sum = 0;\n    let num = Math.pow(base, power);\n    num = num.toString();\n    for(let i = 0; i < num.length; i++){\n        sum += parseInt(num[i]);\n    }\n    return sum;\n}",
+    "    var sum = 0;\n    var result = Math.pow(base, power);\n    var result_str = result.toString();\n    for(var i = 0; i < result_str.length; i++){\n        sum += parseInt(result_str[i]);\n    }\n    return sum;\n}\n",
+    "    //Calculate the power of base\n    let result = Math.pow(base, power);\n    //Convert the result to a string and split it into an array of digits\n    let digits = result.toString().split('');\n    //Calculate the sum of all digits\n    let sum = digits.reduce((acc, digit) => acc + parseInt(digit), 0);\n    return sum;\n}\n"
+  ]
+}

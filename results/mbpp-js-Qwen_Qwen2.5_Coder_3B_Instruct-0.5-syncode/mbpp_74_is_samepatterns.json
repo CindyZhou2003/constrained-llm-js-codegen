@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_74_is_samepatterns",
+  "language": "js",
+  "prompt": "//Write a function to check whether it follows the sequence given in the patterns array.\nfunction is_samepatterns(colors, patterns){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_74_is_samepatterns.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_samepatterns;\n  assert.deepEqual(candidate([\"red\", \"green\", \"green\"], [\"a\", \"b\", \"b\"]),true);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\", \"b\"]),false);\n  assert.deepEqual(candidate([\"red\", \"green\", \"greenn\"], [\"a\", \"b\"]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  for(var i = 0; i < colors.length; i++){\n    if(colors[i] !== patterns[i]){\n      return false;\n    }\n  }\n  return true;\n}\n",
+    "    var color_length = colors.length;\n    var pattern_length = patterns.length;\n    var pattern_length_1 = patterns[0].length;\n    var pattern_length_2 = patterns[1].length;\n    var pattern_length_3 = patterns[2].length;\n    if(color_length != pattern_length){\n        return false;\n    }\n    for(var i = 0; i < color_length; i++){\n        if(pattern_length_1 != patterns[i].length || pattern_length_2 != patterns[i].length || pattern_length_3 != patterns[i].length){\n            return false;\n        }\n        if(colors[i] == patterns[i][0] || colors[i] == patterns[i][1] || colors[i] == patterns[i][2]){\n            continue;\n        }\n        else{\n            return false;\n        }\n    }\n    return true;\n}",
+    "    var len = patterns.length;\n    var len1 = colors.length;\n    var k = 0;\n    var flag = true;\n    var j = 0;\n    if(len1 != len){\n        return false;\n    }\n    for(var i = 0; i < len; i++){\n        if(patterns[i] == \"R\"){\n            if(colors[k] != \"Red\"){\n                flag = false;\n                break;\n            }\n            k++;\n        }\n        else if(patterns[i] == \"B\"){\n            if(colors[k] != \"Blue\"){\n                flag = false;\n                break;\n            }\n            k++;\n        }\n        else if(patterns[i] == \"Y\"){\n            if(colors[k] != \"Yellow\"){\n                flag = false;\n                break;\n            }\n            k++;\n        }\n    }\n    return flag;\n}",
+    "    for (let i = 0; i < patterns.length; i++){\n        let pattern = patterns[i];\n        let match = true;\n        for (let j = 0; j < pattern.length; j++){\n            let color = pattern[j];\n            if (colors[j] !== color){\n                match = false;\n                break;\n            }\n        }\n        if (!match){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "  let result = true;\n  for(let i =0; i<colors.length; i++){\n    if(colors[i] !== patterns[i]){\n      result = false;\n      break;\n    }\n  }\n  return result;\n}\n"
+  ]
+}

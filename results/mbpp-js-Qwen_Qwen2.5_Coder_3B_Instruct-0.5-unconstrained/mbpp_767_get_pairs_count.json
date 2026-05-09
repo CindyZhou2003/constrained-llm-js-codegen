@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_767_get_pairs_count",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of pairs whose sum is equal to \u00e2\u20ac\u02dcsum\u00e2\u20ac\u2122. The funtion gets as input an array of numbers and the sum,\nfunction get_pairs_count(arr, sum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_767_get_pairs_count.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_pairs_count;\n  assert.deepEqual(candidate([1, 1, 1, 1], 2),6);\n  assert.deepEqual(candidate([1, 5, 7, -1, 5], 6),3);\n  assert.deepEqual(candidate([1, -2, 3], 1),1);\n  assert.deepEqual(candidate([-1, -2, 3], -3),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    var map = {};\n    for(var i = 0; i < arr.length; i++){\n        if(map[sum - arr[i]] !== undefined){\n            count++;\n        }\n        map[arr[i]] = 1;\n    }\n    return count;\n}",
+    "    var count = 0;\n    var seen = new Set();\n\n    for(var i = 0; i < arr.length; i++){\n        var complement = sum - arr[i];\n\n        if(seen.has(complement)){\n            count++;\n        }\n\n        seen.add(arr[i]);\n    }\n\n    return count;\n}\n",
+    "    var count = 0;\n    var visited = new Set();\n    for(var i = 0; i < arr.length; i++){\n        if(visited.has(sum - arr[i])){\n            count++;\n        }\n        visited.add(arr[i]);\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < arr.length; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] + arr[j] === sum){\n                count++;\n            }\n        }\n    }\n    return count;\n}\nlet arr = [1, 2, 3, 4, 5];\nlet sum = 5;",
+    "    var count = 0;\n    var i, j;\n    for(i = 0; i < arr.length; i++){\n        for(j = i + 1; j < arr.length; j++){\n            if(arr[i] + arr[j] == sum){\n                count++;\n            }\n        }\n    }\n    return count;\n}\n\nvar arr = [1, 5, 7, 9, 12, 15, 20];\nvar sum = 17;"
+  ]
+}

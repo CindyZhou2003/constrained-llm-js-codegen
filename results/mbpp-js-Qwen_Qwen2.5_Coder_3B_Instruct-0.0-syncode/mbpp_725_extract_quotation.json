@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var text2 = text1.match(/\"// Create "
+    "    var text2 = text1.match(/\"([^\"]*)\"/g);\n    return text2;\n}"
   ]
 }

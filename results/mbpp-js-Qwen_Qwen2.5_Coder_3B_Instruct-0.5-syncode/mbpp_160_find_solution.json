@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    const solutions = [];\n    for(let x = 0; x <= n; x++){\n        const y = (n - (a * x)) / b;\n        if(y % 1 === 0){\n            solutions.push([x, y]);\n        }\n    }\n    return solutions;\n}\n",
+    "    // If a or b is 0, we can solve the equation directly\n    if(a === 0){\n        if(n % b === 0){\n            return [0, n / b];\n        }\n    }\n    if(b === 0){\n        if(n % a === 0){\n            return [n / a, 0];\n        }\n    }\n    // If a and b are both non-zero, we can use the Extended Euclidean Algorithm to find a solution\n    let gcd = gcd_extended(a, b, 0, 1);\n    if(n % gcd !== 0){\n        return undefined;\n    }\n    let x = Math.floor(n / gcd * gcd_extended(a, b, 1, 0)[0]);\n    let y = Math.floor(n / gcd * gcd_extended(a, b, 0, 1)[1]);\n    return [x, y];\n}\n",
+    "    if(a == 0 && b == 0){\n        if(n == 0){\n            return [0, 0];\n        }\n        else{\n            return undefined;\n        }\n    }\n    if(a == 0){\n        if(n % b == 0){\n            return [0, n / b];\n        }\n        else{\n            return undefined;\n        }\n    }\n    if(b == 0){\n        if(n % a == 0){\n            return [n / a, 0];\n        }\n        else{\n            return undefined;\n        }\n    }\n    var x = 0;\n    var y = 0;\n    var gcd = find_gcd(a, b);\n    a = a / gcd;\n    b = b / gcd;\n    n = n / gcd;\n    if(n % 1 != 0){\n        return undefined;\n    }\n    if(a > 0){\n        x = n / a;\n    }\n    else{\n        x = -n / a;\n    }\n    if(b > 0){\n        y = n / b;\n    }\n    else{\n        y = -n / b;\n    }\n    return [x, y];\n}",
+    "    // Check if a and b are both non-zero\n    if (a === 0 && b === 0) {\n        return undefined;\n    }\n    // Check if n is divisible by the greatest common divisor of a and b\n    if (n % gcd(a, b) !== 0) {\n        return undefined;\n    }\n    // Calculate the greatest common divisor of a and b\n    const d = gcd(a, b);\n    // Calculate the value of x and y\n    const x = (n / d) * (b /",
+    "    for(let x = 0; x <= n/a; x++){\n        let y = (n - a*x)/b;\n        if(y % 1 === 0){\n            return [x, y];\n        }\n    }\n    return undefined;\n}\n"
+  ]
+}

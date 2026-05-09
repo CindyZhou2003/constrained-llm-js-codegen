@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_260_newman_prime",
+  "language": "js",
+  "prompt": "//Write a function to find the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime number.\nfunction newman_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_260_newman_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = newman_prime;\n  assert.deepEqual(candidate(3),7);\n  assert.deepEqual(candidate(4),17);\n  assert.deepEqual(candidate(5),41);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Initialize the list of newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams primes\n    let primes = [];\n    // Initialize the number to check for primality\n    let num = 2;\n    // Loop until we have found the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime\n    while(primes.length < n){\n        // Check if the number is prime\n        if(is_prime(num)){\n            // If it is prime, add it to the list of primes\n            primes.push(num);\n        }\n        // Increment the number to check for primality\n        num++;\n    }\n    // Return the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime\n    return primes[n-1];\n}",
+    "    let count = 0;\n    let num = 2;\n    while(count < n){\n        if(is_newman_prime(num)){\n            count++;\n        }\n        num++;\n    }\n    return num - 1;\n}\n",
+    "    var primes = [];\n    var num = 2;\n    while(primes.length < n){\n        if(is_prime(num)){\n            primes.push(num);\n        }\n        num++;\n    }\n    return primes[n-1];\n}\n"
+  ]
+}

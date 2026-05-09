@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_102_snake_to_camel",
+  "language": "js",
+  "prompt": "//Write a function to convert a snake case string to camel case string.\nfunction snake_to_camel(word){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_102_snake_to_camel.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = snake_to_camel;\n  assert.deepEqual(candidate(\"python_program\"),\"PythonProgram\");\n  assert.deepEqual(candidate(\"python_language\"),\"PythonLanguage\");\n  assert.deepEqual(candidate(\"programming_language\"),\"ProgrammingLanguage\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let camel_case = word.replace(/_([a-z])/g, function(match, letter){\n        return letter.toUpperCase();\n    });\n    return camel_case;\n}",
+    "    let camelCase = word.split('_').map((word, index) => {\n        if(index === 0){\n            return word.toLowerCase();\n        }else{\n            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n        }\n    }).join('');\n    return camelCase;\n}\n",
+    "    let camel = word.split('_').map((word,index) => {\n        if(index === 0){\n            return word.toLowerCase();\n        }else{\n            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n        }\n    }).join('');\n    return camel;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_141_pancake_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction pancake_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_141_pancake_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pancake_sort;\n  assert.deepEqual(candidate([15, 79, 25, 38, 69]),[15, 25, 38, 69, 79]);\n  assert.deepEqual(candidate([98, 12, 54, 36, 85]),[12, 36, 54, 85, 98]);\n  assert.deepEqual(candidate([41, 42, 32, 12, 23]),[12, 23, 32, 41, 42]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=nums.length-1;i>0;i--){\n        let max_index = 0;\n        for(let j=1;j<=i;j++){\n            if(nums[j]>nums[max_index]){\n                max_index = j;\n            }\n        }\n        if(max_index!=i){\n            nums = pancake(nums,max_index);\n            nums = pancake(nums,i);\n        }\n    }\n    return nums;\n}\n",
+    "    // Iterate through each element in the array\n    for(let i = 0; i < nums.length - 1; i++){\n        // Find the maximum element in the unsorted portion of the array\n        let maxIndex = i;\n        for(let j = i + 1; j < nums.length; j++){\n            if(nums[j] > nums[maxIndex]){\n                maxIndex = j;\n            }\n        }\n        // If the maximum element is not already at the start of the unsorted portion, swap it to the start\n        if(maxIndex !== i){\n            // Reverse the unsorted portion of the array to bring the maximum element to the start\n            nums.reverse(i, maxIndex);\n            // Reverse the entire array to bring the maximum element to its correct position\n            nums.reverse(0, nums.length - 1);\n        }\n    }\n    return nums;\n}\n",
+    "    for(let i = nums.length-1; i>0; i--){\n        let maxIndex = 0;\n        for(let j = 0; j<=i; j++){\n            if(nums[j]>nums[maxIndex]){\n                maxIndex = j;\n            }\n        }\n        if(maxIndex !== i){\n            if(maxIndex !== 0){\n                nums = reverse(nums, 0, maxIndex);\n            }\n            nums = reverse(nums, 0, i);\n        }\n    }\n    return nums;\n}",
+    "    // Traverse through all array elements\n    for (let i = 0; i < nums.length - 1; i++) {\n        // Find the maximum element in unsorted array\n        let max_index = i;\n        for (let j = i + 1; j < nums.length; j++) {\n            if (nums[j] > nums[max_index]) {\n                max_index = j;\n            }\n        }\n        // Move the maximum element to end of current unsorted array\n        if (max_index != i) {\n            // Swap the found max element with the first element\n            [nums[i], nums[max_index]] = [nums[max_index], nums[i]];\n            // Swap the max element with the last element of the unsorted array\n            [nums[i], nums[nums.length - 1 - i]] = [nums[nums.length - 1 - i], nums[i]];\n        }\n    }\n    return nums;\n}",
+    "    let n = nums.length;\n    for(let i = n; i > 1; i--){\n        let max = 0;\n        for(let j = 1; j < i; j++){\n            if(nums[j] > nums[max]){\n                max = j;\n            }\n        }\n        if(max !== i - 1){\n            nums = reverse(nums, 0, max);\n            nums = reverse(nums, 0, i - 1);\n        }\n    }\n    return nums;\n}\n"
+  ]
+}

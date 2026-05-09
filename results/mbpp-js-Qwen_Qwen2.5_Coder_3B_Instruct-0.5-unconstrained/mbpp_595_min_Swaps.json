@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_595_min_Swaps",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count minimum number of swaps required to convert one binary number represented as a string to another.\nfunction min_Swaps(str1, str2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_595_min_Swaps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Swaps;\n  assert.deepEqual(candidate(\"1101\", \"1110\"),1);\n  assert.deepEqual(candidate(\"111\", \"000\"),\"Not Possible\");\n  assert.deepEqual(candidate(\"111\", \"110\"),\"Not Possible\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = str1.length;\n    let count = 0;\n    let i = 0;\n    let j = 0;\n    let k = 0;\n    let count1 = 0;\n    let count2 = 0;\n    let count3 = 0;\n    let count4 = 0;\n    let count5 = 0;\n    let count6 = 0;\n    let count7 = 0;\n    let count8 = 0;\n    let count9 = 0;\n    let count10 = 0;\n    let count11 = 0;\n    let count12 = 0;\n    let count13 = 0;\n    let count14 = 0;\n    let count15 = 0;\n    let count16 = 0;\n    let count17 = 0;\n    let count18 = 0;\n    let count19 = 0;\n    let count20 = 0;\n    let count21 = 0;\n    let count22 = 0;\n    let count23 = 0;\n    let count24 = 0;\n    let count25 = 0;\n    let count26 = 0;\n    let count27 = 0;\n    let count28 = 0;\n    let count29 = 0;\n    let count30 = 0;\n    let count31 = 0;\n    let count32 = 0;\n    let count33 = 0;\n    let count34 = 0;\n    let count35 = 0;\n    let count36 = 0;\n    let count37 = 0;\n    let count38 = 0;\n    let count39 = 0;\n    let count40 = 0;\n    let count41 = 0;\n    let count42 = 0;\n    let count43 = 0;\n    let count44 = 0;\n    let count45 = 0;\n    let count46 = 0;\n    let count47 = 0;\n    let count48 = 0;\n    let count49 = 0;\n    let count50 = 0;\n    let count51 = 0;\n    let count52 = 0;\n    let count53 = 0;\n    let count54 = 0",
+    "    let n = str1.length;\n    let count = 0;\n    let temp = 0;\n    for(let i = 0; i < n; i++){\n        if(str1[i] !== str2[i]){\n            count++;\n            temp++;\n        }\n        if(temp == 2){\n            count--;\n            temp = 0;\n        }\n    }\n    return count;\n}",
+    "  if(str1.length !== str2.length){\n    return -1;\n  }\n  let count = 0;\n  let n = str1.length;\n  let temp = str1.split('');\n  for(let i = 0; i < n; i++){\n    if(temp[i] !== str2[i]){\n      count++;\n      for(let j = i + 1; j < n; j++){\n        if(temp[j] === str2[i]){\n          temp[j] = temp[i];\n          temp[i] = str2[i];\n          break;\n        }\n      }\n    }\n  }\n  return count;\n}\n",
+    "    let len = str1.length;\n    let count = 0;\n    let i = 0;\n    let j = 0;\n    let temp = '';\n    let str = '';\n    while(i < len && j < len){\n        if(str1[i] !== str2[i]){\n            count++;\n            if(len % 2 === 0 && j - i === 1){\n                temp = str1[i+1];\n                str1[i+1] = str1[i];\n                str1[i] = temp;\n            }\n            else if(len % 2 !== 0){\n                temp = str1[j+1];\n                str1[j+1] = str1[j];\n                str1[j] = temp;\n            }\n        }\n        i++;\n        j++;\n    }\n    return count;\n}\nlet str1 = \"10010\";\nlet str2 = \"11000\";",
+    "    var n = str1.length;\n    if(n != str2.length) return -1;\n    var count0 = 0, count1 = 0;\n    for(var i = 0; i < n; i++){\n        if(str1[i] == '0') count0++;\n        else count1++;\n    }\n    if(count0 != count1) return -1;\n    var res = 0;\n    var count = 0;\n    for(var i = 0; i < n; i++){\n        if(str1[i] != str2[i]) count++;\n        if(count > 2){\n            while(str1[i] != str2[i]){\n                i--;\n                count--;\n            }\n            i++;\n            res++;\n            count = 2;\n        }\n    }\n    return res;\n}"
+  ]
+}

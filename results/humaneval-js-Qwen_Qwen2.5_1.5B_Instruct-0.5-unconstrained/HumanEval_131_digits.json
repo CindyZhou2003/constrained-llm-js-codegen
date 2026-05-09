@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_131_digits",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the product of the odd digits.\n// Return 0 if all digits are even.\n// For example:\n// >>> digits(1)\n// 1\n// >>> digits(4)\n// 0\n// >>> digits(235)\n// 15\nfunction digits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_131_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digits;\n  assert.deepEqual(candidate(5),5);\n  assert.deepEqual(candidate(54),5);\n  assert.deepEqual(candidate(120),1);\n  assert.deepEqual(candidate(5014),5);\n  assert.deepEqual(candidate(98765),315);\n  assert.deepEqual(candidate(5576543),2625);\n  assert.deepEqual(candidate(2468),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let odd = 1;\n    while(n > 0){\n        let last = n % 10;\n        if(last % 2 !== 0){\n            odd *= last;\n        }\n        n = Math.floor(n/10);\n    }\n    return odd;\n}",
+    "    // Write your code here\n    let odd = 1;\n    while(n > 0){\n        if(n % 2 !== 0){\n            odd *= n % 10;\n        }\n        n = Math.floor(n / 10);\n    }\n    return odd;\n}",
+    "  let result = 1;\n  let digits = n.toString().split('');\n  for(let i = 0; i < digits.length; i++){\n    if(isOdd(digits[i])){\n      result *= parseInt(digits[i]);\n    }\n  }\n  return result;\n}\n",
+    "    let sum = 1;\n    let odd = true;\n    while(n){\n        let digit = n % 10;\n        if(digit % 2 === 0){\n            odd = false;\n        }else{\n            sum *= digit;\n        }\n        n = Math.floor(n / 10);\n    }\n    return odd ? sum : 0;\n}",
+    "    let result = 1;\n    let odd = false;\n    while (n > 0) {\n        if (n % 2 === 1){\n            odd = true;\n            result *= n % 10;\n        }\n        n = Math.floor(n / 10);\n    }\n    return odd ? result : 0;\n}"
+  ]
+}

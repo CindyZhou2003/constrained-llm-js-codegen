@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return M.sort((a,b) => {\n        return a.reduce((sum, x) => sum + x, 0) - b.reduce((sum, x) => sum + x, 0);\n    });\n}\n",
+    "    M.sort(function(a,b){return a.reduce((acc,x)=>acc+x)-b.reduce((acc,x)=>acc+x)});\n    return M;\n}",
+    "    var sorted_M = M.sort(function(a,b){\n        return (a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2]);\n    });\n    return sorted_M;\n}\n",
+    "    //Create a new array to store the rows and their sums\n    var rows = [];\n    //Iterate over each row in the matrix\n    for(var i = 0; i < M.length; i++){\n        //Calculate the sum of the row\n        var sum = 0;\n        for(var j = 0; j < M[i].length; j++){\n            sum += M[i][j];\n        }\n        //Store the row and its sum as an object in the rows array\n        rows.push({row: M[i], sum: sum});\n    }\n    //Sort the rows array based on the sum of their rows\n    rows.sort(function(a, b){\n        return a.sum - b.sum;\n    });\n    //Create a new array to store the sorted matrix\n    var sorted = [];\n    //Iterate over each row in the sorted rows array\n    for(var i = 0; i < rows.length; i++){\n        //Push the row into the sorted matrix\n        sorted.push(rows[i].row);\n    }\n    //Return the sorted matrix\n    return sorted;\n}\nvar M = [[3, 5, 7], [1, 2, 3], [4, 6, 8]];",
+    "    // Sort the matrix based on the sum of its rows\n    M.sort((a, b) => {\n        let sumA = 0, sumB = 0;\n        for (let i = 0; i < a.length; i++) {\n            sumA += a[i];\n            sumB += b[i];\n        }\n        return sumA - sumB;\n    });\n    return M;\n}\n"
+  ]
+}

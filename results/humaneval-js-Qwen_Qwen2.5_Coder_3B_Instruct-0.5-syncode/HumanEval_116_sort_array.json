@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_116_sort_array",
+  "language": "js",
+  "prompt": "//In this Kata, you have to sort an array of non-negative integers according to\n// number of ones in their binary representation in ascending order.\n// For similar number of ones, sort based on decimal value.\n// It must be implemented like this:\n// >>> sort_array([1, 5, 2, 3, 4])\n// [1, 2, 3, 4, 5]\n// >>> sort_array([-2, -3, -4, -5, -6])\n// [-6, -5, -4, -3, -2]\n// >>> sort_array([1, 0, 2, 3, 4])\n// [0, 1, 2, 3, 4]\nfunction sort_array(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_116_sort_array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_array;\n  assert.deepEqual(candidate([1, 5, 2, 3, 4]),[1, 2, 4, 3, 5]);\n  assert.deepEqual(candidate([-2, -3, -4, -5, -6]),[-4, -2, -6, -5, -3]);\n  assert.deepEqual(candidate([1, 0, 2, 3, 4]),[0, 1, 2, 4, 3]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([2, 5, 77, 4, 5, 3, 5, 7, 2, 3, 4]),[2, 2, 4, 4, 3, 3, 5, 5, 5, 7, 77]);\n  assert.deepEqual(candidate([3, 6, 44, 12, 32, 5]),[32, 3, 5, 6, 12, 44]);\n  assert.deepEqual(candidate([2, 4, 8, 16, 32]),[2, 4, 8, 16, 32]);\n  assert.deepEqual(candidate([2, 4, 8, 16, 32]),[2, 4, 8, 16, 32]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  return arr.sort((a, b) => {\n    let aBinary = a.toString(2).replace(/0/g, '');\n    let bBinary = b.toString(2).replace(/0/g, '');\n    if(aBinary.length === bBinary.length) return a - b;\n    return aBinary.length - bBinary.length;\n  });\n}",
+    "  return arr.sort((a,b) => {\n    let countA = a.toString(2).match(/1/g);\n    let countB = b.toString(2).match(/1/g);\n    let countA = countA ? countA.length : 0;\n    let countB = countB ? countB.length : 0;\n    if(countA === countB) {\n      return a-b;\n    } else {\n      return countA-countB;\n    }\n  });\n}\n",
+    "  return arr.sort((a, b) => {\n    let countA = a.toString(2).split('0').join('').length;\n    let countB = b.toString(2).split('0').join('').length;\n    if (countA === countB) {\n      return a - b;\n    }\n    return countA - countB;\n  });\n}",
+    "  return arr.sort((a,b) => (a.toString(2).match(/1/g) || []).length === (b.toString(2).match(/1/g) || []).length ? a - b : (a.toString(2).match(/1/g) || []).length - (b.toString(2).match(/1/g) || []).length)\n}",
+    "  //sort based on the number of ones in the binary representation\n  arr.sort((a, b) => {\n    let onesA = a.toString(2).split('').filter(char => char === '1').length;\n    let onesB = b.toString(2).split('').filter(char => char === '1').length;\n    if (onesA === onesB) {\n      return a - b;\n    }\n    return onesA - onesB;\n  });\n  return arr;\n}"
+  ]
+}

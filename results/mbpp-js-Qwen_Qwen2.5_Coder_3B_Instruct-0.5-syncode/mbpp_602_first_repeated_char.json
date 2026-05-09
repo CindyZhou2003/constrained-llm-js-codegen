@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var repeated_char = \"\";\n    for(var i = 0; i < str1.length; i++){\n        for(var j = i + 1; j < str1.length; j++){\n            if(str1[i] === str1[j]){\n                repeated_char = str1[i];\n                return repeated_char;\n            }\n        }\n    }\n    return repeated_char;\n}",
+    "    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        for(var j = i + 1; j < str1.length; j++){\n            if(str1[i] == str1[j]){\n                count++;\n            }\n        }\n    }\n    if(count > 0){\n        return str1[count];\n    }\n    else{\n        return \"No repeated character found\";\n    }\n}",
+    "    var len = str1.length;\n    var char_map = new Map();\n    for(var i=0; i<len; i++){\n        if(char_map.has(str1[i])){\n            return str1[i];\n        }\n        else{\n            char_map.set(str",
+    "    //create an empty object to store the count of each character\n    var obj = {};\n    //loop through each character in the string\n    for(var i = 0; i < str1.length; i++){\n        //if the character is already in the object, increment its count\n        if(obj[str1[i]]){\n            obj[str1[i]]++;\n        }\n        //if the character is not in the object, add it with a count of 1\n        else{\n            obj[str1[i]] = 1;\n        }\n    }\n    //loop through each character in the string again\n    for(var i = 0; i < str1.length; i++){\n        //if the character's count is greater than 1, return it\n        if(obj[str1[i]] > 1){\n            return str1[i];\n        }\n    }\n    //if no repeated character is found, return null\n    return null;\n}",
+    "    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        for(var j = i + 1; j < str1.length; j++){\n            if(str1[i] == str1[j]){\n                count++;\n                return str1[i];\n            }\n        }\n    }\n    return \"No repeated character\";\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_389_find_lucas",
+  "language": "js",
+  "prompt": "//Write a function to find the n'th lucas number.\nfunction find_lucas(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_389_find_lucas.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_lucas;\n  assert.deepEqual(candidate(9),76);\n  assert.deepEqual(candidate(4),7);\n  assert.deepEqual(candidate(3),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var lucas = [2,1];\n    for(var i=2;i<=n;i++){\n        lucas[i] = lucas[i-1] + lucas[i-2];\n    }\n    return lucas[n];\n}",
+    "    if(n < 0){\n        console.log(\"Invalid input. Please enter a non-negative integer.\");\n        return;\n    }\n    if(n === 0){\n        return 2;\n    }\n    if(n === 1){\n        return 1;\n    }\n    let a = 2;\n    let b = 1;\n    let lucas = 0;\n    for(let i = 2; i <= n; i++){\n        lucas = a + b;\n        a = b;\n        b = lucas;\n    }\n    return lucas;\n}\n",
+    "    if(n==0){\n        return 2;\n    }\n    if(n==1){\n        return 1;\n    }\n    return find_lucas(n-1)+find_lucas(n-2);\n}",
+    "    let lucas = [2,1];\n    for(let i = 2; i < n; i++){\n        lucas[i] = lucas[i-1] + lucas[i-2];\n    }\n    return lucas[n-1];\n}\n",
+    "    if(n == 0) return 2;\n    if(n == 1) return 1;\n    return find_lucas(n - 1) + find_lucas(n - 2);\n}\n"
+  ]
+}

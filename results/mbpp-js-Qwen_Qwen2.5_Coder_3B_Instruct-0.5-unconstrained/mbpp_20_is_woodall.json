@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let woodall = false;\n    for(let i = 1; i <= x; i++){\n        if(3*i + 1 == x){\n            woodall = true;\n            break;\n        }\n    }\n    return woodall;\n}",
+    "    let sum = 0;\n    for(let i = 1; i <= x; i++){\n        sum += Math.pow(i, 3);\n        if(sum > x){\n            return false;\n        }\n    }\n    return sum === x;\n}\n",
+    "    var i=1;\n    var sum=0;\n    while(sum<x){\n        sum=sum+i;\n        i=i+1;\n    }\n    return sum==x;\n}",
+    "  if(x%2==0){\n    return false;\n  }\n  else{\n    for(let i=1;i<=x;i++){\n      if(x==2*i*(i-1)+1){\n        return true;\n      }\n    }\n    return false;\n  }\n}",
+    "    //The condition for a number to be a woodall number is:\n    //x = n * 2^n - 1\n    //We can rearrange this to:\n    //n = log2((x + 1) / 2) + 1\n    //If n is an integer, then x is a woodall number.\n    let n = Math.log2((x + 1) / 2) + 1;\n    return Number.isInteger(n);\n}"
+  ]
+}

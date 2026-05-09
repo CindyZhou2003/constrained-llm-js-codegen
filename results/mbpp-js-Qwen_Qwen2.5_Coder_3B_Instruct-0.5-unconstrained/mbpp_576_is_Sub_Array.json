@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_576_is_Sub_Array",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array is sublist of another or not.\nfunction is_Sub_Array(A, B){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_576_is_Sub_Array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sub_Array;\n  assert.deepEqual(candidate([1, 4, 3, 5], [1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 1], [1, 2, 1]),true);\n  assert.deepEqual(candidate([1, 0, 2, 2], [2, 2, 0]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //if B is empty then it is a sublist of A\n    if(B.length == 0){\n        return true;\n    }\n    //if A is empty then it is not a sublist of B\n    if(A.length == 0){\n        return false;\n    }\n    //if first element of B is not present in A then it is not a sublist of B\n    if(A.indexOf(B[0]) == -1){\n        return false;\n    }\n    //if first element of B is present in A then check if B is a sublist of A starting from the index of first element of B\n    return is_Sub_Array(A.slice(A.indexOf(B[0])), B.slice(1));\n}",
+    "    var i = 0;\n    var j = 0;\n    var matched = 0;\n    while(i < A.length && j < B.length){\n        if(A[i] === B[j]){\n            matched++;\n            i++;\n            j++;\n        }else{\n            j++;\n        }\n    }\n    return matched === A.length;\n}\n",
+    "    var count = 0;\n    for(var i = 0; i < A.length; i++){\n        if(A[i] == B[0]){\n            count++;\n            for(var j = 1; j < B.length; j++){\n                if(A[i + j] != B[j]){\n                    count--;\n                    break;\n                }\n            }\n        }\n        if(count == B.length) return true;\n    }\n    return false;\n}",
+    "    var len_A = A.length;\n    var len_B = B.length;\n    var i = 0;\n    var j = 0;\n    while(i<len_A && j<len_B){\n        if(A[i]==B[j]){\n            i++;\n            j++;\n        }\n        else{\n            j++;\n        }\n    }\n    if(i==len_A){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    var i, j, flag;\n    for(i = 0; i < B.length; i++){\n        flag = 0;\n        for(j = 0; j < A.length; j++){\n            if(B[i] == A[j]){\n                flag = 1;\n                break;\n            }\n        }\n        if(flag == 0) return false;\n    }\n    return true;\n}"
+  ]
+}

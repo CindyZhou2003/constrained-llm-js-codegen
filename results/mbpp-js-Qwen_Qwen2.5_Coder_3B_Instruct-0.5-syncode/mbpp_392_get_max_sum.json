@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_392_get_max_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n).\nfunction get_max_sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_392_get_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_max_sum;\n  assert.deepEqual(candidate(60),106);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n<1){\n        return 0;\n    }\n    if(n<=5){\n        return n;\n    }\n    if(dp[n] !== undefined){\n        return dp[n];\n    }\n    let max_sum = 0;\n    for(let i=2;i<=5;i++){\n        max_sum = Math.max(max_sum,get_max_sum(n/i));\n    }\n    max_sum = Math.max(max_sum,n);\n    dp[n] = max_sum;\n    return max_sum;\n}",
+    "    if(n <= 5){\n        return n;\n    }\n    var max_sum = 0;\n    for(var i = 1; i <= 5; i++){\n        max_sum = Math.max(max_sum, get_max_sum(Math.floor(n/i)));\n    }\n    return Math.max(max_sum, n);\n}",
+    "    //Base case: if n is less than or equal to 5, return n itself\n    if(n <= 5){\n        return n;\n    }\n    //Recursive case: use the given equation to find the maximum sum\n    return Math.max(get_max_sum(n/2) + get_max_sum(n/",
+    "    // Base case: if n is less than or equal to 5, return n\n    if (n <= 5) {\n        return n;\n    }\n    // Recursive case: calculate the maximum sum by using the given equation\n    let max_sum = Math.max(get_max_sum(n/2) + get_max_sum(n/",
+    "    //Base case: if n is less than or equal to 5, the maximum sum is n itself\n    if (n <= 5){\n        return n;\n    }\n    //Recursive case: find the maximum sum by using the given equation\n    let max_sum = 0;\n    for (let i = 2; i <= 5; i++){\n        max_sum = Math.max(max_sum, get_max_sum(n/i));\n    }\n    return Math.max(max_sum + n, n);\n}"
+  ]
+}

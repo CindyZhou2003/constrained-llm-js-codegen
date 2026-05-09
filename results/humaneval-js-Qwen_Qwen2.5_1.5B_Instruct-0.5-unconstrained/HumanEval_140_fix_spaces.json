@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_140_fix_spaces",
+  "language": "js",
+  "prompt": "//Given a string text, replace all spaces in it with underscores, \n// and if a string has more than 2 consecutive spaces, \n// then replace all consecutive spaces with - \n// >>> fix_spaces(\"Example\")\n// \"Example\"\n// >>> fix_spaces(\"Example 1\")\n// \"Example_1\"\n// >>> fix_spaces(\" Example 2\")\n// \"_Example_2\"\n// >>> fix_spaces(\" Example   3\")\n// \"_Example-3\"\nfunction fix_spaces(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_140_fix_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = fix_spaces;\n  assert.deepEqual(candidate(\"Example\"),\"Example\");\n  assert.deepEqual(candidate(\"Mudasir Hanif \"),\"Mudasir_Hanif_\");\n  assert.deepEqual(candidate(\"Yellow Yellow  Dirty  Fellow\"),\"Yellow_Yellow__Dirty__Fellow\");\n  assert.deepEqual(candidate(\"Exa   mple\"),\"Exa-mple\");\n  assert.deepEqual(candidate(\"   Exa 1 2 2 mple\"),\"-Exa_1_2_2_mple\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = text.split(' ');\n    let res = '';\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i].length === 1){\n            res += arr[i];\n        } else if (arr[i].length === 2){\n            res += arr[i].charAt(0) + arr[i].charAt(1) + '_';\n        } else {\n            res += arr[i].charAt(0) + arr[i].charAt(1) + arr[i].charAt(2) + '-';\n        }\n    }\n    return res;\n}",
+    "    let str = text.split(\" \");\n    let res = \"\";\n    for(let i = 0; i < str.length; i++){\n        if(str[i] === \" \"){\n            res += \"-\".repeat(2);\n        } else {\n            res += str[i];\n        }\n    }\n    return res;\n}",
+    "  let newStr = text.replace(/\\s/g, '_');\n  let count = 0;\n  for(let i = 0; i < newStr.length; i++){\n    if(newStr[i] === ' '){\n      count++;\n    }\n    if(count > 2){\n      newStr = newStr.slice(0, i) + '-' + newStr.slice(i);\n      break;\n    }\n  }\n  return newStr;\n}",
+    "    let result = \"\"\n    let spaceCount = 0\n    for (let i = 0; i < text.length; i++){\n        if (text[i] === \" \"){\n            spaceCount++\n            if (spaceCount > 2){\n                result += \"-\"\n            } else {\n                result += \"_\"\n            }\n        } else {\n            result += text[i]\n        }\n    }\n    return result\n}",
+    "    let result = '';\n    let space_count = 0;\n\n    for(let i = 0; i < text.length; i++){\n        if(text[i] === ' '){\n            space_count++;\n            if(space_count === 2){\n                result += '-';\n            } else {\n                result += '_';\n            }\n        } else {\n            if(space_count === 0){\n                result += text[i];\n            } else {\n                result += text[i];\n                space_count = 0;\n            }\n        }\n    }\n    return result;\n}"
+  ]
+}

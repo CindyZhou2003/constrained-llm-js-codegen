@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_580_extract_even",
+  "language": "js",
+  "prompt": "//Write a function to remove uneven elements in the nested mixed array.\nfunction extract_even(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_580_extract_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_even;\n  assert.deepEqual(candidate([4, 5, [7, 6, [2, 4]], 6, 8]),[4, [6, [2, 4]], 6, 8]);\n  assert.deepEqual(candidate([5, 6, [8, 7, [4, 8]], 7, 9]),[6, [8, [4, 8]]]);\n  assert.deepEqual(candidate([5, 6, [9, 8, [4, 6]], 8, 10]),[6, [8, [4, 6]], 8, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = [ele for ele in test_tuple if ele % 2 == 0]\n    return res\ntest_tuple = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(extract_even(test_tuple))\ntest_tuple = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\nprint(extract_even(test_tuple))\ntest_tuple = [11, 22, 33, 44, 55, 66, 77, 88, 99, 100]\nprint(extract_even(test_tuple))\ntest_tuple = [11, 22, 33, 44, 55, 66, 77, 88, 99, 100, 101, 102]\nprint(extract_even(test_tuple))",
+    "    res = [ele for ele in test_tuple if isinstance(ele, int) and ele % 2 == 0]\n    return res\ntest_tuple = ([1, 2, 3, 4], 5, [6, 7, 8], 9, [10, 11, 12])\nprint(extract_even(test_tuple))",
+    "    # Initialize an empty list to store the result\n    res = []\n    \n    # Iterate over each sub-array in the test tuple\n    for ele in test_tuple:\n        # Iterate over each element in the sub-array\n        for sub_ele in ele:\n            # Check if the element is even\n            if sub_ele % 2 == 0:\n                # Append the even element to the result list\n                res.append(sub_ele)\n    \n    # Return the result list\n    return res\n}\n\n# Example usage\ntest_tuple = ([1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12])\nprint(extract_even(test_tuple))  # Output: [2, 4, 6, 8, 10, 12]\n```\n\nIn this solution, we define a function `extract_even` that takes a nested mixed array `test_tuple` as input. We initialize an empty list `res` to store the even elements. We iterate over each sub-array in the input tuple and then iterate over each element in the sub-array. If an element is even (i.e., divisible by 2), we append it to the result list. Finally, we return the result list containing all the even elements from the nested mixed array. The example usage demonstrates how to call the function and print the result. ```\n\n",
+    "    res = []\n    for ele in test_tuple:\n        if isinstance(ele, list):\n            res.extend(extract_even(ele))\n        elif ele % 2 == 0:\n            res.append(ele)\n    return res\nprint(extract_even([[4, 5, 6], [7, 8, 9], [10, 11, 12]]))\n\n\n\n#Write a function to remove uneven elements in the nested mixed array.",
+    "    res = test_tuple.filter(ele => ele % 2 == 0);\n    return res;\n}\ntest_tuple = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];\nprint(extract_even(test_tuple));"
+  ]
+}

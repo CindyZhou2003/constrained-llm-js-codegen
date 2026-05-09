@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_113_check_integer",
+  "language": "js",
+  "prompt": "//Write a function to check if a string represents an integer or not.\nfunction check_integer(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_113_check_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_integer;\n  assert.deepEqual(candidate(\"python\"),false);\n  assert.deepEqual(candidate(\"1\"),true);\n  assert.deepEqual(candidate(\"12345\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return text.match(/^-?\\d+$/) != null;\n}\n",
+    "    // Check if the string is empty\n    if(text.length === 0){\n        return false;\n    }\n    // Check if the string starts with a '+' or '-' and the rest of the string is a number\n    if(text.startsWith('+') || text.startsWith('-')){\n        return text.slice(1).match(/\\d+/) !== null;\n    }\n    // Check if the string is a number\n    return text.match(/\\d+/) !== null;\n}\n",
+    "    if(text.split('').includes('.')){\n        return false;\n    }\n    let num = Number(text);\n    return !isNaN(num);\n}\n",
+    "    return /^[+-]?\\d+$/.test(text);\n}",
+    "    var integer = /^[0-9]+$/;\n    return integer.test(text);\n}\n"
+  ]
+}

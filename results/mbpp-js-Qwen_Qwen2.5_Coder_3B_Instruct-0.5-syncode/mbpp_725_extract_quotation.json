@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_725_extract_quotation",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_725_extract_quotation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var text2 = text1.match(/\"[^\"]*\"/g);\n    return text2;\n}",
+    "    var text2;\n    var position1;\n    position1 = text1.indexOf(\" \");\n    text2 = text1.substr(position1+1);\n    var position2;\n    position2 = text2.indexOf(\" \");\n    text2 = text2.substr(0, position2);\n    return text2;\n}",
+    "    let a=0;\n    let b=0;\n    let c=0;\n    let d=0;\n    let e=0;\n    let f=0;\n    let g=0;\n    let h=0;\n    let i=0;\n    let j=0;\n    let k=0;\n    let l=0;\n    let m=0;\n    let n=0;\n    let o=0;\n    let p=0;\n    let q=0;\n    let r=0;\n    let s=0;\n    let t=0;\n    let u=0;\n    let v=0;\n    let w=0;\n    let x=0;\n    let y=0;\n    let z=0;\n    let result=\" \";\n    for(let i=0;i<text1.length;i++){\n        if(text1[i]==\"a\"){\n            a++;\n            result=result+\"a\";\n        }\n        else if(text1[i]==\"b\"){\n            b++;\n            result=result+\"b\";\n        }\n        else if(text1[i]==\"c\"){\n            c++;\n            result=result+\"c\";\n        }\n        else if(text1[i]==\"d\"){\n            d++;\n            result=result+\"d\";\n        }\n        else if(text1[i]==\"e\"){\n            e++;\n            result=result+\"e\";\n        }\n        else if(text1[i]==\"f\"){\n            f++;\n            result=result+\"f\";\n        }\n        else if(text1[i]==\"g\"){\n            g++;\n            result=result+\"g\";\n        }\n        else if(text1[i]==\"h\"){\n            h++;\n            result=result+\"h\";\n        }\n        else if(text1[i]==\"i\"){\n            i++;\n            result=result+\"i\";\n        }\n        else if(text1[i]==\"j\"){\n            j++;\n            result=result+\"j\";\n        }\n        else if(text1[i]==\"k\"){\n            k++;\n            result=result+\"k\";\n        }\n        else if(text1[i]==\"l\"){\n            l++;\n            result=result+\"l\";\n        }\n        else if(text1[i]==\"m\"){\n            m++;\n            result=result+\"m\";\n        }\n        else if(text1[i]==\"n\"){\n            n++;\n            result=result+\"n\";\n        }\n        else if(text1[i]==\"o\"){\n            o++;\n            result=result+\"o\";\n        }\n        else if(text1[i]==\"p\"){\n            p++;\n            result=result+\"p\";\n        }\n        else if(text1[i]==\"q\"){\n            q++;\n            result=result+\"q\";\n       ",
+    "    var text2 = text1.match(/\"([^\"]*)\"/g);\n    return text2;\n}\n",
+    "    let text2 = text1.match(/\\\"(.*?)\\\"/g);\n    return text2;\n}"
+  ]
+}

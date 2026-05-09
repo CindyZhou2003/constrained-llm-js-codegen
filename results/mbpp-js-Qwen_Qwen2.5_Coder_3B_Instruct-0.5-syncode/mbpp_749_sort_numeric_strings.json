@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_749_sort_numeric_strings",
+  "language": "js",
+  "prompt": "//Write a function to sort a given array of strings of numbers numerically. https://www.geeksforgeeks.org/JavaScript-sort-numeric-strings-in-a-array/\nfunction sort_numeric_strings(nums_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_749_sort_numeric_strings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_numeric_strings;\n  assert.deepEqual(candidate([\"4\", \"12\", \"45\", \"7\", \"0\", \"100\", \"200\", \"-12\", \"-500\"]),[-500, -12, 0, 4, 7, 12, 45, 100, 200]);\n  assert.deepEqual(candidate([\"2\", \"3\", \"8\", \"4\", \"7\", \"9\", \"8\", \"2\", \"6\", \"5\", \"1\", \"6\", \"1\", \"2\", \"3\", \"4\", \"6\", \"9\", \"1\", \"2\"]),[1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8, 9, 9]);\n  assert.deepEqual(candidate([\"1\", \"3\", \"5\", \"7\", \"1\", \"3\", \"13\", \"15\", \"17\", \"5\", \"7 \", \"9\", \"1\", \"11\"]),[1, 1, 1, 3, 3, 5, 5, 7, 7, 9, 11, 13, 15, 17]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return nums_str.sort((a,b)=> Number(a)-Number(b))\n}",
+    "    //sort function takes a comparator function that compares two elements at a time\n    return nums_str.sort((a,b)=>{\n        //convert strings to numbers\n        let num_a = parseInt(a);\n        let num_b = parseInt(b);\n        //compare the numbers and return a value that indicates the order\n        if(num_a < num_b){\n            return -1;\n        }else if(num_a > num_b){\n            return 1;\n        }else{\n            return 0;\n        }\n    });\n}\n",
+    "    return nums_str.sort((a,b) => a-b);\n}",
+    "    // Convert the string array to a number array\n    let nums_arr = nums_str.map(Number);\n    // Sort the number array in ascending order\n    nums_arr.sort((a, b) => a - b);\n    // Convert the sorted number array back to a string array\n    return nums_arr.map(String);\n}",
+    "    return nums_str.sort((a,b)=>a-b);\n}"
+  ]
+}

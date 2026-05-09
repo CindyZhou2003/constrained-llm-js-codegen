@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_161_solve",
+  "language": "js",
+  "prompt": "//You are given a string s.\n// if s[i] is a letter, reverse its case from lower to upper or vise versa, \n// otherwise keep it as it is.\n// If the string contains no letters, reverse the string.\n// The function should return the resulted string.\n// Examples\n// >>> solve(\"1234\")\n// \"4321\"\n// >>> solve(\"ab\")\n// \"AB\"\n// >>> solve(\"#a@C\")\n// \"#A@c\"\nfunction solve(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_161_solve.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = solve;\n  assert.deepEqual(candidate(\"AsDf\"),\"aSdF\");\n  assert.deepEqual(candidate(\"1234\"),\"4321\");\n  assert.deepEqual(candidate(\"ab\"),\"AB\");\n  assert.deepEqual(candidate(\"#a@C\"),\"#A@c\");\n  assert.deepEqual(candidate(\"#AsdfW^45\"),\"#aSDFw^45\");\n  assert.deepEqual(candidate(\"#6@2\"),\"2@6#\");\n  assert.deepEqual(candidate(\"#$a^D\"),\"#$A^d\");\n  assert.deepEqual(candidate(\"#ccc\"),\"#CCC\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Your code here\n    let hasLetters = false;\n    let result = '';\n\n    for(let i = 0; i < s.length; i++){\n        let char = s[i];\n\n        if(char >= 'a' && char <= 'z'){\n            result += char.toUpperCase();\n            hasLetters = true;\n        } else if(char >= 'A' && char <= 'Z'){\n            result += char.toLowerCase();\n            hasLetters = true;\n        } else {\n            result += char;\n        }\n    }\n\n    if(!hasLetters){\n        result = result.split('').reverse().join('');\n    }\n\n    return result;\n}\n",
+    "    let letters = s.split('').filter(char => char.match(/[a-zA-Z]/));\n    if (!letters.length) return s.split('').reverse().join('');\n    let result = '';\n    for (let char of s) {\n        if (char.match(/[a-zA-Z]/)) {\n            result += letters.shift().toLowerCase() === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();\n        } else {\n            result += char;\n        }\n    }\n    return result;\n}",
+    "    let letters = s.split('').filter(char => /[a-zA-Z]/.test(char))\n    if (letters.length === 0) return s.split('').reverse().join('') \n    let result = letters.map(char => /[a-z]/.test(char) ? char.toUpperCase() : char.toLowerCase()).join('')\n    return s.split('').map(char => /[a-zA-Z]/.test(char) ? result[result.length - 1] : char).join('')\n}",
+    "    let letters = s.split('').filter(char => /[a-zA-Z]/.test(char));\n    let lettersReversed = letters.reverse().join('');\n    let numbersAndSymbols = s.split('').filter(char => !/[a-zA-Z]/.test(char));\n    return lettersReversed + numbersAndSymbols;\n}",
+    "    // Your code here\n    let hasLetter = false;\n    let result = '';\n\n    for (let i = 0; i < s.length; i++) {\n        const char = s[i];\n        if (/[a-zA-Z]/.test(char)) { // Check if the character is a letter\n            hasLetter = true;\n            result += char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();\n        } else {\n            result += char;\n        }\n    }\n\n    return hasLetter ? result : result.split('').reverse().join('');\n}"
+  ]
+}

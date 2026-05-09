@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var sorted = l.sort(function(a, b){return a - b});\n    var consecutive = true;\n    for(var i = 0; i < sorted.length - 1; i++){\n        if(sorted[i] + 1 !== sorted[i + 1]){\n            consecutive = false;\n            break;\n        }\n    }\n    return consecutive;\n}"
+    "    var sorted = l.sort((a, b) => a - b);\n    for(var i = 0; i < sorted.length - 1; i++){\n        if(sorted[i] + 1 !== sorted[i + 1]){\n            return false;\n        }\n    }\n    return true;\n}"
   ]
 }

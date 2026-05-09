@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_18_remove_dirty_chars",
+  "language": "js",
+  "prompt": "//Write a function to remove characters from the first string which are present in the second string.\nfunction remove_dirty_chars(string, second_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_18_remove_dirty_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_dirty_chars;\n  assert.deepEqual(candidate(\"probasscurve\", \"pros\"),\"bacuve\");\n  assert.deepEqual(candidate(\"digitalindia\", \"talent\"),\"digiidi\");\n  assert.deepEqual(candidate(\"exoticmiles\", \"toxic\"),\"emles\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = \"\";\n    for(let i = 0; i < string.length; i++){\n        if(second_string.indexOf(string[i]) === -1){\n            result += string[i];\n        }\n    }\n    return result;\n}\nlet string = \"Hello World\";\nlet second_string = \"aeiou\";",
+    "    let new_string = string.split(''); //Splitting the string into an array of characters\n    let result = \"\"; //Initializing an empty string to store the final result\n    for(let i = 0; i < new_string.length; i++){\n        if(second_string.indexOf(new_string[i]) === -1){ //Checking if the current character is not present in the second string\n            result += new_string[i]; //Adding the current character to the result string\n        }\n    }\n    return result;\n}",
+    "    var new_string = '';\n    for(var i = 0; i < string.length; i++){\n        var char = string[i];\n        if(second_string.indexOf(char) == -1){\n            new_string += char;\n        }\n    }\n    return new_string;\n}",
+    "    var string_length = string.length;\n    var second_string_length = second_string.length;\n    var result = string;\n    for(var i = 0; i < string_length; i++){\n        for(var j = 0; j < second_string_length; j++){\n            if(string[i] == second_string[j]){\n                result = result.replace(string[i], \"\");\n            }\n        }\n    }\n    return result;\n}",
+    "    let result = '';\n    for (let i = 0; i < string.length; i++){\n        let found = false;\n        for (let j = 0; j < second_string.length; j++){\n            if (string[i] === second_string[j]){\n                found = true;\n                break;\n            }\n        }\n        if (!found){\n            result += string[i];\n        }\n    }\n    return result;\n}\n"
+  ]
+}

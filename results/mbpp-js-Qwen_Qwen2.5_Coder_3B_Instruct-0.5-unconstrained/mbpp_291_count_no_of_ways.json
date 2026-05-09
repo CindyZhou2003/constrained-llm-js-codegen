@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_291_count_no_of_ways",
+  "language": "js",
+  "prompt": "//Write a function to find out the number of ways of painting the fence such that at most 2 adjacent posts have the same color for the given fence with n posts and k colors.\nfunction count_no_of_ways(n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_291_count_no_of_ways.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_no_of_ways;\n  assert.deepEqual(candidate(2, 4),16);\n  assert.deepEqual(candidate(3, 2),6);\n  assert.deepEqual(candidate(4, 4),228);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (n == 0) return 0;\n    if (n == 1) return k;\n    let same = k; // number of ways to paint the first two posts with the same color\n    let diff = k * (k - 1); // number of ways to paint the first two posts with different colors\n    for (let i = 2; i < n; i++){\n        let temp = same; // store the value of same for the next iteration\n        same = diff; // update the value of same to be the number of ways to paint the current post with the same color as the previous post\n        diff = temp * (k - 1) + diff * (k - 1); // update the value of diff to be the number of ways to paint the current post with a different color than the previous post\n    }\n    return same + diff;\n}",
+    "    if(n === 0){\n        return 0;\n    }\n    if(n === 1){\n        return k;\n    }\n    let same = k;\n    let diff = k * (k - 1);\n    for(let i = 2; i < n; i++){\n        let prev_same = same;\n        same = diff;\n        diff = prev_same * (k - 1) + diff * (k - 1);\n    }\n    return same + diff;\n}",
+    "    if(n == 0){\n        return 0;\n    }\n    if(n == 1){\n        return k;\n    }\n    \n    var same = k;\n    var diff = k * (k - 1);\n    var res = same + diff;\n    \n    for(var i = 2; i < n; i++){\n        same = diff;\n        diff = res * (k - 1);\n        res = same + diff;\n    }\n    return res;\n}\n",
+    "    if(n === 0)\n        return 0;\n    if(n === 1)\n        return k;\n    var same = k;\n    var diff = k*(k-1);\n    var count = same + diff;\n    for(var i = 2; i < n; i++){\n        same = diff;\n        diff = count*(k-1);\n        count = same + diff;\n    }\n    return count;\n}",
+    "    if(n == 0){\n        return 0;\n    }\n    if(n == 1){\n        return k;\n    }\n    var same = k; //same color\n    var diff = k * (k - 1); //different color\n    for(var i = 2; i < n; i++){\n        var temp = same;\n        same = diff;\n        diff = temp * (k - 1) + diff * (k - 1);\n    }\n    return same + diff;\n}"
+  ]
+}

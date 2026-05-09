@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var sum = 0;\n    var average = 0;\n    for(var i = 1; i <= number; i++){\n        sum = sum + i;\n    }\n    average = sum / number;\n    return sum + \" \" + average;\n}"
+    "    var sum = 0;\n    for(var i = 1; i <= number; i++){\n        sum = sum + i;\n    }\n    var average = sum / number;\n    return sum + \" \" + average;\n}"
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_630_get_coordinates",
+  "language": "js",
+  "prompt": "//Write a function to extract all the adjacent coordinates of the given coordinate array.\nfunction get_coordinates(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_630_get_coordinates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_coordinates;\n  assert.deepEqual(candidate([3, 4]),[[2, 3], [2, 4], [2, 5], [3, 3], [3, 4], [3, 5], [4, 3], [4, 4], [4, 5]]);\n  assert.deepEqual(candidate([4, 5]),[[3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 4], [5, 5], [5, 6]]);\n  assert.deepEqual(candidate([5, 6]),[[4, 5], [4, 6], [4, 7], [5, 5], [5, 6], [5, 7], [6, 5], [6, 6], [6, 7]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = []\n    for i",
+    "    res = []\n    for i",
+    "    res = []\n    for i",
+    "    res = []\n    for i",
+    "    res = []\n    for i"
+  ]
+}

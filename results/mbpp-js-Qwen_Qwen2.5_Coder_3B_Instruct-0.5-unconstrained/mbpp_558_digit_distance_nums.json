@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_558_digit_distance_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sum = 0;\n    var d1, d2;\n    while (n1 > 0 || n2 > 0){\n        d1 = n1 % 10;\n        n1 = Math.floor(n1 / 10);\n        d2 = n2 % 10;\n        n2 = Math.floor(n2 / 10);\n        sum += Math.abs(d1 - d2);\n    }\n    return sum;\n}",
+    "    // Convert the integers to strings to easily access each digit\n    let str1 = n1.toString();\n    let str2 = n2.toString();\n\n    // Initialize the sum of differences\n    let sum = 0;\n\n    // Loop through each digit of the numbers\n    for(let i = 0; i < str1.length; i++){\n        // Calculate the absolute difference between the corresponding digits\n        let diff = Math.abs(parseInt(str1[i]) - parseInt(str2[i]));\n\n        // Add the difference to the sum\n        sum += diff;\n    }\n\n    // Return the sum of differences\n    return sum;\n}\n",
+    "    // Convert numbers to strings to easily iterate over each digit\n    let str1 = n1.toString();\n    let str2 = n2.toString();\n\n    // Initialize sum\n    let sum = 0;\n\n    // Iterate over each digit\n    for(let i = 0; i < str1.length || i < str2.length; i++){\n        // Get the absolute difference between digits\n        let diff = Math.abs(parseInt(str1[i]) - parseInt(str2[i]));\n\n        // Add the difference to the sum\n        sum += diff;\n    }\n\n    return sum;\n}\n",
+    "    //convert the numbers to string\n    let str1 = n1.toString();\n    let str2 = n2.toString();\n    //check the length of the strings\n    if(str1.length !== str2.length){\n        return \"The numbers must have the same length\";\n    }\n    //initialize the sum to 0\n    let sum = 0;\n    //loop through the string\n    for(let i = 0; i < str1.length; i++){\n        //convert the characters to numbers\n        let num1 = parseInt(str1[i]);\n        let num2 = parseInt(str2[i]);\n        //find the absolute difference\n        let diff = Math.abs(num1 - num2);\n        //add the difference to the sum\n        sum += diff;\n    }\n    //return the sum\n    return sum;\n}\n",
+    "    let sum = 0;\n    let n1_str = n1.toString();\n    let n2_str = n2.toString();\n    if(n1_str.length > n2_str.length){\n        let temp = n1_str;\n        n1_str = n2_str;\n        n2_str = temp;\n    }\n    for(let i = 0; i < n1_str.length; i++){\n        sum += Math.abs(Number(n1_str[i]) - Number(n2_str[i]));\n    }\n    for(let i = n1_str.length; i < n2_str.length; i++){\n        sum += Number(n2_str[i]);\n    }\n    return sum;\n}\n"
+  ]
+}

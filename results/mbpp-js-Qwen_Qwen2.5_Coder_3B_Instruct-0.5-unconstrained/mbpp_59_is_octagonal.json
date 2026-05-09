@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_59_is_octagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth octagonal number.\nfunction is_octagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_59_is_octagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_octagonal;\n  assert.deepEqual(candidate(5),65);\n  assert.deepEqual(candidate(10),280);\n  assert.deepEqual(candidate(15),645);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (8*n*n+1)/2;\n}\n",
+    "    let octagonal_number = (3*n*n - n)/2;\n    return octagonal_number;\n}\n",
+    "    var octagonal_number = (3*n*n - n)/2;\n    return octagonal_number;\n}",
+    "    return n * (3 * n - 2) === 4 * (n * n - n);\n}",
+    "    let octagonal_number = 3*n*(2*n-1);\n    if(octagonal_number > 0){\n        console.log(`The ${n}th octagonal number is ${octagonal_number}.`);\n    }\n    else{\n        console.log(`The ${n}th octagonal number is not a positive integer.`);\n    }\n}\nis_octagonal(10);"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_14_all_prefixes",
+  "language": "js",
+  "prompt": "//Return array of all prefixes from shortest to longest of the input string\n// >>> all_prefixes(\"abc\")\n// [\"a\", \"ab\", \"abc\"]\nfunction all_prefixes(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_14_all_prefixes.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_prefixes;\n  assert.deepEqual(candidate(\"\"),[]);\n  assert.deepEqual(candidate(\"asdfgh\"),[\"a\", \"as\", \"asd\", \"asdf\", \"asdfg\", \"asdfgh\"]);\n  assert.deepEqual(candidate(\"WWW\"),[\"W\", \"WW\", \"WWW\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let prefixes = [];\n    for(let i = 1; i <= string.length; i++){\n        prefixes.push(string.slice(0, i));\n    }\n    return prefixes;\n}\n",
+    "    let prefixes = [];\n    for(let i = 1; i <= string.length; i++){\n        prefixes.push(string.substring(0, i));\n    }\n    return prefixes;\n}\n",
+    "    let prefixes = [];\n    for(let i = 1; i <= string.length; i++){\n        prefixes.push(string.substring(0, i));\n    }\n    return prefixes;\n}\n"
+  ]
+}

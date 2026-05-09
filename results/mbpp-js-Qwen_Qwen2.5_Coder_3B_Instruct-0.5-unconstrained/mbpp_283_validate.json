@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var digit = n.toString();\n    var count = [];\n    for(var i = 0; i < digit.length; i++){\n        count[digit[i]] = (count[digit[i]] || 0) + 1;\n    }\n    for(var i = 0; i < digit.length; i++){\n        if(count[digit[i]] > parseInt(digit[i])){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let obj = {};\n    let str = n.toString();\n    for(let i=0;i<str.length;i++){\n        if(str[i] in obj){\n            obj[str[i]]++;\n        }else{\n            obj[str[i]] = 1;\n        }\n    }\n    for(let key in obj){\n        if(obj[key] > key){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let count=new Array(10).fill(0);\n    while(n>0){\n        count[n%10]++;\n        n=Math.floor(n/10);\n    }\n    for(let i=0;i<10;i++){\n        if(count[i]>i){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    // Convert the integer to a string to iterate over each digit\n    let str = n.toString();\n    // Create an object to store the frequency of each digit\n    let freq = {};\n    // Iterate over each digit in the string\n    for(let i = 0; i < str.length; i++){\n        // If the digit is already in the object, increment its frequency\n        if(freq[str[i]]){\n            freq[str[i]]++;\n        }\n        // Otherwise, add the digit to the object with a frequency of 1\n        else{\n            freq[str[i]] = 1;\n        }\n    }\n    // Iterate over each digit in the string\n    for(let i = 0; i < str.length; i++){\n        // If the frequency of the digit is greater than the digit itself, return false\n        if(freq[str[i]] > parseInt(str[i])){\n            return false;\n        }\n    }\n    // If all digits have a frequency less than or equal to the digit itself, return true\n    return true;\n}",
+    "    // Convert the integer to a string to iterate over each digit\n    n = n.toString();\n    // Create a frequency map to count the occurrences of each digit\n    var frequencyMap = {};\n    for(var i = 0; i < n.length; i++){\n        if(frequencyMap[n[i]]){\n            frequencyMap[n[i]]++;\n        } else {\n            frequencyMap[n[i]] = 1;\n        }\n    }\n    // Iterate over the frequency map and check if the frequency of each digit is less than or equal to the digit itself\n    for(var digit in frequencyMap){\n        if(frequencyMap[digit] > digit){\n            return false;\n        }\n    }\n    return true;\n}\n"
+  ]
+}

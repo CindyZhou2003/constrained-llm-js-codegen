@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_255_combinations_colors",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and length n, and generates all combinations (with repetition) of the elements of the array and returns an array with an array for each combination.\nfunction combinations_colors(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_255_combinations_colors.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = combinations_colors;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 1),[[\"Red\"], [\"Green\"], [\"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 2),[[\"Red\", \"Red\"], [\"Red\", \"Green\"], [\"Red\", \"Blue\"], [\"Green\", \"Green\"], [\"Green\", \"Blue\"], [\"Blue\", \"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 3),[[\"Red\", \"Red\", \"Red\"], [\"Red\", \"Red\", \"Green\"], [\"Red\", \"Red\", \"Blue\"], [\"Red\", \"Green\", \"Green\"], [\"Red\", \"Green\", \"Blue\"], [\"Red\", \"Blue\", \"Blue\"], [\"Green\", \"Green\", \"Green\"], [\"Green\", \"Green\", \"Blue\"], [\"Green\", \"Blue\", \"Blue\"], [\"Blue\", \"Blue\", \"Blue\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Initialize an array to store the combinations\n    let combinations = [];\n    // Define a helper function to generate combinations\n    function generateCombinations(index, currentCombination){\n        // If the current combination has reached the desired length, add it to the combinations array\n        if(currentCombination.length === n){\n            combinations.push([...currentCombination]);\n            return;\n        }\n        // Iterate over the array and generate combinations by including each element\n        for(let i = index; i < l.length; i++){\n            currentCombination.push(l[i]);\n            generateCombinations(i, currentCombination);\n            currentCombination.pop();\n        }\n    }\n    // Call the helper function to start generating combinations\n    generateCombinations(0, []);\n    // Return the array of combinations\n    return combinations;\n}",
+    "    let colors = [];\n    for(let i = 0; i < l; i++){\n        colors.push(i);\n    }\n    let result = [];\n    function recurse(current, remaining){\n        if(remaining.length === 0){\n            result.push(current);\n            return;\n        }\n        for(let i = 0; i < remaining.length; i++){\n            recurse(current.concat(remaining[i]), remaining.slice(i+1));\n        }\n    }\n    recurse([], colors);\n    return result;\n}\n",
+    "    var result = [];\n    var result2 = [];\n    var temp = [];\n    var temp2 = [];\n    function run(l, n, temp, temp2){\n        if(temp2.length === n){\n            result2.push(temp2.slice());\n            return;\n        }\n        for(var i = 0; i < l.length; i++){\n            temp.push(l[i]);\n            temp2.push(l[i]);\n            run(l, n, temp, temp2);\n            temp.pop();\n            temp2.pop();\n        }\n    }\n    run(l, n, temp, temp2);\n    for(var i = 0; i < result2.length; i++){\n        result.push(result2[i]);\n    }\n    return result;\n}",
+    "    var result = [];\n    var current = [];\n    var colors = [\"red\", \"blue\", \"green\"];\n    \n    function generateCombinations(index){\n        if(index === n){\n            result.push(current.slice());\n            return;\n        }\n        \n        for(var i = 0; i < colors.length; i++){\n            current.push(colors[i]);\n            generateCombinations(index + 1);\n            current.pop();\n        }\n    }\n    \n    generateCombinations(0);\n    return result;\n}\n",
+    "  var result = [];\n  var current = [];\n  var i = 0;\n  while (i < n){\n    current.push(l[i]);\n    result.push(current.slice());\n    i++;\n  }\n  while (i < n){\n    var j = 0;\n    while (j < result.length){\n      result[j].push(l[i]);\n      j++;\n    }\n    i++;\n  }\n  return result;\n}\n"
+  ]
+}

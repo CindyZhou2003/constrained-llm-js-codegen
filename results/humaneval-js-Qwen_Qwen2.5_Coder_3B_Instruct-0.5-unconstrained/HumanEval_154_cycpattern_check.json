@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // your code here\n    let str = b + b;\n    return str.includes(a);\n}",
+    "  if(b.length > a.length){\n    return false;\n  }\n  let str = b + b;\n  return str.includes(a);\n}",
+    "    // Your code here\n    let result = false;\n    let len = b.length;\n    for(let i = 0; i < len; i++) {\n        let temp = b.slice(i) + b.slice(0, i);\n        if(a.includes(temp)) {\n            result = true;\n        }\n    }\n    return result;\n}\n",
+    "    let len = b.length;\n    for(let i = 0; i < len; i++){\n        let temp = b.slice(i) + b.slice(0, i);\n        if(a.includes(temp)){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    if(b.length > a.length) return false;\n    let rotations = b.length;\n    for(let i = 0; i < rotations; i++){\n        if(a.includes(b)) return true;\n        b = b.slice(1) + b[0];\n    }\n    return false;\n}\n"
+  ]
+}

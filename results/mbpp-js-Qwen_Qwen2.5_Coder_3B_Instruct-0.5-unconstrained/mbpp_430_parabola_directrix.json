@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_430_parabola_directrix",
+  "language": "js",
+  "prompt": "//Write a function to find the directrix of a parabola.\nfunction parabola_directrix(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_430_parabola_directrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parabola_directrix;\n  assert.deepEqual(candidate(5, 3, 2),-198);\n  assert.deepEqual(candidate(9, 8, 4),-2336);\n  assert.deepEqual(candidate(2, 4, 6),-130);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return -c / (4 * a);\n}\n",
+    "    //Find the x-coordinate of the vertex\n    let x_vertex = -b / (2 * a);\n    //Find the y-coordinate of the vertex\n    let y_vertex = c - (b * x_vertex) / (2 * a);\n    //Find the y-coordinate of the directrix\n    let y_directrix = y_vertex - 1 / (4 * a);\n    return y_directrix;\n}\n",
+    "    //The directrix of a parabola with equation y = ax^2 + bx + c is given by the formula y = -1/(4a) + c\n    return -1/(4*a) + c;\n}",
+    "    let h = -b / (2 * a);\n    let k = -c / (2 * a);\n    return k - 1 / (4 * a);\n}\n",
+    "    var x = -b/(2*a);\n    var y = c - (b*b)/(4*a);\n    return y;\n}\n"
+  ]
+}

@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let newText = text.split(' ').join('_');\n    newText = newText.split('_').join(' ');\n    return newText;\n}\n"
+    "    let newText = text.split(' ').join('_');\n    newText = newText.split('_').join(' ');\n    return newText;\n}"
   ]
 }

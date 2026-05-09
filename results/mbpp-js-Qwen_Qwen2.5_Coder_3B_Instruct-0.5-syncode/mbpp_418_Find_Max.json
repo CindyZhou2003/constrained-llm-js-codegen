@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_418_Find_Max",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the element of an array having maximum length.\nfunction Find_Max(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_418_Find_Max.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Max;\n  assert.deepEqual(candidate([[\"A\"], [\"A\", \"B\"], [\"A\", \"B\", \"C\"]]),[\"A\", \"B\", \"C\"]);\n  assert.deepEqual(candidate([[1], [1, 2], [1, 2, 3]]),[1, 2, 3]);\n  assert.deepEqual(candidate([[1, 1], [1, 2, 3], [1, 5, 6, 1]]),[1, 5, 6, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var max = lst[0]; // assume max is the first element of the array\n    for(var i = 1; i < lst.length; i++){ // loop through the array starting from the second element\n        if(lst[i].length > max.length){ // if the current element has a greater length than max\n            max = lst[i]; // update max to be the current element\n        }\n    }\n    return max; // return the element with maximum length\n}",
+    "    //Initialize max with first element of the array\n    var max = lst[0];\n    //Loop through the array starting from the second element\n    for(var i = 1; i < lst.length; i++){\n        //If the current element length is greater than max length, update max\n        if(lst[i].length > max.length){\n            max = lst[i];\n        }\n    }\n    return max;\n}",
+    "    var max = lst[0].length;\n    var res = lst[0];\n    for(var i = 1;i < lst.length;i++){\n        if(lst[i].length > max){\n            max = lst[i].length;\n            res = lst[i];\n        }\n    }\n    return res;\n}\n",
+    "    var max = lst[0];\n    var max_len = lst[0].length;\n    for(var i = 1; i < lst.length; i++){\n        if(lst[i].length > max_len){\n            max_len = lst[i].length;\n            max = lst[i];\n        }\n    }\n    return max;\n}",
+    "    var max = lst[0].length;\n    for(var i = 1; i < lst.length; i++){\n        if(lst[i].length > max){\n            max = lst[i].length;\n        }\n    }\n    return max;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_409_min_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the minimum product from the pairs of tuples within a given array.\nfunction min_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_409_min_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),8);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),30);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),100);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min_product = Infinity;\n    for(let i = 0; i < list1.length; i++){\n        let product = list1[i][0] * list1[i][1];\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    return min_product;\n}",
+    "    // sort the list based on the product of the tuples\n    list1.sort((a, b) => {\n        return a[0] * a[1] - b[0] * b[1];\n    });\n    // return the product of the first tuple in the sorted list\n    return list1[0][0] * list1[0][1];\n}\n",
+    "    let min_product = Infinity;\n    for(let i = 0; i < list1.length; i++){\n        let product = list1[i][0] * list1[i][1];\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    return min_product;\n}",
+    "    // Initialize variables to store the minimum product and the corresponding tuple\n    let min_product = Infinity;\n    let min_tuple = null;\n    \n    // Iterate through each tuple in the list\n    for(let tuple of list1){\n        // Calculate the product of the tuple\n        let product = tuple[0] * tuple[1];\n        \n        // Check if the product is less than the current minimum product\n        if(product < min_product){\n            min_product = product;\n            min_tuple = tuple;\n        }\n    }\n    \n    // Return the minimum product and the corresponding tuple\n    return {min_product: min_product, min_tuple: min_tuple};\n}\n",
+    "    let min_product = Infinity;\n    for(let i = 0; i < list1.length; i++){\n        let product = list1[i][0] * list1[i][1];\n        if(product < min_product){\n            min_product = product;\n        }\n    }\n    return min_product;\n}\n"
+  ]
+}

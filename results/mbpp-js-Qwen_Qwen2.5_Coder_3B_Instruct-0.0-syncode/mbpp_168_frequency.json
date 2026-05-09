@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let count = 0;\n    for(let i = 0; i < a.length; i++){\n        if(a[i] === x){\n            count++;\n        }\n    }\n    return count;\n}\n"
+    "    let count = 0;\n    for(let i = 0; i < a.length; i++){\n        if(a[i] === x){\n            count++;\n        }\n    }\n    return count;\n}"
   ]
 }

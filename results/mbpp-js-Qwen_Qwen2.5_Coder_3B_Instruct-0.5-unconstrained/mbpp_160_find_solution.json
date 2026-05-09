@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var x, y;\n  var solution = [x, y];\n  var solution_exists = false;\n  for (var i = 0; i < n; i++){\n    if (a * i + b * i === n){\n      solution_exists = true;\n      solution[0] = i;\n      solution[1] = i;\n      break;\n    }\n  }\n  if (solution_exists){\n    return solution;\n  }else{\n    return undefined;\n  }\n}\n",
+    "    // Check if a and b are both zero\n    if(a === 0 && b === 0){\n        // If both are zero, then n must also be zero to have a solution\n        if(n === 0){\n            return [0, 0];\n        }\n        // If n is not zero, then there is no solution\n        return undefined;\n    }\n    // Check if a and b are both non-zero\n    if(a !== 0 && b !== 0){\n        // Calculate the greatest common divisor (GCD) of a and b\n        const gcd = gcd(a, b);\n        // Check if n is divisible by the GCD of a and b\n        if(n % gcd === 0){\n            // If n is divisible by the GCD, then a solution exists\n            // Find the x and y values using the extended Euclidean algorithm\n            const [x, y] = extended_euclidean(a, b, n);\n            return [x, y];\n        }\n        // If n is not divisible by the GCD, then there is no solution\n        return undefined;\n    }\n    // If only one of a and b is zero, then n must be divisible by the non-zero value\n    if(a === 0){\n        // If n is divisible by b, then a solution exists\n        if(n % b === 0){\n            // Find the x and y values\n            const x = n / b;\n            const y = 0;\n            return [x, y];\n        }\n        // If n is not divisible by b, then there is no solution\n        return undefined;\n    }\n    if(b === 0){\n        // If n is divisible by a, then a solution exists\n        if(n % a === 0){\n            // Find the x and y values\n            const x = 0;\n            const y = n / a;\n            return [x, y];\n        }\n        // If n is not divisible by a, then there is no solution\n        return undefined;\n    }\n}\n",
+    "    //Check if a and b are both non-zero\n    if(a === 0 && b === 0){\n        return undefined;\n    }\n    //Check if n is divisible by the greatest common divisor of a and b\n    if(n % gcd(a, b) !== 0){\n        return undefined;\n    }\n    //Calculate the greatest common divisor of a and b\n    let gcd_ab = gcd(a, b);\n    //Calculate the solution for x and y\n    let x = n / gcd_ab * (b / gcd_ab);\n    let y = n / gcd_ab * (-a / gcd_ab);\n    //Return the solution as an array\n    return [x, y];\n}",
+    "    //If a or b is 0, we can solve for x or y directly\n    if(a === 0){\n        return [n/b, 0];\n    }\n    if(b === 0){\n        return [0, n/a];\n    }\n    //If n is not divisible by the greatest common divisor of a and b, there is no solution\n    if(n % gcd(a, b) !== 0){\n        return undefined;\n    }\n    //Find the greatest common divisor of a and b\n    let d = gcd(a, b);\n    //Find the modular inverse of b modulo a\n    let inv_b = mod_inverse(b, a);\n    //Find x and y\n    let x = (n * inv_b) % a;\n    let y = (n - a * x) / b;\n    return [x, y];\n}",
+    "    // Check if a and b are coprime\n    if (gcd(a, b) !== 1) {\n        return undefined;\n    }\n    \n    // Find the modular inverse of a modulo b\n    let inv_a = modular_inverse(a, b);\n    \n    // Calculate x and y\n    let x = (n * inv_a) % b;\n    let y = (n * inv_a - x) / a;\n    \n    return [x, y];\n}\n"
+  ]
+}

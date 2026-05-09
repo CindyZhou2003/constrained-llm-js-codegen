@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    vowels = 'aeiouAEIOU';\n    res = 0;\n    for(i in test_str.split('')){\n        if(vowels.includes(test_str[i])"
+    "    vowels = \"aeiouAEIOU\";\n    res = 0;\n    for(i in test_str.split('')){\n"
   ]
 }

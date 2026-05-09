@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_796_return_sum",
+  "language": "js",
+  "prompt": "//Write function to find the sum of all items in the given object.\nfunction return_sum(dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_796_return_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = return_sum;\n  assert.deepEqual(candidate({\"a\": 100, \"b\": 200, \"c\": 300}),600);\n  assert.deepEqual(candidate({\"a\": 25, \"b\": 18, \"c\": 45}),88);\n  assert.deepEqual(candidate({\"a\": 36, \"b\": 39, \"c\": 49}),124);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    sum = 0\n    for i in dict.values():\n        sum = sum + i\n    return sum\n}\nprint(return_sum({1:2, 2:3, 3:4, 4:5}))",
+    "    sum = 0;\n    for(i in dict){\n        sum += dict[i];\n    }\n    return sum;\n}\n",
+    "    sum = 0\n    for i in dict:\n        sum += dict[i]\n    return sum\n}\ndict = {'a':5,'b':10,'c':15}\nprint(return_sum(dict))",
+    "    sum = 0;\n    for (key in dict){\n        sum += dict[key];\n    }\n    return sum;\n}\ndict = {1:10, 2:20, 3:30};\nprint(return_sum(dict));",
+    "    sum = 0\n    for (let key in dict){\n        sum += dict[key]\n    }\n    return sum\n}\ndict = {a:1,b:2,c:3}\nprint(return_sum(dict))"
+  ]
+}

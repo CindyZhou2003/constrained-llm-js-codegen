@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_165_count_char_position",
+  "language": "js",
+  "prompt": "//Write a function to count the number of characters in a string that occur at the same position in the string as in the English alphabet (case insensitive).\nfunction count_char_position(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_165_count_char_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_char_position;\n  assert.deepEqual(candidate(\"xbcefg\"),2);\n  assert.deepEqual(candidate(\"ABcED\"),3);\n  assert.deepEqual(candidate(\"AbgdeF\"),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < str1.length; i++){\n        if(str1[i].toLowerCase() === str1[i].toUpperCase()){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < str1.length; i++){\n        if(str1[i].toLowerCase() === str1[i].toUpperCase()){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    let alphabet = 'abcdefghijklmnopqrstuvwxyz';\n    for(let i = 0; i < str1.length; i++){\n        if(str1[i].toLowerCase() === alphabet[i]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var count = 0;\n    for(var i = 0; i < str1.length; i++){\n        if(str1[i] === str1[i].toLowerCase()){\n            if((str1[i] === 'a' || str1[i] === 'e' || str1[i] === 'i' || str1[i] === 'o' || str1[i] === 'u') && i === 0){\n                count++;\n            }\n            else if((str1[i] === 'b' || str1[i] === 'c' || str1[i] === 'd' || str1[i] === 'f' || str1[i] === 'g') && i === 1){\n                count++;\n            }\n            else if((str1[i] === 'h' || str1[i] === 'j' || str1[i] === 'k' || str1[i] === 'l' || str1[i] === 'm') && i === 2){\n                count++;\n            }\n            else if((str1[i] === 'n' || str1[i] === 'p' || str1[i] === 'q' || str1[i] === 'r' || str1[i] === 's') && i === 3){\n                count++;\n            }\n            else if((str1[i] === 't' || str1[i] === 'v' || str1[i] === 'w' || str1[i] === 'x' || str1[i] === 'y' || str1[i] === 'z') && i === 4){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < str1.length; i++){\n        if(str1[i] === str1[i].toLowerCase() && str1[i] === String.fromCharCode(i + 97)){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

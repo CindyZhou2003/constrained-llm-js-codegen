@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    res = [];\n    for (let i = 0; i < test_list.length; i++){\n        for (let j = i + 1; j < test_list.length; j++){\n            for (let k = j + 1; k < test_list.length; k++){\n                res.push([test_list[i], test_list[j], test_list[k]]);\n            }\n        }\n    }\n    return res;\n}\ntest_list = [1, 2, 3, 4, 5];\nprint(find_combinations(test_list));import itertools\n\ndef find_combinations(test_list):\n"
+    "    res = [];\n    for (let i = 0; i < test_list.length; i++){\n        for (let j = i + 1; j < test_list.length; j++){\n            for (let k = j + 1; k < test_list.length; k++){\n                res.push([test_list[i], test_list[j], test_list[k]]);\n            }\n        }\n    }\n    return res;\n}"
   ]
 }

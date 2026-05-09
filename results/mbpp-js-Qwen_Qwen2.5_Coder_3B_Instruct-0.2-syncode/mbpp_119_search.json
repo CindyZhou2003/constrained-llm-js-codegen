@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_119_search",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the element that appears only once in a sorted array.\nfunction search(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_119_search.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = search;\n  assert.deepEqual(candidate([1, 1, 2, 2, 3]),3);\n  assert.deepEqual(candidate([1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8]),8);\n  assert.deepEqual(candidate([1, 2, 2, 3, 3, 4, 4]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let start = 0;\n    let end = arr.length - 1;\n    while(start <= end){\n        let mid = Math.floor((start + end) / 2);\n        if(mid % 2 === 0){\n            if(arr[mid] === arr[mid + 1]){\n                start = mid + 2;\n            }else{\n                end = mid;\n            }\n        }else{\n            if(arr[mid] === arr[mid - 1]){\n                start = mid + 1;\n            }else{\n                end = mid - 1;\n            }\n        }\n    }\n    return arr[start];\n}",
+    "    let left = 0;\n    let right = arr.length - 1;\n    while(left < right){\n        let mid = Math.floor((left + right) / 2);\n        if(arr[mid] === arr[mid + 1]){\n            if((mid - left) % 2 === 0){\n                left = mid + 2;\n            }else{\n                right = mid;\n            }\n        }else if(arr[mid] === arr[mid - 1]){\n            if((right - mid) % 2 === 0){\n                right = mid - 2;\n            }else{\n                left = mid;\n            }\n        }else{\n            return arr[mid];\n        }\n    }\n    return arr[left];\n}",
+    "    let left = 0;\n    let right = arr.length - 1;\n    while(left < right){\n        let mid = Math.floor((left + right) / 2);\n        if(arr[mid] === arr[mid + 1]){\n            if((mid - left) % 2 === 0){\n                left = mid + 2;\n            }else{\n                right = mid;\n            }\n        }else if(arr[mid] === arr[mid - 1]){\n            if((right - mid) % 2 === 0){\n                right = mid - 2;\n            }else{\n                left = mid;\n            }\n        }else{\n            return arr[mid];\n        }\n    }\n    return arr[left];\n}"
+  ]
+}

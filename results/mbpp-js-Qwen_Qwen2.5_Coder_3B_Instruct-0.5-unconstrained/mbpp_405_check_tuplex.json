@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_405_check_tuplex",
+  "language": "js",
+  "prompt": "//Write a function to check whether an element exists within an array.\nfunction check_tuplex(tuplex, tuple1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_405_check_tuplex.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_tuplex;\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], \"r\"),true);\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], \"5\"),false);\n  assert.deepEqual(candidate([\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"], 3),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(i in tuplex){\n        if(tuplex[i] == tuple1){\n            return true;\n        }\n    }\n    return false;\n}\nprint(check_tuplex([1, 2, 3, 4, 5], 4)) #Output: True\nprint(check_tuplex([1, 2, 3, 4, 5], 6)) #Output: False\n\n#Write a function to find the maximum and minimum values in an array.\ndef max_min(arr):\n    max_val = arr[0]\n    min_val = arr[0]\n    for i in range(1, len(arr)):\n        if arr[i] > max_val:\n            max_val = arr[i]\n        if arr[i] < min_val:\n            min_val = arr[i]\n    return max_val, min_val\nprint(max_min([1, 2, 3, 4, 5])) #Output: (5, 1)\nprint(max_min([10, 20, 30, 40, 50])) #Output: (50, 10)\n\n#Write a function to count the number of occurrences of a given element in an array.\ndef count_occurrences(arr, element):\n    count = 0\n    for i in range(len(arr)):\n        if arr[i] == element:\n            count += 1\n    return count\nprint(count_occurrences([1, 2, 3, 4, 5, 2, 2], 2)) #Output: 3\nprint(count_occurrences([10, 20, 30, 40, 50], 10)) #Output: 1\n\n#Write a function to reverse the elements of an array.\ndef reverse_array(arr):\n    return arr[::-1]\nprint(reverse_array([1, 2, 3, 4, 5])) #Output: [5, 4, 3, 2, 1]\nprint(reverse_array([10, 20, 30, 40, 50])) #Output: [50, 40, 30, 20, 10]\n\n#Write a function to find the sum of all elements in an array.\ndef sum_array(arr):\n    return sum(arr)\nprint(sum_array([1, 2, 3, 4, 5])) #Output:",
+    "    for(i in tuplex){\n        if(tuple1 == tuplex[i]){\n            return true;\n        }\n    }\n    return false;\n}\n\ntuplex = [1, 2, 3, 4, 5];\ntuple1 = 3;\nprint(check_tuplex(tuplex, tuple1));",
+    "    for(x in tuplex){\n        if(tuplex[x] == tuple1){\n            return 'Element found';\n        }\n    }\n    return 'Element not found';\n}\n\nprint(check_tuplex([10,20,30,40,50], 30));",
+    "    for(i in tuplex){\n        if(tuplex[i] === tuple1){\n            return true;\n        }\n    }\n    return false;\n}\ntuplex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\ntuple1 = 5;\nprint(check_tuplex(tuplex, tuple1));",
+    "    if(tuple1 in tuplex){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\ntuplex = (1,2,3,4,5);\ntuple1 = 3;\nprint(check_tuplex(tuplex, tuple1));\n\ntuplex = (1,2,3,4,5);\ntuple1 = 3;\nprint(check_tuplex(tuplex, tuple1));"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_584_find_adverbs",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Split the text into words\n    let words = text.split(' ');\n    //Initialize variables to store the adverb and its positions\n    let adverb = ''; \n    let positions = [];\n    //Iterate through the words\n    for(let i = 0; i < words.length; i++){\n        //Check if the word ends with ly\n        if(words[i].endsWith('ly')){\n            //Store the adverb and its position\n            adverb = words[i];\n            positions.push(i);\n        }\n    }\n    //Return the adverb and its positions\n    return {adverb: adverb, positions: positions};\n}",
+    "    var adverbs = [];\n    var positions = [];\n    var words = text.split(\" \");\n    for(var i = 0; i < words.length; i++){\n        var word = words[i];\n        if(word.endsWith(\"ly\")){\n            adverbs.push(word);\n            positions.push(i);\n        }\n    }\n    return {adverbs: adverbs, positions: positions};\n}\nvar text = \"The quickly brown fox jumped over the lazy dog\";\nvar result = find_adverbs(text);",
+    "  var adverbs = [];\n  var positions = [];\n  var words = text.split(' ');\n  for (var i = 0; i < words.length; i++) {\n    if (words[i].indexOf('ly') !== -1) {\n      adverbs.push(words[i]);\n      positions.push(i);\n    }\n  }\n  return adverbs;\n}\nvar text = \"She quickly ran to the store and bought some food.\";\nvar adverbs = find_adverbs(text);",
+    "    const adverbs = text.match(/\\b([a-zA-Z]+ly)\\b/g);\n    if(adverbs){\n        console.log(\"First adverb ending with ly:\", adverbs[0]);\n        console.log(\"Positions:\", adverbs.map((adverb, index) => index + 1));\n    }else{\n        console.log(\"No adverb ending with ly found.\");\n    }\n}\n",
+    "    //Split the text into words\n    let words = text.split(\" \");\n    //Initialize variables to store the first adverb and its positions\n    let first_adverb = \"\";\n    let positions = [];\n    //Iterate through the words\n    for(let i = 0; i < words.length; i++){\n        //Check if the word ends with ly\n        if(words[i].endsWith(\"ly\")){\n            //Check if this is the first adverb found\n            if(first_adverb === \"\"){\n                first_adverb = words[i];\n                positions.push(i);\n            }\n        }\n    }\n    //Return the first adverb and its positions\n    return {adverb: first_adverb, positions: positions};\n}"
+  ]
+}

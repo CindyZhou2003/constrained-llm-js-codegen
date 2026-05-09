@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            sum += (arr[i] ^ arr[j]);\n        }\n    }\n    return sum;\n}\nlet arr = [1, 2, 3, 4];\nlet n = arr.length;"
+    "    let sum = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            sum += (arr[i] ^ arr[j]);\n        }\n    }\n    return sum;\n}"
   ]
 }

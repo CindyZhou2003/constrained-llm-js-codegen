@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_75_is_multiply_prime",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the given number is the multiplication of 3 prime numbers\n// and false otherwise.\n// Knowing that (a) is less then 100. \n// Example:\n// >>> is_multiply_prime(30)\n// true\n// 30 = 2 * 3 * 5\nfunction is_multiply_prime(a){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_75_is_multiply_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_multiply_prime;\n  assert.deepEqual(candidate(5),false);\n  assert.deepEqual(candidate(30),true);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(125),true);\n  assert.deepEqual(candidate(105),true);\n  assert.deepEqual(candidate(126),false);\n  assert.deepEqual(candidate(729),false);\n  assert.deepEqual(candidate(891),false);\n  assert.deepEqual(candidate(1001),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(a < 100){\n        let count = 0;\n        for(let i = 2; i <= a; i++){\n            if(a % i === 0){\n                count++;\n                if(count > 3){\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n}\n",
+    "    if(a < 100){\n        let count = 0\n        let arr = []\n        for(let i = 2; i < a; i++){\n            let isDivisible = true\n            for(let j = 2; j <= i; j++){\n                if(i % j === 0){\n                    isDivisible = false\n                    break\n                }\n            }\n            if(isDivisible){\n                arr.push(i)\n            }\n        }\n        if(arr.length === 3){\n            count++\n        }\n    }\n    return count === 1\n}",
+    "    var arr = [];\n    for(let i = 2; i <= Math.sqrt(a); i++){\n        if(a % i == 0){\n            arr.push(i);\n            a = a / i;\n        }\n    }\n    if(arr.length == 0) return true;\n    return arr[0] * arr[1] * arr[2] == a;\n}",
+    "    if(a < 100){\n        let i = 2;\n        let isPrime = true;\n        while(i < a){\n            if(a % i === 0){\n                isPrime = false;\n                break;\n            }\n            i++;\n        }\n        if(isPrime){\n            i = 2;\n            while(i < a){\n                if(a % i === 0){\n                    isPrime = false;\n                    break;\n                }\n                i++;\n            }\n            if(isPrime){\n                i = 2;\n                while(i < a){\n                    if(a % i === 0){\n                        isPrime = false;\n                        break;\n                    }\n                    i++;\n                }\n                if(isPrime){\n                    return true;\n                }else{\n                    return false;\n                }\n            }else{\n                return false;\n            }\n        }else{\n            return false;\n        }\n    }else{\n        return false;\n    }\n}",
+    "  if (a < 100){\n    var count = 0;\n    for (var i = 2; i <= Math.sqrt(a); i++) {\n      if (a % i == 0){\n        count++;\n      }\n    }\n    if (count == 0){\n      for (var i = 2; i <= Math.sqrt(a); i++) {\n        if (a % i == 0){\n          count++;\n        }\n      }\n      if (count == 0){\n        for (var i = 2; i <= Math.sqrt(a); i++) {\n          if (a % i == 0){\n            count++;\n          }\n        }\n        if (count == 0){\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}"
+  ]
+}

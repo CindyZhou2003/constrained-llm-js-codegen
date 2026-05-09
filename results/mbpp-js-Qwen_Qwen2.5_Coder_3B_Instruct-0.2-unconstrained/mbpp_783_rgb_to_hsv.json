@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert rgb to hsv\n    // r, g, b should be in the range of 0 to 255\n    // hsv should be in the range of 0 to 360 for hue, 0 to 1 for saturation, and 0 to 1 for value\n    // Example: rgb_to_hsv(255, 0, 0) should return (0, 1, 1)\n    // Example: rgb_to_hsv(0, 255, 0) should return (120, 1, 1)\n    // Example: rgb_to_hsv(0, 0, 255) should return (240, 1, 1)\n    // Example: rgb_to_hsv(255, 255, 255) should return (0, 0, 1)\n    // Example: rgb_to_hsv(0, 0, 0) should return (0, 0, 0)\n    // Example: rgb_to_hsv(128, 128, 128) should return (120, 0.5, 0.5)\n    // Example: rgb_to_hsv(192, 64, 128) should return (300, 0.5, 0.5)\n    // Example: rgb_to_hsv(64, 192, 128) should return (60, 0.5, 0.5)\n    // Example: rgb_to_hsv(128, 64, 192) should return (240, 0.5, 0.5)\n    // Example: rgb_to_hsv(128, 192, 64) should return (180, 0.5, 0.5)\n    // Example: rgb_to_hsv(192, 128, 64) should return (30, 0.5, 0.5)\n    // Example: rgb_to_hsv(64, 128, 192) should return (30, 0.5, 0.5)\n    // Example: rgb_to_hsv(128, 192, 64",
+    "    // Convert RGB values to a range of 0 to 1\n    r /= 255;\n    g /= 255;\n    b /= 255;\n\n    // Find the maximum and minimum values of r, g, and b\n    let max = Math.max(r, g, b);\n    let min = Math.min(r, g, b);\n\n    // Calculate the hue\n    let hue;\n    if (max === min) {\n        hue = 0; // No hue\n    } else if (max === r) {\n        hue = (60 * ((g - b) / (max - min))) + 360;\n    } else if (max === g) {\n        hue = (60 * ((b - r) / (max - min))) + 120;\n    } else if (max === b) {\n        hue = (60 * ((r - g) / (max - min))) + 240;\n    }\n\n    // Calculate the saturation\n    let saturation;\n    if (max === 0) {\n        saturation = 0; // No saturation\n    } else {\n        saturation = (1 - (min / max));\n    }\n\n    // Calculate the value\n    let value = max;\n\n    return [hue, saturation, value];\n}\n",
+    "    // Convert RGB values to a range of 0 to 1\n    r /= 255;\n    g /= 255;\n    b /= 255;\n\n    // Find the maximum and minimum values\n    let max = Math.max(r, g, b);\n    let min = Math.min(r, g, b);\n\n    // Calculate the hue\n    let hue;\n    if (max === min) {\n        hue = 0; // achromatic color\n    } else if (max === r) {\n        hue = (60 * ((g - b) / (max - min))) + 360;\n    } else if (max === g) {\n        hue = (60 * ((b - r) / (max - min))) + 120;\n    } else if (max === b) {\n        hue = (60 * ((r - g) / (max - min))) + 240;\n    }\n\n    // Calculate the saturation\n    let saturation;\n    if (max === 0) {\n        saturation = 0; // achromatic color\n    } else {\n        saturation = (1 - (min / max));\n    }\n\n    // Calculate the value\n    let value = max;\n\n    // Return the HSV values as a tuple\n    return [hue, saturation, value];\n}\n"
+  ]
+}

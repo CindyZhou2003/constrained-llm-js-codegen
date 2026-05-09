@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var len = s.length;\n    if(len % 2 == 0){\n        return \"Even\";\n    }else{\n        return \"Odd\";\n    }\n}"
+    "    var len = s.length;\n    if(len % 2 == 0){\n        return \"Even\";\n    }\n    else{\n        return \"Odd\";\n    }\n}"
   ]
 }

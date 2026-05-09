@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //base case\n    if(index == n-1){\n        return a[index];\n    }\n    //if k is out of bound\n    if(k > n-1){\n        return -1;\n    }\n    //if the current element is greater than the next element\n    if(a[index] > a[index+1]){\n        //return the current element plus the maximum sum of increasing subsequence from prefix until kth element\n        return a[index] + max_sum_increasing_subseq(a, n, k, k+1);\n    }\n    //if the current element is less than or equal to the next element\n    else{\n        //return the maximum of the current element plus the maximum sum of increasing subsequence from prefix until kth element and the maximum sum of increasing subsequence from prefix until kth element\n        return Math.max(a[index] + max_sum_increasing_subseq(a, n, k, k+1), max_sum_increasing_subseq(a, n, index+1, index+2));\n    }\n}",
+    "    // Base case: if index is equal to n-1, return the value of the element at index\n    if(index == n-1){\n        return a[index];\n    }\n    // Initialize the maximum sum to a very small number\n    let max_sum = -1;\n    // Iterate through the elements from index+1 to n-1\n    for(let i = index+1; i < n; i++){\n        // Check if the current element is greater than the element at index\n        if(a[i] > a[index]){\n            // Recursively call the function for the next index and k+1\n            let sum = max_sum_increasing_subseq(a, n, i, k+1);\n            // Update the maximum sum if the current sum is greater\n            max_sum = Math.max(max_sum, sum);\n        }\n    }\n    // Return the maximum sum plus the value of the element at index\n    return max_sum + a[index];\n}",
+    "    let max = 0;\n    for(let i = index; i < k; i++){\n        if(a[i] > a[index] && max < a[i]){\n            max = a[i];\n        }\n    }\n    return max;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Base case: If k is equal to n, return the sum of the subsequence ending at index.\n    if(k === n){\n        return a[index];\n    }\n    //If the maximum sum of increasing subsequence ending at index is already calculated, return it.\n    if(dp[index][k] !== -1){\n        return dp[index][k];\n    }\n    //Initialize the maximum sum to the sum of the subsequence ending at index.\n    let max_sum = a[index];\n    //Iterate over the elements after index.\n    for(let i = index + 1; i < k; i++){\n        //If the current element is greater than the previous element, update the maximum sum.\n        if(a[i] > a[index]){\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    //Store the maximum sum in the dp array.\n    dp[index][k] = max_sum;\n    //Return the maximum sum.\n    return max_sum;\n}",
+    "    //base case\n    if(index == n - 1){\n        return 0;\n    }\n    //if the kth element is not included in the subsequence\n    let ans = max_sum_increasing_subseq(a, n, index + 1, k);\n    //if the kth element is included in the subsequence\n    if(k <= n && a[k] > a[index]){\n        ans = Math.max(ans, a[k] + max_sum_increasing_subseq(a, n, k, k + 1));\n    }\n    return ans;\n}\n",
+    "    // Base case: if index is out of bounds, return 0\n    if(index >= n || k >= n){\n        return 0;\n    }\n    // Recursive case: either include the current element or exclude it\n    let include = a[index] + max_sum_increasing_subseq(a, n, index + 1, k);\n    let exclude = max_sum_increasing_subseq(a, n, index + 1, k);\n    return Math.max(include, exclude);\n}\n",
+    "    // Base case: if the index is out of bounds, return 0\n    if (index >= n) {\n        return 0;\n    }\n    // If the maximum sum for the current index is already computed, return it\n    if (dp[index] !== -1) {\n        return dp[index];\n    }\n    // Initialize the maximum sum for the current index\n    let max_sum = a[index];\n    // Iterate over the elements after the current index\n    for (let i = index + 1; i < n; i++) {\n        // If the current element is greater than or equal to the previous element, update the maximum sum\n        if (a[i] >= a[index]) {\n            max_sum = Math.max(max_sum, a[index] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Store the maximum sum for the current index in the dp array\n    dp[index] = max_sum;\n    return max_sum;\n}\n",
+    "    // Base case: if index is out of bounds, return 0\n    if(index >= n){\n        return 0;\n    }\n    // Initialize the maximum sum to 0\n    let max_sum = 0;\n    // Iterate over all elements after the given index k\n    for(let i = k; i < n; i++){\n        // If the current element is greater than the element at the given index\n        if(a[i] > a[index]){\n            // Recursively call the function to find the maximum sum of increasing subsequence from the current element\n            max_sum = Math.max(max_sum, a[i] + max_sum_increasing_subseq(a, n, i, k));\n        }\n    }\n    // Return the maximum sum found\n    return max_sum;\n}"
+  ]
+}

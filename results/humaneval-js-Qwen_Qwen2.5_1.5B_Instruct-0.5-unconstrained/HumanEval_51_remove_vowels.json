@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_51_remove_vowels",
+  "language": "js",
+  "prompt": "//remove_vowels is a function that takes string and returns string without vowels.\n// >>> remove_vowels(\"\")\n// \"\"\n// >>> remove_vowels(\"abcdef\")\n// \"bcdf\"\n// >>> remove_vowels(\"aaaaa\")\n// \"\"\n// >>> remove_vowels(\"aaBAA\")\n// \"B\"\n// >>> remove_vowels(\"zbcd\")\n// \"zbcd\"\nfunction remove_vowels(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_51_remove_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_vowels;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"abcdef\nghijklm\"),\"bcdf\nghjklm\");\n  assert.deepEqual(candidate(\"fedcba\"),\"fdcb\");\n  assert.deepEqual(candidate(\"eeeee\"),\"\");\n  assert.deepEqual(candidate(\"acBAA\"),\"cB\");\n  assert.deepEqual(candidate(\"EcBOO\"),\"cB\");\n  assert.deepEqual(candidate(\"ybcd\"),\"ybcd\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = '';\n    const vowels = 'aeiouAEIOU';\n    for(let char of text){\n        if(!vowels.includes(char)){\n            result += char;\n        }\n    }\n    return result;\n}",
+    "  return text.replace(/[aeiou]/g, \"\");\n}",
+    "    let result = \"\";\n    for(let i = 0; i < text.length; i++){\n        let char = text[i];\n        if(char === \"a\" || char === \"e\" || char === \"i\" || char === \"o\" || char === \"u\" || char === \"A\" || char === \"E\" || char === \"I\" || char === \"O\" || char === \"U\"){\n            continue;\n        }\n        else{\n            result += char;\n        }\n    }\n    return result;\n}",
+    "  let newString = '';\n  for(let i = 0; i < text.length; i++){\n    if(text[i] === 'a' || text[i] === 'e' || text[i] === 'i' || text[i] === 'o' || text[i] === 'u' || text[i] === 'A' || text[i] === 'E' || text[i] === 'I' || text[i] === 'O' || text[i] === 'U'){\n      continue;\n    }else{\n      newString += text[i];\n    }\n  }\n  return newString;\n}\n",
+    "    let vowels = [\"a\", \"e\", \"i\", \"o\", \"u\", \"A\", \"E\", \"I\", \"O\", \"U\"];\n    let result = [];\n    for(let letter of text){\n        if(!vowels.includes(letter)){\n            result.push(letter);\n        }\n    }\n    return result.join('');\n}\n"
+  ]
+}

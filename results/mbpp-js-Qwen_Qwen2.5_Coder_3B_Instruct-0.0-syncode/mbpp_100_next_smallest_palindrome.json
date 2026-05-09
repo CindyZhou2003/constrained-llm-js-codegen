@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    // Convert the number to a string\n    let str = num.toString();\n    // Initialize the next smallest palindrome\n    let next_palindrome = num + 1;\n    // Loop until we find the next smallest palindrome\n    while (true) {\n        // Convert the next palindrome to a string\n        let next_str = next_palindrome.toString();\n        // Check if the next palindrome is a palindrome\n        if (next_str === next_str.split('').reverse().join('')) {\n            // Return the next smallest palindrome\n            return next_palindrome;\n        }\n        // Increment the next palindrome\n        next_palindrome++;\n    }\n}"
+    "    // Convert the number to a string\n    let str = num.toString();\n    // Initialize a variable to store the next smallest palindrome\n    let next_palindrome = num + 1;\n    // Loop until we find the next smallest palindrome\n    while (true) {\n        // Convert the next palindrome to a string\n        let next_str = next_palindrome.toString();\n        // Check if the next palindrome is a palindrome\n        if (next_str === next_str.split('').reverse().join('')) {\n            // Return the next smallest palindrome\n            return next_palindrome;\n        }\n        // Increment the next palindrome\n        next_palindrome++;\n    }\n}"
   ]
 }

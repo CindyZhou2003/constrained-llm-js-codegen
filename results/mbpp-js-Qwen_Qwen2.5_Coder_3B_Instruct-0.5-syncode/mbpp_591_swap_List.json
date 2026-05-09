@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_591_swap_List",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to interchange the first and last elements in an array.\nfunction swap_List(newList){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_591_swap_List.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = swap_List;\n  assert.deepEqual(candidate([12, 35, 9, 56, 24]),[24, 35, 9, 56, 12]);\n  assert.deepEqual(candidate([1, 2, 3]),[3, 2, 1]);\n  assert.deepEqual(candidate([4, 5, 6]),[6, 5, 4]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var firstElement=newList[0];\n    var lastElement=newList[newList.length-1];\n    newList[0]=lastElement;\n    newList[newList.length-1]=firstElement;\n    return newList;\n}",
+    "    let firstElement = newList[0];\n    let lastElement = newList[newList.length - 1];\n    newList[0] = lastElement;\n    newList[newList.length - 1] = firstElement;\n    return newList;\n}",
+    "    let first = newList[0];\n    let last = newList[newList.length - 1];\n    newList[0] = last;\n    newList[newList.length - 1] = first;\n    return newList;\n}",
+    "    let temp = newList[0];\n    newList[0] = newList[newList.length-1];\n    newList[newList.length-1] = temp;\n    return newList;\n}\n",
+    "    //if the array length is greater than 1\n    if(newList.length > 1){\n        //store the first element\n        let firstElement = newList[0];\n        //store the last element\n        let lastElement = newList[newList.length - 1];\n        //replace the first element with the last element\n        newList[0] = lastElement;\n        //replace the last element with the first element\n        newList[newList.length - 1] = firstElement;\n        //return the modified array\n        return newList;\n    }\n    //if the array length is 1 or less\n    else{\n        //return the array as it is\n        return newList;\n    }\n}"
+  ]
+}

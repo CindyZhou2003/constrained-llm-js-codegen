@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = [];\n    var n = list1.length;\n    var r = 2;\n    var index = 0;\n    var temp = new Array(r);\n    var combination = new Array(r);\n    function combinationUtil(list1, index, r, temp, combination, result) {\n        if (index == r) {\n            for (var i = 0; i < r; i++) {\n                combination[i] = temp[i];\n            }\n            result.push(combination);\n            return;\n        }\n        for (var i = index; i < n; i++) {\n            temp[index] = list1[i];\n            combinationUtil(list1, i + 1, r, temp, combination, result);\n        }\n    }\n    combinationUtil(list1, index, r, temp, combination, result);\n    return result;\n}"
+    "    var result = [];\n    var n = list1.length;\n    var r = 2;\n    var index = 0;\n    var temp = [];\n    var combination = function(start, n, r, index, temp){\n        if(index == r){\n            result.push(temp.slice());\n            return;\n        }\n        for(var i = start; i <= n - r + index; i++){\n            temp[index] = list1[i];\n            combination(i + 1, n, r, index + 1, temp);\n        }\n    }\n    combination(0, n, r, index, temp);\n    return result;\n}"
   ]
 }

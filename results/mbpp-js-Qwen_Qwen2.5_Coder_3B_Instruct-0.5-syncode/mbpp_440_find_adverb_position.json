@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_440_find_adverb_position",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb and their positions in a given sentence.\nfunction find_adverb_position(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_440_find_adverb_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverb_position;\n  assert.deepEqual(candidate(\"clearly!! we can see the sky\"),[0, 7, \"clearly\"]);\n  assert.deepEqual(candidate(\"seriously!! there are many roses\"),[0, 9, \"seriously\"]);\n  assert.deepEqual(candidate(\"unfortunately!! sita is going to home\"),[0, 13, \"unfortunately\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var adverbs = [];\n    var positions = [];\n    var words = text.split(\" \");\n    for(var i=0; i<words.length; i++){\n        if(words[i].endsWith(\"ly\")){\n            adverbs.push(words[i]);\n            positions.push(i);\n        }\n    }\n    return {adverbs: adverbs, positions: positions};\n}",
+    "    var adverbs = [];\n    var positions = [];\n    var words = text.split(' ');\n    for(var i = 0; i < words.length; i++){\n        if(words[i].endsWith('ly')){\n            adverbs.push(words[i]);\n            positions.push(i);\n        }\n    }\n    return {adverbs: adverbs, positions: positions};\n}",
+    "    //Split the sentence into words\n    const words = text.split(' ');\n    //Define a regular expression to match adverbs\n    const adverb_regex = /[A-Z][a-z]+ly/;\n    //Loop through the words and find the first adverb\n    for(let i=0; i<words.length; i++){\n        if(adverb_regex.test(words[i])){\n            //Return the position of the adverb and the adverb itself\n            return {position: i, adverb: words[i]};\n        }\n    }\n    //If no adverb is found, return null\n    return null;\n}",
+    "  var adverbs = text.match(/\\b([A-Za-z]+ing)\\b/g); // find all adverbs in the sentence\n  if(adverbs){\n    var positions = adverbs.map(function(adverb){\n      return text.indexOf(adverb); // find the position of each adverb in the sentence\n    });\n    return {adverbs: adverbs, positions: positions};\n  }\n  return null; // return null if no adverbs are found\n}\n",
+    "    var adverb_position = [];\n    var adverbs = text.match(/\\b([a-z]+ly)\\b/gi);\n    if(adverbs != null){\n        for(var i = 0; i < adverbs.length; i++){\n            adverb_position.push({adverb: adverbs[i], position: text.indexOf(adverbs[i])});\n        }\n    }\n    return adverb_position;\n}"
+  ]
+}

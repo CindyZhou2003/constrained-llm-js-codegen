@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_805_max_sum_list",
+  "language": "js",
+  "prompt": "//Write a function that returns the array in an array of lists whose sum of elements is the highest.\nfunction max_sum_list(lists){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_805_max_sum_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_list;\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]),[10, 11, 12]);\n  assert.deepEqual(candidate([[3, 2, 1], [6, 5, 4], [12, 11, 10]]),[12, 11, 10]);\n  assert.deepEqual(candidate([[2, 3, 1]]),[2, 3, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // find the sum of each list\n    let sums = lists.map(list => list.reduce((acc, curr) => acc + curr, 0));\n    // find the index of the list with the highest sum\n    let max_index = sums.indexOf(Math.max(...sums));\n    // return the list with the highest sum\n    return lists[max_index];\n}",
+    "    //Initialize max sum to the first list's sum\n    let max_sum = lists[0].reduce((a, b) => a + b, 0);\n    //Initialize max sum list to the first list\n    let max_sum_list = lists[0];\n    //Iterate through the list of lists\n    for(let i = 1; i < lists.length; i++){\n        //Calculate the sum of the current list\n        let current_sum = lists[i].reduce((a, b) => a + b, 0);\n        //If the current sum is greater than the max sum, update max sum and max sum list\n        if(current_sum > max_sum){\n            max_sum = current_sum;\n            max_sum_list = lists[i];\n        }\n    }\n    //Return the max sum list\n    return max_sum_list;\n}\n",
+    "    var max_sum = 0;\n    var max_list = [];\n    for(var i = 0; i < lists.length; i++){\n        var sum = 0;\n        for(var j = 0; j < lists[i].length; j++){\n            sum += lists[i][j];\n        }\n        if(sum > max_sum){\n            max_sum = sum;\n            max_list = lists[i];\n        }\n    }\n    return max_list;\n}\n",
+    "    //Initialize the max sum to negative infinity\n    let max_sum = -Infinity;\n    //Initialize the result list to an empty list\n    let result = [];\n    //Iterate over each list in the input list\n    for(let i = 0; i < lists.length; i++){\n        //Initialize the current sum to 0\n        let current_sum = 0;\n        //Iterate over each element in the current list\n        for(let j = 0; j < lists[i].length; j++){\n            //Add the current element to the current sum\n            current_sum += lists[i][j];\n        }\n        //If the current sum is greater than the max sum, update the max sum and result list\n        if(current_sum > max_sum){\n            max_sum = current_sum;\n            result = lists[i];\n        }\n    }\n    //Return the result list\n    return result;\n}\n",
+    "    var list = [];\n    var max = 0;\n    for(var i = 0; i < lists.length; i++){\n        var sum = 0;\n        for(var j = 0; j < lists[i].length; j++){\n            sum += lists[i][j];\n        }\n        if(sum > max){\n            max = sum;\n            list = lists[i];\n        }\n    }\n    return list;\n}\n"
+  ]
+}

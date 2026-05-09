@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_748_capital_words_spaces",
+  "language": "js",
+  "prompt": "//Write a function to put spaces between words starting with capital letters in a given string.\nfunction capital_words_spaces(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_748_capital_words_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = capital_words_spaces;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"PythonProgrammingExamples\"),\"Python Programming Examples\");\n  assert.deepEqual(candidate(\"GetReadyToBeCodingFreak\"),\"Get Ready To Be Coding Freak\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var res = str1.replace(/(?<=[a-z])(?=[A-Z])/g,\" $1\");\n    return res;\n}",
+    "    let str2 = str1.replace(/(?<=[a-z])(?=[A-Z])/g, \" \");\n    return str2;\n}",
+    "    str1 = str1.replace(/([A-Z])/g, ' $1');\n    return str1;\n}",
+    "    var str2 = str1.split(\" \");\n    var result = \"\";\n    for(var i = 0; i < str2.length; i++){\n        var word = str2[i];\n        if(i !== 0){\n            result += \" \";\n        }\n        for(var j = 0; j < word.length; j++){\n            var char = word[j];\n            if(j === 0 && char === char.toUpperCase()){\n                result += char;\n            }else if(j !== 0 && char === char.toUpperCase()){\n                result += \" \" + char;\n            }else{\n                result += char;\n            }\n        }\n    }\n    return result;\n}",
+    "    var result = str1.replace(/\\b([A-Z][A-Z0-9]*)\\b/g, '$1 ');\n    return result;\n}"
+  ]
+}

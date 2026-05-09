@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = 0;\n    for(let i = 0; i < sample_names.length; i++){\n        if(sample_names[i][0] >= 'A' && sample_names[i][0] <= 'Z'){\n            result += sample_names[i].length;\n        }\n    }\n    return result;\n}",
+    "    let filtered_names = sample_names.filter(name => name[0] === name[0].toUpperCase());\n    let sum_of_length = filtered_names.reduce((acc, name) => acc + name.length, 0);\n    return sum_of_length;\n}",
+    "    // Filter the array to remove names that start with a lowercase letter\n    const filtered_names = sample_names.filter(name => name[0] === name[0].toUpperCase());\n    // Calculate the total length of the names in the filtered array\n    const total_length = filtered_names.reduce((sum, name) => sum + name.length, 0);\n    return total_length;\n}\n",
+    "    return sample_names.filter(name => name[0] === name[0].toUpperCase()).map(name => name.length).reduce((acc, length) => acc + length, 0);\n}",
+    "    return sample_names.filter(names => names[0].toUpperCase() === names[0]).map(names => names.length).reduce((a,b) => a + b, 0);\n}"
+  ]
+}

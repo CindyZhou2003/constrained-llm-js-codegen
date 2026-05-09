@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_771_check_expression",
+  "language": "js",
+  "prompt": "//Write a function to check if the given expression is balanced or not. https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/\nfunction check_expression(exp){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_771_check_expression.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_expression;\n  assert.deepEqual(candidate(\"{()}[{}]\"),true);\n  assert.deepEqual(candidate(\"{()}[{]\"),false);\n  assert.deepEqual(candidate(\"{()}[{}][]({})\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let stack = [];\n    let n = exp.length;\n    for(let i=0; i<n; i++){\n        if(exp[i]=='(' || exp[i]=='[' || exp[i]=='{'){\n            stack.push(exp[i]);\n        }\n        else if(exp[i]==')' || exp[i]==']' || exp[i]=='}'){\n            if(stack.length==0) return false;\n            let top=stack.pop();\n            if((exp[i]==')' && top!='(') || (exp[i]==']' && top!='[') || (exp[i]=='}' && top!='{')){\n                return false;\n            }\n        }\n    }\n    return stack.length==0;\n}",
+    "    // Create an empty stack\n    let stack = [];\n    // Traverse the expression\n    for(let i = 0; i < exp.length; i++){\n        let c = exp[i];\n        // If the current character is an opening parenthesis, push it onto the stack\n        if(c === '(' || c === '{' || c === '['){\n            stack.push(c);\n        }\n        // If the current character is a closing parenthesis, check if the top of the stack is the corresponding opening parenthesis\n        else if(c === ')' || c === '}' || c === ']'){\n            if(stack.length === 0){\n                return false;\n            }\n            let top = stack.pop();\n            if((c === ')' && top !== '(') || (c === '}' && top !== '{') || (c === ']' && top !== '[')){\n                return false;\n            }\n        }\n    }\n    // If the stack is empty, the expression is balanced\n    return stack.length === 0;\n}\n",
+    "    var stack = [];\n    for(var i = 0; i < exp.length; i++){\n        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){\n            stack.push(exp[i]);\n        }\n        else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']'){\n            if(stack.length == 0){\n                return false;\n            }\n            var top = stack.pop();\n            if((exp[i] == ')' && top != '(') ||\n               (exp[i] == '}' && top != '{') ||\n               (exp[i] == ']' && top != '[')){\n                return false;\n            }\n        }\n    }\n    return stack.length == 0;\n}\n",
+    "    var stack = [];\n    for(var i=0; i<exp.length; i++){\n        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){\n            stack.push(exp[i]);\n        }\n        else{\n            if(stack.length == 0){\n                return false;\n            }\n            var x = stack.pop();\n            if(exp[i] == ')' && x != '('){\n                return false;\n            }\n            if(exp[i] == '}' && x != '{'){\n                return false;\n            }\n            if(exp[i] == ']' && x != '['){\n                return false;\n            }\n        }\n    }\n    if(stack.length == 0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    var stack = [] //empty stack\n    var i //index variable\n    var length = exp.length //length of expression\n\n    for(i = 0; i < length; i++){\n        var char = exp[i] //current character\n\n        if(char == '(' || char == '{' || char == '['){\n            stack.push(char) //push opening brackets to stack\n        }\n        else if(char == ')' || char == '}' || char == ']'){\n            if(stack.length == 0){\n                return false //if stack is empty, return false\n            }\n            var top = stack.pop() //pop top element from stack\n            if(!isMatching(top, char)){\n                return false //if top element does not match with current character, return false\n            }\n        }\n    }\n    return stack.length == 0 //if stack is empty, return true\n}\n"
+  ]
+}

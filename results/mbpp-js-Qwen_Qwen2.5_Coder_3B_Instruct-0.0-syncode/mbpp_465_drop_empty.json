@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    let dict2 = {};\n    for(let key in dict1){\n        if(dict1[key] !== undefined && dict1[key] !== null && dict1[key] !== false && dict1[key] !== 0 && dict1[key] !== ''){\n            dict2[key] = dict1[key];\n        }\n    }\n    return dict2;\n}"
+    "    let dict2 = {};\n    for(let key in dict1){\n        if(dict1[key] !== undefined && dict1[key] !== null && dict1[key] !== \"\" && dict1[key] !== 0){\n            dict2[key] = dict1[key];\n        }\n    }\n    return dict2;\n}"
   ]
 }

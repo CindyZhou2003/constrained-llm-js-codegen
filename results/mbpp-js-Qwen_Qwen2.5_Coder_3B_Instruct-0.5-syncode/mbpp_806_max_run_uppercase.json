@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_806_max_run_uppercase",
+  "language": "js",
+  "prompt": "//Write a function to find maximum run of uppercase characters in the given string.\nfunction max_run_uppercase(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_806_max_run_uppercase.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_run_uppercase;\n  assert.deepEqual(candidate(\"GeMKSForGERksISBESt\"),5);\n  assert.deepEqual(candidate(\"PrECIOusMOVemENTSYT\"),6);\n  assert.deepEqual(candidate(\"GooGLEFluTTER\"),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = test_str.split('').reduce((res, ele) => {\n        if (ele >= 'A' && ele <= 'Z') {\n            res.count += 1;\n            res.max = Math.max(res.max, res.count);\n        } else {\n            res.count = 0;\n        }\n        return res;\n    }, { count: 0, max: 0 });\n    return res.max;\n}\n",
+    "    res = 0;\n    for (let i = 0; i < test_str.length; i++) {\n        if (test_str[i] >= 'A' && test_str[i] <= 'Z') {\n            res = Math.max(res, i - start + 1);\n        } else {\n            start = i + 1;\n        }\n    }\n    return res;\n}",
+    "    res = test_str.split(' ').reduce((res, ele) => {\n        if (ele.match(/^[A-Z]+$/)) {\n            if (ele.length > res.length) {\n                res = ele;\n            }\n        }\n        return res;\n    }, '');\n    return res;\n}",
+    "    res = test_str.split('').reduce((max, ele) => {\n        if(ele.match(/[A-Z]/) && max < ele.length){\n            max = ele.length;\n        }\n        return max;\n    }, 0);\n    return res;\n}",
+    "\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string\n\t//Using split() to split string into characters and then using join() to join them back together\n\t//Using regex to find all uppercase characters and then using length() to find the length of the string\n\t//Using max() to find the maximum length of the string"
+  ]
+}

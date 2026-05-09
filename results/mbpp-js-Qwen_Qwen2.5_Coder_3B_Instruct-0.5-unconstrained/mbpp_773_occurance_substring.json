@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_773_occurance_substring",
+  "language": "js",
+  "prompt": "//Write a function to find the occurrence and position of the substrings within a string. Return undefined if there is no match.\nfunction occurance_substring(text, pattern){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_773_occurance_substring.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = occurance_substring;\n  assert.deepEqual(candidate(\"python programming, python language\", \"python\"),[\"python\", 0, 6]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"programming\"),[\"programming\", 7, 18]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"language\"),[\"language\", 31, 39]);\n  assert.deepEqual(candidate(\"c++ programming, c++ language\", \"python\"),undefined);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var occurance = text.match(new RegExp(pattern, 'gi'));\n    var position = [];\n    if(occurance){\n        for(var i = 0; i < occurance.length; i++){\n            position.push(text.indexOf(occurance[i]));\n        }\n    }\n    return position.length === 0 ? undefined : {occurance: occurance, position: position};\n}\n",
+    "    let matches = [];\n    let position = 0;\n    while (position < text.length) {\n        let index = text.indexOf(pattern, position);\n        if (index !== -1) {\n            matches.push({ index: index, position: position });\n            position = index + 1;\n        } else {\n            break;\n        }\n    }\n    if (matches.length === 0) {\n        return undefined;\n    } else {\n        return matches;\n    }\n}\n",
+    "    var position = text.indexOf(pattern);\n    if(position == -1){\n        return undefined;\n    }\n    var count = 0;\n    while(position != -1){\n        count++;\n        position = text.indexOf(pattern, position + 1);\n    }\n    return {count:count, position:position};\n}\n",
+    "    var occurance = 0,\n        position = -1,\n        index = 0;\n    \n    while((index = text.indexOf(pattern, index)) !== -1){\n        occurance++;\n        position = index;\n        index++;\n    }\n    \n    if(occurance > 0){\n        return {\n            \"occurance\": occurance,\n            \"position\": position\n        };\n    }\n    \n    return undefined;\n}\n",
+    "    let index = text.indexOf(pattern);\n    if(index !== -1){\n        let count = 0;\n        let positions = [];\n        while(index !== -1){\n            count++;\n            positions.push(index);\n            index = text.indexOf(pattern, index + 1);\n        }\n        return {count, positions};\n    } else {\n        return undefined;\n    }\n}\n"
+  ]
+}

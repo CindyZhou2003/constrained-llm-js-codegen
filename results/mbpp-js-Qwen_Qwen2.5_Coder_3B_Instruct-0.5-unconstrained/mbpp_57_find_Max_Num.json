@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_57_find_Max_Num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the largest number that can be formed with the given array of digits.\nfunction find_Max_Num(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_57_find_Max_Num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Max_Num;\n  assert.deepEqual(candidate([1, 2, 3]),321);\n  assert.deepEqual(candidate([4, 5, 6, 1]),6541);\n  assert.deepEqual(candidate([1, 2, 3, 9]),9321);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the array of digits into a string\n    let str = arr.join('');\n    // Sort the string in descending order\n    str = str.split('').sort((a,b) => b - a).join('');\n    // Convert the sorted string back into a number\n    return parseInt(str, 10);\n}",
+    "    // Sort the array in descending order\n    arr.sort((a, b) => b - a);\n    // Join the sorted array into a single string\n    let max_num_str = arr.join('');\n    // Convert the string back to a number\n    let max_num = parseInt(max_num_str, 10);\n    return max_num;\n}",
+    "    let max_num = 0;\n    let max_num_temp = 0;\n    let max_num_temp2 = 0;\n    let max_num_temp3 = 0;\n    let max_num_temp4 = 0;\n    let max_num_temp5 = 0;\n    let max_num_temp6 = 0;\n    let max_num_temp7 = 0;\n    let max_num_temp8 = 0;\n    let max_num_temp9 = 0;\n    let max_num_temp10 = 0;\n    let max_num_temp11 = 0;\n    let max_num_temp12 = 0;\n    let max_num_temp13 = 0;\n    let max_num_temp14 = 0;\n    let max_num_temp15 = 0;\n    let max_num_temp16 = 0;\n    let max_num_temp17 = 0;\n    let max_num_temp18 = 0;\n    let max_num_temp19 = 0;\n    let max_num_temp20 = 0;\n    let max_num_temp21 = 0;\n    let max_num_temp22 = 0;\n    let max_num_temp23 = 0;\n    let max_num_temp24 = 0;\n    let max_num_temp25 = 0;\n    let max_num_temp26 = 0;\n    let max_num_temp27 = 0;\n    let max_num_temp28 = 0;\n    let max_num_temp29 = 0;\n    let max_num_temp30 = 0;\n    let max_num_temp31 = 0;\n    let max_num_temp32 = 0;\n    let max_num_temp33 = 0;\n    let max_num_temp34 = 0;\n    let max_num_temp35 = 0;\n    let max_num_temp36 = 0;\n    let max_num_temp37 = 0;\n    let max_num_temp38 = 0;\n    let max_num_temp39 = 0;\n    let max_num_temp40 = 0;\n    let max_num_temp41 = 0;\n    let max_num_temp42 = 0;\n    let max_num_temp43 = 0;\n    let max_num_temp44 = 0;\n    let max_num_temp45 = 0;\n    let max_num_temp46 = 0;\n    let max_num_temp47 =",
+    "    arr.sort((a,b)=>b-a);\n    let max_num = '';\n    for(let i=0;i<arr.length;i++){\n        max_num += arr[i];\n    }\n    return max_num;\n}\n",
+    "  arr.sort((a,b) => b-a);\n  return arr.join('');\n}"
+  ]
+}

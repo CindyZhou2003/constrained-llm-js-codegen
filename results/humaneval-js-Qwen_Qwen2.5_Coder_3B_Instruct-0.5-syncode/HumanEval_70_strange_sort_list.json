@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_70_strange_sort_list",
+  "language": "js",
+  "prompt": "//Given array of integers, return array in strange order.\n// Strange sorting, is when you start with the minimum value,\n// then maximum of the remaining integers, then minimum and so on.\n// Examples:\n// >>> strange_sort_list([1, 2, 3, 4])\n// [1, 4, 2, 3]\n// >>> strange_sort_list([5, 5, 5, 5])\n// [5, 5, 5, 5]\n// >>> strange_sort_list([])\n// []\nfunction strange_sort_list(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_70_strange_sort_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = strange_sort_list;\n  assert.deepEqual(candidate([1, 2, 3, 4]),[1, 4, 2, 3]);\n  assert.deepEqual(candidate([5, 6, 7, 8, 9]),[5, 9, 6, 8, 7]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),[1, 5, 2, 4, 3]);\n  assert.deepEqual(candidate([5, 6, 7, 8, 9, 1]),[1, 9, 5, 8, 6, 7]);\n  assert.deepEqual(candidate([5, 5, 5, 5]),[5, 5, 5, 5]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8]),[1, 8, 2, 7, 3, 6, 4, 5]);\n  assert.deepEqual(candidate([0, 2, 2, 2, 5, 5, -5, -5]),[-5, 5, -5, 5, 0, 2, 2, 2]);\n  assert.deepEqual(candidate([111111]),[111111]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  // Your code here\n}",
+    "    var sortedList = [];\n    var min = lst[0];\n    var max = lst[0];\n    var minIndex = 0;\n    var maxIndex = 0;\n    while(lst.length > 0){\n        for(var i = 0; i < lst.length; i++){\n            if(lst[i] < min){\n                min = lst[i];\n                minIndex = i;\n            }\n            if(lst[i] > max){\n                max = lst[i];\n                maxIndex = i;\n            }\n        }\n        sortedList.push(min);\n        sortedList.push(max);\n        lst.splice(minIndex, 1);\n        lst.splice(maxIndex, 1);\n        min = lst[0];\n        max = lst[0];\n    }\n    return sortedList;\n}",
+    "    let sorted = [];\n    let min = Math.min(...lst);\n    let max = Math.max(...lst);\n    while(lst.length > 0){\n        sorted.push(min);\n        lst.splice(lst.indexOf(min), 1);\n        if(lst.length > 0){\n            sorted.push(max);\n            lst.splice(lst.indexOf(max), 1);\n        }\n    }\n    return sorted;\n}",
+    "    if(lst.length === 0) return [];\n    let sorted = [];\n    while(lst.length > 0){\n        sorted.push(Math.min(...lst));\n        lst.splice(lst.indexOf(Math.min(...lst)), 1);\n        if(lst.length === 0) break;\n        sorted.push(Math.max(...lst));\n        lst.splice(lst.indexOf(Math.max(...lst)), 1);\n    }\n    return sorted;\n}",
+    "    let sorted = [];\n    let min = Math.min(...lst);\n    let max = Math.max(...lst);\n    while(lst.length > 0){\n        sorted.push(min);\n        lst.splice(lst.indexOf(min), 1);\n        min = Math.min(...lst);\n        if(lst.length > 0){\n            sorted.push(max);\n            lst.splice(lst.indexOf(max), 1);\n            max = Math.max(...lst);\n        }\n    }\n    return sorted;\n}"
+  ]
+}

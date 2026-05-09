@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_754_extract_index_list",
+  "language": "js",
+  "prompt": "//We say that an element is common for lists l1, l2, l3 if it appears in all three lists under the same index. Write a function to find common elements from three lists. The function should return an array.\nfunction extract_index_list(l1, l2, l3){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_754_extract_index_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_index_list;\n  assert.deepEqual(candidate([1, 1, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 7], [0, 1, 2, 3, 4, 5, 7]),[1, 7]);\n  assert.deepEqual(candidate([1, 1, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 6, 5], [0, 1, 2, 3, 4, 6, 7]),[1, 6]);\n  assert.deepEqual(candidate([1, 1, 3, 4, 6, 5, 6], [0, 1, 2, 3, 4, 5, 7], [0, 1, 2, 3, 4, 5, 7]),[1, 5]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 6, 6, 6], [0, 1, 2, 3, 4, 5, 7], [0, 1, 2, 3, 4, 5, 7]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let index_list = []\n    for(let i = 0; i < l1.length; i++){\n        if(l1[i] == l2[i] && l2[i] == l3[i]){\n            index_list.push(i)\n        }\n    }\n    return index_list\n}",
+    "    var index_list = [];\n    var common_elements = [];\n    for(var i = 0; i < l1.length; i++){\n        if(l1[i] === l2[i] && l1[i] === l3[i]){\n            index_list.push(i);\n        }\n    }\n    for(var j = 0; j < index_list.length; j++){\n        common_elements.push(l1[index_list[j]]);\n    }\n    return common_elements;\n}\n",
+    "    let common_elements = [];\n    for (let i = 0; i < l1.length; i++) {\n        if (l1[i] === l2[i] && l2[i] === l3[i]) {\n            common_elements.push(l1[i]);\n        }\n    }\n    return common_elements;\n}\n",
+    "    //create an empty array to store the common elements\n    let common_elements = [];\n    //loop through the lists\n    for(let i = 0; i < l1.length; i++){\n        //check if the element is common for all three lists\n        if(l1[i] === l2[i] && l2[i] === l3[i]){\n            //add the element to the common_elements array\n            common_elements.push(l1[i]);\n        }\n    }\n    //return the common_elements array\n    return common_elements;\n}",
+    "    var index_list = [];\n    for(var i=0; i < l1.length; i++){\n        if(l1[i] === l2[i] && l2[i] === l3[i]){\n            index_list.push(i);\n        }\n    }\n    return index_list;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    # Using tuple() + extend() + dict()\n    res = tuple(test_tup)\n    res.extend(test_dict.items())\n    return res\n# Driver code\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 4, 'b': 5}\nprint(add_dict_to_tuple(test_tup, test_dict))",
+    "    # Using list comprehension to add the dictionary to the tuple\n    res = tuple([ele for ele in test_tup] + [test_dict])\n    return res\n# Driver code\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 1, 'b': 2}\nprint(add_dict_to_tuple(test_tup, test_dict))",
+    "    # Add the dictionary to the tuple\n    res = test_tup + (test_dict,)\n    return res\n# Test the function\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 10, 'b': 20}\nprint(add_dict_to_tuple(test_tup, test_dict))\n# Output: (1, 2, 3, {'a': 10, 'b': 20})```\n\n\n#Write a function to add an object to the array. The output should be an array.\ndef add_dict_to_tuple(test_tup, test_dict):\n    # Add the dictionary to the tuple\n    res = test_tup + (test_dict,)\n    return res\n# Test the function\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 10, 'b': 20}\nprint(add_dict_to_tuple(test_tup, test_dict))\n# Output: (1, 2, 3, {'a': 10, 'b': 20})```\n\n\n#Write a function to add an object to the array. The output should be an array.\ndef add_dict_to_tuple(test_tup, test_dict):\n    # Add the dictionary to the tuple\n    res = test_tup + (test_dict,)\n    return res\n# Test the function\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 10, 'b': 20}\nprint(add_dict_to_tuple(test_tup, test_dict))\n# Output: (1, 2, 3, {'a': 10, 'b': 20})```\n\n\n#Write a function to add an object to the array. The output should be an array.\ndef add_dict_to_tuple(test_tup, test_dict):\n    # Add the dictionary to the tuple\n    res = test_tup + (test_dict,)\n    return res\n# Test the function\ntest_tup = (1, 2, 3)\ntest_dict = {'a': 10, 'b': 20}\nprint(add_dict_to_tuple(test_tup, test_dict))\n# Output: (1, 2, 3, {'a': 10, 'b': 20})```\n\n\n#Write a function to add an object to the array. The output should be an array.\ndef add_dict_to"
+  ]
+}

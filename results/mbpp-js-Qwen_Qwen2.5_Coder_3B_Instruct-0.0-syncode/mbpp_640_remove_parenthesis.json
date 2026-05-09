@@ -13,6 +13,6 @@
     "\nconsole.log"
   ],
   "completions": [
-    "    var result = items.replace(/\\//**Question** What  **is** the **difference** between **`replace`** and **`replaceAll`** in JavaScript?  "
+    "    var result = items.replace(/\\([^)]*\\)/g, '');\n    return result;\n}\n"
   ]
 }

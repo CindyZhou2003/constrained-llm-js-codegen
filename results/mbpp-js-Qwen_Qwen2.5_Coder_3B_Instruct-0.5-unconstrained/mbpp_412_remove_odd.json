@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_412_remove_odd",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to remove odd numbers from a given array.\nfunction remove_odd(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_412_remove_odd.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_odd;\n  assert.deepEqual(candidate([1, 2, 3]),[2]);\n  assert.deepEqual(candidate([2, 4, 6]),[2, 4, 6]);\n  assert.deepEqual(candidate([10, 20, 3]),[10, 20]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return l.filter(n => n % 2 === 0);\n}",
+    "  var odd = l.filter(function(item){\n    return item % 2 == 0;\n  });\n  return odd;\n}",
+    "    var i=0;\n    var j=0;\n    var k=0;\n    var n=l.length;\n    var m=l.length;\n    var a=[];\n    while(i<n){\n        if(l[i]%2==0){\n            a[j]=l[i];\n            j++;\n        }\n        i++;\n    }\n    while(k<m){\n        l[k]=a[k];\n        k++;\n    }\n    return l;\n}\n",
+    "    return l.filter(function(value){\n        return value%2==0;\n    });\n}",
+    "    let newl = [];\n    for(let i = 0; i < l.length; i++){\n        if(l[i] % 2 == 0){\n            newl.push(l[i]);\n        }\n    }\n    return newl;\n}"
+  ]
+}

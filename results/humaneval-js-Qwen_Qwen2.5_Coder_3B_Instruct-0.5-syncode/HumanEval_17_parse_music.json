@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_17_parse_music",
+  "language": "js",
+  "prompt": "//Input to this function is a string representing musical notes in a special ASCII format.\n// Your task is to parse this string and return array of integers corresponding to how many beats does each\n// not last.\n// Here is a legend:\n// 'o' - whole note, lasts four beats\n// 'o|' - half note, lasts two beats\n// '.|' - quater note, lasts one beat\n// >>> parse_music(\"o o| .| o| o| .| .| .| .| o o\")\n// [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\nfunction parse_music(music_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_17_parse_music.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parse_music;\n  assert.deepEqual(candidate(\"\"),[]);\n  assert.deepEqual(candidate(\"o o o o\"),[4, 4, 4, 4]);\n  assert.deepEqual(candidate(\".| .| .| .|\"),[1, 1, 1, 1]);\n  assert.deepEqual(candidate(\"o| o| .| .| o o o o\"),[2, 2, 1, 1, 4, 4, 4, 4]);\n  assert.deepEqual(candidate(\"o| .| o| .| o o| o o|\"),[2, 1, 2, 1, 4, 2, 4, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var notes = music_string.split(\" \");\n    var beats = [];\n    for(var i = 0; i < notes.length; i++){\n        if(notes[i] === 'o'){\n            beats.push(4);\n        }\n        else if(notes[i] === 'o|'){\n            beats.push(2);\n        }\n        else if(notes[i] === '.|'){\n            beats.push(1);\n        }\n    }\n    return beats;\n}",
+    "    // Split the input string by spaces to get individual notes\n    const notes = music_string.split(' ');\n    // Initialize an empty array to store the beat counts\n    const beat_counts = [];\n    // Iterate over each note in the array\n    for(let note of notes){\n        // Check if the note is a whole note\n        if(note === 'o'){\n            // If it is, push 4 to the beat_counts array\n            beat_counts.push(4);\n        }\n        // Check if the note is a half note\n        else if(note === 'o|'){\n            // If it is, push 2 to the beat_counts array\n            beat_counts.push(2);\n        }\n        // Check if the note is a quarter note\n        else if(note === '.|'){\n            // If it is, push 1 to the beat_counts array\n            beat_counts.push(1);\n        }\n    }\n    // Return the beat_counts array\n    return beat_counts;\n}",
+    "    // Split the music string into an array of notes\n    let notes = music_string.split(' ');\n    // Define an array to store the number of beats for each note\n    let beats = [];\n    // Loop through each note in the array\n    for (let i = 0; i < notes.length; i++){\n        // Check if the note is a whole note\n        if (notes[i] === 'o'){\n            // Add four beats to the beats array\n            beats.push(4);\n        }\n        // Check if the note is a half note\n        else if (notes[i] === 'o|'){\n            // Add two beats to the beats array\n            beats.push(2);\n        }\n        // Check if the note is a quater note\n        else if (notes[i] === '.|'){\n            // Add one beat to the beats array\n            beats.push(1);\n        }\n    }\n    // Return the array of beats\n    return beats;\n}",
+    "    let music_array = music_string.split(' ');\n    let beat_array = [];\n    for(let i = 0; i < music_array.length; i++){\n        if(music_array[i] === 'o'){\n            beat_array.push(4);\n        } else if(music_array[i] === 'o|'){\n            beat_array.push(2);\n        } else if(music_array[i] === '.|'){\n            beat_array.push(1);\n        }\n    }\n    return beat_array;\n}",
+    "  return music_string.split(' ').map(note => {\n    switch(note){\n      case 'o': return 4;\n      case 'o|': return 2;\n      case '.|': return 1;\n    }\n  });\n}\n"
+  ]
+}

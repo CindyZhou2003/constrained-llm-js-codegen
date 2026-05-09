@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res = tuple(map(lambda iname",
+    "    res = []\n    for i",
+    "    res = tuple(map(lambda in1"
+  ]
+}

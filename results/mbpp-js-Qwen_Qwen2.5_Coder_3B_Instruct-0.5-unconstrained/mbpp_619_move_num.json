@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    res=test_str.split('').filter(ele => !isNaN(ele)).join('');\n    res=res.split('').filter(ele => isNaN(ele)).join('');\n    return res;\n}\ntest_str=\"geeks234for234geeks\";\nprint(move_num(test_str));",
+    "    res = test_str.split(\"\").filter(ele => isNaN(ele)).join(\"\") + test_str.split(\"\").filter(ele => !isNaN(ele)).join(\"\");\n    return res;\n}",
+    "    res = test_str.split(\" \").filter(x => isNaN(x)).join(\" \") + \" \" + test_str.split(\" \").filter(x => !isNaN(x)).join(\" \")\n    return res\n}\ntest_str = \"geeks 4 5 3 2\"\nprint(move_num(test_str))",
+    "    test_str = test_str.split('')\n    let res = []\n    for(let i = 0; i < test_str.length; i++){\n        if(typeof(test_str[i]) == 'number'){\n            res.push(test_str[i])\n        }\n    }\n    res = res.join('')\n    test_str = test_str.filter(item => typeof(item) != 'number')\n    test_str = test_str.join('')\n    return test_str + res\n}",
+    "    res = test_str.replace(/[0-9]/g, '');\n    res += test_str.replace(/[a-zA-Z]/g, '');\n    return res;\n}\ntest_str = \"Geeks123for123Geeks\"\nprint(\"Original string : \", test_str)\nprint(\"After moving numbers to end : \", move_num(test_str))"
+  ]
+}

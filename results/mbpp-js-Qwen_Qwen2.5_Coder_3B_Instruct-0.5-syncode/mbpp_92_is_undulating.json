@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_92_is_undulating",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is undulating or not.\nfunction is_undulating(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_92_is_undulating.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_undulating;\n  assert.deepEqual(candidate(1212121),true);\n  assert.deepEqual(candidate(1991),false);\n  assert.deepEqual(candidate(121),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var undulating = false;\n    var arr = n.toString().split(\"\");\n    for(var i=0;i<arr.length-1;i++){\n        if(arr[i] == arr[i+1]){\n            undulating = true;\n        }else{\n            undulating = false;\n            break;\n        }\n    }\n    if(undulating){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let count=0;\n    let flag=0;\n    let flag1=0;\n    while(n>0){\n        let digit=n%10;\n        if(count==0){\n            flag=digit;\n        }\n        else if(count==1){\n            flag1=digit;\n        }\n        else{\n            if(flag!=digit && flag1!=digit){\n                return false;\n            }\n        }\n        n=Math.floor(n/10);\n        count++;\n    }\n    return true;\n}",
+    "    let str = n.toString();\n    let undulating = false;\n    for(let i = 0; i < str.length - 1; i++){\n        if(str[i] === str[i + 1]){\n            continue;\n        }else if(str[i] === str[i + 2]){\n            undulating = true;\n        }else{\n            undulating = false;\n            break;\n        }\n    }\n    return undulating;\n}",
+    "    let str = n.toString();\n    let undulating = true;\n    for(let i = 1; i < str.length; i++){\n        if(str[i] === str[i-1]){\n            undulating = false;\n            break;\n        }\n    }\n    return undulating;\n}\n",
+    "    if(n<10){\n        return false;\n    }\n    let s = n.toString();\n    let flag = false;\n    for(let i=1;i<s.length-1;i++){\n        if(s[i] == s[i-1] && s[i] == s[i+1]){\n            flag = true;\n        }\n    }\n    return flag;\n}"
+  ]
+}

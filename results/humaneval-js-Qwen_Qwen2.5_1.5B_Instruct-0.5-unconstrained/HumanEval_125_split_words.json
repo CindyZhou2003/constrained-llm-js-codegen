@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_125_split_words",
+  "language": "js",
+  "prompt": "//Given a string of words, return an array of words split on whitespace, if no whitespaces exists in the text you\n// should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the\n// alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25\n// Examples\n// >>> split_words(\"Hello world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"Hello,world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"abcdef\")\n// 3\nfunction split_words(txt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_125_split_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_words;\n  assert.deepEqual(candidate(\"Hello world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello,world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello world,!\"),[\"Hello\", \"world,!\"]);\n  assert.deepEqual(candidate(\"Hello,Hello,world !\"),[\"Hello,Hello,world\", \"!\"]);\n  assert.deepEqual(candidate(\"abcdef\"),3);\n  assert.deepEqual(candidate(\"aaabb\"),2);\n  assert.deepEqual(candidate(\"aaaBb\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = txt.split(' ');\n    let count = 0;\n    for(let i = 0; i < str.length; i++){\n        if(str[i] === ','){\n            str.splice(i, 1);\n            i--;\n        }\n    }\n    for(let i = 0; i < str.length; i++){\n        if(str[i].match(/[a-z]/g)){\n            let a = str[i].toLowerCase();\n            let b = a.charCodeAt(0) - 96;\n            if(b % 2 === 1){\n                count++;\n            }\n        }\n    }\n    return str;\n}",
+    "    let res = [];\n    let count = 0;\n    let string = txt.split('');\n    if(string.includes(',')){\n        for(let i = 0; i < string.length; i++){\n            if(string[i] == ','){\n                res.push(string.slice(0,i).join(''));\n                string = string.slice(i+1);\n            }\n        }\n        res.push(string.slice(0,string.length).join(''));\n    }else if(string.includes(' ')){\n        for(let i = 0; i < string.length; i++){\n            if(string[i] == ' '){\n                res.push(string.slice(0,i).join(''));\n                string = string.slice(i+1);\n            }\n        }\n        res.push(string.slice(0,string.length).join(''));\n    }else{\n        for(let i = 0; i < string.length; i++){\n            if(string[i] >= 'a' && string[i] <= 'z'){\n                count += 1;\n            }\n        }\n    }\n    return res;\n}",
+    "    var res = [];\n    if(txt.indexOf(' ') > -1){\n        for(var i = 0; i < txt.length; i++){\n            if(txt[i] != ' '){\n                res.push(txt[i]);\n            }\n        }\n        return res;\n    } else {\n        var count = 0;\n        for(var i = 0; i < txt.length; i++){\n            if(isLowerCase(txt[i])){\n                count++;\n            }\n        }\n        return count;\n    }\n}\n",
+    "    let words = txt.split(' ');\n    let result = [];\n    if(words.length === 0){\n        return 0;\n    }\n    if (words[0].match(/\\s/g)) {\n        result.push(words[0].replace(/\\s/g, \"\"));\n    }\n    for(let i = 1; i < words.length; i++){\n        if(words[i].match(/\\s/g)){\n            result.push(words[i].replace(/\\s/g, \"\"));\n        } else {\n            result.push(words[i]);\n        }\n    }\n    return result;\n}",
+    "    if(txt.includes(',')){\n        return txt.split(',');\n    }else if(txt.includes(' ')){\n        return txt.split(' ');\n    }else{\n        let count = 0;\n        for(let i = 0; i < txt.length; i++){\n            if(txt[i] >= 'a' && txt[i] <= 'z'){\n                if((txt[i] - 'a') % 2 === 1){\n                    count++;\n                }\n            }\n        }\n        return count;\n    }\n}"
+  ]
+}

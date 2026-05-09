@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Get the number of bits in the number\n    let num_bits = Math.floor(Math.log2(n)) + 1;\n    \n    // Create a mask that has all bits set except the first and last bit\n    let mask = (1 << (num_bits - 2)) - 1;\n    \n    // Toggle the middle bits of the number\n    let toggled_bits = n ^ mask;\n    \n    return toggled_bits;\n}\n",
+    "    // Get the number of bits in n\n    let num_bits = n.toString(2).length;\n\n    // Get the first and last bits of n\n    let first_bit = (n >> (num_bits - 1)) & 1;\n    let last_bit = (n >> 0) & 1;\n\n    // Get the middle bits of n\n    let middle_bits = n ^ ((1 << (num_bits - 1)) - 1) ^ ((1 << 0) - 1);\n\n    // Toggle the middle bits of n\n    let toggled_middle_bits = middle_bits ^ ((1 << (num_bits - 1)) - 1) ^ ((1 << 0) - 1);\n\n    // Return the toggled number\n    return ((first_bit << (num_bits - 1)) | toggled_middle_bits | (last_bit << 0));\n}\n",
+    "    // first and last bit are set\n    let mask = 1;\n    mask = mask << (n - 2);\n    mask = mask | 1;\n    mask = mask | 1 << (n - 1);\n    // toggle bits of the number except the first and the last bit\n    let result = n ^ mask;\n    return result;\n}",
+    "  if(n <= 1) return n;\n  let middle_bits = n >> 1;\n  let first_last_bits = n & 1;\n  let middle_last_bits = (middle_bits | first_last_bits) << 1;\n  return middle_last_bits;\n}\n",
+    "    //Get the first and last bits\n    let first_bit = (n & (1 << 0));\n    let last_bit = (n & (1 << (n.length - 1)));\n    //Remove the first and last bits\n    n = n & (~(1 << 0) & (~(1 << (n.length - 1))));\n    //Toggle the middle bits\n    n = n ^ ((1 << (n.length - 2)) & ((1 << (n.length - 3)) & ((1 << (n.length - 4)) & ((1 << (n.length - 5)) & ((1 << (n.length - 6)) & ((1 << (n.length - 7)) & ((1 << (n.length - 8)) & ((1 << (n.length - 9)) & ((1 << (n.length - 10)) & ((1 << (n.length - 11)) & ((1 << (n.length - 12)) & ((1 << (n.length - 13)) & ((1 << (n.length - 14)) & ((1 << (n.length - 15)) & ((1 << (n.length - 16)) & ((1 << (n.length - 17)) & ((1 << (n.length - 18)) & ((1 << (n.length - 19)) & ((1 << (n.length - 20)) & ((1 << (n.length - 21)) & ((1 << (n.length - 22)) & ((1 << (n.length - 23)) & ((1 << (n.length - 24)) & ((1 << (n.length - 25)) & ((1 << (n.length - 26)) & ((1 << (n.length - 27)) & ((1 << (n.length - 28)) & ((1 << (n.length - 29)) & ((1 << (n.length - 30)) & ((1 << (n.length - 31))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))"
+  ]
+}
