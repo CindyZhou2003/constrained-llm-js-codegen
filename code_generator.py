@@ -138,7 +138,7 @@ def cmd_evaluate(args, parser):
     total_time = 0.0
     with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(["task_name", "temperature", "execution_time_s"])
+        writer.writerow(["task_name", "temperature", "num_completions", "execution_time_s", "time_per_completion_s"])
 
         for task in tqdm(tasks):
             task_name = task.get("name", task.get("task_id", task.get("id")))
@@ -170,15 +170,16 @@ def cmd_evaluate(args, parser):
             with open(json_file, "w", encoding="utf-8") as f_json:
                 json.dump(result_item, f_json, indent=2)
 
-            writer.writerow([task_name, args.temperature, f"{task_time:.4f}"])
+            writer.writerow([task_name, args.temperature, args.num_completions,
+                             f"{task_time:.4f}", f"{task_time / args.num_completions:.4f}"])
 
-        writer.writerow(["TOTAL", "", f"{total_time:.4f}"])
+        writer.writerow(["TOTAL", "", "", f"{total_time:.4f}", ""])
 
     print(f"\n>>> Generation Finished! JSON saved to: {output_path}")
     print(f"    Timing saved to: {timing_path}")
     print(f"    Total generation time: {total_time:.2f}s ({total_time/60:.1f}min)")
     print(f"    To compress and evaluate, run:")
-    print(f"    python code_evaluation.py --input_dir {output_path} --benchmark multipl-e")
+    print(f"    python code_evaluation.py --input_dir {output_path} --benchmark multipl-e --pass_k {args.num_completions}")
 
 
 # ---------------------------------------------------------------------------

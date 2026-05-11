@@ -1,0 +1,9 @@
+Comparison: humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.0-unconstrained vs humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.0-syncode
+================================================================================
+
+Total changed test cases: 4
+
+HumanEval_120_maximum: Exception -> ReferenceError
+HumanEval_160_do_algebra: AssertionError -> SyntaxError
+HumanEval_47_median: OK -> SyntaxError
+HumanEval_71_triangle_area: AssertionError -> SyntaxError

@@ -217,5 +217,3 @@ results_eval/
 
 # Compressed JSON files
 *.json.gz
-/benchmark/OmniCode
-/test_results

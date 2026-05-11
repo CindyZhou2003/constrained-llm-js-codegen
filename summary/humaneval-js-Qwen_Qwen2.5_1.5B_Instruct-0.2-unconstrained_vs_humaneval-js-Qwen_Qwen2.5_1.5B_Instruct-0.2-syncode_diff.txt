@@ -1,0 +1,36 @@
+Comparison: humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.2-unconstrained vs humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.2-syncode
+================================================================================
+
+Total changed test cases: 31
+
+HumanEval_100_make_a_pile: AssertionError -> Exception
+HumanEval_102_choose_num: OK -> AssertionError
+HumanEval_10_make_palindrome: AssertionError -> Timeout
+HumanEval_110_exchange: OK -> AssertionError
+HumanEval_120_maximum: AssertionError -> ReferenceError
+HumanEval_121_solution: AssertionError -> OK
+HumanEval_123_get_odd_collatz: AssertionError -> OK
+HumanEval_125_split_words: AssertionError -> SyntaxError
+HumanEval_127_intersection: AssertionError -> ReferenceError
+HumanEval_140_fix_spaces: AssertionError -> SyntaxError
+HumanEval_141_file_name_check: SyntaxError -> AssertionError
+HumanEval_143_words_in_sentence: OK -> ReferenceError
+HumanEval_153_Strongest_Extension: AssertionError -> OK
+HumanEval_154_cycpattern_check: SyntaxError -> OK
+HumanEval_156_int_to_mini_roman: OK -> AssertionError
+HumanEval_159_eat: OK -> AssertionError
+HumanEval_160_do_algebra: AssertionError -> SyntaxError
+HumanEval_162_string_to_md5: Exception -> ReferenceError
+HumanEval_16_count_distinct_characters: AssertionError -> OK
+HumanEval_18_how_many_times: Timeout -> AssertionError
+HumanEval_1_separate_paren_groups: Timeout -> AssertionError
+HumanEval_46_fib4: OK -> AssertionError
+HumanEval_47_median: OK -> SyntaxError
+HumanEval_49_modp: Exception -> AssertionError
+HumanEval_67_fruit_distribution: OK -> AssertionError
+HumanEval_6_parse_nested_parens: OK -> AssertionError
+HumanEval_71_triangle_area: OK -> AssertionError
+HumanEval_72_will_it_fly: ReferenceError -> OK
+HumanEval_76_is_simple_power: OK -> SyntaxError
+HumanEval_85_add: OK -> AssertionError
+HumanEval_87_get_row: AssertionError -> SyntaxError

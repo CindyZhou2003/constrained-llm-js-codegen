@@ -169,6 +169,8 @@ python code_evaluation.py \
 
 ### 5) Evaluate with MultiPL-E
 
+Pass `--benchmark multipl-e` to run the Docker evaluation pipeline. Add `--pass_k <k>` to compute pass@1 and pass@k in the same run (requires at least k completions per problem, i.e. `-n <k>` during generation).
+
 #### Option A — via code_evaluation.py (recommended)
 
 Compress and run the full MultiPL-E Docker pipeline in one step:
@@ -178,6 +180,17 @@ python code_evaluation.py \
   --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
   --benchmark multipl-e
 ```
+
+To compute pass@1 **and** pass@k together (requires at least k completions per problem):
+
+```bash
+python code_evaluation.py \
+  --input_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --benchmark multipl-e \
+  --pass_k 5
+```
+
+Both pass@1 and pass@5 rows are printed and appended to `results.csv`.
 
 #### Option B — Manual
 

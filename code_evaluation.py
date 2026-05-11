@@ -83,7 +83,7 @@ def _append_to_results_csv(pass_k_output: str, run_name: str) -> None:
     print(f"  Results appended to: {csv_path}")
 
 
-def run_multipl_e_benchmark(gz_dir: Path):
+def run_multipl_e_benchmark(gz_dir: Path, pass_k: int = 1):
     """Run MultiPL-E evaluation via Docker, then compute pass@k."""
     abs_gz_dir = gz_dir.resolve()
 
@@ -125,13 +125,12 @@ def run_multipl_e_benchmark(gz_dir: Path):
 
     pass_k_script = Path(__file__).parent / "benchmark" / "MultiPL-E" / "pass_k.py"
     if pass_k_script.exists():
-        print("  Computing pass@k...")
-        result = subprocess.run(
-            [sys.executable, str(pass_k_script), str(abs_gz_dir)],
-            check=True,
-            capture_output=True,
-            text=True,
-        )
+        k_label = f"pass@1" if pass_k <= 1 else f"pass@1 and pass@{pass_k}"
+        print(f"  Computing {k_label}...")
+        cmd = [sys.executable, str(pass_k_script), str(abs_gz_dir)]
+        if pass_k > 1:
+            cmd += ["-k", str(pass_k)]
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
         print(result.stdout, end="")
         _append_to_results_csv(result.stdout, abs_gz_dir.name)
     else:
@@ -164,6 +163,10 @@ if __name__ == "__main__":
         choices=list(BENCHMARK_RUNNERS),
         help="Benchmark to run after compression (e.g. multipl-e).",
     )
+    parser.add_argument(
+        "--pass_k", type=int, default=1,
+        help="Compute pass@1 and pass@k (e.g. --pass_k 5). Requires at least k completions per problem.",
+    )
     args = parser.parse_args()
 
     input_dir = Path(args.input_dir)
@@ -181,4 +184,4 @@ if __name__ == "__main__":
 
     if args.benchmark:
         runner = BENCHMARK_RUNNERS[args.benchmark]
-        runner(gz_output_dir)
+        runner(gz_output_dir, pass_k=args.pass_k)

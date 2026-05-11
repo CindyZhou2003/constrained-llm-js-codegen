@@ -1,0 +1,46 @@
+Comparison: humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.5-unconstrained vs humaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.5-syncode
+================================================================================
+
+Total changed test cases: 41
+
+HumanEval_100_make_a_pile: OK -> Exception
+HumanEval_101_words_string: AssertionError -> OK
+HumanEval_104_unique_digits: AssertionError -> OK
+HumanEval_108_count_nums: AssertionError -> Timeout
+HumanEval_109_move_one_ball: ReferenceError -> OK
+HumanEval_10_make_palindrome: AssertionError -> ReferenceError
+HumanEval_118_get_closest_vowel: AssertionError -> Exception
+HumanEval_120_maximum: Exception -> ReferenceError
+HumanEval_123_get_odd_collatz: OK -> AssertionError
+HumanEval_125_split_words: AssertionError -> ReferenceError
+HumanEval_127_intersection: AssertionError -> ReferenceError
+HumanEval_129_minPath: ReferenceError -> SyntaxError
+HumanEval_130_tri: AssertionError -> SyntaxError
+HumanEval_131_digits: ReferenceError -> OK
+HumanEval_137_compare_one: AssertionError -> Exception
+HumanEval_138_is_equal_to_sum_even: AssertionError -> OK
+HumanEval_141_file_name_check: SyntaxError -> Exception
+HumanEval_144_simplify: OK -> SyntaxError
+HumanEval_151_double_the_difference: AssertionError -> OK
+HumanEval_159_eat: OK -> Exception
+HumanEval_160_do_algebra: AssertionError -> SyntaxError
+HumanEval_162_string_to_md5: Exception -> ReferenceError
+HumanEval_1_separate_paren_groups: SyntaxError -> AssertionError
+HumanEval_26_remove_duplicates: OK -> AssertionError
+HumanEval_34_unique: OK -> AssertionError
+HumanEval_36_fizz_buzz: Exception -> AssertionError
+HumanEval_41_car_race_collision: AssertionError -> ReferenceError
+HumanEval_48_is_palindrome: OK -> SyntaxError
+HumanEval_59_largest_prime_factor: OK -> SyntaxError
+HumanEval_63_fibfib: OK -> SyntaxError
+HumanEval_64_vowels_count: OK -> AssertionError
+HumanEval_65_circular_shift: SyntaxError -> OK
+HumanEval_6_parse_nested_parens: AssertionError -> SyntaxError
+HumanEval_73_smallest_change: Timeout -> OK
+HumanEval_75_is_multiply_prime: ReferenceError -> AssertionError
+HumanEval_83_starts_one_ends: AssertionError -> SyntaxError
+HumanEval_84_solve: AssertionError -> OK
+HumanEval_92_any_int: AssertionError -> ReferenceError
+HumanEval_96_count_up_to: ReferenceError -> SyntaxError
+HumanEval_98_count_upper: AssertionError -> OK
+HumanEval_99_closest_integer: OK -> SyntaxError

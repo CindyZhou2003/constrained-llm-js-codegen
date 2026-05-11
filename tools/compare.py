@@ -124,7 +124,7 @@ def parse_count_file(path):
     results = {}
     current_status = None
     status_pattern = re.compile(r"^\[(.+?)\]")
-    file_pattern = re.compile(r"\s+(mbpp_\d+_.+?)\.results\.json")
+    file_pattern = re.compile(r"\s+(\S+?)\.results\.json")
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.rstrip()

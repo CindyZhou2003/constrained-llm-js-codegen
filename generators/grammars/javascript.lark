@@ -2,7 +2,7 @@
 
 start: js_script_module
 
-js_script_module: top_level+
+js_script_module: top_level
 
 top_level: statement
          | function_declaration
@@ -34,10 +34,17 @@ expression_statement: expr_safe ";"?
 function_declaration: "async"? "function" "*"? IDENTIFIER function_params_postfix compound_statement
 class_declaration: "class" IDENTIFIER ("extends" expression)? class_body
 class_body: "{" class_member* "}"
-class_member: ("static" | "get" | "set" | "async" | "public" | "private")? "*"? (class_method | class_property)
+// Same reasoning as `property`: "get"/"set" are contextual, not reserved.
+// Allow IDENTIFIER as a modifier slot so `get foo() {}` parses without making
+// `get`/`set` keywords that conflict with their use as plain identifiers.
+class_member: ("static" | "async" | "public" | "private" | IDENTIFIER)? "*"? (class_method | class_property)
 class_property: "#"? IDENTIFIER ("=" expression)? ";"?
 class_method: "#"? IDENTIFIER function_params_postfix compound_statement
-compound_statement: "{" statement* "}"
+
+// block_item allows function/class declarations inside { } bodies without
+// introducing a reduce/reduce conflict with top_level
+block_item: statement | function_declaration | class_declaration
+compound_statement: "{" block_item* "}"
 
 export_statement: "export" "default"? (declaration_statement | function_declaration | class_declaration)
                 | "export" "default" expression ";"
@@ -158,7 +165,21 @@ member_func: primary_func postfix_modifier*
 member_obj:  primary_obj  postfix_modifier*
 
 postfix_modifier: postfix_modifier_dot | postfix_modifier_no_dot
-postfix_modifier_dot: "." IDENTIFIER | "?." IDENTIFIER
+// JS allows any IdentifierName (including reserved words) after `.` — e.g.
+// `obj.delete()`, `obj.in`, `obj.typeof`. Without this, the basic lexer
+// tokenizes `delete`/`typeof`/etc. as their reserved-word terminals and the
+// parser rejects them where it expects IDENTIFIER. Listing them as explicit
+// alternatives keeps the LALR(1) decision unambiguous.
+postfix_modifier_dot: "." member_name | "?." member_name
+member_name: IDENTIFIER | reserved_word
+reserved_word: "async" | "function" | "class"
+             | "var" | "let" | "const"
+             | "if" | "else" | "for" | "while" | "do" | "switch" | "case" | "default"
+             | "try" | "catch" | "finally" | "throw" | "return" | "break" | "continue" | "with"
+             | "this" | "new" | "null" | "undefined" | "true" | "false"
+             | "delete" | "typeof" | "void" | "await"
+             | "in" | "instanceof" | "of" | "as" | "from" | "extends"
+             | "static" | "public" | "private"
 postfix_modifier_no_dot: "[" expression "]"
                 | "?." "[" expression "]"
                 | "(" comma_separated_expressions? ")"
@@ -171,7 +192,7 @@ primary_safe_non_numeric: IDENTIFIER
             | lexical_literal_non_numeric
             | TEMPLATE_LITERAL
             | array_literal
-            | paren_enclosed_expression
+            | paren_or_arrow_safe
             | arrow_expression_safe
             | "this"
             | "new" expression
@@ -181,25 +202,54 @@ primary_func: function_expression
 
 primary_obj: object_literal
 
-paren_enclosed_expression: "(" expression? ")"
+// Unify paren_enclosed_expression and the paren form of arrow_expression_safe into
+// one rule so the LALR(1) parser sees "=>" as a valid lookahead after ")" and does
+// not pre-commit to reducing before the arrow token is seen.
+//
+// Root cause of the original bug: with the two concepts as separate rules, after
+// "(" expr ")" the LALR states for "paren expression complete" and "arrow params
+// ready for =>" diverged because their *content* rules differed (expression? vs
+// comma_separated_expressions?). That created a shift/reduce conflict at ")" which
+// Lark resolved by picking the paren-expression state, dropping the arrow state and
+// with it the "=>" terminal from the contextual lexer's valid-token set. Syncode then
+// blocked all continuations after generating "=>", stopping generation mid-arrow.
+//
+// Fix: both the arrow and paren alternatives use the identical content rule
+// (expression?), so their LALR items are merged in the same state after "(expr)".
+// That merged state contains the arrow item "• => arrow_body", keeping "=>" valid.
+// Since "=>" never appears in FOLLOW(paren expression), there is no shift/reduce
+// conflict: "=>" → shift (arrow), anything else → reduce (paren expression).
+//
+// Multi-param arrows (x, y) => are split into a separate alternative disambiguated
+// by the comma, which can only appear at this level for arrow params.
+paren_or_arrow_safe: "(" expression? ")" "=>" arrow_body                         // single or no-param arrow
+                   | "(" expression "," multi_arrow_params ")" "=>" arrow_body   // multi-param arrow
+                   | "(" "..." IDENTIFIER ")" "=>" arrow_body                    // rest-only arrow
+                   | "(" expression? ")"                                          // paren expression
+
+multi_arrow_params: multi_arrow_param ("," multi_arrow_param)*
+multi_arrow_param: "..."? expression
 
 object_literal: "{" comma_separated_properties? "}"
 comma_separated_properties: property ("," property)*
+// "get"/"set" are NOT reserved words in JS — they must remain valid IDENTIFIERs
+// (e.g. `let set = …`). Using string literals here would make Lark create GET/SET
+// terminals that win over IDENTIFIER. Instead, parse `get foo() {}` as the
+// IDENTIFIER-IDENTIFIER form, disambiguated by 1-token lookahead.
 property: "..." expression
         | "[" expression "]" ":" expression
         | (IDENTIFIER | STRING_LITERAL | INTEGER_LITERAL) ":" expression
-        | ("get" | "set") IDENTIFIER function_params_postfix compound_statement
+        | IDENTIFIER IDENTIFIER function_params_postfix compound_statement
         | IDENTIFIER function_params_postfix compound_statement
         | IDENTIFIER
 
 function_expression: "async"? "function" function_params_postfix compound_statement
 class_expression: "class" class_body
 
-// Split Arrow to avoid collision
-arrow_expression_safe: IDENTIFIER "=>" arrow_body 
-                     | "(" comma_separated_expressions? ")" "=>" arrow_body
-arrow_body: compound_statement 
-          | expr_safe 
+// IDENTIFIER-form arrow is unambiguous — keep separate
+arrow_expression_safe: IDENTIFIER "=>" arrow_body
+arrow_body: compound_statement
+          | expr_safe
           | expr_func
 
 lexical_literal_non_numeric: "null" | "undefined" | "true" | "false" | STRING_LITERAL | REGEX_LITERAL
@@ -228,16 +278,58 @@ identifier_as_another: IDENTIFIER "as" IDENTIFIER
 // Lexical Grammar
 
 IDENTIFIER: CNAME
-REGEX_LITERAL.2: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
-SLASH: "/"
+// REGEX_LITERAL must beat SLASH on priority because Syncode uses Lark's
+// `basic` lexer (not contextual — see syncode/parsers/__init__.py), so the
+// lexer can't tell division from regex by parser state. With priority 4 > 3,
+// a complete `/.../flags` lexes as REGEX_LITERAL and a bare `/` lexes as
+// SLASH.
+//
+// CRITICAL: content (outside char classes) must EXCLUDE whitespace. With a
+// greedy basic lexer, an expression like `(l[len/2] + l[len/2 - 1]) / 2`
+// would otherwise be tokenized as a single REGEX_LITERAL `/2] + l[len/2 -
+// 1]) /` (matched from the first `/` to a later `/`). Excluding `\s` from
+// outer content makes the lexer stop before any space, and division
+// expressions virtually always have spaces or non-regex chars between their
+// `/` operators.
+//
+// PARTIAL alt: matches in-progress regex literals (no closing `/` yet) so
+// the model can stream `s.split(/[\`, `regex = /^\d+/`, etc., without
+// parser failure. The leading-character set is deliberately restricted to
+// shapes that almost never occur in division:
+//   /^   anchor — `^` is XOR (binary), invalid right after `/`
+//   /[   char class — `5/[arr]` is technically valid but extremely rare
+//   /\X  escape   — `\` is not a valid expression token in division
+//   /(?  group with `?` (non-capture, lookaround) — `5/(?...)` is invalid
+//   /(\  /([ group whose first char is `\` or `[` — same reason as above
+// Common divisions like `5/(a+b)`, `5/2`, `x/y` do NOT match this prefix
+// (their second char is alphanumeric or `(` without `?[\`), so SLASH still
+// wins. The partial body uses `[^\n\/]*` so it stops at the next `/` — that
+// way a fully closed regex always lets the complete alt produce a longer
+// (winning) match.
+// First content char must not be a digit (along with whitespace etc.). This
+// prevents the basic lexer from gobbling `10/3/2` (chained division) as
+// `10` `REGEX(/3/)` `2`. Subsequent content can include digits. Regex
+// literals whose first char is a digit (e.g. `/3/`) are vanishingly rare —
+// real-world regex starts with a letter, `[`, `^`, `(`, or `\\X`.
+REGEX_LITERAL.4: /\/([^\s\d\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])([^\s\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])*\/[gimsuy]*/
+              | /\/(\^|\[|\\.|\(\?|\(\\|\(\[)[^\n\/]*/
+SLASH.3: "/"
 BIGINT_LITERAL: /\d+n/
 FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/ | /\d+\./
 INTEGER_LITERAL: /0[bB][01]+/ | /0[oO][0-7]+/ | /0[xX][0-9a-fA-F]+/ | /\d+/
 STRING_LITERAL: /'([^'\\]|\\.)*'/ | /"([^"\\]|\\.)*"/
 TEMPLATE_LITERAL: /`([^`\\]*(\\.[^`\\]*)*)`/
 
-LINE_COMMENT: /\/\/[^\n\r]*/
-BLOCK_COMMENT: /\/\*[\s\S]*?\*\//
+// BLOCK_COMMENT priority 5 (above REGEX_LITERAL.4) so that on inputs starting
+// with `/*`, the comment terminal wins even though the regex content rules
+// would technically also match `/*foo*/`.
+// Partial alt: starts with `/*`, then content where any run of `*`s must be
+// followed by something that is NOT `*` and NOT `/` (so `*/` cannot appear),
+// optionally ending with a single trailing `*`. This is the lookahead-free
+// equivalent of "no `*/` inside" and is FSM-compilable for interegular.
+// Complete alt is non-greedy and wins on length whenever a `*/` exists.
+LINE_COMMENT.5: /\/\/[^\n\r]*/
+BLOCK_COMMENT.5: /\/\*[\s\S]*?\*\// | /\/\*([^*]|\*+[^*\/])*\*?/
 
 %import common.CNAME
 %import common.DIGIT
