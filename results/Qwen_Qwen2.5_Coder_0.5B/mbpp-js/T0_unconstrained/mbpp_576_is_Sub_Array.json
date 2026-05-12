@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_576_is_Sub_Array",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array is sublist of another or not.\nfunction is_Sub_Array(A, B){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_576_is_Sub_Array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sub_Array;\n  assert.deepEqual(candidate([1, 4, 3, 5], [1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 1], [1, 2, 1]),true);\n  assert.deepEqual(candidate([1, 0, 2, 2], [2, 2, 0]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=0; i<A.length; i++){\n        for(let j=0; j<B.length; j++){\n            if(A[i] !== B[j]){\n                return false;\n            }\n        }\n    }\n    return true;\n}"
+  ]
+}

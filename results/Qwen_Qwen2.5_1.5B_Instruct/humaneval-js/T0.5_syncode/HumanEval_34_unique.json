@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_34_unique",
+  "language": "js",
+  "prompt": "//Return sorted unique elements in an array\n// >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])\n// [0, 2, 3, 5, 9, 123]\nfunction unique(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_34_unique.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique;\n  assert.deepEqual(candidate([5, 3, 5, 2, 3, 3, 9, 0, 123]),[0, 2, 3, 5, 9, 123]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let unique = [];\n    let seen = new Set();\n    for (let i = 0; i < l.length; i++){\n        if (!seen.has(l[i])){\n            unique.push(l[i]);\n            seen.add(l[i]);\n        }\n    }\n    return unique;\n}\n",
+    "    var arr = l.sort();\n    var i = 0;\n    for(i = 0; i<arr.length; i++){\n        if(arr[i] == arr[i+1]){\n            arr.splice(i, 1);\n            i--;\n        }\n    }\n    return arr;\n}\n",
+    "    var set = new Set(l);\n    return Array.from(set);\n}// Return the number of elements that are equal to the average of the first and last element in the array",
+    "    var result = [];\n    for (var i = 0; i < l.length; i++){\n        if (result.indexOf(l[i]) === -1){\n            result.push(l[i]);\n        }\n    }\n    return result;\n}//Return the array with all duplicate values removed",
+    "  let result = [];\n  let i = 0;\n  let j = 0;\n  while(i < l.length){\n    if(l[i] !== l[j]){\n      result.push(l[i]);\n      j++;\n    }\n    i++;\n  }\n  return result;\n}\n"
+  ]
+}

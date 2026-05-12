@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let pattern = b + b;\n    return pattern.includes(a);\n}//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word",
+    "    let arr = a.split('');\n    let arr2 = b.split('');\n    let arr3 = b.split('').reverse();\n    let arr4 = b.split('').reverse().join('');\n    let arr5 = b.split('').join('');\n    let arr6 = b.split('').join('').split('').reverse();\n    let arr7 = b.split('').join('').split('').reverse().split('').join('');\n    let arr8 = b.split('').join('').split('').reverse().split('').reverse().join('');\n    let arr9 = b.split('').join('').split('').reverse().split('').reverse().split('').join('');\n    let arr10 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr11 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').join('');\n    let arr12 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr13 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').join('');\n    let arr14 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr15 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').join('');\n    let arr16 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr17 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').join('');\n    let arr18 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr19 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').join('');\n    let arr20 = b.split('').join('').split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().split('').reverse().join('');\n    let arr21 =",
+    "    return a.includes(b) || a.includes(b.substring(1) + b.substring(0,1));\n}// 1. Write a function that takes two strings as input and returns true if the second string is a rotation of the first string."
+  ]
+}

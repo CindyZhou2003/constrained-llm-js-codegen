@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let mask = (1 << (r - l + 1)) - 1;\n    let mask2 = (1 << (l - 1)) - 1;\n    let mask3 = (1 << (r + 1)) - 1;\n    let mask4 = (1 << (n + 1)) - 1;\n    let mask5 = (1 << (n - 1)) - 1;\n    let mask6 = (1 << (n + 1)) - 1;\n    let mask7 = (1 << (n - 1)) - 1;\n    let mask8 = (1 << (n + 1)) - 1;\n    let mask9 = (1 << (n - 1)) - 1;\n    let mask10 = (1 << (n + 1)) - 1;\n    let mask11 = (1 << (n - 1)) - 1;\n    let mask12 = (1 << (n + 1)) - 1;\n    let mask13 = (1 << (n - 1)) - 1;\n    let mask14 = (1 << (n + 1)) - 1;\n    let mask15 = (1 << (n - 1)) - 1;\n    let mask16 = (1 << (n + 1)) - 1;\n    let mask17 = (1 << (n - 1)) - 1;\n    let mask18 = (1 << (n + 1)) - 1;\n    let mask19 = (1 << (n - 1)) - 1;\n    let mask20 = (1 << (n + 1)) - 1;\n    let mask21 = (1 << (n - 1)) - 1;\n    let mask22 = (1 << (n + 1)) - 1;\n    let mask23 = (1 << (n - 1)) - 1;\n    let mask24 = (1 << (n + 1)) - 1;\n    let mask25 = (1 << (n - 1)) - 1;\n    let mask26 = (1 << (n + 1)) - 1;\n    let mask27 = (1 << (n - 1)) - 1;\n    let mask28 = ("
+  ]
+}

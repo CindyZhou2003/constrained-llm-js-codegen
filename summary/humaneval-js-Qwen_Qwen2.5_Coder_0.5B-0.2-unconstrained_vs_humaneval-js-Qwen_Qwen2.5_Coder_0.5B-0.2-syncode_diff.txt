@@ -1,0 +1,30 @@
+Comparison: humaneval-js-Qwen_Qwen2.5_Coder_0.5B-0.2-unconstrained vs humaneval-js-Qwen_Qwen2.5_Coder_0.5B-0.2-syncode
+================================================================================
+
+Total changed test cases: 25
+
+HumanEval_102_choose_num: OK -> AssertionError
+HumanEval_105_by_length: ReferenceError -> AssertionError
+HumanEval_112_reverse_delete: OK -> AssertionError
+HumanEval_116_sort_array: AssertionError -> OK
+HumanEval_117_select_words: SyntaxError -> AssertionError
+HumanEval_125_split_words: SyntaxError -> AssertionError
+HumanEval_127_intersection: AssertionError -> ReferenceError
+HumanEval_147_get_max_triples: OK -> AssertionError
+HumanEval_148_bf: AssertionError -> SyntaxError
+HumanEval_160_do_algebra: AssertionError -> SyntaxError
+HumanEval_20_find_closest_elements: SyntaxError -> AssertionError
+HumanEval_24_largest_divisor: AssertionError -> OK
+HumanEval_25_factorize: OK -> SyntaxError
+HumanEval_39_prime_fib: AssertionError -> ReferenceError
+HumanEval_40_triples_sum_to_zero: SyntaxError -> OK
+HumanEval_41_car_race_collision: SyntaxError -> Exception
+HumanEval_46_fib4: OK -> SyntaxError
+HumanEval_49_modp: AssertionError -> SyntaxError
+HumanEval_59_largest_prime_factor: OK -> AssertionError
+HumanEval_6_parse_nested_parens: SyntaxError -> Timeout
+HumanEval_73_smallest_change: AssertionError -> OK
+HumanEval_77_iscube: AssertionError -> OK
+HumanEval_78_hex_key: ReferenceError -> AssertionError
+HumanEval_83_starts_one_ends: ReferenceError -> AssertionError
+HumanEval_99_closest_integer: OK -> AssertionError

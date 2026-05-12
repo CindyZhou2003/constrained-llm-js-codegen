@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_161_solve",
+  "language": "js",
+  "prompt": "//You are given a string s.\n// if s[i] is a letter, reverse its case from lower to upper or vise versa, \n// otherwise keep it as it is.\n// If the string contains no letters, reverse the string.\n// The function should return the resulted string.\n// Examples\n// >>> solve(\"1234\")\n// \"4321\"\n// >>> solve(\"ab\")\n// \"AB\"\n// >>> solve(\"#a@C\")\n// \"#A@c\"\nfunction solve(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_161_solve.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = solve;\n  assert.deepEqual(candidate(\"AsDf\"),\"aSdF\");\n  assert.deepEqual(candidate(\"1234\"),\"4321\");\n  assert.deepEqual(candidate(\"ab\"),\"AB\");\n  assert.deepEqual(candidate(\"#a@C\"),\"#A@c\");\n  assert.deepEqual(candidate(\"#AsdfW^45\"),\"#aSDFw^45\");\n  assert.deepEqual(candidate(\"#6@2\"),\"2@6#\");\n  assert.deepEqual(candidate(\"#$a^D\"),\"#$A^d\");\n  assert.deepEqual(candidate(\"#ccc\"),\"#CCC\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let res = \"\"\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === \" \"){\n            res += \" \"\n        }else{\n            if(s[i] >= \"a\" && s[i] <= \"z\"){\n                res += s[i].toUpperCase()\n            }else{\n                res += s[i].toLowerCase()\n            }\n        }\n    }\n    return res\n}/**\n * @param {string} s\n * @return {string}\n */",
+    "    let arr = s.split(\"\");\n    let newArr = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === arr[i].toLowerCase()){\n            newArr.push(arr[i].toUpperCase());\n        }else{\n            newArr.push(arr[i].toLowerCase());\n        }\n    }\n    return newArr.join(\"\");\n}/**\n * 7kyu\n * Reverse Case\n * https://www.codewars.com/kata/590621a4305260b1f000016e\n * \n * Your task is to write a function that will reverse the case of each character in a string.\n * If the character is already in the opposite case, it should return to its original case.\n * For example:\n * \"Hello\" => \"hELLO\"\n * \"WorLD\" => \"wORld\"\n * \"1234\" => \"1234\"\n * \"ab\" => \"AB\"\n * \"#a@C\" => \"#A@c\"\n * \n * @param {string} s\n * @return {string}\n *///Your task is to write a function that will reverse the case of each character in a string.",
+    "  let letters = [];\n  for (let i = 0; i < s.length; i++){\n    if (s[i] === s[i].toLowerCase()){\n      letters.push(s[i].toUpperCase())\n    } else if (s[i] === s[i].toUpperCase()){\n      letters.push(s[i].toLowerCase())\n    }\n  }\n  return letters.join('');\n}// Your code should be here\n",
+    "    let result = '';\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] >= 'a' && s[i] <= 'z') {\n            result += s[i].toUpperCase();\n        } else if (s[i] >= 'A' && s[i] <= 'Z') {\n            result += s[i].toLowerCase();\n        } else {\n            result += s[i];\n        }\n    }\n    return result;\n}//Your task is to implement the function solve which takes a string s as input and returns the modified string.",
+    "    let result = \"\";\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === \" \"){\n            result += s[i];\n            continue;\n        }\n        if(s[i] === s[i].toLowerCase()){\n            result += s[i].toUpperCase();\n        } else {\n            result += s[i].toLowerCase();\n        }\n    }\n    return result;\n}//You are given a string s."
+  ]
+}

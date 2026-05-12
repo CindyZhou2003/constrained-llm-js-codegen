@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_96_divisor",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the number of divisors of a given integer.\nfunction divisor(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_96_divisor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisor;\n  assert.deepEqual(candidate(15),4);\n  assert.deepEqual(candidate(12),6);\n  assert.deepEqual(candidate(9),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i=1; i<=n; i++){\n        if(n%i==0){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

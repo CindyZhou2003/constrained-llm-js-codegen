@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_43_pairs_sum_to_zero",
+  "language": "js",
+  "prompt": "//pairs_sum_to_zero takes an array of integers as an input.\n// it returns true if there are two distinct elements in the array that\n// sum to zero, and false otherwise.\n// >>> pairs_sum_to_zero([1, 3, 5, 0])\n// false\n// >>> pairs_sum_to_zero([1, 3, -2, 1])\n// false\n// >>> pairs_sum_to_zero([1, 2, 3, 7])\n// false\n// >>> pairs_sum_to_zero([2, 4, -5, 3, 5, 7])\n// true\n// >>> pairs_sum_to_zero([1])\n// false\nfunction pairs_sum_to_zero(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_43_pairs_sum_to_zero.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pairs_sum_to_zero;\n  assert.deepEqual(candidate([1, 3, 5, 0]),false);\n  assert.deepEqual(candidate([1, 3, -2, 1]),false);\n  assert.deepEqual(candidate([1, 2, 3, 7]),false);\n  assert.deepEqual(candidate([2, 4, -5, 3, 5, 7]),true);\n  assert.deepEqual(candidate([1]),false);\n  assert.deepEqual(candidate([-3, 9, -1, 3, 2, 30]),true);\n  assert.deepEqual(candidate([-3, 9, -1, 3, 2, 31]),true);\n  assert.deepEqual(candidate([-3, 9, -1, 4, 2, 30]),false);\n  assert.deepEqual(candidate([-3, 9, -1, 4, 2, 31]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < l.length; i++){\n        for (let j = i + 1; j < l.length; j++){\n            if (l[i] + l[j] === 0){\n                return true;\n            }\n        }\n    }\n    return false;\n}//This is a simple implementation of the function pairs_sum_to_zero that uses two nested loops to check if any two distinct elements in the input array sum to zero. It returns true if such a pair is found, and false otherwise. The time complexity of this implementation is O(n^2), where n is the length of the input array, as it involves iterating through the array twice. The space complexity is O(1), as it only uses a constant amount of additional memory. This implementation can be optimized by using a Set to store the elements of the array, and checking if the negation of each element is present in the Set. This would reduce the time complexity to O(n), but would require additional space to store the Set. \n",
+    "    for (let i = 0; i < l.length; i++){\n        for (let j = i + 1; j < l.length; j++){\n            if (l[i] + l[j] === 0){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n",
+    "    let new_l = l.map((num) => num * -1);\n    return l.some((num, i) => new_l.includes(num) && i !== new_l.indexOf(num));\n}/**\n * @param {number[]} nums\n * @return {boolean}\n */",
+    "    let count = 0;\n    for(let i = 0; i < l.length; i++){\n        for(let j = i + 1; j < l.length; j++){\n            if(l[i] + l[j] == 0){\n                count++;\n            }\n        }\n    }\n    if(count == 0){\n        return false;\n    }\n    else{\n        return true;\n    }\n}// 1. \u7528\u4e24\u4e2afor\u5faa\u73af\u904d\u5386\u6570\u7ec4\uff0c\u627e\u51fa\u6240\u6709\u53ef\u80fd\u7684\u4e24\u4e24\u7ec4\u5408\u3002",
+    "    for(let i = 0; i < l.length; i++){\n        let sum = 0;\n        for(let j = i + 1; j < l.length; j++){\n            sum = l[i] + l[j];\n            if(sum == 0){\n                return true;\n            }\n        }\n    }\n    return false;\n}// function pairs_sum_to_zero(l){"
+  ]
+}

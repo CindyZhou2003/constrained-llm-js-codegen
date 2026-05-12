@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_735_toggle_middle_bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to toggle bits of the number except the first and the last bit. https://www.geeksforgeeks.org/toggle-bits-number-expect-first-last-bits/\nfunction toggle_middle_bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_735_toggle_middle_bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_middle_bits;\n  assert.deepEqual(candidate(9),15);\n  assert.deepEqual(candidate(10),12);\n  assert.deepEqual(candidate(11),13);\n  assert.deepEqual(candidate(65),127);\n  assert.deepEqual(candidate(77),115);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let mask = 1;\n    let mask2 = 1;\n    let mask3 = 1;\n    let mask4 = 1;\n    let mask5 = 1;\n    let mask6 = 1;\n    let mask7 = 1;\n    let mask8 = 1;\n    let mask9 = 1;\n    let mask10 = 1;\n    let mask11 = 1;\n    let mask12 = 1;\n    let mask13 = 1;\n    let mask14 = 1;\n    let mask15 = 1;\n    let mask16 = 1;\n    let mask17 = 1;\n    let mask18 = 1;\n    let mask19 = 1;\n    let mask20 = 1;\n    let mask21 = 1;\n    let mask22 = 1;\n    let mask23 = 1;\n    let mask24 = 1;\n    let mask25 = 1;\n    let mask26 = 1;\n    let mask27 = 1;\n    let mask28 = 1;\n    let mask29 = 1;\n    let mask30 = 1;\n    let mask31 = 1;\n    let mask32 = 1;\n    let mask33 = 1;\n    let mask34 = 1;\n    let mask35 = 1;\n    let mask36 = 1;\n    let mask37 = 1;\n    let mask38 = 1;\n    let mask39 = 1;\n    let mask40 = 1;\n    let mask41 = 1;\n    let mask42 = 1;\n    let mask43 = 1;\n    let mask44 = 1;\n    let mask45 = 1;\n    let mask46 = 1;\n    let mask47 = 1;\n    let mask48 = 1;\n    let mask49 = 1;\n    let mask50 = 1;\n    let mask51 = 1;\n    let mask52 = 1;\n    let mask53 = 1;\n    let mask54 = 1;\n    let mask55 = 1;\n    let mask56 = 1;\n    let mask57 = 1;\n    let mask58 = 1;\n"
+  ]
+}

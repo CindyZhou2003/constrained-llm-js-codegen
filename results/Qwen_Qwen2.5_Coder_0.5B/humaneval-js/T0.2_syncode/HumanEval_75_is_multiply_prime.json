@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_75_is_multiply_prime",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the given number is the multiplication of 3 prime numbers\n// and false otherwise.\n// Knowing that (a) is less then 100. \n// Example:\n// >>> is_multiply_prime(30)\n// true\n// 30 = 2 * 3 * 5\nfunction is_multiply_prime(a){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_75_is_multiply_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_multiply_prime;\n  assert.deepEqual(candidate(5),false);\n  assert.deepEqual(candidate(30),true);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(125),true);\n  assert.deepEqual(candidate(105),true);\n  assert.deepEqual(candidate(126),false);\n  assert.deepEqual(candidate(729),false);\n  assert.deepEqual(candidate(891),false);\n  assert.deepEqual(candidate(1001),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var b = 2;\n  var c = 3;\n  var d = 5;\n  var e = 7;\n  var f = 11;\n  var g = 13;\n  var h = 17;\n  var i = 19;\n  var j = 23;\n  var k = 29;\n  var l = 31;\n  var m = 37;\n  var n = 41;\n  var o = 43;\n  var p = 47;\n  var q = 53;\n  var r = 59;\n  var s = 61;\n  var t = 67;\n  var u = 71;\n  var v = 73;\n  var w = 79;\n  var x = 83;\n  var y = 89;\n  var z = 97;\n  var a = 101;\n  var b = 103;\n  var c = 107;\n  var d = 109;\n  var e = 113;\n  var f = 127;\n  var g = 131;\n  var h = 137;\n  var i = 139;\n  var j = 149;\n  var k = 151;\n  var l = 157;\n  var m = 163;\n  var n = 167;\n  var o = 173;\n  var p = 179;\n  var q = 181;\n  var r = 191;\n  var s = 193;\n  var t = 197;\n  var u = 199;\n  var v = 211;\n  var w = 223;\n  var x = 227;\n  var y = 229;\n  var z = 233;\n  var a = 239;\n  var b = 241;\n  var c = 247;\n  var d = 251;\n  var e = 257;\n  var f = 263;\n  var g = 269;\n  var h = 271;\n  var i = 277;\n ",
+    "    let prime = [2,3,5];\n    for(let i = 0; i < prime.length; i++){\n        if(a % prime[i] === 0){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let b = 2;\n    let c = 3;\n    let d = 5;\n    let e = 7;\n    let f = 11;\n    let g = 13;\n    let h = 17;\n    let i = 19;\n    let j = 23;\n    let k = 29;\n    let l = 31;\n    let m = 37;\n    let n = 41;\n    let o = 43;\n    let p = 47;\n    let q = 53;\n    let r = 59;\n    let s = 61;\n    let t = 67;\n    let u = 71;\n    let v = 73;\n    let w = 79;\n    let x = 83;\n    let y = 89;\n    let z = 97;\n    let a1 = a;\n    let b1 = b;\n    let c1 = c;\n    let d1 = d;\n    let e1 = e;\n    let f1 = f;\n    let g1 = g;\n    let h1 = h;\n    let i1 = i;\n    let j1 = j;\n    let k1 = k;\n    let l1 = l;\n    let m1 = m;\n    let n1 = n;\n    let o1 = o;\n    let p1 = p;\n    let q1 = q;\n    let r1 = r;\n    let s1 = s;\n    let t1 = t;\n    let u1 = u;\n    let v1 = v;\n    let w1 = w;\n    let x1 = x;\n    let y1 = y;\n    let z1 = z;\n    let a2 = a1 * b1;\n    let b2 = a1 * c1;\n    let c2 = a1 * d1;\n    let d2 = a1 * e1;\n    let e2 = a1 * f1;\n    let f2 = a1 * g1;\n    let g2 = a1 * h1;\n    let h2 = a1 * i1;\n    let i2 = a1 * j1;\n    let j2 = a1 * k1;\n    let k2 = a1 * l1;\n    let l2 = a1 * m1;\n   "
+  ]
+}

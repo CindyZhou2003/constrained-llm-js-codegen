@@ -57,9 +57,10 @@ def cmd_generate(args, parser):
     if args.mode in {"syncode", "itergen", "chopchop"} and not args.grammar:
         parser.error("--grammar is required for constrained modes: syncode, itergen, chopchop")
 
-    model_name_clean = args.model.replace("/", "_").replace("-", "_")
-    output_dir_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
-    final_output_path = Path(args.output_dir) / output_dir_name
+    model_dir = args.model.replace("/", "_").replace("-", "_")
+    dataset_dir = f"{args.dataset_name}-js"
+    run_dir = f"T{args.temperature:g}_{args.mode}"
+    final_output_path = Path(args.output_dir) / model_dir / dataset_dir / run_dir
     final_output_path.mkdir(parents=True, exist_ok=True)
     print(f"Creating directory: {final_output_path.absolute()}")
 
@@ -74,9 +75,9 @@ def cmd_generate(args, parser):
     print(f"--- Generating raw code for {len(tasks)} tasks ---")
     print(f"--- Results will be saved to: {final_output_path} ---")
 
-    log_dir = Path(args.output_dir) / "log"
+    log_dir = Path(args.output_dir) / model_dir / dataset_dir / "log"
     log_dir.mkdir(parents=True, exist_ok=True)
-    timing_path = log_dir / f"{output_dir_name}_timing.csv"
+    timing_path = log_dir / f"{run_dir}_timing.csv"
     total_time = 0.0
     with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)
@@ -119,9 +120,10 @@ def cmd_evaluate(args, parser):
 
     generator = UnifiedCodeGenerator(model_name=args.model, **vars(args))
 
-    model_name_clean = args.model.replace("/", "_").replace("-", "_")
-    run_name = f"{args.dataset_name}-js-{model_name_clean}-{args.temperature}-{args.mode}"
-    output_path = Path(args.output_base) / run_name
+    model_dir = args.model.replace("/", "_").replace("-", "_")
+    dataset_dir = f"{args.dataset_name}-js"
+    run_dir = f"T{args.temperature:g}_{args.mode}"
+    output_path = Path(args.output_base) / model_dir / dataset_dir / run_dir
     output_path.mkdir(parents=True, exist_ok=True)
 
     print(f"\n>>> Step 1: Loading Dataset from {args.input_file}")
@@ -132,9 +134,9 @@ def cmd_evaluate(args, parser):
                 tasks.append(json.loads(line))
 
     print(f">>> Step 2: Generating Code (Mode: {args.mode})...")
-    log_dir = Path(args.output_base) / "log"
+    log_dir = Path(args.output_base) / model_dir / dataset_dir / "log"
     log_dir.mkdir(parents=True, exist_ok=True)
-    timing_path = log_dir / f"{run_name}_timing.csv"
+    timing_path = log_dir / f"{run_dir}_timing.csv"
     total_time = 0.0
     with open(timing_path, "w", newline="", encoding="utf-8") as csv_file:
         writer = csv.writer(csv_file)

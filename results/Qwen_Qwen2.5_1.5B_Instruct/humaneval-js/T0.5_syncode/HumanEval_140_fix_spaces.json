@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_140_fix_spaces",
+  "language": "js",
+  "prompt": "//Given a string text, replace all spaces in it with underscores, \n// and if a string has more than 2 consecutive spaces, \n// then replace all consecutive spaces with - \n// >>> fix_spaces(\"Example\")\n// \"Example\"\n// >>> fix_spaces(\"Example 1\")\n// \"Example_1\"\n// >>> fix_spaces(\" Example 2\")\n// \"_Example_2\"\n// >>> fix_spaces(\" Example   3\")\n// \"_Example-3\"\nfunction fix_spaces(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_140_fix_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = fix_spaces;\n  assert.deepEqual(candidate(\"Example\"),\"Example\");\n  assert.deepEqual(candidate(\"Mudasir Hanif \"),\"Mudasir_Hanif_\");\n  assert.deepEqual(candidate(\"Yellow Yellow  Dirty  Fellow\"),\"Yellow_Yellow__Dirty__Fellow\");\n  assert.deepEqual(candidate(\"Exa   mple\"),\"Exa-mple\");\n  assert.deepEqual(candidate(\"   Exa 1 2 2 mple\"),\"-Exa_1_2_2_mple\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = text.replace(/\\s+/g, '-');\n    return result;\n}//Given a string text, replace all spaces in it with underscores, ",
+    "    return text.replace(/(\\s{2})/g, '-').replace(/ /g, '_')\n}//given an array of numbers, return the sum of the numbers",
+    "    // if the string is empty\n    if (text == \"\") {\n        return text;\n    }\n    // replace all spaces with underscores\n    text = text.replace(\" \", \"_\");\n    // replace all consecutive spaces with -\n    return text.replace(/[_]{2,}/g, \"-\");\n}/**\n * @param {number[]} arr\n * @return {number[]}\n */",
+    "    if (text.length == 0) return text\n    let result = ''\n    let count = 0;\n    for (let i = 0; i < text.length; i++){\n        if (text[i] == ' '){\n            count++\n            if (count < 2) result += '_'\n            else result += '-'\n        } else {\n            result += text[i]\n            count = 0\n        }\n    }\n    return result\n}",
+    "    let arr = text.split(\" \")\n    let res = \"\"\n    for(let i = 0; i < arr.length; i++){\n        if(i === arr.length - 1){\n            res += arr[i]\n        } else {\n            res += arr[i] + (arr[i+1].length > 2 ? \"-\" : \"_\")\n        }\n    }\n    return res\n}"
+  ]
+}

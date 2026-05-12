@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_125_split_words",
+  "language": "js",
+  "prompt": "//Given a string of words, return an array of words split on whitespace, if no whitespaces exists in the text you\n// should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the\n// alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25\n// Examples\n// >>> split_words(\"Hello world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"Hello,world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"abcdef\")\n// 3\nfunction split_words(txt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_125_split_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_words;\n  assert.deepEqual(candidate(\"Hello world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello,world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello world,!\"),[\"Hello\", \"world,!\"]);\n  assert.deepEqual(candidate(\"Hello,Hello,world !\"),[\"Hello,Hello,world\", \"!\"]);\n  assert.deepEqual(candidate(\"abcdef\"),3);\n  assert.deepEqual(candidate(\"aaabb\"),2);\n  assert.deepEqual(candidate(\"aaaBb\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = txt.split(' ');\n    let arr2 = arr.filter((x) => x !== '');\n    let arr3 = arr2.filter((x) => x !== ',');\n    let arr4 = arr3.filter((x) => x !== ',');\n    let arr5 = arr4.filter((x) => x !== ',');\n    let arr6 = arr5.filter((x) => x !== ',');\n    let arr7 = arr6.filter((x) => x !== ',');\n    let arr8 = arr7.filter((x) => x !== ',');\n    let arr9 = arr8.filter((x) => x !== ',');\n    let arr10 = arr9.filter((x) => x !== ',');\n    let arr11 = arr10.filter((x) => x !== ',');\n    let arr12 = arr11.filter((x) => x !== ',');\n    let arr13 = arr12.filter((x) => x !== ',');\n    let arr14 = arr13.filter((x) => x !== ',');\n    let arr15 = arr14.filter((x) => x !== ',');\n    let arr16 = arr15.filter((x) => x !== ',');\n    let arr17 = arr16.filter((x) => x !== ',');\n    let arr18 = arr17.filter((x) => x !== ',');\n    let arr19 = arr18.filter((x) => x !== ',');\n    let arr20 = arr19.filter((x) => x !== ',');\n    let arr21 = arr20.filter((x) => x !== ',');\n    let arr22 = arr21.filter((x) => x !== ',');\n    let arr23 = arr22.filter((x) => x !== ',');\n    let arr24 = arr23.filter((x) => x !== ',');\n    let arr25 = arr24.filter((x) => x !== ',');\n    let arr26 = arr25.filter((x) => x !== ',');\n    let arr27 = arr26.filter((x) => x !== ',');\n    let arr28 = arr27.filter((x) => x !== ',');\n    let arr29 = arr28.filter((x) => x !== ',');\n    let arr30 = arr29.filter((x) => x !== ',');\n   "
+  ]
+}

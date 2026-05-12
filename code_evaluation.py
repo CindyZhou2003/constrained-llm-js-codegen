@@ -35,34 +35,38 @@ def compress_folder(src_dir: Path, dst_dir: Path) -> int:
     return count
 
 
-def _parse_run_name(run_name: str):
-    """Split run_name (e.g. mbpp-js-microsoft_phi_2-0.0-unconstrained) into (dataset, model, temperature, mode)."""
-    m = re.match(r'^(.+)-js-([^-]+)-(\d+\.\d+)-(.+)$', run_name)
+def _parse_run_path(gz_dir: Path):
+    """Extract (dataset, model, temperature, mode) from a path like .../<model>/<dataset>-js/T<temp>_<mode>."""
+    run_dir = gz_dir.name
+    dataset = gz_dir.parent.name
+    model = gz_dir.parent.parent.name
+    m = re.match(r'^T(\d+(?:\.\d+)?)_(.+)$', run_dir)
     if m:
-        return m.group(1) + '-js', m.group(2), m.group(3), m.group(4)
-    return run_name, '', '', ''
+        return dataset, model, m.group(1), m.group(2)
+    return dataset, model, '', ''
 
 
-def _lookup_total_time(run_name: str) -> str:
-    """Look up total generation time from the timing CSV for a given run name."""
-    search_dirs = [
-        Path(__file__).parent / "results" / "log",
-    ]
-    for log_dir in search_dirs:
-        timing_path = log_dir / f"{run_name}_timing.csv"
-        if timing_path.exists():
-            total = 0.0
-            with open(timing_path, "r", encoding="utf-8") as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    if row.get("task_name", row.get("task_id", "")) == "TOTAL":
-                        return row["execution_time_s"]
-                    total += float(row["execution_time_s"])
-            return f"{total:.4f}"
-    return ""
+def _lookup_total_time(gz_dir: Path) -> str:
+    """Look up total generation time from the timing CSV for a given gz directory."""
+    run_dir = gz_dir.name
+    dataset = gz_dir.parent.name
+    model = gz_dir.parent.parent.name
+    timing_path = (
+        Path(__file__).parent / "results" / model / dataset / "log" / f"{run_dir}_timing.csv"
+    )
+    if not timing_path.exists():
+        return ""
+    total = 0.0
+    with open(timing_path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row.get("task_name", row.get("task_id", "")) == "TOTAL":
+                return row["execution_time_s"]
+            total += float(row["execution_time_s"])
+    return f"{total:.4f}"
 
 
-def _append_to_results_csv(pass_k_output: str, run_name: str) -> None:
+def _append_to_results_csv(pass_k_output: str, gz_dir: Path) -> None:
     """Append pass@k result rows to results.csv, creating the file with a header if needed."""
     csv_path = Path(__file__).parent / "results.csv"
     lines = [line for line in pass_k_output.splitlines() if line.strip()]
@@ -70,8 +74,8 @@ def _append_to_results_csv(pass_k_output: str, run_name: str) -> None:
     data_lines = lines[1:] if len(lines) > 1 else []
     if not data_lines:
         return
-    total_time = _lookup_total_time(run_name)
-    dataset, model, temperature, mode = _parse_run_name(run_name)
+    total_time = _lookup_total_time(gz_dir)
+    dataset, model, temperature, mode = _parse_run_path(gz_dir)
     write_header = not csv_path.exists()
     with open(csv_path, "a", newline="", encoding="utf-8") as f:
         if write_header:
@@ -132,7 +136,7 @@ def run_multipl_e_benchmark(gz_dir: Path, pass_k: int = 1):
             cmd += ["-k", str(pass_k)]
         result = subprocess.run(cmd, check=True, capture_output=True, text=True)
         print(result.stdout, end="")
-        _append_to_results_csv(result.stdout, abs_gz_dir.name)
+        _append_to_results_csv(result.stdout, abs_gz_dir)
     else:
         print(f"  Warning: pass_k.py not found at {pass_k_script}. Run manually:")
         print(f"    python benchmark/MultiPL-E/pass_k.py {abs_gz_dir}")
@@ -174,10 +178,12 @@ if __name__ == "__main__":
         print(f"Error: input directory does not exist: {input_dir}", file=sys.stderr)
         sys.exit(1)
 
-    gz_output_dir = (
-        Path(args.gz_output_dir) if args.gz_output_dir
-        else Path("results_eval") / input_dir.name
-    )
+    if args.gz_output_dir:
+        gz_output_dir = Path(args.gz_output_dir)
+    else:
+        # Mirror the trailing <model>/<dataset>-js/<run_dir> structure under results_eval/
+        parts = input_dir.parts[-3:]
+        gz_output_dir = Path("results_eval", *parts)
 
     print(f">>> Compressing results: {input_dir} -> {gz_output_dir}")
     compress_folder(input_dir, gz_output_dir)

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_86_anti_shuffle",
+  "language": "js",
+  "prompt": "//Write a function that takes a string and returns an ordered version of it.\n// Ordered version of string, is a string where all words (separated by space)\n// are replaced by a new word where all the characters arranged in\n// ascending order based on ascii value.\n// Note: You should keep the order of words and blank spaces in the sentence.\n// For example:\n// >>> anti_shuffle(\"Hi\")\n// \"Hi\"\n// >>> anti_shuffle(\"hello\")\n// \"ehllo\"\n// >>> anti_shuffle(\"Hello World!!!\")\n// \"Hello !!!Wdlor\"\nfunction anti_shuffle(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_86_anti_shuffle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = anti_shuffle;\n  assert.deepEqual(candidate(\"Hi\"),\"Hi\");\n  assert.deepEqual(candidate(\"hello\"),\"ehllo\");\n  assert.deepEqual(candidate(\"number\"),\"bemnru\");\n  assert.deepEqual(candidate(\"abcd\"),\"abcd\");\n  assert.deepEqual(candidate(\"Hello World!!!\"),\"Hello !!!Wdlor\");\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"Hi. My name is Mister Robot. How are you?\"),\".Hi My aemn is Meirst .Rboot How aer ?ouy\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = s.split(\" \");\n    let newArr = [];\n    for(let i = 0; i < arr.length; i++){\n        let temp = arr[i];\n        let tempArr = [];\n        for(let j = 0; j < temp.length; j++){\n            tempArr.push(temp.charCodeAt(j));\n        }\n        tempArr.sort();\n        for(let k = 0; k < temp.length; k++){\n            tempArr[k] = String.fromCharCode(tempArr[k]);\n        }\n        temp = tempArr.join(\"\");\n        newArr.push(temp);\n    }\n    return newArr.join(\" \");\n}\n",
+    "    let arr = s.split(' ');\n    let arr2 = [];\n    for(let i = 0; i < arr.length; i++){\n        let temp = arr[i].split('');\n        temp.sort((a,b) => a.charCodeAt(0) - b.charCodeAt(0));\n        arr2.push(temp.join(''));\n    }\n    return arr2.join(' ');\n}",
+    "    let arr = s.split(' ')\n    let newArr = []\n    for(let i = 0; i < arr.length; i++){\n        let newWord = ''\n        for(let j = 0; j < arr[i].length; j++){\n            let ascii = arr[i][j].charCodeAt(0)\n            newWord += String.fromCharCode(ascii)\n        }\n        newArr.push(newWord)\n    }\n    return newArr.join(' ')\n}"
+  ]
+}

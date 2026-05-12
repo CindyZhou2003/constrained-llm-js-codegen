@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_105_by_length",
+  "language": "js",
+  "prompt": "//Given an array of integers, sort the integers that are between 1 and 9 inclusive,\n// reverse the resulting array, and then replace each digit by its corresponding name from\n// \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\n// For example:\n// >>> by_length([2, 1, 1, 4, 5, 8, 2, 3])\n// [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n// If the array is empty, return an empty array:\n// >>> by_length([])\n// []\n// If the array has any strange number ignore it:\n// >>> by_length([1, -1, 55])\n// [\"One\"]\nfunction by_length(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_105_by_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = by_length;\n  assert.deepEqual(candidate([2, 1, 1, 4, 5, 8, 2, 3]),[\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, -1, 55]),[\"One\"]);\n  assert.deepEqual(candidate([1, -1, 3, 2]),[\"Three\", \"Two\", \"One\"]);\n  assert.deepEqual(candidate([9, 4, 8]),[\"Nine\", \"Eight\", \"Four\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] >= 1 && arr[i] <= 9){\n            result.push(arr[i]);\n        }\n    }\n    result.sort((a, b) => a - b);\n    for(let i = 0; i < result.length; i++){\n        if(result[i] === 1){\n            result[i] = \"One\";\n        } else if(result[i] === 2){\n            result[i] = \"Two\";\n        } else if(result[i] === 3){\n            result[i] = \"Three\";\n        } else if(result[i] === 4){\n            result[i] = \"Four\";\n        } else if(result[i] === 5){\n            result[i] = \"Five\";\n        } else if(result[i] === 6){\n            result[i] = \"Six\";\n        } else if(result[i] === 7){\n            result[i] = \"Seven\";\n        } else if(result[i] === 8){\n            result[i] = \"Eight\";\n        } else if(result[i] === 9){\n            result[i] = \"Nine\";\n        }\n    }\n    return result;\n}//Given an array of integers, sort the integers that are between 1 and 9 inclusive,"
+  ]
+}

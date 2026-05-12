@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_156_int_to_mini_roman",
+  "language": "js",
+  "prompt": "//Given a positive integer, obtain its roman numeral equivalent as a string,\n// and return it in lowercase.\n// Restrictions: 1 <= num <= 1000\n// Examples:\n// >>> int_to_mini_roman(19)\n// \"xix\"\n// >>> int_to_mini_roman(152)\n// \"clii\"\n// >>> int_to_mini_roman(426)\n// \"cdxxvi\"\nfunction int_to_mini_roman(number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_156_int_to_mini_roman.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = int_to_mini_roman;\n  assert.deepEqual(candidate(19),\"xix\");\n  assert.deepEqual(candidate(152),\"clii\");\n  assert.deepEqual(candidate(251),\"ccli\");\n  assert.deepEqual(candidate(426),\"cdxxvi\");\n  assert.deepEqual(candidate(500),\"d\");\n  assert.deepEqual(candidate(1),\"i\");\n  assert.deepEqual(candidate(4),\"iv\");\n  assert.deepEqual(candidate(43),\"xliii\");\n  assert.deepEqual(candidate(90),\"xc\");\n  assert.deepEqual(candidate(94),\"xciv\");\n  assert.deepEqual(candidate(532),\"dxxxii\");\n  assert.deepEqual(candidate(900),\"cm\");\n  assert.deepEqual(candidate(994),\"cmxciv\");\n  assert.deepEqual(candidate(1000),\"m\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    const roman = {\n        1: 'I',\n        4: 'IV',\n        5: 'V',\n        9: 'IX',\n        10: 'X',\n        40: 'XL',\n        50: 'L',\n        90: 'XC',\n        100: 'C',\n        400: 'CD',\n        500: 'D',\n        900: 'CM',\n        1000: 'M'\n    }\n    let result = '';\n    for (let key in roman) {\n        while (number >= key) {\n            result += roman[key];\n            number -= key;\n        }\n    }\n    return result;\n}",
+    "    let roman = {\n        1: 'I',\n        2: 'II',\n        3: 'III',\n        4: 'IV',\n        5: 'V',\n        6: 'VI',\n        7: 'VII',\n        8: 'VIII',\n        9: 'IX',\n        10: 'X',\n        20: 'XX',\n        30: 'XXX',\n        40: 'XL',\n        50: 'L',\n        60: 'LX',\n        70: 'LXX',\n        80: 'LXXX',\n        90: 'XC',\n        100: 'C',\n        200: 'CC',\n        300: 'CCC',\n        400: 'CD',\n        500: 'D',\n        600: 'DC',\n        700: 'DCC',\n        800: 'DCCC',\n        900: 'CM',\n        1000: 'M',\n        2000: 'MM',\n        3000: 'MMM'\n    }\n    let result = '';\n    for (let i = 1; i <= 1000; i++) {\n        while (number >= i) {\n            number -= i;\n            result += roman[i];\n        }\n    }\n    return result;\n}\n",
+    "    let roman = \"\";\n    let arr = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"];\n    let num = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];\n    for(let i = 0; i < arr.length; i++){\n        while(number >= num[i]){\n            roman += arr[i];\n            number -= num[i];\n        }\n    }\n    return roman;\n}"
+  ]
+}

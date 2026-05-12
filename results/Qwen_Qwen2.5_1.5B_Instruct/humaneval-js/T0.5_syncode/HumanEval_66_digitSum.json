@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_66_digitSum",
+  "language": "js",
+  "prompt": "//Task\n// Write a function that takes a string as input and returns the sum of the upper characters only'\n// ASCII codes.\n// Examples:\n// >>> digitSum(\"\")\n// 0\n// >>> digitSum(\"abAB\")\n// 131\n// >>> digitSum(\"abcCd\")\n// 67\n// >>> digitSum(\"helloE\")\n// 69\n// >>> digitSum(\"woArBld\")\n// 131\n// >>> digitSum(\"aAaaaXa\")\n// 153\nfunction digitSum(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_66_digitSum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digitSum;\n  assert.deepEqual(candidate(\"\"),0);\n  assert.deepEqual(candidate(\"abAB\"),131);\n  assert.deepEqual(candidate(\"abcCd\"),67);\n  assert.deepEqual(candidate(\"helloE\"),69);\n  assert.deepEqual(candidate(\"woArBld\"),131);\n  assert.deepEqual(candidate(\"aAaaaXa\"),153);\n  assert.deepEqual(candidate(\" How are yOu?\"),151);\n  assert.deepEqual(candidate(\"You arE Very Smart\"),327);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return s.toLowerCase().split('').filter(s=>s.charCodeAt(0)>96).reduce((a,c)=>a+c.charCodeAt(0)-96,0);\n}// Task",
+    "    let sum = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s.charCodeAt(i) > 64 && s.charCodeAt(i) < 91){\n            sum += s.charCodeAt(i);\n        }\n    }\n    return sum;\n}// Test cases",
+    "    return s.split('').reduce((sum, char) => {\n        return sum + (char >= 'A' && char <= 'Z' ? char.charCodeAt(0) - 64 : 0);\n    }, 0);\n}// Task",
+    "    let sum = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s[i] >= 65 && s[i] <= 90){\n            sum += s.charCodeAt(i);\n        }\n    }\n    return sum;\n}// Task",
+    "    let sum = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s[i].charCodeAt(0) >= 65 && s[i].charCodeAt(0) <= 90){\n            sum += s[i].charCodeAt(0);\n        }\n    }\n    return sum;\n}// Task"
+  ]
+}

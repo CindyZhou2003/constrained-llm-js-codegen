@@ -1,0 +1,6 @@
+task_name,temperature,num_completions,execution_time_s,time_per_completion_s
+mbpp_3_is_not_prime,0.2,3,38.7104,12.9035
+mbpp_4_heap_queue_largest,0.2,3,30.1242,10.0414
+mbpp_6_differ_At_One_Bit_Pos,0.2,3,49.9862,16.6621
+mbpp_8_square_nums,0.2,3,7.9666,2.6555
+mbpp_9_find_Rotations,0.2,3,47.9072,15.9691

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_54_same_chars",
+  "language": "js",
+  "prompt": "//Check if two words have the same characters.\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\")\n// true\n// >>> same_chars(\"abcd\", \"dddddddabc\")\n// true\n// >>> same_chars(\"dddddddabc\", \"abcd\")\n// true\n// >>> same_chars(\"eabcd\", \"dddddddabc\")\n// false\n// >>> same_chars(\"abcd\", \"dddddddabce\")\n// false\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddddabc\")\n// false\nfunction same_chars(s0, s1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_54_same_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = same_chars;\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\"),true);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabc\"),true);\n  assert.deepEqual(candidate(\"dddddddabc\", \"abcd\"),true);\n  assert.deepEqual(candidate(\"eabcd\", \"dddddddabc\"),false);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabcf\"),false);\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddddabc\"),false);\n  assert.deepEqual(candidate(\"aabb\", \"aaccc\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return s0.split('').sort().join('') === s1.split('').sort().join('');\n}// This function checks if two strings have the same characters by sorting them and comparing them.",
+    "    let s0_arr = s0.split('');\n    let s1_arr = s1.split('');\n    s0_arr.sort();\n    s1_arr.sort();\n    return s0_arr.join('') === s1_arr.join('');\n}\n",
+    "    return s0.split('').sort().join('') === s1.split('').sort().join('');\n}// Define a function to check if two strings have the same characters."
+  ]
+}

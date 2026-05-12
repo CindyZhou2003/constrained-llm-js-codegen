@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_54_same_chars",
+  "language": "js",
+  "prompt": "//Check if two words have the same characters.\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\")\n// true\n// >>> same_chars(\"abcd\", \"dddddddabc\")\n// true\n// >>> same_chars(\"dddddddabc\", \"abcd\")\n// true\n// >>> same_chars(\"eabcd\", \"dddddddabc\")\n// false\n// >>> same_chars(\"abcd\", \"dddddddabce\")\n// false\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddddabc\")\n// false\nfunction same_chars(s0, s1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_54_same_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = same_chars;\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\"),true);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabc\"),true);\n  assert.deepEqual(candidate(\"dddddddabc\", \"abcd\"),true);\n  assert.deepEqual(candidate(\"eabcd\", \"dddddddabc\"),false);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabcf\"),false);\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddddabc\"),false);\n  assert.deepEqual(candidate(\"aabb\", \"aaccc\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let s0set = new Set(s0);\n    let s1set = new Set(s1);\n    if(s0set.size === s1set.size){\n        return true;\n    }else{\n        return false;\n    }\n}/**\n * @param {string[]} words\n * @return {boolean}\n */",
+    "    let a = s0.split('').sort();\n    let b = s1.split('').sort();\n    if(a.length != b.length){\n        return false;\n    }else{\n        for(let i = 0; i < a.length; i++){\n            if(a[i] != b[i]){\n                return false;\n            }\n        }\n        return true;\n    }\n}//Given an array of integers, find the first missing positive number in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers too.",
+    "  let s0Arr = s0.split(\"\");\n  let s1Arr = s1.split(\"\");\n  let s0Set = [...new Set(s0Arr)];\n  let s1Set = [...new Set(s1Arr)];\n  return s0Set.length === s1Set.length;\n}/**\n * Problem: https://www.codewars.com/kata/546e2562b03326a88e000020\n *\n * @param {number} n\n * @return {Array}\n */",
+    "  let arr0 = s0.split('')\n  let arr1 = s1.split('')\n  let arr = []\n  let arr2 = []\n  let count = 0\n  let count2 = 0\n  arr0.forEach((element, index) => {\n    if(arr1.includes(element)){\n      count++\n      arr.push(element)\n    }\n  })\n  arr1.forEach((element, index) => {\n    if(arr.includes(element)){\n      count2++\n      arr2.push(element)\n    }\n  })\n  if(count === count2){\n    return true\n  }\n  return false\n}//Define a function that returns the number of unique elements in an array.",
+    "  return s0.split('').every((char, index) => s1.includes(char) && index === s1.indexOf(char));\n}//Check if two words have the same characters."
+  ]
+}

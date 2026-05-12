@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_131_digits",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the product of the odd digits.\n// Return 0 if all digits are even.\n// For example:\n// >>> digits(1)\n// 1\n// >>> digits(4)\n// 0\n// >>> digits(235)\n// 15\nfunction digits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_131_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digits;\n  assert.deepEqual(candidate(5),5);\n  assert.deepEqual(candidate(54),5);\n  assert.deepEqual(candidate(120),1);\n  assert.deepEqual(candidate(5014),5);\n  assert.deepEqual(candidate(98765),315);\n  assert.deepEqual(candidate(5576543),2625);\n  assert.deepEqual(candidate(2468),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let product = 1;\n    for(let i = 0; i < n.toString().length; i++){\n        let digit = n.toString()[i];\n        if(digit % 2 != 0){\n            product *= digit;\n        }\n    }\n    return product;\n}//Given a string, remove all vowels in the string.",
+    "  let product = 1;\n  let isOdd = false;\n  let productArr = [];\n\n  while(n){\n    let digit = n % 10;\n    if(digit % 2 !== 0){\n      product *= digit;\n      isOdd = true;\n    }\n    n = Math.floor(n / 10);\n  }\n\n  if(isOdd){\n    return product;\n  }\n\n  return 0;\n}/*\n * 1. Create a variable product and set it to 1\n * 2. Create a variable isOdd and set it to false\n * 3. Create an empty array called productArr\n * 4. While n is greater than 0\n * 5. Create a variable digit and set it to n % 10\n * 6. If digit is odd\n * 7. Multiply product by digit\n * 8. Set isOdd to true\n * 9. Remove the last digit from n by dividing it by 10\n * 10. After the while loop, check if isOdd is true\n * 11. If it is true, return product\n * 12. If it is false, return 0\n *//**\n * @param {number} n\n * @return {number}\n */",
+    "  let result = 1;\n  let odd = false;\n  while(n > 0){\n    let digit = n % 10;\n    if(digit % 2 !== 0){\n      result *= digit;\n      odd = true;\n    }\n    n = Math.floor(n/10);\n  }\n  return odd ? result : 0;\n}//Given a positive integer n, return the product of the odd digits.",
+    "    let product = 1;\n    let oddDigit = 0;\n\n    for(let i = 0; i < n.toString().length; i++){\n        if(Number(n.toString()[i]) % 2 !== 0){\n            product *= Number(n.toString()[i]);\n            oddDigit = 1;\n        }\n    }\n    if(oddDigit === 0){\n        return 0;\n    } else {\n        return product;\n    }\n}//Given a string, return a new string where the first and last chars have been exchanged.",
+    "  let product = 1;\n  let odd = 1;\n  let isOdd = false;\n  while (n > 0) {\n    let digit = n % 10;\n    if (digit % 2 !== 0) {\n      isOdd = true;\n      product *= digit;\n    }\n    n = Math.floor(n / 10);\n  }\n  if (isOdd) {\n    return product;\n  } else {\n    return 0;\n  }\n}"
+  ]
+}

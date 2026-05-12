@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_84_solve",
+  "language": "js",
+  "prompt": "//Given a positive integer N, return the total sum of its digits in binary.\n// Example\n// >>> solve(1000)\n// \"1\"\n// >>> solve(150)\n// \"110\"\n// >>> solve(147)\n// \"1100\"\n// Variables:\n// @N integer\n// Constraints: 0 \u00e2\u2030\u00a4 N \u00e2\u2030\u00a4 10000.\n// Output:\n// a string of binary number\nfunction solve(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_84_solve.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = solve;\n  assert.deepEqual(candidate(1000),\"1\");\n  assert.deepEqual(candidate(150),\"110\");\n  assert.deepEqual(candidate(147),\"1100\");\n  assert.deepEqual(candidate(333),\"1001\");\n  assert.deepEqual(candidate(963),\"10010\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    let num = N.toString();\n    for(let i = 0; i < num.length; i++){\n        sum += Number(num[i]);\n    }\n    return sum.toString(2);\n}//Given an array of integers, return the sum of all the positive integers in the array.",
+    "    let arr = []\n    let sum = 0;\n    while(N>0){\n        arr.push(N%2);\n        N = Math.floor(N/2);\n    }\n    arr = arr.reverse();\n    for(let i = 0; i < arr.length; i++){\n        sum += arr[i]*Math.pow(10,i);\n    }\n    return sum.toString(2);\n}//Given a positive integer N, return the total sum of its digits in binary.",
+    "    return N.toString(2).split('').reduce((acc,curr) => acc + curr, 0).toString(2);\n}//Given a positive integer N, return the total sum of its digits in binary.",
+    "  let binary = ''\n  while (N !== 0){\n    binary += (N % 2)\n    N = Math.floor(N/2)\n  }\n  return binary\n}//Given a positive integer N, return the total sum of its digits in binary.",
+    "  let binary = '';\n  let sum = 0;\n  for(let i = 0; i < N; i++){\n    sum += N % 2;\n    binary += String(N % 2);\n    N = Math.floor(N / 2);\n  }\n  return sum.toString(2) + binary;\n}//Given a positive integer N, return the total sum of its digits in binary."
+  ]
+}

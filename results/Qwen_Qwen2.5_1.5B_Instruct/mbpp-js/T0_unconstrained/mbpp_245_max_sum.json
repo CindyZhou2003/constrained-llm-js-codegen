@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = 0;\n    let max1 = 0;\n    let max2 = 0;\n    let max3 = 0;\n    let max4 = 0;\n    let max5 = 0;\n    let max6 = 0;\n    let max7 = 0;\n    let max8 = 0;\n    let max9 = 0;\n    let max10 = 0;\n    let max11 = 0;\n    let max12 = 0;\n    let max13 = 0;\n    let max14 = 0;\n    let max15 = 0;\n    let max16 = 0;\n    let max17 = 0;\n    let max18 = 0;\n    let max19 = 0;\n    let max20 = 0;\n    let max21 = 0;\n    let max22 = 0;\n    let max23 = 0;\n    let max24 = 0;\n    let max25 = 0;\n    let max26 = 0;\n    let max27 = 0;\n    let max28 = 0;\n    let max29 = 0;\n    let max30 = 0;\n    let max31 = 0;\n    let max32 = 0;\n    let max33 = 0;\n    let max34 = 0;\n    let max35 = 0;\n    let max36 = 0;\n    let max37 = 0;\n    let max38 = 0;\n    let max39 = 0;\n    let max40 = 0;\n    let max41 = 0;\n    let max42 = 0;\n    let max43 = 0;\n    let max44 = 0;\n    let max45 = 0;\n    let max46 = 0;\n    let max47 = 0;\n    let max48 = 0;\n    let max49 = 0;\n    let max50 = 0;\n    let max51 = 0;\n    let max52 = 0;\n    let max53 = 0;\n    let max54 = 0;\n    let max55 = 0;\n    let max56 = 0;\n    let max57 = 0;\n   "
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var len = b.length;\n    for (var i = 0; i < len; i++) {\n        var str = a.substr(i) + a.substr(0, i);\n        if (str.includes(b)) {\n            return true;\n        }\n    }\n    return false;\n}//Given an array of integers, find the sum of all the elements in the array.",
+    "    let str = b + b;\n    if(str.includes(a)){\n        return true;\n    }\n    return false;\n}/*\n * 1. Create a variable called `a` and assign it the string `\"hello\"`\n * 2. Create a variable called `b` and assign it the string `\"llo\"`\n * 3. Call the function `cycpattern_check(a, b)`\n * 4. The function will return `true` or `false`\n * 5. Log the result to the console\n */\n",
+    "  var b = b + b;\n  if(b.includes(a)){\n    return true;\n  }\n  return false;\n}//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word",
+    "    var a1 = a.split('');\n    var b1 = b.split('');\n    var a2 = a1.concat(a1);\n    var b2 = b1.concat(b1);\n    return a2.includes(b2) || b1.includes(a2);\n}// JavaScript",
+    "    if(a.indexOf(b) !== -1){\n        return true;\n    } else {\n        return false;\n    }\n}// you can use this to help test your function"
+  ]
+}

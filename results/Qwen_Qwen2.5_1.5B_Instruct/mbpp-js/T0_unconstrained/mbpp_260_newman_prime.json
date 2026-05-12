@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_260_newman_prime",
+  "language": "js",
+  "prompt": "//Write a function to find the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime number.\nfunction newman_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_260_newman_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = newman_prime;\n  assert.deepEqual(candidate(3),7);\n  assert.deepEqual(candidate(4),17);\n  assert.deepEqual(candidate(5),41);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let a = 1;\n    let b = 1;\n    let c = 1;\n    let d = 1;\n    let e = 1;\n    let f = 1;\n    let g = 1;\n    let h = 1;\n    let i = 1;\n    let j = 1;\n    let k = 1;\n    let l = 1;\n    let m = 1;\n    let n = 1;\n    let o = 1;\n    let p = 1;\n    let q = 1;\n    let r = 1;\n    let s = 1;\n    let t = 1;\n    let u = 1;\n    let v = 1;\n    let w = 1;\n    let x = 1;\n    let y = 1;\n    let z = 1;\n    let a1 = 1;\n    let b1 = 1;\n    let c1 = 1;\n    let d1 = 1;\n    let e1 = 1;\n    let f1 = 1;\n    let g1 = 1;\n    let h1 = 1;\n    let i1 = 1;\n    let j1 = 1;\n    let k1 = 1;\n    let l1 = 1;\n    let m1 = 1;\n    let n1 = 1;\n    let o1 = 1;\n    let p1 = 1;\n    let q1 = 1;\n    let r1 = 1;\n    let s1 = 1;\n    let t1 = 1;\n    let u1 = 1;\n    let v1 = 1;\n    let w1 = 1;\n    let x1 = 1;\n    let y1 = 1;\n    let z1 = 1;\n    let a2 = 1;\n    let b2 = 1;\n    let c2 = 1;\n    let d2 = 1;\n    let e2 = 1;\n    let f2 = 1;\n    let g2 = 1;\n    let h2 = 1;\n    let i2 = 1;\n    let j2 = 1;\n    let k2 = 1;\n    let l2 = 1;\n    let m2 = 1;\n    let n2 = 1;\n    let o2 = 1;\n    let"
+  ]
+}

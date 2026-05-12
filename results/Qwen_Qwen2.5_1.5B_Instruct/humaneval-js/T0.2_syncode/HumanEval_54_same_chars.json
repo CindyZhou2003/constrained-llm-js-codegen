@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_54_same_chars",
+  "language": "js",
+  "prompt": "//Check if two words have the same characters.\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\")\n// true\n// >>> same_chars(\"abcd\", \"dddddddabc\")\n// true\n// >>> same_chars(\"dddddddabc\", \"abcd\")\n// true\n// >>> same_chars(\"eabcd\", \"dddddddabc\")\n// false\n// >>> same_chars(\"abcd\", \"dddddddabce\")\n// false\n// >>> same_chars(\"eabcdzzzz\", \"dddzzzzzzzddddabc\")\n// false\nfunction same_chars(s0, s1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_54_same_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = same_chars;\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddeddabc\"),true);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabc\"),true);\n  assert.deepEqual(candidate(\"dddddddabc\", \"abcd\"),true);\n  assert.deepEqual(candidate(\"eabcd\", \"dddddddabc\"),false);\n  assert.deepEqual(candidate(\"abcd\", \"dddddddabcf\"),false);\n  assert.deepEqual(candidate(\"eabcdzzzz\", \"dddzzzzzzzddddabc\"),false);\n  assert.deepEqual(candidate(\"aabb\", \"aaccc\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  if(s0.length !== s1.length) return false;\n  let s0Map = {};\n  let s1Map = {};\n  for(let i = 0; i < s0.length; i++){\n    s0Map[s0[i]] = s0Map[s0[i]] + 1 || 1;\n    s1Map[s1[i]] = s1Map[s1[i]] + 1 || 1;\n  }\n  for(let key in s0Map){\n    if(s0Map[key] !== s1Map[key]) return false;\n  }\n  return true;\n}\n",
+    "    let s0Arr = s0.split('');\n    let s1Arr = s1.split('');\n    let s0Set = new Set(s0Arr);\n    let s1Set = new Set(s1Arr);\n    return s0Set.size === s1Set.size;\n}//Check if two words have the same characters.",
+    "    let s0Arr = s0.split('');\n    let s1Arr = s1.split('');\n    let s0Set = new Set(s0Arr);\n    let s1Set = new Set(s1Arr);\n    let s0SetLen = s0Set.size;\n    let s1SetLen = s1Set.size;\n    if(s0SetLen === s1SetLen){\n        return true;\n    } else {\n        return false;\n    }\n}//Check if two words have the same characters."
+  ]
+}

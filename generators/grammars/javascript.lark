@@ -84,7 +84,7 @@ expr_func: unary_func assignment_operator expression -> assignment
 expr_obj:  unary_obj  assignment_operator expression -> assignment
          | ternary_obj
 
-assignment_operator: "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "**=" 
+assignment_operator: "=" | "+=" | "-=" | "*=" | DIVIDE_ASSIGN | "%=" | "**="
                    | ">>=" | "<<=" | ">>>=" | "|=" | "&=" | "^=" | "&&=" | "||=" | "??="
 
 // Level 2: Ternary
@@ -313,6 +313,11 @@ IDENTIFIER: CNAME
 // real-world regex starts with a letter, `[`, `^`, `(`, or `\\X`.
 REGEX_LITERAL.4: /\/([^\s\d\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])([^\s\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])*\/[gimsuy]*/
               | /\/(\^|\[|\\.|\(\?|\(\\|\(\[)[^\n\/]*/
+// DIVIDE_ASSIGN.3 matches SLASH's priority so the longer literal `/=` wins
+// the tie-break by max_width; otherwise SLASH.3 (priority 3) would beat the
+// default-priority `"/="` literal and the lexer would split `/=` into
+// SLASH + EQUAL, breaking the parse.
+DIVIDE_ASSIGN.3: "/="
 SLASH.3: "/"
 BIGINT_LITERAL: /\d+n/
 FLOAT_LITERAL: /\d+[eE][+-]?\d+/ | /\d*\.\d+/ | /\d+\./

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_105_by_length",
+  "language": "js",
+  "prompt": "//Given an array of integers, sort the integers that are between 1 and 9 inclusive,\n// reverse the resulting array, and then replace each digit by its corresponding name from\n// \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\n// For example:\n// >>> by_length([2, 1, 1, 4, 5, 8, 2, 3])\n// [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n// If the array is empty, return an empty array:\n// >>> by_length([])\n// []\n// If the array has any strange number ignore it:\n// >>> by_length([1, -1, 55])\n// [\"One\"]\nfunction by_length(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_105_by_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = by_length;\n  assert.deepEqual(candidate([2, 1, 1, 4, 5, 8, 2, 3]),[\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, -1, 55]),[\"One\"]);\n  assert.deepEqual(candidate([1, -1, 3, 2]),[\"Three\", \"Two\", \"One\"]);\n  assert.deepEqual(candidate([9, 4, 8]),[\"Nine\", \"Eight\", \"Four\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] >= 1 && arr[i] <= 9){\n            result.push(arr[i]);\n        }else{\n            result.push(\"Unknown\");\n        }\n    }\n    result = result.reverse();\n    return result;\n}",
+    "    let arr2 = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] >= 1 && arr[i] <= 9){\n            arr2.push(arr[i]);\n        }\n    }\n    arr2.sort((a,b) => a-b);\n    for(let i = 0; i < arr2.length; i++){\n        arr2[i] = arr2[i] + \" \" + (i+1);\n    }\n    return arr2;\n}",
+    "    let arr2 = [];\n    arr.forEach((item, index) => {\n        if(item >= 1 && item <= 9) {\n            arr2.push(item);\n        }\n    });\n    arr2.sort((a, b) => a - b);\n    let arr3 = [];\n    arr2.forEach((item, index) => {\n        if(item >= 1 && item <= 9) {\n            arr3.push(item);\n        }\n    });\n    arr3.reverse();\n    let arr4 = [];\n    arr3.forEach((item, index) => {\n        if(item >= 1 && item <= 9) {\n            arr4.push(item);\n        }\n    });\n    arr4.forEach((item, index) => {\n        if(item >= 1 && item <= 9) {\n            arr4[index] = item.toString();\n        }\n    });\n    return arr4;\n}\n"
+  ]
+}

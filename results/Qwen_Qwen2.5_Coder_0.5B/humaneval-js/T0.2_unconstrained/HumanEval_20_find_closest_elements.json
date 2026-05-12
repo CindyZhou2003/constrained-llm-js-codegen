@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_20_find_closest_elements",
+  "language": "js",
+  "prompt": "//From a supplied array of numbers (of length at least two) select and return two that are the closest to each\n// other and return them in order (smaller number, larger number).\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n// [2.0, 2.2]\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n// [2.0, 2.0]\nfunction find_closest_elements(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_20_find_closest_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_closest_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]),[3.9, 4.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0]),[5.0, 5.9]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]),[2.0, 2.2]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]),[2.0, 2.0]);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1]),[2.2, 3.1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let closest = numbers[0];\n    let closest2 = numbers[1];\n    for (let i = 0; i < numbers.length; i++) {\n        for (let j = i + 1; j < numbers.length; j++) {\n            if (Math.abs(numbers[i] - closest) > Math.abs(numbers[j] - closest)) {\n                closest = numbers[i];\n                closest2 = numbers[j];\n            } else if (Math.abs(numbers[i] - closest) === Math.abs(numbers[j] - closest)) {\n                if (numbers[i] < numbers[j]) {\n                    closest = numbers[i];\n                    closest2 = numbers[j];\n                } else {\n                    closest = numbers[j];\n                    closest2 = numbers[i];\n                }\n            }\n        }\n    }\n    return [closest, closest2];\n}\n",
+    "    let min = Infinity;\n    let minIndex = 0;\n    let max = -Infinity;\n    let maxIndex = 0;\n    for (let i = 0; i < numbers.length; i++){\n        if (numbers[i] < min){\n            min = numbers[i];\n            minIndex = i;\n        }\n        if (numbers[i] > max){\n            max = numbers[i];\n            maxIndex = i;\n        }\n    }\n    return [numbers[minIndex], numbers[maxIndex]];\n}",
+    "    let closest = numbers[0];\n    let closest2 = numbers[1];\n    let closest3 = numbers[2];\n    let closest4 = numbers[3];\n    let closest5 = numbers[4];\n    let closest6 = numbers[5];\n    let closest7 = numbers[6];\n    let closest8 = numbers[7];\n    let closest9 = numbers[8];\n    let closest10 = numbers[9];\n    let closest11 = numbers[10];\n    let closest12 = numbers[11];\n    let closest13 = numbers[12];\n    let closest14 = numbers[13];\n    let closest15 = numbers[14];\n    let closest16 = numbers[15];\n    let closest17 = numbers[16];\n    let closest18 = numbers[17];\n    let closest19 = numbers[18];\n    let closest20 = numbers[19];\n    let closest21 = numbers[20];\n    let closest22 = numbers[21];\n    let closest23 = numbers[22];\n    let closest24 = numbers[23];\n    let closest25 = numbers[24];\n    let closest26 = numbers[25];\n    let closest27 = numbers[26];\n    let closest28 = numbers[27];\n    let closest29 = numbers[28];\n    let closest30 = numbers[29];\n    let closest31 = numbers[30];\n    let closest32 = numbers[31];\n    let closest33 = numbers[32];\n    let closest34 = numbers[33];\n    let closest35 = numbers[34];\n    let closest36 = numbers[35];\n    let closest37 = numbers[36];\n    let closest38 = numbers[37];\n    let closest39 = numbers[38];\n    let closest40 = numbers[39];\n    let closest41 = numbers[40];\n    let closest42 = numbers[41];\n    let closest43 = numbers[42];\n    let closest44 = numbers[43];\n    let closest45 = numbers[44];\n    let closest46 = numbers[45];\n    let closest47 = numbers[46];\n    let closest48 = numbers[47];\n    let closest4"
+  ]
+}

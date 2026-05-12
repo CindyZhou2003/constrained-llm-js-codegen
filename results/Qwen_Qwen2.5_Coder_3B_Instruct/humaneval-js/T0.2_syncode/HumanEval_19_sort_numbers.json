@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_19_sort_numbers",
+  "language": "js",
+  "prompt": "//Input is a space-delimited string of numberals from 'zero' to 'nine'.\n// Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n// Return the string with numbers sorted from smallest to largest\n// >>> sort_numbers(\"three one five\")\n// \"one three five\"\nfunction sort_numbers(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_19_sort_numbers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_numbers;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"three\"),\"three\");\n  assert.deepEqual(candidate(\"three five nine\"),\"three five nine\");\n  assert.deepEqual(candidate(\"five zero four seven nine eight\"),\"zero four five seven eight nine\");\n  assert.deepEqual(candidate(\"six five four three two one zero\"),\"zero one two three four five six\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Split the input string into an array of words\n    let wordArray = numbers.split(' ');\n    // Sort the array of words based on their numeric value\n    wordArray.sort((a, b) => {\n        // Convert the words to their numeric values using a mapping object\n        let mapping = {\n            'zero': 0,\n            'one': 1,\n            'two': 2,\n            'three': 3,\n            'four': 4,\n            'five': 5,\n            'six': 6,\n            'seven': 7,\n            'eight': 8,\n            'nine': 9\n        };\n        // Return the difference in numeric values between the two words\n        return mapping[a] - mapping[b];\n    });\n    // Join the sorted array of words back into a string\n    return wordArray.join(' ');\n}// Example usage:",
+    "    // Split the input string into an array of words\n    let wordArray = numbers.split(' ');\n    // Sort the array of words based on their numeric value\n    wordArray.sort((a, b) => {\n        // Get the numeric value of each word\n        let numA = parseInt(a);\n        let numB = parseInt(b);\n        // Return the difference between the numeric values\n        return numA - numB;\n    });\n    // Join the sorted array of words back into a string\n    return wordArray.join(' ');\n}\n",
+    "  let numArray = numbers.split(' ');\n  numArray.sort((a, b) => {\n    return numArray.indexOf(a) - numArray.indexOf(b);\n  });\n  return numArray.join(' ');\n}// Example usage:"
+  ]
+}

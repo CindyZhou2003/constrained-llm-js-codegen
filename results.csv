@@ -6,8 +6,6 @@ humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,unconstrained,1,0.67080745341614
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,unconstrained,3,0.7577639751552795,161,3,3,3304.0609
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.5,unconstrained,1,0.6347826086956521,161,5,5,5363.9981
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.5,unconstrained,5,0.8074534161490683,161,5,5,5363.9981
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,syncode,1,0.650103519668737,161,3,3,3913.4282
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,syncode,3,0.7018633540372671,161,3,3,3913.4282
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.5,syncode,1,0.648447204968944,161,5,5,7283.5850
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.5,syncode,5,0.8385093167701864,161,5,5,7283.5850
 mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.0,syncode,1,0.5491183879093199,397,1,1,2551.9274
@@ -29,3 +27,15 @@ humaneval-js,Qwen_Qwen2.5_1.5B_Instruct,0.5,syncode,1,0.3838509316770186,161,5,5
 humaneval-js,Qwen_Qwen2.5_1.5B_Instruct,0.5,syncode,5,0.5900621118012422,161,5,5,5882.4855
 humaneval-js,Qwen_Qwen2.5_1.5B_Instruct,0.2,syncode,1,0.4244306418219461,161,3,3,4124.4169
 humaneval-js,Qwen_Qwen2.5_1.5B_Instruct,0.2,syncode,3,0.4906832298136646,161,3,3,4124.4169
+mbpp-js,Qwen_Qwen2.5_1.5B_Instruct,0.0,unconstrained,1,0.5088161209068011,397,1,1,3522.2568
+mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.0,unconstrained,1,0.3929471032745592,397,1,1,1481.2463
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.0,unconstrained,1,0.2981366459627329,161,1,1,512.0723
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.0,syncode,1,0.2981366459627329,161,1,1,1445.9387
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,unconstrained,1,0.2898550724637681,161,3,3,1494.0025
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,unconstrained,3,0.36024844720496896,161,3,3,1494.0025
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,1,0.2774327122153209,161,3,3,3810.9297
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,3,0.34782608695652173,161,3,3,3810.9297
+humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,syncode,1,0.6645962732919255,161,3,3,4251.5858
+humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,syncode,3,0.7453416149068323,161,3,3,4251.5858
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,1,0.3002070393374741,161,3,3,4521.5952
+humaneval-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,3,0.38509316770186336,161,3,3,4521.5952

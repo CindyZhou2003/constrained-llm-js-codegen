@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_1_separate_paren_groups",
+  "language": "js",
+  "prompt": "//Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n// separate those group into separate strings and return the array of those.\n// Separate groups are balanced (each open brace is properly closed) and not nested within each other\n// Ignore any spaces in the input string.\n// >>> separate_paren_groups(\"( ) (( )) (( )( ))\")\n// [\"()\", \"(())\", \"(()())\"]\nfunction separate_paren_groups(paren_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_1_separate_paren_groups.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = separate_paren_groups;\n  assert.deepEqual(candidate(\"(()()) ((())) () ((())()())\"),[\"(()())\", \"((()))\", \"()\", \"((())()())\"]);\n  assert.deepEqual(candidate(\"() (()) ((())) (((())))\"),[\"()\", \"(())\", \"((()))\", \"(((())))\"]);\n  assert.deepEqual(candidate(\"(()(())((())))\"),[\"(()(())((())))\"]);\n  assert.deepEqual(candidate(\"( ) (( )) (( )( ))\"),[\"()\", \"(())\", \"(()())\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    let stack = [];\n    for (let i = 0; i < paren_string.length; i++) {\n        let char = paren_string[i];\n        if (char === '(') {\n            stack.push(char);\n        } else if (char === ')') {\n            let group = stack.pop();\n            if (group === '(') {\n                arr.push(group);\n            }\n        }\n    }\n    return arr;\n}",
+    "  var result = [];\n  var open = 0;\n  var close = 0;\n  var current = \"\";\n  var i = 0;\n  var j = 0;\n  for (i = 0; i < paren_string.length; i++){\n    if (paren_string[i] === \"(\") {\n      open++;\n      current += paren_string[i];\n    } else if (paren_string[i] === \")\") {\n      close++;\n      current += paren_string[i];\n    } else if (paren_string[i] === \" \") {\n      continue;\n    } else {\n      current += paren_string[i];\n    }\n  }\n  if (open === close) {\n    result.push(current);\n  }\n  return result;\n}",
+    "    return paren_string.split(/(\\(\\)|\\)))/).map((group) => group.replace(/\\\\()/g, \"\"));\n}\n\n",
+    "    const result = [];\n    let result_string = '';\n    let open_braces = 0;\n    let close_braces = 0;\n    for (let char of paren_string) {\n        if (char == '(') {\n            open_braces++;\n        }\n        else if (char == ')') {\n            open_braces--;\n        }\n        if (open_braces < 0) {\n            open_braces = 0;\n        }\n        result_string += char;\n        if (open_braces == 0) {\n            result.push(result_string);\n            result_string = '';\n        }\n    }\n    return result;\n}",
+    "  let output = [];\n  let counter = 0;\n  for (let i = 0; i < paren_string.length; i++){\n    if (paren_string[i] == '('){\n      counter++;\n    } else if (paren_string[i] == ')'){\n      counter--;\n    }\n    if (counter == 0){\n      output.push(paren_string.slice(0, i + 1));\n      paren_string = paren_string.slice(i + 1);\n    }\n  }\n  return output;\n}"
+  ]
+}

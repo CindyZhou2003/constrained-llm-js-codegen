@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_65_circular_shift",
+  "language": "js",
+  "prompt": "//Circular shift the digits of the integer x, shift the digits right by shift\n// and return the result as a string.\n// If shift > number of digits, return digits reversed.\n// >>> circular_shift(12, 1)\n// \"21\"\n// >>> circular_shift(12, 2)\n// \"12\"\nfunction circular_shift(x, shift){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_65_circular_shift.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = circular_shift;\n  assert.deepEqual(candidate(100, 2),\"001\");\n  assert.deepEqual(candidate(12, 2),\"12\");\n  assert.deepEqual(candidate(97, 8),\"79\");\n  assert.deepEqual(candidate(12, 1),\"21\");\n  assert.deepEqual(candidate(11, 101),\"11\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = x.toString();\n    let len = str.length;\n    shift = shift % len;\n    let right = str.substring(len - shift);\n    let left = str.substring(0, len - shift);\n    return left + right;\n}//Given an array of integers, find the maximum sum of a subarray of size K.",
+    "  if(shift > x.toString().length) return x.toString().split('').reverse().join('');\n  let result = '';\n  for(let i = 0; i < shift; i++) {\n    result = result + x.toString().charAt(x.toString().length - 1);\n    x = x.toString().slice(0, -1);\n  }\n  return result + x.toString();\n}// Write a function that takes an integer as input and returns a string",
+    "    if(shift > x.toString().length){\n        return x.toString().split('').reverse().join('');\n    }\n    let digits = x.toString().split('');\n    let slice = digits.slice(digits.length-shift);\n    let rest = digits.slice(0,digits.length-shift);\n    return slice.concat(rest).join('');\n}// Given a number n and a base, return the number of digits in n that are divisible by the base.",
+    "    let num = x.toString().split('').reverse().join('');\n    let res = num.substring(num.length-shift) + num.substring(0, num.length-shift);\n    return res;\n}/**\n * @param {number} x\n * @param {number} shift\n * @return {number}\n */",
+    "    let digits = x.toString().split('');\n    let len = digits.length;\n    if(shift > len){\n        return digits.reverse().join('');\n    } else {\n        let newDigits = [];\n        for(let i = len - shift; i < len; i++){\n            newDigits.push(digits[i]);\n        }\n        for(let i = 0; i < len - shift; i++){\n            newDigits.push(digits[i]);\n        }\n        return newDigits.join('');\n    }\n}//Write code to remove duplicates from the array"
+  ]
+}

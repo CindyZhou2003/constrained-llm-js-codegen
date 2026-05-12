@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_17_parse_music",
+  "language": "js",
+  "prompt": "//Input to this function is a string representing musical notes in a special ASCII format.\n// Your task is to parse this string and return array of integers corresponding to how many beats does each\n// not last.\n// Here is a legend:\n// 'o' - whole note, lasts four beats\n// 'o|' - half note, lasts two beats\n// '.|' - quater note, lasts one beat\n// >>> parse_music(\"o o| .| o| o| .| .| .| .| o o\")\n// [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\nfunction parse_music(music_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_17_parse_music.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parse_music;\n  assert.deepEqual(candidate(\"\"),[]);\n  assert.deepEqual(candidate(\"o o o o\"),[4, 4, 4, 4]);\n  assert.deepEqual(candidate(\".| .| .| .|\"),[1, 1, 1, 1]);\n  assert.deepEqual(candidate(\"o| o| .| .| o o o o\"),[2, 2, 1, 1, 4, 4, 4, 4]);\n  assert.deepEqual(candidate(\"o| .| o| .| o o| o o|\"),[2, 1, 2, 1, 4, 2, 4, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let result = [];\n  music_string.split(' ').forEach(note => {\n    switch(note){\n      case 'o':\n        result.push(4);\n        break;\n      case 'o|':\n        result.push(2);\n        break;\n      case '.|':\n        result.push(1);\n        break;\n    }\n  });\n  return result;\n}\n",
+    "  let note = music_string.split(' ');\n  let result = [];\n  for(let i = 0; i < note.length; i++){\n    if(note[i] === 'o'){\n      result.push(4);\n    } else if(note[i] === 'o|'){\n      result.push(2);\n    } else if(note[i] === '.|'){\n      result.push(1);\n    }\n  }\n  return result;\n}/**\n * @param {number[]} arr\n * @return {number}\n */\n    // return arr.reduce((acc, val) => acc + val, 0);\n\n  // console.log(sum([1, 2, 3, 4, 5])); // 15\n  // console.log(sum([1, 2, 3, 4, 5, 6])); // 21\n  // console.log(sum([1, 2, 3, 4, 5, 6, 7])); // 28\n  // console.log(sum([1, 2, 3, 4, 5, 6, 7, 8])); // 36\n  // console.log(sum([1, 2, 3, 4, 5, 6, 7, 8, 9])); // 45\n  // console.log(sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // 55\n  // console.log(sum([10, 20, 30, 40, 50, 60, 70, 80, 90, 100])); // 505\n  // console.log(sum([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000])); // 5500\n  // console.log(sum([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000])); // 55000\n  //",
+    "  //Your code goes here\n  let arr = music_string.split(' ');\n  let result = [];\n  for(let i = 0; i < arr.length; i++){\n    if(arr[i] === 'o'){\n      result.push(4);\n    } else if(arr[i] === 'o|'){\n      result.push(2);\n    } else if(arr[i] === '.|'){\n      result.push(1);\n    }\n  }\n  return result;\n}// Test cases",
+    "    //Your code goes here\n    let notes = music_string.split(\" \");\n    let beat_pattern = {o: 4, o: 2, .../: 1};\n    let beats = [];\n    notes.forEach(note => {\n        let note_beat = note.split('').reduce((acc, cur) => acc + beat_pattern[cur], 0);\n        beats.push(note_beat);\n    });\n    return beats;\n}import { parse_music } from './music.js';\n\nconst notes = \"o o| .| o| o| .| .| .| .| o o\";\nparse_music(notes); // [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]// Importing the `parse_music` function from the `music.js` file\nimport { parse_music } from './music.js';\n",
+    "    var notes = music_string.split(\" \");\n    var note_beats = [];\n    for (var i = 0; i < notes.length; i++) {\n        if (notes[i] == \"o\") {\n            note_beats.push(4);\n        } else if (notes[i] == \"o|\") {\n            note_beats.push(2);\n        } else if (notes[i] == \".|\") {\n            note_beats.push(1);\n        }\n    }\n    return note_beats;\n}/**\n * @param {string} s\n * @return {number[]}\n */\n"
+  ]
+}

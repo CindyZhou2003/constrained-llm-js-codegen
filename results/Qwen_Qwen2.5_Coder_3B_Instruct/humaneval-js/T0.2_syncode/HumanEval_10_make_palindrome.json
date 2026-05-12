@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_10_make_palindrome",
+  "language": "js",
+  "prompt": "//Find the shortest palindrome that begins with a supplied string.\n// Algorithm idea is simple:\n// - Find the longest postfix of supplied string that is a palindrome.\n// - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n// >>> make_palindrome(\"\")\n// \"\"\n// >>> make_palindrome(\"cat\")\n// \"catac\"\n// >>> make_palindrome(\"cata\")\n// \"catac\"\nfunction make_palindrome(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_10_make_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = make_palindrome;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"x\"),\"x\");\n  assert.deepEqual(candidate(\"xyz\"),\"xyzyx\");\n  assert.deepEqual(candidate(\"xyx\"),\"xyx\");\n  assert.deepEqual(candidate(\"jerry\"),\"jerryrrej\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(string.length === 0) return \"\";\n    let palindromic_suffix = find_longest_palindromic_suffix(string);\n    let prefix = string.substring(0, string.length - palindromic_suffix.length);\n    let reversed_prefix = reverse_string(prefix);\n    return string + reversed_prefix;\n}\n",
+    "    if(string.length === 0) return string;\n    var i = 0;\n    var j = string.length - 1;\n    while(i < j){\n        if(string[i] === string[j]){\n            i++;\n            j--;\n        }else{\n            j--;\n        }\n    }\n    var prefix = string.substring(0, i);\n    var reversed_prefix = prefix.split('').reverse().join('');\n    return string + reversed_prefix;\n}\n",
+    "    // Find the longest palindromic suffix.\n    let palindromic_suffix = string;\n    for(let i = string.length - 1; i >= 0; i--){\n        if(is_palindrome(string.substring(i))){\n            palindromic_suffix = string.substring(i);\n            break;\n        }\n    }\n    // Reverse the prefix that comes before the palindromic suffix.\n    let prefix = string.substring(0, string.length - palindromic_suffix.length);\n    let reversed_prefix = prefix.split('').reverse().join('');\n    // Append the reversed prefix to the end of the string.\n    return string + reversed_prefix;\n}\n"
+  ]
+}

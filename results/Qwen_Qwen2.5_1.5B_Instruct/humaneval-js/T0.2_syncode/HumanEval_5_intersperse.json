@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_5_intersperse",
+  "language": "js",
+  "prompt": "//Insert a number 'delimeter' between every two consecutive elements of input array `numbers'\n// >>> intersperse([], 4)\n// []\n// >>> intersperse([1, 2, 3], 4)\n// [1, 4, 2, 4, 3]\nfunction intersperse(numbers, delimeter){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_5_intersperse.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = intersperse;\n  assert.deepEqual(candidate([], 7),[]);\n  assert.deepEqual(candidate([5, 6, 3, 2], 8),[5, 8, 6, 8, 3, 8, 2]);\n  assert.deepEqual(candidate([2, 2, 2], 2),[2, 2, 2, 2, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < numbers.length; i++){\n        result.push(numbers[i]);\n        if(i < numbers.length - 1){\n            result.push(delimeter);\n        }\n    }\n    return result;\n}//Write a function that takes an array of numbers and returns the sum of all the numbers in the array.",
+    "    let result = [];\n    for(let i = 0; i < numbers.length; i++){\n        result.push(numbers[i]);\n        if(i < numbers.length - 1){\n            result.push(delimeter);\n        }\n    }\n    return result;\n}//Write a function that takes an array of strings and returns a new array with the strings in reverse order.",
+    "  let result = [];\n  for(let i = 0; i < numbers.length; i++){\n    result.push(numbers[i]);\n    if(i < numbers.length - 1){\n      result.push(delimeter);\n    }\n  }\n  return result;\n}//Write a function that takes an array of strings and returns a new array with the strings sorted in reverse alphabetical order."
+  ]
+}

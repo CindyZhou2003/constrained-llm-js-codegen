@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_65_circular_shift",
+  "language": "js",
+  "prompt": "//Circular shift the digits of the integer x, shift the digits right by shift\n// and return the result as a string.\n// If shift > number of digits, return digits reversed.\n// >>> circular_shift(12, 1)\n// \"21\"\n// >>> circular_shift(12, 2)\n// \"12\"\nfunction circular_shift(x, shift){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_65_circular_shift.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = circular_shift;\n  assert.deepEqual(candidate(100, 2),\"001\");\n  assert.deepEqual(candidate(12, 2),\"12\");\n  assert.deepEqual(candidate(97, 8),\"79\");\n  assert.deepEqual(candidate(12, 1),\"21\");\n  assert.deepEqual(candidate(11, 101),\"11\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let digits = x.toString().split('');\n    let len = digits.length;\n    let shift = shift % len;\n    if(shift > len){\n        return digits.reverse().join('');\n    }\n    let newDigits = digits.slice(shift).concat(digits.slice(0, shift));\n    return newDigits.join('');\n}//test cases",
+    "  if (shift > x.toString().length) return x.toString().split('').reverse().join('');\n  return x.toString().split('').slice(-shift).concat(x.toString().split('').slice(0, x.toString().length - shift)).join('');\n}// function circular_shift(x, shift){",
+    "  if(shift > x.toString().length){\n    return x.toString().split('').reverse().join('');\n  }\n  let result = '';\n  for(let i = 0; i < shift; i++){\n    result += x.toString().charAt(x.toString().length - 1);\n    x = x.toString().slice(0, x.toString().length - 1);\n  }\n  return result + x;\n}// 1"
+  ]
+}

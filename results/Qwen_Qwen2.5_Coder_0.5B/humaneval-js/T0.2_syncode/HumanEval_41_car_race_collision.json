@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_41_car_race_collision",
+  "language": "js",
+  "prompt": "//Imagine a road that's a perfectly straight infinitely long line.\n// n cars are driving left to right;  simultaneously, a different set of n cars\n// are driving right to left.   The two sets of cars start out being very far from\n// each other.  All cars move in the same speed.  Two cars are said to collide\n// when a car that's moving left to right hits a car that's moving right to left.\n// However, the cars are infinitely sturdy and strong; as a result, they continue moving\n// in their trajectory as if they did not collide.\n// This function outputs the number of such collisions.\nfunction car_race_collision(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_41_car_race_collision.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = car_race_collision;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),9);\n  assert.deepEqual(candidate(4),16);\n  assert.deepEqual(candidate(8),64);\n  assert.deepEqual(candidate(10),100);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var collisions = 0;\n    for(var i = 0; i < n; i++){\n        for(var j = 0; j < n; j++){\n            if(i != j){\n                if(i < j){\n                    if(i < n - 1 && j < n - 1){\n                        if(i < n - 2 && j < n - 2){\n                            if(i < n - 3 && j < n - 3){\n                                if(i < n - 4 && j < n - 4){\n                                    collisions++;\n                                }\n                            }\n                        }\n                    }\n                }\n            }\n        }\n    }\n    return collisions;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = 0; j < n; j++){\n            if(i != j){\n                if(i < j){\n                    if(i % 2 == 0 && j % 2 == 0){\n                        count++;\n                    }\n                } else {\n                    if(i % 2 == 0 && j % 2 == 1){\n                        count++;\n                    }\n                }\n            }\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = 0; j < n; j++){\n            if(i != j){\n                if(i < j){\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}"
+  ]
+}

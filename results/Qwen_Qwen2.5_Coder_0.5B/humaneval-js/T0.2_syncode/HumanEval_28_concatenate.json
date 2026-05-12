@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_28_concatenate",
+  "language": "js",
+  "prompt": "//Concatenate array of strings into a single string\n// >>> concatenate([])\n// \"\"\n// >>> concatenate([\"a\", \"b\", \"c\"])\n// \"abc\"\nfunction concatenate(strings){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_28_concatenate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = concatenate;\n  assert.deepEqual(candidate([]),\"\");\n  assert.deepEqual(candidate([\"x\", \"y\", \"z\"]),\"xyz\");\n  assert.deepEqual(candidate([\"x\", \"y\", \"z\", \"w\", \"k\"]),\"xyzwk\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return strings.join(\"\");\n  }\n  \n  // >>> concatenate([\"a\", \"b\", \"c\"])\n  // \"abc\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"])\n  // \"abcdef\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"])\n  // \"abcdefghi\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"])\n  // \"abcdefghijkl\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"], [\"m\", \"n\", \"o\"])\n  // \"abcdefghijkmno\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"], [\"m\", \"n\", \"o\"], [\"p\", \"q\", \"r\", \"s\"])\n  // \"abcdefghijkmnoqrs\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"], [\"m\", \"n\", \"o\"], [\"p\", \"q\", \"r\", \"s\"], [\"t\", \"u\", \"v\", \"w\"])\n  // \"abcdefghijkmnoqrsuvwxyz\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"], [\"m\", \"n\", \"o\"], [\"p\", \"q\", \"r\", \"s\"], [\"t\", \"u\", \"v\", \"w\"], [\"x\", \"y\", \"z\"])\n  // \"abcdefghijkmnoqrsuvwxyzxyz\"\n  // >>> concatenate([\"a\", \"b\", \"c\"], [\"d\", \"e\", \"f\"], [\"g\", \"h\", \"i\"], [\"j\", \"k\", \"l\"], [\"m\", \"n\", \"o\"], [\"p\", \"q\", \"r\", \"s\"], [\"t\", \"u\", \"v",
+    "    return strings.join(\"\");\n}\n",
+    "  return strings.join(\"\");\n}\n"
+  ]
+}

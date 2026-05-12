@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_33_sort_third",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal\n// to the values of the corresponding indicies of l, but sorted.\n// >>> sort_third([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_third([5, 6, 3, 4, 8, 9, 2])\n// [2, 6, 3, 4, 8, 9, 5]\nfunction sort_third(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_33_sort_third.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_third;\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2]),[2, 6, 3, 4, 8, 9, 5]);\n  assert.deepEqual(candidate([5, 8, 3, 4, 6, 9, 2]),[2, 8, 3, 4, 6, 9, 5]);\n  assert.deepEqual(candidate([5, 6, 9, 4, 8, 3, 2]),[2, 6, 9, 4, 8, 3, 5]);\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2, 1]),[2, 6, 3, 4, 8, 9, 5, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var l_prime = [];\n    var l_prime_index = 0;\n    for(var i = 0; i < l.length; i++){\n        if(i % 3 == 0){\n            l_prime.push(l[i]);\n        } else {\n            l_prime[l_prime_index] = l[i];\n            l_prime_index++;\n        }\n    }\n    return l_prime;\n}//This function takes an array l and returns an array l' such that",
+    "    let l_prime = [];\n\n    for(let i = 0; i < l.length; i++){\n        if(i % 3 === 0){\n            l_prime.push(l[i]);\n        } else {\n            l_prime.push(l[i]);\n        }\n    }\n    l_prime.sort((a, b) => a - b);\n    return l_prime;\n}\n",
+    "  //loop through the array\n  for(let i = 0; i < l.length; i++){\n    //check if the index is divisible by 3\n    if(i % 3 == 0){\n      //if it is, sort the corresponding element\n      l[i] = l[i].sort();\n    }\n  }\n  //return the sorted array\n  return l;\n}//This function takes an array l and returns an array l' such that",
+    "    let l2 = [...l];\n    for(let i = 0; i < l2.length; i++){\n        if(i % 3 === 0){\n            l2[i] = l[Math.floor(i/3)];\n        }\n    }\n    return l2;\n}/*\n * This function takes an array l and returns an array l' such that\n * l' is identical to l in the indicies that are not divisible by two, while its values at the indicies that are divisible by two are equal\n * to the values of the corresponding indicies of l, but sorted.\n * >>> sort_second([1, 2, 3])\n * [1, 2, 3]\n * >>> sort_second([5, 6, 3, 4, 8, 9, 2])\n * [5, 2, 3, 4, 8, 9, 6]\n * >>> sort_second([10, 15, 20, 25, 30, 35, 40])\n * [10, 15, 20, 25, 30, 35, 40]\n * >>> sort_second([10, 15, 2, 25, 30, 35, 40])\n * [10, 15, 2, 30, 25, 35, 40]\n * >>> sort_second([10, 15, 2, 25, 30, 35, 40, 5])\n * [10, 15, 2, 25, 30, 35, 40, 5]\n */",
+    "    var arr = [];\n    for(var i = 0; i < l.length; i++){\n        if(i % 3 === 0){\n            arr.push(l[i]);\n        }\n    }\n    arr.sort(function(a, b){\n        return a - b;\n    });\n    for(var i = 0; i < l.length; i++){\n        if(i % 3 !== 0){\n            l[i] = arr.shift();\n        }\n    }\n    return l;\n}\n"
+  ]
+}

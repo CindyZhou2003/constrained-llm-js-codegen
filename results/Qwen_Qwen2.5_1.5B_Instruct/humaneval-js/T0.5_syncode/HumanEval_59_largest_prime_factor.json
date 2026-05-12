@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_59_largest_prime_factor",
+  "language": "js",
+  "prompt": "//Return the largest prime factor of n. Assume n > 1 and is not a prime.\n// >>> largest_prime_factor(13195)\n// 29\n// >>> largest_prime_factor(2048)\n// 2\nfunction largest_prime_factor(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_59_largest_prime_factor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_prime_factor;\n  assert.deepEqual(candidate(15),5);\n  assert.deepEqual(candidate(27),3);\n  assert.deepEqual(candidate(63),7);\n  assert.deepEqual(candidate(330),11);\n  assert.deepEqual(candidate(13195),29);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let largest = 2;\n    let i = 2;\n    while((i = Math.sqrt(n)) > i){\n        if(n % i == 0){\n            largest = i;\n            n = n / i;\n        } else {\n            i++;\n        }\n    }\n    return largest;\n}// Return the largest prime factor of n. Assume n > 1 and is not a prime.",
+    "  let factor = 2;\n  let limit = Math.sqrt(n);\n  while(factor <= limit){\n    if(n % factor === 0){\n      limit = Math.sqrt(n / factor);\n      n = n / factor;\n    } else {\n      factor++;\n    }\n  }\n  return n;\n}// Return the largest prime factor of n. Assume n > 1 and is not a prime.",
+    "    let max = Math.sqrt(n);\n    let prime = 2;\n    while (prime <= max){\n        while (n % prime === 0){\n            n /=//Return the largest prime factor of n. Assume n > 1 and is not a prime.",
+    "    let factor = 2;\n    while (n > 1) {\n        if (n % factor === 0) {\n            n /=/**\n  Given a positive integer n that is not a prime number and not 1 or 2.\n\n  1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.",
+    "    let factor = 2;\n    while(n > 1){\n        if(n % factor === 0){\n            n = n / factor;\n        }else{\n            factor++;\n        }\n    }\n    return factor;\n}// Return the largest prime factor of n. Assume n > 1 and is not a prime."
+  ]
+}

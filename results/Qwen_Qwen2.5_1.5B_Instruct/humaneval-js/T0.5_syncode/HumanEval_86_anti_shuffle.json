@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_86_anti_shuffle",
+  "language": "js",
+  "prompt": "//Write a function that takes a string and returns an ordered version of it.\n// Ordered version of string, is a string where all words (separated by space)\n// are replaced by a new word where all the characters arranged in\n// ascending order based on ascii value.\n// Note: You should keep the order of words and blank spaces in the sentence.\n// For example:\n// >>> anti_shuffle(\"Hi\")\n// \"Hi\"\n// >>> anti_shuffle(\"hello\")\n// \"ehllo\"\n// >>> anti_shuffle(\"Hello World!!!\")\n// \"Hello !!!Wdlor\"\nfunction anti_shuffle(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_86_anti_shuffle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = anti_shuffle;\n  assert.deepEqual(candidate(\"Hi\"),\"Hi\");\n  assert.deepEqual(candidate(\"hello\"),\"ehllo\");\n  assert.deepEqual(candidate(\"number\"),\"bemnru\");\n  assert.deepEqual(candidate(\"abcd\"),\"abcd\");\n  assert.deepEqual(candidate(\"Hello World!!!\"),\"Hello !!!Wdlor\");\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"Hi. My name is Mister Robot. How are you?\"),\".Hi My aemn is Meirst .Rboot How aer ?ouy\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let words = s.split(\" \");\n    for(let i = 0; i < words.length; i++){\n        words[i] = words[i].split(\"\").sort().join(\"\");\n    }\n    return words.join(\" \");\n}/*eslint-disable*/\n",
+    "    let arr = s.split(\" \");\n    for(let i = 0; i < arr.length; i++){\n        let str = arr[i];\n        arr[i] = str.split(\"\").sort().join(\"\");\n    }\n    return arr.join(\" \");\n}\n",
+    "    var words = s.split(\" \");\n    var new_s = \"\";\n    for (var i = 0; i < words.length; i++){\n        var word = words[i];\n        var new_word = \"\";\n        for (var j = 0; j < word.length; j++){\n            new_word += String.fromCharCode(word.charCodeAt(j) + i);\n        }\n        new_s += new_word + \" \";\n    }\n    return new_s.trim();\n}",
+    "    let arr = s.split(\" \");\n    let res = \"\";\n    for(let i = 0; i < arr.length; i++){\n        res += arr[i].split(\"\").sort().join(\"\") + \" \";\n    }\n    return res.slice(0, -1);\n}/**\n * @param {string} s\n * @return {string}\n */",
+    "    let arr = s.split(\" \");\n    for(let i = 0; i < arr.length; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[i] > arr[j]){\n                let temp = arr[i];\n                arr[i] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    return arr.join(\" \");\n}"
+  ]
+}

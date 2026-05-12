@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_17_parse_music",
+  "language": "js",
+  "prompt": "//Input to this function is a string representing musical notes in a special ASCII format.\n// Your task is to parse this string and return array of integers corresponding to how many beats does each\n// not last.\n// Here is a legend:\n// 'o' - whole note, lasts four beats\n// 'o|' - half note, lasts two beats\n// '.|' - quater note, lasts one beat\n// >>> parse_music(\"o o| .| o| o| .| .| .| .| o o\")\n// [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\nfunction parse_music(music_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_17_parse_music.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parse_music;\n  assert.deepEqual(candidate(\"\"),[]);\n  assert.deepEqual(candidate(\"o o o o\"),[4, 4, 4, 4]);\n  assert.deepEqual(candidate(\".| .| .| .|\"),[1, 1, 1, 1]);\n  assert.deepEqual(candidate(\"o| o| .| .| o o o o\"),[2, 2, 1, 1, 4, 4, 4, 4]);\n  assert.deepEqual(candidate(\"o| .| o| .| o o| o o|\"),[2, 1, 2, 1, 4, 2, 4, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let music_array = music_string.split(' ');\n  let result = [];\n  for (let i = 0; i < music_array.length; i++) {\n    if (music_array[i] === 'o') {\n      result.push(4);\n    } else if (music_array[i] === 'o|') {\n      result.push(2);\n    } else if (music_array[i] === 'o|.|o|') {\n      result.push(1);\n    } else if (music_array[i] === 'o|.|.|o|') {\n      result.push(2);\n    } else if (music_array[i] === 'o|.|.|.|o|') {\n      result.push(1);\n    } else if (music_array[i] === 'o|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|.|.|.|.|.|.|.|.|.|.|.|.|.|.|o|') {\n      result.push(4);\n    } else if (music_array[i] === 'o|",
+    "    let music = music_string.split(' ');\n    let result = [];\n    for (let i = 0; i < music.length; i++) {\n        if (music[i] == 'o') {\n            result.push(4);\n        } else if (music[i] == 'o|') {\n            result.push(2);\n        } else if (music[i] == '.|') {\n            result.push(1);\n        } else if (music[i] == 'o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o|o",
+    "    let result = [];\n    let current = 0;\n    let current_beats = 0;\n    for(let i = 0; i < music_string.length; i++){\n        if(music_string[i] === 'o'){\n            current_beats += 4;\n        } else if(music_string[i] === '|'){\n            current_beats += 2;\n        } else if(music_string[i] === '.'){\n            current_beats += 1;\n        }\n        if(current_beats === 4){\n            result.push(current);\n            current = 0;\n            current_beats = 0;\n        }\n    }\n    return result;\n}"
+  ]
+}

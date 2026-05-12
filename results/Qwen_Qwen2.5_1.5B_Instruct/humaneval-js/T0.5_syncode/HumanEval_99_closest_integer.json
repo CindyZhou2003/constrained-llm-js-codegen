@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_99_closest_integer",
+  "language": "js",
+  "prompt": "//Create a function that takes a value (string) representing a number\n// and returns the closest integer to it. If the number is equidistant\n// from two integers, round it away from zero.\n// Examples\n// >>> closest_integer(\"10\")\n// 10\n// >>> closest_integer(\"15.3\")\n// 15\n// Note:\n// Rounding away from zero means that if the given number is equidistant\n// from two integers, the one you should return is the one that is the\n// farthest from zero. For example closest_integer(\"14.5\") should\n// return 15 and closest_integer(\"-14.5\") should return -15.\nfunction closest_integer(value){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_99_closest_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_integer;\n  assert.deepEqual(candidate(\"10\"),10);\n  assert.deepEqual(candidate(\"14.5\"),15);\n  assert.deepEqual(candidate(\"-15.5\"),-16);\n  assert.deepEqual(candidate(\"15.3\"),15);\n  assert.deepEqual(candidate(\"0\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Math.abs(value) < 0.5 ? Math.floor(value) : Math.ceil(value);\n}// Create a function that takes an array of integers and returns the sum.",
+    "  let num = parseFloat(value);\n  let integer = Math.floor(num);\n  let fractional = num - integer;\n  if (fractional === 0.5) {\n    return integer === 0 ? num : integer + 1;\n  }\n  return integer;\n}\n",
+    "    //convert the string to a number\n    let num = +value;\n    //convert the number to a string\n    let numString = num.toString();\n    //split the string into an array of characters\n    let numArray = numString.split(\"\");\n    //for loop to find the index of the decimal point\n    for(let i = 0; i < numArray.length; i++){\n        if(numArray[i] === \".\"){\n            //find the index of the first digit after the decimal point\n            let decimalIndex = i + 1;\n            break;\n        }\n    }\n    //convert the decimal index to a string\n    let decimalIndexString = decimalIndex.toString();\n    //add a zero to the right of the decimal point\n    decimalIndexString = decimalIndexString + \"0\";\n    //split the string into an array of characters\n    let decimalArray = decimalIndexString.split(\"\");\n    //get the number of digits after the decimal point\n    let decimalLength = decimalArray.length;\n    //create a variable to store the integer value\n    let integerValue = 0;\n    //create a variable to store the decimal value\n    let decimalValue = 0;\n    //create a variable to store the closest integer value\n    let closestInteger = 0;\n    //create a variable to store the absolute value of the difference between the number and the integer\n    let absValue = 0;\n    //create a variable to store the closest integer value to the number\n    let closestIntegerToNumber = 0;\n    //create a variable to store the absolute value of the difference between the number and the closest integer value\n    let absValueToNumber = 0;\n    //create a variable to store the closest integer value to the decimal\n    let closestIntegerToDecimal = 0;\n    //create a variable to store the absolute value of the difference between the number and the closest integer value to the decimal\n    let absValueToDecimal = 0;\n    //create a variable to store the closest integer value to the number\n    let closestIntegerToNumber = 0;\n    //create a variable to store the absolute value of the difference between the number and the closest integer value to the number\n    let absValueToNumber = 0;\n    //create a variable to store the closest integer value to the decimal\n    let closestIntegerToDecimal = 0;\n    //create a variable to store the absolute value of the difference between the",
+    "    var num = parseFloat(value);\n    var int = Math.floor(num);\n    var diff = num - int;\n\n    if (diff === 0.5){\n        return (int + 1);\n    } else if (diff > 0.5){\n        return (int + 1);\n    } else {\n        return (int);\n    }\n}\n",
+    "    let num = Number(value);\n    let floor = Math.floor(num);\n    let ceil = Math.ceil(num);\n    return num - floor < ceil - num ? ceil : floor;\n}"
+  ]
+}

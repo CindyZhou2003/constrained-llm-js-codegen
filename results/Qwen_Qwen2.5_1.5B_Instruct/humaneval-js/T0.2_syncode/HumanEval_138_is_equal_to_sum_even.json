@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_138_is_equal_to_sum_even",
+  "language": "js",
+  "prompt": "//Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers\n// Example\n// >>> is_equal_to_sum_even(4)\n// false\n// >>> is_equal_to_sum_even(6)\n// false\n// >>> is_equal_to_sum_even(8)\n// true\nfunction is_equal_to_sum_even(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_138_is_equal_to_sum_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_equal_to_sum_even;\n  assert.deepEqual(candidate(4),false);\n  assert.deepEqual(candidate(6),false);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),true);\n  assert.deepEqual(candidate(11),false);\n  assert.deepEqual(candidate(12),true);\n  assert.deepEqual(candidate(13),false);\n  assert.deepEqual(candidate(16),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n<4) return false;\n    for(let i=2;i<=n;i+=2){\n        if(n-i%2==0) return true;\n    }\n    return false;\n}//Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers",
+    "    // Write your code here\n    if(n<4){\n        return false;\n    }\n    for(let i=2;i<=n;i+=2){\n        if(n-i%2==0){\n            return true;\n        }\n    }\n    return false;\n}// Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers",
+    "    if(n%2 !== 0){\n        return false;\n    }\n    else if(n === 2){\n        return false;\n    }\n    else if(n === 4){\n        return true;\n    }\n    else if(n === 6){\n        return true;\n    }\n    else if(n === 8){\n        return true;\n    }\n    else if(n === 10){\n        return true;\n    }\n    else if(n === 12){\n        return true;\n    }\n    else if(n === 14){\n        return true;\n    }\n    else if(n === 16){\n        return true;\n    }\n    else if(n === 18){\n        return true;\n    }\n    else if(n === 20){\n        return true;\n    }\n    else if(n === 22){\n        return true;\n    }\n    else if(n === 24){\n        return true;\n    }\n    else if(n === 26){\n        return true;\n    }\n    else if(n === 28){\n        return true;\n    }\n    else if(n === 30){\n        return true;\n    }\n    else if(n === 32){\n        return true;\n    }\n    else if(n === 34){\n        return true;\n    }\n    else if(n === 36){\n        return true;\n    }\n    else if(n === 38){\n        return true;\n    }\n    else if(n === 40){\n        return true;\n    }\n    else if(n === 42){\n        return true;\n    }\n    else if(n === 44){\n        return true;\n    }\n    else if(n === 46){\n        return true;\n    }\n    else if(n === 48){\n        return true;\n    }\n    else if(n === 50){\n        return true;\n    }\n    else if(n === 52){\n        return true;\n    }\n    else if(n === 54){\n        return true;\n    }\n    else if(n === 56){\n        return true;\n    }\n    else if(n === 58){\n        return true;\n    }\n    else if(n === 60){\n        return true;\n    }\n    else if(n === 62){\n        return true;\n    }\n    else if(n === 64){\n        return true;\n    }\n    else if(n === 66){\n        return true;\n    }\n    else if(n === "
+  ]
+}

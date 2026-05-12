@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_427_change_date_format",
+  "language": "js",
+  "prompt": "//Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.\nfunction change_date_format(dt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_427_change_date_format.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = change_date_format;\n  assert.deepEqual(candidate(\"2026-01-02\"),\"02-01-2026\");\n  assert.deepEqual(candidate(\"2020-11-13\"),\"13-11-2020\");\n  assert.deepEqual(candidate(\"2021-04-26\"),\"26-04-2021\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var date = new Date(dt);\n    var dd = date.getDate();\n    var mm = date.getMonth() + 1; //January is 0!\n    var yyyy = date.getFullYear();\n    if(dd<10){\n        dd='0'+dd\n    }\n    if(mm<10){\n        mm='0'+mm\n    }\n    return yyyy+'-'+mm+'-'+dd;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_108_count_nums",
+  "language": "js",
+  "prompt": "//Write a function count_nums which takes an array of integers and returns\n// the number of elements which has a sum of digits > 0.\n// If a number is negative, then its first signed digit will be negative:\n// e.g. -123 has signed digits -1, 2, and 3.\n// >>> count_nums([])\n// 0\n// >>> count_nums([-1, 11, -11])\n// 1\n// >>> count_nums([1, 1, 2])\n// 3\nfunction count_nums(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_108_count_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_nums;\n  assert.deepEqual(candidate([]),0);\n  assert.deepEqual(candidate([-1, -2, 0]),0);\n  assert.deepEqual(candidate([1, 1, 2, -2, 3, 4, 5]),6);\n  assert.deepEqual(candidate([1, 6, 9, -6, 0, 1, 5]),5);\n  assert.deepEqual(candidate([1, 100, 98, -7, 1, -1]),4);\n  assert.deepEqual(candidate([12, 23, 34, -45, -56, 0]),5);\n  assert.deepEqual(candidate([0, 1]),1);\n  assert.deepEqual(candidate([1]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let num = arr[i];\n        let sign = 1;\n        if(num < 0){\n            sign = -1;\n            num = Math.abs(num);\n        }\n        let digits = num.toString().split('');\n        for(let j = 0; j < digits.length; j++){\n            sum += parseInt(digits[j]) * sign;\n        }\n    }\n    return sum > 0 ? sum : 0;\n}\n",
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let num = arr[i];\n        if(num < 0){\n            num = num.toString().split('').map(Number).reverse().join('');\n            for(let j = 0; j < num.length; j++){\n                sum += num[j];\n            }\n        } else {\n            sum += num.toString().split('').map(Number).reduce((acc, curr) => acc + curr, 0);\n        }\n    }\n    return sum > 0 ? 1 : 0;\n}\n",
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        let num = arr[i];\n        let sign = 1;\n        if(num < 0){\n            sign = -1;\n            num = Math.abs(num);\n        }\n        let digits = num.toString().split('');\n        for(let j = 0; j < digits.length; j++){\n            sum += parseInt(digits[j]) * sign;\n        }\n    }\n    return sum > 0 ? sum : 0;\n}\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_21_rescale_to_unit",
+  "language": "js",
+  "prompt": "//Given array of numbers (of at least two elements), apply a linear transform to that array,\n// such that the smallest number will become 0 and the largest will become 1\n// >>> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])\n// [0.0, 0.25, 0.5, 0.75, 1.0]\nfunction rescale_to_unit(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_21_rescale_to_unit.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rescale_to_unit;\n  assert.deepEqual(candidate([2.0, 49.9]),[0.0, 1.0]);\n  assert.deepEqual(candidate([100.0, 49.9]),[1.0, 0.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0]),[0.0, 0.25, 0.5, 0.75, 1.0]);\n  assert.deepEqual(candidate([2.0, 1.0, 5.0, 3.0, 4.0]),[0.25, 0.0, 1.0, 0.5, 0.75]);\n  assert.deepEqual(candidate([12.0, 11.0, 15.0, 13.0, 14.0]),[0.25, 0.0, 1.0, 0.5, 0.75]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min = Math.min(...numbers);\n    let max = Math.max(...numbers);\n    let rescaled = [];\n    for(let i = 0; i < numbers.length; i++){\n        rescaled.push((numbers[i] - min) / (max - min));\n    }\n    return rescaled;\n}\n"
+  ]
+}

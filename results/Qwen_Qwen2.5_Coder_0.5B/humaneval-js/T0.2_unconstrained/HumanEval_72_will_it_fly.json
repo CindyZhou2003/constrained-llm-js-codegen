@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_72_will_it_fly",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the object q will fly, and false otherwise.\n// The object q will fly if it's balanced (it is a palindromic array) and the sum of its elements is less than or equal the maximum possible weight w.\n// Example:\n// >>> will_it_fly([1, 2], 5)\n// false\n// # 1+2 is less than the maximum possible weight, but it's unbalanced.\n// >>> will_it_fly([3, 2, 3], 1)\n// false\n// # it's balanced, but 3+2+3 is more than the maximum possible weight.\n// >>> will_it_fly([3, 2, 3], 9)\n// true\n// # 3+2+3 is less than the maximum possible weight, and it's balanced.\n// >>> will_it_fly([3], 5)\n// true\n// # 3 is less than the maximum possible weight, and it's balanced.\nfunction will_it_fly(q, w){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_72_will_it_fly.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = will_it_fly;\n  assert.deepEqual(candidate([3, 2, 3], 9),true);\n  assert.deepEqual(candidate([1, 2], 5),false);\n  assert.deepEqual(candidate([3], 5),true);\n  assert.deepEqual(candidate([3, 2, 3], 1),false);\n  assert.deepEqual(candidate([1, 2, 3], 6),false);\n  assert.deepEqual(candidate([5], 5),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (q.length === 0) return true;\n    if (q.length === 1) return q[0] === q[q.length - 1];\n    let sum = 0;\n    for (let i = 0; i < q.length; i++) {\n        if (q[i] !== q[q.length - 1 - i]) return false;\n        sum += q[i];\n    }\n    return sum <= w;\n}",
+    "    if (q.length === 0) return false;\n    if (q.length === 1) return true;\n    let sum = 0;\n    for (let i = 0; i < q.length; i++) {\n        sum += q[i];\n    }\n    if (sum > w) return false;\n    if (q.length === 2) return true;\n    if (q.length === 3) return true;\n    if (q.length === 4) return true;\n    if (q.length === 5) return true;\n    if (q.length === 6) return true;\n    if (q.length === 7) return true;\n    if (q.length === 8) return true;\n    if (q.length === 9) return true;\n    if (q.length === 10) return true;\n    if (q.length === 11) return true;\n    if (q.length === 12) return true;\n    if (q.length === 13) return true;\n    if (q.length === 14) return true;\n    if (q.length === 15) return true;\n    if (q.length === 16) return true;\n    if (q.length === 17) return true;\n    if (q.length === 18) return true;\n    if (q.length === 19) return true;\n    if (q.length === 20) return true;\n    if (q.length === 21) return true;\n    if (q.length === 22) return true;\n    if (q.length === 23) return true;\n    if (q.length === 24) return true;\n    if (q.length === 25) return true;\n    if (q.length === 26) return true;\n    if (q.length === 27) return true;\n    if (q.length === 28) return true;\n    if (q.length === 29) return true;\n    if (q.length === 30) return true;\n    if (q.length === 31) return true;\n    if (q.length === 32) return true;\n    if (q.length === 33) return true;\n    if (q.length === 34) return true;\n    if (q.length === 35) return true;\n    if (q.length === 36) return true",
+    "    if (q.length === 0) return false;\n    if (q.length === 1) return q[0] === q[q.length - 1];\n    let sum = 0;\n    for (let i = 0; i < q.length; i++) {\n        if (q[i] !== q[q.length - 1 - i]) return false;\n        sum += q[i];\n    }\n    return sum <= w;\n}"
+  ]
+}

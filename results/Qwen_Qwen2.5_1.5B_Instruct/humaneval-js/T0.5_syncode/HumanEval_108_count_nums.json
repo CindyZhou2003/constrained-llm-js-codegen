@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_108_count_nums",
+  "language": "js",
+  "prompt": "//Write a function count_nums which takes an array of integers and returns\n// the number of elements which has a sum of digits > 0.\n// If a number is negative, then its first signed digit will be negative:\n// e.g. -123 has signed digits -1, 2, and 3.\n// >>> count_nums([])\n// 0\n// >>> count_nums([-1, 11, -11])\n// 1\n// >>> count_nums([1, 1, 2])\n// 3\nfunction count_nums(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_108_count_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_nums;\n  assert.deepEqual(candidate([]),0);\n  assert.deepEqual(candidate([-1, -2, 0]),0);\n  assert.deepEqual(candidate([1, 1, 2, -2, 3, 4, 5]),6);\n  assert.deepEqual(candidate([1, 6, 9, -6, 0, 1, 5]),5);\n  assert.deepEqual(candidate([1, 100, 98, -7, 1, -1]),4);\n  assert.deepEqual(candidate([12, 23, 34, -45, -56, 0]),5);\n  assert.deepEqual(candidate([0, 1]),1);\n  assert.deepEqual(candidate([1]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] < 0){\n            sum = sum + Math.abs(arr[i]) - Math.sign(arr[i]);\n        }\n        else{\n            sum = sum + arr[i];\n        }\n    }\n    return sum > 0 ? 1 : 0;\n}/**\n * @param {number[]} nums\n * @return {number}\n */",
+    "    let count = 0;\n    for (let i = 0; i < arr.length; i++) {\n        let sum = 0;\n        for (let j = arr[i].toString().length - 1; j >= 0; j--) {\n            let digit = arr[i].toString()[j];\n            if (digit !== '-') {\n                sum += parseInt(digit);\n            }\n        }\n        if (sum > 0) {\n            count++;\n        }\n    }\n    return count;\n}/**\n * @param {number[]} nums\n * @return {number}\n */",
+    "    //Your code here\n    let count = 0;\n    for(let i = 0; i < arr.length; i++){\n        let temp = arr[i];\n        let sum = 0;\n        while(temp != 0){\n            sum += temp % 10;\n            temp = Math.floor(temp / 10);\n        }\n        if(sum > 0){\n            count++;\n        }\n    }\n    return count;\n}// Write a function count_nums which takes an array of integers and returns",
+    "  let result = 0;\n  arr.forEach(num => {\n    let sum = 0;\n    if(num < 0){\n      let absNum = Math.abs(num);\n      let sign = -1;\n      while(absNum > 0){\n        let digit = absNum % 10;\n        sum += digit * sign;\n        sign *= -1;\n        absNum = Math.floor(absNum / 10);\n      }\n    } else {\n      while(num > 0){\n        let digit = num % 10;\n        sum += digit;\n        num = Math.floor(num / 10);\n      }\n    }\n    if(sum > 0) result++;\n  });\n  return result;\n}// Test cases",
+    "    let sum = 0\n    for(let i = 0; i < arr.length; i++){\n        let signed = arr[i]\n        if(signed < 0){\n            signed *= -1\n            let first = signed % 10\n            signed = Math.floor(signed / 10)\n            signed += first\n        }\n        sum += signed\n    }\n    if(sum > 0){\n        return sum\n    } else {\n        return 0\n    }\n}"
+  ]
+}

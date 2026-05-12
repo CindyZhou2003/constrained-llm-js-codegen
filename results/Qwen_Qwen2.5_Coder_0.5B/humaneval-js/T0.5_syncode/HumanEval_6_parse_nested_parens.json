@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_6_parse_nested_parens",
+  "language": "js",
+  "prompt": "//Input to this function is a string represented multiple groups for nested parentheses separated by spaces.\n// For each of the group, output the deepest level of nesting of parentheses.\n// E.g. (()()) has maximum two levels of nesting while ((())) has three.\n// >>> parse_nested_parens(\"(()()) ((())) () ((())()())\")\n// [2, 3, 1, 3]\nfunction parse_nested_parens(paren_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_6_parse_nested_parens.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = parse_nested_parens;\n  assert.deepEqual(candidate(\"(()()) ((())) () ((())()())\"),[2, 3, 1, 3]);\n  assert.deepEqual(candidate(\"() (()) ((())) (((())))\"),[1, 2, 3, 4]);\n  assert.deepEqual(candidate(\"(()(())((())))\"),[4]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //split the string into an array of strings where each string is a group of parentheses\n    //split the string into an array of strings where each string is a group of parentheses\n    let parens = paren_string.split(' ');\n    console.log(parens);\n    let max = 0;\n    let arr = [];\n    for(let i = 0; i < parens.length; i++){\n        let count = 1;\n        for(let j = i + 1; j < parens.length; j++){\n            if(parens[j] === parens[i]){\n                count++;\n            }else{\n                break;\n            }\n        }\n        if(count > max){\n            max = count;\n            arr = [parens[i]];\n        }else if(count === max){\n            arr.push(parens[i]);\n        }\n    }\n    console.log(arr);\n    return arr;\n}\n",
+    "  let parentheses = paren_string.split(' ').map(char => {\n    return char === '(' ? 1 : -1;\n  });\n  let max = 0;\n  let currentDepth = 0;\n  let result = [];\n  for (let i = 0; i < parentheses.length; i++) {\n    if (parentheses[i] === 1) {\n      currentDepth++;\n      if (currentDepth > max) {\n        max = currentDepth;\n      }\n    } else {\n      currentDepth--;\n    }\n  }\n  result.push(max);\n  return result;\n}\n",
+    "  let stack = [];\n  let max = 0;\n  let deepest = 0;\n  let level = 0;\n  let output = [];\n  for(let i = 0; i < paren_string.length; i++){\n    if(paren_string[i] === '('){\n      stack.push(paren_string[i]);\n    }\n    else if(paren_string[i] === ')'){\n      stack.pop();\n      if(stack.length > 0){\n        level = stack.length;\n      }\n      else{\n        level = 0;\n      }\n      if(level > max){\n        max = level;\n        deepest = max;\n      }\n    }\n  }\n  for(let i = 0; i < max; i++){\n    output.push(deepest);\n  }\n  return output;\n}",
+    "  // Create a list of all parentheses in the string\n  let parens = paren_string.split(\" \").filter(function (e) {\n    return e !== \"\";\n  });\n\n  // Iterate through the parens list\n  let max = 0;\n  let maxIndex = 0;\n  let current = 0;\n  let current_index = 0;\n  let current_max = 0;\n\n  // Iterate through the parens list and keep track of the maximum depth\n  parens.forEach(function (e) {\n    if (e === \"(\") {\n      current++;\n      current_max = current_max + 1;\n      if (current > max) {\n        max = current;\n        maxIndex = current_index;\n      }\n    } else if (e === \")\") {\n      current--;\n      if (current === 0) {\n        current_max = current_max - 1;\n      } else if (current > max) {\n        max = current_max;\n        maxIndex = current_index;\n      }\n    }\n    current_index++;\n  });\n\n  // Return the max\n  return [max, maxIndex];\n}",
+    "    let stack = [];\n    let result = [];\n    let count = 0;\n    for(let i = 0; i < paren_string.length; i++){\n        if(paren_string[i] === '('){\n            stack.push(paren_string[i]);\n        } else if(paren_string[i] === ')'){\n            stack.pop();\n        }\n        if(stack.length > 0){\n            count++;\n        } else {\n            count = 0;\n        }\n        result.push(count);\n    }\n    return result;\n}\n"
+  ]
+}

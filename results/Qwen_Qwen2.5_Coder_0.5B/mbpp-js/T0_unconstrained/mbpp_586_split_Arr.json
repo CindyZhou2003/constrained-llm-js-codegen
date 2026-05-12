@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_586_split_Arr",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to split an array at the nth eelment and add the first part to the end.\nfunction split_Arr(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_586_split_Arr.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_Arr;\n  assert.deepEqual(candidate([12, 10, 5, 6, 52, 36], 2),[5, 6, 52, 36, 12, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], 1),[2, 3, 4, 1]);\n  assert.deepEqual(candidate([0, 1, 2, 3, 4, 5, 6, 7], 3),[3, 4, 5, 6, 7, 0, 1, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = [];\n    for(var i = 0; i < l.length; i++){\n        if(i < n){\n            arr.push(l[i]);\n        }else{\n            arr.push(l[i] + l[i-1]);\n        }\n    }\n    return arr;\n}"
+  ]
+}

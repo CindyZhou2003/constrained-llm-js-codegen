@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_33_sort_third",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal\n// to the values of the corresponding indicies of l, but sorted.\n// >>> sort_third([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_third([5, 6, 3, 4, 8, 9, 2])\n// [2, 6, 3, 4, 8, 9, 5]\nfunction sort_third(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_33_sort_third.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_third;\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2]),[2, 6, 3, 4, 8, 9, 5]);\n  assert.deepEqual(candidate([5, 8, 3, 4, 6, 9, 2]),[2, 8, 3, 4, 6, 9, 5]);\n  assert.deepEqual(candidate([5, 6, 9, 4, 8, 3, 2]),[2, 6, 9, 4, 8, 3, 5]);\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2, 1]),[2, 6, 3, 4, 8, 9, 5, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let l1 = l.slice();\n    let l2 = l.slice();\n    for (let i = 0; i < l.length; i++){\n        if (l1[i] % 3 === 0){\n            l2[i] = l1[i];\n        } else {\n            l2[i] = l1[i];\n        }\n    }\n    return l2;\n}",
+    "    let l1 = l.slice();\n    let l2 = l.slice();\n    let l3 = l.slice();\n    let l4 = l.slice();\n    let l5 = l.slice();\n    let l6 = l.slice();\n    let l7 = l.slice();\n    let l8 = l.slice();\n    let l9 = l.slice();\n    let l10 = l.slice();\n    let l11 = l.slice();\n    let l12 = l.slice();\n    let l13 = l.slice();\n    let l14 = l.slice();\n    let l15 = l.slice();\n    let l16 = l.slice();\n    let l17 = l.slice();\n    let l18 = l.slice();\n    let l19 = l.slice();\n    let l20 = l.slice();\n    let l21 = l.slice();\n    let l22 = l.slice();\n    let l23 = l.slice();\n    let l24 = l.slice();\n    let l25 = l.slice();\n    let l26 = l.slice();\n    let l27 = l.slice();\n    let l28 = l.slice();\n    let l29 = l.slice();\n    let l30 = l.slice();\n    let l31 = l.slice();\n    let l32 = l.slice();\n    let l33 = l.slice();\n    let l34 = l.slice();\n    let l35 = l.slice();\n    let l36 = l.slice();\n    let l37 = l.slice();\n    let l38 = l.slice();\n    let l39 = l.slice();\n    let l40 = l.slice();\n    let l41 = l.slice();\n    let l42 = l.slice();\n    let l43 = l.slice();\n    let l44 = l.slice();\n    let l45 = l.slice();\n    let l46 = l.slice();\n    let l47 = l.slice();\n    let l48 = l.slice();\n    let l49 = l.slice();\n    let l50 = l.slice();\n    let l51 = l.slice();\n    let l52 = l.slice();\n    let l53 = l.slice();\n    let l54 = l.slice();\n    let l55 = l.slice();\n    let l56 = l.slice();\n    let l57 = l.slice();\n    let l58 = l.slice",
+    "  let l1 = l.slice();\n  let l2 = l.slice();\n  let l3 = l.slice();\n  for (let i = 0; i < l.length; i++){\n    if (i % 3 === 0){\n      l2[i] = l1[i];\n    } else {\n      l3[i] = l1[i];\n    }\n  }\n  return l2.concat(l3);\n}\n"
+  ]
+}

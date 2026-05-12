@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_74_total_match",
+  "language": "js",
+  "prompt": "//Write a function that accepts two lists of strings and returns the array that has \n// total number of chars in the all strings of the array less than the other array.\n// if the two lists have the same number of chars, return the first array.\n// Examples\n// >>> total_match([], [])\n// []\n// >>> total_match([\"hi\", \"admin\"], [\"hI\", \"Hi\"])\n// [\"hI\", \"Hi\"]\n// >>> total_match([\"hi\", \"admin\"], [\"hi\", \"hi\", \"admin\", \"project\"])\n// [\"hi\", \"admin\"]\n// >>> total_match([\"hi\", \"admin\"], [\"hI\", \"hi\", \"hi\"])\n// [\"hI\", \"hi\", \"hi\"]\n// >>> total_match([\"4\"], [\"1\", \"2\", \"3\", \"4\", \"5\"])\n// [\"4\"]\nfunction total_match(lst1, lst2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_74_total_match.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = total_match;\n  assert.deepEqual(candidate([], []),[]);\n  assert.deepEqual(candidate([\"hi\", \"admin\"], [\"hi\", \"hi\"]),[\"hi\", \"hi\"]);\n  assert.deepEqual(candidate([\"hi\", \"admin\"], [\"hi\", \"hi\", \"admin\", \"project\"]),[\"hi\", \"admin\"]);\n  assert.deepEqual(candidate([\"4\"], [\"1\", \"2\", \"3\", \"4\", \"5\"]),[\"4\"]);\n  assert.deepEqual(candidate([\"hi\", \"admin\"], [\"hI\", \"Hi\"]),[\"hI\", \"Hi\"]);\n  assert.deepEqual(candidate([\"hi\", \"admin\"], [\"hI\", \"hi\", \"hi\"]),[\"hI\", \"hi\", \"hi\"]);\n  assert.deepEqual(candidate([\"hi\", \"admin\"], [\"hI\", \"hi\", \"hii\"]),[\"hi\", \"admin\"]);\n  assert.deepEqual(candidate([], [\"this\"]),[]);\n  assert.deepEqual(candidate([\"this\"], []),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    if(lst1.length == lst2.length){\n        for(let i = 0; i < lst1.length; i++){\n            if(lst1[i].length < lst2[i].length){\n                result.push(lst1[i]);\n            }\n        }\n    }else if(lst1.length < lst2.length){\n        for(let i = 0; i < lst1.length; i++){\n            if(lst1[i].length < lst2[i].length){\n                result.push(lst1[i]);\n            }\n        }\n    }else{\n        for(let i = 0; i < lst2.length; i++){\n            if(lst2[i].length < lst1[i].length){\n                result.push(lst2[i]);\n            }\n        }\n    }\n    return result;\n}",
+    "  var result = [];\n  var i = 0;\n  while(i < lst1.length){\n    var j = 0;\n    while(j < lst2.length){\n      if(lst1[i].length < lst2[j].length){\n        result.push(lst1[i]);\n        break;\n      }\n      j++;\n    }\n    i++;\n  }\n  return result;\n}",
+    "    let result = [];\n    if(lst1.length === lst2.length){\n        for(let i = 0; i < lst1.length; i++){\n            if(lst1[i].length < lst2[i].length){\n                result.push(lst1[i]);\n            }\n        }\n    }else if(lst1.length < lst2.length){\n        for(let i = 0; i < lst1.length; i++){\n            if(lst1[i].length < lst2[i].length){\n                result.push(lst1[i]);\n            }\n        }\n    }else{\n        for(let i = 0; i < lst2.length; i++){\n            if(lst2[i].length < lst1[i].length){\n                result.push(lst2[i]);\n            }\n        }\n    }\n    return result;\n}"
+  ]
+}

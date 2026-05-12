@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_157_right_angle_triangle",
+  "language": "js",
+  "prompt": "//Given the lengths of the three sides of a triangle. Return true if the three\n// sides form a right-angled triangle, false otherwise.\n// A right-angled triangle is a triangle in which one angle is right angle or \n// 90 degree.\n// Example:\n// >>> right_angle_triangle(3, 4, 5)\n// true\n// >>> right_angle_triangle(1, 2, 3)\n// false\nfunction right_angle_triangle(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_157_right_angle_triangle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = right_angle_triangle;\n  assert.deepEqual(candidate(3, 4, 5),true);\n  assert.deepEqual(candidate(1, 2, 3),false);\n  assert.deepEqual(candidate(10, 6, 8),true);\n  assert.deepEqual(candidate(2, 2, 2),false);\n  assert.deepEqual(candidate(7, 24, 25),true);\n  assert.deepEqual(candidate(10, 5, 7),false);\n  assert.deepEqual(candidate(5, 12, 13),true);\n  assert.deepEqual(candidate(15, 8, 17),true);\n  assert.deepEqual(candidate(48, 55, 73),true);\n  assert.deepEqual(candidate(1, 1, 1),false);\n  assert.deepEqual(candidate(2, 2, 10),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Sort the sides to ensure the largest is considered as the hypotenuse\n    let sides = [a, b, c].sort((x, y) => x - y);\n    // Check if the Pythagorean theorem holds\n    return sides[0] * sides[0] + sides[1] * sides[1] === sides[2] * sides[2];\n}// Example usage:",
+    "    // Sort the sides\n    let sides = [a, b, c].sort((x, y) => x - y);\n    // Check if the sum of the squares of the two smaller sides is equal to the square of the largest side\n    return sides[0] * sides[0] + sides[1] * sides[1] === sides[2] * sides[2];\n}// Example usage",
+    "    // Sort the sides to ensure the largest is considered as the hypotenuse\n    const sides = [a, b, c].sort((x, y) => x - y);\n    // Check if the Pythagorean theorem holds\n    return Math.pow(sides[0], 2) + Math.pow(sides[1], 2) === Math.pow(sides[2], 2);\n}\n"
+  ]
+}

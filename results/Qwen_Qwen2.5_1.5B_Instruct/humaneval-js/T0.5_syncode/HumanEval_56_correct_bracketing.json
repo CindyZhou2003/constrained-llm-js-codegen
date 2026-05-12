@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_56_correct_bracketing",
+  "language": "js",
+  "prompt": "//brackets is a string of \"<\" and \">\".\n// return true if every opening bracket has a corresponding closing bracket.\n// >>> correct_bracketing(\"<\")\n// false\n// >>> correct_bracketing(\"<>\")\n// true\n// >>> correct_bracketing(\"<<><>>\")\n// true\n// >>> correct_bracketing(\"><<>\")\n// false\nfunction correct_bracketing(brackets){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_56_correct_bracketing.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = correct_bracketing;\n  assert.deepEqual(candidate(\"<>\"),true);\n  assert.deepEqual(candidate(\"<<><>>\"),true);\n  assert.deepEqual(candidate(\"<><><<><>><>\"),true);\n  assert.deepEqual(candidate(\"<><><<<><><>><>><<><><<>>>\"),true);\n  assert.deepEqual(candidate(\"<<<><>>>>\"),false);\n  assert.deepEqual(candidate(\"><<>\"),false);\n  assert.deepEqual(candidate(\"<\"),false);\n  assert.deepEqual(candidate(\"<<<<\"),false);\n  assert.deepEqual(candidate(\">\"),false);\n  assert.deepEqual(candidate(\"<<>\"),false);\n  assert.deepEqual(candidate(\"<><><<><>><>><<>\"),false);\n  assert.deepEqual(candidate(\"<><><<><>><>>><>\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let stack = []\n    for(let i = 0; i < brackets.length; i++){\n        if(brackets[i] === '<'){\n            stack.push(brackets[i])\n        } else if(brackets[i] === '>'){\n            if(stack.length === 0){\n                return false\n            } else {\n                stack.pop()\n            }\n        }\n    }\n    return stack.length === 0\n}//console.log(correct_bracketing(\"<\"))",
+    "  let stack = [];\n  for (let i = 0; i < brackets.length; i++) {\n    if (brackets[i] === \"<\") {\n      stack.push(brackets[i]);\n    } else if (brackets[i] === \">\") {\n      if (stack.length === 0) {\n        return false;\n      } else {\n        stack.pop();\n      }\n    }\n  }\n  return stack.length === 0;\n}//brackets is a string of \"<\" and \">\".",
+    "    let stack = [];\n    let opening = [\"<\", \"<\"];\n    let closing = [\">\", \">\"];\n    for (let i = 0; i < brackets.length; i++) {\n        if (opening.includes(brackets[i])) {\n            stack.push(brackets[i]);\n        } else if (closing.includes(brackets[i])) {\n            if (stack.length === 0) {\n                return false;\n            }\n            let last = stack.pop();\n            if (last !== brackets[i]) {\n                return false;\n            }\n        }\n    }\n    return stack.length === 0;\n}\n",
+    "    let stack = [];\n    for(let i = 0; i < brackets.length; i++){\n        if(brackets[i] === \"<\"){\n            stack.push(brackets[i]);\n        } else if (brackets[i] === \">\") {\n            if(stack.length === 0){\n                return false;\n            } else {\n                stack.pop();\n            }\n        }\n    }\n    if(stack.length === 0){\n        return true;\n    } else {\n        return false;\n    }\n}\n",
+    "    //Your code here\n  return brackets.split(\"\").every((char, index, array) => {\n    if(char === \"<\"){\n      return array[index + 1] === \">\"\n    }\n    if(char === \">\"){\n      return array[index - 1] === \"<\"\n    }\n    return false;\n  });\n}//test\n  //>>> correct_bracketing(\"<\")\n  //false\n  //>>> correct_bracketing(\"<>\")\n  //true\n  //>>> correct_bracketing(\"<<><>>\")\n  //true\n  //>>> correct_bracketing(\"><<>\")\n  //false"
+  ]
+}

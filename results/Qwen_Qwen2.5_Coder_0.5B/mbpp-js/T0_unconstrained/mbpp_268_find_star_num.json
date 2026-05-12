@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_268_find_star_num",
+  "language": "js",
+  "prompt": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_268_find_star_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n==1){\n        return 1;\n    }\n    else{\n        return find_star_num(n-1)+n;\n    }\n}"
+  ]
+}

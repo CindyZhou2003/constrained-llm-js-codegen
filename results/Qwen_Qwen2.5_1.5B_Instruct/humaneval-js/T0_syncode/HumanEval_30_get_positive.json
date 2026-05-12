@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_30_get_positive",
+  "language": "js",
+  "prompt": "//Return only positive numbers in the array.\n// >>> get_positive([-1, 2, -4, 5, 6])\n// [2, 5, 6]\n// >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])\n// [5, 3, 2, 3, 9, 123, 1]\nfunction get_positive(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_30_get_positive.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_positive;\n  assert.deepEqual(candidate([-1, -2, 4, 5, 6]),[4, 5, 6]);\n  assert.deepEqual(candidate([5, 3, -5, 2, 3, 3, 9, 0, 123, 1, -10]),[5, 3, 2, 3, 3, 9, 123, 1]);\n  assert.deepEqual(candidate([-1, -2]),[]);\n  assert.deepEqual(candidate([]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return l.filter(function(n){\n        return n > 0;\n    });\n}/**\n * @param {number[]} arr - The array of numbers to be filtered.\n * @returns {number[]} - An array containing only the positive numbers from the input array.\n */"
+  ]
+}

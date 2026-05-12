@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_75_is_multiply_prime",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the given number is the multiplication of 3 prime numbers\n// and false otherwise.\n// Knowing that (a) is less then 100. \n// Example:\n// >>> is_multiply_prime(30)\n// true\n// 30 = 2 * 3 * 5\nfunction is_multiply_prime(a){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_75_is_multiply_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_multiply_prime;\n  assert.deepEqual(candidate(5),false);\n  assert.deepEqual(candidate(30),true);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(125),true);\n  assert.deepEqual(candidate(105),true);\n  assert.deepEqual(candidate(126),false);\n  assert.deepEqual(candidate(729),false);\n  assert.deepEqual(candidate(891),false);\n  assert.deepEqual(candidate(1001),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var isPrime = function(number){\n    for(var i=2; i<number; i++){\n      if(number%i === 0){\n        return false;\n      }\n    }\n    return true;\n  }\n  \n  var array = [];\n  for(var i=2; i<a; i++){\n    if(isPrime(i)){\n      array.push(i);\n    }\n  }\n  \n  if(array.length !== 3){\n    return false;\n  }\n  \n  for(var i=0; i<array.length; i++){\n    for(var j=i+1; j<array.length; j++){\n      for(var k=j+1; k<array.length; k++){\n        if(array[i] * array[j] * array[k] === a){\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}/**\n * @param {number} a\n * @return {boolean}\n */ \n",
+    "    let count = 0;\n    for(let i = 2; i <= a; i++){\n        if(a % i === 0){\n            count++;\n            a = a/i;\n        }\n    }\n    if(count === 2 && a === 1){\n        return true;\n    }else{\n        return false;\n    }\n}\n",
+    "  let count = 0;\n  for(let i = 2; i < a; i++){\n    if(a % i === 0){\n      count++;\n      if(count > 3)\n        return false;\n    }\n  }\n  return count === 3;\n}/*\n * @param {number[]} nums\n * @return {boolean}\n */",
+    "    if(a <= 100){\n        let is_prime = true;\n        for(let i = 2; i < a; i++){\n            if(a % i === 0){\n                is_prime = false;\n                break;\n            }\n        }\n        if(is_prime){\n            let count = 1;\n            let result = 1;\n            for(let i = 2; i < a; i++){\n                if(a % i === 0){\n                    count++;\n                    if(count > 3){\n                        is_prime = false;\n                        break;\n                    }\n                    result *= i;\n                }\n            }\n            if(count === 3 && is_prime){\n                return true;\n            }\n        }\n    }\n    return false;\n}//Write a function that returns the number of vowels in a given string",
+    "    var arr = []\n    for(i=2; i<=a; i++){\n        if(a % i == 0){\n            arr.push(i)\n            while(a % i == 0){\n                a = a/i\n            }\n        }\n    }\n    if(arr.length == 3){\n        return true\n    }else{\n        return false\n    }\n}"
+  ]
+}

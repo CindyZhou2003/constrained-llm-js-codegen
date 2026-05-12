@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_119_match_parens",
+  "language": "js",
+  "prompt": "//You are given an array of two strings, both strings consist of open\n// parentheses '(' or close parentheses ')' only.\n// Your job is to check if it is possible to concatenate the two strings in\n// some order, that the resulting string will be good.\n// A string S is considered to be good if and only if all parentheses in S\n// are balanced. For example: the string '(())()' is good, while the string\n// '())' is not.\n// Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.\n// Examples:\n// >>> match_parens([\"()(\", \")\"])\n// \"Yes\"\n// >>> match_parens([\")\", \")\"])\n// \"No\"\nfunction match_parens(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_119_match_parens.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = match_parens;\n  assert.deepEqual(candidate([\"()(\", \")\"]),\"Yes\");\n  assert.deepEqual(candidate([\")\", \")\"]),\"No\");\n  assert.deepEqual(candidate([\"(()(())\", \"())())\"]),\"No\");\n  assert.deepEqual(candidate([\")())\", \"(()()(\"]),\"Yes\");\n  assert.deepEqual(candidate([\"(())))\", \"(()())((\"]),\"Yes\");\n  assert.deepEqual(candidate([\"()\", \"())\"]),\"No\");\n  assert.deepEqual(candidate([\"(()(\", \"()))()\"]),\"Yes\");\n  assert.deepEqual(candidate([\"((((\", \"((())\"]),\"No\");\n  assert.deepEqual(candidate([\")(()\", \"(()(\"]),\"No\");\n  assert.deepEqual(candidate([\")(\", \")(\"]),\"No\");\n  assert.deepEqual(candidate([\"(\", \")\"]),\"Yes\");\n  assert.deepEqual(candidate([\")\", \"(\"]),\"Yes\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let stack = [];\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i] === '('){\n            stack.push(lst[i]);\n        } else if(lst[i] === ')'){\n            if(stack.length === 0){\n                return \"No\";\n            }\n            stack.pop();\n        }\n    }\n    return stack.length === 0 ? \"Yes\" : \"No\";\n}",
+    "    let open = 0;\n    let close = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i] === '('){\n            open++;\n        }else{\n            close++;\n        }\n    }\n    if(open === close){\n        return \"Yes\";\n    }else{\n        return \"No\";\n    }\n}",
+    "    let open = 0;\n    let close = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i] === \"(\") open++;\n        else close++;\n    }\n    if(open === close) return \"Yes\";\n    else return \"No\";\n}"
+  ]
+}

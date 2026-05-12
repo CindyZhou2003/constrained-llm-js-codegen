@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_584_find_adverbs",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let adverbs = [];\n    let adverb = \"\";\n    let positions = [];\n    for(let i = 0; i < text.length; i++){\n        if(text[i] === \" \"){\n            adverbs.push(adverb);\n            adverb = \"\";\n        } else {\n            adverb += text[i];\n        }\n    }\n    adverbs.push(adverb);\n    for(let i = 0; i < adverbs.length; i++){\n        if(adverbs[i].endsWith(\"ly\")){\n            positions.push(i);\n        }\n    }\n    return positions;\n}\n"
+  ]
+}

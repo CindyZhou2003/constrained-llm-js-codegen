@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_83_starts_one_ends",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the count of the numbers of n-digit\n// positive integers that start or end with 1.\nfunction starts_one_ends(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_83_starts_one_ends.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = starts_one_ends;\n  assert.deepEqual(candidate(1),1);\n  assert.deepEqual(candidate(2),18);\n  assert.deepEqual(candidate(3),180);\n  assert.deepEqual(candidate(4),1800);\n  assert.deepEqual(candidate(5),18000);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n === 1){\n        return 1;\n    }\n    let count = 0;\n    for(let i = 1; i < Math.pow(10,n); i++){\n        if(i.toString().startsWith('1') || i.toString().endsWith('1')){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    //base case\n    if(n==1){\n        return 1;\n    }\n    //recursive case\n    else{\n        return (10 - 1) * 9 * starts_one_ends(n - 1);\n    }\n}",
+    "  // Start with the first number, which is 100...001 (n digits)\n  // The number of digits between 100...001 and 100...999 is (10^n - 10^(n-1))\n  // The number of digits between 100...999 and 100...9999 is (10^(n-1) - 10^(n-2))\n  // The number of digits between 100...9999 and 100...99999 is (10^(n-2) - 10^(n-3))\n  // And so on...\n  // The number of digits between 100...99999 and 100...999999 is (10^(n-5) - 10^(n-6))\n  // And so on...\n  // The number of digits between 100...999999 and 100...9999999 is (10^(n-7) - 10^(n-8))\n  // The number of digits between 100...9999999 and 100...99999999 is (10^(n-9) - 10^(n-10))\n  // And so on...\n  // The number of digits between 100...99999999 and 100...999999999 is (10^(n-11) - 10^(n-12))\n  // The number of digits between 100...999999999 and 100...9999999999 is (10^(n-13) - 10^(n-14))\n  // And so on...\n  // The number of digits between 100...9999999999 and 100...99999999999 is (10^(n-15) - 10^(n-16))\n  // The number of digits between 100...999999999",
+    "    if(n==1){\n        return 1\n    }\n    let start = 1\n    let end = 9\n    let count = 0\n    for(let i=2; i<n; i++){\n        count+=start*end\n        start+=1\n        end-=1\n    }\n    return count+start*9\n}\n",
+    "    if(n == 1){\n        return 1;\n    }\n    let count = 0;\n    for(let i = 1; i <= 9; i++){\n        count += starts_one_ends(n-1);\n        if(i == 1){\n            count += starts_one_ends(n-1);\n        }\n    }\n    return count;\n}//Given a string s, return the number of substrings that have only one distinct"
+  ]
+}

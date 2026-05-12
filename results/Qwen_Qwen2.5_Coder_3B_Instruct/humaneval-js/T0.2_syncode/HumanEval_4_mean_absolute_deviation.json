@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_4_mean_absolute_deviation",
+  "language": "js",
+  "prompt": "//For a given array of input numbers, calculate Mean Absolute Deviation\n// around the mean of this dataset.\n// Mean Absolute Deviation is the average absolute difference between each\n// element and a centerpoint (mean in this case):\n// MAD = average | x - x_mean |\n// >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])\n// 1.0\nfunction mean_absolute_deviation(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_4_mean_absolute_deviation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = mean_absolute_deviation;\n  assert.deepEqual(candidate([1.0, 2.0]),0.5);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0]),1.0);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0]),1.2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var mean = numbers.reduce(function(a, b){return a + b;}) / numbers.length;\n  var sum = numbers.reduce(function(a, b){return Math.abs(a - mean) + b;});\n  return sum / numbers.length;\n}// This is a JavaScript code snippet that defines a function to calculate the Mean Absolute Deviation (MAD) of an array of numbers.",
+    "    var mean = numbers.reduce(function(a, b) { return a + b; }) / numbers.length;\n    var sum = numbers.reduce(function(a, b) { return Math.abs(a - b) + mean; });\n    return sum / numbers.length;\n}//For a given array of input numbers, calculate Mean Absolute Deviation",
+    "  var mean = numbers.reduce(function(a, b){return a + b;}) / numbers.length;\n  var mad = numbers.reduce(function(a, b){return a + Math.abs(b - mean);}) / numbers.length;\n  return mad;\n}// Example usage:"
+  ]
+}

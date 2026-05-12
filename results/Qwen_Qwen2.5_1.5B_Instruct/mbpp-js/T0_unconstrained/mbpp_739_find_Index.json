@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let i = 1;\n    let j = 1;\n    let k = 1;\n    let sum = 0;\n    let count = 0;\n    while(count < n){\n        sum = i + j + k;\n        if(sum > n){\n            k++;\n            j = k;\n            i = j;\n        }\n        else if(sum < n){\n            i++;\n            j = i;\n            k = j;\n        }\n        else{\n            count++;\n        }\n    }\n    return i;\n}"
+  ]
+}
