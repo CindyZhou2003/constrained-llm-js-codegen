@@ -25,6 +25,7 @@ class Config:
     repetition_penalty: float = 1.0
     top_p: float = 1.0
     top_k: float = 0
+    max_new_tokens: int | None = None
     timeout: int = 99999  # no timeout by default
 
 
@@ -136,6 +137,7 @@ class LanguageModelRunner:
         generated_tokens: list[int] = self.tokenizer(
             fixed_prefix, add_special_tokens=False
         )["input_ids"]
+        initial_token_count = len(generated_tokens)
         forbidden_tokens: dict = defaultdict(set)
         cache = DynamicCache()
         decoded_output = fixed_prefix
@@ -146,6 +148,12 @@ class LanguageModelRunner:
         start_time = time.time()
 
         while time.time() - start_time <= config.timeout:
+            if (
+                config.max_new_tokens is not None
+                and len(generated_tokens) - initial_token_count >= config.max_new_tokens
+            ):
+                break
+
             num_tokens_guessed += 1
             tries += 1
             output = self._generate_next_token(

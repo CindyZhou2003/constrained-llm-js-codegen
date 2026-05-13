@@ -1,1 +1,18 @@
-{"name": "mbpp_160_find_solution", "language": "js", "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var x = 0;\n    var y = 0;\n    var result = [];\n"]}
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var x = 0;\n    var y = 0;\n    if(a === 0 && b === 0){\n        if(n === 0){\n            return [x, y];\n        }\n        else{\n            return undefined;\n        }\n    }\n    else if(a === 0){\n        if(n % b === 0){\n            return [n / b, y];\n        }\n        else{\n            return undefined;\n        }\n    }\n    else if(b === 0){\n        if(n % a === 0){\n            return [x, n / a];\n        }\n        else{\n            return undefined;\n        }\n    }\n    else{\n        if(n % a === 0){\n            x = n / a;\n            y = 0;\n        }\n        else if(n % b === 0){\n            y = n / b;\n            x = 0;\n        }\n        else{\n            return undefined;\n        }\n    }\n    return [x, y];\n}\n"
+  ]
+}

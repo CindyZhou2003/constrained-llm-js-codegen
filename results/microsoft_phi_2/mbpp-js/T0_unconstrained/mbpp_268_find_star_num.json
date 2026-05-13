@@ -1,1 +1,18 @@
-{"name": "mbpp_268_find_star_num", "language": "js", "prompt": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_268_find_star_num.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var i = 0;\n    var j = 0;\n    var k = 0;"]}
+{
+  "name": "mbpp_268_find_star_num",
+  "language": "js",
+  "prompt": "//Write a function to find the n'th star number.\nfunction find_star_num(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_268_find_star_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_star_num;\n  assert.deepEqual(candidate(3),37);\n  assert.deepEqual(candidate(4),73);\n  assert.deepEqual(candidate(5),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i = 1;\n    var j = 1;\n    var k = 1;\n    var count = 0;\n    while(count < n){\n        if(i == j && j == k){\n            count++;\n            i++;\n            j++;\n            k++;\n        }\n        else if(i == j){\n            i++;\n            j++;\n        }\n        else if(j == k){\n            j++;\n            k++;\n        }\n        else{\n            i++;\n            j = i + 1;\n            k = j + 1;\n        }\n    }\n    return i;\n}\n"
+  ]
+}

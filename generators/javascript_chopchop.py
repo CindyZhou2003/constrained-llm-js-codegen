@@ -72,9 +72,11 @@ class ExprStmt(Unary): ...
 class FunctionDecl(Ternary): ...
 class AsyncFunctionDecl(Ternary): ...
 class GeneratorDecl(Ternary): ...
+class AsyncGeneratorDecl(Ternary): ...
 class FunctionExpr(Binary): ...
 class AsyncFunctionExpr(Binary): ...
 class GeneratorExpr(Binary): ...
+class AsyncGeneratorExpr(Binary): ...
 
 # --- Arrow Expressions -------------------------------------------------
 class ArrowExprIdent(Binary): ...
@@ -123,6 +125,7 @@ class IfThen(Binary): ...
 class IfThenElse(Ternary): ...
 class WhileStmt(Binary): ...
 class DoWhileStmt(Binary): ...
+class WithStmt(Binary): ...
 @dataclass(frozen=True)
 class ForStmt(Application):
     init: TreeGrammar
@@ -134,24 +137,32 @@ class ForInitConst(Binary): ...
 class ForInitVar(Binary): ...
 class ForInitAssign(Binary): ...
 class ForInitExpr(Unary): ...
+class ForInitLetNoInit(Unary): ...
+class ForInitConstNoInit(Unary): ...
+class ForInitVarNoInit(Unary): ...
 class BreakStmt(Zeroary): ...
 class ContinueStmt(Zeroary): ...
 class ReturnStmt(Unary): ...
 class ReturnVoidStmt(Zeroary): ...
 class ThrowStmt(Unary): ...
 class TryCatch(Ternary): ...
+class TryCatchNoParam(Binary): ...
 @dataclass(frozen=True)
 class TryCatchFinally(Application):
     try_body: TreeGrammar
     catch_param: TreeGrammar
     catch_body: TreeGrammar
     finally_body: TreeGrammar
+class TryCatchNoParamFinally(Ternary): ...
 class TryFinally(Binary): ...
 
 # --- Declarations ------------------------------------------------------
 class LetDecl(Binary): ...
 class ConstDecl(Binary): ...
 class VarDecl(Binary): ...
+class LetDeclNoInit(Unary): ...
+class ConstDeclNoInit(Unary): ...
+class VarDeclNoInit(Unary): ...
 
 # --- Expressions: assignment / ternary ---------------------------------
 class AssignExpr(Ternary): ...
@@ -208,8 +219,11 @@ class PreDec(Unary): ...
 class MemberAccess(Binary): ...
 class OptionalChain(Binary): ...
 class IndexAccess(Binary): ...
+class OptionalIndexAccess(Binary): ...
 class Call0(Unary): ...
 class CallN(Binary): ...
+class OptionalCall0(Unary): ...
+class OptionalCallN(Binary): ...
 class PostInc(Unary): ...
 class PostDec(Unary): ...
 class Args(Binary): ...
@@ -258,8 +272,8 @@ CONSTRUCTORS: list[type[Application]] = [
     # Statements
     StmtSeq, ExprStmt,
     # Functions (sync, async, generator)
-    FunctionDecl, AsyncFunctionDecl, GeneratorDecl,
-    FunctionExpr, AsyncFunctionExpr, GeneratorExpr,
+    FunctionDecl, AsyncFunctionDecl, GeneratorDecl, AsyncGeneratorDecl,
+    FunctionExpr, AsyncFunctionExpr, GeneratorExpr, AsyncGeneratorExpr,
     # Arrow expressions
     ArrowExprIdent, ArrowExprNoParams, ArrowExprParams,
     AsyncArrowIdent, AsyncArrowNoParams, AsyncArrowParams,
@@ -275,12 +289,13 @@ CONSTRUCTORS: list[type[Application]] = [
     # Blocks / Control
     EmptyBlock, NonemptyBlock,
     IfThen, IfThenElse,
-    WhileStmt, DoWhileStmt,
+    WhileStmt, DoWhileStmt, WithStmt,
     ForStmt, ForInitLet, ForInitConst, ForInitVar, ForInitAssign, ForInitExpr,
+    ForInitLetNoInit, ForInitConstNoInit, ForInitVarNoInit,
     BreakStmt, ContinueStmt,
     ReturnStmt, ReturnVoidStmt, ThrowStmt,
-    TryCatch, TryCatchFinally, TryFinally,
-    LetDecl, ConstDecl, VarDecl,
+    TryCatch, TryCatchNoParam, TryCatchFinally, TryCatchNoParamFinally, TryFinally,
+    LetDecl, ConstDecl, VarDecl, LetDeclNoInit, ConstDeclNoInit, VarDeclNoInit,
     # Expressions
     AssignExpr, TernaryExpr,
     LogicOr, LogicAnd, NullishCoalesce,
@@ -293,8 +308,8 @@ CONSTRUCTORS: list[type[Application]] = [
     TypeofExpr, VoidExpr, DeleteExpr, AwaitExpr,
     YieldExpr, YieldStarExpr,
     PreInc, PreDec,
-    MemberAccess, OptionalChain, IndexAccess,
-    Call0, CallN,
+    MemberAccess, OptionalChain, IndexAccess, OptionalIndexAccess,
+    Call0, CallN, OptionalCall0, OptionalCallN,
     PostInc, PostDec,
     Args, SpreadArg,
     NoParams, Params, Param, ParamSeq, DefaultParam, RestParam,
@@ -362,9 +377,16 @@ def _decl_name(stmt_tree) -> str | None:
     match stmt_tree:
         case LetDecl(lhs, _) | ConstDecl(lhs, _) | VarDecl(lhs, _):
             return _lvalue_name(as_tree(lhs))
+        case LetDeclNoInit(lhs) | ConstDeclNoInit(lhs) | VarDeclNoInit(lhs):
+            return _lvalue_name(as_tree(lhs))
         case ForInitLet(lhs, _) | ForInitConst(lhs, _) | ForInitVar(lhs, _):
             return _lvalue_name(as_tree(lhs))
-        case FunctionDecl(name, _, _) | AsyncFunctionDecl(name, _, _) | GeneratorDecl(name, _, _):
+        case ForInitLetNoInit(lhs) | ForInitConstNoInit(lhs) | ForInitVarNoInit(lhs):
+            return _lvalue_name(as_tree(lhs))
+        case (FunctionDecl(name, _, _)
+              | AsyncFunctionDecl(name, _, _)
+              | GeneratorDecl(name, _, _)
+              | AsyncGeneratorDecl(name, _, _)):
             return _var_name(name)
         case ClassDecl(name, _) | ClassDeclExtends(name, _, _):
             return _var_name(name)
@@ -489,6 +511,8 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
             return stmt if env.in_loop else EmptySet()
         case LetDecl(lhs, rhs) | ConstDecl(lhs, rhs) | VarDecl(lhs, rhs):
             return stmt.__class__.of(lhs, js_prune_expr(env, rhs))
+        case LetDeclNoInit(_) | ConstDeclNoInit(_) | VarDeclNoInit(_):
+            return stmt
         case ExprStmt(expr):
             return ExprStmt.of(js_prune_expr(env, expr))
         case ReturnStmt(expr):
@@ -507,6 +531,11 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
                 catch_param,
                 js_prune_stmt(catch_env, catch_body),
             )
+        case TryCatchNoParam(try_body, catch_body):
+            return TryCatchNoParam.of(
+                js_prune_stmt(env, try_body),
+                js_prune_stmt(env, catch_body),
+            )
         case TryCatchFinally(try_body, catch_param, catch_body, finally_body):
             catch_env = env
             catch_name = _var_name(catch_param)
@@ -516,6 +545,12 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
                 js_prune_stmt(env, try_body),
                 catch_param,
                 js_prune_stmt(catch_env, catch_body),
+                js_prune_stmt(env, finally_body),
+            )
+        case TryCatchNoParamFinally(try_body, catch_body, finally_body):
+            return TryCatchNoParamFinally.of(
+                js_prune_stmt(env, try_body),
+                js_prune_stmt(env, catch_body),
                 js_prune_stmt(env, finally_body),
             )
         case TryFinally(try_body, finally_body):
@@ -541,6 +576,8 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
                 js_prune_stmt(env.enter_loop(), body),
                 js_prune_expr(env, cond),
             )
+        case WithStmt(expr, body):
+            return WithStmt.of(js_prune_expr(env, expr), js_prune_stmt(env, body))
         case ForStmt(for_init, cond, update, body):
             loop_env = env.enter_loop()
             init_tree = as_tree(for_init)
@@ -598,7 +635,8 @@ def js_prune_stmt(env: JSEnv, stmt: TreeGrammar) -> TreeGrammar:
             return NonemptyBlock.of(js_prune_stmts(env, stmts))
         case (FunctionDecl(name, params, body)
               | AsyncFunctionDecl(name, params, body)
-              | GeneratorDecl(name, params, body)):
+              | GeneratorDecl(name, params, body)
+              | AsyncGeneratorDecl(name, params, body)):
             name_tree = as_tree(name)
             params_tree = as_tree(params)
             inner_env = env
@@ -631,7 +669,8 @@ def js_prune_expr(env: JSEnv, expr: TreeGrammar) -> TreeGrammar:
             return expr
         case (FunctionExpr(params, body)
               | AsyncFunctionExpr(params, body)
-              | GeneratorExpr(params, body)):
+              | GeneratorExpr(params, body)
+              | AsyncGeneratorExpr(params, body)):
             params_tree = as_tree(params)
             inner_env = env
             if params_tree is not None:
@@ -655,7 +694,7 @@ def js_prune_expr(env: JSEnv, expr: TreeGrammar) -> TreeGrammar:
             return ClassExpr.of(js_prune_stmt(env, body))
         case ClassExprExtends(superclass, body):
             return ClassExprExtends.of(js_prune_expr(env, superclass), js_prune_stmt(env, body))
-        case Call0(callee) | CallN(callee, _):
+        case Call0(callee) | CallN(callee, _) | OptionalCall0(callee) | OptionalCallN(callee, _):
             callee_tree = as_tree(callee)
             if isinstance(callee_tree, Var):
                 name = _var_name(callee_tree.children[0])
@@ -665,7 +704,10 @@ def js_prune_expr(env: JSEnv, expr: TreeGrammar) -> TreeGrammar:
             if any(isinstance(c, EmptySet) for c in new_children):
                 return EmptySet()
             return expr.__class__.of(*new_children, is_tree=expr.is_tree)
-        case MemberAccess(obj, prop) | OptionalChain(obj, prop):
+        case (MemberAccess(obj, prop)
+              | OptionalChain(obj, prop)
+              | IndexAccess(obj, prop)
+              | OptionalIndexAccess(obj, prop)):
             pruned_obj = js_prune_expr(env, obj)
             if isinstance(pruned_obj, EmptySet):
                 return EmptySet()

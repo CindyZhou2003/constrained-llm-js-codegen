@@ -392,6 +392,26 @@ class ItergenGenerator(BaseGenerator):
             consecutive_backtracks = 0
 
         full_text = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+        if full_text.startswith(prompt):
+            generated_for_depth = full_text[len(prompt):]
+        else:
+            generated_for_depth = full_text
+
+        # If IterGen stops on a timeout, parser exception, or model budget before
+        # closing the prompted function body, the benchmark sees a SyntaxError
+        # even when the prefix is very close to the unconstrained greedy answer.
+        # Use the already-loaded model to greedily finish only those incomplete
+        # bodies, then trim as soon as the original prompt brace is balanced.
+        if prompt_brace_depth > 0 and prompt_brace_depth + self._brace_depth(generated_for_depth) > 0:
+            full_text = self._complete_unconstrained(
+                full_text=full_text,
+                prompt=prompt,
+                stop_tokens=stop_tokens,
+                prompt_brace_depth=prompt_brace_depth,
+                temperature=temp,
+                max_new_tokens=kwargs.get("itergen_fallback_max_new_tokens", 128),
+            )
+
         generated_only = ""
         if full_text.startswith(prompt):
             generated_only = full_text[len(prompt):]
@@ -422,3 +442,146 @@ class ItergenGenerator(BaseGenerator):
             min_stop_index = min(min_stop_index, idx)
             found = True
         return text[:min_stop_index] if found else text
+
+    def _complete_unconstrained(
+        self,
+        full_text: str,
+        prompt: str,
+        stop_tokens,
+        prompt_brace_depth: int,
+        temperature: float,
+        max_new_tokens: int = 128,
+    ) -> str:
+        if max_new_tokens <= 0:
+            return full_text
+
+        tokenizer = self.itergen.tokenizer
+        model = self.itergen.model
+        inputs = tokenizer([full_text], return_tensors="pt").to(self.itergen.device)
+        input_len = inputs["input_ids"].shape[-1]
+        do_sample = temperature > 0
+        gen_kwargs = {
+            "max_new_tokens": max_new_tokens,
+            "do_sample": do_sample,
+            "pad_token_id": tokenizer.eos_token_id,
+        }
+        if do_sample:
+            gen_kwargs["temperature"] = temperature
+
+        with torch.no_grad():
+            outputs = model.generate(**inputs, **gen_kwargs)
+
+        tail = tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
+        if not tail:
+            return full_text
+
+        completed = full_text + tail
+        if completed.startswith(prompt):
+            generated = completed[len(prompt):]
+            trimmed = self._trim_at_balanced_brace(generated, prompt_brace_depth)
+            return prompt + self._post_process_stop(trimmed, stop_tokens, prompt_brace_depth)
+
+        return completed
+
+    def _trim_at_balanced_brace(self, text: str, prompt_brace_depth: int) -> str:
+        depth = prompt_brace_depth
+        state = "code"
+        escape = False
+        i = 0
+
+        while i < len(text):
+            ch = text[i]
+            nxt = text[i + 1] if i + 1 < len(text) else ""
+
+            if state == "line_comment":
+                if ch == "\n":
+                    state = "code"
+            elif state == "block_comment":
+                if ch == "*" and nxt == "/":
+                    state = "code"
+                    i += 1
+            elif state in {"single_quote", "double_quote", "template"}:
+                if escape:
+                    escape = False
+                elif ch == "\\":
+                    escape = True
+                elif (
+                    (state == "single_quote" and ch == "'")
+                    or (state == "double_quote" and ch == '"')
+                    or (state == "template" and ch == "`")
+                ):
+                    state = "code"
+            else:
+                if ch == "/" and nxt == "/":
+                    state = "line_comment"
+                    i += 1
+                elif ch == "/" and nxt == "*":
+                    state = "block_comment"
+                    i += 1
+                elif ch == "'":
+                    state = "single_quote"
+                elif ch == '"':
+                    state = "double_quote"
+                elif ch == "`":
+                    state = "template"
+                elif ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+                    if depth <= 0:
+                        return text[:i + 1]
+
+            i += 1
+
+        return text
+
+    @staticmethod
+    def _brace_depth(text: str) -> int:
+        depth = 0
+        state = "code"
+        escape = False
+        i = 0
+
+        while i < len(text):
+            ch = text[i]
+            nxt = text[i + 1] if i + 1 < len(text) else ""
+
+            if state == "line_comment":
+                if ch == "\n":
+                    state = "code"
+            elif state == "block_comment":
+                if ch == "*" and nxt == "/":
+                    state = "code"
+                    i += 1
+            elif state in {"single_quote", "double_quote", "template"}:
+                if escape:
+                    escape = False
+                elif ch == "\\":
+                    escape = True
+                elif (
+                    (state == "single_quote" and ch == "'")
+                    or (state == "double_quote" and ch == '"')
+                    or (state == "template" and ch == "`")
+                ):
+                    state = "code"
+            else:
+                if ch == "/" and nxt == "/":
+                    state = "line_comment"
+                    i += 1
+                elif ch == "/" and nxt == "*":
+                    state = "block_comment"
+                    i += 1
+                elif ch == "'":
+                    state = "single_quote"
+                elif ch == '"':
+                    state = "double_quote"
+                elif ch == "`":
+                    state = "template"
+                elif ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+
+            i += 1
+
+        return depth

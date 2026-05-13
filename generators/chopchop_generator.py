@@ -314,6 +314,7 @@ class ChopchopGenerator(BaseGenerator):
         5. Apply stop-token truncation.
         """
         temperature = float(kwargs.get("temperature"))
+        max_new_tokens = kwargs.get("max_new_tokens")
         context = kwargs.get("context", self.context)
         fixed_prefix = kwargs.get("fixed_prefix", self.fixed_prefix)
         safety_timeout = int(kwargs.get("safety_timeout", 300))
@@ -330,7 +331,11 @@ class ChopchopGenerator(BaseGenerator):
 
         try:
             run_info = self.runner.run(
-                Config(temperature=temperature, timeout=safety_timeout),
+                Config(
+                    temperature=temperature,
+                    max_new_tokens=max_new_tokens,
+                    timeout=safety_timeout,
+                ),
                 prompt=task_prompt,
                 context=context,
                 fixed_prefix=fixed_prefix,

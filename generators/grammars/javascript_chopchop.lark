@@ -5,13 +5,17 @@
 # coalescing, import/export, yield/generators, delete, optional chaining, etc.
 
 IDENTIFIER: /(?!(let|const|var|return|true|false|null|undefined|function|if|else|for|while|do|break|continue|throw|try|catch|finally|new|typeof|void|instanceof|in|of|switch|case|default|class|extends|super|import|export|from|as|async|await|yield|delete|static)$)[A-Za-z_$][A-Za-z0-9_$]*/
-NUMBER: /(?:0[xX][0-9a-fA-F]+|0[oO][0-7]+|0[bB][01]+|(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?)/
+NUMBER: /(?:0[xX][0-9a-fA-F]+n?|0[oO][0-7]+n?|0[bB][01]+n?|(?:\d+\.\d*|\.\d+|\d+)(?:[eE][+-]?\d+)?n?)/
 STRING: /'([^'\\]|\\.)*'|"([^"\\]|\\.)*"/
-TEMPLATE_LITERAL: /`([^`\\]|\\.)*`/
-REGEX_LITERAL: /\/([^\n\\\/]|\\.)+\/[gimsuy]*/
+TEMPLATE_LITERAL: /`([^`\\]*(\\.[^`\\]*)*)`/
+REGEX_LITERAL: /\/([^\s\d\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])([^\s\\\/\[]|\\.|\[([^\]\n\\]|\\.)*\])*\/[gimsuy]*/
+LINE_COMMENT: /\/\/[^\n\r]*/
+BLOCK_COMMENT: /\/\*[\s\S]*?\*\//
 WS: /\s+/
 
 %ignore WS
+%ignore LINE_COMMENT
+%ignore BLOCK_COMMENT
 
 start: stmt_seq
 
@@ -33,6 +37,7 @@ stmt: declaration_statement
     | switch_statement
     | control_flow_statement
     | try_catch_statement
+    | with_statement
     | compound_statement
     | function_declaration
     | class_declaration
@@ -40,12 +45,14 @@ stmt: declaration_statement
     | export_statement
 
 expression_statement: expression ";" {ExprStmt}
+                    | expression {ExprStmt}
 
 # --- Functions (sync & async, regular & generator) -----------------
 
 function_declaration: "function" IDENTIFIER function_params_postfix compound_statement {FunctionDecl}
                     | "async" "function" IDENTIFIER function_params_postfix compound_statement {AsyncFunctionDecl}
                     | "function" "*" IDENTIFIER function_params_postfix compound_statement {GeneratorDecl}
+                    | "async" "function" "*" IDENTIFIER function_params_postfix compound_statement {AsyncGeneratorDecl}
 
 # --- Classes -------------------------------------------------------
 
@@ -62,14 +69,20 @@ class_member: IDENTIFIER function_params_postfix compound_statement {ClassMethod
             | "static" IDENTIFIER function_params_postfix compound_statement {StaticMethod}
             | "async" IDENTIFIER function_params_postfix compound_statement {AsyncClassMethod}
             | IDENTIFIER "=" expression ";" {ClassField}
+            | IDENTIFIER "=" expression {ClassField}
             | "static" IDENTIFIER "=" expression ";" {StaticField}
+            | "static" IDENTIFIER "=" expression {StaticField}
 
 # --- Import / Export -----------------------------------------------
 
 import_statement: "import" STRING ";" {ImportBare}
+               | "import" STRING {ImportBare}
                | "import" IDENTIFIER "from" STRING ";" {ImportDefault}
+               | "import" IDENTIFIER "from" STRING {ImportDefault}
                | "import" "{" import_specifiers "}" "from" STRING ";" {ImportNamed}
+               | "import" "{" import_specifiers "}" "from" STRING {ImportNamed}
                | "import" IDENTIFIER "," "{" import_specifiers "}" "from" STRING ";" {ImportDefaultNamed}
+               | "import" IDENTIFIER "," "{" import_specifiers "}" "from" STRING {ImportDefaultNamed}
 
 import_specifiers: import_specifier
                  | import_specifier "," import_specifiers {ImportSpecSeq}
@@ -78,11 +91,14 @@ import_specifier: IDENTIFIER {ImportSpec}
                 | IDENTIFIER "as" IDENTIFIER {ImportAlias}
 
 export_statement: "export" "default" expression ";" {ExportDefaultExpr}
+                | "export" "default" expression {ExportDefaultExpr}
                 | "export" declaration_statement {ExportDecl}
                 | "export" function_declaration {ExportFuncDecl}
                 | "export" class_declaration {ExportClassDecl}
                 | "export" "{" export_specifiers "}" ";" {ExportNamed}
+                | "export" "{" export_specifiers "}" {ExportNamed}
                 | "export" "{" export_specifiers "}" "from" STRING ";" {ExportNamedFrom}
+                | "export" "{" export_specifiers "}" "from" STRING {ExportNamedFrom}
 
 export_specifiers: export_specifier
                  | export_specifier "," export_specifiers {ExportSpecSeq}
@@ -101,12 +117,18 @@ if_statement: "if" "(" expression ")" stmt {IfThen}
 while_statement: "while" "(" expression ")" stmt {WhileStmt}
 
 do_while_statement: "do" stmt "while" "(" expression ")" ";" {DoWhileStmt}
+                  | "do" stmt "while" "(" expression ")" {DoWhileStmt}
+
+with_statement: "with" "(" expression ")" stmt {WithStmt}
 
 for_statement: "for" "(" for_init ";" expression ";" expression ")" stmt {ForStmt}
 
 for_init: "let" lvalue "=" expression {ForInitLet}
         | "const" lvalue "=" expression {ForInitConst}
         | "var" lvalue "=" expression {ForInitVar}
+        | "let" lvalue {ForInitLetNoInit}
+        | "const" lvalue {ForInitConstNoInit}
+        | "var" lvalue {ForInitVarNoInit}
         | lvalue "=" expression {ForInitAssign}
         | expression {ForInitExpr}
 
@@ -133,18 +155,34 @@ default_clause: "default" ":" {EmptyDefault}
               | "default" ":" stmt_seq {DefaultClause}
 
 control_flow_statement: "break" ";" {BreakStmt}
+                      | "break" {BreakStmt}
                       | "continue" ";" {ContinueStmt}
+                      | "continue" {ContinueStmt}
                       | "return" expression ";" {ReturnStmt}
+                      | "return" expression {ReturnStmt}
                       | "return" ";" {ReturnVoidStmt}
+                      | "return" {ReturnVoidStmt}
                       | "throw" expression ";" {ThrowStmt}
+                      | "throw" expression {ThrowStmt}
 
 try_catch_statement: "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement {TryCatch}
+                   | "try" compound_statement "catch" compound_statement {TryCatchNoParam}
                    | "try" compound_statement "catch" "(" IDENTIFIER ")" compound_statement "finally" compound_statement {TryCatchFinally}
+                   | "try" compound_statement "catch" compound_statement "finally" compound_statement {TryCatchNoParamFinally}
                    | "try" compound_statement "finally" compound_statement {TryFinally}
 
 declaration_statement: "let" lvalue "=" expression ";" {LetDecl}
+                     | "let" lvalue "=" expression {LetDecl}
+                     | "let" lvalue ";" {LetDeclNoInit}
+                     | "let" lvalue {LetDeclNoInit}
                      | "const" lvalue "=" expression ";" {ConstDecl}
+                     | "const" lvalue "=" expression {ConstDecl}
+                     | "const" lvalue ";" {ConstDeclNoInit}
+                     | "const" lvalue {ConstDeclNoInit}
                      | "var" lvalue "=" expression ";" {VarDecl}
+                     | "var" lvalue "=" expression {VarDecl}
+                     | "var" lvalue ";" {VarDeclNoInit}
+                     | "var" lvalue {VarDeclNoInit}
 
 lvalue: member_expression
 
@@ -222,13 +260,59 @@ unary_expr: member_expression
           | "--" unary_expr {PreDec}
 
 member_expression: primary_expr
-                 | member_expression "." IDENTIFIER {MemberAccess}
-                 | member_expression "?." IDENTIFIER {OptionalChain}
+                 | member_expression "." member_name {MemberAccess}
+                 | member_expression "?." member_name {OptionalChain}
                  | member_expression "[" expression "]" {IndexAccess}
+                 | member_expression "?." "[" expression "]" {OptionalIndexAccess}
                  | member_expression "(" ")" {Call0}
                  | member_expression "(" arg_list ")" {CallN}
+                 | member_expression "?." "(" ")" {OptionalCall0}
+                 | member_expression "?." "(" arg_list ")" {OptionalCallN}
                  | member_expression "++" {PostInc}
                  | member_expression "--" {PostDec}
+
+member_name: IDENTIFIER
+           | reserved_word
+
+reserved_word: "async"
+             | "function"
+             | "class"
+             | "var"
+             | "let"
+             | "const"
+             | "if"
+             | "else"
+             | "for"
+             | "while"
+             | "do"
+             | "switch"
+             | "case"
+             | "default"
+             | "try"
+             | "catch"
+             | "finally"
+             | "throw"
+             | "return"
+             | "break"
+             | "continue"
+             | "with"
+             | "this"
+             | "new"
+             | "null"
+             | "undefined"
+             | "true"
+             | "false"
+             | "delete"
+             | "typeof"
+             | "void"
+             | "await"
+             | "in"
+             | "instanceof"
+             | "of"
+             | "as"
+             | "from"
+             | "extends"
+             | "static"
 
 arg_list: arg_item
         | arg_item "," arg_list {Args}
@@ -289,6 +373,7 @@ property: IDENTIFIER ":" expression {PropertyPair}
 function_expression: "function" function_params_postfix compound_statement {FunctionExpr}
                    | "async" "function" function_params_postfix compound_statement {AsyncFunctionExpr}
                    | "function" "*" function_params_postfix compound_statement {GeneratorExpr}
+                   | "async" "function" "*" function_params_postfix compound_statement {AsyncGeneratorExpr}
 
 class_expression: "class" class_body {ClassExpr}
                 | "class" "extends" expression class_body {ClassExprExtends}
@@ -316,3 +401,7 @@ param_list: param_item {Param}
 param_item: IDENTIFIER
           | IDENTIFIER "=" expression {DefaultParam}
           | "..." IDENTIFIER {RestParam}
+          | object_literal
+          | array_literal
+          | object_literal "=" expression {DefaultParam}
+          | array_literal "=" expression {DefaultParam}

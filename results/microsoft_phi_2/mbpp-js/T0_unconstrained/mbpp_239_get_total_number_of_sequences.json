@@ -1,1 +1,18 @@
-{"name": "mbpp_239_get_total_number_of_sequences", "language": "js", "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    let total_number_of_sequences = 0;\n    let current_sequence ="]}
+{
+  "name": "mbpp_239_get_total_number_of_sequences",
+  "language": "js",
+  "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let total_number_of_sequences = 0;\n    let current_sequence = [];\n    for(let i = 1; i <= m; i++){\n        current_sequence.push(i);\n        if(current_sequence.length == n){\n            total_number_of_sequences++;\n            current_sequence = [];\n        }\n    }\n    return total_number_of_sequences;\n}\n"
+  ]
+}
