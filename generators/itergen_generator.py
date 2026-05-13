@@ -1,6 +1,32 @@
 import re
+import time
+import torch
+from transformers import StoppingCriteria
 from .itergen.itergen.main import IterGen
 from .base import BaseGenerator
+
+
+class _BraceDepthStop(StoppingCriteria):
+    """Stop forward() as soon as the prompt's outer `{` is balanced.
+
+    Without this, after the model emits the function's closing `}`,
+    forward(unit="statement", num=1) keeps generating: the `}` ends a
+    compound_statement, not a new top-level statement, and comments are
+    %ignore'd -- so the unit never fires and the whole max_new_tokens
+    budget is burned on garbage that post-processing throws away (49s
+    wasted on the 0.5B model, minutes on the 3B).
+    """
+    def __init__(self, itergen_ref, prompt_len, depth_offset):
+        self.itergen = itergen_ref
+        self.prompt_len = prompt_len
+        self.depth_offset = depth_offset
+
+    def __call__(self, input_ids, scores, **kwargs):
+        gen = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
+        body = gen[self.prompt_len:] if len(gen) > self.prompt_len else ""
+        depth = self.depth_offset + body.count('{') - body.count('}')
+        stop = depth <= 0
+        return torch.full((input_ids.shape[0],), stop, dtype=torch.bool, device=input_ids.device)
 
 class ItergenGenerator(BaseGenerator):
     def __init__(self, model_name: str, grammar: str, **kwargs):
@@ -10,7 +36,7 @@ class ItergenGenerator(BaseGenerator):
             "model_id": model_name,
             "grammar": grammar,
             "parse_output_only": False,
-            "recurrence_penalty": 1.0,
+            "recurrence_penalty": 0.0,
             "max_new_tokens": kwargs.get("max_new_tokens"),
             "do_sample": temp > 0  # if temperature > 0, enable sampling; otherwise, use greedy decoding
         }
@@ -43,10 +69,23 @@ class ItergenGenerator(BaseGenerator):
 
         self.itergen.start(prompt=prompt)
 
-        tracking_categories = [
-            "var_decl", "function_declaration", "function_parameter", "primary_safe_non_numeric",
-            "expr_safe", "control_flow_statement"
-        ]
+        # The old default ran hand-written semantic checks after every generated
+        # statement and backtracked on failures. In practice the symbol map can
+        # expose partial/stale identifier slices while IterGen is recovering from
+        # an incremental parse failure, so the checks falsely rejected fragments
+        # such as "fo", "ction", or "ing" as undeclared variables. That caused
+        # short completions, repeated backtracking, wall-clock timeouts, and lower
+        # pass rates than the unconstrained baseline. Keep the experimental checks
+        # available for debugging, but make grammar-only IterGen the default.
+        enable_semantic_checks = bool(kwargs.get("semantic_checks", False))
+        tracking_categories = (
+            [
+                "var_decl", "function_declaration", "function_parameter", "primary_safe_non_numeric",
+                "expr_safe", "control_flow_statement"
+            ]
+            if enable_semantic_checks
+            else []
+        )
         
         # Analyze grammar to identify which tokens to track for semantic checks
         base_identifiers = set([
@@ -88,6 +127,14 @@ class ItergenGenerator(BaseGenerator):
         # Count opening braces in prompt to track when the function body is complete
         prompt_brace_depth = prompt.count('{') - prompt.count('}')
 
+        # Add a stopping criterion that cuts forward() short the moment brace depth
+        # hits 0 -- otherwise the model wastes the rest of its token budget on
+        # %ignore'd comments after the function close (see _BraceDepthStop docstring).
+        if prompt_brace_depth > 0:
+            self.itergen.stopping_criteria.append(
+                _BraceDepthStop(self.itergen, len(prompt), prompt_brace_depth)
+            )
+
         # Loop until the model hits its own token budget (enforced by start()'s max_length)
         # or our early-termination checks fire. Using a large fixed bound avoids the old
         # bug where max_steps == max_new_tokens caused premature exit: each forward() call
@@ -96,22 +143,39 @@ class ItergenGenerator(BaseGenerator):
 
         prev_gen_len = len(prompt)  # track generation length to detect stalls
 
+        # Detect infinite backtrack loops: if backward() returns us to the same
+        # position repeatedly, the next forward() is regenerating the same invalid
+        # statement (typical under greedy decoding with recurrence_penalty=1.0).
+        last_backtrack_pos = -1
+        consecutive_backtracks = 0
+        MAX_CONSECUTIVE_BACKTRACKS = 3
+
+        # Hard wall-clock cap per task. A normal task is ~2s; anything past 60s
+        # almost certainly means we're churning on slow validation or grammar masks
+        # with no real progress. Bail with whatever has been generated so far.
+        MAX_GENERATE_SECONDS = 60.0
+        start_time = time.perf_counter()
+
         for step in range(max_steps):
 
-            # semantic checks
+            if time.perf_counter() - start_time > MAX_GENERATE_SECONDS:
+                print(f"[itergen] wall-clock timeout at step {step} ({MAX_GENERATE_SECONDS:.0f}s)")
+                break
+
             pre_counts = {}
 
-            for cat in tracking_categories:
-                try:
-                    res = self.itergen.view(unit=cat)
-                    pre_counts[cat] = len(res[0]) if res and res[0] else 0
-                except Exception:
-                    pre_counts[cat] = 0
+            if enable_semantic_checks:
+                for cat in tracking_categories:
+                    try:
+                        res = self.itergen.view(unit=cat)
+                        pre_counts[cat] = len(res[0]) if res and res[0] else 0
+                    except Exception:
+                        pre_counts[cat] = 0
 
             # forward 1 step
             try:
                 self.itergen.forward(unit="statement", num=1, **forward_params)
-            except Exception as e:
+            except Exception:
                 break
 
             current_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
@@ -150,6 +214,9 @@ class ItergenGenerator(BaseGenerator):
                 current_depth = prompt_brace_depth + gen_open - gen_close
                 if current_depth <= 0:
                     break
+
+            if not enable_semantic_checks:
+                continue
 
             post_items = {}
             for cat in tracking_categories:
@@ -305,8 +372,24 @@ class ItergenGenerator(BaseGenerator):
                 self.itergen.backward(unit="statement", num=1)
                 # Reset prev_gen_len after backtracking so the stall detector stays accurate.
                 backtracked_code = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
-                prev_gen_len = len(backtracked_code)
+                new_pos = len(backtracked_code)
+                # If we keep landing at the same backtrack position, the model is
+                # regenerating the identical invalid statement -- abort instead of spinning.
+                if new_pos == last_backtrack_pos:
+                    consecutive_backtracks += 1
+                    if consecutive_backtracks >= MAX_CONSECUTIVE_BACKTRACKS:
+                        tail = backtracked_code[-80:] if backtracked_code else ""
+                        print(f"[itergen] abort: {consecutive_backtracks}x stuck @pos={new_pos} | reason={violation_reason!r} | tail={tail!r}")
+                        break
+                else:
+                    last_backtrack_pos = new_pos
+                    consecutive_backtracks = 1
+                prev_gen_len = new_pos
                 continue
+
+            # Successful step -- reset the backtrack-loop tracker.
+            last_backtrack_pos = -1
+            consecutive_backtracks = 0
 
         full_text = self.itergen.structured_gen[0] if self.itergen.structured_gen else ""
         generated_only = ""

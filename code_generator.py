@@ -206,6 +206,8 @@ if __name__ == "__main__":
     gen_p.add_argument("--pruner", type=str, default="none",
                        choices=["none", "basic"],
                        help="Pruner mode for chopchop (none=identity, basic=env-aware JS pruning)")
+    gen_p.add_argument("--semantic_checks", action="store_true",
+                       help="Enable experimental IterGen semantic backtracking checks")
 
     # -- evaluate sub-command ------------------------------------------------
     eval_p = subparsers.add_parser("evaluate", help="Batch generation — outputs MultiPL-E-compatible .json files")
@@ -222,6 +224,8 @@ if __name__ == "__main__":
     eval_p.add_argument("--pruner", type=str, default="none",
                         choices=["none", "basic"],
                         help="Pruner mode for chopchop (none=identity, basic=env-aware JS pruning)")
+    eval_p.add_argument("--semantic_checks", action="store_true",
+                        help="Enable experimental IterGen semantic backtracking checks")
     eval_p.add_argument("--num_completions", "-n", type=int, default=1,
                         help="Number of completions to generate per task (for pass@k with k>1)")
 

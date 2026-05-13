@@ -36,4 +36,80 @@ class HFGenerator(BaseGenerator):
             )
         
         text = self.tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
-        return self._post_process_stop(text, stop_tokens)
+        return self._post_process_stop_js(text, stop_tokens, prompt)
+
+    def _post_process_stop_js(self, text: str, stop_tokens, prompt: str) -> str:
+        if not stop_tokens:
+            return text
+
+        prompt_brace_depth = self._brace_depth(prompt)
+        min_stop_index = len(text)
+        found = False
+
+        for stop in stop_tokens:
+            start = 0
+            while True:
+                idx = text.find(stop, start)
+                if idx == -1:
+                    break
+
+                depth = prompt_brace_depth + self._brace_depth(text[:idx])
+                if depth <= 0:
+                    min_stop_index = min(min_stop_index, idx)
+                    found = True
+                    break
+
+                start = idx + len(stop)
+
+        return text[:min_stop_index] if found else text
+
+    @staticmethod
+    def _brace_depth(text: str) -> int:
+        depth = 0
+        state = "code"
+        escape = False
+        i = 0
+
+        while i < len(text):
+            ch = text[i]
+            nxt = text[i + 1] if i + 1 < len(text) else ""
+
+            if state == "line_comment":
+                if ch == "\n":
+                    state = "code"
+            elif state == "block_comment":
+                if ch == "*" and nxt == "/":
+                    state = "code"
+                    i += 1
+            elif state in {"single_quote", "double_quote", "template"}:
+                if escape:
+                    escape = False
+                elif ch == "\\":
+                    escape = True
+                elif (
+                    (state == "single_quote" and ch == "'")
+                    or (state == "double_quote" and ch == '"')
+                    or (state == "template" and ch == "`")
+                ):
+                    state = "code"
+            else:
+                if ch == "/" and nxt == "/":
+                    state = "line_comment"
+                    i += 1
+                elif ch == "/" and nxt == "*":
+                    state = "block_comment"
+                    i += 1
+                elif ch == "'":
+                    state = "single_quote"
+                elif ch == '"':
+                    state = "double_quote"
+                elif ch == "`":
+                    state = "template"
+                elif ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+
+            i += 1
+
+        return depth
