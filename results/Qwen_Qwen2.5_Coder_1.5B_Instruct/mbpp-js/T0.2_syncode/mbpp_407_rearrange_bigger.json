@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = n.toString();\n    let arr = str.split('');\n    let len = arr.length;\n    let max = 0;\n    let index = 0;\n    for(let i = len-1; i >= 0; i--){\n        if(arr[i] > max){\n            max = arr[i];\n            index = i;\n        }\n    }\n    if(index == 0){\n        return -1;\n    }\n    let temp = arr[index];\n    arr[index] = arr[len-1];\n    arr[len-1] = temp;\n    let left = arr.slice(0,index);\n    let right = arr.slice(index+1);\n    let sorted_right = right.sort((a,b) => a-b);\n    let result = left.concat(sorted_right);\n    return parseInt(result.join(''));\n}",
+    "    let str = n.toString();\n    let len = str.length;\n    let max = -1;\n    let index = -1;\n    for(let i = len - 1; i >= 0; i--){\n        if(str[i] > max){\n            max = str[i];\n            index = i;\n        }\n    }\n    if(index == -1){\n        return -1;\n    }\n    let temp = str[index];\n    str[index] = str[len - 1];\n    str[len - 1] = temp;\n    let left = str.slice(0, index);\n    let right = str.slice(index + 1);\n    let sorted_right = right.split('').sort().join('');\n    return parseInt(left + sorted_right);\n}",
+    "    let digits = n.toString().split('');\n    let max = digits[0];\n    let max_index = 0;\n    for(let i = 1; i < digits.length; i++){\n        if(digits[i] > max){\n            max = digits[i];\n            max_index = i;\n        }\n    }\n    if(max_index === 0){\n        return -1;\n    }\n    let min = digits[max_index];\n    let min_index = max_index;\n    for(let i = max_index + 1; i < digits.length; i++){\n        if(digits[i] < min && digits[i] > max){\n            min = digits[i];\n            min_index = i;\n        }\n    }\n    let temp = digits[max_index];\n    digits[max_index] = digits[min_index];\n    digits[min_index] = temp;\n    return parseInt(digits.join(''));\n}"
+  ]
+}

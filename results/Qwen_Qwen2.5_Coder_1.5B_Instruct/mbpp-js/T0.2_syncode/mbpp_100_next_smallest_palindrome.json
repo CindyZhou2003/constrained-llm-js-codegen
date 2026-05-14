@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(mid,len);\n    let right_reversed = right.split('').reverse().join('');\n    let left_reversed = left.split('').reverse().join('');\n    let left_right = left_reversed+right_reversed;\n    if(left_right == str){\n        return num+1;\n    }\n    else{\n        return left_right;\n    }\n}",
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(mid,len);\n    let right_reversed = right.split('').reverse().join('');\n    if(right === right_reversed){\n        if(len % 2 === 0){\n            return parseInt(left + right);\n        }else{\n            return parseInt(left + right + left[0]);\n        }\n    }else{\n        let right_reversed = right.split('').reverse().join('');\n        let right_reversed_int = parseInt(right_reversed);\n        if(right_reversed_int > right){\n            return parseInt(left + right_reversed);\n        }else{\n            return parseInt(left + right + left[0]);\n        }\n    }\n}",
+    "    let str = num.toString();\n    let len = str.length;\n    let half = Math.floor(len/2);\n    let first_half = str.substring(0,half);\n    let second_half = str.substring(half,len);\n    let second_half_reversed = second_half.split('').reverse().join('');\n    let next_half = parseInt(second_half_reversed);\n    let next_half_str = next_half.toString();\n    if(len%2==0){\n        next_half_str = next_half_str.substring(0,len-1);\n    }\n    let next_smallest_palindrome = parseInt(first_half+next_half_str);\n    return next_smallest_palindrome;\n}"
+  ]
+}

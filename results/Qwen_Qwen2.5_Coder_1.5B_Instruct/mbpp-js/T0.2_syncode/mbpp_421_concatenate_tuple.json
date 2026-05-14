@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_421_concatenate_tuple",
+  "language": "js",
+  "prompt": "//Write a function to concatenate each element of array by the delimiter.\nfunction concatenate_tuple(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_421_concatenate_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = concatenate_tuple;\n  assert.deepEqual(candidate([\"ID\", \"is\", 4, \"UTS\"]),\"ID-is-4-UTS\");\n  assert.deepEqual(candidate([\"QWE\", \"is\", 4, \"RTY\"]),\"QWE-is-4-RTY\");\n  assert.deepEqual(candidate([\"ZEN\", \"is\", 4, \"OP\"]),\"ZEN-is-4-OP\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = '';\n    for(var i=0; i<test_tup.length; i++){\n        result += test_tup[i];\n    }\n    return result;\n}",
+    "    return test_tup.join('-');\n}\n  ",
+    "    res = \"\";\n    for(i in test_tup.keys()){\n        res += test_tup[i] + \" \";\n    }\n    return res;\n}\ntest_tup = {'a': '1', 'b': '2', 'c': '3'}\nprint(concatenate_tuple(test_tup))"
+  ]
+}

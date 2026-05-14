@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_400_extract_freq",
+  "language": "js",
+  "prompt": "//Write a function to extract the number of unique tuples in the given array.\nfunction extract_freq(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_400_extract_freq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_freq;\n  assert.deepEqual(candidate([[3, 4], [1, 2], [4, 3], [5, 6]]),3);\n  assert.deepEqual(candidate([[4, 15], [2, 3], [5, 4], [6, 7]]),4);\n  assert.deepEqual(candidate([[5, 16], [2, 3], [6, 5], [6, 9]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Create a Set to store unique tuples\n    let unique_tuples = new Set();\n    \n    // Iterate over each tuple in the list\n    for (let tuple of test_list) {\n        // Convert the tuple to a string and add it to the Set\n        unique_tuplesadd(JSONStringifyTupleTuple) {\n            let str = ((a, b) => `[${a}, ${b}]`)(tuple[0], tuple[1]);\n            return str;\n        }\n        \n        // Add the string representation of the tuple to the Set\n        unique_tuples.add(JSONStringifyTuple(tuple));\n    }\n    \n    // Return the size of the Set, which represents the number of unique tuples\n    return unique_tuples.size;\n}"
+  ]
+}

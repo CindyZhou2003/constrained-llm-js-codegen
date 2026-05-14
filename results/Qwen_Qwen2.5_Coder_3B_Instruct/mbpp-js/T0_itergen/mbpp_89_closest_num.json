@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert the number to a string to iterate over each digit\n    let num_str = N.toString();\n    //Initialize a variable to store the closest smaller number\n    let closest = -1;\n    //Iterate over each digit in the string\n    for(let i = 0; i < num_str.length; i++){\n        //If the current digit is smaller than the previous digit, update the closest number\n        if(num_str[i] < num_str[i-1]){\n            closest = parseInt(num_str.substring(0, i) + (parseInt(num_str[i-1]) - 1) + num_str.substring(i+1));\n            break;\n        }\n    }\n    //Return the closest smaller number\n    return closest;\n}\n"
+  ]
+}

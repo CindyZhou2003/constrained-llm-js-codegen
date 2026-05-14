@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_277_dict_filter",
+  "language": "js",
+  "prompt": "//Write a function that takes in an object and integer n and filters the object to only include entries with values greater than or equal to n.\nfunction dict_filter(dict, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_277_dict_filter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dict_filter;\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 170),{\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 180),{\"Alden Cantrell\": 180, \"Pierre Cox\": 190});\n  assert.deepEqual(candidate({\"Cierra Vega\": 175, \"Alden Cantrell\": 180, \"Kierra Gentry\": 165, \"Pierre Cox\": 190}, 190),{\"Pierre Cox\": 190});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return Object.fromEntries\n    // Filter the entries of the dictionary\n    // where the value is greater than or equal to n\n    // and convert the result back to a dictionary\n    // using Object.fromEntries\n    // which takes an array of [key, value] pairs\n    // and returns a new dictionary\n    // with the same key-value pairs\n    // that satisfy the condition\n    // and the same order as the original dictionary\n    // (if the order is important)\n    // and the same keys and values as the original dictionary\n    // (if the keys and values are important)\n    // and the same type as the original dictionary\n    // (if the type is important)\n    // and the same prototype as the original dictionary\n    // (if the prototype is important)\n    // and the same length as the original dictionary\n    // (if the length is important)\n    // and the same entries as the original dictionary\n    // (if the entries are important)\n    // and the same keys as the original dictionary\n    // (if the keys are important)\n    // and the same values as the original dictionary\n    // (if the values are important)\n    // and the same prototype as the original dictionary\n    // (if the prototype is important)\n    // and the same length as the original dictionary\n    // (if the length is important)\n    // and the same entries as the original dictionary\n    // (if the entries are important)\n    // and the same keys as the original dictionary\n    // (if the keys are important)\n    // and the same values as the original dictionary\n    // (if the values are important)\n    // and the same prototype as the original dictionary\n    // (if the prototype is important)\n    // and the same length as the original dictionary\n    // (if the length is important)\n    // and the same entries as the original dictionary\n    // (if the entries are important)\n    // and the same keys as the original dictionary\n    // (if the keys are important)\n    // and the same values as the original dictionary\n    // (if the values are important)\n    // and the same prototype as the original dictionary\n    // (if the prototype is important)\n    // and the same length as the original dictionary\n    // (if the length is important)\n    // and the same entries as the original dictionary\n    // (if the entries are important)\n    // and"
+  ]
+}

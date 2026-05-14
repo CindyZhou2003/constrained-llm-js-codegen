@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_287_square_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer n and returns the sum of squares of first n even natural numbers.\nfunction square_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_287_square_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = square_Sum;\n  assert.deepEqual(candidate(2),20);\n  assert.deepEqual(candidate(3),56);\n  assert.deepEqual(candidate(4),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let sum = 0;\n  for (let i = 1; i <= n; i++) {\n    let evenNumber = 2 * i;\n    sum += evenNumber * evenNumber;\n  }\n  return sum;\n}"
+  ]
+}

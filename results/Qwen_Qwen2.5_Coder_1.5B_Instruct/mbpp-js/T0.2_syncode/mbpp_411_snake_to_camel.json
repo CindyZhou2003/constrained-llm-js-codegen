@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_411_snake_to_camel",
+  "language": "js",
+  "prompt": "//Write a function to convert the given snake case string to camel case string.\nfunction snake_to_camel(word){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_411_snake_to_camel.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = snake_to_camel;\n  assert.deepEqual(candidate(\"android_tv\"),\"AndroidTv\");\n  assert.deepEqual(candidate(\"google_pixel\"),\"GooglePixel\");\n  assert.deepEqual(candidate(\"apple_watch\"),\"AppleWatch\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = '';\n    for(let i = 0; i < word.length; i++){\n        if(word[i] === '_'){\n            result += word[i+1].toUpperCase();\n            i++;\n        }else{\n            result += word[i];\n        }\n    }\n    return result;\n}",
+    "    let result = word.split('_');\n    for(let i = 1; i < result.length; i++){\n        result[i] = result[i].charAt(0).toUpperCase() + result[i].slice(1);\n    }\n    return result.join('');\n}",
+    "    let result = '';\n    let words = word.split('_');\n    for(let i = 0; i < words.length; i++){\n        let word = words[i];\n        if(i > 0){\n            word = word.charAt(0).toUpperCase() + word.slice(1);\n        }\n        result += word;\n    }\n    return result;\n}"
+  ]
+}

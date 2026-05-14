@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_773_occurance_substring",
+  "language": "js",
+  "prompt": "//Write a function to find the occurrence and position of the substrings within a string. Return undefined if there is no match.\nfunction occurance_substring(text, pattern){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_773_occurance_substring.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = occurance_substring;\n  assert.deepEqual(candidate(\"python programming, python language\", \"python\"),[\"python\", 0, 6]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"programming\"),[\"programming\", 7, 18]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"language\"),[\"language\", 31, 39]);\n  assert.deepEqual(candidate(\"c++ programming, c++ language\", \"python\"),undefined);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const positions = [];\n  let index = text.indexOf(pattern);\n\n  while (index !== -1) {\n    positions.push(index);\n    index = text.indexOf(pattern, index + 1);\n  }\n\n  if (positions.length === 0) {\n    return undefined;\n  }\n\n  return positions;\n}"
+  ]
+}

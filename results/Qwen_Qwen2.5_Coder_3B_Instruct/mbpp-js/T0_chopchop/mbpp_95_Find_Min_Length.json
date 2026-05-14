@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_95_Find_Min_Length",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the length of the smallest array in an array of lists.\nfunction Find_Min_Length(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_95_Find_Min_Length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Min_Length;\n  assert.deepEqual(candidate([[1], [1, 2]]),1);\n  assert.deepEqual(candidate([[1, 2], [1, 2, 3], [1, 2, 3, 4]]),2);\n  assert.deepEqual(candidate([[3, 3, 3], [4, 4, 4, 4]]),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (lst.length === 0) {\n    return 0; // Return 0 if the input list is empty\n  }\n\n  let minLength = lst[0].length; // Initialize minLength with the length of the first list\n\n  for (let i = 1; i < lst.length; i++) {\n    if (lst[i].length < minLength) {\n      minLength = lst[i].length; // Update minLength if a shorter list is found\n    }\n  }\n\n  return minLength; // Return the length of the smallest list\n}"
+  ]
+}

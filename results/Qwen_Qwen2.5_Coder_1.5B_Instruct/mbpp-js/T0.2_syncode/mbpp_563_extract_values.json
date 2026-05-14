@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_563_extract_values",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks from a string.\nfunction extract_values(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_563_extract_values.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_values;\n  assert.deepEqual(candidate(\"\"Python\", \"PHP\", \"Java\"\"),[\"Python\", \"PHP\", \"Java\"]);\n  assert.deepEqual(candidate(\"\"python\",\"program\",\"language\"\"),[\"python\", \"program\", \"language\"]);\n  assert.deepEqual(candidate(\"\"red\",\"blue\",\"green\",\"yellow\"\"),[\"red\", \"blue\", \"green\", \"yellow\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let start = 0;\n    let end = 0;\n    while (end < text.length) {\n        if (text[end] === '\"') {\n            if (start === end) {\n                start++;\n            } else {\n                result.push(text.substring(start, end));\n                start = end + 1;\n            }\n        }\n        end++;\n    }\n    return result;\n}",
+    "    let values = [];\n    let start = 0;\n    let end = 0;\n    for(let i = 0; i < text.length; i++){\n        if(text[i] === '\"'){\n            start = i;\n            while(text[i] !== '\"'){\n                i++;\n            }\n            end = i;\n            values.push(text.substring(start + 1, end));\n        }\n    }\n    return values;\n}",
+    "    let values = [];\n    let start = 0;\n    let end = 0;\n    while (end < text.length) {\n        if (text[end] === '\"') {\n            if (start === end) {\n                start++;\n            } else {\n                values.push(text.substring(start, end));\n                start = end + 1;\n            }\n        }\n        end++;\n    }\n    values.push(text.substring(start, end));\n    return values;\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_557_toggle_string",
+  "language": "js",
+  "prompt": "//Write a function to toggle the case of all characters in a string.\nfunction toggle_string(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_557_toggle_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = toggle_string;\n  assert.deepEqual(candidate(\"Python\"),\"pYTHON\");\n  assert.deepEqual(candidate(\"Pangram\"),\"pANGRAM\");\n  assert.deepEqual(candidate(\"LIttLE\"),\"liTTle\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let toggle = '';\n    for(let i = 0; i < string.length; i++){\n        if(string[i] === string[i].toUpperCase()){\n            toggle += string[i].toLowerCase();\n        }else{\n            toggle += string[i].toUpperCase();\n        }\n    }\n    return toggle;\n}\n"
+  ]
+}

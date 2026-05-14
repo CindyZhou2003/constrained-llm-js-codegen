@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_417_group_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find common first element in given array of lists.\nfunction group_tuples(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_417_group_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = group_tuples;\n  assert.deepEqual(candidate([[\"x\", \"y\"], [\"x\", \"z\"], [\"w\", \"t\"]]),[[\"x\", \"y\", \"z\"], [\"w\", \"t\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"a\", \"c\"], [\"d\", \"e\"]]),[[\"a\", \"b\", \"c\"], [\"d\", \"e\"]]);\n  assert.deepEqual(candidate([[\"f\", \"g\"], [\"f\", \"g\"], [\"h\", \"i\"]]),[[\"f\", \"g\", \"g\"], [\"h\", \"i\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Initialize an empty object to store the frequency of each first element\n  const frequency = {};\n\n  // Iterate over each list in the input array\n  for (const list of Input) {\n    // Check if the first element of the list is already in the frequency object\n    if (frequency[list[0]]) {\n      // If it is, increment its count\n      frequency[list[0]]++;\n    } else {\n      // If it's not, add it to the frequency object with a count of 1\n      frequency[list[0]] = 1;\n    }\n  }\n\n  // Initialize a variable to store the common first element\n  let commonFirstElement = null;\n\n  // Iterate over the frequency object to find the first element with a count of 1\n  for (const [firstElement, count] of Object.entries(frequency)) {\n    if (count === 1) {\n      commonFirstElement = firstElement;\n      break;\n    }\n  }\n\n  // Return the common first element\n  return commonFirstElement;\n}"
+  ]
+}

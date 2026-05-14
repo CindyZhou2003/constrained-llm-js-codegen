@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_408_k_smallest_pairs",
+  "language": "js",
+  "prompt": "//Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.\nfunction k_smallest_pairs(nums1, nums2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_408_k_smallest_pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = k_smallest_pairs;\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 2),[[1, 2], [1, 4]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 1),[[1, 2]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 7),[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let pairs = [];\n    let heap = [];\n    let i = 0; // pointer for nums1\n    let j = 0; // pointer for nums2\n\n    // add the first k pairs to the heap\n    while(i < nums1.length && j < nums2.length && k > 0){\n        let sum = nums1[i] + nums2[j];\n        heap.push([sum, i, j]);\n        i++;\n        j++;\n        k--;\n    }\n\n    // build the heap\n    heapify(heap);\n\n    // add the smallest pairs to the result array\n    while(k > 0 && heap.length > 0){\n        let [sum, i, j] = heap[0];\n        pairs.push([nums1[i], nums2[j]]);\n        k--;\n        // remove the smallest pair from the heap\n        heap[0] = heap[heap.length - 1];\n        heap.pop();\n        heapify(heap);\n\n        // add the next pair to the heap\n        if(i + 1 < nums1.length){\n            let new_sum = nums1[i + 1] + nums2[j];\n            heap.push([new_sum, i + 1, j]);\n        }\n        if(j + 1 < nums2.length){\n            let new_sum = nums1[i] + nums2[j + 1];\n            heap.push([new_sum, i, j + 1]);\n        }\n    }\n\n    return pairs;\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_92_is_undulating",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is undulating or not.\nfunction is_undulating(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_92_is_undulating.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_undulating;\n  assert.deepEqual(candidate(1212121),true);\n  assert.deepEqual(candidate(1991),false);\n  assert.deepEqual(candidate(121),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Convert the number to a string to easily access digits\n  const str = n.toString();\n  const len = str.length;\n\n  // An undulating number must have at least 3 digits\n  if (len < 3) {\n    return false;\n  }\n\n  // Check if the number is undulating\n  for (let i = 1; i < len - 1; i++) {\n    if (str[i] === str[i - 1] || str[i] === str[i + 1]) {\n      return false;\n    }\n  }\n\n  return true;\n}"
+  ]
+}

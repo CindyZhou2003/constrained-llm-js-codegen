@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_57_find_Max_Num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the largest number that can be formed with the given array of digits.\nfunction find_Max_Num(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_57_find_Max_Num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Max_Num;\n  assert.deepEqual(candidate([1, 2, 3]),321);\n  assert.deepEqual(candidate([4, 5, 6, 1]),6541);\n  assert.deepEqual(candidate([1, 2, 3, 9]),9321);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (arr.length === 0) return \"0\";\n\n  arr.sort((a, b) => {\n    const strA = \"\";\n\n    for (let i = 0; i < arr.length; i++) {\n      if (arr[i] === a) {\n        strA += \"0\";\n      } else {\n        strA += arr[i];\n      }\n    }\n\n    const strB = \"\";\n\n    for (let i = 0; i < arr.length; i++) {\n      if (arr[i] === b) {\n        strB += \"0\";\n      } else {\n        strB += arr[i];\n      }\n    }\n\n    return strB - strA;\n  });\n\n  let result = \"\";\n  for (let i = 0; i < arr.length; i++) {\n    result += arr[i];\n  }\n\n  return result.startsWith(\"0\") ? \"0\" : result;\n}"
+  ]
+}

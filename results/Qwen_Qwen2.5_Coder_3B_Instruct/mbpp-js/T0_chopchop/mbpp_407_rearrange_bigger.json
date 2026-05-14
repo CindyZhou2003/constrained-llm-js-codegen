@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const digits = n.toString().split('');\n  let i = digits.length - 2;\n\n  // Find the first digit from the right that is smaller than the digit to its right\n  while (i >= 0 && digits[i] >= digits[i + 1]) {\n    i--;\n  }\n\n  if (i === -1) {\n    // If no such digit is found, the number is the largest possible permutation\n    return -1;\n  }\n\n  // Find the smallest digit to the right of the found digit that is larger than it\n  let j = digits.length - 1;\n  while (digits[j] <= digits[i]) {\n    j--;\n  }\n\n  // Swap the found digits\n  [digits[i], digits[j]] = [digits[j], digits[i]];\n\n  // Sort the digits to the right of the found digit in ascending order\n  const sortedDigits = digits.slice(i + 1).sort((a, b) => a - b);\n  digits.splice(i + 1, digits.length - i - 1, ...sortedDigits);\n\n  // Convert the array of digits back to a number\n  return parseInt(digits.join(''), 10);\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_94_index_minimum",
+  "language": "js",
+  "prompt": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_94_index_minimum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return test_list.reduce((min, current) => current\n        // Compare the second element of each tuple\n        // If the current tuple's second element is smaller, return it\n        // Otherwise, return the current minimum\n        // This ensures that the first tuple with the smallest second element is returned\n        // If the list is empty, reduce will return undefined, which is the correct behavior\n        // for finding the minimum in an empty list\n        // If the list has only one tuple, reduce will return that tuple\n        // If the list has multiple tuples, reduce will return the first tuple with the smallest second element\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple tuples with the same smallest second element, reduce will return the first one\n        // If the list has multiple"
+  ]
+}

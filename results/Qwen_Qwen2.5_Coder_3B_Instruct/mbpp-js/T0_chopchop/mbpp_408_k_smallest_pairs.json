@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_408_k_smallest_pairs",
+  "language": "js",
+  "prompt": "//Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.\nfunction k_smallest_pairs(nums1, nums2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_408_k_smallest_pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = k_smallest_pairs;\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 2),[[1, 2], [1, 4]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 1),[[1, 2]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 7),[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (k <= 0 || nums1.length === 0 || nums2.length === 0) return [];\n\n  const minHeap = new MinPriorityQueue\n  // Initialize the heap with the first element of each pair\n  // (nums1[i] + nums2[0], i, 0)\n  // This ensures we start with the smallest possible sums\n  // and explore them first\n  // The heap will store tuples of the form (sum, i, j)\n  // where i is the index in nums1 and j is the index in nums2\n  for (let i = 0; i < Math.min(k, nums1.length); i++) {\n    minHeap.enqueue([nums1[i] + nums2[0], i, 0]);\n  }\n\n  const result = [];\n  while (minHeap.size() > 0 && result.length < k) {\n    const [sum, i, j] = minHeap.dequeue();\n    result.push([nums1[i], nums2[j]]);\n\n    // If there is a next element in nums2 for the current pair\n    if (j + 1 < nums2.length) {\n      minHeap.enqueue([nums1[i] + nums2[j + 1], i, j + 1]);\n    }\n  }\n\n  return result;\n}"
+  ]
+}

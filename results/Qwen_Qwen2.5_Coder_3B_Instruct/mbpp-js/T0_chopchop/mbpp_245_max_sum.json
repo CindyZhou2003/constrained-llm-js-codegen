@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (arr.length === 0) return 0;\n\n  const n = arr.length;\n  const inc = new Array(n).fill(0);\n  const dec = new Array(n).fill(0);\n\n  // Fill inc array\n  for (let i = 1; i < n; i++) {\n    for (let j = 0; j < i; j++) {\n      if (arr[i] > arr[j]) {\n        inc[i] = Math.max(inc[i], inc[j] + arr[i]);\n      }\n    }\n  }\n\n  // Fill dec array\n  for (let i = n - 2; i >= 0; i--) {\n    for (let j = n - 1; j > i; j--) {\n      if (arr[i] > arr[j]) {\n        dec[i] = Math.max(dec[i], dec[j] + arr[i]);\n      }\n    }\n  }\n\n  // Find the maximum sum of bitonic subsequence\n  let maxSum = 0;\n  for (let i = 0; i < n; i++) {\n    maxSum = Math.max(maxSum, inc[i] + dec[i] - arr[i]);\n  }\n\n  return maxSum;\n}"
+  ]
+}

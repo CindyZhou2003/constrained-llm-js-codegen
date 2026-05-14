@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_749_sort_numeric_strings",
+  "language": "js",
+  "prompt": "//Write a function to sort a given array of strings of numbers numerically. https://www.geeksforgeeks.org/JavaScript-sort-numeric-strings-in-a-array/\nfunction sort_numeric_strings(nums_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_749_sort_numeric_strings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_numeric_strings;\n  assert.deepEqual(candidate([\"4\", \"12\", \"45\", \"7\", \"0\", \"100\", \"200\", \"-12\", \"-500\"]),[-500, -12, 0, 4, 7, 12, 45, 100, 200]);\n  assert.deepEqual(candidate([\"2\", \"3\", \"8\", \"4\", \"7\", \"9\", \"8\", \"2\", \"6\", \"5\", \"1\", \"6\", \"1\", \"2\", \"3\", \"4\", \"6\", \"9\", \"1\", \"2\"]),[1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8, 9, 9]);\n  assert.deepEqual(candidate([\"1\", \"3\", \"5\", \"7\", \"1\", \"3\", \"13\", \"15\", \"17\", \"5\", \"7 \", \"9\", \"1\", \"11\"]),[1, 1, 1, 3, 3, 5, 5, 7, 7, 9, 11, 13, 15, 17]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return nums_str.sort((a, b) => aNumberValue =In the given code, the `sort_numeric_strings` function takes an array of strings as input and returns a new array with the strings sorted numerically. The function uses the `sort` method with a custom comparator function to achieve this.\n\nHere's a breakdown of how the function works:\n\n1. The `sort` method is called on the `nums_str` array. The `sort` method sorts the elements of an array in place and returns the sorted array.\n\n2. The comparator function `(a, b) => aNumberValue = a - b` is used to determine the order of the elements. This function takes two arguments, `a` and `b`, which are the elements being compared.\n\n3. Inside the comparator function, `aNumberValue` is assigned the result of the expression `a - b`. This expression calculates the difference between the numeric values of `a` and `b`.\n\n4. If `aNumberValue` is less than 0, it means that `a` should come before `b` in the sorted array. In this case, the function returns `-1`.\n\n5. If `aNumberValue` is greater than 0, it means that `a` should come after `b` in the sorted array. In this case, the function returns `1`.\n\n6. If `aNumberValue` is equal to 0, it means that `a` and `b` are considered equal in terms of their numeric values. In this case, the function returns `0`.\n\n7. The `sort` method uses the comparator function to determine the order of the elements in the array. The elements are sorted in ascending order by default, but you can pass a different comparator function to sort in descending order or to sort based on a different criterion.\n\n8. The sorted array is returned by the `sort_numeric_strings` function.\n\nHere's an example of how to use the `sort_numeric_strings` function:\n\n```javascript\nconst nums_str = [\"3\", \"1\", \"4\", \"1\", \"5\", \"9\", \"2\", \"6\", \"5\", \"3\", \"5\"];\nconst sorted_nums_str = sort_numeric_strings(nums_str);"
+  ]
+}

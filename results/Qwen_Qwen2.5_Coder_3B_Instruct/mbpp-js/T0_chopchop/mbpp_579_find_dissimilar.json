@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_579_find_dissimilar",
+  "language": "js",
+  "prompt": "//Write a function to find the dissimilar elements in the given two tuples.\nfunction find_dissimilar(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_579_find_dissimilar.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_dissimilar;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [7, 2, 3, 9]),[1, 4, 7, 9]);\n  assert.deepEqual(candidate([21, 11, 25, 26], [26, 34, 21, 36]),[34, 36, 11, 25]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Convert tuples to arrays for easier manipulation\n    let arr1 = Array.from(test_tup1);\n    let arr2 = Array.from(test_tup2);\n    \n    // Use filter to find elements in arr1 that are not in arr2\n    let dissimilar_elements = arr1.filter(element => !arr2.includes(element));\n    \n    // Use filter to find elements in arr2 that are not in arr1\n    dissimilar_elements = dissimilar_elements.concat(arr2.filter(element => !arr1.includes(element)));\n    \n    // Return the dissimilar elements as a tuple\n    return dissimilar_elements;\n}"
+  ]
+}

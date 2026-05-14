@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_109_odd_Equivalent",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the number of numbers with an odd value when rotating a binary string the given number of times.\nfunction odd_Equivalent(s, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_109_odd_Equivalent.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = odd_Equivalent;\n  assert.deepEqual(candidate(\"011001\", 6),3);\n  assert.deepEqual(candidate(\"11011\", 5),4);\n  assert.deepEqual(candidate(\"1010\", 4),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let count = 0;\n  const length = s.length;\n\n  for (let i = 0; i < length; i++) {\n    let rotated = s.slice(i) + s.slice(0, i);\n    let oddCount = 0;\n\n    for (let j = 0; j < length; j++) {\n      if (rotated[j] === '1') {\n        oddCount++;\n      }\n    }\n\n    if (oddCount % 2 !== 0) {\n      count++;\n    }\n  }\n\n  return count;\n}"
+  ]
+}

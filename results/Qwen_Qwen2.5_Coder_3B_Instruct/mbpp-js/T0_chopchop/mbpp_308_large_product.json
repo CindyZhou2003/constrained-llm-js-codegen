@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_308_large_product",
+  "language": "js",
+  "prompt": "//Write a function to find the specified number of largest products from two given lists, selecting one factor from each array.\nfunction large_product(nums1, nums2, N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_308_large_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = large_product;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 3),[60, 54, 50]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 4),[60, 54, 50, 48]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 5),[60, 54, 50, 48, 45]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Sort nums1 in descending order\n  nums1.sort((a, b) => b  =>\n  // Sort nums2 in descending order\n  nums2.sort((a, b) => b  - a\n\n  // Initialize an array to store the largest products\n  // with the specified number of elements\n  let largestProducts = [];\n\n  // Iterate through the sorted nums1 and nums2 arrays\n  for (let i = 0; i < N; i++) {\n    // Calculate the product of the current elements\n    let product = nums1[i] * nums2[i];\n    // Add the product to the largestProducts array\n    largestProducts.push(product);\n  }\n\n  // Return the largestProducts array\n  return largestProducts;\n}"
+  ]
+}

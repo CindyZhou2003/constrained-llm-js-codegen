@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_580_extract_even",
+  "language": "js",
+  "prompt": "//Write a function to remove uneven elements in the nested mixed array.\nfunction extract_even(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_580_extract_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_even;\n  assert.deepEqual(candidate([4, 5, [7, 6, [2, 4]], 6, 8]),[4, [6, [2, 4]], 6, 8]);\n  assert.deepEqual(candidate([5, 6, [8, 7, [4, 8]], 7, 9]),[6, [8, [4, 8]]]);\n  assert.deepEqual(candidate([5, 6, [9, 8, [4, 6]], 8, 10]),[6, [8, [4, 6]], 8, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Initialize an empty array to store the even elements\n    let even_elements = [];\n    \n    // Iterate over each element in the test_tuple\n    for (let i = 0; i < test_tuple.length; i++) {\n        // Check if the element is an array\n        if (Array.isArray(test_tuple[i])) {\n            // Recursively call the function on the nested array\n            let nested_even_elements = extract_even(test_tuple[i]);\n            // Add the even elements from the nested array to the even_elements array\n            even_elements = even_elements.concat(nested_even_elements);\n        } else {\n            // Check if the element is an even number\n            if (test_tuple[i] % 2 === 0) {\n                // Add the even number to the even_elements array\n                even_elements.push(test_tuple[i]);\n            }\n        }\n    }\n    \n    // Return the array of even elements\n    return even_elements;\n}"
+  ]
+}

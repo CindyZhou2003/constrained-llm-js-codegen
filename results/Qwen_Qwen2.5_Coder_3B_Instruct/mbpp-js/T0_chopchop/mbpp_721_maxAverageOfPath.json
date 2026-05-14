@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_721_maxAverageOfPath",
+  "language": "js",
+  "prompt": "//Given a square matrix of size N*N given as an array of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.\nfunction maxAverageOfPath(cost){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_721_maxAverageOfPath.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = maxAverageOfPath;\n  assert.deepEqual(candidate([[1, 2, 3], [6, 5, 4], [7, 3, 9]]),5.2);\n  assert.deepEqual(candidate([[2, 3, 4], [7, 6, 5], [8, 4, 10]]),6.2);\n  assert.deepEqual(candidate([[3, 4, 5], [8, 7, 6], [9, 5, 11]]),7.2);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),5.8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const N = cost.length;\n  const dp = Array.from({ length: N }, () => Array(N).fill(0));\n\n  // Initialize the first cell\n  dp00 = calcCost(cost, 0, 0);\n\n  // Fill the first row\n  for (let j = 1; j < N; j++) {\n    dp0j = calcCost(cost, 0, j);\n  }\n\n  // Fill the first column\n  for (let i = 1; i < N; i++) {\n    dpij = calcCost(cost, i, 0);\n  }\n\n  // Fill the rest of the matrix\n  for (let i = 1; i < N; i++) {\n    for (let j = 1; j < N; j++) {\n      dpij = Math.max(\n        calcCost(cost, i, j) + dp0j,\n        calcCost(cost, i, j) + dp0i\n      );\n    }\n  }\n\n  // The maximum average is the maximum value in the last row\n  return Math.max(...dp[N - 1]);\n}\n"
+  ]
+}

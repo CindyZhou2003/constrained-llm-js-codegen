@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_799_left_rotate",
+  "language": "js",
+  "prompt": "//Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit.\nfunction left_rotate(n, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_799_left_rotate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = left_rotate;\n  assert.deepEqual(candidate(16, 2),64);\n  assert.deepEqual(candidate(10, 2),40);\n  assert.deepEqual(candidate(99, 3),792);\n  assert.deepEqual(candidate(99, 3),792);\n  assert.deepEqual(candidate(1, 3),8);\n  assert.deepEqual(candidate(5, 3),40);\n  assert.deepEqual(candidate(29, 3),232);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const bits = 32;\n  d = d % bits; // Handle cases where d is greater than the number of bits\n  return (n << d) | (n >>> (bits - d));\n}"
+  ]
+}
