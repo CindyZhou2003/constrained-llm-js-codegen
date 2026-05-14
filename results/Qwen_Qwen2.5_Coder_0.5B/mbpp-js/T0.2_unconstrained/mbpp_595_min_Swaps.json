@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_595_min_Swaps",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count minimum number of swaps required to convert one binary number represented as a string to another.\nfunction min_Swaps(str1, str2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_595_min_Swaps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Swaps;\n  assert.deepEqual(candidate(\"1101\", \"1110\"),1);\n  assert.deepEqual(candidate(\"111\", \"000\"),\"Not Possible\");\n  assert.deepEqual(candidate(\"111\", \"110\"),\"Not Possible\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    let arr1 = str1.split(\"\");\n    let arr2 = str2.split(\"\");\n    let len = arr1.length;\n    for(let i = 0; i < len; i++){\n        if(arr1[i] != arr2[i]){\n            count++;\n            let index = arr1.indexOf(arr2[i]);\n            arr1[index] = arr2[i];\n            arr2[i] = arr1[index];\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let str1_arr = str1.split('');\n    let str2_arr = str2.split('');\n    let i = 0;\n    while(i < str1_arr.length){\n        if(str1_arr[i] !== str2_arr[i]){\n            count++;\n            let temp = str1_arr[i];\n            str1_arr[i] = str2_arr[i];\n            str2_arr[i] = temp;\n        }\n        i++;\n    }\n    return count;\n}",
+    "    let count = 0;\n    let arr1 = str1.split('');\n    let arr2 = str2.split('');\n    let i = 0;\n    while(i < arr1.length){\n        if(arr1[i] != arr2[i]){\n            count++;\n            let temp = arr1[i];\n            arr1[i] = arr2[i];\n            arr2[i] = temp;\n        }\n        i++;\n    }\n    return count;\n}"
+  ]
+}

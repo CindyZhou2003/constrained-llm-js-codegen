@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var jumps = 0;\n    for(var i = 0; i < steps.length; i++){\n        if(i + steps[i] > d){\n            jumps++;\n            d = i + steps[i];\n            i = 0;\n        }\n    }\n    return jumps;\n}",
+    "    if(steps === 0){\n        return 0;\n    }\n    if(steps < d){\n        return -1;\n    }\n    let jumps = 0;\n    let jump = d;\n    for(let i = 1; i < steps; i++){\n        if(i + jump > steps){\n            jumps++;\n            jump = d;\n        }\n        jump--;\n    }\n    jumps++;\n    return jumps;\n}",
+    "    let jumps = 0;\n    let curr = 0;\n    let next = 0;\n\n    while(curr < steps){\n        jumps++;\n        next = curr + d;\n        if(next >= steps){\n            return jumps;\n        }\n        curr = next;\n    }\n\n    return jumps;\n}\n",
+    "    let jumps = 0;\n    let current = 0;\n    let next = 0;\n    for(let i = 0; i < steps; i++){\n        next = 0;\n        for(let j = 0; j < d; j++){\n            next++;\n            current++;\n        }\n        if(next === steps){\n            jumps++;\n        }\n    }\n    return jumps;\n}",
+    "    let jumps = 0;\n    let i = 0;\n    let j = d;\n    while(j > 0 && i < steps){\n        jumps++;\n        i++;\n        j = Math.max(j - steps[i], 0);\n    }\n    return jumps;\n}\n"
+  ]
+}

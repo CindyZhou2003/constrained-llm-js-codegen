@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_92_is_undulating",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is undulating or not.\nfunction is_undulating(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_92_is_undulating.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_undulating;\n  assert.deepEqual(candidate(1212121),true);\n  assert.deepEqual(candidate(1991),false);\n  assert.deepEqual(candidate(121),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString().split('');\n    let arr1 = arr.reverse().join('');\n    let arr2 = arr1.split('');\n    for(let i=0; i<arr.length; i++){\n        if(arr[i] !== arr2[i]){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let arr = n.toString().split(\"\");\n    let i = 1;\n    let j = 0;\n    while(i < arr.length){\n        if(arr[i] != arr[i-1]){\n            return false;\n        }\n        i++;\n    }\n    return true;\n}",
+    "    if(n==0){\n        console.log(\"The given number is undulating\");\n    }else if(n<0){\n        console.log(\"The given number is not undulating\");\n    }else{\n        console.log(\"The given number is undulating\");\n    }\n}",
+    "    if(n==0)\n    return \"Zero\";\n    var temp=n;\n    var sum=0;\n    while(n>0){\n        sum=sum+(n%10)*(n%10)*(n%10);\n        n=Math.floor(n/10);\n    }\n    if(sum==temp)\n    return \"Udduler\";\n    else\n    return \"Not Udduler\";\n}",
+    "    if(n>0&&n<100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  ]
+}

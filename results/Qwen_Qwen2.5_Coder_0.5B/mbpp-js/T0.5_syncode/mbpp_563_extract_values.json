@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_563_extract_values",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks from a string.\nfunction extract_values(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_563_extract_values.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_values;\n  assert.deepEqual(candidate(\"\"Python\", \"PHP\", \"Java\"\"),[\"Python\", \"PHP\", \"Java\"]);\n  assert.deepEqual(candidate(\"\"python\",\"program\",\"language\"\"),[\"python\", \"program\", \"language\"]);\n  assert.deepEqual(candidate(\"\"red\",\"blue\",\"green\",\"yellow\"\"),[\"red\", \"blue\", \"green\", \"yellow\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = text.split(\", \");\n    var arr2 = [];\n    for(var i=0; i<arr.length; i++){\n        arr2.push(arr[i].slice(1, arr[i].length-1));\n    }\n    return arr2;\n}\n",
+    "    var arr = text.split('');\n    var result = [];\n    for (var i = 0; i < arr.length; i++) {\n        if (arr[i] === '\"') {\n            result.push(arr[i + 1]);\n        }\n    }\n    return result.join('');\n}\n",
+    "    return text.split('\"')[1]\n}",
+    "    let new_text = text.split(\"\\\"\");\n    console.log(new_text);\n    return new_text;\n}\n",
+    "    return text.split('\"')[1];\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_116_tuple_to_int",
+  "language": "js",
+  "prompt": "//Write a function to convert a given array of positive integers into a single integer.\nfunction tuple_to_int(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_116_tuple_to_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_to_int;\n  assert.deepEqual(candidate([1, 2, 3]),123);\n  assert.deepEqual(candidate([4, 5, 6]),456);\n  assert.deepEqual(candidate([5, 6, 7]),567);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = 0;\n    let digit = 1;\n    let len = nums.length;\n    for(let i = len-1; i>=0; i--){\n        result += (nums[i] * digit);\n        digit *= 10;\n    }\n    return result;\n}",
+    "    let int = 0;\n    for(let i = 0; i < nums.length; i++){\n        int += nums[i];\n    }\n    return int;\n}",
+    "    let int = 0;\n    for(let i = 0; i < nums.length; i++){\n        int = int * 10 + nums[i];\n    }\n    return int;\n}",
+    "    let string = \"\"\n    for (let i = 0; i < nums.length; i++){\n        string += nums[i]\n    }\n    return parseInt(string)\n}",
+    "    let res=0;\n    for(let i=0;i<nums.length;i++){\n        res+=nums[i];\n    }\n    return res;\n}"
+  ]
+}

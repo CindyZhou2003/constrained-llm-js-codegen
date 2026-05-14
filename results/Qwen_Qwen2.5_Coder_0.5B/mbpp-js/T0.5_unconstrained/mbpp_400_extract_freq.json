@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_400_extract_freq",
+  "language": "js",
+  "prompt": "//Write a function to extract the number of unique tuples in the given array.\nfunction extract_freq(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_400_extract_freq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_freq;\n  assert.deepEqual(candidate([[3, 4], [1, 2], [4, 3], [5, 6]]),3);\n  assert.deepEqual(candidate([[4, 15], [2, 3], [5, 4], [6, 7]]),4);\n  assert.deepEqual(candidate([[5, 16], [2, 3], [6, 5], [6, 9]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let freq = {};\n    let result = [];\n    for(let i = 0; i < test_list.length; i++){\n        if(freq[test_list[i]]){\n            freq[test_list[i]]++;\n        } else {\n            freq[test_list[i]] = 1;\n        }\n    }\n    for(let key in freq){\n        result.push([key, freq[key]]);\n    }\n    return result;\n}\nlet test_list = [1, 2, 3, 4, 5];",
+    "    var array = test_list;\n    var array2 = array.sort(function(a,b){return a-b});\n    var array3 = array2.filter(function(item){return item % 2 == 0});\n    var array4 = array3.length;\n    return array4;\n}\n\nvar test_list = [1,1,2,3,4,5,6,7,8,9,10];",
+    "    let count = 0;\n    let hashSet = new Set();\n    for (let i = 0; i < test_list.length; i++) {\n        for (let j = 0; j < test_list.length; j++) {\n            if (test_list[i] === test_list[j]) {\n                hashSet.add(test_list[i]);\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let freq = {}\n    for(var i = 0; i < test_list.length; i++){\n        if(freq[test_list[i]]){\n            freq[test_list[i]] += 1\n        }else{\n            freq[test_list[i]] = 1\n        }\n    }\n    return Object.keys(freq).length\n}\n",
+    "    var arr = test_list;\n    var arr2 = [];\n    var arr3 = [];\n    var arr4 = [];\n    var arr5 = [];\n    var arr6 = [];\n    var arr7 = [];\n    var arr8 = [];\n    var arr9 = [];\n    var arr10 = [];\n    var arr11 = [];\n    var arr12 = [];\n    var arr13 = [];\n    var arr14 = [];\n    var arr15 = [];\n    var arr16 = [];\n    var arr17 = [];\n    var arr18 = [];\n    var arr19 = [];\n    var arr20 = [];\n    var arr21 = [];\n    var arr22 = [];\n    var arr23 = [];\n    var arr24 = [];\n    var arr25 = [];\n    var arr26 = [];\n    var arr27 = [];\n    var arr28 = [];\n    var arr29 = [];\n    var arr30 = [];\n    var arr31 = [];\n    var arr32 = [];\n    var arr33 = [];\n    var arr34 = [];\n    var arr35 = [];\n    var arr36 = [];\n    var arr37 = [];\n    var arr38 = [];\n    var arr39 = [];\n    var arr40 = [];\n    var arr41 = [];\n    var arr42 = [];\n    var arr43 = [];\n    var arr44 = [];\n    var arr45 = [];\n    var arr46 = [];\n    var arr47 = [];\n    var arr48 = [];\n    var arr49 = [];\n    var arr50 = [];\n    var arr51 = [];\n    var arr52 = [];\n    var arr53 = [];\n    var arr54 = [];\n    var arr55 = [];\n    var arr56 = [];\n    var arr57 = [];\n    var arr58 = [];\n    var arr59 = [];\n    var arr60 = [];\n    var arr61 = [];\n    var arr62 = [];\n    var arr63 = [];\n    var arr64 = [];\n    var arr65 = [];\n    var arr66 = [];\n    var arr67 = [];\n    var arr68 = [];\n    var arr69 = [];\n    var arr70 = [];\n    var arr71 = [];\n    var arr72 = [];\n    var arr73 = [];\n    var arr74"
+  ]
+}

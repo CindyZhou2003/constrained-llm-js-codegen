@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_239_get_total_number_of_sequences",
+  "language": "js",
+  "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 1; i <= n; i++){\n        let current = 2 * i;\n        if(i < m && current <= m){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let total_sequences = 0;\n    for(let i=0; i<=m; i++){\n        for(let j=0; j<=n; j++){\n            if(i>=2*j && i<m){\n                total_sequences++;\n            }\n        }\n    }\n    return total_sequences;\n}\n",
+    "    // Write your code here.\n    let max = m * 2;\n    let current = m;\n    let total = 0;\n    let previous = 0;\n    while(current <= max){\n        total += get_number_of_sequences(current, n);\n        current = current * 2;\n        previous = current - n;\n    }\n    return total;\n}\n",
+    "    let count = 0;\n    for(let i = 1; i <= m; i++){\n        for(let j = 1; j <= n; j++){\n            if(i >= 2 * j - 1 && i <= m){\n                count++;\n            }\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    let sequence = [m];\n\n    while(sequence.length < n){\n        let current = sequence[sequence.length - 1];\n        while(current >= 2 * sequence[sequence.length - 2] && current <= m){\n            current = sequence[sequence.length - 1] + sequence[sequence.length - 2];\n            sequence.push(current);\n        }\n        count++;\n    }\n    return count;\n}\n"
+  ]
+}

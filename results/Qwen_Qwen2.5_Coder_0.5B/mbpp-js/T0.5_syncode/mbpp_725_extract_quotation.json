@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_725_extract_quotation",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_725_extract_quotation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var text = text1.split(\" \");\n    var new_text = \"\";\n    for(var i = 0; i < text.length; i++){\n        if(text[i].indexOf('\"') != -1){\n            new_text += text[i].substr(1, text[i].length - 2);\n        }\n    }\n    return new_text;\n}",
+    "    let result = text1.replace(/[\"']+/g,'');\n    return result;\n}",
+    "    var string = text1;\n    var result = string.substring(1,string.length-1);\n    console.log(result);\n}",
+    "    let arr = text1.split(\" \");\n    let result = [];\n    for (let i = 0; i < arr.length; i++) {\n        if(arr[i].includes(\" \")){\n            result.push(arr[i].slice(1,arr[i].length-1));\n        }\n    }\n    return result;\n}",
+    "    let arr = text1.split(\" \");\n    let res = \"\";\n    for(let i=0; i<arr.length; i++){\n        if(arr[i].charAt(0) == '\"' && arr[i].charAt(arr[i].length-1) == '\"'){\n            res = res + arr[i].substring(1, arr[i].length-1);\n        }\n    }\n    return res;\n}\n"
+  ]
+}

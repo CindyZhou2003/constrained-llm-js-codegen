@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_33_sort_third",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal\n// to the values of the corresponding indicies of l, but sorted.\n// >>> sort_third([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_third([5, 6, 3, 4, 8, 9, 2])\n// [2, 6, 3, 4, 8, 9, 5]\nfunction sort_third(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_33_sort_third.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_third;\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2]),[2, 6, 3, 4, 8, 9, 5]);\n  assert.deepEqual(candidate([5, 8, 3, 4, 6, 9, 2]),[2, 8, 3, 4, 6, 9, 5]);\n  assert.deepEqual(candidate([5, 6, 9, 4, 8, 3, 2]),[2, 6, 9, 4, 8, 3, 5]);\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2, 1]),[2, 6, 3, 4, 8, 9, 5, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var sorted = l.slice(0);\n  for (var i = 0; i < sorted.length; i++){\n    if (sorted[i]%3 == 0){\n      var n = sorted[i];\n      var j = i;\n      while (j > 0 && sorted[j-1] > n){\n        sorted[j] = sorted[j-1];\n        j--;\n      }\n      sorted[j] = n;\n    }\n  }\n  return sorted;\n}",
+    "  let l2 = l.slice();\n  for (let i = 0; i < l2.length; i++) {\n    if (i % 3 === 0) {\n      l2[i] = l2[i].sort()\n    }\n  }\n  return l2\n}",
+    "  let res = [];\n  for (let i = 0; i < l.length; i++){\n    if (i % 3 === 0) {\n      res.push(l[i]);\n    } else {\n      res.push(l[i]);\n      res.push(l[i]);\n    }\n  }\n  return res;\n}\n",
+    "  let l2 = l.slice();\n  let l3 = l2.filter((el, i) => i % 3 !== 0);\n  let l4 = l3.sort((a, b) => a - b);\n  l2 = l2.concat(l4);\n  return l2;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < l.length; i++){\n        if(i % 3 !== 0){\n            result.push(l[i]);\n        }\n    }\n    result.sort();\n    let j = 0;\n    for(let i = 0; i < l.length; i++){\n        if(i % 3 === 0){\n            l[i] = result[j];\n            j++;\n        }\n    }\n    return l;\n}\n\n\n"
+  ]
+}

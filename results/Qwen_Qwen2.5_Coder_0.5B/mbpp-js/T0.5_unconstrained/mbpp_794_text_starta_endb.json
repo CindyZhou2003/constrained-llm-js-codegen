@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_794_text_starta_endb",
+  "language": "js",
+  "prompt": "//Write a function that matches a string that has an 'a' followed by anything, ending in 'b'.\nfunction text_starta_endb(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_794_text_starta_endb.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_starta_endb;\n  assert.deepEqual(candidate(\"aabbbb\"),true);\n  assert.deepEqual(candidate(\"aabAbbbc\"),false);\n  assert.deepEqual(candidate(\"accddbbjjj\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = text.match(/a(b)?/);\n    return result;\n}",
+    "    let result = text.match(/a(.*?)b/g);\n    return result;\n}\n",
+    "    if(text.includes('a') && text.endsWith('b')){\n        return true;\n    }\n    return false;\n}",
+    "    if(text.includes(\"a\") && text.endsWith(\"b\")){\n        return true;\n    }else{\n        return false;\n    }\n}\n",
+    "    var reg = /a(b)?/;\n    var result = reg.test(text);\n    return result;\n}"
+  ]
+}

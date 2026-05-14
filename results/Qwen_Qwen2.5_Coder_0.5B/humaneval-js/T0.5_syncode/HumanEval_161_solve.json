@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_161_solve",
+  "language": "js",
+  "prompt": "//You are given a string s.\n// if s[i] is a letter, reverse its case from lower to upper or vise versa, \n// otherwise keep it as it is.\n// If the string contains no letters, reverse the string.\n// The function should return the resulted string.\n// Examples\n// >>> solve(\"1234\")\n// \"4321\"\n// >>> solve(\"ab\")\n// \"AB\"\n// >>> solve(\"#a@C\")\n// \"#A@c\"\nfunction solve(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_161_solve.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = solve;\n  assert.deepEqual(candidate(\"AsDf\"),\"aSdF\");\n  assert.deepEqual(candidate(\"1234\"),\"4321\");\n  assert.deepEqual(candidate(\"ab\"),\"AB\");\n  assert.deepEqual(candidate(\"#a@C\"),\"#A@c\");\n  assert.deepEqual(candidate(\"#AsdfW^45\"),\"#aSDFw^45\");\n  assert.deepEqual(candidate(\"#6@2\"),\"2@6#\");\n  assert.deepEqual(candidate(\"#$a^D\"),\"#$A^d\");\n  assert.deepEqual(candidate(\"#ccc\"),\"#CCC\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newString = s.split(\"\")\n    let result = \"\"\n    for(let i = 0; i < newString.length; i++){\n        let char = newString[i]\n        if (char == \" \"){\n            result += char\n        } else if (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90){\n            result += char.toLowerCase()\n        } else if (char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122){\n            result += char.toUpperCase()\n        } else {\n            result += char\n        }\n    }\n    return result\n}",
+    "    let newStr = s.split(\"\")\n    let str = newStr.filter(e => {\n        if (e.match(/^[a-zA-Z]+$/g)) {\n            return e\n        }\n    })\n    let strReverse = str.reverse()\n    let strUpper = strReverse.map(e => {\n        if (e.match(/[a-z]/g)) {\n            return e.toUpperCase()\n        } else {\n            return e.toLowerCase()\n        }\n    })\n    let strLower = strUpper.map(e => {\n        if (e.match(/[A-Z]/g)) {\n            return e.toLowerCase()\n        } else {\n            return e.toUpperCase()\n        }\n    })\n    let strResult = strLower.join(\"\")\n    return strResult\n}",
+    "    let result = \"\";\n    for(let i = 0; i < s.length; i++) {\n        if(s[i] >= 'a' && s[i] <= 'z') {\n            result += s[i].toUpperCase();\n        } else if(s[i] >= 'A' && s[i] <= 'Z') {\n            result += s[i].toLowerCase();\n        } else {\n            result += s[i];\n        }\n    }\n    return result;\n}",
+    "    let result = '';\n    for(let i = 0; i < s.length; i++){\n        if(!isNaN(Number(s[i]))){\n            result += s[i];\n        }else if(s[i].toLowerCase() === s[i]){\n            result += s[i].toUpperCase();\n        }else{\n            result += s[i].toLowerCase();\n        }\n    }\n    return result;\n}",
+    "    let result = s.split('').map((letter) => {\n        if(letter >= 'a' && letter <= 'z'){\n            return letter.toUpperCase();\n        } else if(letter >= 'A' && letter <= 'Z'){\n            return letter.toLowerCase();\n        } else return letter;\n    }).join('');\n    return result;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_417_group_tuples",
+  "language": "js",
+  "prompt": "//Write a function to find common first element in given array of lists.\nfunction group_tuples(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_417_group_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = group_tuples;\n  assert.deepEqual(candidate([[\"x\", \"y\"], [\"x\", \"z\"], [\"w\", \"t\"]]),[[\"x\", \"y\", \"z\"], [\"w\", \"t\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"a\", \"c\"], [\"d\", \"e\"]]),[[\"a\", \"b\", \"c\"], [\"d\", \"e\"]]);\n  assert.deepEqual(candidate([[\"f\", \"g\"], [\"f\", \"g\"], [\"h\", \"i\"]]),[[\"f\", \"g\", \"g\"], [\"h\", \"i\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Input is a list of lists\n    let list = Input;\n    let list2 = [];\n    let list3 = [];\n    for(let i=0; i<list.length; i++){\n        for(let j=0; j<list[i].length; j++){\n            for(let k=0; k<list[i][j].length; k++){\n                if(list[i][j][k] == list[i][j][k+1]){\n                    list2.push(list[i][j][k]);\n                }\n            }\n        }\n        list3.push(list2)\n        list2 = [];\n    }\n    return list3;\n}\n",
+    "    var result = [];\n    for(var i=0; i<Input.length; i++){\n        if(Input[i][0] === Input[i+1][0]){\n            result.push(Input[i][0]);\n        }\n    }\n    return result;\n}",
+    "  let result = [];\n  for (let i = 0; i < Input.length; i++) {\n    for (let j = 0; j < Input[i].length; j++) {\n      if (j === 0){\n        result[i] = Input[i][j];\n      } else if (Result[i][j] !== Result[i][j-1]){\n        result[i] = Input[i][j];\n      }\n    }\n  }\n  return result;\n}\n",
+    "    var result = [];\n    for(var i = 0; i < Input.length; i++){\n        if(Input[i][0] == Input[i][1]){\n            result.push(Input[i][0]);\n        }\n    }\n    return result;\n}",
+    "\tvar output = [];\n\tfor(var i = 0; i < Input.length; i++){\n\t\tfor(var j = 0; j < Input[i].length; j++){\n\t\t\tif(output.indexOf(Input[i][j]) === -1){\n\t\t\t\toutput.push(Input[i][j]);\n\t\t\t}\n\t\t}\n\t}\n\treturn output;\n}\n"
+  ]
+}

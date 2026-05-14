@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_748_capital_words_spaces",
+  "language": "js",
+  "prompt": "//Write a function to put spaces between words starting with capital letters in a given string.\nfunction capital_words_spaces(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_748_capital_words_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = capital_words_spaces;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"PythonProgrammingExamples\"),\"Python Programming Examples\");\n  assert.deepEqual(candidate(\"GetReadyToBeCodingFreak\"),\"Get Ready To Be Coding Freak\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = str1.split(' ');\n    var result = str.map((value) => {\n        return value.charAt(0).toUpperCase() + value.slice(1);\n    });\n    return result.join(' ');\n}",
+    "    var str = str1.split(\" \");\n    var newStr = [];\n    for(var i = 0; i < str.length; i++){\n        if(str[i][0] === str[i][0].toUpperCase()){\n            newStr.push(str[i]);\n        }\n        else{\n            newStr.push(str[i][0].toUpperCase()+str[i].slice(1));\n        }\n    }\n    return newStr.join(\" \");\n}",
+    "    let str2 = str1.split(' ');\n    let new_str = \"\";\n    for(let i = 0; i < str2.length; i++){\n        if(str2[i].charAt(0).toUpperCase() === str2[i].charAt(0)){\n            new_str = new_str + str2[i].substring(1) + \" \" + \" \";\n        } else {\n            new_str = new_str + str2[i] + \" \";\n        }\n    }\n    return new_str.trim();\n}\n",
+    "    let arr = str1.split(\" \");\n    let newArr = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i].charAt(0).toUpperCase() == arr[i].charAt(0)){\n            newArr.push(arr[i].substring(1) + \" \");\n        }\n        else{\n            newArr.push(arr[i]);\n        }\n    }\n    return newArr.join(\"\");\n}\n",
+    "    let result = \"\";\n    let word = \"\";\n    for(let i = 0; i < str1.length; i++){\n        if(str1[i] === \" \"){\n            if(word[0] === word[0].toUpperCase()){\n                result += word + \" \";\n            }\n            else{\n                result += word + \"\";\n            }\n            word = \"\";\n        }\n        else{\n            word += str1[i];\n        }\n    }\n    if(word[0] === word[0].toUpperCase()){\n        result += word + \" \";\n    }\n    else{\n        result += word + \"\";\n    }\n    return result;\n}"
+  ]
+}

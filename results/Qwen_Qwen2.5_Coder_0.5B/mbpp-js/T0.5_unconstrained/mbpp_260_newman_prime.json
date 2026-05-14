@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_260_newman_prime",
+  "language": "js",
+  "prompt": "//Write a function to find the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime number.\nfunction newman_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_260_newman_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = newman_prime;\n  assert.deepEqual(candidate(3),7);\n  assert.deepEqual(candidate(4),17);\n  assert.deepEqual(candidate(5),41);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var prime = 2;\n    while(n > 0){\n        var x = 2;\n        while(x < prime){\n            if(prime % x == 0){\n                prime = x;\n                break;\n            }\n            x++;\n        }\n        n--;\n    }\n    return prime;\n}\n",
+    "  if(n < 1){\n    return \"please enter a positive integer greater than 0\";\n  }\n  var prime = 2;\n  for(var i = 2; i < n; i++){\n    if(prime % i !== 0){\n      prime++;\n    }else{\n      prime = 2;\n    }\n  }\n  return prime;\n}\n",
+    "  var i = 1;\n  var j = 1;\n  var c = 0;\n  var p = 0;\n  while (c < n) {\n    j = 1;\n    while (j < i) {\n      if (newman(i, j) === p) {\n        c += 1;\n      }\n      j += 1;\n    }\n    j = 1;\n    i += 1;\n    p += 1;\n  }\n  return p - 1;\n}",
+    "    //create a variable to store the prime number\n    let prime = 0;\n    //create a boolean variable to determine if the number is prime\n    let isPrime = false;\n    //create a variable to store the next prime number\n    let nextPrime = 0;\n    //create a variable to store the last prime number\n    let lastPrime = 2;\n    //create a variable to store the current number\n    let current = 0;\n\n    //iterate through the numbers from 2 to n\n    for (let i = 2; i <= n; i++){\n        //check if the current number is prime\n        isPrime = true;\n        //iterate through the numbers from 2 to the current number\n        for (let j = 2; j < i; j++){\n            //check if the current number is divisible by any number from 2 to the current number\n            if (i % j === 0){\n                //set the isPrime variable to false\n                isPrime = false;\n                //break out of the inner loop\n                break;\n            }\n        }\n        //if the isPrime variable is true, then the current number is prime\n        if (isPrime){\n            //set the prime variable to the current number\n            prime = i;\n            //break out of the outer loop\n            break;\n        }\n    }\n    //if the prime variable is not 0, then the current number is prime\n    if (prime !== 0){\n        //set the nextPrime variable to the next prime number\n        nextPrime = prime + 1;\n        //set the lastPrime variable to the current number\n        lastPrime = current;\n        //iterate through the numbers from the current number to the next prime number\n        for (let i = current + 1; i <= nextPrime; i++){\n            //check if the current number is prime\n            isPrime = true;\n            //iterate through the numbers from 2 to the current number\n            for (let j = 2; j < i; j++){\n                //check if the current number is divisible by any number from 2 to the current number\n                if (i % j === 0){\n                    //set the isPrime variable to false\n                    isPrime = false;\n                    //break out of the inner loop\n                    break;\n                }\n            }\n            //if the isPrime variable is true, then the current number is prime\n           ",
+    "    var primes = [2];\n    var p = 3;\n    while (primes.length < n){\n        if (isPrime(p)){\n            primes.push(p);\n        }\n        p += 2;\n    }\n    return primes[n-1];\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_37_sort_even",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the odd indicies, while its values at the even indicies are equal\n// to the values of the even indicies of l, but sorted.\n// >>> sort_even([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_even([5, 6, 3, 4])\n// [3, 6, 5, 4]\nfunction sort_even(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_37_sort_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_even;\n  assert.deepEqual(candidate([1, 2, 3]),[1, 2, 3]);\n  assert.deepEqual(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]),[-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123]);\n  assert.deepEqual(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]),[-12, 8, 3, 4, 5, 2, 12, 11, 23, -10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let l1 = l.slice(0, l.length/2);\n  let l2 = l.slice(l.length/2, l.length);\n  let l3 = l.slice(l.length/2, l.length);\n  let l4 = l.slice(0, l.length/2);\n  let l5 = l.slice(l.length/2, l.length);\n  let l6 = l.slice(0, l.length/2);\n  let l7 = l.slice(l.length/2, l.length);\n  let l8 = l.slice(0, l.length/2);\n  let l9 = l.slice(l.length/2, l.length);\n  let l10 = l.slice(0, l.length/2);\n  let l11 = l.slice(l.length/2, l.length);\n  let l12 = l.slice(0, l.length/2);\n  let l13 = l.slice(l.length/2, l.length);\n  let l14 = l.slice(0, l.length/2);\n  let l15 = l.slice(l.length/2, l.length);\n  let l16 = l.slice(0, l.length/2);\n  let l17 = l.slice(l.length/2, l.length);\n  let l18 = l.slice(0, l.length/2);\n  let l19 = l.slice(l.length/2, l.length);\n  let l20 = l.slice(0, l.length/2);\n  let l21 = l.slice(l.length/2, l.length);\n  let l22 = l.slice(0, l.length/2);\n  let l23 = l.slice(l.length/2, l.length);\n  let l24 = l.slice(0, l.length/2);\n  let l25 = l.slice(l.length/2, l.length);\n  let l26 = l.slice(0, l.length/2);\n  let l27 = l.slice(l.length/2, l.length);\n  let l28 = l.slice(0, l.length/2);\n  let l29 = l.slice(l.length/2, l.length);\n  let l30 = l.slice(0, l.length/2);\n  let l31 = l.slice(l.length/2, l.length);\n  let l32 = l.slice(0, l.length/2);\n  let l33 = l.slice",
+    "  let even = [];\n  let odd = [];\n  for(let i = 0; i < l.length; i++){\n    if(i % 2 == 0){\n      even.push(l[i]);\n    } else {\n      odd.push(l[i]);\n    }\n  }\n  return even.concat(odd.sort((a,b) => a - b));\n}\n",
+    "    let result = [];\n    let even = 0;\n    for(let i = 0; i < l.length; i++){\n        if(i % 2 === 0){\n            result.push(l[i]);\n        } else {\n            result.push(l[i]);\n        }\n    }\n    result.sort((a, b) => a - b);\n    for(let j = 0; j < l.length; j++){\n        if(j % 2 === 0){\n            l[j] = result[j];\n        } else {\n            l[j] = result[j];\n        }\n    }\n    return l;\n}",
+    "    var l1=[];\n    var l2=[];\n    for(var i=0;i<l.length;i++){\n        if(i%2==0){\n            l1.push(l[i]);\n        }else{\n            l2.push(l[i]);\n        }\n    }\n    return l1.sort().concat(l2.sort());\n}\n",
+    "  var even = []\n  var odd = []\n  var sorted = []\n  for (var i = 0; i < l.length; i++) {\n    if (i % 2 === 0) {\n      even.push(l[i])\n    } else {\n      odd.push(l[i])\n    }\n  }\n  even.sort(function(a, b){return a - b})\n  for (var i = 0; i < l.length; i++) {\n    if (i % 2 === 0) {\n      sorted.push(even[i])\n    } else {\n      sorted.push(odd[i])\n    }\n  }\n  return sorted\n}\n"
+  ]
+}

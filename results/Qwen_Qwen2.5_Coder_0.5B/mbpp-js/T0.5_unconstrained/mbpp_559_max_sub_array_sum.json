@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_559_max_sub_array_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the sum of the largest contiguous sublist in the given array.\nfunction max_sub_array_sum(a, size){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_559_max_sub_array_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum;\n  assert.deepEqual(candidate([-2, -3, 4, -1, -2, 1, 5, -3], 8),7);\n  assert.deepEqual(candidate([-3, -4, 5, -2, -3, 2, 6, -4], 8),8);\n  assert.deepEqual(candidate([-4, -5, 6, -3, -4, 3, 7, -5], 8),10);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = -Infinity;\n    let temp = 0;\n    for(let i=0; i<size; i++){\n        temp+=a[i];\n        if(temp>max){\n            max=temp;\n        }\n        if(temp<0){\n            temp=0;\n        }\n    }\n    if(max>0){\n        return max;\n    }else{\n        return 0;\n    }\n}",
+    "  var max_so_far = 0;\n  var max_ending_here = 0;\n  var start = 0;\n  var curr = 0;\n  for (var i = 0; i < size; i++) {\n    curr = curr + a[i];\n    if (max_ending_here < curr) {\n      max_ending_here = curr;\n      start = i + 1;\n    }\n    if (max_so_far < max_ending_here) {\n      max_so_far = max_ending_here;\n    }\n  }\n  return max_so_far;\n}\n\nvar a = [1, -2, 3, 10, -4, 7, 2, -5];\nvar size = a.length;",
+    "    let max = -Infinity\n    for(let i = 0; i < size; i++){\n        let current = 0\n        for(let j = i; j < size; j++){\n            current += a[j]\n            max = Math.max(max, current)\n        }\n    }\n    return max\n}\n",
+    "    var max_so_far = 0;\n    var max_ending_here = 0;\n\n    for (var i = 0; i < size; i++) {\n        max_ending_here = max_ending_here + a[i];\n        if (max_ending_here < 0) {\n            max_ending_here = 0;\n        }\n        if (max_so_far < max_ending_here) {\n            max_so_far = max_ending_here;\n        }\n    }\n    return max_so_far;\n}\nvar arr = [-2, -3, 4, -1, -2, 1, 5, -3];",
+    "    if(size <= 0){\n        return null;\n    }\n    var max = a[0];\n    var temp = a[0];\n    for(var i = 1; i < a.length; i++){\n        temp = Math.max(temp + a[i], a[i]);\n        max = Math.max(temp, max);\n    }\n    return max;\n}\nvar a = [2,3,4,5,6];\nvar size = 6;"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_93_encode",
+  "language": "js",
+  "prompt": "//Write a function that takes a message, and encodes in such a \n// way that it swaps case of all letters, replaces all vowels in \n// the message with the letter that appears 2 places ahead of that \n// vowel in the english alphabet. \n// Assume only letters. \n// Examples:\n// >>> encode(\"test\")\n// \"TGST\"\n// >>> encode(\"This is a message\")\n// \"tHKS KS C MGSSCGG\"\nfunction encode(message){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_93_encode.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encode;\n  assert.deepEqual(candidate(\"TEST\"),\"tgst\");\n  assert.deepEqual(candidate(\"Mudasir\"),\"mWDCSKR\");\n  assert.deepEqual(candidate(\"YES\"),\"ygs\");\n  assert.deepEqual(candidate(\"This is a message\"),\"tHKS KS C MGSSCGG\");\n  assert.deepEqual(candidate(\"I DoNt KnOw WhAt tO WrItE\"),\"k dQnT kNqW wHcT Tq wRkTg\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newMessage = \"\";\n    for(let i = 0; i < message.length; i++){\n        if(message[i] === \" \"){\n            newMessage += message[i];\n        } else {\n            if(message[i] === message[i].toUpperCase()){\n                newMessage += message[i].toLowerCase();\n            } else if(message[i] === message[i].toLowerCase()){\n                newMessage += message[i].toUpperCase();\n            } else {\n                newMessage += message[i].toLowerCase();\n                newMessage += message[i].toLowerCase();\n            }\n        }\n    }\n    return newMessage;\n}\n",
+    "    let letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];\n    let messageArr = message.split('');\n    let encodedMessageArr = [];\n    let vowel = ['a','e','i','o','u'];\n    for(let i = 0; i < messageArr.length; i++){\n        if(letters.indexOf(messageArr[i]) < 0) {\n            encodedMessageArr.push(messageArr[i]);\n        }\n        else {\n            if(vowel.indexOf(messageArr[i]) < 0){\n                encodedMessageArr.push(messageArr[i]);\n            }\n            else {\n                encodedMessageArr.push(letters[letters.indexOf(messageArr[i])+2]);\n            }\n        }\n    }\n    return encodedMessageArr.join('');\n}\n",
+    "    var encodedMessage = \"\";\n    for(var i = 0; i < message.length; i++){\n        if(message[i] === message[i].toLowerCase()){\n            encodedMessage = encodedMessage + message[i].toUpperCase();\n        }else if(message[i] === message[i].toUpperCase()){\n            encodedMessage = encodedMessage + message[i].toLowerCase();\n        }else if(message[i] === \"a\"){\n            encodedMessage = encodedMessage + \"z\";\n        }else if(message[i] === \"e\"){\n            encodedMessage = encodedMessage + \"y\";\n        }else if(message[i] === \"i\"){\n            encodedMessage = encodedMessage + \"u\";\n        }else if(message[i] === \"o\"){\n            encodedMessage = encodedMessage + \"p\";\n        }else if(message[i] === \"u\"){\n            encodedMessage = encodedMessage + \"a\";\n        }else{\n            encodedMessage = encodedMessage + message[i];\n        }\n    }\n    return encodedMessage;\n}\n",
+    "    let output = \"\";\n    for(let i = 0; i < message.length; i++){\n        let char = message[i];\n        if(char === char.toUpperCase() && char === char.toLowerCase()){\n            output += char;\n        } else if(char === \"a\" || char === \"e\" || char === \"i\" || char === \"o\" || char === \"u\"){\n            output += \"2\" + char;\n        } else {\n            output += char;\n        }\n    }\n    return output;\n}\n",
+    "    let result = \"\"\n    let arr = message.split(\"\")\n    for(let i = 0; i < arr.length; i++){\n        if(isVowel(arr[i])){\n            result += arr[i].toUpperCase()\n        } else {\n            result += arr[i].toLowerCase()\n        }\n    }\n    return result\n}\n"
+  ]
+}

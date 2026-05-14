@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_222_check_type",
+  "language": "js",
+  "prompt": "//Write a function to check if all the elements in array have same data type or not.\nfunction check_type(test_tuple){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_222_check_type.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_type;\n  assert.deepEqual(candidate([5, 6, 7, 3, 5, 6]),true);\n  assert.deepEqual(candidate([1, 2, \"4\"]),false);\n  assert.deepEqual(candidate([3, 2, 1, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (var i = 0; i < test_tuple.length; i++) {\n        var type = typeof(test_tuple[i]);\n        if (type != 'object') {\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let temp = 0;\n    for (let i = 0; i < test_tuple.length; i++) {\n        if (typeof test_tuple[i] != 'number') {\n            temp = 1;\n        }\n    }\n    return temp;\n}\nlet test_array = [1, 2, 3, 4];",
+    "  var type = typeof(test_tuple[0]);\n  for (var i=1; i<test_tuple.length; i++) {\n    if (typeof(test_tuple[i]) != type) {\n      return false;\n    }\n  }\n  return true;\n}\n",
+    "    var type = typeof(test_tuple[0]);\n    for (var i = 1; i < test_tuple.length; i++){\n        if (typeof(test_tuple[i]) !== type){\n            return false;\n        }\n    }\n    return true;\n}\nvar test_tuple = [1, 1, 1, 1];",
+    "    let result = true;\n    for(let i in test_tuple){\n        if(typeof test_tuple[i] !== typeof test_tuple[0]){\n            result = false;\n        }\n    }\n    return result;\n}\nlet test_tuple = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_156_int_to_mini_roman",
+  "language": "js",
+  "prompt": "//Given a positive integer, obtain its roman numeral equivalent as a string,\n// and return it in lowercase.\n// Restrictions: 1 <= num <= 1000\n// Examples:\n// >>> int_to_mini_roman(19)\n// \"xix\"\n// >>> int_to_mini_roman(152)\n// \"clii\"\n// >>> int_to_mini_roman(426)\n// \"cdxxvi\"\nfunction int_to_mini_roman(number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_156_int_to_mini_roman.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = int_to_mini_roman;\n  assert.deepEqual(candidate(19),\"xix\");\n  assert.deepEqual(candidate(152),\"clii\");\n  assert.deepEqual(candidate(251),\"ccli\");\n  assert.deepEqual(candidate(426),\"cdxxvi\");\n  assert.deepEqual(candidate(500),\"d\");\n  assert.deepEqual(candidate(1),\"i\");\n  assert.deepEqual(candidate(4),\"iv\");\n  assert.deepEqual(candidate(43),\"xliii\");\n  assert.deepEqual(candidate(90),\"xc\");\n  assert.deepEqual(candidate(94),\"xciv\");\n  assert.deepEqual(candidate(532),\"dxxxii\");\n  assert.deepEqual(candidate(900),\"cm\");\n  assert.deepEqual(candidate(994),\"cmxciv\");\n  assert.deepEqual(candidate(1000),\"m\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var roman = \"\";\n    var roman_numerals = [\n        {value: 1000, symbol: \"m\"},\n        {value: 900, symbol: \"cm\"},\n        {value: 500, symbol: \"d\"},\n        {value: 400, symbol: \"cd\"},\n        {value: 100, symbol: \"c\"},\n        {value: 90, symbol: \"xc\"},\n        {value: 50, symbol: \"l\"},\n        {value: 40, symbol: \"xl\"},\n        {value: 10, symbol: \"x\"},\n        {value: 9, symbol: \"ix\"},\n        {value: 5, symbol: \"v\"},\n        {value: 4, symbol: \"iv\"},\n        {value: 1, symbol: \"i\"}\n"
+  ]
+}

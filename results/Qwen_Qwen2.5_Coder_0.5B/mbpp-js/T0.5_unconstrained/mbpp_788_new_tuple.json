@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  // your code here\n  return test_list.map(function(item, index){\n    return test_str[index]\n  })\n}\n",
+    "    let new_list = []\n    for(let i = 0; i < test_str.length; i++){\n        new_list.push(test_list[i] + test_str[i])\n    }\n    return new_list\n}\nlet test_str = \"Hello\"\nlet test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+    "    var result = [];\n    for (var i = 0; i < test_str.length; i++) {\n        result.push(test_list[i].split(test_str[i]));\n    }\n    return result;\n}\nvar test_list = [\"a\", \"b\", \"c\", \"d\", \"e\"];\nvar test_str = \"ab\";",
+    "    var result = [];\n    for (var i=0; i < test_list.length; i++) {\n        result.push(test_list[i] + test_str);\n    }\n    return result;\n}",
+    "    const test_array = test_str.split(\" \");\n    const test_new_array = test_array.map(function(item){\n        return item + \" \" + test_list;\n    });\n    return test_new_array;\n}"
+  ]
+}

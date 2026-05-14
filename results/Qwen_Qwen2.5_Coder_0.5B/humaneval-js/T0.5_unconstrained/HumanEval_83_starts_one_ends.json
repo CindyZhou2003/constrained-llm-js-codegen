@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_83_starts_one_ends",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the count of the numbers of n-digit\n// positive integers that start or end with 1.\nfunction starts_one_ends(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_83_starts_one_ends.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = starts_one_ends;\n  assert.deepEqual(candidate(1),1);\n  assert.deepEqual(candidate(2),18);\n  assert.deepEqual(candidate(3),180);\n  assert.deepEqual(candidate(4),1800);\n  assert.deepEqual(candidate(5),18000);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < n; i++){\n        if(n == 1){\n            count++;\n        }else if(n == 2){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }\n        }else if(n == 3){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }else if(i == 3){\n                count++;\n            }\n        }else if(n == 4){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }else if(i == 3){\n                count++;\n            }else if(i == 4){\n                count++;\n            }\n        }else if(n == 5){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }else if(i == 3){\n                count++;\n            }else if(i == 4){\n                count++;\n            }else if(i == 5){\n                count++;\n            }\n        }else if(n == 6){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }else if(i == 3){\n                count++;\n            }else if(i == 4){\n                count++;\n            }else if(i == 5){\n                count++;\n            }else if(i == 6){\n                count++;\n            }\n        }else if(n == 7){\n            if(i == 0){\n                count++;\n            }else if(i == 1){\n                count++;\n            }else if(i == 2){\n                count++;\n            }else if(i == 3){\n                count++;\n            }else if(i == 4){\n                count++;\n            }else if(i == 5){\n                count++;\n            }else if(i == 6){\n                count++;\n            }else if(i == 7){\n                count++;\n            }\n        }else if(n == 8){\n            if(i == 0){\n                count++;\n            }else if",
+    "    let count = 0;\n    for(let i = 1; i < 10; i++)\n        count += countNumbers(i) * countNumbers(n-1-i);\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 1; i < 10**n; i++){\n        if(i.toString().length === n){\n            count++\n        }else if(i.toString().length === n+1){\n            count++\n        }\n    }\n    return count;\n}\n",
+    "    let num = 0;\n    for(let i = 1; i <= 10; i++){\n        num += i;\n    }\n    return num;\n}\n",
+    "    let count = 0;\n    for(let i=0; i<=n; i++){\n        if(i%10==1 || i==n) count++;\n    }\n    return count;\n}"
+  ]
+}

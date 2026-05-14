@@ -1,1 +1,18 @@
-{"name": "mbpp_61_count_Substrings", "language": "js", "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var count = 0;\n    for(var i = 0; i < s.length"]}
+{
+  "name": "mbpp_61_count_Substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    for(var i = 0; i < s.length; i++){\n        var sum = 0;\n        for(var j = i; j < s.length; j++){\n            sum += parseInt(s[j]);\n            if(sum == j - i + 1){\n                count++;\n            }\n        }\n    }\n    return count;\n}\n"
+  ]
+}

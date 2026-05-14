@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = -Infinity;\n    for(let i=0; i<arr.length; i++){\n        for(let j=i; j<arr.length; j++){\n            let sum = 0;\n            for(let k=i; k<=j; k++){\n                sum += arr[k];\n            }\n            if(sum > max){\n                max = sum;\n            }\n        }\n    }\n    return max;\n}",
+    "    let max = -Infinity;\n    let arrCopy = [...arr];\n    let idx = -1;\n    let temp = 0;\n    for(let i=0;i<arr.length;i++){\n        if(arrCopy[i] < arrCopy[i+1]){\n            temp = temp + arrCopy[i];\n            arrCopy[i] = -Infinity;\n            arrCopy[i+1] = -Infinity;\n        }else{\n            temp += arrCopy[i];\n        }\n        if(temp > max){\n            max = temp;\n            idx = i;\n        }\n    }\n    return max;\n}",
+    "    if(arr.length < 3) return arr.length;\n    let max = 0;\n    for(let i = 0; i < arr.length - 1; i++){\n        let sum = arr[i];\n        for(let j = i + 1; j < arr.length; j++){\n            if(arr[j] > arr[i]){\n                sum += arr[j];\n            } else {\n                break;\n            }\n        }\n        if(sum > max){\n            max = sum;\n        }\n    }\n    return max;\n}\n\nlet arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];",
+    "    let max = 0;\n    let curr = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] > arr[i+1]){\n            curr = arr[i] + max_sum(arr.slice(i+1))\n            max = Math.max(max, curr)\n        }else if(arr[i] < arr[i+1]){\n            curr = arr[i] + max_sum(arr.slice(0, i))\n            max = Math.max(max, curr)\n        }\n    }\n    return max\n}",
+    "    let max = 0;\n    let max_length = 0;\n    for (let i = 0; i < arr.length; i++){\n        let current = arr[i];\n        let left = i - 1;\n        let right = i + 1;\n        let left_max = 0;\n        let right_max = 0;\n        while (left >= 0 && current > arr[left]){\n            left_max = max(left_max, arr[left]);\n            left--;\n        }\n        while (right < arr.length && current > arr[right]){\n            right_max = max(right_max, arr[right]);\n            right++;\n        }\n        max = Math.max(max, left_max + current + right_max);\n        max_length = Math.max(max_length, left_max + right_max + 1);\n    }\n    return max;\n}"
+  ]
+}

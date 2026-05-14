@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_1_separate_paren_groups",
+  "language": "js",
+  "prompt": "//Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n// separate those group into separate strings and return the array of those.\n// Separate groups are balanced (each open brace is properly closed) and not nested within each other\n// Ignore any spaces in the input string.\n// >>> separate_paren_groups(\"( ) (( )) (( )( ))\")\n// [\"()\", \"(())\", \"(()())\"]\nfunction separate_paren_groups(paren_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_1_separate_paren_groups.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = separate_paren_groups;\n  assert.deepEqual(candidate(\"(()()) ((())) () ((())()())\"),[\"(()())\", \"((()))\", \"()\", \"((())()())\"]);\n  assert.deepEqual(candidate(\"() (()) ((())) (((())))\"),[\"()\", \"(())\", \"((()))\", \"(((())))\"]);\n  assert.deepEqual(candidate(\"(()(())((())))\"),[\"(()(())((())))\"]);\n  assert.deepEqual(candidate(\"( ) (( )) (( )( ))\"),[\"()\", \"(())\", \"(()())\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let current_group = \"\";\n    let open_count = 0;\n\n    for(let char of paren_string.replace( /\\s/g, '' )) {\n        if(char === '(') {\n            open_count++;\n            current_group += char;\n        } else if(char === ')') {\n            open_count--;\n            current_group += char;\n            if(open_count === 0) {\n                result.push(current_group);\n                current_group = \"\";\n            }\n        }\n    }\n\n    return result;\n}\n\n"
+  ]
+}

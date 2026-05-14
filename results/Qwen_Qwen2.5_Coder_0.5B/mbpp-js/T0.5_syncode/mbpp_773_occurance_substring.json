@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_773_occurance_substring",
+  "language": "js",
+  "prompt": "//Write a function to find the occurrence and position of the substrings within a string. Return undefined if there is no match.\nfunction occurance_substring(text, pattern){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_773_occurance_substring.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = occurance_substring;\n  assert.deepEqual(candidate(\"python programming, python language\", \"python\"),[\"python\", 0, 6]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"programming\"),[\"programming\", 7, 18]);\n  assert.deepEqual(candidate(\"python programming,programming language\", \"language\"),[\"language\", 31, 39]);\n  assert.deepEqual(candidate(\"c++ programming, c++ language\", \"python\"),undefined);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    let position = 0;\n    let arr = [];\n    for(let i=0; i<text.length; i++){\n        if(text[i] === pattern[0]){\n            count = 0;\n            for(let j=1; j<pattern.length; j++){\n                if(text[i+j] !== pattern[j]){\n                    count++;\n                }\n            }\n            if(count === pattern.length){\n                arr.push(i);\n            }\n        }\n    }\n    return arr;\n}",
+    "    let arr = [];\n    let patternArr = pattern.split('');\n    let textArr = text.split('');\n    let i = 0;\n    while(i < textArr.length){\n        let flag = 0;\n        let j = 0;\n        while(j < patternArr.length){\n            if(textArr[i] === patternArr[j]){\n                i++;\n                j++;\n            }else{\n                break;\n            }\n        }\n        if(j === patternArr.length){\n            arr.push(i - j);\n            i = i - j;\n        }\n    }\n    if(arr.length === 0){\n        return undefined;\n    }else{\n        return arr;\n    }\n}\n",
+    "    let count = 0;\n    let position = 0;\n\n    while (true){\n        let index = text.indexOf(pattern, position);\n        if (index === -1){\n            break;\n        }\n        count++;\n        position = index + 1;\n    }\n    return count;\n}",
+    "    let arr = text.split(pattern);\n    let arr2 = arr.map((x) => x.length);\n    let arr3 = arr2.filter((x) => x > 0);\n    return arr3[0];\n}\n",
+    "    let pattern_count = 0;\n    let pattern_pos = 0;\n    while(pattern_pos < text.length){\n        let pos = text.indexOf(pattern, pattern_pos);\n        if(pos == -1){\n            return undefined;\n        }\n        pattern_count++;\n        pattern_pos = pos + 1;\n    }\n    return {count:pattern_count, pos:pattern_pos};\n}"
+  ]
+}

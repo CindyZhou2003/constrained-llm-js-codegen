@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var n1 = n.toString().split('');\n    var n2 = n1.sort((a, b) => b-a);\n    var n3 = n2.join('');\n    return n3;\n}\n",
+    "  let arr = String(n).split('');\n  let result = '';\n  for(let i = arr.length - 1; i >= 0; i--){\n    if(arr[i] > arr[i - 1]){\n      result = arr[i] + result;\n      arr.splice(i, 1);\n      break;\n    } else if (arr[i] < arr[i - 1] && i === 0) {\n      result = arr[i] + result;\n      arr.splice(i, 1);\n      break;\n    }\n  }\n\n  if(result.length === 0){\n    arr.sort((a, b) => b - a);\n    result = arr.join('');\n  }\n\n  return result;\n}\n",
+    "    let digits = n.toString().split('').sort().join('');\n    let arr = digits.split('');\n    for(let i = arr.length-1; i > 0; i--){\n        if(arr[i] > arr[i-1]){\n            let temp = arr[i];\n            arr[i] = arr[i-1];\n            arr[i-1] = temp;\n            break;\n        }\n    }\n    return arr.join('');\n}\n",
+    "    let s = n.toString();\n    let arr = [...s];\n    let arr2 = [...s];\n    let arr3 = [...s];\n    let arr4 = [...s];\n    let arr5 = [...s];\n    let arr6 = [...s];\n    let arr7 = [...s];\n    let arr8 = [...s];\n    let arr9 = [...s];\n    let arr10 = [...s];\n    let arr11 = [...s];\n    let arr12 = [...s];\n    let arr13 = [...s];\n    let arr14 = [...s];\n    let arr15 = [...s];\n    let arr16 = [...s];\n    let arr17 = [...s];\n    let arr18 = [...s];\n    let arr19 = [...s];\n    let arr20 = [...s];\n    let arr21 = [...s];\n    let arr22 = [...s];\n    let arr23 = [...s];\n    let arr24 = [...s];\n    let arr25 = [...s];\n    let arr26 = [...s];\n    let arr27 = [...s];\n    let arr28 = [...s];\n    let arr29 = [...s];\n    let arr30 = [...s];\n    let arr31 = [...s];\n    let arr32 = [...s];\n    let arr33 = [...s];\n    let arr34 = [...s];\n    let arr35 = [...s];\n    let arr36 = [...s];\n    let arr37 = [...s];\n    let arr38 = [...s];\n    let arr39 = [...s];\n    let arr40 = [...s];\n    let arr41 = [...s];\n    let arr42 = [...s];\n    let arr43 = [...s];\n    let arr44 = [...s];\n    let arr45 = [...s];\n    let arr46 = [...s];\n    let arr47 = [...s];\n    let arr48 = [...s];\n    let arr49 = [...s];\n    let arr50 = [...s];\n    let arr51 = [...s];\n    let arr52 = [...s];\n    let arr53 = [...s];\n    let arr54 = [...s];\n    let arr55 = [...s];\n    let arr56 = [...s];\n    let arr57 = [...",
+    "    let arr = n.toString().split(\"\").sort((a,b) => a-b);\n    let res = \"\";\n    let i = 0;\n    while(i < arr.length){\n        if(isNaN(arr[i])){\n            res += arr[i];\n            i++;\n        }else{\n            res += arr[i];\n            i = i+2;\n        }\n    }\n    return res;\n}"
+  ]
+}

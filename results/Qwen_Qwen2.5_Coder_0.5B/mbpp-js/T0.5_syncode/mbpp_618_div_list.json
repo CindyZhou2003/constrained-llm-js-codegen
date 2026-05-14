@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_618_div_list",
+  "language": "js",
+  "prompt": "//Write a function to divide two lists element wise.\nfunction div_list(nums1, nums2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_618_div_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = div_list;\n  assert.deepEqual(candidate([4, 5, 6], [1, 2, 3]),[4.0, 2.5, 2.0]);\n  assert.deepEqual(candidate([3, 2], [1, 4]),[3.0, 0.5]);\n  assert.deepEqual(candidate([90, 120], [50, 70]),[1.8, 1.7142857142857142]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr1 = nums1.split('');\n    var arr2 = nums2.split('');\n    var result = [];\n    if(arr1.length < arr2.length){\n        while(arr1.length < arr2.length){\n            arr2.push(0);\n        }\n    }else if(arr1.length > arr2.length){\n        while(arr2.length < arr1.length){\n            arr1.push(0);\n        }\n    }\n    for(let i = 0; i < arr1.length; i++){\n        result.push(parseInt(arr1[i]) / parseInt(arr2[i]));\n    }\n    return result;\n}\n",
+    "    let nums1length = nums1.length;\n    let nums2length = nums2.length;\n    let remainder = 0;\n    let quotient = [];\n    let quotientArray = [];\n    let quotientLength = 0;\n    let remainderLength = 0;\n    if(nums1length > nums2length){\n        remainderLength = nums1length - nums2length;\n        for(let i = 0; i < remainderLength; i++){\n            quotient.push(0);\n        }\n        for(let i = 0; i < nums2length; i++){\n            remainder = nums2[i] % 10;\n            quotient[remainderLength + i] = remainder;\n        }\n    }\n    else{\n        remainderLength = nums2length - nums1length;\n        for(let i = 0; i < remainderLength; i++){\n            quotient.push(0);\n        }\n        for(let i = 0; i < nums1length; i++){\n            remainder = nums1[i] % 10;\n            quotient[remainderLength + i] = remainder;\n        }\n    }\n    quotientArray = quotient.reverse();\n    for(let i = 0; i < nums1length; i++){\n        quotientArray[i] = quotientArray[i] / nums2length;\n    }\n    return quotientArray;\n}\n",
+    "    const result = [];\n    let remainder = 0;\n    let index = 0;\n    while(nums1.length || nums2.length){\n        let num1 = nums1[index];\n        let num2 = nums2[index];\n        let temp = 0;\n        if(nums1.length > index){\n            temp += num1;\n        }\n        if(nums2.length > index){\n            temp += num2;\n        }\n        if(temp === 0){\n            result.push(0);\n            index++;\n        } else {\n            result.push(temp/nums2[index] + remainder);\n            remainder = temp%nums2[index];\n            index++;\n        }\n    }\n    if(remainder > 0){\n        result.push(remainder);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    if(nums1.length > nums2.length){\n        let temp = nums1;\n        nums1 = nums2;\n        nums2 = temp;\n    }\n    for(let i = 0; i < nums1.length; i++){\n        result.push(nums1[i] / nums2[i]);\n    }\n    return result;\n}",
+    "    if(nums1.length < nums2.length){\n        nums1 = nums1.concat(nums2.slice(nums2.length));\n    } else if(nums1.length > nums2.length){\n        nums2 = nums2.concat(nums1.slice(nums1.length));\n    }\n    let result = [];\n    let i = 0;\n    while(i < nums1.length){\n        let num1 = nums1[i];\n        let num2 = nums2[i];\n        result.push(num1/num2);\n        i++;\n    }\n    return result;\n}\n"
+  ]
+}

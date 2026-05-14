@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_98_count_upper",
+  "language": "js",
+  "prompt": "//Given a string s, count the number of uppercase vowels in even indices.\n// For example:\n// >>> count_upper(\"aBCdEf\")\n// 1\n// >>> count_upper(\"abcdefg\")\n// 0\n// >>> count_upper(\"dBBE\")\n// 0\nfunction count_upper(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_98_count_upper.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_upper;\n  assert.deepEqual(candidate(\"aBCdEf\"),1);\n  assert.deepEqual(candidate(\"abcdefg\"),0);\n  assert.deepEqual(candidate(\"dBBE\"),0);\n  assert.deepEqual(candidate(\"B\"),0);\n  assert.deepEqual(candidate(\"U\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n  assert.deepEqual(candidate(\"EEEE\"),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let count = 0;\n  for (let i = 0; i < s.length; i++) {\n    if (s[i] === \"A\" || s[i] === \"E\" || s[i] === \"I\" || s[i] === \"O\" || s[i] === \"U\") {\n      count++;\n    }\n  }\n  return count;\n}\n",
+    "    let count = 0;\n    for (let i = 0; i < s.length; i++) {\n        if (s[i] === 'A' || s[i] === 'E' || s[i] === 'I' || s[i] === 'O' || s[i] === 'U') {\n            count++;\n        }\n    }\n    return count;\n}",
+    "  let count = 0;\n  for (let i = 0; i < s.length; i++){\n    if(s[i] === 'A' || s[i] === 'E' || s[i] === 'I' || s[i] === 'O' || s[i] === 'U'){\n      count++;\n    }\n  }\n  return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === \"A\" || s[i] === \"E\" || s[i] === \"I\" || s[i] === \"O\" || s[i] === \"U\"){\n            if(i % 2 === 0){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "  let count=0;\n  for(let i=0;i<s.length;i++){\n    if(s[i]===s[i+1]&&s[i+1]===s[i+2]&&s[i+1]===s[i+3]&&s[i+1]===s[i+4]&&s[i+1]===s[i+5]&&s[i+1]===s[i+6]&&s[i+1]===s[i+7]&&s[i+1]===s[i+8]&&s[i+1]===s[i+9]&&s[i+1]===s[i+10]&&s[i+1]===s[i+11]&&s[i+1]===s[i+12]&&s[i+1]===s[i+13]&&s[i+1]===s[i+14]&&s[i+1]===s[i+15]&&s[i+1]===s[i+16]&&s[i+1]===s[i+17]&&s[i+1]===s[i+18]&&s[i+1]===s[i+19]&&s[i+1]===s[i+20]&&s[i+1]===s[i+21]&&s[i+1]===s[i+22]&&s[i+1]===s[i+23]&&s[i+1]===s[i+24]&&s[i+1]===s[i+25]&&s[i+1]===s[i+26]&&s[i+1]===s[i+27]&&s[i+1]===s[i+28]&&s[i+1]===s[i+29]&&s[i+1]===s[i+30]&&s[i+1]===s[i+31]&&s[i+1]===s[i+32]&&s[i+1]===s[i+33]&&s[i+1]===s[i+34]&&s[i+1]===s[i+35]&&s[i+1]===s[i+36]&&s[i+1]===s[i+37]&&s[i+1]===s[i+38]&&s[i+1]===s[i+3"
+  ]
+}

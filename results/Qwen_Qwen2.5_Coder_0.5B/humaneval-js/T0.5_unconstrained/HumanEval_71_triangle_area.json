@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_71_triangle_area",
+  "language": "js",
+  "prompt": "//Given the lengths of the three sides of a triangle. Return the area of\n// the triangle rounded to 2 decimal points if the three sides form a valid triangle. \n// Otherwise return -1\n// Three sides make a valid triangle when the sum of any two sides is greater \n// than the third side.\n// Example:\n// >>> triangle_area(3, 4, 5)\n// 6.0\n// >>> triangle_area(1, 2, 10)\n// -1\nfunction triangle_area(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_71_triangle_area.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triangle_area;\n  assert.deepEqual(candidate(3, 4, 5),6.0);\n  assert.deepEqual(candidate(1, 2, 10),-1);\n  assert.deepEqual(candidate(4, 8, 5),8.18);\n  assert.deepEqual(candidate(2, 2, 2),1.73);\n  assert.deepEqual(candidate(1, 2, 3),-1);\n  assert.deepEqual(candidate(10, 5, 7),16.25);\n  assert.deepEqual(candidate(2, 6, 3),-1);\n  assert.deepEqual(candidate(1, 1, 1),0.43);\n  assert.deepEqual(candidate(2, 2, 10),-1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if ((a + b > c) && (a + c > b) && (c + b > a)){\n        let s = (a + b + c) / 2;\n        return Math.sqrt(s * (s - a) * (s - b) * (s - c));\n    } else {\n        return -1;\n    }\n}",
+    "    if (a + b < c || a + c < b || b + c < a) {\n        return -1\n    } else {\n        let s = (a + b + c) / 2\n        return Math.sqrt(s * (s - a) * (s - b) * (s - c))\n    }\n}",
+    "    let arr = [a, b, c]\n    let sorted = arr.sort((a, b) => a - b)\n    let sides = [sorted[0], sorted[1], sorted[2]]\n    let sidesArr = [sides[0], sides[1], sides[2]]\n    let sidesSum = sidesArr[0] + sidesArr[1]\n    let sidesSumArr = [sidesSum, sidesArr[2], sidesArr[0]]\n    let sidesSumArrSort = sidesSumArr.sort((a, b) => a - b)\n    let med = sidesSumArrSort[1]\n    let sidesMed = [sidesSumArrSort[0], sidesSumArrSort[2]]\n    let sidesMedArr = [sidesMed[0], sidesMed[1], sidesMed[2]]\n    let sidesMedArrSort = sidesMedArr.sort((a, b) => a - b)\n    let medArr = sidesMedArrSort[0]\n    let sidesArrSum = sidesArr[0] + sidesArr[1]\n    let medArrSum = medArr + med\n    let sidesMedArrSum = sidesMedArr[0] + sidesMedArr[1]\n    let sidesMedArrSumArr = sidesMedArrSum + sidesMedArr[2]\n    let sidesMedArrSumArrSort = sidesMedArrSumArr.sort((a, b) => a - b)\n    let medArrSumArr = sidesMedArrSumArrSort[0]\n    let medArrSumArrSort = medArrSumArrSort[0]\n    let sidesMedArrSumArrSort = sidesMedArrSumArrSort[0]\n    let sidesMedArrSumArrSort2 = sidesMedArrSumArrSort[1]\n    let sidesMedArrSumArrSort3 = sidesMedArrSumArrSort[2]\n    let sidesMedArrSumArrSort3Sort = sidesMedArrSumArrSort3.sort((a, b) => a - b)\n    let sidesMedArrSumArrSort3Sort2 = sidesMedArrSumArrSort3Sort[0]\n    let sidesMedArrSumArrSort3Sort2Sort = sidesMedArrSumArrSort3Sort2.sort((a, b) => a - b)\n    let sidesMedArrSumArrSort3Sort2Sort2 = sidesMedArrSumArrSort3Sort2Sort[0]\n    let sidesMedArrSumArrSort",
+    "    if (a + b <= c || b + c <= a || c + a <= b){\n        return -1\n    } else {\n        return (Math.sqrt((a + b - c) * (a + b + c) * (a + c - b) * (a + c + b)) / 2).toFixed(2)\n    }\n}\n",
+    "  if(a+b>c && a+c>b && b+c>a){\n    let p = (a+b+c)/2;\n    let s = Math.sqrt(p*(p-a)*(p-b)*(p-c));\n    return s.toFixed(2);\n  } else {\n    return -1;\n  }\n}"
+  ]
+}

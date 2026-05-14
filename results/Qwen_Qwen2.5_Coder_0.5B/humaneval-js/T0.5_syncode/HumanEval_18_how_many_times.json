@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_18_how_many_times",
+  "language": "js",
+  "prompt": "//Find how many times a given substring can be found in the original string. Count overlaping cases.\n// >>> how_many_times(\"\", \"a\")\n// 0\n// >>> how_many_times(\"aaa\", \"a\")\n// 3\n// >>> how_many_times(\"aaaa\", \"aa\")\n// 3\nfunction how_many_times(string, substring){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_18_how_many_times.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = how_many_times;\n  assert.deepEqual(candidate(\"\", \"x\"),0);\n  assert.deepEqual(candidate(\"xyxyxyx\", \"x\"),4);\n  assert.deepEqual(candidate(\"cacacacac\", \"cac\"),4);\n  assert.deepEqual(candidate(\"john doe\", \"john\"),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < string.length; i++){\n        if(string.substring(i, i + substring.length) == substring){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < string.length; i++){\n        if(string[i] === substring[0]){\n            let j = 0;\n            while(j < substring.length){\n                if(string[i+j] !== substring[j]){\n                    break;\n                }\n                j++;\n            }\n            if(j === substring.length){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    if (substring.length === 0) {\n        return 0;\n    }\n    let count = 0;\n    let start = 0;\n    while (start < string.length) {\n        let index = string.indexOf(substring, start);\n        if (index === -1) {\n            break;\n        }\n        count++;\n        start = index + 1;\n    }\n    return count;\n}",
+    "    if (string.length < substring.length) return 0;\n    let substringIndex = 0;\n    let stringIndex = 0;\n    let count = 0;\n    while (stringIndex < string.length){\n        if (string[stringIndex] === substring[substringIndex]){\n            substringIndex++;\n            stringIndex++;\n        } else {\n            substringIndex = 0;\n            stringIndex++;\n        }\n        if (substringIndex === substring.length) {\n            count++;\n            substringIndex = 0;\n        }\n    }\n    return count;\n}\n",
+    "  let count = 0;\n  let start = 0;\n  let index = 0;\n  while (index < string.length) {\n    if (string.slice(start, index + substring.length) === substring) {\n      count++;\n      start = index + substring.length;\n    }\n    index++;\n  }\n  return count;\n}\n"
+  ]
+}

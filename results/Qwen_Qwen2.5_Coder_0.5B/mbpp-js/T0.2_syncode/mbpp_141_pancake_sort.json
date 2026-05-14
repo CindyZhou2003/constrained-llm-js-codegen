@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_141_pancake_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction pancake_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_141_pancake_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pancake_sort;\n  assert.deepEqual(candidate([15, 79, 25, 38, 69]),[15, 25, 38, 69, 79]);\n  assert.deepEqual(candidate([98, 12, 54, 36, 85]),[12, 36, 54, 85, 98]);\n  assert.deepEqual(candidate([41, 42, 32, 12, 23]),[12, 23, 32, 41, 42]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sorted = nums.slice().sort((a,b)=>a-b);\n    for(let i=0;i<sorted.length;i++){\n        let index = nums.indexOf(sorted[i]);\n        if(index !== i){\n            let temp = nums[index];\n            nums[index] = nums[i];\n            nums[i] = temp;\n            let temp2 = sorted[index];\n            sorted[index] = sorted[i];\n            sorted[i] = temp2;\n        }\n    }\n    return nums;\n}\n",
+    "    let sorted = nums.slice().sort((a,b)=>a-b);\n    let i = 0;\n    while(i < sorted.length){\n        let j = nums.indexOf(sorted[i]);\n        if(j === 0){\n            pancake(nums, i+1);\n            i++;\n        }else{\n            pancake(nums, i);\n            pancake(nums, j);\n            i++;\n        }\n    }\n    return nums;\n}\n",
+    "    let sorted = nums.slice().sort((a,b) => a-b)\n    for(let i=0; i<sorted.length; i++){\n        let index = nums.indexOf(sorted[i])\n        if(index !== i){\n            for(let j=0; j<index; j++){\n                nums[j] = nums[index-j]\n            }\n            nums[index] = sorted[i]\n        }\n    }\n    return nums\n}\n"
+  ]
+}

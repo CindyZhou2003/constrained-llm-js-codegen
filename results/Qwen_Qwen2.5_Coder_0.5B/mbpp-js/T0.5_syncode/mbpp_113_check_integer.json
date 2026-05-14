@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_113_check_integer",
+  "language": "js",
+  "prompt": "//Write a function to check if a string represents an integer or not.\nfunction check_integer(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_113_check_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_integer;\n  assert.deepEqual(candidate(\"python\"),false);\n  assert.deepEqual(candidate(\"1\"),true);\n  assert.deepEqual(candidate(\"12345\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return text.match(/^-?\\d+$/) !== null;\n}",
+    "    if(text.length === 0) return false;\n    if(text[0] === \"-\" || text[0] === \"+\") return false;\n    for(let i = 0; i < text.length; i++){\n        if(text[i] === \"0\") return false;\n        if(text[i] < \"0\" || text[i] > \"9\") return false;\n    }\n    return true;\n}",
+    "  var regex = /^-?\\d+$/;\n  return regex.test(text);\n}",
+    "    var integer = /^\\d+$/;\n    return integer.test(text);\n}\n",
+    "    if(text.match(/^\\d+$/)){\n        return true;\n    } else {\n        return false;\n    }\n}"
+  ]
+}

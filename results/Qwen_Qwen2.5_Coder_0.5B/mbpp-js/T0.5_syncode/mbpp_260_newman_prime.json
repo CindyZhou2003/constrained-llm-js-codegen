@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_260_newman_prime",
+  "language": "js",
+  "prompt": "//Write a function to find the nth newman\u00e2\u20ac\u201cshanks\u00e2\u20ac\u201cwilliams prime number.\nfunction newman_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_260_newman_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = newman_prime;\n  assert.deepEqual(candidate(3),7);\n  assert.deepEqual(candidate(4),17);\n  assert.deepEqual(candidate(5),41);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i=2;\n    var p=0;\n    while(true){\n        if(n%i==0){\n            p++;\n            if(p==n){\n                return i;\n            }\n        }\n        i++;\n    }\n}",
+    "    let prime = 2;\n    let a = 0;\n    let b = 0;\n    let c = 0;\n    while (true){\n        if (prime % 2 !== 0){\n            a = prime;\n            b = prime + 2;\n            c = prime + 4;\n            while (true){\n                if (a % 2 !== 0 || b % 2 !== 0 || c % 2 !== 0){\n                    c = c + 2;\n                }\n                else{\n                    break;\n                }\n            }\n            if (c >= n){\n                return prime;\n            }\n            prime = prime + 2;\n        }\n        prime = prime + 2;\n    }\n}",
+    "    var i = 2;\n    var prime = 0;\n    var flag = 0;\n    while(prime != n){\n        if((i*i) <= n){\n            if(n%i == 0){\n                flag = 1;\n                break;\n            }\n        }\n        i++;\n    }\n    if(flag == 1){\n        return false;\n    }else{\n        return true;\n    }\n}\n",
+    "    let primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541,547,557,563,569,571,577,587,593,599,601,607,613,617,619,631,641,643,647,653,659,661,673,677,683,691,701,709,719,727,733,739,743,751,757,",
+    "  var primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];\n  var counter = 0;\n  for(var i=0;i<primes.length;i++){\n    var p = primes[i];\n    if(p>n){\n      break;\n    }\n    var j = 0;\n    while(j<primes.length){\n      var q = primes[j];\n      if(p%q==0){\n        break;\n      }\n      j++;\n    }\n    if(j==primes.length){\n      counter++;\n    }\n  }\n  return counter;\n}\n"
+  ]
+}

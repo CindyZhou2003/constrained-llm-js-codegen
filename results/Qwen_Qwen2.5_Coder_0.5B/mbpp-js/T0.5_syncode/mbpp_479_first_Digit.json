@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_479_first_Digit",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first digit of a given number.\nfunction first_Digit(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_479_first_Digit.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_Digit;\n  assert.deepEqual(candidate(123),1);\n  assert.deepEqual(candidate(456),4);\n  assert.deepEqual(candidate(12),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = n.toString().split('');\n    return arr[0];\n}",
+    "    const digits = n.toString().split(\"\");\n    const firstDigit = digits[0];\n    return firstDigit;\n}",
+    "    return Math.floor(n/10);\n}",
+    "    var num = n;\n    var digit = 0;\n    var arr = num.toString().split('');\n    for (var i = 0; i < arr.length; i++) {\n      if (arr[i] != '0') {\n        digit = arr[i];\n        break;\n      }\n    }\n    return digit;\n  }\n  \n  //Test the function\n  // var a = 123;\n  // console.log(first_Digit(a));",
+    "    return Math.floor(n/10);\n}"
+  ]
+}

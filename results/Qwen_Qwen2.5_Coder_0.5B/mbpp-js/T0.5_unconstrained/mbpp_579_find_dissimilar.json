@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_579_find_dissimilar",
+  "language": "js",
+  "prompt": "//Write a function to find the dissimilar elements in the given two tuples.\nfunction find_dissimilar(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_579_find_dissimilar.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_dissimilar;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [7, 2, 3, 9]),[1, 4, 7, 9]);\n  assert.deepEqual(candidate([21, 11, 25, 26], [26, 34, 21, 36]),[34, 36, 11, 25]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for (let i = 0; i < test_tup1.length; i++) {\n        if (test_tup1[i] != test_tup2[i]) {\n            result.push(test_tup1[i]);\n        }\n    }\n    return result;\n}\nlet test1 = [1, 2, 3, 4];\nlet test2 = [1, 2, 3, 5, 6, 7, 8, 9];",
+    "    var result = [];\n    for (var i = 0; i < test_tup1.length; i++) {\n        if(test_tup1[i] != test_tup2[i]){\n            result.push(test_tup1[i]);\n        }\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let test_tup1_length = test_tup1.length;\n    let test_tup2_length = test_tup2.length;\n    for (let i=0; i<test_tup1_length; i++){\n        for (let j=0; j<test_tup2_length; j++){\n            if (test_tup1[i] === test_tup2[j]){\n                break;\n            }\n            if (j === test_tup2_length - 1){\n                result.push(test_tup1[i]);\n            }\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for (let i = 0; i < test_tup1.length; i++) {\n        let element = test_tup1[i];\n        if (!(test_tup2.includes(element))){\n            result.push(element);\n        }\n    }\n    return result;\n}\n",
+    "    var same = [];\n    var diff = [];\n    for(var i=0;i<test_tup1.length;i++){\n        if(test_tup1[i] == test_tup2[i]){\n            same.push(test_tup1[i]);\n        }else{\n            diff.push(test_tup1[i]);\n        }\n    }\n    return diff;\n}"
+  ]
+}

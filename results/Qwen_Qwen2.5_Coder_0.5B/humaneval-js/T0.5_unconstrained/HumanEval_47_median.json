@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_47_median",
+  "language": "js",
+  "prompt": "//Return median of elements in the array l.\n// >>> median([3, 1, 2, 4, 5])\n// 3\n// >>> median([-10, 4, 6, 1000, 10, 20])\n// 15.0\nfunction median(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_47_median.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median;\n  assert.deepEqual(candidate([3, 1, 2, 4, 5]),3);\n  assert.deepEqual(candidate([-10, 4, 6, 1000, 10, 20]),8.0);\n  assert.deepEqual(candidate([5]),5);\n  assert.deepEqual(candidate([6, 5]),5.5);\n  assert.deepEqual(candidate([8, 1, 3, 9, 9, 2, 7]),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    l.sort((a,b) => a-b);\n    return l[Math.floor(l.length / 2)];\n}\n",
+    "    let sorted = l.sort((a,b) => a-b);\n    let mid = Math.floor(sorted.length/2);\n    if (sorted.length%2 === 0){\n        return (sorted[mid] + sorted[mid-1])/2;\n    } else {\n        return sorted[mid];\n    }\n}",
+    "    //your code here\n    var a = l.sort(function(a, b){\n        return a - b;\n    });\n    var m = a.length / 2;\n    if (a.length % 2 == 0) {\n        return (a[m] + a[m - 1]) / 2;\n    }\n    else {\n        return a[m];\n    }\n}",
+    "    let i = l.length/2;\n    let j = l.length/2 - 1;\n    if(l.length % 2 === 0){\n        i = i - 1;\n    }\n    return (l[i] + l[j]) / 2;\n}\n",
+    "  let sorted = l.sort((a,b) => a-b);\n  let middle = Math.floor(sorted.length/2);\n  if (sorted.length%2 !== 0) {\n    return sorted[middle];\n  } else {\n    return (sorted[middle] + sorted[middle-1])/2;\n  }\n}\n"
+  ]
+}

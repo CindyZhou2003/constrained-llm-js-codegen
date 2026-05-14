@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let num= N;\n    let arr = [];\n    for (let i = 0; i < arr.length; i++) {\n        if (arr[i] > num) {\n            arr.push(arr[i])\n        }\n    }\n    arr.pop()\n    return arr\n}",
+    "    if(N < 0){\n        return -1\n    }\n    let n = N\n    let ans = 0\n    while(n > 0){\n        ans = ans*10 + n%10\n        n = Math.floor(n/10)\n    }\n    return ans\n}",
+    "    let arr = [N];\n    for(let i = N; i > 0; i--){\n        arr.push(i)\n    }\n    let result = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        result = Math.min(result, arr[i])\n    }\n    return result\n}\n",
+    "    if(N === 0){\n        return N;\n    }\n    if(N === 1){\n        return 0;\n    }\n    if(N > 1){\n        if(N % 2 === 0){\n            return N/2 + 1;\n        }else{\n            return N/2;\n        }\n    }\n}",
+    "    if(N < 0){\n        return -1\n    }else if(N === 0){\n        return 0\n    }else{\n        return N-1\n    }\n}"
+  ]
+}

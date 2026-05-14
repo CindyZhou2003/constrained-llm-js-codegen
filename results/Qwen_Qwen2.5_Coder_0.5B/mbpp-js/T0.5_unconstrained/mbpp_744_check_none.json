@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_744_check_none",
+  "language": "js",
+  "prompt": "//Write a function to check if the given array has any undefined value or not.\nfunction check_none(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_744_check_none.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_none;\n  assert.deepEqual(candidate([10, 4, 5, 6, undefined]),true);\n  assert.deepEqual(candidate([7, 8, 9, 11, 14]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, undefined]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var has_none = false;\n  for(var i=0; i<test_tup.length; i++){\n    if(test_tup[i] === undefined){\n      has_none = true;\n      break;\n    }\n  }\n  return has_none;\n}\nvar arr = [1,2,3,4,5,undefined,6,7,8,9];\nvar arr2 = [1,2,3,4,5,undefined,6,7,8,9,10,11,undefined,13];",
+    "    for(var i=0;i<test_tup.length;i++){\n        if(test_tup[i]==undefined){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    var count = 0;\n    for(var i=0;i<test_tup.length;i++){\n        if(test_tup[i] === undefined){\n            count++;\n        }\n    }\n    if(count>0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n",
+    "    let not_none = test_tup.filter((item) => {\n        return item !== undefined;\n    })\n    if(not_none.length > 0){\n        return true\n    }\n    return false\n}\n",
+    "    for(var i=0;i<test_tup.length;i++){\n        if(test_tup[i] === undefined){\n            return true;\n        }\n    }\n    return false;\n}"
+  ]
+}

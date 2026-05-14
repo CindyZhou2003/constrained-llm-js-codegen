@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_19_sort_numbers",
+  "language": "js",
+  "prompt": "//Input is a space-delimited string of numberals from 'zero' to 'nine'.\n// Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n// Return the string with numbers sorted from smallest to largest\n// >>> sort_numbers(\"three one five\")\n// \"one three five\"\nfunction sort_numbers(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_19_sort_numbers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_numbers;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"three\"),\"three\");\n  assert.deepEqual(candidate(\"three five nine\"),\"three five nine\");\n  assert.deepEqual(candidate(\"five zero four seven nine eight\"),\"zero four five seven eight nine\");\n  assert.deepEqual(candidate(\"six five four three two one zero\"),\"zero one two three four five six\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  return numbers.split(' ').sort((a,b) => a - b).join(' ');\n}",
+    "    let numbersArray = numbers.split(' ');\n    let sortedNumbers = numbersArray.sort(function(a,b){return a-b});\n    return sortedNumbers.join(' ');\n}\n",
+    "  return numbers.split(\" \").sort((a,b) => a - b).join(\" \");\n}",
+    "    let string = numbers.split(\" \");\n    let numbers = string.map((num) => {return parseInt(num);});\n    numbers.sort((a, b) => {return a - b;});\n    let result = numbers.join(\" \");\n    return result;\n}\n",
+    "  //Your solution code here\n  var numbers = numbers.split(' ');\n  var sorted = numbers.sort(function(a,b){return a-b});\n  return sorted.join(' ');\n}"
+  ]
+}

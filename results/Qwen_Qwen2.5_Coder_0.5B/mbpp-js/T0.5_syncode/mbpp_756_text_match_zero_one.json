@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_756_text_match_zero_one",
+  "language": "js",
+  "prompt": "//Write a function that matches a string that has an 'a' followed by one or more 'b's. https://www.w3resource.com/JavaScript-exercises/re/JavaScript-re-exercise-3.php\nfunction text_match_zero_one(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_756_text_match_zero_one.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_zero_one;\n  assert.deepEqual(candidate(\"ac\"),false);\n  assert.deepEqual(candidate(\"dc\"),false);\n  assert.deepEqual(candidate(\"abbbba\"),true);\n  assert.deepEqual(candidate(\"dsabbbba\"),true);\n  assert.deepEqual(candidate(\"asbbbba\"),false);\n  assert.deepEqual(candidate(\"abaaa\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(text.match(/a(b*)/)){\n        console.log(\"Found\");\n    }else{\n        console.log(\"Not Found\");\n    }\n}",
+    "    if(text.includes(\"ab\")){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    if (text.includes('a')){\n        console.log('Found a match!')\n    } else {\n        console.log('No match')\n    }\n}",
+    "    if (text.match(/a*b/)){\n        return \"Matched\";\n    }\n    else{\n        return \"Not matched\";\n    }\n}\n",
+    "    var result = text.match(/a{1,}/);\n    return result ? \"Found a match\" : \"Not matched\";\n}"
+  ]
+}

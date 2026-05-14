@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_86_anti_shuffle",
+  "language": "js",
+  "prompt": "//Write a function that takes a string and returns an ordered version of it.\n// Ordered version of string, is a string where all words (separated by space)\n// are replaced by a new word where all the characters arranged in\n// ascending order based on ascii value.\n// Note: You should keep the order of words and blank spaces in the sentence.\n// For example:\n// >>> anti_shuffle(\"Hi\")\n// \"Hi\"\n// >>> anti_shuffle(\"hello\")\n// \"ehllo\"\n// >>> anti_shuffle(\"Hello World!!!\")\n// \"Hello !!!Wdlor\"\nfunction anti_shuffle(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_86_anti_shuffle.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = anti_shuffle;\n  assert.deepEqual(candidate(\"Hi\"),\"Hi\");\n  assert.deepEqual(candidate(\"hello\"),\"ehllo\");\n  assert.deepEqual(candidate(\"number\"),\"bemnru\");\n  assert.deepEqual(candidate(\"abcd\"),\"abcd\");\n  assert.deepEqual(candidate(\"Hello World!!!\"),\"Hello !!!Wdlor\");\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"Hi. My name is Mister Robot. How are you?\"),\".Hi My aemn is Meirst .Rboot How aer ?ouy\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = s.split(' ');\n    let arr2 = arr.map(element => element.split('').sort().join(''));\n    let res = arr2.join(' ');\n    return res;\n}",
+    "    return s.split(' ').map(a => [...a].sort().join('')).join(' ');\n}\n",
+    "    let arr = s.split(\" \");\n    for(let i=0;i<arr.length;i++){\n        arr[i] = arr[i].split('').sort((a,b)=> a.charCodeAt(0) - b.charCodeAt(0)).join('');\n    }\n    return arr.join(\" \");\n}\n\n",
+    "    let arr = s.split(' ');\n    let result = arr.sort(function(a,b){return a.charCodeAt(0) - b.charCodeAt(0)});\n    return result.join(' ');\n}",
+    "    return s.split(' ').sort().join(' ');\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_99_decimal_to_binary",
+  "language": "js",
+  "prompt": "//Write a function to convert the given decimal number to its binary equivalent, represented as a string with no leading zeros.\nfunction decimal_to_binary(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_99_decimal_to_binary.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = decimal_to_binary;\n  assert.deepEqual(candidate(8),\"1000\");\n  assert.deepEqual(candidate(18),\"10010\");\n  assert.deepEqual(candidate(7),\"111\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = []\n    let binary = ''\n    while(n > 0){\n        let rem = n % 2\n        result.push(rem)\n        n = Math.floor(n/2)\n    }\n    for(let i = result.length - 1; i >= 0; i--){\n        binary += result[i]\n    }\n    return binary\n}",
+    "    return n.toString(2);\n}",
+    "    let binary = '';\n    while (n > 0) {\n        binary = (n % 2) + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}\n",
+    "    var binary = \"\";\n    var remainder;\n\n    while (n > 0) {\n        remainder = n % 2;\n        binary = remainder + binary;\n        n = Math.floor(n / 2);\n    }\n    return binary;\n}",
+    "    let binary = \"\";\n    while(n > 0){\n        binary = (n%2) + binary;\n        n = Math.floor(n/2);\n    }\n    return binary;\n}"
+  ]
+}

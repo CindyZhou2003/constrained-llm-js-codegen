@@ -148,7 +148,10 @@ class ItergenGenerator(BaseGenerator):
         # statement (typical under greedy decoding with recurrence_penalty=1.0).
         last_backtrack_pos = -1
         consecutive_backtracks = 0
-        MAX_CONSECUTIVE_BACKTRACKS = 3
+        # 5 retries gives recurrence_penalty=0.0 enough chances to diverge to a
+        # different token path after backward(); 3 was too tight for cases where
+        # the alternative paths also briefly look invalid before resolving.
+        MAX_CONSECUTIVE_BACKTRACKS = 5
 
         # Hard wall-clock cap per task. A normal task is ~2s; anything past 60s
         # almost certainly means we're churning on slow validation or grammar masks
@@ -311,7 +314,16 @@ class ItergenGenerator(BaseGenerator):
             # Implicit declarations (catch, for-in/of, arrow params)
             current_identifiers.update(re.findall(r'catch\s*\(\s*([a-zA-Z_$][a-zA-Z0-9_$]*)', full_gen_so_far))
             current_identifiers.update(re.findall(r'for\s*\(\s*(?:var|let|const\s+)?([a-zA-Z_$][a-zA-Z0-9_$]*)\s+(?:of|in)', full_gen_so_far))
+            # Arrow params: single-form `x =>` and parenthesized `(a, b, c) =>`.
+            # Missing the multi-param case is a real bug: callbacks like
+            # `.map((word, index) => ...)` leave `word`/`index` undeclared and
+            # trigger false-positive aborts the moment the body references them.
             current_identifiers.update(re.findall(r'(?:^|[\W])([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=>', full_gen_so_far))
+            for params_str in re.findall(r'\(\s*([^()]*?)\s*\)\s*=>', full_gen_so_far):
+                for p in params_str.split(','):
+                    p_name = p.strip().split('=')[0].strip().lstrip('.').split()[-1] if p.strip() else ''
+                    if p_name and re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', p_name):
+                        current_identifiers.add(p_name)
 
             # 1. Redeclaration: `let`/`const x` at brace depth D conflicts only when
             # another declaration of `x` already exists at the same depth D.
@@ -335,13 +347,22 @@ class ItergenGenerator(BaseGenerator):
             # 2. Undeclared variable: pure identifier that hasn't been declared yet.
             # SPM's primary_safe_non_numeric only captures variable-position identifiers,
             # not property names (.prop) or method names, so false positives are low.
+            # Word-boundary check: IterGen's view sometimes returns partial-BPE-token
+            # fragments (e.g. 'oL' while the model is mid-way through emitting
+            # 'toLowerCase'). Require the token to appear as a standalone identifier
+            # in the generated text -- if it only exists as a substring inside a
+            # longer identifier, it's a parser artifact, not a real variable use.
             if is_valid:
                 for prim_str in post_items["primary_safe_non_numeric"][pre_counts.get("primary_safe_non_numeric", 0):]:
                     token = prim_str.strip()
-                    if re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token) and token not in current_identifiers:
-                        violation_reason = f"Undeclared: '{token}'"
-                        is_valid = False
-                        break
+                    if not (re.match(r'^[a-zA-Z_$][a-zA-Z0-9_$]*$', token) and token not in current_identifiers):
+                        continue
+                    standalone = re.search(r'(?<![a-zA-Z0-9_$])' + re.escape(token) + r'(?![a-zA-Z0-9_$])', full_gen_so_far)
+                    if not standalone:
+                        continue
+                    violation_reason = f"Undeclared: '{token}'"
+                    is_valid = False
+                    break
 
             # 3. Const reassignment: `constVar = ...` where LHS is not a member access.
             if is_valid:

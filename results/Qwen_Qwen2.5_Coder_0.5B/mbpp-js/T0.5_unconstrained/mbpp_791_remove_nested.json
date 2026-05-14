@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_791_remove_nested",
+  "language": "js",
+  "prompt": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_791_remove_nested.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newArr=[];\n    for(let i=0;i<test_tup.length;i++){\n        let temp=test_tup[i];\n        newArr.push(temp[0]);\n    }\n    return newArr;\n}\nlet arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];\nlet res = remove_nested(arr);",
+    "    var temp = test_tup;\n    test_tup = [];\n    for(var i = 0; i < temp.length; i++){\n        if(temp[i].length == 2){\n            test_tup.push(temp[i]);\n        }\n    }\n    return test_tup;\n}",
+    "    var arr = [];\n    for (var i = 0; i < test_tup.length; i++) {\n        if (typeof test_tup[i] !== 'object') {\n            arr.push(test_tup[i]);\n        }\n    }\n    return arr;\n}\nvar arr = [1, ['a', 2], [3, 'b'], 4];\nvar test_tup = remove_nested(arr);",
+    "    let arr = [];\n    for(let i=0; i<test_tup.length; i++){\n        if(test_tup[i] !== test_tup[i+1]){\n            arr.push(test_tup[i]);\n        }\n    }\n    return arr;\n}\n",
+    "    let result= []\n    for(let i=0;i<test_tup.length;i++){\n        let tmp=test_tup[i];\n        if(typeof tmp[0]==='object' && !(tmp[0] instanceof Array)){\n            result.push(tmp)\n        }else{\n            result.push(tmp)\n        }\n    }\n    return result\n}"
+  ]
+}

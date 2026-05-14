@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let x = 0;\n    let y = 1;\n    let sum = a * x + b * y;\n    while (sum != n){\n        let temp = y;\n        y = x;\n        x = temp + (sum / x);\n        sum = a * x + b * y;\n    }\n    return [x, y]\n}",
+    "    let x = 0;\n    let y = 1;\n\n    while (x < n && y < n){\n        let temp = y;\n        y = x + y;\n        x = temp;\n    }\n\n    if (x < n && y < n){\n        return [x, y]\n    } else {\n        return undefined\n    }\n}\n",
+    "    let x = 0;\n    let y = 0;\n    let last_x = 0;\n    let last_y = 0;\n    let diff = 0;\n    let sum = 0;\n    let count = 0;\n    while (count < n){\n        if (last_x === 0 && last_y === 0){\n            x = 1;\n            y = 0;\n            count++;\n        }else{\n            diff = a*x + b*y - n;\n            sum += diff;\n            if (sum === 0){\n                return [x,y];\n            }\n            if (diff > 0){\n                y++;\n            }else{\n                x++;\n            }\n            last_x = x;\n            last_y = y;\n        }\n    }\n    return undefined;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "    let x = 0;\n    let y = 1;\n\n    //if the gcd of a and b is 1, then we know that gcd(a,n) = 1\n    //gcd(a,n) = gcd(a,b) * gcd(b,n) = 1 * n = n\n    if(gcd(a, b) === 1){\n        return [x, y];\n    }\n\n    //if gcd(a,b) = 1, then we know that a and b have a common factor\n    //if gcd(a,b) = 1, then a and b are relatively prime\n    //we can use the extended Euclidean algorithm to find a and b\n    //the algorithm is as follows:\n    //let s = a, t = 1, r = b, r1 = a % b, s1 = t, r2 = r % t\n    //while r1 !== 0\n    //    let s = s1, t = s1 - t1, r = r1, r1 = r1 % r, r2 = r2 % r\n    //if r2 === 0\n    //    return [s, t]\n    //else\n    //    return undefined\n    while(a !== b){\n        if(a > b){\n            [a, b] = [b, a % b]\n        }else{\n            [a, b] = [b, a % b]\n        }\n    }\n\n    //we know that a and b are relatively prime, so we can use the extended Euclidean algorithm to find a and b\n    let [x, y] = extended_euclidean(a, b);\n\n    //now we can find x and y by using the formula x = a * x0 + b * y0, y = a * y0 + b * y1\n    //where x0 and y0 are the roots of the equation ax + by = n\n    let x0 = 1;\n    let y0 = 0;\n    let x1 = 0;\n    let y1 = 1;\n    let x = 0;\n    let y = 1;\n\n    //we can use the formula x = a * x0 + b * y0, y = a * y0 + b * y1\n    //where x0 and y0 are the roots of the equation ax + by = n\n    //",
+    "  let x = 0;\n  let y = 0;\n  let x1 = 0;\n  let y1 = 0;\n  let x2 = 0;\n  let y2 = 0;\n  let x3 = 0;\n  let y3 = 0;\n  let x4 = 0;\n  let y4 = 0;\n  let x5 = 0;\n  let y5 = 0;\n  let x6 = 0;\n  let y6 = 0;\n  let x7 = 0;\n  let y7 = 0;\n  let x8 = 0;\n  let y8 = 0;\n  let x9 = 0;\n  let y9 = 0;\n  let x10 = 0;\n  let y10 = 0;\n  let x11 = 0;\n  let y11 = 0;\n  let x12 = 0;\n  let y12 = 0;\n  let x13 = 0;\n  let y13 = 0;\n  \n  for (let i = 0; i <= n; i++) {\n    x1 = (a * i) + b;\n    x2 = (a * i) + b;\n    x3 = (a * i) + b;\n    x4 = (a * i) + b;\n    x5 = (a * i) + b;\n    x6 = (a * i) + b;\n    x7 = (a * i) + b;\n    x8 = (a * i) + b;\n    x9 = (a * i) + b;\n    x10 = (a * i) + b;\n    x11 = (a * i) + b;\n    x12 = (a * i) + b;\n    x13 = (a * i) + b;\n    y1 = (n - (a * i)) / b;\n    y2 = (n - (a * i)) / b;\n    y3 = (n - (a * i)) / b;\n    y4 = (n - (a * i)) / b;\n    y5 = (n - (a * i)) / b;\n    y6 = (n - (a * i)) / b;\n    y7 = (n - (a * i"
+  ]
+}

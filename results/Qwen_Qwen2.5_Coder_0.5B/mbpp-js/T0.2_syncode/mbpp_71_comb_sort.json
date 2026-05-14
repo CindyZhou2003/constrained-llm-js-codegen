@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_71_comb_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction comb_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_71_comb_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = comb_sort;\n  assert.deepEqual(candidate([5, 15, 37, 25, 79]),[5, 15, 25, 37, 79]);\n  assert.deepEqual(candidate([41, 32, 15, 19, 22]),[15, 19, 22, 32, 41]);\n  assert.deepEqual(candidate([99, 15, 13, 47]),[13, 15, 47, 99]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let gap = nums.length;\n    let shrink = 1;\n    while(gap > 1 || shrink > 1){\n        gap = Math.floor(gap / shrink);\n        shrink = shrink * 2;\n    }\n    for(let i = 0; i < gap; i++){\n        for(let j = 0; j < nums.length - gap; j++){\n            if(nums[j] > nums[j + gap]){\n                let temp = nums[j];\n                nums[j] = nums[j + gap];\n                nums[j + gap] = temp;\n            }\n        }\n    }\n    return nums;\n}",
+    "    let gap = nums.length;\n    let shrink = 1;\n    while (gap > shrink) {\n        gap = Math.floor(gap / 1.3);\n        shrink = Math.floor(shrink / 1.3);\n    }\n    while (gap > 0) {\n        for (let i = 0; i < nums.length - gap; i++) {\n            if (nums[i] > nums[i + gap]) {\n                let temp = nums[i];\n                nums[i] = nums[i + gap];\n                nums[i + gap] = temp;\n            }\n        }\n        gap = shrink;\n    }\n    return nums;\n}\n",
+    "    var gap = nums.length;\n    var shrink = 1;\n    while(gap > shrink){\n        gap = Math.floor(gap/shrink);\n        shrink = shrink * 2;\n    }\n    for(var i = 0; i < nums.length; i++){\n        for(var j = i + gap; j < nums.length; j = j + gap){\n            if(nums[i] > nums[j]){\n                var temp = nums[i];\n                nums[i] = nums[j];\n                nums[j] = temp;\n            }\n        }\n    }\n    return nums;\n}\n"
+  ]
+}

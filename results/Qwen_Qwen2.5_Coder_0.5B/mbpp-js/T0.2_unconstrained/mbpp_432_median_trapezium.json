@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_432_median_trapezium",
+  "language": "js",
+  "prompt": "//Write a function to find the median length of a trapezium.\nfunction median_trapezium(base1, base2, height){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_432_median_trapezium.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median_trapezium;\n  assert.deepEqual(candidate(15, 25, 35),20);\n  assert.deepEqual(candidate(10, 20, 30),15);\n  assert.deepEqual(candidate(6, 9, 4),7.5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let length = (base1 + base2) / 2;\n    let area = (base1 + base2) * height / 2;\n    let perimeter = base1 + base2 + height + height;\n    let median = (length + perimeter) / 2;\n    return median;\n}",
+    "    let area = (base1 + base2) * height / 2\n    return area\n}",
+    "    let length = (base1 + base2) / 2;\n    let area = (base1 + base2) * height / 2;\n    let perimeter = base1 + base2 + height;\n    let median = (length + perimeter) / 2;\n    return median;\n}"
+  ]
+}

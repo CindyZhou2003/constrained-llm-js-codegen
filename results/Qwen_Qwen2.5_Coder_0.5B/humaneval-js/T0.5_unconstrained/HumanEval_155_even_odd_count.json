@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_155_even_odd_count",
+  "language": "js",
+  "prompt": "//Given an integer. return an array that has the number of even and odd digits respectively.\n// Example:\n// >>> even_odd_count(-12)\n// [1, 1]\n// >>> even_odd_count(123)\n// [1, 2]\nfunction even_odd_count(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_155_even_odd_count.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = even_odd_count;\n  assert.deepEqual(candidate(7),[0, 1]);\n  assert.deepEqual(candidate(-78),[1, 1]);\n  assert.deepEqual(candidate(3452),[2, 2]);\n  assert.deepEqual(candidate(346211),[3, 3]);\n  assert.deepEqual(candidate(-345821),[3, 3]);\n  assert.deepEqual(candidate(-2),[1, 0]);\n  assert.deepEqual(candidate(-45347),[2, 3]);\n  assert.deepEqual(candidate(0),[1, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let even = 0;\n    let odd = 0;\n    while(num>0){\n        if(num%2===0){\n            even++\n        }\n        else{\n            odd++\n        }\n        num = Math.floor(num/10)\n    }\n    return [even,odd]\n}",
+    "    let even = 0;\n    let odd = 0;\n    let arr = [];\n    if(num > 0){\n        while(num > 0){\n            let remainder = num % 10;\n            if(remainder % 2 === 0){\n                even++;\n            }else{\n                odd++;\n            }\n            num = Math.floor(num / 10);\n        }\n        arr.push(even);\n        arr.push(odd);\n    }else{\n        arr.push(0);\n        arr.push(0);\n    }\n    return arr;\n}",
+    "    if(num<0){\n        num = num*-1\n    }\n    let result = []\n    let even = 0\n    let odd = 0\n    while(num>0){\n        let digit = num%10\n        if(digit%2 === 0){\n            even++\n        }else{\n            odd++\n        }\n        num = Math.floor(num/10)\n    }\n    result.push(even)\n    result.push(odd)\n    return result\n}",
+    "    let num1 = num.toString().split('').filter((x) => {return x % 2 === 0}).length;\n    let num2 = num.toString().split('').filter((x) => {return x % 2 !== 0}).length;\n    return [num1, num2];\n}",
+    "  \n  if (num < 0) {\n    num *= -1;\n  }\n  \n  let odd = 0;\n  let even = 0;\n  \n  while (num) {\n    if (num % 2 === 0) {\n      even += 1;\n    } else {\n      odd += 1;\n    }\n    num = Math.floor(num / 10);\n  }\n  \n  return [even, odd];\n}"
+  ]
+}

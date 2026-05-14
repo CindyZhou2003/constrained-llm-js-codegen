@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_414_overlapping",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether any value in a sequence exists in a sequence or not.\nfunction overlapping(list1, list2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_414_overlapping.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = overlapping;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [6, 7, 8, 9]),false);\n  assert.deepEqual(candidate([1, 2, 3], [4, 5, 6]),false);\n  assert.deepEqual(candidate([1, 4, 5], [1, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=0; i<list1.length; i++){\n        for(let j=0; j<list2.length; j++){\n            if(list1[i] === list2[j]){\n                return true;\n            }\n        }\n    }\n    return false;\n}",
+    "    for(let i in list1){\n        if(list1[i] in list2){\n            return true;\n        }\n    }\n    return false;\n}",
+    "    for (let i = 0; i < list1.length; i++) {\n        for (let j = 0; j < list2.length; j++) {\n            if (list1[i] == list2[j]) {\n                return true;\n            }\n        }\n    }\n    return false;\n}",
+    "    if(list1.length > list2.length){\n        list1 = list1.sort()\n        list2 = list2.sort()\n    }else{\n        list1 = list1.sort()\n        list2 = list2.sort()\n    }\n    for(i=0; i<list1.length; i++){\n        if(list1[i] == list2[i]){\n            return true\n        }\n    }\n    return false\n}\n",
+    "    var list1Length = list1.length;\n    var list2Length = list2.length;\n    var total = list1Length + list2Length;\n    var result = false;\n    for(var i = 0; i < total; i++){\n        if(list1[i] == list2[i]){\n            result = true;\n        }\n    }\n    return result;\n}"
+  ]
+}

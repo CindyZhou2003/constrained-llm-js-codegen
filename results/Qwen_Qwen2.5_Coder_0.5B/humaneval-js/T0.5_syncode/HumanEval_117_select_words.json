@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_117_select_words",
+  "language": "js",
+  "prompt": "//Given a string s and a natural number n, you have been tasked to implement \n// a function that returns an array of all words from string s that contain exactly \n// n consonants, in order these words appear in the string s.\n// If the string s is empty then the function should return an empty array.\n// Note: you may assume the input string contains only letters and spaces.\n// Examples:\n// >>> select_words(\"Mary had a little lamb\", 4)\n// [\"little\"]\n// >>> select_words(\"Mary had a little lamb\", 3)\n// [\"Mary\", \"lamb\"]\n// >>> select_words(\"simple white space\", 2)\n// []\n// >>> select_words(\"Hello world\", 4)\n// [\"world\"]\n// >>> select_words(\"Uncle sam\", 3)\n// [\"Uncle\"]\nfunction select_words(s, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_117_select_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = select_words;\n  assert.deepEqual(candidate(\"Mary had a little lamb\", 4),[\"little\"]);\n  assert.deepEqual(candidate(\"Mary had a little lamb\", 3),[\"Mary\", \"lamb\"]);\n  assert.deepEqual(candidate(\"simple white space\", 2),[]);\n  assert.deepEqual(candidate(\"Hello world\", 4),[\"world\"]);\n  assert.deepEqual(candidate(\"Uncle sam\", 3),[\"Uncle\"]);\n  assert.deepEqual(candidate(\"\", 4),[]);\n  assert.deepEqual(candidate(\"a b c d e f\", 1),[\"b\", \"c\", \"d\", \"f\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let word = s.split(' ');\n    for (let i = 0; i < word.length; i++) {\n        let wordArray = word[i].split('');\n        let consonantCount = 0;\n        for (let j = 0; j < wordArray.length; j++) {\n            if (wordArray[j] === 'a' || wordArray[j] === 'e' || wordArray[j] === 'i' || wordArray[j] === 'o' || wordArray[j] === 'u') {\n                consonantCount++;\n            }\n        }\n        if (consonantCount === n) {\n            result.push(word[i]);\n        }\n    }\n    return result;\n}\n",
+    "    let arr = s.split(\" \")\n    let newArr = []\n    let newArr2 = []\n    for (let i = 0; i < arr.length; i++) {\n        let word = arr[i]\n        let count = 0\n        for (let j = 0; j < word.length; j++) {\n            if (word[j] === \" \") {\n                count++\n            } else if (word[j] === \"a\" || word[j] === \"e\" || word[j] === \"i\" || word[j] === \"o\" || word[j] === \"u\") {\n                count++\n            }\n        }\n        if (count === n) {\n            newArr.push(word)\n        }\n    }\n    for (let i = 0; i < newArr.length; i++) {\n        let word = newArr[i]\n        let index = 0\n        for (let j = 0; j < word.length; j++) {\n            if (word[j] === \" \") {\n                index++\n            }\n        }\n        if (index === n) {\n            newArr2.push(word)\n        }\n    }\n    return newArr2\n}\n",
+    "    const result = [];\n    const arr = s.split(' ');\n    for(let i = 0; i < arr.length; i++){\n        if(isConsonant(arr[i])){\n            result.push(arr[i]);\n        }\n    }\n    return result;\n}\n",
+    "  let res = [];\n  let arr = s.split(' ');\n  for (let i=0; i<arr.length; i++) {\n    let word = arr[i];\n    let count = 0;\n    for (let j=0; j<word.length; j++) {\n      if (word[j] === 'a' || word[j] === 'e' || word[j] === 'i' || word[j] === 'o' || word[j] === 'u' || word[j] === 'y') {\n        count++;\n      }\n    }\n    if (count === n) {\n      res.push(word);\n    }\n  }\n  return res;\n}",
+    "  let arr = [];\n  let arr2 = s.split(\" \");\n  for(let i = 0; i < arr2.length; i++){\n    let count = 0;\n    let arr3 = arr2[i].split(\"\");\n    for(let j = 0; j < arr3.length; j++){\n      if(arr3[j] === \"a\" || arr3[j] === \"e\" || arr3[j] === \"i\" || arr3[j] === \"o\" || arr3[j] === \"u\"){\n        count++;\n      }\n    }\n    if(count === n){\n      arr.push(arr2[i]);\n    }\n  }\n  return arr;\n}"
+  ]
+}

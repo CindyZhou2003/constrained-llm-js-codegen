@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_771_check_expression",
+  "language": "js",
+  "prompt": "//Write a function to check if the given expression is balanced or not. https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/\nfunction check_expression(exp){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_771_check_expression.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_expression;\n  assert.deepEqual(candidate(\"{()}[{}]\"),true);\n  assert.deepEqual(candidate(\"{()}[{]\"),false);\n  assert.deepEqual(candidate(\"{()}[{}][]({})\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let stack = [];\n    let map = {\n        \"(\":\")\",\n        \"[\":\"]\",\n        \"{\":\"}\"\n    }\n    for(let i=0; i<exp.length; i++){\n        if(exp[i] in map){\n            stack.push(map[exp[i]]);\n        }else{\n            if(exp[i] == stack.pop()){\n                continue;\n            }else{\n                return false;\n            }\n        }\n    }\n    return stack.length == 0;\n}",
+    "    let stack = [];\n    let open = ['(','{','['];\n    let close = [')', '}',']'];\n    let arr = exp.split('');\n    for(let i=0; i<arr.length; i++){\n        if(open.includes(arr[i])){\n            stack.push(arr[i]);\n        }else if(close.includes(arr[i])){\n            if(stack.length===0) return false;\n            let last = stack.pop();\n            if(last === '(' && arr[i] !== ')') return false;\n            if(last === '{' && arr[i] !== '}') return false;\n            if(last === '[' && arr[i] !== ']') return false;\n        }\n    }\n    if(stack.length===0) return true;\n    return false;\n}",
+    "    let stack = [];\n    for (let i=0;i<exp.length;i++){\n        if(exp[i] == '('){\n            stack.push(exp[i]);\n        }else if(exp[i] == ')'){\n            if(stack.length == 0){\n                return false;\n            }else{\n                stack.pop();\n            }\n        }\n    }\n    if(stack.length == 0){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let stack = [];\n    for(let i=0; i<exp.length; i++){\n        if(exp[i] == '('){\n            stack.push(exp[i]);\n        }\n        else if(exp[i] == ')'){\n            let top = stack[stack.length-1];\n            if(top == '('){\n                stack.pop();\n            }\n            else{\n                stack.push(exp[i]);\n            }\n        }\n    }\n    if(stack.length == 0){\n        return true;\n    }\n    return false;\n}\n",
+    "    let stack = [];\n    for(let i=0; i<exp.length; i++){\n        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['){\n            stack.push(exp[i]);\n        }else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']'){\n            if(stack.length == 0){\n                return false;\n            }\n            let top = stack[stack.length - 1];\n            if((top == '(' && exp[i] == ')') || (top == '{' && exp[i] == '}') || (top == '[' && exp[i] == ']')){\n                stack.pop();\n            }else{\n                return false;\n            }\n        }\n    }\n    if(stack.length > 0){\n        return false;\n    }else{\n        return true;\n    }\n}\n"
+  ]
+}

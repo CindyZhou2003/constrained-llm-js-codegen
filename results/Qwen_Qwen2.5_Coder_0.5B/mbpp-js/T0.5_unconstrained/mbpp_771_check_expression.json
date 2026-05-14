@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_771_check_expression",
+  "language": "js",
+  "prompt": "//Write a function to check if the given expression is balanced or not. https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/\nfunction check_expression(exp){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_771_check_expression.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_expression;\n  assert.deepEqual(candidate(\"{()}[{}]\"),true);\n  assert.deepEqual(candidate(\"{()}[{]\"),false);\n  assert.deepEqual(candidate(\"{()}[{}][]({})\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var stack = [];\n    var openParenthesis = [\"(\", \"[\", \"{\"];\n    var closeParenthesis = [\")\", \"]\", \"}\"];\n    var count = 0;\n    for(var i = 0; i < exp.length; i++){\n        var letter = exp.charAt(i);\n        if(openParenthesis.indexOf(letter) !== -1){\n            stack.push(letter);\n            count++;\n        }else if(closeParenthesis.indexOf(letter) !== -1){\n            var last_open = stack.pop();\n            if(letter !== last_open){\n                return false;\n            }\n            count--;\n        }\n        if(count < 0){\n            return false;\n        }\n    }\n    return count === 0;\n}\n",
+    "    let stack = [];\n    let stack2 = [];\n    for(let i=0; i<exp.length; i++){\n        if(exp[i] == '('){\n            stack.push(exp[i]);\n        }\n        else if(exp[i] == ')'){\n            stack2.push(exp[i]);\n        }\n        else if(exp[i] == '{'){\n            stack.push(exp[i]);\n        }\n        else if(exp[i] == '}'){\n            stack2.push(exp[i]);\n        }\n        else if(exp[i] == '['){\n            stack.push(exp[i]);\n        }\n        else if(exp[i] == ']'){\n            stack2.push(exp[i]);\n        }\n    }\n    if(stack.length == 0 && stack2.length == 0){\n        return true;\n    }\n    else if(stack.length != 0 && stack2.length != 0){\n        return false;\n    }\n    else{\n        return true;\n    }\n}",
+    "    var stack = [];\n    var i = 0;\n    while(i<exp.length){\n        if(exp[i]=='(' || exp[i]=='[' || exp[i]=='{'){\n            stack.push(exp[i]);\n        }else if(exp[i]==')'){\n            if(stack.length==0 || stack.pop()!='(') return false;\n        }else if(exp[i]==']'){\n            if(stack.length==0 || stack.pop()!='[') return false;\n        }else if(exp[i]=='}'){\n            if(stack.length==0 || stack.pop()!='{') return false;\n        }\n        i++;\n    }\n    if(stack.length!=0) return false;\n    return true;\n}",
+    "    let stack = []\n    for(let i = 0; i < exp.length; i++){\n        if(exp[i] == '('){\n            stack.push(exp[i])\n        }\n        else if(exp[i] == ')'){\n            if(stack.length == 0){\n                return false\n            }\n            stack.pop()\n        }\n    }\n    return stack.length == 0\n}",
+    "    var stack = [];\n    var current_character;\n    var char_stack = [];\n    var first_character = false;\n    var last_character = false;\n\n    for(var i = 0; i < exp.length; i++){\n        current_character = exp[i];\n        if(current_character == '(' || current_character == '{' || current_character == '['){\n            stack.push(current_character);\n        }else if(current_character == ')' || current_character == '}' || current_character == ']'){\n            if(stack.length == 0){\n                return false;\n            }\n            if(current_character == ')' && stack[stack.length - 1] == '('){\n                stack.pop();\n            }else if(current_character == '}' && stack[stack.length - 1] == '{'){\n                stack.pop();\n            }else if(current_character == ']' && stack[stack.length - 1] == '['){\n                stack.pop();\n            }else{\n                return false;\n            }\n        }\n    }\n    if(stack.length == 0){\n        return true;\n    }else{\n        return false;\n    }\n}"
+  ]
+}

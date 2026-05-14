@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_635_heap_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort the given array.\nfunction heap_sort(iterable){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_635_heap_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_sort;\n  assert.deepEqual(candidate([1, 3, 5, 7, 9, 2, 4, 6, 8, 0]),[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 25, 58]),[14, 22, 25, 25, 35, 58, 65, 75, 85]);\n  assert.deepEqual(candidate([7, 1, 9, 5]),[1, 5, 7, 9]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let len = iterable.length;\n    let h = Math.floor(len/2) - 1;\n    while(h >= 0){\n        heapify(iterable, h, len);\n        h--;\n    }\n    for(let i = len-1; i >= 0; i--){\n        let temp = iterable[0];\n        iterable[0] = iterable[i];\n        iterable[i] = temp;\n        heapify(iterable, 0, i);\n    }\n    return iterable;\n}\n",
+    "    // Create a heap from the array\n    // heapify the array\n    // sort the array\n    let heap = new Heap(iterable)\n    let sorted = []\n    while (heap.size() > 0) {\n        sorted.push(heap.pop())\n    }\n    return sorted\n}\n",
+    "  let heap = new Heap(iterable.length);\n  for(let i = 0; i < iterable.length; i++){\n    heap.insert(iterable[i])\n  }\n  let result = [];\n  while(heap.size() > 0){\n    result.push(heap.extract());\n  }\n  return result;\n}",
+    "    let heap = new Heap(iterable);\n    let result = [];\n    while(heap.size() > 0){\n        result.push(heap.extractMax());\n    }\n    return result;\n}",
+    "    let n = iterable.length;\n    let heap = new Heap(iterable);\n    let sorted = new Array(n);\n    for(let i = 0; i < n; i++){\n        sorted[i] = heap.pop();\n    }\n    return sorted;\n}\n"
+  ]
+}

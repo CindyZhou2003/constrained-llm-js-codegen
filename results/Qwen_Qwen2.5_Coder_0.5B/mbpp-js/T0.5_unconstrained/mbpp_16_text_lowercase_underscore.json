@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_16_text_lowercase_underscore",
+  "language": "js",
+  "prompt": "//Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.\nfunction text_lowercase_underscore(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_16_text_lowercase_underscore.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_lowercase_underscore;\n  assert.deepEqual(candidate(\"aab_cbbbc\"),true);\n  assert.deepEqual(candidate(\"aab_Abbbc\"),false);\n  assert.deepEqual(candidate(\"Aaab_abbbc\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = text.match(/([a-z]+_+)/g)\n    return result.length > 0\n  }",
+    "  return text.match(/([a-z]+)(_[a-z]+)/g) == null\n}\n",
+    "    let regex = /_?[a-z]+[_]?/g\n    return text.match(regex)\n}\ntext_lowercase_underscore('hello_world') //true\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello_world') //false\ntext_lowercase_underscore('hello_world_') //true\ntext_lowercase_underscore('hello",
+    "    const regex = /([a-z]+(_[a-z]+)*)+/gi\n    if(text.match(regex)){\n        return true\n    }else{\n        return false\n    }\n}",
+    "    let arr = text.split(\" \");\n    let result = arr.every((item)=>item.match(/^[a-z]+_[a-z]+$/i));\n    return result===true?true:false;\n}\n"
+  ]
+}

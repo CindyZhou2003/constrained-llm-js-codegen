@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_95_Find_Min_Length",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the length of the smallest array in an array of lists.\nfunction Find_Min_Length(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_95_Find_Min_Length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Min_Length;\n  assert.deepEqual(candidate([[1], [1, 2]]),1);\n  assert.deepEqual(candidate([[1, 2], [1, 2, 3], [1, 2, 3, 4]]),2);\n  assert.deepEqual(candidate([[3, 3, 3], [4, 4, 4, 4]]),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var min = lst[0].length;\n    for(var i = 1; i < lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}\n\nvar arr = [[1, 2, 3], [4, 5, 6], [7]];\nvar ans = Find_Min_Length(arr);",
+    "    let min = lst[0].length;\n    for(let i=0; i<lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}\n\nlet arr1 = [1,2,3,4];\nlet arr2 = [10,20,30,40];\nlet arr3 = [100,200,300,400];\nlet arr4 = [1000,2000,3000,4000];\nlet arr5 = [10000,20000,30000,40000];\nlet arr6 = [100000,200000,300000,400000];\n",
+    "  var min = lst[0].length;\n  for (i = 0; i < lst.length; i++){\n    if (lst[i].length < min){\n      min = lst[i].length;\n    }\n  }\n  return min;\n}",
+    "    let min = lst[0].length;\n    for(let i = 0; i < lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}",
+    "    var min = lst[0].length;\n    for(var i = 0; i < lst.length; i++){\n        if(lst[i].length < min){\n            min = lst[i].length;\n        }\n    }\n    return min;\n}"
+  ]
+}

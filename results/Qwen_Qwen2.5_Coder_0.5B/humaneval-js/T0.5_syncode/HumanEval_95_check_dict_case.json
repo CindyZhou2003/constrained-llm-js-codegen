@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_95_check_dict_case",
+  "language": "js",
+  "prompt": "//Given an object, return true if all keys are strings in lower \n// case or all keys are strings in upper case, else return false.\n// The function should return false is the given object is empty.\n// Examples:\n// >>> check_dict_case({\"a\": \"apple\", \"b\": \"banana\"})\n// true\n// >>> check_dict_case({\"a\": \"apple\", \"A\": \"banana\", \"B\": \"banana\"})\n// false\n// >>> check_dict_case({\"a\": \"apple\", 8: \"banana\", \"a\": \"apple\"})\n// false\n// >>> check_dict_case({\"Name\": \"John\", \"Age\": \"36\", \"City\": \"Houston\"})\n// false\n// >>> check_dict_case({\"STATE\": \"NC\", \"ZIP\": \"12345\"})\n// true\nfunction check_dict_case(dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_95_check_dict_case.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_dict_case;\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"b\": \"banana\"}),true);\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"A\": \"banana\", \"B\": \"banana\"}),false);\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"5\": \"banana\", \"a\": \"apple\"}),false);\n  assert.deepEqual(candidate({\"Name\": \"John\", \"Age\": \"36\", \"City\": \"Houston\"}),false);\n  assert.deepEqual(candidate({\"STATE\": \"NC\", \"ZIP\": \"12345\"}),true);\n  assert.deepEqual(candidate({\"fruit\": \"Orange\", \"taste\": \"Sweet\"}),true);\n  assert.deepEqual(candidate({}),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (var i in dict){\n        if (typeof dict[i] == 'string'){\n            if (i == 'a' || i == 'A' || i == 'b' || i == 'B' || i == 'c' || i == 'C' || i == 'd' || i == 'D' || i == 'e' || i == 'E' || i == 'f' || i == 'F' || i == 'g' || i == 'G' || i == 'h' || i == 'H' || i == 'i' || i == 'I' || i == 'j' || i == 'J' || i == 'k' || i == 'K' || i == 'l' || i == 'L' || i == 'm' || i == 'M' || i == 'n' || i == 'N' || i == 'o' || i == 'O' || i == 'p' || i == 'P' || i == 'q' || i == 'Q' || i == 'r' || i == 'R' || i == 's' || i == 'S' || i == 't' || i == 'T' || i == 'u' || i == 'U' || i == 'v' || i == 'V' || i == 'w' || i == 'W' || i == 'x' || i == 'X' || i == 'y' || i == 'Y' || i == 'z' || i == 'Z'){\n                continue;\n            }else{\n                return false;\n            }\n        }\n        else{\n            return false;\n        }\n    }\n    return true;\n}",
+    "    if(Object.keys(dict).length === 0) return false\n    for(let key in dict){\n        if(typeof key !== 'string' || typeof dict[key] !== 'string') return false\n    }\n    return true\n}",
+    "  if(Object.keys(dict).length > 0){\n    if(Object.keys(dict).every((key) => typeof key == \"string\")){\n      return true;\n    }else{\n      return false;\n    }\n  }else{\n    return false;\n  }\n}",
+    "    //check if the object is empty or not\n    if(Object.keys(dict).length == 0){\n        return false;\n    }\n    //check if the keys are all strings in lower case or all strings in upper case\n    for(var key in dict){\n        if(typeof dict[key] != 'string'){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    if(Object.keys(dict).length == 0){\n        return false;\n    }\n    else{\n        for(let i in dict){\n            if(typeof dict[i] == \"string\"){\n                if(i == \"State\" || i == \"ZIP\"){\n                    if(dict[i].length > 3){\n                        return false;\n                    }\n                }\n                else{\n                    if(dict[i].length < 3){\n                        return false;\n                    }\n                }\n            }\n            else{\n                return false;\n            }\n        }\n        return true;\n    }\n}"
+  ]
+}

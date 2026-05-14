@@ -1,1 +1,18 @@
-{"name": "mbpp_468_max_product", "language": "js", "prompt": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_468_max_product.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    let max_product = 1;\n    let current_max = 1;\n    let"]}
+{
+  "name": "mbpp_468_max_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_468_max_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Write your code here\n    let max = 0;\n    let arr_len = arr.length;\n    let arr_len_1 = arr_len - 1;\n    let arr_len_2 = arr_len - 2;\n    let arr_len_3 = arr_len - 3;\n    let arr_len_4 = arr_len - 4;\n    let arr_len_5 = arr_len - 5;\n    let arr_len_6 = arr_len - 6;\n    let arr_len_7 = arr_len - 7;\n    let arr_len_8 = arr_len - 8;\n    let arr_len_9 = arr_len - 9;\n    let arr_len_10 = arr_len - 10;\n    let arr_len_11 = arr_len - 11;\n    let arr_len_12 = arr_len - 12;\n    let arr_len_13 = arr_len - 13;\n    let arr_len_14 = arr_len - 14;\n    let arr_len_15 = arr_len - 15;\n    let arr_len_16 = arr_len - 16;\n    let arr_len_17 = arr_len - 17;\n    let arr_len_18 = arr_len - 18;\n    let arr_len_19 = arr_len - 19;\n    let arr_len_20 = arr_len - 20;\n    let arr_len_21 = arr_len - 21;\n    let arr_len_22 = arr_len - 22;\n    let arr_len_23 = arr_len - 23;\n    let arr_len_24 = arr_len - 24;\n    let arr_len_25 = arr_len - 25;\n    let arr_len_26 = arr_len - 26;\n    let arr_len_27 = arr_len - 27;\n    let arr_len_28 = arr_len - 28;\n    let arr_len_29 = arr_len - 29;\n    let arr_len_30 = arr_len - 30;\n    let arr_len_31 = arr_len - 31;\n    let arr_len_32 = arr_len - 32;\n    let arr_len_33"
+  ]
+}

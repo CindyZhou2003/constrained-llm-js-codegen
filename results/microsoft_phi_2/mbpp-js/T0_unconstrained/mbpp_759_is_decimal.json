@@ -1,1 +1,18 @@
-{"name": "mbpp_759_is_decimal", "language": "js", "prompt": "//Write a function to check whether a given string is a decimal number with a precision of 2.\nfunction is_decimal(num){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_759_is_decimal.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_decimal;\n  assert.deepEqual(candidate(\"123.11\"),true);\n  assert.deepEqual(candidate(\"e666.86\"),false);\n  assert.deepEqual(candidate(\"3.124587\"),false);\n  assert.deepEqual(candidate(\"1.11\"),true);\n  assert.deepEqual(candidate(\"1.1.11\"),false);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["  var num_str = num.toString();\n  var num_len = num_"]}
+{
+  "name": "mbpp_759_is_decimal",
+  "language": "js",
+  "prompt": "//Write a function to check whether a given string is a decimal number with a precision of 2.\nfunction is_decimal(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_759_is_decimal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_decimal;\n  assert.deepEqual(candidate(\"123.11\"),true);\n  assert.deepEqual(candidate(\"e666.86\"),false);\n  assert.deepEqual(candidate(\"3.124587\"),false);\n  assert.deepEqual(candidate(\"1.11\"),true);\n  assert.deepEqual(candidate(\"1.1.11\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var num_str = num.toString();\n  var num_len = num_str.length;\n  var num_str_split = num_str.split(\".\");\n  var num_str_split_len = num_str_split.length;\n  var num_str_split_2 = num_str_split[0];\n  var num_str_split_2_len = num_str_split_2.length;\n  var num_str_split_3 = num_str_split[1];\n  var num_str_split_3_len = num_str_split_3.length;\n  var num_str_split_4 = num_str_split[2];\n  var num_str_split_4_len = num_str_split_4.length;\n  var num_str_split_5 = num_str_split[3];\n  var num_str_split_5_len = num_str_split_5.length;\n  var num_str_split_6 = num_str_split[4];\n  var num_str_split_6_len = num_str_split_6.length;\n  var num_str_split_7 = num_str_split[5];\n  var num_str_split_7_len = num_str_split_7.length;\n  var num_str_split_8 = num_str_split[6];\n  var num_str_split_8_len = num_str_split_8.length;\n  var num_str_split_9 = num_str_split[7];\n  var num_str_split_9_len = num_str_split_9.length;\n  var num_str_split_10 = num_str_split[8];\n  var num_str_split_10_len = num_str_split_10.length;\n  var num_str_split_11 = num_str_split[9];\n  var num_str_split_11_len = num_str_split_11.length;\n  var num_str_split_12 = num_str_split[10];\n  var num_str_split_12_len ="
+  ]
+}

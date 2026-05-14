@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_86_centered_hexagonal_number",
+  "language": "js",
+  "prompt": "//Write a function to find nth centered hexagonal number.\nfunction centered_hexagonal_number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_86_centered_hexagonal_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = centered_hexagonal_number;\n  assert.deepEqual(candidate(10),271);\n  assert.deepEqual(candidate(2),7);\n  assert.deepEqual(candidate(9),217);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Math.pow(2*n,2) -1\n}\n",
+    "    let hexagonal_number = 0;\n    let hexagonal_number_count = 0;\n    let hexagonal_number_counter = 1;\n    let hexagonal_number_distance = 1;\n    while(hexagonal_number_count < n){\n        hexagonal_number = hexagonal_number + hexagonal_number_distance;\n        hexagonal_number_count = hexagonal_number_count + 1;\n        hexagonal_number_distance = hexagonal_number_distance + 2;\n    }\n    return hexagonal_number;\n}\n",
+    "    //return n*(2*n-1);\n    return n*(2*n-1)/2 + n;\n}",
+    "  return (2*n*n - n) / 2;\n}\n",
+    "    let hexagonal = 2 * n * (n - 1)\n    return hexagonal\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_238_number_of_substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of non-empty substrings of a given string.\nfunction number_of_substrings(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_238_number_of_substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = number_of_substrings;\n  assert.deepEqual(candidate(\"abc\"),6);\n  assert.deepEqual(candidate(\"abcd\"),10);\n  assert.deepEqual(candidate(\"abcde\"),15);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let counter = 0;\n    let len = str.length;\n    for(let i = 0; i< len; i++){\n        for(let j = i; j<len; j++){\n            counter++;\n        }\n    }\n    return counter;\n}",
+    "    let count = 0;\n    let substrings = str.split('');\n    for(let i = 0; i < substrings.length; i++){\n        for(let j = i; j < substrings.length; j++){\n            if(substrings[i] !== substrings[j]){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    return str.length;\n}\n",
+    "    // var str = \"abc\";\n    var count =0;\n    for(var i =0 ;i<str.length;i++){\n        for(var j =i+1;j<str.length;j++){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count=0;\n    for(let i=0;i<str.length;i++){\n        for(let j=i+1;j<str.length;j++){\n            let substr=str.slice(i,j);\n            console.log(substr);\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

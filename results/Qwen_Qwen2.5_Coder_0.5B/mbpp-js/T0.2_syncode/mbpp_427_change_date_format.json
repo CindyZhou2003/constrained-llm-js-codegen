@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_427_change_date_format",
+  "language": "js",
+  "prompt": "//Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.\nfunction change_date_format(dt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_427_change_date_format.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = change_date_format;\n  assert.deepEqual(candidate(\"2026-01-02\"),\"02-01-2026\");\n  assert.deepEqual(candidate(\"2020-11-13\"),\"13-11-2020\");\n  assert.deepEqual(candidate(\"2021-04-26\"),\"26-04-2021\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var date = dt.split(\"-\");\n    var new_date = date[1] + \"-\" + date[0] + \"-\" + date[2];\n    return new_date;\n}",
+    "    let date = dt.split(\"-\");\n    let date1 = date[2].split(\" \");\n    let date2 = date1[0].split(\"-\");\n    let date3 = date2[1].split(\"-\");\n    let date4 = date3[2].split(\"-\");\n    let date5 = date4[0].split(\"-\");\n    let date6 = date5[1].split(\"-\");\n    let date7 = date6[0].split(\"-\");\n    let date8 = date7[1].split(\"-\");\n    let date9 = date8[2].split(\"-\");\n    let date10 = date9[0].split(\"-\");\n    let date11 = date10[1].split(\"-\");\n    let date12 = date11[0].split(\"-\");\n    let date13 = date12[1].split(\"-\");\n    let date14 = date13[0].split(\"-\");\n    let date15 = date14[1].split(\"-\");\n    let date16 = date15[0].split(\"-\");\n    let date17 = date16[1].split(\"-\");\n    let date18 = date17[0].split(\"-\");\n    let date19 = date18[1].split(\"-\");\n    let date20 = date19[0].split(\"-\");\n    let date21 = date20[1].split(\"-\");\n    let date22 = date21[0].split(\"-\");\n    let date23 = date22[1].split(\"-\");\n    let date24 = date23[0].split(\"-\");\n    let date25 = date24[1].split(\"-\");\n    let date26 = date25[0].split(\"-\");\n    let date27 = date26[1].split(\"-\");\n    let date28 = date27[0].split(\"-\");\n    let date29 = date28[1].split(\"-\");\n    let date30 = date29[0].split(\"-\");\n    let date31 = date30[1].split(\"-\");\n    let date32 = date31[0].split(\"-\");\n    let date33 = date32[1].split(\"-\");\n    let date34 = date33[0].split(\"-\");\n    let date35 = date34[1].split(\"-\");\n    let date36 = date35[0].split(\"-\");\n    let date37 = date36[1].split(\"-\");\n    let date38 =",
+    "    var d = new Date(dt);\n    var dd = d.getDate();\n    var mm = d.getMonth()+1; //January is 0!\n    var yyyy = d.getFullYear();\n    if(dd<10){\n        dd='0'+dd\n    }\n    if(mm<10){\n        mm='0'+mm\n    }\n    return yyyy+'-'+mm+'-'+dd;\n}"
+  ]
+}

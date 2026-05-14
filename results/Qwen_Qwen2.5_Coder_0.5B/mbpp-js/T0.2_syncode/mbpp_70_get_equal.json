@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_70_get_equal",
+  "language": "js",
+  "prompt": "//Write a function to find whether all the given lists have equal length or not.\nfunction get_equal(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_70_get_equal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_equal;\n  assert.deepEqual(candidate([[11, 22, 33], [44, 55, 66]]),true);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6, 7]]),false);\n  assert.deepEqual(candidate([[1, 2], [3, 4]]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = true;\n    for(let i=0; i<Input.length; i++){\n        if(Input[i].length !== Input[i+1].length){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}",
+    "    let arr1 = Input[0];\n    let arr2 = Input[1];\n    let arr3 = Input[2];\n    let arr4 = Input[3];\n    let arr5 = Input[4];\n    let arr6 = Input[5];\n    let arr7 = Input[6];\n    let arr8 = Input[7];\n    let arr9 = Input[8];\n    let arr10 = Input[9];\n    let arr11 = Input[10];\n    let arr12 = Input[11];\n    let arr13 = Input[12];\n    let arr14 = Input[13];\n    let arr15 = Input[14];\n    let arr16 = Input[15];\n    let arr17 = Input[16];\n    let arr18 = Input[17];\n    let arr19 = Input[18];\n    let arr20 = Input[19];\n    let arr21 = Input[20];\n    let arr22 = Input[21];\n    let arr23 = Input[22];\n    let arr24 = Input[23];\n    let arr25 = Input[24];\n    let arr26 = Input[25];\n    let arr27 = Input[26];\n    let arr28 = Input[27];\n    let arr29 = Input[28];\n    let arr30 = Input[29];\n    let arr31 = Input[30];\n    let arr32 = Input[31];\n    let arr33 = Input[32];\n    let arr34 = Input[33];\n    let arr35 = Input[34];\n    let arr36 = Input[35];\n    let arr37 = Input[36];\n    let arr38 = Input[37];\n    let arr39 = Input[38];\n    let arr40 = Input[39];\n    let arr41 = Input[40];\n    let arr42 = Input[41];\n    let arr43 = Input[42];\n    let arr44 = Input[43];\n    let arr45 = Input[44];\n    let arr46 = Input[45];\n    let arr47 = Input[46];\n    let arr48 = Input[47];\n    let arr",
+    "    let count = 0;\n    for(let i=0; i<Input.length; i++){\n        if(Input[i].length == Input[i+1].length){\n            count++;\n        }\n    }\n    if(count == Input.length){\n        return true;\n    }\n    else{\n        return false;\n    }\n}"
+  ]
+}

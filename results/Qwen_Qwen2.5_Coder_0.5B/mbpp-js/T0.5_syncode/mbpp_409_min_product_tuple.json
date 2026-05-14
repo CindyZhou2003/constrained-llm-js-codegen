@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_409_min_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the minimum product from the pairs of tuples within a given array.\nfunction min_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_409_min_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),8);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),30);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),100);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min_product = 0;\n    for(let i = 0; i < list1.length; i++){\n        for(let j = i + 1; j < list1.length; j++){\n            let product = list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1];\n            if(product < min_product){\n                min_product = product;\n            }\n        }\n    }\n    return min_product;\n}\n",
+    "    let min = list1[0][0]*list1[0][1]\n    for(let i=1; i<list1.length; i++){\n      if(list1[i][0]*list1[i][1]<min){\n        min = list1[i][0]*list1[i][1]\n      }\n    }\n    return min\n}",
+    "    let min = Number.MAX_SAFE_INTEGER\n    let min_index = 0\n    for(let i = 0; i < list1.length; i++){\n        for(let j = i+1; j < list1.length; j++){\n            let x = list1[i][0] * list1[i][1]\n            let y = list1[j][0] * list1[j][1]\n            if(x<y && x<min){\n                min = x\n                min_index = i\n            }else if(y<x && y<min){\n                min = y\n                min_index = j\n            }\n        }\n    }\n    return [list1[min_index][0], list1[min_index][1], list1[min_index][0]*list1[min_index][1]]\n}",
+    "  let min_product = null;\n  for(let i = 0; i < list1.length; i++){\n    for(let j = i+1; j < list1.length; j++){\n      let prod = list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1];\n      if(min_product === null || prod < min_product){\n        min_product = prod;\n      }\n    }\n  }\n  return min_product;\n}",
+    "    var min = list1[0][0]*list1[0][1];\n    for(var i=1;i<list1.length;i++){\n        if(min>list1[i][0]*list1[i][1]){\n            min = list1[i][0]*list1[i][1];\n        }\n    }\n    return min;\n}"
+  ]
+}

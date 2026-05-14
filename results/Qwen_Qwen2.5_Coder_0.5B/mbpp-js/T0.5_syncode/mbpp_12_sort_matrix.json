@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = M.map(a=>a.sort((a,b)=>a+b));\n    return arr.flat().sort((a,b)=>a-b);\n}",
+    "    let result = [];\n    for (let i = 0; i < M.length; i++) {\n        result.push(Math.max(...M[i]));\n    }\n    for (let i = 0; i < M.length; i++) {\n        let max = result[0];\n        for (let j = 0; j < M.length; j++) {\n            if (M[i][j] > max) {\n                max = M[i][j];\n            }\n        }\n        let index = result.indexOf(max);\n        result[index] = max;\n        result.sort((a, b) => a - b);\n        result[index] = result[result.length - 1];\n        result.pop();\n    }\n    return result;\n}\n",
+    "    let array = M;\n    let result = [];\n    let sum;\n    let index;\n    for (let i = 0; i < array.length; i++) {\n        sum = 0;\n        for (let j = 0; j < array[i].length; j++) {\n            sum += array[i][j];\n        }\n        index = array[i].indexOf(sum);\n        array[i].sort((a, b) => a - b);\n        result.push(array[i]);\n    }\n    return result;\n}\n\n",
+    "    let result=[];\n    let sum=0;\n    for(let i=0;i<M.length;i++){\n        sum=0;\n        for(let j=0;j<M.length;j++){\n            sum+=M[i][j];\n        }\n        result.push([i,sum]);\n    }\n    result.sort((a,b)=>a[1]-b[1]);\n    let res=[];\n    for(let i=0;i<result.length;i++){\n        res.push(result[i][0]);\n    }\n    return res;\n}",
+    "    let res = [];\n    for(let i = 0; i < M.length; i++){\n        let sum = 0;\n        for(let j = 0; j < M[i].length; j++){\n            sum += M[i][j];\n        }\n        res.push(sum);\n    }\n    return res.sort((a,b)=>a-b);\n}"
+  ]
+}

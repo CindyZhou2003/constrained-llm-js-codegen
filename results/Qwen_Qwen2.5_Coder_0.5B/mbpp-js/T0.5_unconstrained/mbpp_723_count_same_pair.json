@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_723_count_same_pair",
+  "language": "js",
+  "prompt": "//The input is defined as two lists of the same length. Write a function to count indices where the lists have the same values.\nfunction count_same_pair(nums1, nums2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_723_count_same_pair.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_same_pair;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8], [2, 2, 3, 1, 2, 6, 7, 9]),4);\n  assert.deepEqual(candidate([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8], [2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8]),11);\n  assert.deepEqual(candidate([2, 4, -6, -9, 11, -12, 14, -5, 17], [2, 1, 2, -1, -5, 6, 4, -3, -2, 3, 4, 6, 8]),1);\n  assert.deepEqual(candidate([0, 1, 1, 2], [0, 1, 2, 2]),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let result = 0;\n  for(let i = 0; i<nums1.length; i++){\n    if(nums1[i] === nums2[i]){\n      result = result + 1;\n    }\n  }\n  return result;\n}\n",
+    "    let count = 0;\n    for (let i = 0; i < nums1.length; i++) {\n        if (nums1[i] === nums2[i]) {\n            count++;\n        }\n    }\n    return count;\n}",
+    "    //if the length of the two lists are not equal, return 0\n    if(nums1.length !== nums2.length) return 0;\n\n    //create a counter variable to keep track of the number of indices where the lists have the same values\n    let counter = 0;\n\n    //loop through the two lists\n    for(let i = 0; i < nums1.length; i++){\n        //if the values at the current index are the same, increment the counter\n        if(nums1[i] === nums2[i]){\n            counter++;\n        }\n    }\n    //return the counter\n    return counter;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < nums1.length; i++){\n        if(nums1[i] === nums2[i]){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < nums1.length; i++){\n        if(nums1[i] === nums2[i]){\n            count++;\n        }\n    }\n    return count;\n}\n"
+  ]
+}

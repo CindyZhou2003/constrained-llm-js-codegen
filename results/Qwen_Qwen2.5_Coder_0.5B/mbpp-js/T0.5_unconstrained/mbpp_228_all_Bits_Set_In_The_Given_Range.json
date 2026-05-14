@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_228_all_Bits_Set_In_The_Given_Range",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether all the bits are unset in the given range or not.\nfunction all_Bits_Set_In_The_Given_Range(n, l, r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_228_all_Bits_Set_In_The_Given_Range.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_Bits_Set_In_The_Given_Range;\n  assert.deepEqual(candidate(4, 1, 2),true);\n  assert.deepEqual(candidate(17, 2, 4),true);\n  assert.deepEqual(candidate(39, 4, 6),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let isAllBitsSet = true;\n    for(let i=l; i<r; i++){\n        if(!(n & (1<<i))){\n            isAllBitsSet = false;\n            break;\n        }\n    }\n    return isAllBitsSet;\n}",
+    "    let flag = true;\n    for(let i = l; i <= r; i++){\n        if((n & (1 << i)) !== 0){\n            flag = false;\n        }\n    }\n    return flag;\n}",
+    "    var i;\n    for(i = l; i <= r; i++){\n        if((n & (1 << i)) != 0){\n            return false;\n        }\n    }\n    return true;\n}\nvar n = 12;\nvar l = 1;\nvar r = 11;",
+    "    for(i=l;i<=r;i++){\n        if((n&(1<<i))!=0){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let count = 0;\n    for(let i = l; i <= r; i++){\n        if(n & (1 << i) === 0){\n            count++;\n        }\n    }\n    return count === 0;\n}\n\nlet n = 7;\nlet l = 2;\nlet r = 3;\n"
+  ]
+}

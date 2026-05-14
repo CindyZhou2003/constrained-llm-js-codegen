@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_720_add_dict_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add an object to the array. The output should be an array.\nfunction add_dict_to_tuple(test_tup, test_dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_720_add_dict_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_dict_to_tuple;\n  assert.deepEqual(candidate([4, 5, 6], {\"MSAM\": 1, \"is\": 2, \"best\": 3}),[4, 5, 6, {\"MSAM\": 1, \"is\": 2, \"best\": 3}]);\n  assert.deepEqual(candidate([1, 2, 3], {\"UTS\": 2, \"is\": 3, \"Worst\": 4}),[1, 2, 3, {\"UTS\": 2, \"is\": 3, \"Worst\": 4}]);\n  assert.deepEqual(candidate([8, 9, 10], {\"POS\": 3, \"is\": 4, \"Okay\": 5}),[8, 9, 10, {\"POS\": 3, \"is\": 4, \"Okay\": 5}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var new_tup = Object.assign({}, test_tup);\n  new_tup[test_dict] = test_dict;\n  return new_tup;\n}\n",
+    "    return [test_tup, test_dict]\n}\nadd_dict_to_tuple([1,2,3],[4,5,6])",
+    "    return [test_tup, ...test_dict];\n}\n",
+    "    let new_tup = [...test_tup, test_dict];\n    return new_tup;\n}\nlet test_tup = [1,2,3];\nlet test_dict = {x: 1, y: 2, z: 3};",
+    "    return [test_tup, test_dict];\n}\nlet test_tup = [\"test\", 2];\nlet test_dict = {test:2};\nlet result = add_dict_to_tuple(test_tup, test_dict);"
+  ]
+}

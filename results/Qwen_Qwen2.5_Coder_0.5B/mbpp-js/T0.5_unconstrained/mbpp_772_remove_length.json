@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_772_remove_length",
+  "language": "js",
+  "prompt": "//Write a function to remove all the words with k length in the given string.\nfunction remove_length(test_str, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_772_remove_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_length;\n  assert.deepEqual(candidate(\"The person is most value tet\", 3),\"person is most value\");\n  assert.deepEqual(candidate(\"If you told me about this ok\", 4),\"If you me about ok\");\n  assert.deepEqual(candidate(\"Forces of darkeness is come into the play\", 4),\"Forces of darkeness is the\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = test_str.split(' ');\n    let res = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i].length > K){\n            res.push(arr[i]);\n        }\n    }\n    return res.join(' ');\n}\n",
+    "    let arr = test_str.split(' ');\n    let result = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i].length > K){\n            result.push(arr[i]);\n        }\n    }\n    return result.join(' ');\n}\n",
+    "    let new_str = \"\";\n    let count = 0;\n    for(let i = 0; i < test_str.length; i++){\n        if(test_str[i].length == K){\n            count++;\n        }else{\n            new_str += test_str[i];\n            count = 0;\n        }\n    }\n    console.log(new_str);\n}\nremove_length(\"Hello World\", 4);",
+    "    let words = test_str.split(\" \");\n    for(let i = 0; i < words.length; i++){\n        if(words[i].length == K){\n            words.splice(i,1);\n            i--;\n        }\n    }\n    return words.join(\" \");\n}",
+    "    var arr = test_str.split(\" \");\n    var newarr = [];\n    for (var i = 0; i < arr.length; i++) {\n        if (arr[i].length != K) {\n            newarr.push(arr[i]);\n        }\n    }\n    return newarr.join(\" \");\n}\n\nvar str = \"I love to code in JS\";\nvar k = 4;"
+  ]
+}

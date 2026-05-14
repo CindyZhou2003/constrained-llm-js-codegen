@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    let i = n;\n    let arr = [];\n    while(i > 0){\n        arr.push(i % 10);\n        i = Math.floor(i / 10);\n    }\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] > 0 && arr[i] < arr[i + 1]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var digits = n.toString().split('');\n    var result = true;\n    for (var i = 0; i < digits.length; i++) {\n        var count = 0;\n        for (var j = 0; j < digits.length; j++) {\n            if (digits[i] == digits[j]) {\n                count++;\n            }\n        }\n        if (count > digits[i]) {\n            result = false;\n        }\n    }\n    return result;\n}",
+    "    let count = 0;\n    let freq = 0;\n    while(n>0){\n        freq = n%10;\n        count++;\n        n = Math.floor(n/10);\n        if(freq > count){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let arr = n.toString().split(\"\");\n    let count = [];\n    for(let i=0;i<arr.length;i++){\n        count[i] = arr[i].repeat(arr[i].length);\n    }\n    for(let i=0;i<count.length;i++){\n        if(count[i] === count[i].repeat(count[i].length) && count[i] !== 0){\n            count[i] = 0;\n        }\n    }\n    if(count.length === 0){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let arr = n.toString().split(\"\");\n    let arr2 = arr.map((x)=>{\n        let count = 0;\n        for(let i=0; i<arr.length; i++){\n            if(x == arr[i]){\n                count++;\n            }\n        }\n        return count;\n    });\n    return arr2.every((x)=>x<=x);\n}"
+  ]
+}

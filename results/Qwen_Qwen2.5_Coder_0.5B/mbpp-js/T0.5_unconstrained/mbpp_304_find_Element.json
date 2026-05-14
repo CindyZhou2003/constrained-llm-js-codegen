@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_304_find_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find element at a given index after number of rotations.\nfunction find_Element(arr, ranges, rotations, index){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_304_find_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Element;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [[0, 2], [0, 3]], 2, 1),3);\n  assert.deepEqual(candidate([1, 2, 3, 4], [[0, 1], [0, 2]], 1, 2),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [[0, 1], [0, 2]], 1, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < rotations; i++) {\n        arr = arr.splice(0, 1)[0];\n    }\n    return arr[index];\n}\n",
+    "    //find the index of the element\n    let index_of_element = arr.indexOf(arr[index]);\n    //find the index of the element after the rotations\n    let index_of_element_after_rotations = index_of_element + rotations;\n    //if the index of the element after the rotations is negative, then the index of the element after the rotations is zero\n    if(index_of_element_after_rotations < 0){\n        index_of_element_after_rotations = index_of_element_after_rotations + arr.length;\n    }\n    //if the index of the element after the rotations is greater than the length of the array, then the index of the element after the rotations is the length of the array\n    if(index_of_element_after_rotations > arr.length){\n        index_of_element_after_rotations = index_of_element_after_rotations - arr.length;\n    }\n    //return the index of the element after the rotations\n    return index_of_element_after_rotations;\n}\n",
+    "    let index = index % rotations;\n    let rotations = rotations - index;\n    for(let i = 0; i < rotations; i++){\n        arr.push(arr.shift());\n    }\n    return arr[index];\n}\n\nlet arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nlet ranges = [[1, 10], [0, 5], [1, 2]];\nlet rotations = 5;\nlet index = 3;",
+    "    var count = 0;\n    for(var i=0; i<ranges.length; i++){\n        count = count + ranges[i];\n    }\n    count = count + index;\n    return arr[count % count];\n}\n",
+    "    var new_arr = [];\n    for(var i=0; i<arr.length; i++){\n        if(i >= ranges[0] && i < ranges[1]){\n            new_arr.push(arr[i]);\n        }\n    }\n    for(var i=0; i<rotations; i++){\n        new_arr.push(new_arr[new_arr.length-1]);\n    }\n    return new_arr[index];\n}\n\nvar arr = [1,2,3,4,5,6,7,8,9];\nvar ranges = [1,3];\nvar rotations = 2;\nvar index = 4;"
+  ]
+}

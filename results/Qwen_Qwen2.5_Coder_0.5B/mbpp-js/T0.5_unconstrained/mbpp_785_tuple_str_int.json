@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_785_tuple_str_int",
+  "language": "js",
+  "prompt": "//Write a function to convert array string to integer array.\nfunction tuple_str_int(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_785_tuple_str_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_str_int;\n  assert.deepEqual(candidate(\"(7, 8, 9)\"),[7, 8, 9]);\n  assert.deepEqual(candidate(\"(1, 2, 3)\"),[1, 2, 3]);\n  assert.deepEqual(candidate(\"(4, 5, 6)\"),[4, 5, 6]);\n  assert.deepEqual(candidate(\"(7, 81, 19)\"),[7, 81, 19]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = test_str.split(',');\n    let arr2 = [];\n    for(var i=0;i<arr.length;i++){\n        if(arr[i].trim().length>0){\n            arr2.push(parseInt(arr[i].trim()));\n        }\n    }\n    return arr2;\n}\n",
+    "    let test_arr = test_str.split(' ');\n    let test_int_arr = [];\n    for(let i = 0; i < test_arr.length; i++){\n        test_int_arr.push(parseInt(test_arr[i]));\n    }\n    return test_int_arr;\n}",
+    "    var test_array = test_str.split(' ')\n    for(var i = 0; i < test_array.length; i++){\n        test_array[i] = parseInt(test_array[i])\n    }\n    return test_array\n}\n",
+    "    // convert string to array\n    let str_arr = test_str.split(' ');\n    // convert array to integer array\n    let int_arr = str_arr.map(Number);\n    return int_arr;\n}\n",
+    "    let test_str_arr = test_str.split('');\n    let result = [];\n    for (let i = 0; i < test_str_arr.length; i++){\n        if (test_str_arr[i] === ','){\n            result.push(test_str_arr[i - 1]);\n        }\n        else if (test_str_arr[i] === ']'){\n            result.push(test_str_arr[i + 1]);\n        }\n        else if (test_str_arr[i] === ']'){\n            result.push(test_str_arr[i - 1]);\n        }\n        else if (test_str_arr[i] === ' '){\n            result.push(test_str_arr[i - 1]);\n        }\n        else if (test_str_arr[i] === ','){\n            result.push(test_str_arr[i + 1]);\n        }\n        else {\n            result.push(test_str_arr[i]);\n        }\n    }\n    return result;\n}\n"
+  ]
+}

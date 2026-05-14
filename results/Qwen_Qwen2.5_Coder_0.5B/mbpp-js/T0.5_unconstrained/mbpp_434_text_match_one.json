@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_434_text_match_one",
+  "language": "js",
+  "prompt": "//Write a function that matches a string that has an a followed by one or more b's.\nfunction text_match_one(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_434_text_match_one.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = text_match_one;\n  assert.deepEqual(candidate(\"ac\"),false);\n  assert.deepEqual(candidate(\"dc\"),false);\n  assert.deepEqual(candidate(\"abba\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (text.match(/a(b*)/)){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    //Write your code here\n    let result = text.match(/a{1,}b/g);\n    console.log(result);\n}\ntext_match_one(\"abbbabbbbabba\");",
+    "    let result = text.match(/a*b/);\n    return result;\n}\n",
+    "    if(text.includes('a')){\n        if(text.includes('b')){\n            return true;\n        } else {\n            return false;\n        }\n    } else {\n        return false;\n    }\n}\n",
+    "    if(text.includes('a')){\n        return text.match(/a+/);\n    }else{\n        return null;\n    }\n}\n"
+  ]
+}

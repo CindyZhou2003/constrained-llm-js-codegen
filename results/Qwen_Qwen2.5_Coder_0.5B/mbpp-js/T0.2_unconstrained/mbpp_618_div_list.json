@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_618_div_list",
+  "language": "js",
+  "prompt": "//Write a function to divide two lists element wise.\nfunction div_list(nums1, nums2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_618_div_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = div_list;\n  assert.deepEqual(candidate([4, 5, 6], [1, 2, 3]),[4.0, 2.5, 2.0]);\n  assert.deepEqual(candidate([3, 2], [1, 4]),[3.0, 0.5]);\n  assert.deepEqual(candidate([90, 120], [50, 70]),[1.8, 1.7142857142857142]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let i = 0;\n    while(i < nums1.length){\n        let num1 = nums1[i];\n        let num2 = nums2[i];\n        let sum = num1 + num2;\n        result.push(sum);\n        i++;\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let i = 0;\n    while(i < nums1.length){\n        let num1 = nums1[i];\n        let num2 = nums2[i];\n        let sum = num1 + num2;\n        result.push(sum);\n        i++;\n    }\n    return result;\n}\n\nlet nums1 = [1, 2, 3, 4, 5];\nlet nums2 = [1, 2, 3, 4, 5];",
+    "    let result = [];\n    let remainder = 0;\n    let i = 0;\n    while(i < nums1.length || i < nums2.length){\n        let num1 = nums1[i] || 0;\n        let num2 = nums2[i] || 0;\n        let sum = num1 + num2 + remainder;\n        remainder = sum / 10;\n        result.push(sum % 10);\n        i++;\n    }\n    if(remainder > 0){\n        result.push(remainder);\n    }\n    return result;\n}\n"
+  ]
+}

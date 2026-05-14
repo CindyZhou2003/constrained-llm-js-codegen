@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_57_find_Max_Num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the largest number that can be formed with the given array of digits.\nfunction find_Max_Num(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_57_find_Max_Num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Max_Num;\n  assert.deepEqual(candidate([1, 2, 3]),321);\n  assert.deepEqual(candidate([4, 5, 6, 1]),6541);\n  assert.deepEqual(candidate([1, 2, 3, 9]),9321);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_num = 0;\n    for(let i = 0; i < arr.length; i++) {\n      let num = arr[i];\n      for(let j = i + 1; j < arr.length; j++) {\n        num = num * 10 + arr[j];\n        if(num > max_num) {\n          max_num = num;\n        }\n      }\n    }\n    return max_num;\n  }\n  \n  // Example usage:\n  // const arr = [5, 2, 8, 1, 3];\n  // const max_num = find_Max_Num(arr);\n  // console.log(max_num); // Output: 82153",
+    "    var max = arr[0];\n    for(var i = 0; i < arr.length; i++){\n        if(arr[i] > max){\n            max = arr[i];\n        }\n    }\n    return max;\n}",
+    "    let max_num = 0;\n    for(let i = 0; i < arr.length; i++){\n        let num = arr[i];\n        let new_num = num * arr.length;\n        if(new_num > max_num){\n            max_num = new_num;\n        }\n    }\n    return max_num;\n}",
+    "    let max = arr[0];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] > max){\n            max = arr[i];\n        }\n    }\n    return max;\n}",
+    "    var max = 0;\n    for(var i=0;i<arr.length;i++){\n        max = max * 10 + arr[i];\n    }\n    return max;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_409_min_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the minimum product from the pairs of tuples within a given array.\nfunction min_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_409_min_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),8);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),30);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),100);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let list2 = [];\n    let min = 0;\n    for (let i = 0; i < list1.length; i++){\n        for (let j = i+1; j < list1.length; j++){\n            list2.push([list1[i],list1[j]]);\n        }\n    }\n    for (let i = 0; i < list2.length; i++){\n        if (list2[i][0]*list2[i][1] < min){\n            min = list2[i][0]*list2[i][1];\n        }\n    }\n    return min;\n}",
+    "    return Math.min(...list1.map((tuple) => tuple[0] * tuple[1]));\n}\n",
+    "    let min = Math.min(...list1.map(tuple => tuple[0]*tuple[1]));\n    return min;\n}",
+    "  let min = Number.MAX_SAFE_INTEGER;\n  for(let i = 0; i < list1.length; i++){\n    for(let j = i + 1; j < list1.length; j++){\n      let product = list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1];\n      if(product < min){\n        min = product;\n      }\n    }\n  }\n  return min;\n}\n",
+    "  let min = list1[0][0] * list1[0][1];\n  for(let i=1; i<list1.length; i++){\n    for(let j=1; j<list1[i].length; j++){\n      if(min > list1[i][j] * list1[i][j-1]){\n        min = list1[i][j] * list1[i][j-1];\n      }\n    }\n  }\n  return min;\n}\n\nlet list1 = [[1,2],[3,4],[5,6],[7,8]];"
+  ]
+}

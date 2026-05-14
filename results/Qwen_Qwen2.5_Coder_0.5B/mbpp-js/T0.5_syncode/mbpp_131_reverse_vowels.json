@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_131_reverse_vowels",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse only the vowels of a given string (where y is not a vowel).\nfunction reverse_vowels(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_131_reverse_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_vowels;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"USA\"),\"ASU\");\n  assert.deepEqual(candidate(\"ab\"),\"ab\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str2 = str1.split(\"\");\n    let vowels = new Array(\"a\",\"e\",\"i\",\"o\",\"u\",\"A\",\"E\",\"I\",\"O\",\"U\");\n    let res = \"\";\n    for(let i = 0; i < str2.length; i++){\n        if(vowels.includes(str2[i])){\n            if(str2[i] == \"y\"){\n                res += \"y\";\n            }else{\n                res += str2[i].toUpperCase();\n            }\n        }else{\n            res += str2[i];\n        }\n    }\n    return res;\n}",
+    "    var vowels = \"aeiouAEIOU\";\n    var str2 = \"\";\n    for(var i = 0; i < str1.length; i++){\n        if(vowels.indexOf(str1[i]) !== -1){\n            str2 = str2 + str1[i];\n            var j = str1.indexOf(str1[i]);\n            str1 = str1.replace(str1[i], \"\");\n            str1 = str1.substring(0, j) + str1[i] + str1.substring(j + 1);\n        }\n    }\n    return str2;\n}",
+    "    let str2 = str1.split('');\n    let vowels = ['a','e','i','o','u','A','E','I','O','U'];\n    for(let i = 0; i < str2.length; i++){\n        if(vowels.includes(str2[i])){\n            let index = str2.indexOf(str2[i])\n            str2.splice(index, 1);\n            str2.splice(i, 0, str2[index]);\n            str2.splice(index, 1);\n        }\n    }\n    return str2.join('');\n}",
+    "    let vowels = \"aeiouAEIOU\";\n    let str2 = str1.split(\"\");\n    let result = \"\";\n    for(let i=0; i<str2.length; i++){\n        if(vowels.includes(str2[i])){\n            result += str2[str2.length-i-1];\n        }\n        else{\n            result += str2[i];\n        }\n    }\n    return result;\n}",
+    "    var vowels = 'aeiouAEIOU'\n    var arr = str1.split('')\n    var new_arr = []\n    for (var i = 0; i < arr.length; i++) {\n        if (vowels.indexOf(arr[i]) !== -1) {\n            new_arr.push(arr[i])\n            new_arr.push(arr[i].toUpperCase())\n        }\n        else {\n            new_arr.push(arr[i])\n        }\n    }\n    return new_arr.join('')\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_753_min_k",
+  "language": "js",
+  "prompt": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_753_min_k.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for (let i = 0; i < test_list.length; i++) {\n        if (result.length < K) {\n            result.push(test_list[i]);\n        } else {\n            if (test_list[i] < result[0]) {\n                result.splice(0,1);\n                result.push(test_list[i]);\n            } else if (test_list[i] > result[0]) {\n                result.splice(0,1);\n                result.push(test_list[i]);\n            }\n        }\n    }\n    return result;\n}",
+    "    let sorted_list = test_list.sort((a,b) => a-b)\n    let min_list = []\n    for(let i = 0; i < K; i++){\n        min_list.push(sorted_list[i])\n    }\n    return min_list\n}",
+    "  var min = test_list[0];\n  for(var i=1; i<test_list.length; i++){\n    if(test_list[i]<min){\n      min = test_list[i]\n    }\n  }\n  return min;\n}\n\nvar test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nvar min = min_k(test_list, 3);",
+    "    let arr = [];\n    for(let i = 0; i < test_list.length; i++){\n        if(arr.length < K){\n            arr.push(test_list[i]);\n        }else{\n            let min = arr[0];\n            for(let j = 1; j < arr.length; j++){\n                if(arr[j] < min){\n                    min = arr[j];\n                }\n            }\n            arr.shift();\n            arr.push(min);\n        }\n    }\n    return arr;\n}\n\nlet test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nlet K = 3;",
+    "    // sort the array in descending order\n    test_list.sort(function(a, b){\n        return b - a;\n    });\n\n    // array to store the final result\n    var result = [];\n\n    // traverse the array and add the smallest elements to the result array\n    for (var i = 0; i < K; i++) {\n        result.push(test_list[i]);\n    }\n\n    // return the result\n    return result;\n}\n"
+  ]
+}

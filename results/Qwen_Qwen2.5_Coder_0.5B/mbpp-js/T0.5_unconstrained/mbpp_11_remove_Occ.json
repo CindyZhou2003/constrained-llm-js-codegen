@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_11_remove_Occ",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to remove first and last occurrence of a given character from the string.\nfunction remove_Occ(s, ch){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_11_remove_Occ.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_Occ;\n  assert.deepEqual(candidate(\"hello\", \"l\"),\"heo\");\n  assert.deepEqual(candidate(\"abcda\", \"a\"),\"bcd\");\n  assert.deepEqual(candidate(\"PHP\", \"P\"),\"H\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let arr = s.split(\"\");\n  arr.splice(0,1);\n  arr.splice(arr.length-1,1);\n  return arr.join(\"\");\n}",
+    "    var s1 = s.split('');\n    for(var i = 0; i < s1.length; i++){\n        if(s1[i] == ch){\n            s1.splice(i, 1);\n        }\n    }\n    return s1.join('');\n}",
+    "    let newS = s.substring(1, s.length - 1);\n    return newS;\n}",
+    "    var arr = s.split(\"\");\n    var index = arr.indexOf(ch);\n    var newarr = arr.slice(1, arr.length - 1);\n    console.log(newarr);\n}\nvar s = \"Hello World\";\nvar ch = \"l\";\nremove_Occ(s, ch);",
+    "    var n = s.indexOf(ch);\n    var m = s.lastIndexOf(ch);\n    return s.substring(n+1, m);\n}"
+  ]
+}

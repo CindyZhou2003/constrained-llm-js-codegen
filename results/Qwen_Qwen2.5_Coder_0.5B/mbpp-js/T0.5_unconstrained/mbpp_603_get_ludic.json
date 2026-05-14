@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let lucid_num = [];\n    for(let i=0; i<=n; i++){\n        if(i*i<=n){\n            lucid_num.push(i*i)\n        }\n    }\n    return lucid_num\n}",
+    "    let arr = [];\n    while(n>=1){\n        if(isLudic(n)){\n            arr.push(n);\n        }\n        n--;\n    }\n    return arr;\n}",
+    "    let lucid = [];\n    for (let i = 0; i <= n; i++){\n        if(i % 10 == 5 || i % 10 == 6 || i % 10 == 9){\n            lucid.push(i);\n        }\n    }\n    return lucid;\n}\n",
+    "    let lucid = [];\n    for(let i = 1; i <= n; i++){\n        if(i % 10 === 7 || i % 10 === 4 || i % 10 === 6 || i % 10 === 9){\n            lucid.push(i);\n        }\n    }\n    return lucid;\n}",
+    "    let lucid_nums = [];\n    for(let i = 1; i <= n; i++){\n        if(i % 10 === 1 || i % 10 === 2 || i % 10 === 3 || i % 10 === 4 || i % 10 === 5 || i % 10 === 6 || i % 10 === 7 || i % 10 === 8 || i % 10 === 9){\n            lucid_nums.push(i);\n        }\n    }\n    return lucid_nums;\n}"
+  ]
+}

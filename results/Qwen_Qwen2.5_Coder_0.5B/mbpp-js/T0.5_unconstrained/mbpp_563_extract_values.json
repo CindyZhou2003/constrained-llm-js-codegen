@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_563_extract_values",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks from a string.\nfunction extract_values(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_563_extract_values.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_values;\n  assert.deepEqual(candidate(\"\"Python\", \"PHP\", \"Java\"\"),[\"Python\", \"PHP\", \"Java\"]);\n  assert.deepEqual(candidate(\"\"python\",\"program\",\"language\"\"),[\"python\", \"program\", \"language\"]);\n  assert.deepEqual(candidate(\"\"red\",\"blue\",\"green\",\"yellow\"\"),[\"red\", \"blue\", \"green\", \"yellow\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return text.split(\"'\")[1]\n}\n",
+    "    const textArray = text.split(\" \");\n    const index = textArray.findIndex(item => item.startsWith('\"'));\n    const index2 = textArray.findIndex(item => item.endsWith('\"'));\n    const output = textArray.slice(index + 1, index2 - 1).join(\" \");\n    return output;\n}",
+    "    if (text.includes('\"')) {\n        return text.substring(1, text.length - 1);\n    } else {\n        return null;\n    }\n}\n",
+    "    var values = text.split('\"');\n    return values[1];\n}",
+    "    return text.slice(1, text.length - 1);\n}"
+  ]
+}

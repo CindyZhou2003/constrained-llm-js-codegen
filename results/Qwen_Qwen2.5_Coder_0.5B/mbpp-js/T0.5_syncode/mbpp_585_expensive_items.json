@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_585_expensive_items",
+  "language": "js",
+  "prompt": "//Write a function to find the n most expensive items in a given dataset.\nfunction expensive_items(items, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_585_expensive_items.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = expensive_items;\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}], 2),[{\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-1\", \"price\": 101.1}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}, {\"name\": \"Item-4\", \"price\": 22.75}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  //sort the array based on the price\n  items.sort(function(a, b){\n    return a.price-b.price;\n  });\n\n  //return the first n elements of the array\n  return items.slice(0,n);\n}\n",
+    "  //sort the array in descending order\n  items.sort((a, b) => b.price - a.price);\n  //return the top n items\n  return items.slice(0, n);\n}",
+    "    return items.sort((a,b)=>b-a).slice(0,n)\n}\n",
+    "    return items.sort(function(a,b){\n        return b.price - a.price;\n    }).slice(0,n);\n}\n",
+    "    let max = Math.max(...items);\n    let maxItems = [];\n    for(let i = 0; i < items.length; i++){\n        if(items[i] == max){\n            maxItems.push(items[i]);\n        }\n    }\n    return maxItems.slice(0, n);\n}\n"
+  ]
+}

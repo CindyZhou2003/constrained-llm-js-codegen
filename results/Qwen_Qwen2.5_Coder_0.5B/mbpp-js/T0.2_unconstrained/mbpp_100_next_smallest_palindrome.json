@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev_num = parseInt(rev);\n    let num1 = rev_num + 1;\n    let rev1 = num1.toString().split('').reverse().join('');\n    let rev1_num = parseInt(rev1);\n    if(num1 < rev1_num){\n        return num1;\n    }\n    else{\n        return num;\n    }\n}",
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev_num = parseInt(rev);\n    let rev_num_str = rev_num.toString();\n    let rev_num_rev = rev_num_str.split('').reverse().join('');\n    let rev_num_rev_str = rev_num_rev;\n    let rev_num_rev_num = parseInt(rev_num_rev_str);\n    if(rev_num_rev_num > rev_num){\n        return rev_num_rev_num;\n    }else{\n        return rev_num;\n    }\n}",
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev2 = rev + rev;\n    let rev3 = rev2.split('').reverse().join('');\n    let rev4 = rev3 + rev3;\n    let rev5 = rev4.split('').reverse().join('');\n    let rev6 = rev5 + rev5;\n    let rev7 = rev6.split('').reverse().join('');\n    let rev8 = rev7 + rev7;\n    let rev9 = rev8.split('').reverse().join('');\n    let rev10 = rev9 + rev9;\n    let rev11 = rev10.split('').reverse().join('');\n    let rev12 = rev11 + rev11;\n    let rev13 = rev12.split('').reverse().join('');\n    let rev14 = rev13 + rev13;\n    let rev15 = rev14.split('').reverse().join('');\n    let rev16 = rev15 + rev15;\n    let rev17 = rev16.split('').reverse().join('');\n    let rev18 = rev17 + rev17;\n    let rev19 = rev18.split('').reverse().join('');\n    let rev20 = rev19 + rev19;\n    let rev21 = rev20.split('').reverse().join('');\n    let rev22 = rev21 + rev21;\n    let rev23 = rev22.split('').reverse().join('');\n    let rev24 = rev23 + rev23;\n    let rev25 = rev24.split('').reverse().join('');\n    let rev26 = rev25 + rev25;\n    let rev27 = rev26.split('').reverse().join('');\n    let rev28 = rev27 + rev27;\n    let rev29 = rev28.split('').reverse().join('');\n    let rev30 = rev29 + rev29;\n    let rev31 = rev30.split('').reverse().join('');\n    let rev32 = rev31 + rev31;\n    let rev33 = rev32.split('').reverse().join('');\n    let rev34 = rev33 + rev33;\n    let rev35 = rev34.split('').reverse().join('');\n    let rev36 = rev35 + rev35;\n    let rev37 = rev36.split('')."
+  ]
+}

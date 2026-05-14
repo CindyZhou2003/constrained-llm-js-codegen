@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_72_dif_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given number can be represented as the difference of two squares or not.\nfunction dif_Square(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_72_dif_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dif_Square;\n  assert.deepEqual(candidate(5),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(15),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i = 1;\n    var j = 1;\n    var k = 1;\n    var l = 1;\n    var m = 1;\n    var n = 1;\n    var o = 1;\n    var p = 1;\n    var q = 1;\n    var r = 1;\n    var s = 1;\n    var t = 1;\n    var u = 1;\n    var v = 1;\n    var w = 1;\n    var x = 1;\n    var y = 1;\n    var z = 1;\n    while(i <= n){\n        j = i*i;\n        k = j*j;\n        l = k*k;\n        m = l*l;\n        n = m*m;\n        o = n*n;\n        p = o*p;\n        q = p*p;\n        r = q*q;\n        s = r*r;\n        t = s*s;\n        u = t*t;\n        v = u*u;\n        w = v*v;\n        x = w*w;\n        y = x*x;\n        z = y*y;\n        if(n == x){\n            return true;\n        }\n        else{\n            return false;\n        }\n    }\n}",
+    "    var i = 0;\n    while(i*i <= n){\n        var j = 0;\n        while(j*j <= n){\n            if(i*i + j*j == n){\n                return true;\n            }\n            j++;\n        }\n        i++;\n    }\n    return false;\n}",
+    "    let i = 0;\n    let j = 0;\n    while(i<=n){\n        j = Math.sqrt(n-i);\n        if(j*j == n-i){\n            return true;\n        }\n        i++;\n    }\n    return false;\n}"
+  ]
+}

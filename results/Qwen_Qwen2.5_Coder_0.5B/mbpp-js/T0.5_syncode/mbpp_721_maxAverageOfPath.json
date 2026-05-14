@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_721_maxAverageOfPath",
+  "language": "js",
+  "prompt": "//Given a square matrix of size N*N given as an array of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.\nfunction maxAverageOfPath(cost){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_721_maxAverageOfPath.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = maxAverageOfPath;\n  assert.deepEqual(candidate([[1, 2, 3], [6, 5, 4], [7, 3, 9]]),5.2);\n  assert.deepEqual(candidate([[2, 3, 4], [7, 6, 5], [8, 4, 10]]),6.2);\n  assert.deepEqual(candidate([[3, 4, 5], [8, 7, 6], [9, 5, 11]]),7.2);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),5.8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = cost.length;\n    let dp = Array(n).fill().map(() => Array(n).fill(0));\n    for (let i = 0; i < n; i++) {\n        dp[i][i] = cost[i][0];\n    }\n    for (let i = 1; i < n; i++) {\n        for (let j = 0; j < n; j++) {\n            dp[i][j] = Math.min(dp[i - 1][j], dp[i][j + 1]) + cost[i][j];\n        }\n    }\n    let max = dp[n - 1][0];\n    for (let i = 1; i < n; i++) {\n        max = Math.max(dp[n - 1][i], max);\n    }\n    return max / n;\n}\n",
+    "    let dp = new Array(cost.length);\n    for(let i = 0; i < cost.length; i++){\n        dp[i] = new Array(cost.length);\n    }\n    for(let i = 0; i < cost.length; i++){\n        dp[i][i] = cost[i][i];\n    }\n    for(let i = 1; i < cost.length; i++){\n        for(let j = 0; j < cost.length; j++){\n            if(j === 0){\n                dp[i][j] = cost[i][j] + dp[i - 1][j];\n            }else if(j === i){\n                dp[i][j] = cost[i][j] + dp[i - 1][j - 1];\n            }else{\n                dp[i][j] = cost[i][j] + Math.max(dp[i - 1][j - 1], dp[i - 1][j]);\n            }\n        }\n    }\n    let max = 0;\n    for(let i = 0; i < cost.length; i++){\n        max += dp[cost.length - 1][i];\n    }\n    return max / cost.length;\n}",
+    "    let n = cost.length;\n    let max = Math.max(...cost[0]);\n    let maxPath = 0;\n    let path = 0;\n    for(let i = 1; i < n; i++){\n        for(let j = 0; j < n; j++){\n            if(i === j){\n                cost[i][j] += Math.max(cost[i-1][j], cost[i][j-1]);\n            }else{\n                cost[i][j] += Math.max(cost[i-1][j], cost[i][j-1]);\n            }\n            if(cost[i][j] > maxPath){\n                maxPath = cost[i][j];\n                path = i;\n            }\n        }\n    }\n    for(let i = 0; i < n; i++){\n        if(i === path){\n            cost[i][i] += max;\n        }\n    }\n    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += cost[i][i];\n    }\n    return (sum / n);\n}",
+    "    var n = cost.length;\n    var dp = new Array(n);\n    var res = 0;\n    for(var i = 0; i<n; i++){\n        dp[i] = new Array(n);\n        for(var j = 0; j<n; j++){\n            dp[i][j] = Infinity;\n        }\n    }\n    dp[0][0] = cost[0][0];\n    for(var i = 1; i<n; i++){\n        dp[0][i] = dp[0][i-1] + cost[0][i];\n    }\n    for(var i = 1; i<n; i++){\n        dp[i][0] = dp[i-1][0] + cost[i][0];\n    }\n    for(var i = 1; i<n; i++){\n        for(var j = 1; j<n; j++){\n            dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + cost[i][j];\n        }\n    }\n    for(var i = 0; i<n; i++){\n        res = Math.max(res, dp[n-1][i]);\n    }\n    return res/n;\n}",
+    "    let max = 0;\n    let path = [];\n    for(let i = 0; i < cost.length; i++){\n        let sum = 0;\n        let pathCost = 0;\n        for(let j = 0; j < cost[i].length; j++){\n            sum += cost[i][j];\n            pathCost += cost[i][j];\n            if(j === cost[i].length - 1){\n                max = Math.max(max, pathCost / (i + 1));\n            }\n        }\n        path.push(sum);\n    }\n    return max;\n}"
+  ]
+}

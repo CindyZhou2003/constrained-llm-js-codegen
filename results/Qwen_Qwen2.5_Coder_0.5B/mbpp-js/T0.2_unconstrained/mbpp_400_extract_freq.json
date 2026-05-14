@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_400_extract_freq",
+  "language": "js",
+  "prompt": "//Write a function to extract the number of unique tuples in the given array.\nfunction extract_freq(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_400_extract_freq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_freq;\n  assert.deepEqual(candidate([[3, 4], [1, 2], [4, 3], [5, 6]]),3);\n  assert.deepEqual(candidate([[4, 15], [2, 3], [5, 4], [6, 7]]),4);\n  assert.deepEqual(candidate([[5, 16], [2, 3], [6, 5], [6, 9]]),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let freq = {};\n    for(let i=0;i<test_list.length;i++){\n        if(freq[test_list[i]]){\n            freq[test_list[i]]++;\n        }\n        else{\n            freq[test_list[i]] = 1;\n        }\n    }\n    return Object.keys(freq).length;\n}",
+    "    let freq = {};\n    for(let i = 0; i < test_list.length; i++){\n        if(freq[test_list[i]]){\n            freq[test_list[i]] += 1;\n        }else{\n            freq[test_list[i]] = 1;\n        }\n    }\n    return Object.keys(freq).length;\n}",
+    "    let freq = 0;\n    for(let i = 0; i < test_list.length; i++){\n        let temp = test_list[i];\n        let temp2 = test_list[i];\n        let temp3 = test_list[i];\n        let temp4 = test_list[i];\n        let temp5 = test_list[i];\n        let temp6 = test_list[i];\n        let temp7 = test_list[i];\n        let temp8 = test_list[i];\n        let temp9 = test_list[i];\n        let temp10 = test_list[i];\n        let temp11 = test_list[i];\n        let temp12 = test_list[i];\n        let temp13 = test_list[i];\n        let temp14 = test_list[i];\n        let temp15 = test_list[i];\n        let temp16 = test_list[i];\n        let temp17 = test_list[i];\n        let temp18 = test_list[i];\n        let temp19 = test_list[i];\n        let temp20 = test_list[i];\n        let temp21 = test_list[i];\n        let temp22 = test_list[i];\n        let temp23 = test_list[i];\n        let temp24 = test_list[i];\n        let temp25 = test_list[i];\n        let temp26 = test_list[i];\n        let temp27 = test_list[i];\n        let temp28 = test_list[i];\n        let temp29 = test_list[i];\n        let temp30 = test_list[i];\n        let temp31 = test_list[i];\n        let temp32 = test_list[i];\n        let temp33 = test_list[i];\n        let temp34 = test_list[i];\n        let temp35 = test_list[i];\n        let temp36 = test_list[i];\n        let temp37 = test_list[i];\n        let temp38 = test_list[i];\n        let temp39 = test_list[i];\n        let temp40 = test_list[i];\n        let temp41 = test_list[i];\n        let temp42 = test_list[i];\n        let temp43 = test_list[i];\n        let temp44 = test_list[i];\n        let temp45 = test_list[i];\n        let temp46 = test_list[i];\n        let temp47 = test_list[i];\n        let temp48 = test_list[i];\n        let temp49 = test_list[i];\n        let temp50 = test_list[i"
+  ]
+}

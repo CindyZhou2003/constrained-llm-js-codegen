@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sorted_matrix = [];\n    let row_sum = [];\n    let row_index = 0;\n    let column_index = 0;\n    let sum = 0;\n    for(let i = 0; i < M.length; i++){\n        row_sum.push(0);\n    }\n    for(let i = 0; i < M.length; i++){\n        for(let j = 0; j < M[i].length; j++){\n            sum = 0;\n            for(let k = 0; k < M.length; k++){\n                sum += M[k][j];\n            }\n            row_sum[i] += sum;\n        }\n    }\n    for(let i = 0; i < M.length; i++){\n        for(let j = 0; j < M[i].length; j++){\n            sorted_matrix.push(M[i][j]);\n        }\n    }\n    return sorted_matrix;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < M.length; i++){\n        result.push(M[i].sort((a,b) => a+b));\n    }\n    return result;\n}",
+    "    let sorted = M.sort((a,b) => a.reduce((x,y) => x+y,0) - b.reduce((x,y) => x+y,0));\n    return sorted;\n}\n"
+  ]
+}

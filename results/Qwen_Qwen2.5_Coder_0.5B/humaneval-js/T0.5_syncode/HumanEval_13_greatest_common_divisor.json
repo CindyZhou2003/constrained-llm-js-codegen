@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_13_greatest_common_divisor",
+  "language": "js",
+  "prompt": "//Return a greatest common divisor of two integers a and b\n// >>> greatest_common_divisor(3, 5)\n// 1\n// >>> greatest_common_divisor(25, 15)\n// 5\nfunction greatest_common_divisor(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_13_greatest_common_divisor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = greatest_common_divisor;\n  assert.deepEqual(candidate(3, 7),1);\n  assert.deepEqual(candidate(10, 15),5);\n  assert.deepEqual(candidate(49, 14),7);\n  assert.deepEqual(candidate(144, 60),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    while(b !== 0){\n        let temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}\n",
+    "    //your code here\n    if (a % b === 0) {\n      return b;\n    } else {\n      return greatest_common_divisor(b, a % b);\n    }\n  }\n  \n  //Return the greatest common divisor of two integers a and b\n  // >>> greatest_common_divisor(3, 5)\n  // 1\n  // >>> greatest_common_divisor(25, 15)\n  // 5\n  // >>> greatest_common_divisor(99, 68)\n  // 17\n  // >>> greatest_common_divisor(1024, 19684)\n  // 4\n  // >>> greatest_common_divisor(20, 10)\n  // 10\n  // >>> greatest_common_divisor(10, 20)\n  // 10\n  // >>> greatest_common_divisor(17, 13)\n  // 1\n  // >>> greatest_common_divisor(2, 2)\n  // 2\n  \n  //Return the greatest common divisor of three integers a, b, and c\n  // >>> greatest_common_divisor(3, 5, 7)\n  // 1\n  // >>> greatest_common_divisor(25, 15, 10)\n  // 5\n  // >>> greatest_common_divisor(99, 68, 100)\n  // 1\n  // >>> greatest_common_divisor(1024, 19684, 10000)\n  // 1\n  // >>> greatest_common_divisor(20, 10, 20)\n  // 20\n  // >>> greatest_common_divisor(17, 13, 1)\n  // 1\n  // >>> greatest_common_divisor(2, 2, 2)\n  // 2\n  \n  //Return the greatest common divisor of n numbers a, b, ..., c\n  // >>> greatest_common_divisor(3, 5, 7, 11)\n  // 1\n  // >>> greatest_common_divisor(25, 15, 10, 100)\n  // 1\n  // >>> greatest_common_divisor(1024, 19684, 10000, 1)\n  // ",
+    "    if (b === 0) {\n        return a;\n    } else {\n        return greatest_common_divisor(b, a % b);\n    }\n}\n",
+    "  if (a % b === 0) {\n    return b;\n  } else if (a % b !== 0) {\n    return greatest_common_divisor(b, a % b);\n  }\n}\n",
+    "    if(b === 0) return a;\n    return greatest_common_divisor(b, a % b);\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_141_pancake_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction pancake_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_141_pancake_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pancake_sort;\n  assert.deepEqual(candidate([15, 79, 25, 38, 69]),[15, 25, 38, 69, 79]);\n  assert.deepEqual(candidate([98, 12, 54, 36, 85]),[12, 36, 54, 85, 98]);\n  assert.deepEqual(candidate([41, 42, 32, 12, 23]),[12, 23, 32, 41, 42]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let len = nums.length;\n    let j = 0;\n    while(j < len){\n        let max = nums.indexOf(nums[len - 1]);\n        let maxIndex = len - 1;\n        for(let i = 0; i < len - 1; i++){\n            if(nums[i] > nums[i + 1]){\n                maxIndex = i;\n                break;\n            }\n        }\n        if(maxIndex === max){\n            j++;\n            continue;\n        }\n        else{\n            let temp = nums[maxIndex];\n            nums[maxIndex] = nums[j];\n            nums[j] = temp;\n            j++;\n        }\n        max = nums.indexOf(nums[len - 1]);\n        maxIndex = len - 1;\n        for(let i = 0; i < len - 1; i++){\n            if(nums[i] > nums[i + 1]){\n                maxIndex = i;\n                break;\n            }\n        }\n        if(maxIndex === max){\n            j++;\n            continue;\n        }\n        else{\n            let temp = nums[maxIndex];\n            nums[maxIndex] = nums[j];\n            nums[j] = temp;\n            j++;\n        }\n    }\n    return nums;\n}",
+    "    let len = nums.length;\n    let i = 0;\n    while (i < len){\n        let max = -1;\n        let maxIdx = -1;\n        for (let j = 0; j < len; j++){\n            if (nums[j] > max){\n                max = nums[j];\n                maxIdx = j;\n            }\n        }\n        if (maxIdx !== i){\n            reverse(nums, maxIdx);\n            reverse(nums, i);\n        }\n        i++;\n    }\n    return nums;\n}\n",
+    "    let n = nums.length;\n\n    for(let i = 0; i < n; i++){\n        let max = i;\n        for(let j = i; j < n; j++){\n            if(nums[j] > nums[max]){\n                max = j;\n            }\n        }\n        if(max !== i){\n            swap(nums, max, i);\n        }\n    }\n    for(let i = n-1; i >= 0; i--){\n        let max = i;\n        for(let j = i; j >= 0; j--){\n            if(nums[j] > nums[max]){\n                max = j;\n            }\n        }\n        if(max !== i){\n            swap(nums, max, i);\n        }\n    }\n}",
+    "    let sortedArray = nums.slice();\n    let n = nums.length;\n    let i = 0;\n    while(i < n){\n        let maxIndex = 0;\n        let max = 0;\n        for(let j = 1; j < n; j++){\n            if(sortedArray[j] > sortedArray[maxIndex]){\n                maxIndex = j;\n                max = sortedArray[j];\n            }\n        }\n        if(maxIndex !== i){\n            console.log(sortedArray);\n            for(let k = 0; k < maxIndex; k++){\n                pancake(nums, k, maxIndex);\n            }\n            pancake(nums, maxIndex, i);\n            pancake(nums, i, maxIndex);\n        }\n        i++;\n    }\n    return sortedArray;\n}\n\n\n",
+    "    let len = nums.length - 1;\n    while(len > 0){\n        let maxIndex = 0;\n        for(let i = 0; i < len; i++){\n            if(nums[i] > nums[maxIndex]){\n                maxIndex = i;\n            }\n        }\n        if(maxIndex !== len){\n            //flip the array\n            let temp = nums[maxIndex];\n            nums[maxIndex] = nums[len];\n            nums[len] = temp;\n            //flip the array again\n            let temp2 = nums[maxIndex];\n            nums[maxIndex] = nums[maxIndex-1];\n            nums[maxIndex-1] = temp2;\n            len--;\n        }\n        else{\n            len--;\n        }\n    }\n    return nums;\n}\n"
+  ]
+}

@@ -1,1 +1,18 @@
-{"name": "mbpp_12_sort_matrix", "language": "js", "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["  //Create an array to store the row sums\n  let rowSums = [];\n "]}
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  //Create an array of row sums\n  let row_sums = M.map(row => row.reduce((a, b) => a + b, 0));\n  //Create a copy of the matrix\n  let sorted_M = [...M];\n  //Create a copy of the row sums\n  let sorted_row_sums = [...row_sums];\n  //Create a copy of the indices\n  let sorted_indices = [...Array(M.length).keys()];\n  //Create a variable to store the current index\n  let current_index = 0;\n  //Create a variable to store the maximum row sum\n  let max_row_sum = Math.max(...row_sums);\n  //Create a variable to store the index of the row with the maximum row sum\n  let max_row_sum_index = row_sums.indexOf(max_row_sum);\n  //Create a variable to store the index of the row with the minimum row sum\n  let min_row_sum_index = row_sums.indexOf(Math.min(...row_sums));\n  //Create a variable to store the index of the row with the maximum value\n  let max_value_index = sorted_M[0].indexOf(Math.max(...sorted_M[0]));\n  //Create a variable to store the index of the row with the minimum value\n  let min_value_index = sorted_M[0].indexOf(Math.min(...sorted_M[0]));\n  //Create a variable to store the index of the row with the maximum sum\n  let max_sum_index = sorted_row_sums.indexOf(max_row_sum);\n  //Create a variable to store the index of the row with the minimum sum\n  let min_sum_index = sorted_row_sums.indexOf(min_row_sum);\n  //Create a variable to store the index of the row with the maximum value\n  let max_value_index = sorted_indices[0];\n  //Create a variable to store the index of the row with the minimum value\n  let min_value_index = sorted_indices[0];\n  //Create a variable to store the index of the"
+  ]
+}

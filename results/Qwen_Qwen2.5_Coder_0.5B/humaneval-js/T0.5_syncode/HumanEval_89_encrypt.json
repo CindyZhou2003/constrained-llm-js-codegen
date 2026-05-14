@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_89_encrypt",
+  "language": "js",
+  "prompt": "//Create a function encrypt that takes a string as an argument and\n// returns a string encrypted with the alphabet being rotated. \n// The alphabet should be rotated in a manner such that the letters \n// shift down by two multiplied to two places.\n// For example:\n// >>> encrypt(\"hi\")\n// \"lm\"\n// >>> encrypt(\"asdfghjkl\")\n// \"ewhjklnop\"\n// >>> encrypt(\"gf\")\n// \"kj\"\n// >>> encrypt(\"et\")\n// \"ix\"\nfunction encrypt(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_89_encrypt.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encrypt;\n  assert.deepEqual(candidate(\"hi\"),\"lm\");\n  assert.deepEqual(candidate(\"asdfghjkl\"),\"ewhjklnop\");\n  assert.deepEqual(candidate(\"gf\"),\"kj\");\n  assert.deepEqual(candidate(\"et\"),\"ix\");\n  assert.deepEqual(candidate(\"faewfawefaewg\"),\"jeiajeaijeiak\");\n  assert.deepEqual(candidate(\"hellomyfriend\"),\"lippsqcjvmirh\");\n  assert.deepEqual(candidate(\"dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh\"),\"hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl\");\n  assert.deepEqual(candidate(\"a\"),\"e\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newString = \"\";\n    for (let i = 0; i < s.length; i++) {\n        let charCode = s.charCodeAt(i);\n        if (charCode >= 65 && charCode <= 90) {\n            charCode = charCode + 2;\n            if (charCode > 90) {\n                charCode = charCode - 26;\n            }\n        } else if (charCode >= 97 && charCode <= 122) {\n            charCode = charCode + 2;\n            if (charCode > 122) {\n                charCode = charCode - 26;\n            }\n        }\n        newString += String.fromCharCode(charCode);\n    }\n    return newString;\n}",
+    "    let newString = \"\";\n    for (let i = 0; i < s.length; i++){\n        let ascii = s.charCodeAt(i);\n        if (ascii >= 65 && ascii <= 90){\n            ascii = ascii + 2;\n            if (ascii > 90){\n                ascii = ascii - 26;\n            }\n        }\n        if (ascii >= 97 && ascii <= 122){\n            ascii = ascii + 2;\n            if (ascii > 122){\n                ascii = ascii - 26;\n            }\n        }\n        newString += String.fromCharCode(ascii);\n    }\n    return newString;\n}\n",
+    "  let str = s.split(\"\");\n  let alphabet = \"abcdefghijklmnopqrstuvwxyz\";\n\n  for (let i = 0; i < str.length; i++) {\n    let letter = str[i];\n    let newLetter = alphabet[(alphabet.indexOf(letter) + 2) % 26];\n    str[i] = newLetter;\n  }\n  return str.join(\"\");\n}\n",
+    "    let result = \"\";\n    for(let i = 0; i < s.length; i++){\n        let current = s[i];\n        let newChar = \"\";\n        // if current is a letter\n        if(isAlpha(current)){\n            // if new char is a letter\n            if(isAlpha(newChar = String.fromCharCode((current.charCodeAt(0) - 97 + 2) % 26 + 97))){\n                result += newChar;\n            } else {\n                result += String.fromCharCode((current.charCodeAt(0) - 97 + 2) % 26 + 97);\n            }\n        } else {\n            result += current;\n        }\n    }\n    return result;\n}",
+    "    let alphabet = \"abcdefghijklmnopqrstuvwxyz\";\n    let rotated = \"zyxwvutsrqponmlkjihgfedcba\";\n    let encrypted = \"\";\n    let i = 0;\n    for(let c of s){\n        if(c === ' '){\n            encrypted += ' ';\n            i++;\n        }else{\n            encrypted += rotated[((alphabet.indexOf(c) + 2) % 26) + i];\n        }\n    }\n    return encrypted;\n}"
+  ]
+}

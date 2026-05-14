@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_126_sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of common divisors of two given numbers.\nfunction sum(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_126_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sum;\n  assert.deepEqual(candidate(10, 15),6);\n  assert.deepEqual(candidate(100, 150),93);\n  assert.deepEqual(candidate(4, 6),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let x = 0;\n    for(let i = 1; i<= a; i++){\n        if(a%i === 0 && b%i === 0){\n            x += i;\n        }\n    }\n    return x;\n}",
+    "    let sum = 0;\n    for(let i = 1;i<=Math.min(a,b);i++){\n        if(a%i === 0 && b%i === 0){\n            sum += i;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i = 1; i <= a; i++){\n        if(a % i == 0 && b % i == 0){\n            sum += i;\n        }\n    }\n    return sum;\n}\n\n\n",
+    "    let arr = [];\n    for(let i=1; i<=a; i++){\n        if(a%i === 0 && b%i === 0){\n            arr.push(i)\n        }\n    }\n    return arr.reduce((ac, cv) => ac + cv, 0)\n}",
+    "    let c = 0;\n    for(let i = 1; i <= a; i++){\n      if(a % i == 0 && b % i == 0){\n        c += i;\n      }\n    }\n    return c;\n  }\n  //console.log(sum(6,9));\n\n  //Write a JavaScript function to find the maximum number among three given numbers.\n  // function max(a, b, c){\n  //   if(a > b && a > c){\n  //     return a;\n  //   }else if(b > a && b > c){\n  //     return b;\n  //   }else{\n  //     return c;\n  //   }\n  // }\n  // console.log(max(1, 2, 3));\n\n  //Write a JavaScript function to find the maximum number among two given numbers.\n  // function max(a, b){\n  //   if(a > b){\n  //     return a;\n  //   }else{\n  //     return b;\n  //   }\n  // }\n  // console.log(max(1, 2));\n\n  //Write a JavaScript function to find the minimum number among three given numbers.\n  // function min(a, b, c){\n  //   if(a < b && a < c){\n  //     return a;\n  //   }else if(b < a && b < c){\n  //     return b;\n  //   }else{\n  //     return c;\n  //   }\n  // }\n  // console.log(min(1, 2, 3));\n\n  //Write a JavaScript function to find the minimum number among two given numbers.\n  // function min(a, b){\n  //   if(a < b){\n  //     return a;\n  //   }else{\n  //     return b;\n  //   }\n  // }\n  // console.log(min(1, 2));\n\n  //Write a JavaScript function to find the greatest common divisor (GCD) of two given numbers.\n  // function gcd(a, b){\n  //   if(a > b){\n  //     if(a % b == 0){\n  //       return b;\n  //     }else{\n  //       return gcd(b, a % b);\n  //     }\n  //   }else{\n  //     if(b % a == 0){\n  //       return a;\n  //     }else{\n  //       return gcd(a, b % a);\n "
+  ]
+}

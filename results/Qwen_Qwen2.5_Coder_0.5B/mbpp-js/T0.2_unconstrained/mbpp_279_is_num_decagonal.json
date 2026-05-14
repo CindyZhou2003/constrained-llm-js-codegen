@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_279_is_num_decagonal",
+  "language": "js",
+  "prompt": "//Write a function to find the nth decagonal number.\nfunction is_num_decagonal(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_279_is_num_decagonal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_num_decagonal;\n  assert.deepEqual(candidate(3),27);\n  assert.deepEqual(candidate(7),175);\n  assert.deepEqual(candidate(10),370);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (n * (3 + Math.sqrt(24 + 24 * n)) / 6);\n}",
+    "    return (n*(3*n-1))/2;\n}\n",
+    "    let decagonal = (n*(3*n-1))/2;\n    return decagonal;\n}"
+  ]
+}

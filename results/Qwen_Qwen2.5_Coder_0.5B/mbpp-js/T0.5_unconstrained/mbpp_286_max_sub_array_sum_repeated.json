@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_286_max_sub_array_sum_repeated",
+  "language": "js",
+  "prompt": "//Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.\nfunction max_sub_array_sum_repeated(a, n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_286_max_sub_array_sum_repeated.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum_repeated;\n  assert.deepEqual(candidate([10, 20, -30, -1], 4, 3),30);\n  assert.deepEqual(candidate([-1, 10, 20], 3, 2),59);\n  assert.deepEqual(candidate([-1, -2, -3], 3, 3),-1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_sum = -Infinity\n    let curr_sum = 0\n    let start = 0\n    let end = 0\n    let temp = 0\n    for(let i = 0; i < n; i++){\n        curr_sum = curr_sum + a[i]\n        if(curr_sum > max_sum){\n            max_sum = curr_sum\n            start = i - (n-k+1)\n            end = i\n        }\n        if(curr_sum < 0){\n            curr_sum = 0\n            temp = i + 1\n        }\n    }\n    return max_sum\n}\n",
+    "    let max_sum = -Infinity;\n    let sum = 0;\n    for(let i = 0; i < n; i++){\n        sum += a[i];\n    }\n    for(let i = 0; i < n * k; i++){\n        sum -= a[(i % n) - 1];\n        if(sum > max_sum){\n            max_sum = sum;\n        }\n    }\n    return max_sum;\n}",
+    "  let max = -Infinity;\n  for(let i = 0; i < n; i++){\n    for(let j = 0; j < k; j++){\n      let sum = 0;\n      for(let p = 0; p < n; p++){\n        if(p % k == 0) sum += a[p];\n      }\n      max = Math.max(max, sum);\n    }\n  }\n  return max;\n}\n",
+    "    let max_sum = -Infinity;\n    let current_sum = 0;\n    for(let i=0;i<n;i++){\n        current_sum += a[i];\n        if(i>=k-1){\n            max_sum = Math.max(max_sum, current_sum);\n            current_sum -= a[i-(k-1)];\n        }\n    }\n    return max_sum;\n}\n",
+    "  let max_sum = 0;\n  let current_sum = 0;\n  let start = 0;\n  let end = 0;\n  let temp_sum = 0;\n  for (let i = 0; i < k; i++) {\n    // current_sum = current_sum + a[i];\n    current_sum += a[i];\n  }\n  max_sum = current_sum;\n  for (let i = k; i < n; i++) {\n    temp_sum = temp_sum + a[i] - a[i - k];\n    current_sum = temp_sum + current_sum;\n    if (current_sum > max_sum) {\n      max_sum = current_sum;\n      start = i - k + 1;\n      end = i;\n    }\n  }\n  return max_sum;\n}\n"
+  ]
+}

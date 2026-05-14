@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_588_big_diff",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the difference between largest and smallest value in a given array.\nfunction big_diff(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_588_big_diff.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = big_diff;\n  assert.deepEqual(candidate([1, 2, 3, 4]),3);\n  assert.deepEqual(candidate([4, 5, 12]),8);\n  assert.deepEqual(candidate([9, 2, 3]),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var big = Math.max.apply(null,nums);\n    var small = Math.min.apply(null,nums);\n    var diff = big - small;\n    return diff;\n}",
+    "    var max = Math.max.apply(null, nums);\n    var min = Math.min.apply(null, nums);\n    return max - min;\n}\n",
+    "    let min = Math.min(...nums);\n    let max = Math.max(...nums);\n    return max - min;\n}",
+    "    let small = Math.min(...nums);\n    let big = Math.max(...nums);\n    return big - small;\n}\n",
+    "    let big = Math.max(...nums)\n    let small = Math.min(...nums)\n    return big - small\n  }\n  \n  //Write a JavaScript function to find the second smallest value in an array.\n  //function second_smallest(arr) {\n  //  let smallest = Math.min(...arr);\n  //  let secondSmallest = 0;\n  //  for (let i = 0; i < arr.length; i++) {\n  //    if (arr[i] === smallest) {\n  //      continue;\n  //    } else {\n  //      secondSmallest = arr[i];\n  //      break;\n  //    }\n  //  }\n  //  return secondSmallest;\n  //}\n  // function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  // function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  // function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n  //  arr.sort((a, b) => a - b);\n  //  return arr[1];\n  //}\n  //function second_smallest(arr) {\n"
+  ]
+}

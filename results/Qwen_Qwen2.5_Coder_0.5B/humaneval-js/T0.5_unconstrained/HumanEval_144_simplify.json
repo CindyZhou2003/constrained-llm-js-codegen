@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_144_simplify",
+  "language": "js",
+  "prompt": "//Your task is to implement a function that will simplify the expression\n// x * n. The function returns true if x * n evaluates to a whole number and false\n// otherwise. Both x and n, are string representation of a fraction, and have the following format,\n// <numerator>/<denominator> where both numerator and denominator are positive whole numbers.\n// You can assume that x, and n are valid fractions, and do not have zero as denominator.\n// >>> simplify(\"1/5\", \"5/1\")\n// true\n// >>> simplify(\"1/6\", \"2/1\")\n// false\n// >>> simplify(\"7/10\", \"10/2\")\n// false\nfunction simplify(x, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_144_simplify.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = simplify;\n  assert.deepEqual(candidate(\"1/5\", \"5/1\"),true);\n  assert.deepEqual(candidate(\"1/6\", \"2/1\"),false);\n  assert.deepEqual(candidate(\"5/1\", \"3/1\"),true);\n  assert.deepEqual(candidate(\"7/10\", \"10/2\"),false);\n  assert.deepEqual(candidate(\"2/10\", \"50/10\"),true);\n  assert.deepEqual(candidate(\"7/2\", \"4/2\"),true);\n  assert.deepEqual(candidate(\"11/6\", \"6/1\"),true);\n  assert.deepEqual(candidate(\"2/3\", \"5/2\"),false);\n  assert.deepEqual(candidate(\"5/2\", \"3/5\"),false);\n  assert.deepEqual(candidate(\"2/4\", \"8/4\"),true);\n  assert.deepEqual(candidate(\"2/4\", \"4/2\"),true);\n  assert.deepEqual(candidate(\"1/5\", \"5/1\"),true);\n  assert.deepEqual(candidate(\"1/5\", \"1/5\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return (x*parseInt(n) % 1 === 0) ? true : false;\n}",
+    "    var s = x.split(\"/\");\n    if(s[1] == \"\"){\n        s[1] = \"1\";\n    }\n    if(parseInt(s[0]) == 0 || parseInt(s[1]) == 0){\n        return false;\n    }\n    var num = parseInt(s[0]);\n    var den = parseInt(s[1]);\n    var n = parseInt(n);\n    var ans = num * n;\n    if(ans%den == 0){\n        return true;\n    }\n    return false;\n}",
+    "  // your code here\n  const xArr = x.split(\"/\");\n  const nArr = n.split(\"/\");\n  let xNum = parseInt(xArr[0]);\n  let xDen = parseInt(xArr[1]);\n  let nNum = parseInt(nArr[0]);\n  let nDen = parseInt(nArr[1]);\n\n  if (xNum === 0 || nNum === 0 || nDen === 0) {\n    return false;\n  }\n  if (xNum === 0 && nNum === 0) {\n    return false;\n  }\n  if (xNum === 0 && nDen === 0) {\n    return false;\n  }\n  if (xNum === 0) {\n    return false;\n  }\n  if (xDen === 0) {\n    return false;\n  }\n  if (nDen === 0) {\n    return false;\n  }\n  if (xDen === 0 || nDen === 0) {\n    return false;\n  }\n  if (xDen === 0) {\n    return false;\n  }\n  if (nDen === 0) {\n    return false;\n  }\n  if (xDen === nDen) {\n    return false;\n  }\n  if (xDen < nDen && nDen < xDen) {\n    let y = xDen;\n    let z = nDen;\n    while (y > z) {\n      y = y - z;\n    }\n    if (xNum < y) {\n      return false;\n    }\n    xNum = xNum - y;\n    xDen = xDen - y;\n  }\n  if (xNum < nNum) {\n    return false;\n  }\n  xNum = xNum - nNum;\n  xDen = xDen - nDen;\n  let y = xDen;\n  let z = nDen;\n  while (y > z) {\n    y = y - z;\n  }\n  if (xNum < y) {\n    return false;\n  }\n  xNum = xNum - y;\n  xDen = xDen - y;\n  let y = xDen;\n  let z = nDen;\n  while (y > z) {\n    y = y - z;\n  }\n  if (xNum < y) {\n    return false;\n  }\n  xNum = xNum - y;\n  xDen = xDen - y;\n  if (xNum ===",
+    "    let xNum = x.split(\"/\")[0];\n    let xDen = x.split(\"/\")[1];\n    let nNum = n.split(\"/\")[0];\n    let nDen = n.split(\"/\")[1];\n    let xNumerator = parseInt(xNum);\n    let xDenominator = parseInt(xDen);\n    let nNumerator = parseInt(nNum);\n    let nDenominator = parseInt(nDen);\n    let xIsWhole = xNumerator % xDenominator === 0;\n    let nIsWhole = nNumerator % nDenominator === 0;\n    if (xIsWhole && nIsWhole) return true;\n    else return false;\n}",
+    "  let fraction = x + '/' + n;\n  let num = fraction.split('/')[0];\n  let den = fraction.split('/')[1];\n\n  if (num % den == 0) {\n    return true;\n  } else {\n    return false;\n  }\n}"
+  ]
+}

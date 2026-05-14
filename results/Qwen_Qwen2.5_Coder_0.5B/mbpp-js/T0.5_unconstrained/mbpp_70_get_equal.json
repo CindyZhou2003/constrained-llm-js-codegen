@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_70_get_equal",
+  "language": "js",
+  "prompt": "//Write a function to find whether all the given lists have equal length or not.\nfunction get_equal(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_70_get_equal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_equal;\n  assert.deepEqual(candidate([[11, 22, 33], [44, 55, 66]]),true);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6, 7]]),false);\n  assert.deepEqual(candidate([[1, 2], [3, 4]]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = true;\n    if(Input.length ===1){\n        return result;\n    }\n    for(let i=0; i< Input.length-1;i++){\n        if(Input[i].length !== Input[i+1].length){\n            result = false;\n        }\n    }\n    return result;\n}",
+    "    let result = true;\n    let arr = [];\n    for(let i = 0; i< Input.length; i++){\n        arr.push(Input[i].length);\n    }\n    for(let i = 0; i< arr.length; i++){\n        if(arr[i] != Input[i].length){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}\n",
+    "    var key = 0;\n    var arr = [];\n    for(var i=0; i< Input.length; i++){\n        arr.push(Input[i]);\n    }\n    for(var i=0; i<arr.length; i++){\n        for(var j=0; j<arr.length; j++){\n            if(arr[i] == arr[j]){\n                key = key + 1;\n            }\n        }\n    }\n    if(key == arr.length){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\n",
+    "    let count = 0;\n    let arr = [];\n    for(let i=0; i<Input.length; i++){\n        arr.push(Input[i].length);\n    }\n    for(let i=0; i<Input.length; i++){\n        if(Input[i].length === arr[i]){\n            count++;\n        }\n    }\n    if(count === Input.length){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    let arr1=Input[0];\n    let arr2=Input[1];\n    if(arr1.length!=arr2.length){\n        return false;\n    }\n    let count=0;\n    for(let i=0;i<arr1.length;i++){\n        for(let j=0;j<arr2.length;j++){\n            if(arr1[i]==arr2[j]){\n                count++;\n            }\n        }\n    }\n    if(count==arr1.length){\n        return true;\n    }\n    return false;\n}"
+  ]
+}

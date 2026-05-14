@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_67_fruit_distribution",
+  "language": "js",
+  "prompt": "//In this task, you will be given a string that represents a number of apples and oranges \n// that are distributed in a basket of fruit this basket contains \n// apples, oranges, and mango fruits. Given the string that represents the total number of \n// the oranges and apples and an integer that represent the total number of the fruits \n// in the basket return the number of the mango fruits in the basket.\n// for examble:\n// >>> fruit_distribution(\"5 apples and 6 oranges\", 19)\n// 8\n// >>> fruit_distribution(\"0 apples and 1 oranges\", 3)\n// 2\n// >>> fruit_distribution(\"2 apples and 3 oranges\", 100)\n// 95\n// >>> fruit_distribution(\"100 apples and 1 oranges\", 120)\n// 19\nfunction fruit_distribution(s, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_67_fruit_distribution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = fruit_distribution;\n  assert.deepEqual(candidate(\"5 apples and 6 oranges\", 19),8);\n  assert.deepEqual(candidate(\"5 apples and 6 oranges\", 21),10);\n  assert.deepEqual(candidate(\"0 apples and 1 oranges\", 3),2);\n  assert.deepEqual(candidate(\"1 apples and 0 oranges\", 3),2);\n  assert.deepEqual(candidate(\"2 apples and 3 oranges\", 100),95);\n  assert.deepEqual(candidate(\"2 apples and 3 oranges\", 5),0);\n  assert.deepEqual(candidate(\"1 apples and 100 oranges\", 120),19);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // split the string into an array of words\n    let words = s.split( ' ' );\n    // find the index of the word \"apples\"\n    let applesIndex = words.indexOf( 'apples' );\n    // find the index of the word \"oranges\"\n    let orangesIndex = words.indexOf( 'oranges' );\n    // calculate the number of apples\n    let apples = parseInt( words[ applesIndex - 1 ] );\n    // calculate the number of oranges\n    let oranges = parseInt( words[ orangesIndex - 1 ] );\n    // calculate the number of mangoes\n    let mangoes = n - ( apples + oranges );\n    // return the number of mangoes\n    return mangoes;\n}",
+    "    var apples = parseInt(s.split( ' apples and ')[0]);\n    var oranges = parseInt(s.split( ' apples and ')[1].split( ' oranges')[0]);\n    return n - (apples + oranges);\n}",
+    "    // split the string into an array of words\n    let words = s.split( ' ' );\n    // find the index of the word \"apples\"\n    let applesIndex = words.indexOf( 'apples' );\n    // find the index of the word \"oranges\"\n    let orangesIndex = words.indexOf( 'oranges' );\n    // calculate the number of apples\n    let apples = parseInt( words[ applesIndex - 1 ] );\n    // calculate the number of oranges\n    let oranges = parseInt( words[ orangesIndex - 1 ] );\n    // calculate the number of mangoes\n    let mangoes = n - ( apples + oranges );\n    // return the number of mangoes\n    return mangoes;\n}"
+  ]
+}

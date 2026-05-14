@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_577_last_Digit_Factorial",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the last digit in factorial of a given number.\nfunction last_Digit_Factorial(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_577_last_Digit_Factorial.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = last_Digit_Factorial;\n  assert.deepEqual(candidate(4),4);\n  assert.deepEqual(candidate(21),0);\n  assert.deepEqual(candidate(30),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let factorial = 1;\n    for(let i = 1; i <= n; i++){\n        factorial *= i;\n    }\n    return factorial % 10;\n}\n",
+    "    let factorial = 1;\n    for(let i = 1; i <= n; i++){\n        factorial = factorial * i;\n    }\n    return factorial % 10;\n}",
+    "    let factorial =1;\n    for(let i=1;i<=n;i++){\n        factorial = factorial*i;\n    }\n    let last_digit = factorial %10;\n    return last_digit;\n}",
+    "    let fact = 1;\n    for(let i = 1; i<=n; i++){\n        fact = fact * i;\n    }\n    console.log(fact);\n    return fact % 10;\n}",
+    "    let factorial = 1;\n    for(let i = 1; i<=n; i++){\n        factorial*=i;\n    }\n    return factorial%10;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_125_split_words",
+  "language": "js",
+  "prompt": "//Given a string of words, return an array of words split on whitespace, if no whitespaces exists in the text you\n// should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the\n// alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25\n// Examples\n// >>> split_words(\"Hello world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"Hello,world!\")\n// [\"Hello\", \"world!\"]\n// >>> split_words(\"abcdef\")\n// 3\nfunction split_words(txt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_125_split_words.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = split_words;\n  assert.deepEqual(candidate(\"Hello world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello,world!\"),[\"Hello\", \"world!\"]);\n  assert.deepEqual(candidate(\"Hello world,!\"),[\"Hello\", \"world,!\"]);\n  assert.deepEqual(candidate(\"Hello,Hello,world !\"),[\"Hello,Hello,world\", \"!\"]);\n  assert.deepEqual(candidate(\"abcdef\"),3);\n  assert.deepEqual(candidate(\"aaabb\"),2);\n  assert.deepEqual(candidate(\"aaaBb\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let arr = txt.split(\" \");\n  let ans = [];\n  for(let i = 0; i < arr.length; i++){\n    if(arr[i] == \"\"){\n      for(let j = i; j < arr.length; j++){\n        if(arr[j] == \"\"){\n          ans.push(arr[j]);\n        }\n      }\n      return ans;\n    }\n  }\n  let ans2 = [];\n  for(let j = 0; j < arr.length; j++){\n    if(arr[j] == \"\"){\n      ans2.push(arr[j]);\n    }\n    else{\n      for(let k = j; k < arr.length; k++){\n        if(arr[k] == \"\"){\n          ans2.push(arr[k]);\n        }\n      }\n    }\n  }\n  return ans2;\n}",
+    "  if(txt.includes(' ')){\n    return txt.split(' ')\n  }\n  if(txt.includes(',')){\n    return txt.split(',')\n  }\n  return txt.toLowerCase().split('').filter((letter)=>letter%2!==0).length\n}\n",
+    "    let words = txt.split(' ')\n    let result = []\n    for(let word of words){\n        if(word.match(/[a-z]/i)){\n            result.push(word)\n        }\n    }\n    return result\n}\n\n",
+    "\tlet arr = txt.split(/[\\s,]+/g);\n\tif(arr.length == 1){\n\t\tlet count = 0;\n\t\tfor(let i of arr[0]){\n\t\t\tif(i.charCodeAt(0) % 2 != 0){\n\t\t\t\tcount++;\n\t\t\t}\n\t\t}\n\t\treturn count;\n\t}\n\telse{\n\t\treturn arr.length;\n\t}\n}\n",
+    "  return txt.split(/\\s|,/);\n}\n"
+  ]
+}

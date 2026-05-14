@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    for(let i = 0; i < N; i++){\n        arr.push(i);\n    }\n    arr.sort((a,b) => a-b);\n    return arr[N-1];\n}",
+    "    let arr = [];\n    for(let i = N - 1; i >= 0; i--){\n        arr.push(i);\n    }\n    return arr;\n}",
+    "    let num = N;\n    let closest = N;\n    let index = 0;\n    let index2 = 0;\n    let index3 = 0;\n    let index4 = 0;\n    let index5 = 0;\n    let index6 = 0;\n    let index7 = 0;\n    let index8 = 0;\n    let index9 = 0;\n    let index10 = 0;\n    let index11 = 0;\n    let index12 = 0;\n    let index13 = 0;\n    let index14 = 0;\n    let index15 = 0;\n    let index16 = 0;\n    let index17 = 0;\n    let index18 = 0;\n    let index19 = 0;\n    let index20 = 0;\n    let index21 = 0;\n    let index22 = 0;\n    let index23 = 0;\n    let index24 = 0;\n    let index25 = 0;\n    let index26 = 0;\n    let index27 = 0;\n    let index28 = 0;\n    let index29 = 0;\n    let index30 = 0;\n    let index31 = 0;\n    let index32 = 0;\n    let index33 = 0;\n    let index34 = 0;\n    let index35 = 0;\n    let index36 = 0;\n    let index37 = 0;\n    let index38 = 0;\n    let index39 = 0;\n    let index40 = 0;\n    let index41 = 0;\n    let index42 = 0;\n    let index43 = 0;\n    let index44 = 0;\n    let index45 = 0;\n    let index46 = 0;\n    let index47 = 0;\n    let index48 = 0;\n    let index49 = 0;\n    let index50 = 0;\n    let index51 = 0;\n    let index52 = 0;\n    let index53 = 0;\n    let index54 = 0;\n    let index55 = 0;\n    let index56 = 0;\n    let index57 ="
+  ]
+}

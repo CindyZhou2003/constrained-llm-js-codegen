@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_138_is_Sum_Of_Powers_Of_Two",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given number can be represented as sum of non-zero powers of 2 or not.\nfunction is_Sum_Of_Powers_Of_Two(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_138_is_Sum_Of_Powers_Of_Two.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sum_Of_Powers_Of_Two;\n  assert.deepEqual(candidate(10),true);\n  assert.deepEqual(candidate(7),false);\n  assert.deepEqual(candidate(14),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    let count = 0;\n    let temp = n;\n    while(n>0){\n        let rem = n%2;\n        if(rem == 0){\n            count++;\n        }\n        else{\n            arr.push(rem);\n        }\n        n = Math.floor(n/2);\n    }\n    if(count<1){\n        return true;\n    }\n    if(arr.length == 1){\n        return true;\n    }\n    if(count==1){\n        return true;\n    }\n    if(count==arr.length){\n        return true;\n    }\n    return false;\n}\n",
+    "    if(n == 0) return true;\n    let count = 0;\n    while(n){\n        if(n % 2 == 1) count++;\n        n = n >> 1;\n    }\n    return count <= 1;\n}",
+    "    let power = 0;\n    while (n>0){\n        if (n%2==0){\n            n = n/2;\n            power++;\n        }\n        else{\n            return false;\n        }\n    }\n    if(power==1){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    //first we need to find the number of bits in the given number\n    let count=0;\n    while(n>0){\n        count++;\n        n=n>>1;\n    }\n    //now we need to check if the number of bits is greater than 1\n    if(count>1){\n        return false;\n    }\n    //now we need to check if the number is even or odd\n    if(n%2==0){\n        return false;\n    }\n    //now we need to check if the number of bits is even or odd\n    if(count%2==0){\n        return false;\n    }\n    //now we need to check if the number is divisible by 2\n    if(n%2==0){\n        return false;\n    }\n    \n    return true;\n}",
+    "    let arr = [];\n    for(let i = 0; i < 32; i++){\n        arr.push(0);\n    }\n    let flag = false;\n    for(let i = 0; i < 32; i++){\n        if(n & 1){\n            if(arr[i] == 1){\n                return false;\n            }\n            arr[i] = 1;\n        }\n        n = n >> 1;\n    }\n    for(let i = 0; i < 32; i++){\n        if(arr[i] == 1){\n            flag = true;\n            break;\n        }\n    }\n    return flag;\n}\n"
+  ]
+}

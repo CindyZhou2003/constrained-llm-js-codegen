@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = test_str.split(' ');\n    let result = arr.map((item) => {\n        return item.split('').reverse().join('');\n    });\n    return result.join(' ');\n}",
+    "    let arr = test_str.split(' ');\n    for (let i = 0; i < arr.length; i++) {\n        if (arr[i] !== '') {\n            arr.splice(i, 1);\n            arr.push(arr[i]);\n        }\n    }\n    return arr.join(' ');\n}",
+    "    var num_arr = test_str.split(\"\");\n    var num_arr = num_arr.reverse();\n    var new_str = num_arr.join(\"\");\n    return new_str;\n}\n",
+    "    let str = test_str.split(\"\");\n    let arr = [];\n    for(let i=0; i<str.length; i++){\n        if(str[i]!=\"0\" && str[i]!=\"1\" && str[i]!=\"2\" && str[i]!=\"3\" && str[i]!=\"4\" && str[i]!=\"5\" && str[i]!=\"6\" && str[i]!=\"7\" && str[i]!=\"8\" && str[i]!=\"9\"){\n            arr.push(str[i]);\n        }\n    }\n    for(let i=0; i<str.length; i++){\n        if(str[i]!=\"0\" && str[i]!=\"1\" && str[i]!=\"2\" && str[i]!=\"3\" && str[i]!=\"4\" && str[i]!=\"5\" && str[i]!=\"6\" && str[i]!=\"7\" && str[i]!=\"8\" && str[i]!=\"9\"){\n            arr.push(str[i]);\n        }\n    }\n    return arr.join(\"\");\n}",
+    "    let arr = test_str.split(' ');\n    let result = [];\n    for(let i=0;i<arr.length;i++){\n        if(arr[i] !== ''){\n            result.push(arr[i]);\n        }\n    }\n    return result.join(' ');\n}\n"
+  ]
+}

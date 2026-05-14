@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_569_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_569_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\"], [\"green\", \"orange\"], [\"white\"]]),[[\"green\", \"orange\"], [\"black\"], [\"green\", \"orange\"], [\"white\"]]);\n  assert.deepEqual(candidate([[\"a\", \"b\"], [\"d\", \"c\"], [\"g\", \"h\"], [\"f\", \"e\"]]),[[\"a\", \"b\"], [\"c\", \"d\"], [\"g\", \"h\"], [\"e\", \"f\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < list1.length; i++) {\n        for (let j = 0; j < list1[i].length; j++) {\n            list1[i][j] = list1[i][j].replace(/[a-z]/gi, \"\");\n        }\n        list1[i].sort();\n    }\n    return list1;\n}\n",
+    "    return list1.sort(function(a,b){return a-b});\n}",
+    "    for(var i = 0; i < list1.length; i++){\n        for(var j = 0; j < list1[i].length; j++){\n            for(var k = 0; k < list1[i][j].length; k++){\n                if(list1[i][j][k].toLowerCase() > list1[i][j][k + 1].toLowerCase()){\n                    var temp = list1[i][j][k];\n                    list1[i][j][k] = list1[i][j][k + 1];\n                    list1[i][j][k + 1] = temp;\n                }\n            }\n        }\n    }\n    return list1;\n}\n\nvar list1 = [['apple', 'banana', 'cherry'], ['dog', 'elephant', 'frog'], ['goat', 'horse', 'lion']];",
+    "    let sorted_list = [];\n    for (let i = 0; i < list1.length; i++){\n        sorted_list.push(list1[i].sort());\n    }\n    return sorted_list;\n}\n",
+    "    return list1.sort();\n}\n"
+  ]
+}

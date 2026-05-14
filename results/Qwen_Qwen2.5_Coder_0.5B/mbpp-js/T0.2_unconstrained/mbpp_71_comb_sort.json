@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_71_comb_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction comb_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_71_comb_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = comb_sort;\n  assert.deepEqual(candidate([5, 15, 37, 25, 79]),[5, 15, 25, 37, 79]);\n  assert.deepEqual(candidate([41, 32, 15, 19, 22]),[15, 19, 22, 32, 41]);\n  assert.deepEqual(candidate([99, 15, 13, 47]),[13, 15, 47, 99]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let gap = nums.length;\n    let shrink = 1;\n    while(gap > shrink){\n        gap = Math.floor(gap/shrink);\n        gap = Math.floor(gap/2);\n        for(let i = 0; i < nums.length - gap; i++){\n            if(nums[i] > nums[i+gap]){\n                let temp = nums[i];\n                nums[i] = nums[i+gap];\n                nums[i+gap] = temp;\n            }\n        }\n    }\n    return nums;\n}\nlet arr = [2,5,1,3,4,7,6,8,9,10,11,12,13,14,15,16,17,18,19,20];",
+    "    var gap = nums.length;\n    var shrink = 1.3;\n    var i;\n    while(gap > 1 || gap > shrink){\n        gap = Math.floor(gap / shrink);\n    }\n    for(i = 0; i < gap; i++){\n        for(var j = 0; j < nums.length - gap; j++){\n            if(nums[j] > nums[j + gap]){\n                var temp = nums[j];\n                nums[j] = nums[j + gap];\n                nums[j + gap] = temp;\n            }\n        }\n    }\n    return nums;\n}\n\nvar arr = [2, 5, 1, 3, 7, 4, 6, 8];",
+    "    var gap = nums.length;\n    var shrink = 1.3;\n    var swapped;\n    do{\n        swapped = false;\n        for(var i = 0; i < gap; i++){\n            if(nums[i] > nums[i+1]){\n                var temp = nums[i];\n                nums[i] = nums[i+1];\n                nums[i+1] = temp;\n                swapped = true;\n            }\n        }\n        gap = Math.floor(gap/shrink);\n    }while(swapped && gap > 1);\n    return nums;\n}\n\nvar arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];"
+  ]
+}

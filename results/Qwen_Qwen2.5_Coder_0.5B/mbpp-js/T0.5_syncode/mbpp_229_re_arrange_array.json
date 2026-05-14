@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_229_re_arrange_array",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and an integer n, and re-arranges the first n elements of the given array so that all negative elements appear before positive ones, and where the relative order among negative and positive elements is preserved.\nfunction re_arrange_array(arr, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_229_re_arrange_array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = re_arrange_array;\n  assert.deepEqual(candidate([-1, 2, -3, 4, 5, 6, -7, 8, 9], 9),[-1, -3, -7, 4, 5, 6, 2, 8, 9]);\n  assert.deepEqual(candidate([12, -14, -26, 13, 15], 5),[-14, -26, 12, 13, 15]);\n  assert.deepEqual(candidate([10, 24, 36, -42, -39, -78, 85], 7),[-42, -39, -78, 10, 24, 36, 85]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    const arr2 = [];\n    for(let i = 0; i < n; i++){\n        if(arr[i] < 0){\n            arr2.unshift(arr[i]);\n        }else{\n            arr2.push(arr[i]);\n        }\n    }\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] >= 0){\n            arr2.push(arr[i]);\n        }\n    }\n    return arr2;\n}\n",
+    "    for(let i=0; i<n; i++){\n        if(arr[i]<0){\n            for(let j=i; j<n; j++){\n                if(arr[j]>0){\n                    let temp = arr[j];\n                    arr[j] = arr[i];\n                    arr[i] = temp;\n                    break;\n                }\n            }\n        }\n    }\n    return arr;\n}\n",
+    "    let negative = 0;\n    let positive = 0;\n    while(negative < n){\n        if(arr[negative] < 0){\n            let temp = arr[negative];\n            arr[negative] = arr[negative + 1];\n            arr[negative + 1] = temp;\n            negative++;\n        }\n        else{\n            positive++;\n        }\n    }\n    while(positive < n){\n        if(arr[positive] < 0){\n            let temp = arr[positive];\n            arr[positive] = arr[positive + 1];\n            arr[positive + 1] = temp;\n            positive++;\n        }\n        else{\n            positive++;\n        }\n    }\n    return arr;\n}",
+    "    let pos = 0;\n    let neg = n-1;\n    while(pos < n && neg >= 0){\n        if(arr[pos] < 0){\n            swap(arr, pos, neg);\n            pos++;\n            neg--;\n        }else{\n            pos++;\n        }\n    }\n    return arr;\n}\n",
+    "    let negative = [];\n    let positive = [];\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] < 0){\n            negative.push(arr[i]);\n        }\n        else{\n            positive.push(arr[i]);\n        }\n    }\n    return arr.splice(0, n).concat(negative).concat(positive);\n}\n"
+  ]
+}

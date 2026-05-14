@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_39_prime_fib",
+  "language": "js",
+  "prompt": "//prime_fib returns n-th number that is a Fibonacci number and it's also prime.\n// >>> prime_fib(1)\n// 2\n// >>> prime_fib(2)\n// 3\n// >>> prime_fib(3)\n// 5\n// >>> prime_fib(4)\n// 13\n// >>> prime_fib(5)\n// 89\nfunction prime_fib(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_39_prime_fib.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = prime_fib;\n  assert.deepEqual(candidate(1),2);\n  assert.deepEqual(candidate(2),3);\n  assert.deepEqual(candidate(3),5);\n  assert.deepEqual(candidate(4),13);\n  assert.deepEqual(candidate(5),89);\n  assert.deepEqual(candidate(6),233);\n  assert.deepEqual(candidate(7),1597);\n  assert.deepEqual(candidate(8),28657);\n  assert.deepEqual(candidate(9),514229);\n  assert.deepEqual(candidate(10),433494437);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  // your code here\n  let fib = [0,1];\n  let prime = [];\n  for(let i = 2; i <= n; i++){\n    //fib[0] = 0;\n    //fib[1] = 1;\n    if(fib[i-1] === 0 && fib[i-2] === 1){\n      fib[i] = 1;\n      prime.push(i);\n    }\n    else if(fib[i-1] === 0 || fib[i-2] === 1){\n      fib[i] = 0;\n    }\n    else{\n      fib[i] = fib[i-1] + fib[i-2];\n    }\n  }\n  return prime[n-1];\n}",
+    "    let fib = [1,2];\n    let count = 2;\n    let prev = 0;\n    let next = 1;\n    while(fib[count-1] < n){\n        let temp = next;\n        next = fib[count] + prev;\n        prev = temp;\n        count++;\n    }\n    return fib[count-2];\n}",
+    "    let a = 1;\n    let b = 1;\n    let c = 0;\n    let d = 0;\n    for(let i = 0; i < n; i++){\n        c = a + b;\n        a = b;\n        b = c;\n        if(c % 2 == 0){\n            d++;\n        }\n    }\n    return d;\n}",
+    "    let fib = [0,1];\n    let prime = [];\n    let i = 0;\n    while(fib[i]+fib[i+1] <= n){\n        fib[i+2] = fib[i]+fib[i+1];\n        if(isPrime(fib[i+2])){\n            prime.push(fib[i+2]);\n        }\n        i++;\n    }\n    return prime[n-1];\n}\n",
+    "  var fib = [1, 2];\n  var prime = [2, 3];\n  var count = 3;\n  while (count < n) {\n    var fib_next = fib[fib.length - 1] + fib[fib.length - 2];\n    fib.push(fib_next);\n    if (isPrime(fib_next)) {\n      prime.push(fib_next);\n      count++;\n    }\n  }\n  return prime[n - 1];\n}\n"
+  ]
+}

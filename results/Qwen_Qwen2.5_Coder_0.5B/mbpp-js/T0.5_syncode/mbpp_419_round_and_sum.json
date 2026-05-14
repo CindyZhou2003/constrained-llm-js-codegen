@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_419_round_and_sum",
+  "language": "js",
+  "prompt": "//Write a function to round every number of a given array of numbers and print the total sum multiplied by the length of the array.\nfunction round_and_sum(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_419_round_and_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = round_and_sum;\n  assert.deepEqual(candidate([22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]),243);\n  assert.deepEqual(candidate([5, 2, 9, 24.3, 29]),345);\n  assert.deepEqual(candidate([25.0, 56.7, 89.2]),513);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for (let i = 0; i < list1.length; i++){\n        sum += Math.round(list1[i])\n    }\n    console.log(sum * list1.length)\n}\n\n",
+    "    var sum = 0;\n    for (var i = 0; i < list1.length; i++) {\n      sum += Math.round(list1[i]);\n    }\n    console.log(sum * list1.length);\n  }\n  \n  //Write a function to square every number of a given array of numbers and print the total sum multiplied by the length of the array.\n  //function square_and_sum(list1){\n  //  var sum = 0;\n  //  for (var i = 0; i < list1.length; i++) {\n  //    sum += Math.pow(list1[i], 2);\n  //  }\n  //  console.log(sum * list1.length);\n  //}\n  \n  //Write a function to find the two numbers of a given array of numbers and print the total sum multiplied by the length of the array.\n  //function two_sum(list1){\n  //  var sum = 0;\n  //  for (var i = 0; i < list1.length; i++) {\n  //    for (var j = i + 1; j < list1.length; j++) {\n  //      if (list1[i] + list1[j] == 200) {\n  //        sum = list1[i] + list1[j];\n  //      }\n  //    }\n  //  }\n  //  console.log(sum * list1.length);\n  //}\n  \n  //Write a function to find the two numbers of a given array of numbers and print the total sum multiplied by the length of the array.\n  //function two_sum(list1){\n  //  var sum = 0;\n  //  for (var i = 0; i < list1.length; i++) {\n  //    for (var j = i + 1; j < list1.length; j++) {\n  //      if (list1[i] + list1[j] == 200) {\n  //        sum = list1[i] + list1[j];\n  //      }\n  //    }\n  //  }\n  //  console.log(sum * list1.length);\n  //}\n  \n  //Write a function to find the two numbers of a given array of numbers and print the total sum multiplied by the length of the array.\n  //function two_sum(list1){\n  //  var sum = 0;\n  //  for (var i = 0; i <",
+    "    var total = 0;\n    for(var i = 0; i < list1.length; i++){\n        total += Math.round(list1[i]);\n    }\n    console.log(total * list1.length);\n}\n",
+    "    let total = 0\n    for (let i = 0; i < list1.length; i++) {\n        total += Math.round(list1[i])\n    }\n    return total\n}",
+    "    let sum = 0;\n    for(let i = 0; i < list1.length; i++){\n        sum += Math.round(list1[i]);\n    }\n    console.log(sum);\n}"
+  ]
+}

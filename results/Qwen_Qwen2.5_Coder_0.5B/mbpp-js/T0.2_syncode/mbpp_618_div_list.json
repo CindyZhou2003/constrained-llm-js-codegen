@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_618_div_list",
+  "language": "js",
+  "prompt": "//Write a function to divide two lists element wise.\nfunction div_list(nums1, nums2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_618_div_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = div_list;\n  assert.deepEqual(candidate([4, 5, 6], [1, 2, 3]),[4.0, 2.5, 2.0]);\n  assert.deepEqual(candidate([3, 2], [1, 4]),[3.0, 0.5]);\n  assert.deepEqual(candidate([90, 120], [50, 70]),[1.8, 1.7142857142857142]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let nums1_length = nums1.length;\n    let nums2_length = nums2.length;\n    let i = 0;\n    let j = 0;\n    while(i < nums1_length || j < nums2_length){\n        let num1 = nums1[i];\n        let num2 = nums2[j];\n        let sum = 0;\n        if(num1 === 0){\n            sum = 0;\n        }else if(num2 === 0){\n            sum = 0;\n        }else{\n            sum = num1 / num2;\n        }\n        result.push(sum);\n        i++;\n        j++;\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let remainder = 0;\n    let i = 0;\n    let j = 0;\n    while(i < nums1.length || j < nums2.length){\n        if(i < nums1.length){\n            remainder += nums1[i];\n        }\n        if(j < nums2.length){\n            remainder += nums2[j];\n        }\n        result.push(remainder % 10);\n        remainder = Math.floor(remainder / 10);\n        i++;\n        j++;\n    }\n    return result;\n}\n",
+    "    let result = [];\n    let remainder = 0;\n    let i = 0;\n    while(i < nums1.length){\n        let num1 = nums1[i];\n        let num2 = nums2[i];\n        let quotient = Math.floor(num1 / num2);\n        let remainder = num1 % num2;\n        result.push(quotient);\n        if(remainder != 0){\n            result.push(1);\n        }else{\n            result.push(0);\n        }\n        i++;\n    }\n    return result;\n}\n"
+  ]
+}

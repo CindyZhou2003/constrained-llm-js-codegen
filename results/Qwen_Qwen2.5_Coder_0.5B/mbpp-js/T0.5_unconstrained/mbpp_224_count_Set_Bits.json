@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_224_count_Set_Bits",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of set bits (binary digits with value 1) in a given number.\nfunction count_Set_Bits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_224_count_Set_Bits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Set_Bits;\n  assert.deepEqual(candidate(2),1);\n  assert.deepEqual(candidate(4),1);\n  assert.deepEqual(candidate(6),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < 32; i++){\n        if(n & (1 << i)) count++;\n    }\n    return count;\n}",
+    "    let count=0;\n    while(n){\n        if(n&1==1){\n            count++;\n        }\n        n=n>>1;\n    }\n    return count;\n}\n\nlet n=14;",
+    "    var count = 0;\n    while(n != 0){\n        if(n & 1){\n            count++;\n        }\n        n = n >> 1;\n    }\n    return count;\n}",
+    "    let count = 0;\n    while(n>0){\n        if(n&1){\n            count++;\n        }\n        n = n>>1;\n    }\n    return count;\n}",
+    "    //initialize the count variable\n    let count = 0;\n    //loop through the bits of the number\n    for(let i = 0; i < n.length; i++){\n        //check if the current bit is 1\n        if(n[i] === 1){\n            //increment the count\n            count++;\n        }\n    }\n    //return the count\n    return count;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i;\n    var j;\n    var k;\n    var sum;\n    var count = 0;\n    var index = 0;\n    var smallest = 0;\n    var smallest_index = 0;\n    for(i = 1; i<=n; i++){\n        count = 0;\n        for(j = 1; j <= i; j++){\n            sum = j * (j + 1) / 2;\n            if(sum == i){\n                count++;\n            }\n        }\n        if(count == i){\n            if(i < smallest){\n                smallest = i;\n                smallest_index = count;\n            }\n        }\n    }\n    return smallest_index;\n}",
+    "    let i=2;\n    let sum=0;\n    while(sum<=n){\n        i++;\n        sum+=i;\n    }\n    return i-2;\n}",
+    "    let sum = 0;\n    let i = 1;\n    while(sum <= n){\n        sum += i;\n        i++;\n    }\n    return i-1;\n}",
+    "    var i = 1;\n    var count = 0;\n    var temp = 0;\n    while(true){\n        if(10**i > count){\n            temp = count;\n        }\n        i++;\n        count = temp + i;\n        if(count >= n){\n            return i-1;\n        }\n    }\n}\n",
+    "    var index = 0;\n    var num = 1;\n    while(num.toString().length < n){\n        num += 1;\n    }\n    index = num.toString().split('').reduce(function(prev,curr){return prev + curr},0);\n    return index;\n}"
+  ]
+}

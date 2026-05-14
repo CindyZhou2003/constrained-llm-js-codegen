@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_446_count_Occurrence",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the occurence of all elements of array in an array.\nfunction count_Occurrence(tup, lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_446_count_Occurrence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Occurrence;\n  assert.deepEqual(candidate([\"a\", \"a\", \"c\", \"b\", \"d\"], [\"a\", \"b\"]),3);\n  assert.deepEqual(candidate([1, 2, 3, 1, 4, 6, 7, 1, 4], [1, 4, 7]),6);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [1, 2]),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    for(var i = 0; i < lst.length; i++){\n        if(lst[i] === tup){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i = 0; i < lst.length; i++){\n        if(tup[0] == lst[i]){\n            count++;\n        }\n    }\n    return count;\n}\n\nconst arr = [1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1",
+    "    let count = 0;\n    for(let i = 0; i < lst.length; i++){\n        for(let j = 0; j < tup.length; j++){\n            if(tup[j] === lst[i]){\n                count++;\n            }\n        }\n    }\n    return count;\n}\n",
+    "    var count = 0;\n    for(var i = 0; i < tup.length; i++){\n        if(tup[i] === lst){\n            count++;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    for(let i of lst){\n        if(tup.includes(i)){\n            count++;\n        }\n    }\n    return count;\n}\n\nlet arr = [1,2,3,4,5,6,7,8,9,10];\nlet lst = [1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10];"
+  ]
+}

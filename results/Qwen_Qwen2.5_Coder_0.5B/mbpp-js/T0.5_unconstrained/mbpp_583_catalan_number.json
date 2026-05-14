@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_583_catalan_number",
+  "language": "js",
+  "prompt": "//Write a function which returns nth catalan number.\nfunction catalan_number(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_583_catalan_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = catalan_number;\n  assert.deepEqual(candidate(10),16796);\n  assert.deepEqual(candidate(9),4862);\n  assert.deepEqual(candidate(7),429);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var catalan = [1];\n    for(var i=1;i<=num;i++){\n        catalan[i] = 0;\n        for(var j=0;j<i;j++){\n            catalan[i]+=catalan[j]*catalan[i-j-1];\n        }\n    }\n    return catalan[num];\n}\n",
+    "    let ans = 1;\n    for(let i=0;i<num;i++){\n        ans = ans*(2*i+1);\n    }\n    return ans;\n}",
+    "    if(num<=1)return 1;\n    var ans=0;\n    for(var i=0;i<num;i++){\n        ans+=catalan_number(i)*catalan_number(num-i-1);\n    }\n    return ans;\n}",
+    "    var total = 0;\n    for(let i = 0; i < num; i++){\n        total += Math.floor( (Math.pow(-1, i) * (2 * i + 1) ) / ( i + 1 ) );\n    }\n    return total;\n}",
+    "    var res = 1;\n    var factorial = 1;\n    for(var i = 0;i<=num;i++){\n        factorial *= i;\n        res += factorial/num;\n    }\n    return res;\n}"
+  ]
+}

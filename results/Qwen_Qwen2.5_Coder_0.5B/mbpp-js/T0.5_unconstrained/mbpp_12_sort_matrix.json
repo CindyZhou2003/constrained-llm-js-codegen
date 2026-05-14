@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < M.length; i++){\n        let temp = [];\n        temp.push(M[i][0]);\n        for(let j = 1; j < M[i].length; j++){\n            temp.push(M[i][j]);\n        }\n        temp.sort((a, b) => a+b);\n        result.push(temp);\n    }\n    return result;\n}\n\nvar matrix = [[1,2,3],[4,5,6],[7,8,9]];",
+    "    for (let row = 0; row < M.length; row++){\n        for (let col = 0; col < M[row].length; col++){\n            for (let i = 0; i < M[row].length; i++){\n                if(M[row][i] < M[row][col]){\n                    let temp = M[row][i];\n                    M[row][i] = M[row][col];\n                    M[row][col] = temp;\n                }\n            }\n        }\n    }\n    return M;\n}",
+    "    let sorted_matrix = M.sort((a,b) => a[0] + a[1] - b[0] - b[1]);\n    return sorted_matrix;\n}\n\nlet matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];\nlet sorted_matrix = sort_matrix(matrix);",
+    "    M.sort((a,b)=>{\n        return a.reduce((a,b)=>a+b,0)-b.reduce((a,b)=>a+b,0)\n    })\n    return M\n}\n",
+    "    M.sort((a,b)=>{\n        return a[0]+a[1]-b[0]-b[1];\n    });\n    return M;\n}\n"
+  ]
+}

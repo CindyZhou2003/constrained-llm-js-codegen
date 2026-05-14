@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_103_eulerian_num",
+  "language": "js",
+  "prompt": "//Write a function to find the Eulerian number a(n, m).\nfunction eulerian_num(n, m){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_103_eulerian_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = eulerian_num;\n  assert.deepEqual(candidate(3, 1),4);\n  assert.deepEqual(candidate(4, 1),11);\n  assert.deepEqual(candidate(5, 3),26);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var a = new Array(n+1);\n    var b = new Array(n+1);\n    var c = new Array(n+1);\n    var d = new Array(n+1);\n    var e = new Array(n+1);\n    a[0] = 1;\n    b[0] = 1;\n    c[0] = 1;\n    d[0] = 1;\n    e[0] = 1;\n    for(var i = 1; i < n+1; i++){\n        a[i] = 0;\n        b[i] = 0;\n        c[i] = 0;\n        d[i] = 0;\n        e[i] = 0;\n    }\n    for(var i = 1; i < n+1; i++){\n        for(var j = 1; j < n+1; j++){\n            if(i < j){\n                d[i] += a[i-1] * b[j];\n                e[i] += a[i-1] * c[j];\n            }\n            if(i > j){\n                d[i] += a[i-1] * e[j];\n                e[i] += a[i-1] * d[j];\n            }\n        }\n    }\n    return d[n];\n}\n",
+    "    if(n === 0 || m === 0 || n < m) return 0;\n    if(n === m) return 1;\n    return eulerian_num(n-1, m) + eulerian_num(n-1, m-1);\n}\n",
+    "    if(n === 0 || m === 0) return 1;\n    return eulerian_num(n-1, m-1) + eulerian_num(n-1, m);\n}\n",
+    "  if (n < m) return 0;\n  var a = [1];\n  for (var i = 1; i <= n; i++) {\n    var temp = [];\n    for (var j = 0; j <= Math.min(i, m); j++) {\n      if (i == j || i == j + 1) temp.push(1);\n      else temp.push(a[j] + a[j - 1]);\n    }\n    a = temp;\n  }\n  return a[a.length - 1];\n}",
+    "    var a = new Array(n+1);\n    for(var i=0; i<a.length; i++){\n        a[i] = new Array(m+1);\n    }\n    for(var i=0; i<a.length; i++){\n        for(var j=0; j<a[i].length; j++){\n            if(i == 0 || j == 0){\n                a[i][j] = 1;\n            }else{\n                a[i][j] = a[i-1][j] + a[i][j-1];\n            }\n        }\n    }\n    console.log(a);\n    return a[n][m];\n}"
+  ]
+}

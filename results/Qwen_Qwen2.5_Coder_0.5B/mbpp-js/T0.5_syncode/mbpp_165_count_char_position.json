@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_165_count_char_position",
+  "language": "js",
+  "prompt": "//Write a function to count the number of characters in a string that occur at the same position in the string as in the English alphabet (case insensitive).\nfunction count_char_position(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_165_count_char_position.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_char_position;\n  assert.deepEqual(candidate(\"xbcefg\"),2);\n  assert.deepEqual(candidate(\"ABcED\"),3);\n  assert.deepEqual(candidate(\"AbgdeF\"),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for (let i = 0; i < str1.length; i++) {\n        if(str1[i].charCodeAt(0) >= 65 && str1[i].charCodeAt(0) <= 90){\n            count += 1;\n        }\n    }\n    return count;\n}\n",
+    "    let count = 0;\n    let arr = str1.toLowerCase().split('');\n\n    for (let i = 0; i < arr.length; i++) {\n        if (arr[i] === \"a\" || arr[i] === \"e\" || arr[i] === \"i\" || arr[i] === \"o\" || arr[i] === \"u\" || arr[i] === \"A\" || arr[i] === \"E\" || arr[i] === \"I\" || arr[i] === \"O\" || arr[i] === \"U\") {\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var count=0;\n    var str1=str1.toLowerCase();\n    for(var i=0;i<str1.length;i++){\n        if(str1.charAt(i)==\"a\" || str1.charAt(i)==\"e\" || str1.charAt(i)==\"i\" || str1.charAt(i)==\"o\" || str1.charAt(i)==\"u\"){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    var count = 0;\n    for(var i = 0; i<str1.length; i++){\n        if(str1[i].toUpperCase()==str1[i]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let arr = str1.toLowerCase().split('');\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] === arr[i].toUpperCase() && i === arr.indexOf(arr[i])){\n            count++;\n        }else if(arr[i] === arr[i].toLowerCase() && i === arr.indexOf(arr[i])){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  const digits = n.toString().split('').map(Number);\n  let maxIndex = digits.length - 1;\n  let max = digits[maxIndex];\n  let i = digits.length - 1;\n  while(i >= 0 && digits[i] <= max){\n    if(digits[i] > max){\n      max = digits[i];\n      maxIndex = i;\n    }\n    i--;\n  }\n  if(maxIndex === digits.length - 1){\n    return n;\n  }\n  let j = digits.length - 1;\n  while(j >= 0 && digits[j] <= max){\n    j--;\n  }\n  let temp = digits[maxIndex];\n  digits[maxIndex] = digits[j];\n  digits[j] = temp;\n  digits = digits.sort((a,b) => a - b);\n  return +digits.join('');\n}\n",
+    "    var str = n.toString();\n    var arr = str.split(\"\");\n    arr.sort();\n    var n = arr.join(\"\");\n    return parseInt(n);\n}\n",
+    "    let n = n.toString().split('').sort((a,b) => a-b);\n    let a = n[n.length-1];\n    let b = n[n.length-2];\n    if(a == b){\n        return false;\n    }else{\n        let c = n[n.length-3];\n        let d = n[n.length-4];\n        let e = n[n.length-5];\n        if(a == c && a == d && a == e){\n            return false;\n        }else{\n            return true;\n        }\n    }\n}",
+    "    let str = n.toString();\n    let arr = str.split('');\n    let sorted = arr.sort((a,b)=>a-b);\n    let reversed = sorted.reverse();\n    let result = reversed.join('');\n    return Number(result);\n}\n",
+    "    const arr = n.toString().split('').map(Number);\n    const sortedArr = arr.sort((a, b) => a - b);\n    let i = sortedArr.length - 1;\n    while(i >= 0 && sortedArr[i] <= sortedArr[i - 1]) i--;\n    if(i < 0) return -1;\n    let j = sortedArr.length - 1;\n    while(j > i) {\n        if(sortedArr[i] < sortedArr[j]) {\n            [sortedArr[i], sortedArr[j]] = [sortedArr[j], sortedArr[i]];\n            break;\n        }\n        j--;\n    }\n    let result = '';\n    for(let k = sortedArr.length - 1; k >= i; k--) {\n        result += sortedArr[k];\n    }\n    return parseInt(result);\n}\n"
+  ]
+}

@@ -1,1 +1,18 @@
-{"name": "mbpp_558_digit_distance_nums", "language": "js", "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var sum = 0;\n    var n1_str = n1.toString();"]}
+{
+  "name": "mbpp_558_digit_distance_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sum of the per-digit difference between two integers.\nfunction digit_distance_nums(n1, n2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_558_digit_distance_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digit_distance_nums;\n  assert.deepEqual(candidate(1, 2),1);\n  assert.deepEqual(candidate(23, 56),6);\n  assert.deepEqual(candidate(123, 256),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sum = 0;\n    var n1_str = n1.toString();\n    var n2_str = n2.toString();\n    var n1_len = n1_str.length;\n    var n2_len = n2_str.length;\n    var i = 0;\n    var j = 0;\n    while(i < n1_len && j < n2_len){\n        var n1_digit = parseInt(n1_str[i]);\n        var n2_digit = parseInt(n2_str[j]);\n        var distance = Math.abs(n1_digit - n2_digit);\n        sum += distance;\n        i++;\n        j++;\n    }\n    while(i < n1_len){\n        var n1_digit = parseInt(n1_str[i]);\n        var distance = Math.abs(n1_digit - 0);\n        sum += distance;\n        i++;\n    }\n    while(j < n2_len){\n        var n2_digit = parseInt(n2_str[j]);\n        var distance = Math.abs(n2_digit - 0);\n        sum += distance;\n        j++;\n    }\n    return sum;\n}\n\nA:\n\nYou can use the following function:"
+  ]
+}

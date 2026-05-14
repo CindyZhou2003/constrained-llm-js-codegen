@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_120_max_product_tuple",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum absolute product between numbers in pairs of tuples within a given array.\nfunction max_product_tuple(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_120_max_product_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product_tuple;\n  assert.deepEqual(candidate([[2, 7], [2, 6], [1, 8], [4, 9]]),36);\n  assert.deepEqual(candidate([[10, 20], [15, 2], [5, 10]]),200);\n  assert.deepEqual(candidate([[11, 44], [10, 15], [20, 5], [12, 9]]),484);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let max = 0;\n  for(let i = 0; i < list1.length; i++){\n    for(let j = i + 1; j < list1.length; j++){\n      let product = Math.abs(list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1]);\n      if(product > max){\n        max = product;\n      }\n    }\n  }\n  return max;\n}",
+    "    let max = 0;\n    for(let i = 0; i < list1.length; i++){\n        for(let j = i+1; j < list1.length; j++){\n            let product = Math.abs(list1[i][0]*list1[i][1]*list1[j][0]*list1[j][1]);\n            if(product > max){\n                max = product;\n            }\n        }\n    }\n    return max;\n}\n",
+    "    let max = list1[0][0] * list1[1][0];\n    for (let i = 1; i < list1.length; i++){\n        for (let j = 0; j < i; j++){\n            if (Math.abs(list1[i][0] * list1[i][1]) > Math.abs(list1[j][0] * list1[j][1])){\n                max = Math.abs(list1[i][0] * list1[i][1]);\n            }\n            else if (Math.abs(list1[j][0] * list1[j][1]) > Math.abs(list1[i][0] * list1[i][1])){\n                max = Math.abs(list1[j][0] * list1[j][1]);\n            }\n        }\n    }\n    return max;\n}\n",
+    "    let max = 0;\n    for (let i = 0; i < list1.length; i++) {\n        for (let j = i+1; j < list1.length; j++) {\n            let product = Math.abs(list1[i][0] * list1[i][1] * list1[j][0] * list1[j][1]);\n            if (product > max) {\n                max = product;\n            }\n        }\n    }\n    return max;\n}",
+    "  let max = 0;\n  for(let i = 0; i < list1.length; i++){\n    let arr = list1[i];\n    for(let j = 0; j < arr.length; j++){\n      let num1 = arr[j];\n      for(let k = 0; k < arr.length; k++){\n        let num2 = arr[k];\n        let product = Math.abs(num1 * num2);\n        if(product > max){\n          max = product;\n        }\n      }\n    }\n  }\n  return max;\n}\n\nmax_product_tuple([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20], [21, 22], [23, 24], [25, 26], [27, 28], [29, 30], [31, 32], [33, 34], [35, 36], [37, 38], [39, 40], [41, 42], [43, 44], [45, 46], [47, 48], [49, 50], [51, 52], [53, 54], [55, 56], [57, 58], [59, 60], [61, 62], [63, 64], [65, 66], [67, 68], [69, 70], [71, 72], [73, 74], [75, 76], [77, 78], [79, 80], [81, 82], [83, 84], [85, 86], [87, 88], [89, 90], [91, 92], [93, 94], [95, 96], [97, 98], [99, 100]]);"
+  ]
+}

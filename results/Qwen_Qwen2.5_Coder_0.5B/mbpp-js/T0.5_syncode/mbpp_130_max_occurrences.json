@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_130_max_occurrences",
+  "language": "js",
+  "prompt": "//Write a function to find the item with maximum frequency in a given array.\nfunction max_occurrences(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_130_max_occurrences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_occurrences;\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 2, 4, 6, 9, 1, 2]),2);\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 7, 9, 15, 14, 10, 12, 13, 16, 18]),8);\n  assert.deepEqual(candidate([10, 20, 20, 30, 40, 90, 80, 50, 30, 20, 50, 10]),20);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = 0;\n    let max_item = 0;\n    for (let i = 0; i < nums.length; i++){\n        let count = 0;\n        for (let j = 0; j < nums.length; j++){\n            if (nums[i] === nums[j]){\n                count += 1;\n            }\n        }\n        if (count > max){\n            max = count;\n            max_item = nums[i];\n        }\n    }\n    return max_item;\n}",
+    "    var max = 0;\n    for (var i = 0; i < nums.length; i++) {\n        var count = 0;\n        for (var j = 0; j < nums.length; j++) {\n            if (nums[i] == nums[j]) {\n                count++;\n            }\n        }\n        if (count > max) {\n            max = count;\n        }\n    }\n    return max;\n}",
+    "    let max = 0;\n    let max_item;\n    for(let i = 0; i < nums.length; i++){\n        let count = 0;\n        for(let j = 0; j < nums.length; j++){\n            if(nums[i] === nums[j]){\n                count++;\n            }\n        }\n        if(count > max){\n            max = count;\n            max_item = nums[i];\n        }\n    }\n    return max_item;\n}",
+    "    let map = {}\n    for(let i = 0; i < nums.length; i++){\n        if(map[nums[i]] === undefined){\n            map[nums[i]] = 1\n        }\n        else{\n            map[nums[i]] += 1\n        }\n    }\n    let max = 0\n    let maxNum = 0\n    for(let num in map){\n        if(map[num] > max){\n            maxNum = num\n            max = map[num]\n        }\n    }\n    return maxNum\n}",
+    "    let count = {};\n    let max = 0;\n    let max_item = null;\n    //iterate over the array\n    nums.forEach(num => {\n        if(count[num]){\n            count[num]++;\n        }else{\n            count[num] = 1;\n        }\n    });\n    //iterate over the object\n    for(let key in count){\n        //if the count is greater than max then assign it to max and max_item\n        if(count[key] > max){\n            max = count[key];\n            max_item = key;\n        }\n    }\n    return max_item;\n}"
+  ]
+}

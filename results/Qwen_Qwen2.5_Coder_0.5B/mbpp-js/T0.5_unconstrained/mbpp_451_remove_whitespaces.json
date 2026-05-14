@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_451_remove_whitespaces",
+  "language": "js",
+  "prompt": "//Write a function to remove all whitespaces from the given string.\nfunction remove_whitespaces(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_451_remove_whitespaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_whitespaces;\n  assert.deepEqual(candidate(\" Google    Flutter \"),\"GoogleFlutter\");\n  assert.deepEqual(candidate(\" Google    Dart \"),\"GoogleDart\");\n  assert.deepEqual(candidate(\" iOS    Swift \"),\"iOSSwift\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let text2 = text1.trim();\n    console.log(text2);\n}\nremove_whitespaces(\"Hello World\");\nremove_whitespaces(\"  Hello   World  \");\nremove_whitespaces(\"This is a test string with   extra   spaces\");\nremove_whitespaces(\"This is a test string with   extra   spaces  \");\nremove_whitespaces(\"This is a test string with   extra   spaces  \");\n",
+    "    var result = text1.replace(/\\s/g, \"\");\n    return result;\n}",
+    "    return text1.replace(/\\s/g, '');\n}\n",
+    "    let text2 = text1.split(\" \").join(\"\");\n    return text2;\n}",
+    "    return text1.replace(/\\s+/g,\"\")\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_472_check_Consecutive",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array contains consecutive numbers or not.\nfunction check_Consecutive(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_472_check_Consecutive.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_Consecutive;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n  assert.deepEqual(candidate([1, 2, 3, 5, 6]),false);\n  assert.deepEqual(candidate([1, 2, 1]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = l;\n    let i = 0;\n    while(i < arr.length){\n        if(arr[i] == arr[i+1] - 1){\n            i++;\n        }else{\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    var res = true;\n    var num = 1;\n    for(var i = 0; i < l.length-1; i++){\n        if(l[i]+1 != l[i+1]){\n            res = false;\n            break;\n        }\n    }\n    return res;\n}",
+    "  let check = true;\n  let result = false;\n  let counter = 0;\n  for(let i = 0; i < l.length; i++){\n    if(l[i] == l[i+1]){\n      counter++;\n      result = true;\n    }else{\n      counter = 0;\n      result = false;\n    }\n  }\n  if(result == true){\n    return counter;\n  }else{\n    return false;\n  }\n}",
+    "    // 1st way\n    let arr= l.sort((a,b)=>a-b);\n    for(let i=0;i<l.length-1;i++){\n        if(arr[i+1] !== arr[i]+1){\n            return false;\n        }\n    }\n    return true;\n    // 2nd way\n    // let arr= l.sort((a,b)=>a-b);\n    // let j=arr[0];\n    // for(let i=1;i<arr.length;i++){\n    //     if(j!==arr[i]-1){\n    //         return false;\n    //     }\n    //     j=arr[i];\n    // }\n    // return true;\n}",
+    "    let arr = [...l];\n    let result = true;\n    for(let i = 0; i < arr.length; i++){\n        if(i === 0){\n            continue;\n        }\n        if(arr[i] - arr[i-1] !== 1){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_143_words_in_sentence",
+  "language": "js",
+  "prompt": "//You are given a string representing a sentence,\n// the sentence contains some words separated by a space,\n// and you have to return a string that contains the words from the original sentence,\n// whose lengths are prime numbers,\n// the order of the words in the new string should be the same as the original one.\n// Example 1:\n// >>> words_in_sentence(\"This is a test\")\n// \"is\"\n// Example 2:\n// >>> words_in_sentence(\"lets go for swimming\")\n// \"go for\"\n// Constraints:\n// * 1 <= len(sentence) <= 100\n// * sentence contains only letters\nfunction words_in_sentence(sentence){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_143_words_in_sentence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = words_in_sentence;\n  assert.deepEqual(candidate(\"This is a test\"),\"is\");\n  assert.deepEqual(candidate(\"lets go for swimming\"),\"go for\");\n  assert.deepEqual(candidate(\"there is no place available here\"),\"there is no place\");\n  assert.deepEqual(candidate(\"Hi I am Hussein\"),\"Hi am Hussein\");\n  assert.deepEqual(candidate(\"go for it\"),\"go for it\");\n  assert.deepEqual(candidate(\"here\"),\"\");\n  assert.deepEqual(candidate(\"here is\"),\"is\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let arr = sentence.split(\" \")\n  let arr2 = []\n  let arr3 = []\n  for(let i = 0; i < arr.length; i++){\n    let s = arr[i]\n    let arr4 = s.split(\"\")\n    let arr5 = arr4.map(a => parseInt(a))\n    arr5.sort((a, b) => a - b)\n    let arr6 = arr5.filter(a => a % 1 === 0)\n    if(arr6.length === 2){\n      arr3.push(arr6[0], arr6[1])\n    }\n  }\n  let arr7 = arr3.join(\" \")\n  return arr7\n}\n",
+    "    let words = sentence.split(\" \");\n    let primeWords = [];\n    let primeNumber = 0;\n    for(let i = 0; i < words.length; i++){\n        let word = words[i].split(\"\");\n        let sum = 0;\n        for(let j = 0; j < word.length; j++){\n            sum += parseInt(word[j]);\n        }\n        if(isPrime(sum)){\n            primeWords.push(words[i]);\n        }\n    }\n    return primeWords.join(\" \");\n}\n",
+    "    let words = sentence.split(\" \");\n    let prime = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];\n    let primeWords = [];\n    for(let i = 0; i < words.length; i++){\n        let word = words[i].split(\"\");\n        let wordLength = word.length;\n        let primeFlag = false;\n        for(let j = 0; j < prime.length; j++){\n            if(wordLength % prime[j] == 0){\n                primeFlag = true;\n                break;\n            }\n        }\n        if(primeFlag == false){\n            primeWords.push(words[i]);\n        }\n    }\n    let newSentence = \"\";\n    for(let i = 0; i < primeWords.length; i++){\n        newSentence += primeWords[i] + \" \";\n    }\n    return newSentence.trim();\n}\n",
+    "    let result = [];\n    let words = sentence.split(' ');\n    for (let word of words) {\n        if (isPrime(word.length)) {\n            result.push(word);\n        }\n    }\n    return result.join(' ');\n}\n",
+    "    let arr = sentence.split(' ');\n    let result = [];\n    for (let i = 0; i < arr.length; i++) {\n        if (isPrime(arr[i].length)) {\n            result.push(arr[i]);\n        }\n    }\n    return result.join(' ');\n}"
+  ]
+}

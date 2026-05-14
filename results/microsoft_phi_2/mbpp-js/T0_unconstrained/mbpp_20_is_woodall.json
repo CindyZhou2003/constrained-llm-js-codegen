@@ -1,1 +1,18 @@
-{"name": "mbpp_20_is_woodall", "language": "js", "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var a = x.toString().split(\"\");\n    var b = a.length"]}
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var a = x.toString().split(\"\");\n    var b = a.length;\n    var c = a.length - 1;\n    var d = a[0];\n    var e = a[b - 1];\n    var f = a[c];\n    var g = a[c - 1];\n    var h = a[b - 2];\n    var i = a[b - 3];\n    var j = a[b - 4];\n    var k = a[b - 5];\n    var l = a[b - 6];\n    var m = a[b - 7];\n    var n = a[b - 8];\n    var o = a[b - 9];\n    var p = a[b - 10];\n    var q = a[b - 11];\n    var r = a[b - 12];\n    var s = a[b - 13];\n    var t = a[b - 14];\n    var u = a[b - 15];\n    var v = a[b - 16];\n    var w = a[b - 17];\n    var x = a[b - 18];\n    var y = a[b - 19];\n    var z = a[b - 20];\n    var aa = d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z;\n    var bb = aa % 10;\n    var cc = aa / 10;\n    var dd = bb + cc;\n    var ee = dd % 10;\n    var ff = dd / 10;\n    var gg = ee + ff;\n    var hh = gg % 10;\n    var ii = gg / 10;\n    var jj = hh + ii;\n    var kk = jj % 10;\n    var ll = jj / 10;\n    var mm = kk + ll;\n    var nn = mm % 10;\n    var oo = mm / 10;\n    var pp = nn + oo;\n    var qq = pp % 10;\n    var rr = pp / 10;\n    var ss"
+  ]
+}

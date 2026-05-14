@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_584_find_adverbs",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var adverbs = [];\n    var adverb = \"\";\n    var position = 0;\n    for(var i = 0; i < text.length; i++){\n        if(text[i] === \" \"){\n            if(adverb === \"ly\"){\n                adverbs.push(adverb);\n                adverb = \"\";\n            }\n        }else{\n            adverb += text[i];\n        }\n    }\n    if(adverb === \"ly\"){\n        adverbs.push(adverb);\n    }\n    return adverbs;\n}",
+    "    var adverbs = [];\n    var adverb = \"\";\n    var pos = 0;\n    for(var i = 0; i < text.length; i++){\n        if(text[i] == \" \"){\n            adverb = text.slice(pos, i);\n            adverbs.push(adverb);\n            pos = i + 1;\n        }\n    }\n    return adverbs;\n}\n",
+    "    var adverbs = [];\n    var adverb = \"\";\n    var adverb_pos = [];\n    var adverb_pos1 = [];\n    var adverb_pos2 = [];\n    var adverb_pos3 = [];\n    var adverb_pos4 = [];\n    var adverb_pos5 = [];\n    var adverb_pos6 = [];\n    var adverb_pos7 = [];\n    var adverb_pos8 = [];\n    var adverb_pos9 = [];\n    var adverb_pos10 = [];\n    var adverb_pos11 = [];\n    var adverb_pos12 = [];\n    var adverb_pos13 = [];\n    var adverb_pos14 = [];\n    var adverb_pos15 = [];\n    var adverb_pos16 = [];\n    var adverb_pos17 = [];\n    var adverb_pos18 = [];\n    var adverb_pos19 = [];\n    var adverb_pos20 = [];\n    var adverb_pos21 = [];\n    var adverb_pos22 = [];\n    var adverb_pos23 = [];\n    var adverb_pos24 = [];\n    var adverb_pos25 = [];\n    var adverb_pos26 = [];\n    var adverb_pos27 = [];\n    var adverb_pos28 = [];\n    var adverb_pos29 = [];\n    var adverb_pos30 = [];\n    var adverb_pos31 = [];\n    var adverb_pos32 = [];\n    var adverb_pos33 = [];\n    var adverb_pos34 = [];\n    var adverb_pos35 = [];\n    var adverb_pos36 = [];\n    var adverb_pos37 = [];\n    var adverb_pos38 = [];\n    var adverb_pos39 = [];\n    var adverb_pos40 = [];\n    var adverb_pos41 = [];\n    var adverb_pos42 = [];\n    var adverb_pos43 = [];\n    var adverb_pos44 = [];\n    var adverb_pos45 = [];\n    var adverb_pos46 = [];\n    var adverb_pos47 = [];\n    var adverb_pos48 = [];\n    var adverb_pos49 = [];\n    var adverb_pos50 = [];\n    var adverb_pos51 = [];\n    var adverb_pos52 = [];\n    var adverb_pos53 = [];\n    var adverb_pos54 = [];\n    var adverb_pos55 = [];\n    var adverb_pos56"
+  ]
+}

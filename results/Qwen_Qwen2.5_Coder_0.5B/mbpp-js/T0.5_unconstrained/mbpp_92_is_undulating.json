@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_92_is_undulating",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is undulating or not.\nfunction is_undulating(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_92_is_undulating.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_undulating;\n  assert.deepEqual(candidate(1212121),true);\n  assert.deepEqual(candidate(1991),false);\n  assert.deepEqual(candidate(121),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString().split('');\n    let arr2 = [];\n    for(let i = 0; i < arr.length; i++){\n        arr2.push(arr[i]);\n    }\n    arr2.reverse();\n    let is_undulating = arr2.join('') == arr.join('');\n    return is_undulating;\n}\n",
+    "    if(n==0){\n        return true\n    }else if(n<0){\n        return false\n    }else{\n        let arr = []\n        let str = n.toString()\n        for(let i=0;i<str.length;i++){\n            arr.push(parseInt(str[i]))\n        }\n        for(let i=0;i<arr.length-1;i++){\n            if(arr[i+1]-arr[i]==1){\n                continue\n            }else{\n                return false\n            }\n        }\n        return true\n    }\n}",
+    "    let n1=n.toString();\n    let n2=n1.slice(0, n1.length - 1);\n    let n3=n2.slice(n2.length - 1);\n    let n4=n3.slice(0, n3.length - 1);\n    let n5=n4.slice(n4.length - 1);\n    let n6=n5.slice(0, n5.length - 1);\n    let n7=n6.slice(n6.length - 1);\n    let n8=n7.slice(0, n7.length - 1);\n    let n9=n8.slice(n8.length - 1);\n    let n10=n9.slice(0, n9.length - 1);\n    let n11=n10.slice(n10.length - 1);\n    let n12=n11.slice(0, n11.length - 1);\n    let n13=n12.slice(n12.length - 1);\n    let n14=n13.slice(0, n13.length - 1);\n    let n15=n14.slice(n14.length - 1);\n    let n16=n15.slice(0, n15.length - 1);\n    let n17=n16.slice(n16.length - 1);\n    let n18=n17.slice(0, n17.length - 1);\n    let n19=n18.slice(n18.length - 1);\n    let n20=n19.slice(0, n19.length - 1);\n    let n21=n20.slice(n20.length - 1);\n    let n22=n21.slice(0, n21.length - 1);\n    let n23=n22.slice(n22.length - 1);\n    let n24=n23.slice(0, n23.length - 1);\n    let n25=n24.slice(n24.length - 1);\n    let n26=n25.slice(0, n25.length - 1);\n    let n27=n26.slice(n26.length - 1);\n    let n28=n27.slice(0, n27.length - 1);\n    let n29=n28.slice(n28.length - 1);\n    let n30=n29.slice(0,",
+    "    var num = n;\n    var sum = 0;\n    var count = 0;\n    while(num > 0){\n        var digit = num % 10;\n        sum = sum + digit * digit;\n        num = Math.floor(num / 10);\n        count++;\n    }\n    if(sum == n){\n        return true;\n    }\n    else{\n        return false;\n    }\n}\nvar n = 145;\nvar result = is_undulating(n);",
+    "    if(n>0){\n        let sum=0;\n        while(n>0){\n            sum+=n%10;\n            n=Math.floor(n/10);\n        }\n        return sum==n;\n    }\n    else{\n        return false;\n    }\n}"
+  ]
+}

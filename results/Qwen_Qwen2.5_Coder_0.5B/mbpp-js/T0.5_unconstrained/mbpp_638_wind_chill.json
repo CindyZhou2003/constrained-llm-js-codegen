@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_638_wind_chill",
+  "language": "js",
+  "prompt": "//Write a function to calculate the wind chill index rounded to the next integer given the wind velocity in km/h and a temperature in celsius.\nfunction wind_chill(v, t){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_638_wind_chill.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = wind_chill;\n  assert.deepEqual(candidate(120, 35),40);\n  assert.deepEqual(candidate(40, 20),19);\n  assert.deepEqual(candidate(10, 8),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    const k = 0.6215;\n    const a = 35.74;\n    const b = 0.6215;\n    const c = 13.12;\n    const d = 0.4275;\n\n    return Math.round(((k * t) + (a * v) - (b * v * v)) * d);\n}\n",
+    "    let c = t + 1.1 * v;\n    return Math.round(c);\n}\n\nwind_chill(10, 23);",
+    "    let windChill = (35.74 + 0.6215 * t - 35.75 * Math.pow(v, 0.16) + 0.4275 * t * Math.pow(v, 0.16));\n    return windChill;\n}",
+    "    let wind_chill = 0.4275 * Math.pow(v,0.16) * (t - 273.15) + 35.75 * Math.pow(v,0.16) - 0.13215 * t + 0.006215 * v * Math.pow(t,0.16);\n    return Math.round(wind_chill);\n}\n",
+    "    if(v >= 0 && t >= 0){\n        let c = 13.12 + 0.6215*t + (0.4275*t-35.75)*Math.pow(v,0.16);\n        return Math.round(c);\n    }\n    else{\n        return \"Invalid input!\";\n    }\n}\n"
+  ]
+}

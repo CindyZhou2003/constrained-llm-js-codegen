@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_413_extract_nth_element",
+  "language": "js",
+  "prompt": "//Write a function to extract the nth element from a given array of tuples.\nfunction extract_nth_element(list1, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_413_extract_nth_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_nth_element;\n  assert.deepEqual(candidate([[\"Greyson Fulton\", 98, 99], [\"Brady Kent\", 97, 96], [\"Wyatt Knott\", 91, 94], [\"Beau Turnbull\", 94, 98]], 0),[\"Greyson Fulton\", \"Brady Kent\", \"Wyatt Knott\", \"Beau Turnbull\"]);\n  assert.deepEqual(candidate([[\"Greyson Fulton\", 98, 99], [\"Brady Kent\", 97, 96], [\"Wyatt Knott\", 91, 94], [\"Beau Turnbull\", 94, 98]], 2),[99, 96, 94, 98]);\n  assert.deepEqual(candidate([[\"Greyson Fulton\", 98, 99], [\"Brady Kent\", 97, 96], [\"Wyatt Knott\", 91, 94], [\"Beau Turnbull\", 94, 98]], 1),[98, 97, 91, 94]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return list1[n];\n}",
+    "    return list1[n];\n}",
+    "    return list1[n];\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_119_search",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the element that appears only once in a sorted array.\nfunction search(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_119_search.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = search;\n  assert.deepEqual(candidate([1, 1, 2, 2, 3]),3);\n  assert.deepEqual(candidate([1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8]),8);\n  assert.deepEqual(candidate([1, 2, 2, 3, 3, 4, 4]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let len = arr.length;\n    let i=0;\n    while(i<len){\n        if(arr[i] !== arr[i+1]){\n            return arr[i];\n        }\n        i++;\n    }\n    return arr[i];\n}",
+    "    let result = arr[0];\n    for(let i=1; i<arr.length; i++){\n        if(arr[i] !== arr[i-1]){\n            result = arr[i];\n            break;\n        }\n    }\n    return result;\n}\n",
+    "    let start = 0;\n    let end = arr.length - 1;\n    if(arr.length == 1){\n        return arr[0];\n    }\n    while(start <= end){\n        let mid = Math.floor((start + end)/2);\n        if(arr[mid] == arr[mid-1]){\n            if(mid % 2 == 0){\n                start = mid + 1;\n            }\n            else{\n                end = mid - 2;\n            }\n        }\n        else if(arr[mid] == arr[mid+1]){\n            if(mid % 2 == 0){\n                end = mid - 1;\n            }\n            else{\n                start = mid + 2;\n            }\n        }\n        else{\n            return arr[mid];\n        }\n    }\n}\n",
+    "    let start = 0;\n    let end = arr.length - 1;\n    let middle = Math.floor((start + end) / 2);\n    while (start <= end) {\n        if (arr[middle] !== arr[middle + 1] && arr[middle] !== arr[middle - 1]) {\n            return arr[middle];\n        } else if (arr[middle] === arr[middle + 1]) {\n            start = middle + 1;\n        } else {\n            end = middle - 1;\n        }\n        middle = Math.floor((start + end) / 2);\n    }\n    return -1;\n}",
+    "    let n = arr.length;\n    if(n==0){\n        return null;\n    }\n    if(n==1){\n        return arr[0];\n    }\n    let i=0;\n    while(i<n){\n        if(arr[i]!==arr[i+1]){\n            return arr[i];\n        }\n        i+=2;\n    }\n    return null;\n}"
+  ]
+}

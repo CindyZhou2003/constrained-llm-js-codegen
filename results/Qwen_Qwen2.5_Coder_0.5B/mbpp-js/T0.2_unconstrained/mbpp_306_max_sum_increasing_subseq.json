@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_306_max_sum_increasing_subseq",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i .\nfunction max_sum_increasing_subseq(a, n, index, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_306_max_sum_increasing_subseq.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_increasing_subseq;\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 4, 6),11);\n  assert.deepEqual(candidate([1, 101, 2, 3, 100, 4, 5], 7, 2, 5),7);\n  assert.deepEqual(candidate([11, 15, 19, 21, 26, 28, 31], 7, 2, 4),71);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(index == n){\n        return 0;\n    }\n    if(a[index] >= k){\n        return Math.max(max_sum_increasing_subseq(a, n, index + 1, k), max_sum_increasing_subseq(a, n, index + 1, k) + a[index]);\n    }\n    return max_sum_increasing_subseq(a, n, index + 1, k);\n}",
+    "    if(index == n){\n        return 0;\n    }\n    if(a[index] <= k){\n        return Math.max(a[index] + max_sum_increasing_subseq(a, n, index+1, k), max_sum_increasing_subseq(a, n, index+1, k+1));\n    }\n    else{\n        return max_sum_increasing_subseq(a, n, index+1, k+1);\n    }\n}\n\nlet a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105,",
+    "    if(index == n){\n        return 0;\n    }\n    if(a[index] <= k){\n        return Math.max(max_sum_increasing_subseq(a, n, index+1, k), a[index] + max_sum_increasing_subseq(a, n, index+1, k));\n    }else{\n        return max_sum_increasing_subseq(a, n, index+1, k);\n    }\n}\n"
+  ]
+}

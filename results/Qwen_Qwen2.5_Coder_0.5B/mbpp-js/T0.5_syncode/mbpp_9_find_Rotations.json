@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let len = str.length;\n    for(let i=0; i<len; i++){\n        let left = str.slice(0,i);\n        let right = str.slice(i);\n        if(left===right){\n            return i;\n        }\n    }\n    return -1;\n}",
+    "    let rotations = 0;\n    for(let i = 1; i <= str.length; i++){\n        str = str.slice(1) + str[0];\n        rotations++;\n    }\n    return rotations;\n}\n",
+    "    var temp = str;\n    var arr = [];\n    for(var i=0; i<temp.length; i++){\n        arr.push(temp.slice(i));\n    }\n    var min = arr[0].length;\n    for(var i=1; i<arr.length; i++){\n        if(arr[i].length < min){\n            min = arr[i].length;\n        }\n    }\n    return min;\n}",
+    "    let arr = [];\n    let str1 = str.split('');\n    let str2 = str.split('');\n    for(let i=0; i<str1.length; i++){\n        str1[i] = str1[i].repeat(str1.length);\n        arr.push(str1[i]);\n    }\n    for(let i=0; i<str2.length; i++){\n        str2[i] = str2[i].repeat(str2.length);\n        arr.push(str2[i]);\n    }\n    let k = 0;\n    for(let i=0; i<str1.length; i++){\n        if(arr[i] == arr[k]){\n            k++;\n        }\n    }\n    return k;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "    let rotations = 1;\n    let str1 = str.length;\n    for(let i = 0; i < str.length; i++){\n        let j = i;\n        for(let k = j; k < str1; k++){\n            if(str[j] === str[k]){\n                j++;\n                rotations++;\n            }else{\n                break;\n            }\n        }\n    }\n    return rotations;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_255_combinations_colors",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and length n, and generates all combinations (with repetition) of the elements of the array and returns an array with an array for each combination.\nfunction combinations_colors(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_255_combinations_colors.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = combinations_colors;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 1),[[\"Red\"], [\"Green\"], [\"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 2),[[\"Red\", \"Red\"], [\"Red\", \"Green\"], [\"Red\", \"Blue\"], [\"Green\", \"Green\"], [\"Green\", \"Blue\"], [\"Blue\", \"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 3),[[\"Red\", \"Red\", \"Red\"], [\"Red\", \"Red\", \"Green\"], [\"Red\", \"Red\", \"Blue\"], [\"Red\", \"Green\", \"Green\"], [\"Red\", \"Green\", \"Blue\"], [\"Red\", \"Blue\", \"Blue\"], [\"Green\", \"Green\", \"Green\"], [\"Green\", \"Green\", \"Blue\"], [\"Green\", \"Blue\", \"Blue\"], [\"Blue\", \"Blue\", \"Blue\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    for(let i = 0; i < l; i++){\n        let arr2 = [];\n        for(let j = 0; j < n; j++){\n            arr2.push(l[i]);\n        }\n        arr.push(arr2);\n    }\n    return arr;\n}\n",
+    "    let result = [];\n    let arr = [];\n    for(let i = 0; i < l; i++){\n        arr.push(i);\n    }\n    let count = 0;\n    function helper(arr, count, result){\n        if(count === n){\n            result.push(arr);\n            return;\n        }\n        for(let i = 0; i < arr.length; i++){\n            let temp = arr.slice();\n            temp.splice(i, 1);\n            helper(temp, count + 1, result);\n        }\n    }\n    helper(arr, 0, result);\n    return result;\n}\n",
+    "    let result = [];\n    let arr = [];\n    for(let i = 0; i < l; i++){\n        arr.push(i);\n    }\n    let comb = [];\n    let comb2 = [];\n    for(let i = 0; i < n; i++){\n        comb = arr.splice(0, 1);\n        comb2 = arr.splice(0, 1);\n        result.push(comb.concat(comb2));\n    }\n    return result;\n}\n"
+  ]
+}

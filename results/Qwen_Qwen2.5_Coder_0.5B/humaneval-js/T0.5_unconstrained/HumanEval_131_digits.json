@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_131_digits",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the product of the odd digits.\n// Return 0 if all digits are even.\n// For example:\n// >>> digits(1)\n// 1\n// >>> digits(4)\n// 0\n// >>> digits(235)\n// 15\nfunction digits(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_131_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = digits;\n  assert.deepEqual(candidate(5),5);\n  assert.deepEqual(candidate(54),5);\n  assert.deepEqual(candidate(120),1);\n  assert.deepEqual(candidate(5014),5);\n  assert.deepEqual(candidate(98765),315);\n  assert.deepEqual(candidate(5576543),2625);\n  assert.deepEqual(candidate(2468),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Your code here\n    let digits = n.toString().split('').map(Number);\n    let product = 1;\n    for(let i = 0; i < digits.length; i++){\n        if(digits[i] % 2 == 1){\n            product *= digits[i];\n        }\n    }\n    return product;\n}",
+    "    let product = 1;\n    for (let i = 0; i < n.toString().length; i++){\n        if (n.toString()[i] % 2 !== 0){\n            product *= parseInt(n.toString()[i])\n        }\n    }\n    return product\n}",
+    "    let product = 1;\n    for(let i = 0; i < String(n).length; i++){\n        if(Number(String(n)[i]) % 2 !== 0){\n            product *= Number(String(n)[i]);\n        }\n    }\n    return product;\n}",
+    "    let arr = n.toString().split(\"\");\n    let product = 1;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] % 2 !== 0){\n            product *= arr[i];\n        }\n    }\n    return product;\n}\n",
+    "    var res = 0;\n    var arr = n.toString().split('');\n    for(var i = 0; i < arr.length; i++){\n        if(arr[i] % 2 != 0){\n            res += parseInt(arr[i]);\n        }\n    }\n    return res;\n}"
+  ]
+}

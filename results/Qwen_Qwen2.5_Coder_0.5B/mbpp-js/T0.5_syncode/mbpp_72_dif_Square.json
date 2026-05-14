@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_72_dif_Square",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given number can be represented as the difference of two squares or not.\nfunction dif_Square(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_72_dif_Square.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dif_Square;\n  assert.deepEqual(candidate(5),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(15),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=1;i<=n;i++){\n        for(let j=1;j<=n;j++){\n            if(i*i==j*j+i*j){\n                return \"Yes\"\n            }\n        }\n    }\n    return \"No\"\n}\n",
+    "    let flag = false;\n    let i = 1;\n    let j = 0;\n    while(i<=n){\n        j = Math.pow(i, 2);\n        if(j>n){\n            break;\n        }\n        else{\n            flag = true;\n            break;\n        }\n        i++;\n    }\n    return flag;\n}",
+    "    var i=1;\n    var j=1;\n    while(i*i<=n){\n        j=1;\n        while(j*j<=n){\n            if(i*i+j*j==n){\n                console.log(\"Yes, \"+i+\" and \"+j+\" are the difference of squares\");\n                break;\n            }\n            j++;\n        }\n        i++;\n    }\n    console.log(\"No, no difference of squares\");\n}",
+    "    var squareRoot = Math.sqrt(n);\n    var s = 0;\n    var i = 1;\n    while(i <= squareRoot){\n        if(squareRoot % i == 0){\n            s = i + squareRoot / i;\n            console.log(\"The number can be represented as the difference of two squares\");\n            break;\n        }\n        i++;\n    }\n    if(s == n){\n        console.log(\"The number can be represented as the difference of two squares\");\n    }\n    else{\n        console.log(\"The number cannot be represented as the difference of two squares\");\n    }\n}",
+    "    if(Math.sqrt(n) % 1 == 0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_239_get_total_number_of_sequences",
+  "language": "js",
+  "prompt": "//Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m.\nfunction get_total_number_of_sequences(m, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_239_get_total_number_of_sequences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_total_number_of_sequences;\n  assert.deepEqual(candidate(10, 4),4);\n  assert.deepEqual(candidate(5, 2),6);\n  assert.deepEqual(candidate(16, 3),84);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var total = 0;\n    for(var i = 0; i < n; i++){\n        var last_num = i;\n        var next_num = (last_num * 2) + 1;\n        var total = total + (Math.floor((next_num - last_num) / m));\n    }\n    return total;\n}\n",
+    "    // Write your code here.\n    // 1. Base case: if n is 0, return 1\n    // 2. If n is 1, return 1\n    // 3. If n is 2, return 2\n    // 4. If m is less than or equal to n, return 1\n    // 5. If m is greater than n, return 0\n    // 6. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 7. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 8. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 9. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 10. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 11. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 12. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 13. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 14. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 15. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 16. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 17. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2\n    // 18. If m is greater than twice n but less than or equal to m, return m - n + 1\n    // 19. Otherwise, return the sum of the number of sequences of length n-1 and the number of sequences of length n-2",
+    "  let total = 0;\n  if(n === 0) return 1;\n  let previous = 1;\n  let current = 0;\n  for(let i = 1; i <= n; i++){\n    current = previous * m;\n    if(current >= 2 * previous && current <= m){\n      total += get_total_number_of_sequences(m, i - 1);\n    }\n    previous = current;\n  }\n  return total;\n}\n",
+    "    const sequences = new Array(n).fill(0);\n    sequences[0] = 1;\n    let result = 0;\n\n    for(let i = 0; i < sequences.length; i++){\n        for(let j = 0; j < m; j++){\n            if(j >= 2 * i && j <= m){\n                sequences[i + 1] += sequences[i];\n            }\n        }\n    }\n\n    return result;\n}\n",
+    "    //Write your code here\n    let dp = new Array(n+1).fill(0);\n    dp[0] = 1;\n    for(let i=0; i<n+1; i++){\n        for(let j=1; j<=m; j++){\n            if(i-j >= 0 && i-j <= m){\n                dp[i] += dp[i-j];\n            }\n        }\n    }\n    return dp[n];\n}\n\n"
+  ]
+}

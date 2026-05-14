@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_106_add_lists",
+  "language": "js",
+  "prompt": "//Write a function to append the given array to the given tuples.\nfunction add_lists(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_106_add_lists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_lists;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[9, 10, 5, 6, 7]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[10, 11, 6, 7, 8]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[11, 12, 7, 8, 9]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let new_test = test_list.concat(test_tup);\n    return new_test;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < test_tup.length; i++){\n        result.push(test_list.concat(test_tup[i]));\n    }\n    return result;\n}",
+    "    return test_list.concat(test_tup);\n}\n",
+    "    let test_list = test_list;\n    let test_tup = test_tup;\n    let result_list = [];\n    for (let i = 0; i < test_tup.length; i++) {\n        result_list.push(test_list[test_tup[i][0]], test_list[test_tup[i][1]]);\n    }\n    return result_list;\n}",
+    "    return test_list.concat(test_tup);\n}"
+  ]
+}

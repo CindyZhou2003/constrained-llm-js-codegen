@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = num.toString();\n    var len = str.length;\n    var rev = str.split('').reverse().join('');\n    var rev_str = rev + rev;\n    var rev_num = parseInt(rev_str);\n    if(rev_num < num){\n        return rev_num;\n    }else{\n        return num;\n    }\n}",
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev_num = parseInt(rev);\n    let rev_num_str = rev_num.toString();\n    let rev_num_rev = rev_num_str.split('').reverse().join('');\n    let rev_num_rev_str = rev_num_rev;\n    if(rev_num_rev_str === rev_num_str){\n        return num;\n    }else{\n        let rev_num_rev = parseInt(rev_num_rev_str);\n        return rev_num_rev;\n    }\n}",
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev2 = rev.split('').reverse().join('');\n    let rev3 = rev2.split('').reverse().join('');\n    let rev4 = rev3.split('').reverse().join('');\n    let rev5 = rev4.split('').reverse().join('');\n    let rev6 = rev5.split('').reverse().join('');\n    let rev7 = rev6.split('').reverse().join('');\n    let rev8 = rev7.split('').reverse().join('');\n    let rev9 = rev8.split('').reverse().join('');\n    let rev10 = rev9.split('').reverse().join('');\n    let rev11 = rev10.split('').reverse().join('');\n    let rev12 = rev11.split('').reverse().join('');\n    let rev13 = rev12.split('').reverse().join('');\n    let rev14 = rev13.split('').reverse().join('');\n    let rev15 = rev14.split('').reverse().join('');\n    let rev16 = rev15.split('').reverse().join('');\n    let rev17 = rev16.split('').reverse().join('');\n    let rev18 = rev17.split('').reverse().join('');\n    let rev19 = rev18.split('').reverse().join('');\n    let rev20 = rev19.split('').reverse().join('');\n    let rev21 = rev20.split('').reverse().join('');\n    let rev22 = rev21.split('').reverse().join('');\n    let rev23 = rev22.split('').reverse().join('');\n    let rev24 = rev23.split('').reverse().join('');\n    let rev25 = rev24.split('').reverse().join('');\n    let rev26 = rev25.split('').reverse().join('');\n    let rev27 = rev26.split('').reverse().join('');\n    let rev28 = rev27.split('').reverse().join('');\n    let rev29 = rev28.split('').reverse().join('');\n    let rev30 = rev29.split('').reverse().join('');\n    let rev31 = rev30.split('').reverse().join('');\n    let rev32 = rev31.split('').reverse().join('');\n    let rev33 = rev32.split('').reverse().join('');\n    let rev34 = rev33.split('').reverse().join('');\n    let rev35 = rev34.split('').reverse().join('');\n    let"
+  ]
+}

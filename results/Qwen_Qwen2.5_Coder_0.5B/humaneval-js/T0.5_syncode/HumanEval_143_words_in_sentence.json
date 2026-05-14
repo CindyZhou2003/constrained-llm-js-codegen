@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_143_words_in_sentence",
+  "language": "js",
+  "prompt": "//You are given a string representing a sentence,\n// the sentence contains some words separated by a space,\n// and you have to return a string that contains the words from the original sentence,\n// whose lengths are prime numbers,\n// the order of the words in the new string should be the same as the original one.\n// Example 1:\n// >>> words_in_sentence(\"This is a test\")\n// \"is\"\n// Example 2:\n// >>> words_in_sentence(\"lets go for swimming\")\n// \"go for\"\n// Constraints:\n// * 1 <= len(sentence) <= 100\n// * sentence contains only letters\nfunction words_in_sentence(sentence){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_143_words_in_sentence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = words_in_sentence;\n  assert.deepEqual(candidate(\"This is a test\"),\"is\");\n  assert.deepEqual(candidate(\"lets go for swimming\"),\"go for\");\n  assert.deepEqual(candidate(\"there is no place available here\"),\"there is no place\");\n  assert.deepEqual(candidate(\"Hi I am Hussein\"),\"Hi am Hussein\");\n  assert.deepEqual(candidate(\"go for it\"),\"go for it\");\n  assert.deepEqual(candidate(\"here\"),\"\");\n  assert.deepEqual(candidate(\"here is\"),\"is\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let s = sentence.split(' ')\n    let prime = []\n    let primeList = []\n    for(let i = 0; i < s.length; i++){\n        if(isPrime(s[i].length)){\n            prime.push(s[i])\n        }\n    }\n    for(let i = 0; i < prime.length; i++){\n        primeList.push(prime[i])\n    }\n    let final = primeList.join(' ')\n    return final\n}\n",
+    "    let words = sentence.split(' ');\n    let primeWords = [];\n    const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];\n    for (let i = 0; i < words.length; i++) {\n        let count = 1;\n        for (let j = i + 1; j < words.length; j++) {\n            if (words[i].length === words[j].length) {\n                count++;\n            }\n        }\n        if (count === 1 && primes.includes(words[i].length)) {\n            primeWords.push(words[i]);\n        }\n    }\n    return primeWords.join(' ');\n}",
+    "  const arr = sentence.split(' ');\n  let result = '';\n  for (let i = 0; i < arr.length; i++) {\n    if (isPrime(arr[i].length)) {\n      result += arr[i] + ' ';\n    }\n  }\n  return result.slice(0, -1);\n}\n",
+    "    const words = sentence.split(' ');\n    const primeNumbers = getPrimeNumbers();\n    const primeWords = [];\n    for (let i = 0; i < words.length; i++) {\n        const word = words[i];\n        if (primeNumbers.includes(word.length)) {\n            primeWords.push(word);\n        }\n    }\n    return primeWords.join(' ');\n}\n",
+    "  let words = sentence.split(' ')\n  let primeNumbers = []\n  for(let i = 0; i < words.length; i++){\n    let length = words[i].length\n    if(isPrime(length)){\n      primeNumbers.push(words[i])\n    }\n  }\n  return primeNumbers.join(' ')\n}\n"
+  ]
+}

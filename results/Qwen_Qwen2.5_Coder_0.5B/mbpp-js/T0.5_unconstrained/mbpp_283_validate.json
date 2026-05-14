@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString().split(\"\");\n    let count = 0;\n    let result = true;\n    for(let i = 0; i < arr.length; i++){\n        count = arr[i].repeat(parseInt(arr[i]));\n        if(count>arr[i]){\n            result = false;\n            break;\n        }\n    }\n    return result;\n}",
+    "    let arr =[];\n    let num = n.toString();\n    for(let i=0;i<num.length;i++){\n        let count = num.split(\"\").filter((e)=>e==num[i]).length;\n        if(count<=num[i]){\n            arr.push(count);\n        }\n    }\n    if(arr.length==1){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    var c=0;\n    for (var i=0;i<n;i++){\n        c++;\n        while(c!=0){\n            if(n%10==0){\n                n/=10;\n                c--;\n            }\n            else if(n%10!=0 && n%10==c){\n                n/=10;\n                c--;\n            }\n            else{\n                return false;\n            }\n        }\n    }\n    return true;\n}\n",
+    "    let arr = n.toString().split('');\n    let arr2 = [];\n    for(let i = 0; i < arr.length; i++){\n        arr2.push(arr[i]);\n    }\n    let count = 0;\n    for(let j = 0; j < arr2.length; j++){\n        count += arr2[j].length;\n    }\n    console.log(arr2);\n    for(let k = 0; k < arr2.length; k++){\n        if(arr2[k].length > count){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    var arr = n.toString().split('');\n    var count = 0;\n    for(var i = 0; i<arr.length; i++){\n        var temp = arr[i];\n        var count = 0;\n        for(var j = 0; j<arr.length; j++){\n            if(temp == arr[j]){\n                count++;\n            }\n        }\n        if(count > 1){\n            return false;\n        }\n    }\n    return true;\n}"
+  ]
+}

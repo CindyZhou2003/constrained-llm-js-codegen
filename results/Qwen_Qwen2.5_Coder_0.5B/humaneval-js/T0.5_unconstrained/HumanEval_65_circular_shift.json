@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_65_circular_shift",
+  "language": "js",
+  "prompt": "//Circular shift the digits of the integer x, shift the digits right by shift\n// and return the result as a string.\n// If shift > number of digits, return digits reversed.\n// >>> circular_shift(12, 1)\n// \"21\"\n// >>> circular_shift(12, 2)\n// \"12\"\nfunction circular_shift(x, shift){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_65_circular_shift.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = circular_shift;\n  assert.deepEqual(candidate(100, 2),\"001\");\n  assert.deepEqual(candidate(12, 2),\"12\");\n  assert.deepEqual(candidate(97, 8),\"79\");\n  assert.deepEqual(candidate(12, 1),\"21\");\n  assert.deepEqual(candidate(11, 101),\"11\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if (shift > x.toString().length){\n        return x.toString().split('').reverse().join('');\n    } else {\n        return x.toString().split('').splice(x.toString().length - shift).reverse().join('') + x.toString().split('').splice(0, x.toString().length - shift).join('');\n    }\n}",
+    "    let str = x.toString();\n    let newStr = str.slice(0, str.length - shift) + str.slice(str.length - shift);\n    return newStr;\n}",
+    "    var num = x.toString().split('');\n    if (shift > num.length) {\n        return num.reverse().join('');\n    }\n    return num.slice(shift).concat(num.slice(0, shift)).join('');\n}",
+    "    //your code here\n    let arr = x.toString().split(\"\").reverse();\n    let start = arr.slice(0, shift);\n    let end = arr.slice(shift);\n    let newArr = start.concat(end.reverse());\n    return newArr.join(\"\");\n}\n",
+    "  let digits = x.toString().split('');\n  if (shift > digits.length){\n    digits = digits.reverse().join('')\n  }\n  digits = digits.slice(shift, digits.length);\n  return digits.join('');\n}\n"
+  ]
+}

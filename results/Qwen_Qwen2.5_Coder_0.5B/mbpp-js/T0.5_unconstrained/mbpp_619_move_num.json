@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = test_str.split('');\n    var arr = [];\n\n    for(var i = 0; i< str.length; i++){\n        if(str[i] !== '0'){\n            arr.push(str[i]);\n        }\n    }\n\n    var res = arr.join('');\n    res += test_str.split('').splice(arr.length).join('');\n    return res;\n}\n",
+    "    let arr = test_str.split(\" \");\n    let result = arr.sort(function(a,b){return a-b});\n    return result.join(\" \");\n}\n",
+    "    let str = test_str.split(' ').join('');\n    let num = str.split(' ').join('');\n    let arr = [];\n    for(let i = 0; i < num.length; i++){\n        arr.push(num[i]);\n    }\n    arr.push('');\n    let result = arr.join(' ');\n    return result;\n}",
+    "    var arr = test_str.split(' ');\n    var arr1 = [];\n    for(var i=0; i<arr.length; i++){\n        if(arr[i].length > 1){\n            arr1.push(arr[i]);\n        }\n    }\n    arr1 = arr1.join(' ');\n    return arr1;\n}",
+    "    let str = test_str.split(' ');\n    let num = str[0].split(',');\n    let str2 = str[1].split(',');\n    for(let i = 0; i < num.length; i++){\n        str2.push(num[i]);\n    }\n    return str2.join('');\n}"
+  ]
+}

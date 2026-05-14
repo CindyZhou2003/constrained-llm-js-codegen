@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_69_is_sublist",
+  "language": "js",
+  "prompt": "//Write a function to check whether an array contains the given sublist or not.\nfunction is_sublist(l, s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_69_is_sublist.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_sublist;\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [3, 7]),false);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [4, 3]),true);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [1, 6]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let i = 0;\n    let j = 0;\n    while(i < l.length && j < s.length){\n        if(l[i] === s[j]){\n            i++;\n            j++;\n        }else{\n            i++;\n        }\n    }\n    return j === s.length;\n}",
+    "    for(let i=0;i<l.length;i++){\n        for(let j=0;j<s.length;j++){\n            if(l[i+j]!==s[j]){\n                break;\n            }\n            if(j===s.length-1){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n",
+    "    for(var i = 0; i < l.length; i++){\n        for(var j = 0; j < s.length; j++){\n            if(l[i] !== s[j]){\n                return false\n            }\n        }\n    }\n    return true\n}\n",
+    "    for(let i = 0; i < l.length; i++){\n        if(!l[i].includes(s)){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    let l1=l.slice(0);\n    for(let i=0; i<s.length; i++){\n        if(l1.includes(s[i])){\n            l1.splice(l1.indexOf(s[i]), 1);\n        }\n    }\n    if(l1.length==0){\n        return true;\n    }\n    return false;\n}"
+  ]
+}

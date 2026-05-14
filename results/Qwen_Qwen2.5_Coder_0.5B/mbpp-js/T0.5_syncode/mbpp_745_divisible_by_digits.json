@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_745_divisible_by_digits",
+  "language": "js",
+  "prompt": "//Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. https://www.w3resource.com/JavaScript-exercises/lambda/JavaScript-lambda-exercise-24.php\nfunction divisible_by_digits(startnum, endnum){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_745_divisible_by_digits.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = divisible_by_digits;\n  assert.deepEqual(candidate(1, 22),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]);\n  assert.deepEqual(candidate(1, 15),[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15]);\n  assert.deepEqual(candidate(20, 25),[22, 24]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    for(var i = startnum; i <= endnum; i++){\n        var str = i.toString();\n        var num = 0;\n        for(var j = 0; j < str.length; j++){\n            num = num + parseInt(str[j]);\n        }\n        if(num == 0){\n            continue;\n        }\n        for(var k = 0; k < str.length; k++){\n            var digit = parseInt(str[k]);\n            if(digit == 0){\n                continue;\n            }\n            if(i % digit != 0){\n                break;\n            }\n            if(k == str.length - 1){\n                result.push(i);\n            }\n        }\n    }\n    return result;\n}\n",
+    "    return function(number){\n        let digits = number.toString().split('').map(x => parseInt(x));\n        return digits.every(x => (x !== 0 && number % x === 0));\n    }\n}\n",
+    "    var arr = [];\n    for(var i = startnum; i <= endnum; i++){\n        var arr1 = i.toString().split(\"\");\n        var num = 0;\n        for(var j = 0; j < arr1.length; j++){\n            if(arr1[j] != 0){\n                num = num + parseInt(arr1[j]);\n            }\n        }\n        if(num % i == 0){\n            arr.push(i);\n        }\n    }\n    return arr;\n}",
+    "    let result = []\n    for (let i = startnum; i <= endnum; i++) {\n        let s = i.toString()\n        let arr = s.split('')\n        let j = 0\n        let temp = 0\n        while (j < arr.length) {\n            temp = arr[j] * Math.pow(10, arr.length - j - 1)\n            if (i % temp === 0) {\n                result.push(i)\n                break\n            }\n            j++\n        }\n    }\n    return result\n}",
+    "  return function(x){\n    return (x >= startnum && x <= endnum) && (x.toString().split('').every((y)=>y*1%x === 0));\n  }\n}\n"
+  ]
+}

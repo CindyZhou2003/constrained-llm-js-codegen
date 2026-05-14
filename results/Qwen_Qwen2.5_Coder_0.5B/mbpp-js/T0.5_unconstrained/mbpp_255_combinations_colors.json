@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_255_combinations_colors",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and length n, and generates all combinations (with repetition) of the elements of the array and returns an array with an array for each combination.\nfunction combinations_colors(l, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_255_combinations_colors.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = combinations_colors;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 1),[[\"Red\"], [\"Green\"], [\"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 2),[[\"Red\", \"Red\"], [\"Red\", \"Green\"], [\"Red\", \"Blue\"], [\"Green\", \"Green\"], [\"Green\", \"Blue\"], [\"Blue\", \"Blue\"]]);\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Blue\"], 3),[[\"Red\", \"Red\", \"Red\"], [\"Red\", \"Red\", \"Green\"], [\"Red\", \"Red\", \"Blue\"], [\"Red\", \"Green\", \"Green\"], [\"Red\", \"Green\", \"Blue\"], [\"Red\", \"Blue\", \"Blue\"], [\"Green\", \"Green\", \"Green\"], [\"Green\", \"Green\", \"Blue\"], [\"Green\", \"Blue\", \"Blue\"], [\"Blue\", \"Blue\", \"Blue\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    if(n === 1){\n        for(let i = 0; i < l.length; i++){\n            result.push(l[i]);\n        }\n        return result;\n    }\n    for(let i = 0; i < l.length; i++){\n        let current = l[i];\n        let rest = l.slice(0,i) + l.slice(i+1);\n        for(let j = combinations_colors(rest,n-1); j.length > 0; j = j.slice(1)){\n            result.push(current + j);\n        }\n    }\n    return result;\n}",
+    "  let result = [];\n  let color = l[0];\n  for (let i = 0; i < n; i++){\n    let temp = [];\n    for (let j = 0; j < l.length; j++){\n      temp.push(color);\n      color = l[j];\n    }\n    result.push(temp);\n  }\n  return result;\n}\n",
+    "    let res = []\n    const array = []\n    const loop = (arr, n, l, res) => {\n        if (n === 0) {\n            res.push([...array])\n            return\n        }\n        for (let i = 0; i < l; i++) {\n            array.push(arr[i])\n            loop(arr, n-1, l, res)\n            array.pop()\n        }\n    }\n    loop(l, n, l, res)\n    return res\n}\n",
+    "    let arr = [];\n    for (let i = 0; i < n; i++) {\n        arr.push([]);\n    }\n    let color = [\"red\", \"green\", \"blue\"];\n    for (let i = 0; i < l; i++) {\n        for (let j = 0; j < arr.length; j++) {\n            arr[j].push(color[i]);\n        }\n    }\n    return arr;\n}",
+    "    //create an array for the combinations\n    let combinations = [];\n    //create a variable for the current combination\n    let current_combination = [];\n    //create a variable for the current combination length\n    let current_combination_length = 0;\n    //create a variable for the number of combinations\n    let num_combinations = 0;\n    //create a variable for the length of the array\n    let array_length = l.length;\n    //create a loop for the number of combinations\n    for(let i = 1; i <= n; i++){\n        //create a loop for the length of the current combination\n        for(let j = 0; j < array_length; j++){\n            //add the current combination to the combinations array\n            combinations.push(current_combination);\n            //add the current combination length to the current combination length\n            current_combination_length += 1;\n            //add the current combination to the current combination\n            current_combination.push(l[j]);\n            //add the current combination length to the current combination length\n            current_combination_length += 1;\n        }\n        //add the current combination length to the number of combinations\n        num_combinations += 1;\n    }\n    //return the combinations array\n    return combinations;\n}"
+  ]
+}

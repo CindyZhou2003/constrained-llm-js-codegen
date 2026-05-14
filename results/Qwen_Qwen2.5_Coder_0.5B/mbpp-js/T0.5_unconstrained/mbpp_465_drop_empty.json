@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_465_drop_empty",
+  "language": "js",
+  "prompt": "//Write a function to drop empty items from a given object.\nfunction drop_empty(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_465_drop_empty.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = drop_empty;\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": \"Green\", \"c3\": undefined}),{\"c1\": \"Red\", \"c2\": \"Green\"});\n  assert.deepEqual(candidate({\"c1\": \"Red\", \"c2\": undefined, \"c3\": undefined}),{\"c1\": \"Red\"});\n  assert.deepEqual(candidate({\"c1\": undefined, \"c2\": \"Green\", \"c3\": undefined}),{\"c2\": \"Green\"});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    for (let key in dict1) {\n        if (dict1[key] != \"\"){\n            arr.push(dict1[key]);\n        }\n    }\n    return arr;\n}\n\nlet obj = {\n    name: \"John\",\n    age: 24,\n    city: \"New York\"\n};\n",
+    "    for(let key in dict1){\n        if(dict1[key].length==0){\n            delete dict1[key]\n        }\n    }\n    return dict1\n}\nlet dict1 = {\n    1: 'one',\n    2: 'two',\n    3: 'three',\n    4: 'four',\n    5: 'five'\n}",
+    "    let obj2 = {};\n    for (let key in dict1){\n        if (dict1[key] !== undefined) {\n            obj2[key] = dict1[key];\n        }\n    }\n    return obj2;\n}\n",
+    "    for (let key in dict1){\n        if (typeof dict1[key] === 'undefined'){\n            delete dict1[key]\n        }\n    }\n    return dict1;\n}\nconst obj1 = {\n    name: \"John\",\n    age: 23,\n    city: \"New York\",\n    country: \"USA\"\n}\n",
+    "    var obj = {};\n    for(var key in dict1){\n        if(dict1[key] != undefined){\n            obj[key] = dict1[key];\n        }\n    }\n    return obj;\n}"
+  ]
+}

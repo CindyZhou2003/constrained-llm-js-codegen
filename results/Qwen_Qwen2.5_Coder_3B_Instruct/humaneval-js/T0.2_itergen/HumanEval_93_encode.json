@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_93_encode",
+  "language": "js",
+  "prompt": "//Write a function that takes a message, and encodes in such a \n// way that it swaps case of all letters, replaces all vowels in \n// the message with the letter that appears 2 places ahead of that \n// vowel in the english alphabet. \n// Assume only letters. \n// Examples:\n// >>> encode(\"test\")\n// \"TGST\"\n// >>> encode(\"This is a message\")\n// \"tHKS KS C MGSSCGG\"\nfunction encode(message){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_93_encode.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encode;\n  assert.deepEqual(candidate(\"TEST\"),\"tgst\");\n  assert.deepEqual(candidate(\"Mudasir\"),\"mWDCSKR\");\n  assert.deepEqual(candidate(\"YES\"),\"ygs\");\n  assert.deepEqual(candidate(\"This is a message\"),\"tHKS KS C MGSSCGG\");\n  assert.deepEqual(candidate(\"I DoNt KnOw WhAt tO WrItE\"),\"k dQnT kNqW wHcT Tq wRkTg\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let vowels = \"aeiouAEIOU\";\n    let encodedMessage = \"\";\n    for(let i = 0; i < message.length; i++){\n        let char = message[i];\n        if(vowels.includes(char)){\n            let nextChar = String.fromCharCode(char.charCodeAt(0) + 2);\n            encodedMessage += nextChar;\n        } else {\n            let swappedChar = char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();\n            encodedMessage += swappedChar;\n        }\n    }\n    return encodedMessage;\n}",
+    "    let vowels = \"aeiouAEIOU\";\n    let encodedMessage = \"\";\n\n    for(let i = 0; i < message.length; i++){\n        let char = message[i];\n\n        if(vowels.includes(char)){\n            let nextVowel = String.fromCharCode(char.charCodeAt(0) + 2);\n            encodedMessage += nextVowel;\n        } else {\n            let swappedCaseChar = char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();\n            encodedMessage += swappedCaseChar;\n        }\n    }\n\n    return encodedMessage;\n}",
+    "    let vowels = \"aeiouAEIOU\";\n    let encodedMessage = \"\";\n\n    for(let i = 0; i < message.length; i++){\n        let char = message[i];\n\n        if(vowels.includes(char)){\n            let nextVowel = String.fromCharCode(char.charCodeAt(0) + 2);\n            encodedMessage += nextVowel;\n        } else {\n            let swappedCaseChar = char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();\n            encodedMessage += swappedCaseChar;\n        }\n    }\n\n    return encodedMessage;\n}\n\n"
+  ]
+}

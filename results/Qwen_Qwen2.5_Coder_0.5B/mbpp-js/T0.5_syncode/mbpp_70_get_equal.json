@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_70_get_equal",
+  "language": "js",
+  "prompt": "//Write a function to find whether all the given lists have equal length or not.\nfunction get_equal(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_70_get_equal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_equal;\n  assert.deepEqual(candidate([[11, 22, 33], [44, 55, 66]]),true);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6, 7]]),false);\n  assert.deepEqual(candidate([[1, 2], [3, 4]]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    let result = [];\n    for (let i = 0; i < Input.length; i++) {\n        for (let j = 0; j < Input[i].length; j++) {\n            count++;\n        }\n        result.push(count);\n        count = 0;\n    }\n    if (result.length == 1) {\n        return true;\n    } else {\n        return false;\n    }\n}",
+    "    var i = 0;\n    while(i < Input.length){\n        if(Input[i].length != Input[i+1].length){\n            return false;\n        }\n        i++;\n    }\n    return true;\n}",
+    "    var result = true;\n    for(var i=0; i<inputs.length; i++){\n        if(input[i].length !== input[i+1].length){\n            result = false;\n        }\n    }\n    return result;\n}",
+    "  let arr1 = Input[0];\n  let arr2 = Input[1];\n\n  if(arr1.length !== arr2.length){\n    return false;\n  }\n\n  for(let i=0; i<arr1.length; i++){\n    if(arr1[i] !== arr2[i]){\n      return false;\n    }\n  }\n  return true;\n}\n",
+    "    let total = 0;\n    for(let i = 0; i < Input.length; i++){\n        total += Input[i].length;\n    }\n    return total;\n}"
+  ]
+}

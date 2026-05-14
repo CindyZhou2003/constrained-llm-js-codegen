@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_67_fruit_distribution",
+  "language": "js",
+  "prompt": "//In this task, you will be given a string that represents a number of apples and oranges \n// that are distributed in a basket of fruit this basket contains \n// apples, oranges, and mango fruits. Given the string that represents the total number of \n// the oranges and apples and an integer that represent the total number of the fruits \n// in the basket return the number of the mango fruits in the basket.\n// for examble:\n// >>> fruit_distribution(\"5 apples and 6 oranges\", 19)\n// 8\n// >>> fruit_distribution(\"0 apples and 1 oranges\", 3)\n// 2\n// >>> fruit_distribution(\"2 apples and 3 oranges\", 100)\n// 95\n// >>> fruit_distribution(\"100 apples and 1 oranges\", 120)\n// 19\nfunction fruit_distribution(s, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_67_fruit_distribution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = fruit_distribution;\n  assert.deepEqual(candidate(\"5 apples and 6 oranges\", 19),8);\n  assert.deepEqual(candidate(\"5 apples and 6 oranges\", 21),10);\n  assert.deepEqual(candidate(\"0 apples and 1 oranges\", 3),2);\n  assert.deepEqual(candidate(\"1 apples and 0 oranges\", 3),2);\n  assert.deepEqual(candidate(\"2 apples and 3 oranges\", 100),95);\n  assert.deepEqual(candidate(\"2 apples and 3 oranges\", 5),0);\n  assert.deepEqual(candidate(\"1 apples and 100 oranges\", 120),19);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let apple = parseInt(s.split(\" \")[0])\n    let orange = parseInt(s.split(\" \")[1])\n    let mango = n - (apple + orange)\n    return mango\n}",
+    "    let count=0;\n    let arr=s.split(\" \");\n    arr.forEach(el=>{\n        if(el.includes(\"apples\")||el.includes(\"apples\")){\n            count+=Number(el.replace(\"apples\",\"\"));\n        }else if(el.includes(\"oranges\")||el.includes(\"oranges\")){\n            count+=Number(el.replace(\"oranges\",\"\"));\n        }else if(el.includes(\"mango\")||el.includes(\"mango\")){\n            count+=Number(el.replace(\"mango\",\"\"));\n        }\n    });\n    return n-count;\n}",
+    "    let a = s.split(\" \").filter((x)=>x!=0).join(\"\").split(\" \").reduce((a,x)=>a+x,0)\n    let b = n - a\n    return b.toString().length\n}\n",
+    "    let apple = 0, orange = 0, mango = 0;\n    let arr = s.split(\" \").map(Number);\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] == \"apples\"){\n            apple += 1;\n        }else if(arr[i] == \"oranges\"){\n            orange += 1;\n        }else if(arr[i] == \"mango\"){\n            mango += 1;\n        }\n    }\n    return mango + n - (apple + orange);\n}",
+    "    let split = s.split(\" \")\n    let apples = Number(split[0])\n    let oranges = Number(split[1])\n    let mango = n - apples - oranges\n    return mango\n}"
+  ]
+}

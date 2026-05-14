@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_748_capital_words_spaces",
+  "language": "js",
+  "prompt": "//Write a function to put spaces between words starting with capital letters in a given string.\nfunction capital_words_spaces(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_748_capital_words_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = capital_words_spaces;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"PythonProgrammingExamples\"),\"Python Programming Examples\");\n  assert.deepEqual(candidate(\"GetReadyToBeCodingFreak\"),\"Get Ready To Be Coding Freak\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = str1.split(' ');\n    let result = [];\n    for(let i = 0; i < str.length; i++){\n        if(str[i][0] === str[i][0].toUpperCase()){\n            result.push(str[i].substring(1));\n            result.push(' ');\n        }else{\n            result.push(str[i]);\n        }\n    }\n    return result.join('');\n}\n",
+    "    let str2 = str1.split(' ');\n    let str3 = [];\n    for(let i = 0; i < str2.length; i++){\n        if(str2[i][0] === str2[i][0].toUpperCase()){\n            str3.push(str2[i].slice(1));\n        }else{\n            str3.push(str2[i]);\n        }\n    }\n    return str3.join(' ');\n}",
+    "    let str2 = str1.split(\" \");\n    let result = \"\";\n    for(let i = 0; i < str2.length; i++){\n        if(str2[i][0] === str2[i][0].toUpperCase()){\n            result += str2[i] + \" \";\n        } else {\n            result += str2[i] + \" \";\n        }\n    }\n    return result;\n}"
+  ]
+}

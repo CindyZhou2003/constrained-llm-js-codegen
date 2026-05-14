@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let newStr = str.split(\"\").reverse().join(\"\");\n    if(str == newStr){\n        return 0;\n    }\n    else{\n        return 1 + find_Rotations(newStr);\n    }\n}",
+    "    var count = 0;\n    for(var i = 0; i < str.length; i++){\n        var j = i;\n        var str2 = str;\n        for(var k = 0; k < str2.length; k++){\n            if(str2[j] != str2[k]){\n                str2 = str2.slice(0, j) + str2.slice(j+1);\n                j--;\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    var temp = str;\n    var rotations = 0;\n    while(temp !== str){\n        temp = temp.slice(1) + temp[0];\n        rotations++;\n    }\n    return rotations;\n}",
+    "    let rotations = 0;\n    for(let i = 0; i < str.length; i++){\n        let tmp = str;\n        tmp = tmp.slice(1)+tmp[0];\n        if(tmp === str){\n            return rotations;\n        }\n        rotations++;\n    }\n    return rotations;\n}",
+    "    var count=0;\n    var str1=str.split(' ');\n    var str2=[];\n    for(var i=0;i<str1.length;i++){\n        str2.push(str1[i].split(''));\n    }\n    for(var i=0;i<str2.length;i++){\n        var temp=str2[i];\n        var temp1=temp.join('');\n        for(var j=0;j<temp.length;j++){\n            var temp2=temp1.substring(j,temp1.length);\n            if(temp2==temp1){\n                count++;\n                temp1=temp2;\n                break;\n            }\n        }\n    }\n    return count;\n}"
+  ]
+}

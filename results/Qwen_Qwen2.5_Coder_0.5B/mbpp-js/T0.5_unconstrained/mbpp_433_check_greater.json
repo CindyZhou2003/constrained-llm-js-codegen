@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_433_check_greater",
+  "language": "js",
+  "prompt": "//Write a function to check whether the entered number is greater than the elements of the given array.\nfunction check_greater(arr, number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_433_check_greater.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_greater;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], 4),false);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6], 8),true);\n  assert.deepEqual(candidate([9, 7, 4, 8, 6, 1], 11),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for (let i = 0; i < arr.length; i++) {\n        if (arr[i] > number){\n            return true;\n        }\n    }\n    return false;\n}\nlet arr = [1, 2, 3, 4, 5, 6, 7, 8];\nlet number = 10;",
+    "    if(number > arr[0]){\n        console.log(\"The number is greater than the first element of the array\");\n    }else if(number > arr[1]){\n        console.log(\"The number is greater than the second element of the array\");\n    }else if(number > arr[2]){\n        console.log(\"The number is greater than the third element of the array\");\n    }else if(number > arr[3]){\n        console.log(\"The number is greater than the fourth element of the array\");\n    }else{\n        console.log(\"The number is greater than the array elements\");\n    }\n}\ncheck_greater([1,2,3,4], 5);",
+    "    for (var i=0; i<arr.length; i++){\n        if(arr[i] > number){\n            console.log(\"The number is greater than the array elements\");\n        } else {\n            console.log(\"The number is not greater than the array elements\");\n        }\n    }\n}\n\ncheck_greater([1,2,3,4,5], 3);",
+    "    for(let i=0; i<arr.length; i++)\n    {\n        if(arr[i]>number){\n            console.log(arr[i]);\n        }\n    }\n}\ncheck_greater([1,2,3,4,5,6,7,8],6);",
+    "    for (let i = 0; i < arr.length; i++){\n        if(arr[i]>number){\n            return true;\n        }\n    }\n    return false;\n}\n\nlet my_array = [1,2,3,4,5,6,7,8,9,10];\nlet num = 5;"
+  ]
+}

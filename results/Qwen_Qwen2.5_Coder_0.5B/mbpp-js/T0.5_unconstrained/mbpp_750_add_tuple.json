@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_750_add_tuple",
+  "language": "js",
+  "prompt": "//Write a function to add the given array to the given array.\nfunction add_tuple(test_list, test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_750_add_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = add_tuple;\n  assert.deepEqual(candidate([5, 6, 7], [9, 10]),[5, 6, 7, 9, 10]);\n  assert.deepEqual(candidate([6, 7, 8], [10, 11]),[6, 7, 8, 10, 11]);\n  assert.deepEqual(candidate([7, 8, 9], [11, 12]),[7, 8, 9, 11, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var new_tuple = [];\n    var i = 0;\n    while (i < test_list.length) {\n        new_tuple.push(test_list[i]);\n        i++;\n    }\n    new_tuple.push(test_tup);\n    return new_tuple;\n}\n",
+    "    test_list.push(test_tup);\n    return test_list;\n}\nlet test_list = [];\nlet test_tup = [1,2,3,4,5];\nadd_tuple(test_list, test_tup);",
+    "  let result = [];\n  for (let i = 0; i < test_list.length; i++) {\n    result.push(test_list[i]);\n  }\n  result.push(test_tup);\n  return result;\n}\nlet test_list = [1, 2, 3];\nlet test_tup = [4, 5, 6];",
+    "    test_list.push(test_tup);\n    return test_list;\n}\nlet test_list = [1, 2, 3];\nlet test_tup = [4, 5, 6];\nlet test_list2 = add_tuple(test_list, test_tup);",
+    "    if(test_tup === undefined) return test_list;\n    if(test_list === undefined) return test_tup;\n    test_list.push(test_tup);\n    return test_list;\n}\n"
+  ]
+}

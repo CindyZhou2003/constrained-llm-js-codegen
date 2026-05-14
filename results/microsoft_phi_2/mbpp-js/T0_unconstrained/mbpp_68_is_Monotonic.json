@@ -1,1 +1,18 @@
-{"name": "mbpp_68_is_Monotonic", "language": "js", "prompt": "//Write a JavaScript function to check whether the given array is monotonic or not.\nfunction is_Monotonic(A){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_68_is_Monotonic.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Monotonic;\n  assert.deepEqual(candidate([6, 5, 4, 4]),true);\n  assert.deepEqual(candidate([1, 2, 2, 3]),true);\n  assert.deepEqual(candidate([1, 3, 2]),false);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    let increasing = true;\n    let decreasing = true;\n  "]}
+{
+  "name": "mbpp_68_is_Monotonic",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array is monotonic or not.\nfunction is_Monotonic(A){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_68_is_Monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Monotonic;\n  assert.deepEqual(candidate([6, 5, 4, 4]),true);\n  assert.deepEqual(candidate([1, 2, 2, 3]),true);\n  assert.deepEqual(candidate([1, 3, 2]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let isMonotonic = true;\n    let isIncreasing = A[0] < A[1];\n    for(let i = 1; i < A.length; i++){\n        if(isIncreasing && A[i] < A[i-1]){\n            isIncreasing = false;\n        }\n        else if(!isIncreasing && A[i] > A[i-1]){\n            isIncreasing = true;\n        }\n    }\n    return isIncreasing;\n}\n\nconst A = [1, 2, 3, 4, 5];\nconst B = [5, 4, 3, 2, 1];\nconst C = [1, 3, 2, 4, 5];\n"
+  ]
+}

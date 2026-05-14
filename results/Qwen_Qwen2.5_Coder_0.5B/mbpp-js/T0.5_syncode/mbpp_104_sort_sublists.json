@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_104_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(input_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_104_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\" red \", \"green\"], [\"blue \", \" black\"], [\" orange\", \"brown\"]]),[[\" red \", \"green\"], [\" black\", \"blue \"], [\" orange\", \"brown\"]]);\n  assert.deepEqual(candidate([[\"zilver\", \"gold\"], [\"magnesium\", \"aluminium\"], [\"steel\", \"bronze\"]]),[[\"gold\", \"zilver\"], [\"aluminium\", \"magnesium\"], [\"bronze\", \"steel\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Your code here\n    var result = [];\n    for (let i=0; i<input_list.length; i++){\n        result.push(input_list[i].sort())\n    }\n    return result;\n}",
+    "  //input_list is an array of arrays\n  //return an array of arrays\n  var output_list = [];\n  var temp = [];\n  //iterate through the input list\n  for (var i=0; i<input_list.length; i++){\n    //iterate through the array\n    for (var j=0; j<input_list[i].length; j++){\n      //add the value to the temp array\n      temp.push(input_list[i][j]);\n    }\n    //sort the temp array\n    temp.sort();\n    //push the temp array to the output_list\n    output_list.push(temp);\n    //reset the temp array\n    temp = [];\n  }\n  return output_list;\n}",
+    "    return input_list.map(list => list.sort())\n}",
+    "    return input_list.sort((a,b) => a-b);\n}\n",
+    "    return input_list.map((list) => list.sort());\n}"
+  ]
+}

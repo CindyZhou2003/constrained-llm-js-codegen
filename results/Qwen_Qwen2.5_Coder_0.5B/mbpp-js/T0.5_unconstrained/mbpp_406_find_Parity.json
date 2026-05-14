@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_406_find_Parity",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find whether the parity of a given number is odd.\nfunction find_Parity(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_406_find_Parity.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Parity;\n  assert.deepEqual(candidate(12),false);\n  assert.deepEqual(candidate(7),true);\n  assert.deepEqual(candidate(10),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(x%2==0){\n        console.log(\"The parity of the number is even\");\n    }\n    else{\n        console.log(\"The parity of the number is odd\");\n    }\n}\nfind_Parity(23);",
+    "    if (x%2 == 0){\n        return \"Even\"\n    }\n    else{\n        return \"Odd\"\n    }\n}",
+    "    let parity = 0;\n    while (x>0){\n        parity = x%2;\n        x = Math.floor(x/2);\n    }\n    if (parity == 1){\n        return \"Parity is odd\";\n    }else{\n        return \"Parity is even\";\n    }\n}\n",
+    "    if(x&1==0){\n        return \"Even\";\n    }else{\n        return \"Odd\";\n    }\n}",
+    "    if(x % 2 == 0){\n        console.log(\"Number is even.\")\n    }else{\n        console.log(\"Number is odd.\")\n    }\n}\n\nfind_Parity(9)"
+  ]
+}

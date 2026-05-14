@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_585_expensive_items",
+  "language": "js",
+  "prompt": "//Write a function to find the n most expensive items in a given dataset.\nfunction expensive_items(items, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_585_expensive_items.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = expensive_items;\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}], 2),[{\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-1\", \"price\": 101.1}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}, {\"name\": \"Item-4\", \"price\": 22.75}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var result = [];\n    var count = 0;\n    for(var i=0; i<items.length; i++){\n        if(items[i].price > n){\n            result.push(items[i]);\n            count++;\n            if(count == n){\n                return result;\n            }\n        }\n    }\n    return result;\n}\n\nvar items = [\n    {name: \"item1\", price: 100},\n    {name: \"item2\", price: 200},\n    {name: \"item3\", price: 300},\n    {name: \"item4\", price: 400},\n    {name: \"item5\", price: 500},\n    {name: \"item6\", price: 600},\n    {name: \"item7\", price: 700},\n    {name: \"item8\", price: 800},\n    {name: \"item9\", price: 900},\n    {name: \"item10\", price: 1000}\n];\n\nvar n = 2;\nvar expensive = expensive_items(items, n);",
+    "    //sort the array by the price\n    items.sort(function(a,b){return b-a});\n    //get the first n elements\n    return items.slice(0,n);\n}",
+    "    let result = [];\n    items.sort((a, b) => b.price - a.price);\n    for(let i=0; i<n; i++){\n        result.push(items[i]);\n    }\n    return result;\n}\n\nlet items = [\n    {name: \"item 1\", price: 10, quantity: 2},\n    {name: \"item 2\", price: 15, quantity: 1},\n    {name: \"item 3\", price: 5, quantity: 3},\n    {name: \"item 4\", price: 20, quantity: 4}\n];\n",
+    "    let n_items = [];\n    for(let i = 0; i < n; i++){\n        n_items.push(items[i]);\n    }\n    return n_items.sort(function(a, b){\n        return b - a;\n    });\n}\n\nlet items = [1,2,3,4,5,6,7,8,9,10];\nlet n = 4;\nlet result = expensive_items(items, n);",
+    "  //Create a new array to store the n most expensive items\n  //Create a variable to store the current element\n  //Create a variable to store the current value\n  //Create a variable to store the index of the current element\n  var expensive = [];\n  var current = 0;\n  var value = 0;\n  var index = 0;\n  //Iterate through the items array\n  for (var i = 0; i < items.length; i++) {\n    //Get the current element\n    current = items[i];\n    //Get the current value\n    value = current.price;\n    //Get the index of the current element\n    index = i;\n    //If the current value is greater than the current value stored in expensive\n    //Store the current value in expensive\n    if (value > expensive[current]) {\n      expensive[current] = value;\n      index = current;\n    }\n  }\n  //Return the n most expensive items\n  return expensive.splice(0, n);\n}"
+  ]
+}

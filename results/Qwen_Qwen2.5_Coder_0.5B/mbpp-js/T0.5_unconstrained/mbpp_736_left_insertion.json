@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_736_left_insertion",
+  "language": "js",
+  "prompt": "//Write a function to locate the left insertion point for a specified value in sorted order. https://www.w3resource.com/JavaScript-exercises/data-structures-and-algorithms/JavaScript-data-structure-exercise-24.php\nfunction left_insertion(a, x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_736_left_insertion.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = left_insertion;\n  assert.deepEqual(candidate([1, 2, 4, 5], 6),4);\n  assert.deepEqual(candidate([1, 2, 4, 5], 3),2);\n  assert.deepEqual(candidate([1, 2, 4, 5], 7),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i = 0;\n    while (i < a.length && a[i] < x){\n        i++;\n    }\n    return i;\n}",
+    "    var left = 0;\n    var right = a.length - 1;\n    var middle = Math.floor((right + left) / 2);\n\n    while (a[middle] !== x && left < right) {\n        if (a[middle] > x) {\n            right = middle - 1;\n        } else {\n            left = middle + 1;\n        }\n        middle = Math.floor((right + left) / 2);\n    }\n    return a[middle];\n}\n",
+    "    let i = 0;\n    while (a[i] < x) {\n        i++;\n    }\n    return i;\n}",
+    "    let i = 0;\n    for(i = 0; i < a.length; i++){\n        if(a[i] > x){\n            break;\n        }\n    }\n    return i;\n}\nlet a = [1,2,3,4,5,6,7,8,9];",
+    "    var i = 0;\n    for (i = 0; i < a.length; i++){\n        if (a[i] > x){\n            break\n        }\n    }\n    return i\n}\nvar a = [2, 4, 6, 8, 10, 12]"
+  ]
+}

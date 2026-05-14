@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_472_check_Consecutive",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array contains consecutive numbers or not.\nfunction check_Consecutive(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_472_check_Consecutive.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_Consecutive;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n  assert.deepEqual(candidate([1, 2, 3, 5, 6]),false);\n  assert.deepEqual(candidate([1, 2, 1]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i=0;\n    var j=l.length-1;\n    while(i<j){\n        if(l[i]==l[i+1]-1 && l[j]==l[j-1]+1){\n            i++;\n            j--;\n        }\n        else{\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for(let i=0;i<l.length-1;i++){\n        if(l[i+1]-l[i]!==1){\n            return false\n        }\n    }\n    return true;\n}",
+    "    let num=0;\n    let flag=0;\n    for(let i=0;i<l.length;i++){\n        if(l[i]>num){\n            num=l[i];\n            flag=1;\n        }else{\n            flag=0;\n            break;\n        }\n    }\n    if(flag==1){\n        console.log(\"Array is not consecutive\");\n    }else{\n        console.log(\"Array is consecutive\");\n    }\n}\n  ",
+    "    var count = 0;\n    for (var i = 0; i < l.length; i++) {\n        if (l[i] - 1 != l[i - 1]) {\n            return false;\n        }\n        else {\n            count++;\n        }\n    }\n    if (count == l.length) {\n        return true;\n    }\n    else {\n        return false;\n    }\n}",
+    "    var count = 0;\n    for (var i = 0; i < l.length; i++) {\n        if (l[i] == l[i + 1] + 1) {\n            count++;\n        }\n        else {\n            return false;\n        }\n    }\n    if (count == l.length) {\n        return true;\n    }\n    else {\n        return false;\n    }\n}"
+  ]
+}

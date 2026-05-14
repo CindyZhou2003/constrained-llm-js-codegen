@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_130_max_occurrences",
+  "language": "js",
+  "prompt": "//Write a function to find the item with maximum frequency in a given array.\nfunction max_occurrences(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_130_max_occurrences.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_occurrences;\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 2, 4, 6, 9, 1, 2]),2);\n  assert.deepEqual(candidate([2, 3, 8, 4, 7, 9, 8, 7, 9, 15, 14, 10, 12, 13, 16, 18]),8);\n  assert.deepEqual(candidate([10, 20, 20, 30, 40, 90, 80, 50, 30, 20, 50, 10]),20);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max = 0;\n    let max_index = 0;\n    for(let i=0;i<nums.length;i++){\n        let count = 0;\n        for(let j=0;j<nums.length;j++){\n            if(nums[i] === nums[j]){\n                count++;\n            }\n        }\n        if(count > max){\n            max = count;\n            max_index = i;\n        }\n    }\n    console.log(`The maximum frequency number is ${nums[max_index]}`)\n}\n\nmax_occurrences([1,2,3,2,2,3,4,5,5,5,5,6,6,6,6,7,7,7,7,7,7]);",
+    "    let max = 0;\n    let maxIndex = 0;\n    let map = {};\n    for(let i = 0; i < nums.length; i++){\n        if(map[nums[i]]){\n            map[nums[i]] += 1;\n        }\n        else{\n            map[nums[i]] = 1;\n        }\n    }\n    for(let key in map){\n        if(map[key] > max){\n            max = map[key];\n            maxIndex = nums.indexOf(key);\n        }\n    }\n    return nums[maxIndex];\n}",
+    "    let max = 0;\n    let result = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let count = 0;\n        for (let j = 0; j < nums.length; j++) {\n            if (nums[i] === nums[j]) {\n                count++;\n            }\n        }\n        if (count > max) {\n            max = count;\n            result = nums[i];\n        }\n    }\n    return result;\n}",
+    "    let max = 0;\n    let maxI;\n    let freq = 0;\n    for (let i = 0; i < nums.length; i++) {\n        let count = 0;\n        for (let j = 0; j < nums.length; j++) {\n            if (nums[i] == nums[j]) {\n                count++;\n            }\n        }\n        if (count > freq) {\n            freq = count;\n            max = nums[i];\n            maxI = i;\n        }\n    }\n    return `The max occuring element is ${max} and it is at index ${maxI}`;\n}\nlet nums = [1,2,3,4,5,5,5,6,7,7,7,8,9,10,11,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,1",
+    "    let max = 0;\n    let maxIndex = 0;\n    for(let i = 0; i < nums.length; i++){\n        if(max < nums[i]){\n            max = nums[i];\n            maxIndex = i;\n        }\n    }\n    return maxIndex;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var str = num.toString();\n  var first = str[0];\n  var last = str[str.length-1];\n  var str1 = first+last;\n  var str2 = last+first;\n  var str3 = str1+1;\n  var str4 = str2+1;\n  var str5 = str3+1;\n  var str6 = str4+1;\n  var str7 = str5+1;\n  var str8 = str6+1;\n  var str9 = str7+1;\n  var str10 = str8+1;\n  var str11 = str9+1;\n  var str12 = str10+1;\n  var str13 = str11+1;\n  var str14 = str12+1;\n  var str15 = str13+1;\n  var str16 = str14+1;\n  var str17 = str15+1;\n  var str18 = str16+1;\n  var str19 = str17+1;\n  var str20 = str18+1;\n  var str21 = str19+1;\n  var str22 = str20+1;\n  var str23 = str21+1;\n  var str24 = str22+1;\n  var str25 = str23+1;\n  var str26 = str24+1;\n  var str27 = str25+1;\n  var str28 = str26+1;\n  var str29 = str27+1;\n  var str30 = str28+1;\n  var str31 = str29+1;\n  var str32 = str30+1;\n  var str33 = str31+1;\n  var str34 = str32+1;\n  var str35 = str33+1;\n  var str36 = str34+1;\n  var str37 = str35+1;\n  var str38 = str36+1;\n  var str39 = str37+1;\n  var str40 = str38+1;\n  var str41 = str39+1;\n  var str42 = str40+1;\n ",
+    "    let str = num.toString();\n    for(let i = str.length - 1; i >= 0; i--) {\n        if(str[i] > str[0]) {\n            return +str.slice(0, i) + +str.slice(i) + +str.slice(0, i);\n        }\n    }\n}",
+    "    let num_string = num.toString();\n    let num_array = num_string.split('');\n    let num_array_reverse = num_array.reverse();\n    let num_array_reverse_string = num_array_reverse.join('');\n\n    let num_reverse = parseInt(num_array_reverse_string);\n    let num_reverse_string = num_reverse.toString();\n    let num_reverse_string_reverse = num_reverse_string.split('').reverse().join('');\n\n    let num_reverse_string_reverse_int = parseInt(num_reverse_string_reverse);\n    let num_reverse_string_reverse_int_string = num_reverse_string_reverse_int.toString();\n\n    let num_reverse_string_reverse_int_string_reverse = num_reverse_string_reverse_int_string.split('').reverse().join('');\n\n    let num_reverse_string_reverse_int_string_reverse_int = parseInt(num_reverse_string_reverse_int_string_reverse);\n\n    if(num_reverse_string_reverse_int == num_reverse){\n        return num;\n    } else {\n        return num_reverse;\n    }\n}\n",
+    "    let str = num.toString();\n    let rev = str.split('').reverse().join('');\n    let rev_num = parseInt(rev);\n    let num1 = rev_num + 1;\n    let num2 = num1 + 1;\n    let rev2 = num2.toString().split('').reverse().join('');\n    let rev_num2 = parseInt(rev2);\n    if(num1 > rev_num2){\n        return num1;\n    }\n    else{\n        return num2;\n    }\n}\n",
+    "    let str = num.toString();\n    let len = str.length;\n    let rev = str.split(\"\").reverse().join(\"\");\n    let revStr = rev + rev;\n    let revStrNum = parseInt(revStr);\n    if(revStrNum > num){\n        return num;\n    }else{\n        for(let i = len-1; i > 0; i--){\n            if(str[i] > str[i-1]){\n                let temp = str[i];\n                str = str.slice(0,i) + temp + str.slice(i);\n                return parseInt(str);\n            }\n        }\n    }\n}"
+  ]
+}

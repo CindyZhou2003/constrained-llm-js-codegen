@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = str1.split('');\n    var obj = {};\n    for(var i = 0; i < arr.length; i++){\n        if(obj[arr[i]]){\n            return arr[i];\n        }else{\n            obj[arr[i]] = 1;\n        }\n    }\n    return false;\n}",
+    "    var strArr = str1.split('');\n    var repeatChar = '';\n    for(var i = 0; i < strArr.length; i++){\n        for(var j = i+1; j < strArr.length; j++){\n            if(strArr[i] === strArr[j]){\n                if(repeatChar === ''){\n                    repeatChar = strArr[i];\n                }else{\n                    repeatChar = strArr[i];\n                    break;\n                }\n            }\n        }\n    }\n    return repeatChar;\n}\n",
+    "    let str = str1.split('')\n    for(i=0;i<str.length;i++){\n        if(str.indexOf(str[i])!==str.lastIndexOf(str[i])){\n            return str[i]\n        }\n    }\n}",
+    "    let arr = str1.split(\"\");\n    for(let i=0; i<arr.length; i++){\n        for(let j=i+1; j<arr.length; j++){\n            if(arr[i] === arr[j]){\n                return arr[i];\n            }\n        }\n    }\n}\n",
+    "    var char = str1.split('');\n    var count = 0;\n    var result = '';\n    for(var i = 0; i < char.length; i++){\n        for(var j = i + 1; j < char.length; j++){\n            if (char[i] === char[j]){\n                count++;\n                result = char[i];\n            }\n        }\n    }\n    return result;\n}"
+  ]
+}

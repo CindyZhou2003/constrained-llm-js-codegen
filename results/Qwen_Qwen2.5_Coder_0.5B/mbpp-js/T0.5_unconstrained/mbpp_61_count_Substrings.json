@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_61_count_Substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    let sum = 0;\n    for(let i=0; i<s.length; i++){\n        sum = 0;\n        for(let j=i; j<s.length; j++){\n            sum += parseInt(s[j]);\n            if(sum === j-i+1){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let sum = 0;\n    let count = 0;\n    let i = 0;\n    let j = 0;\n    let n = s.length;\n    while(i <= n){\n        if(n - i + 1 == (n - i + 1) / 2){\n            sum += n;\n            count++;\n            i++;\n        }\n        else{\n            j = i;\n            while(j < n && s[j] == s[i]){\n                j++;\n            }\n            sum += n - j + 1;\n            count++;\n            i = j + 1;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let total = 0;\n    for(let i = 0; i < s.length; i++){\n        let temp = 0;\n        for(let j = i; j < s.length; j++){\n            temp += parseInt(s[j]);\n            if(temp == j - i + 1){\n                count++;\n            }\n        }\n    }\n    return count;\n}",
+    "    let result = 0;\n    for(let i = 0; i < s.length; i++) {\n        let sum = 0;\n        for(let j = i; j < s.length; j++) {\n            sum += parseInt(s[j]);\n            if(sum == j - i + 1) {\n                result++;\n            }\n        }\n    }\n    return result;\n}",
+    "    let sum=0;\n    let count=0;\n    for (let i=0;i<s.length;i++){\n        sum+=s[i];\n        if(sum==i+1){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

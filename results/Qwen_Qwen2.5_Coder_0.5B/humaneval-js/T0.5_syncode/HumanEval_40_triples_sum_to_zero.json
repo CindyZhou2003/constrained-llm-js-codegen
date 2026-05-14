@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_40_triples_sum_to_zero",
+  "language": "js",
+  "prompt": "//triples_sum_to_zero takes an array of integers as an input.\n// it returns true if there are three distinct elements in the array that\n// sum to zero, and false otherwise.\n// >>> triples_sum_to_zero([1, 3, 5, 0])\n// false\n// >>> triples_sum_to_zero([1, 3, -2, 1])\n// true\n// >>> triples_sum_to_zero([1, 2, 3, 7])\n// false\n// >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])\n// true\n// >>> triples_sum_to_zero([1])\n// false\nfunction triples_sum_to_zero(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_40_triples_sum_to_zero.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triples_sum_to_zero;\n  assert.deepEqual(candidate([1, 3, 5, 0]),false);\n  assert.deepEqual(candidate([1, 3, 5, -1]),false);\n  assert.deepEqual(candidate([1, 3, -2, 1]),true);\n  assert.deepEqual(candidate([1, 2, 3, 7]),false);\n  assert.deepEqual(candidate([1, 2, 5, 7]),false);\n  assert.deepEqual(candidate([2, 4, -5, 3, 9, 7]),true);\n  assert.deepEqual(candidate([1]),false);\n  assert.deepEqual(candidate([1, 3, 5, -100]),false);\n  assert.deepEqual(candidate([100, 3, 5, -100]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //loop through the array\n    for (let i = 0; i < l.length; i++) {\n        //loop through the array again\n        for (let j = 0; j < l.length; j++) {\n            //loop through the array again\n            for (let k = 0; k < l.length; k++) {\n                //if the sum of the three elements is 0\n                if (l[i] + l[j] + l[k] === 0) {\n                    //return true\n                    return true;\n                }\n            }\n        }\n    }\n    //return false\n    return false;\n}",
+    "  // Write your code here\n  let seen = new Set()\n  for (let i = 0; i < l.length; i++) {\n    let a = l[i]\n    let b = l[i]\n    let c = l[i]\n    if (seen.has(a+b+c)) {\n      return true\n    } else {\n      seen.add(a)\n      seen.add(b)\n      seen.add(c)\n    }\n  }\n  return false\n}",
+    "    let sum = 0;\n    let nums = l.sort((a, b) => a - b);\n    for (let i = 0; i < nums.length; i++) {\n        sum = sum + nums[i];\n        if (sum === 0) {\n            return true;\n        }\n        if (nums[i] === nums[i + 1]) {\n            i++;\n        }\n    }\n    return false;\n}\n",
+    "  let sum = 0;\n  for(let i = 0; i < l.length; i++){\n    for(let j = i + 1; j < l.length; j++){\n      for(let k = j + 1; k < l.length; k++){\n        if(l[i] + l[j] + l[k] === 0){\n          return true;\n        }\n      }\n    }\n  }\n  return false;\n}",
+    "    // Write your code here\n    let count = 0;\n    for(let i = 0; i < l.length; i++){\n        for(let j = 0; j < l.length; j++){\n            for(let k = 0; k < l.length; k++){\n                if(i !== j && i !== k && j !== k){\n                    if(l[i] + l[j] + l[k] === 0){\n                        count++;\n                        return count;\n                    }\n                }\n            }\n        }\n    }\n    return count;\n}"
+  ]
+}

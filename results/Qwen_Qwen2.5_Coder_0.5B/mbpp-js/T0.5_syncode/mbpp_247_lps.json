@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_247_lps",
+  "language": "js",
+  "prompt": "//Write a function to find the length of the longest palindromic subsequence in the given string.\nfunction lps(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_247_lps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = lps;\n  assert.deepEqual(candidate(\"TENS FOR TENS\"),5);\n  assert.deepEqual(candidate(\"CARDIO FOR CARDS\"),7);\n  assert.deepEqual(candidate(\"PART OF THE JOURNEY IS PART\"),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(str.length == 1) return 1;\n    var dp = new Array(str.length);\n    for(var i = 0; i < str.length; i++) dp[i] = new Array(str.length).fill(0);\n    var max = 0;\n    for(var i = 0; i < str.length; i++){\n        dp[i][i] = 1;\n        for(var j = 0; j < i; j++){\n            if(str[i] == str[j] && j+1 >= i-1) dp[i][j] = 2 + dp[i-1][j+1];\n            else if(str[i] == str[j] && j+1 < i-1) dp[i][j] = dp[i-1][j+1];\n            else dp[i][j] = Math.max(dp[i-1][j], dp[i][j+1]);\n            max = Math.max(max, dp[i][j]);\n        }\n    }\n    return max;\n}",
+    "    let n = str.length;\n    let dp = Array.from({length:n},()=>new Array(n).fill(0));\n    for(let i=0;i<n;i++){\n        dp[i][i] = 1;\n    }\n    for(let i=0;i<n-1;i++){\n        if(str[i]==str[i+1]){\n            dp[i][i+1] = 2;\n        }\n        else{\n            dp[i][i+1] = 1;\n        }\n    }\n    for(let l=3;l<=n;l++){\n        for(let i=0;i<n-l+1;i++){\n            let j = i+l-1;\n            if(str[i]==str[j] && dp[i+1][j-1]==1){\n                dp[i][j] = 2+dp[i+1][j-1];\n            }\n            else{\n                dp[i][j] = Math.max(dp[i][j-1],dp[i+1][j]);\n            }\n        }\n    }\n    return dp[0][n-1];\n}",
+    "    let len = str.length;\n    let dp = Array.from({length: len}, () => new Array(len).fill(0));\n    for(let i = 0; i < len; i++){\n        dp[i][i] = 1;\n    }\n    for(let i = 0; i < len - 1; i++){\n        if(str[i] == str[i+1]){\n            dp[i][i+1] = 2;\n        }else{\n            dp[i][i+1] = 1;\n        }\n    }\n    for(let k = 3; k <= len; k++){\n        for(let i = 0; i < len - k + 1; i++){\n            let j = i + k - 1;\n            if(str[i] == str[j] && dp[i+1][j-1] != 0){\n                dp[i][j] = dp[i+1][j-1] + 2;\n            }else{\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    return dp[0][len - 1];\n}",
+    "    let max = 0;\n    let dp = new Array(str.length).fill(0).map(() => new Array(str.length).fill(0));\n    for(let i = 0; i < str.length; i++){\n        dp[i][i] = 1;\n        max = Math.max(max, dp[i][i]);\n    }\n    for(let len = 2; len <= str.length; len++){\n        for(let i = 0; i < str.length - len + 1; i++){\n            let j = i + len - 1;\n            if(str[i] === str[j]){\n                dp[i][j] = dp[i+1][j-1] + 2;\n                max = Math.max(max, dp[i][j]);\n            }else{\n                dp[i][j] = Math.max(dp[i+1][j], dp[i][j-1]);\n            }\n        }\n    }\n    return max;\n}",
+    "    let dp = new Array(str.length).fill(0).map((elm, i) => new Array(str.length).fill(0));\n    let max = 0;\n    for(let i=0; i<str.length; i++){\n        for(let j=0; j<str.length; j++){\n            if(i === j) dp[i][j] = 1;\n            else if(str[i] === str[j] && i+1 < j) dp[i][j] = dp[i+1][j-1] + 2;\n            else dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j]);\n            max = Math.max(max, dp[i][j]);\n        }\n    }\n    return max;\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_101_kth_element",
+  "language": "js",
+  "prompt": "//Write a function to find the kth element in the given array using 1-based indexing.\nfunction kth_element(arr, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_101_kth_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = kth_element;\n  assert.deepEqual(candidate([12, 3, 5, 7, 19], 2),3);\n  assert.deepEqual(candidate([17, 24, 8, 23], 3),8);\n  assert.deepEqual(candidate([16, 21, 25, 36, 4], 4),36);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return arr[k-1];\n}",
+    "    let i=0;\n    let j=arr.length-1;\n    while(i<=j){\n        let mid=Math.floor((i+j)/2);\n        if(arr[mid]==k){\n            return mid;\n        }\n        else if(arr[mid]>k){\n            j=mid-1;\n        }\n        else{\n            i=mid+1;\n        }\n    }\n    return -1;\n}\nlet arr=[1,2,3,4,5,6,7,8,9,10];\nlet k=3;",
+    "    let i = 0;\n    while(i < arr.length){\n        if(k === i+1){\n            return arr[i];\n        }\n        i++;\n    }\n    return -1;\n}"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_595_min_Swaps",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count minimum number of swaps required to convert one binary number represented as a string to another.\nfunction min_Swaps(str1, str2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_595_min_Swaps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Swaps;\n  assert.deepEqual(candidate(\"1101\", \"1110\"),1);\n  assert.deepEqual(candidate(\"111\", \"000\"),\"Not Possible\");\n  assert.deepEqual(candidate(\"111\", \"110\"),\"Not Possible\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr1 = Array.from(str1);\n    let arr2 = Array.from(str2);\n    let count = 0;\n    let i = 0;\n    while(i < arr1.length){\n        if(arr1[i] != arr2[i]){\n            let j = i+1;\n            while(j < arr1.length){\n                if(arr1[i] != arr2[j]){\n                    count++;\n                    arr1[j] = 1;\n                    arr1[i] = 0;\n                }\n                j++;\n            }\n        }\n        i++;\n    }\n    return count;\n}",
+    "    var count = 0;\n    var i = 0;\n    while(i < str1.length){\n        if(str1[i] != str2[i]){\n            count++;\n        }\n        i++;\n    }\n    return count;\n}\n\nvar str1 = \"10011\";\nvar str2 = \"10000\";",
+    "    var count = 0\n    var result = 0\n    for(var i = 0; i < str1.length; i++){\n        if(str1[i] !== str2[i]){\n            if(str1[i] === 0){\n                str1[i] = 1\n            }else{\n                str1[i] = 0\n            }\n            count++\n            result++\n        }\n    }\n    if(str1 !== str2){\n        result++\n    }\n    return result\n}",
+    "    let count=0;\n    for(let i=0; i<str1.length; i++){\n        if(str1[i] != str2[i]){\n            count++;\n            let temp = str1[i];\n            str1[i] = str2[i];\n            str2[i] = temp;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    let i = 0;\n    let j = 0;\n    while(i < str1.length && j < str2.length){\n        if(str1[i] !== str2[j]){\n            if(str1[i] === '0'){\n                if(str2[j] === '1'){\n                    count++;\n                    j++;\n                }else{\n                    count++;\n                    i++;\n                }\n            }else{\n                if(str2[j] === '0'){\n                    count++;\n                    i++;\n                }else{\n                    count++;\n                    j++;\n                }\n            }\n        }else{\n            i++;\n            j++;\n        }\n    }\n    if(i === str1.length && j === str2.length){\n        return count;\n    }\n    return -1;\n}"
+  ]
+}

@@ -8,14 +8,14 @@ A framework for systematically evaluating LLM code generation under **unconstrai
 
 - `code_generator.py`: Generation-only CLI with two sub-commands:
   - `generate`: Quick single-pass generation — outputs plain source files (`.js`, etc.).
-  - `evaluate`: Batch generation — outputs MultiPL-E-compatible `.json` files in `raw_results/`.
+  - `evaluate`: Batch generation — outputs MultiPL-E-compatible `.json` files in `results/<model>/<dataset>-js/<run>/`.
 - `code_evaluation.py`: Post-generation evaluation CLI — compresses `.json` outputs to `.json.gz` and optionally runs the MultiPL-E Docker benchmark.
 - `compress_results.py`: Post-processing utility to convert `.json` to `.json.gz` for MultiPL-E.
 - `generators/`: Backend implementations and constrained decoding frameworks (`syncode`, `itergen`, `chopchop`, etc.).
   - `grammars/`: Language grammar files (`.lark`) for constrained modes. Add a grammar here for each new language.
 - `datasets/`: Translated prompt datasets in `.jsonl` format, one file per language/benchmark combination.
-- `raw_results/`: Uncompressed generation outputs (`.json`).
-- `results_eval/`: Compressed benchmark inputs and evaluation outputs (`.json.gz`).
+- `results/`: Uncompressed generation outputs (`.json`) grouped by model, dataset, and run.
+- `results_eval/`: Compressed benchmark inputs and evaluation outputs (`.json.gz`) using the same grouped layout as `results/`.
 - `tools/`: Analysis scripts for generated and evaluated results.
 
 ### Utilities in `tools/`
@@ -24,26 +24,26 @@ A framework for systematically evaluating LLM code generation under **unconstrai
 
 ```bash
 # Auto-generate output file name
-python tools/count.py results_eval/mbpp-js-microsoft_phi_2-0.2
+python tools/count.py results_eval/microsoft_phi_2/mbpp-js/T0.2_chopchop
 
-# Specify output file name (optional)
-python tools/count.py results_eval/mbpp-js-microsoft_phi_2-0.2 custom_name.txt
+# Specify output file name (recommended when comparing multiple models/datasets)
+python tools/count.py results_eval/microsoft_phi_2/mbpp-js/T0.2_chopchop summary/phi2_mbpp_T0.2_chopchop.txt
 ```
 
 - `diff.py`: Compare two summary files.
 
 ```bash
-python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt
+python tools/diff.py summary/phi2_mbpp_T0_unconstrained.txt summary/phi2_mbpp_T0_syncode.txt
 
 # Specify output file name (optional)
-python tools/diff.py summary/mbpp-js-microsoft_phi_2-0.0.txt summary/mbpp-js-microsoft_phi_2-0.0-syncode.txt custom_diff.txt
+python tools/diff.py summary/phi2_mbpp_T0_unconstrained.txt summary/phi2_mbpp_T0_syncode.txt phi2_mbpp_T0_unconstrained_vs_syncode_diff.txt
 ```
 
 - `extract_prompts.py`: Extract cases that regress from one run to another.
 
 ```bash
 # Use default prompts file and output path
-python tools/extract_prompts.py mbpp-js-microsoft_phi_2-0.0-unconstrained_vs_mbpp-js-microsoft_phi_2-0.0-syncode_diff.txt
+python tools/extract_prompts.py phi2_mbpp_T0_unconstrained_vs_syncode_diff.txt
 
 # Specify custom prompts file and output path
 python tools/extract_prompts.py diff.txt datasets/js_prompts_mbpp.jsonl datasets/tem_custom.jsonl
@@ -123,7 +123,7 @@ python code_generator.py generate \
 
 Use `code_generator.py evaluate` for task-wise generation with MultiPL-E-compatible JSON content.
 
-The output directory is automatically named `<dataset_name>-<lang>-<model>-<temperature>-<mode>`. Adjust `--input_file` and `--dataset_name` to switch languages or benchmarks.
+The output directory is automatically grouped as `results/<model>/<dataset_name>-js/T<temperature>_<mode>/`. For example, `--model microsoft/phi-2`, `--dataset_name mbpp`, `--temperature 0.2`, and `--mode chopchop` writes to `results/microsoft_phi_2/mbpp-js/T0.2_chopchop/`.
 
 Key parameters to adapt for your language:
 - `--input_file`: your language's prompt dataset
@@ -149,7 +149,9 @@ python code_generator.py evaluate \
 
 **Input**: `.jsonl` prompt file (and a grammar file for constrained modes)
 
-**Output**: uncompressed `.json` files in `raw_results/<run_name>/`
+**Output**: uncompressed `.json` files in `results/<model>/<dataset_name>-js/T<temperature>_<mode>/`
+
+Timing logs are written next to the run directories under `results/<model>/<dataset_name>-js/log/`.
 
 To compress and evaluate, pass the output directory to `code_evaluation.py` (see steps 4–5).
 
@@ -158,13 +160,13 @@ To compress and evaluate, pass the output directory to `code_evaluation.py` (see
 Convert the `.json` files produced by `code_generator.py evaluate` to `.json.gz` for MultiPL-E.
 
 ```bash
-# Output defaults to results_eval/<run_name>/
-python code_evaluation.py --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop
+# Output defaults to the same grouped path under results_eval/
+python code_evaluation.py --input_dir results/microsoft_phi_2/mbpp-js/T0.2_chopchop
 
 # Specify a custom output directory
 python code_evaluation.py \
-  --input_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop \
-  --gz_output_dir results_eval/mbpp-js-microsoft_phi_2-0.2-chopchop
+  --input_dir results/microsoft_phi_2/mbpp-js/T0.2_chopchop \
+  --gz_output_dir results_eval/microsoft_phi_2/mbpp-js/T0.2_chopchop
 ```
 
 ### 5) Evaluate with MultiPL-E
@@ -177,7 +179,7 @@ Compress and run the full MultiPL-E Docker pipeline in one step:
 
 ```bash
 python code_evaluation.py \
-  --input_dir raw_results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --input_dir results/microsoft_phi_2/mbpp-js/T0.2_chopchop \
   --benchmark multipl-e
 ```
 
@@ -185,9 +187,9 @@ To compute pass@1 **and** pass@k together (requires at least k completions per p
 
 ```bash
 python code_evaluation.py \
-  --input_dir results/mbpp-js-microsoft_phi_2-0.2-chopchop \
+  --input_dir results/microsoft_phi_2/mbpp-js/T0.2_chopchop \
   --benchmark multipl-e \
-  --pass_k 5
+  --pass_k 3
 ```
 
 Both pass@1 and pass@5 rows are printed and appended to `results.csv`.
@@ -210,17 +212,17 @@ docker tag ghcr.io/nuprl/multipl-e-evaluation multipl-e-eval
 
 ```bash
 docker run --rm --network none \
-  -v "/absolute/path/to/results_eval:/tutorial:rw" \
+  -v "/absolute/path/to/results_eval/microsoft_phi_2/mbpp-js/T0.2_chopchop:/tutorial:rw" \
   multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
 ```
 
 4. Compute pass@k:
 
 ```bash
-python benchmark/MultiPL-E/pass_k.py /absolute/path/to/results_eval
+python benchmark/MultiPL-E/pass_k.py /absolute/path/to/results_eval/microsoft_phi_2/mbpp-js/T0.2_chopchop
 ```
 
-After `pass_k.py`, related `.results.json.gz` files are written to that same `results_eval` directory.
+After `pass_k.py`, related `.results.json.gz` files are written to that same run directory under `results_eval/`.
 
 ## Adding a New Language
 
@@ -243,7 +245,7 @@ Follow these steps to extend the evaluation to another language:
 4. **Compress and evaluate** — pass the output directory to `code_evaluation.py`:
    ```bash
    python code_evaluation.py \
-     --input_dir raw_results/<run_name> \
+     --input_dir results/<model>/<benchmark>-js/T<temperature>_<mode> \
      --benchmark multipl-e
    ```
 

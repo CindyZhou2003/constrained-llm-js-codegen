@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_304_find_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find element at a given index after number of rotations.\nfunction find_Element(arr, ranges, rotations, index){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_304_find_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Element;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [[0, 2], [0, 3]], 2, 1),3);\n  assert.deepEqual(candidate([1, 2, 3, 4], [[0, 1], [0, 2]], 1, 2),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [[0, 1], [0, 2]], 1, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < ranges.length; i++){\n        let range = ranges[i];\n        let start = range[0];\n        let end = range[1];\n        let rotation = rotations[i];\n        let count = 0;\n        for(let j = 0; j < rotation; j++){\n            result.push(arr[start]);\n            start = (start + 1) % arr.length;\n            count++;\n        }\n        console.log(result);\n        console.log(`Count: ${count}`);\n        console.log(`Index: ${index}`);\n        if(count === index){\n            return result;\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i=0; i<ranges.length; i++){\n        let range = ranges[i];\n        let start = range[0];\n        let end = range[1];\n        let rotations = rotations[i];\n        let temp = [];\n        for(let j=0; j<rotations; j++){\n            temp.push(arr[start]);\n            start++;\n        }\n        for(let j=0; j<rotations; j++){\n            temp.push(arr[end]);\n            end--;\n        }\n        result.push(temp);\n    }\n    return result[index];\n}\n",
+    "    var i = 0;\n    var j = 0;\n    var k = 0;\n    var temp = 0;\n    for(i = 0; i < ranges.length; i++){\n        for(j = 0; j < ranges[i]; j++){\n            for(k = 0; k < rotations; k++){\n                temp = arr[i];\n                arr[i] = arr[i + ranges[i]];\n                arr[i + ranges[i]] = temp;\n            }\n        }\n    }\n    return arr[index];\n}"
+  ]
+}

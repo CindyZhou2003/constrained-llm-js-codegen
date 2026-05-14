@@ -1,1 +1,18 @@
-{"name": "mbpp_584_find_adverbs", "language": "js", "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["  var adverbs = [];\n  var pos = [];\n  var ly = \"ly\";"]}
+{
+  "name": "mbpp_584_find_adverbs",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var adverbs = [];\n    var pos = [];\n    var ly = \"ly\";\n    var ly_pos = [];\n    var ly_pos2 = [];\n    var ly_pos3 = [];\n    var ly_pos4 = [];\n    var ly_pos5 = [];\n    var ly_pos6 = [];\n    var ly_pos7 = [];\n    var ly_pos8 = [];\n    var ly_pos9 = [];\n    var ly_pos10 = [];\n    var ly_pos11 = [];\n    var ly_pos12 = [];\n    var ly_pos13 = [];\n    var ly_pos14 = [];\n    var ly_pos15 = [];\n    var ly_pos16 = [];\n    var ly_pos17 = [];\n    var ly_pos18 = [];\n    var ly_pos19 = [];\n    var ly_pos20 = [];\n    var ly_pos21 = [];\n    var ly_pos22 = [];\n    var ly_pos23 = [];\n    var ly_pos24 = [];\n    var ly_pos25 = [];\n    var ly_pos26 = [];\n    var ly_pos27 = [];\n    var ly_pos28 = [];\n    var ly_pos29 = [];\n    var ly_pos30 = [];\n    var ly_pos31 = [];\n    var ly_pos32 = [];\n    var ly_pos33 = [];\n    var ly_pos34 = [];\n    var ly_pos35 = [];\n    var ly_pos36 = [];\n    var ly_pos37 = [];\n    var ly_pos38 = [];\n    var ly_pos39 = [];\n    var ly_pos40 = [];\n    var ly_pos41 = [];\n    var ly_pos42 = [];\n    var ly_pos43 = [];\n    var ly_pos44 = [];\n    var ly_pos45 = [];\n    var ly_pos46 = [];\n    var ly_pos47 = [];\n    var ly_pos48 = [];\n    var ly_pos49 = [];\n    var ly_pos50 = [];\n    var ly_pos51 = [];\n    var ly_pos52 = [];\n    var ly_pos53 = [];\n    var ly_pos54 = [];\n    var ly_pos55"
+  ]
+}

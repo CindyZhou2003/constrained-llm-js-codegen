@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str2 = str1.split('')\n    let str3 = str2.filter((x,i,arr) => arr.indexOf(x) !== i)\n    let arr = str3.filter((x,i,arr) => arr.indexOf(x) != i)\n    return arr[0]\n}\n",
+    "    var str2 = str1.split(\"\").sort();\n    var str3 = str2.join(\"\");\n    var str4 = str3.split(\"\");\n    var str5 = str4.filter(function(a){\n        return str4.indexOf(a) !== str4.lastIndexOf(a);\n    });\n    return str5[0];\n}",
+    "    var str = str1.split(\" \");\n    var result = str[0];\n    for(var i = 1; i<str.length; i++){\n        if(str[i] === str[0]){\n            result = str[i];\n            break;\n        }\n    }\n    return result;\n}\n",
+    "    let str = str1.split(\"\");\n    let result = [];\n    for (let i = 0; i < str.length; i++) {\n        let count = 0;\n        for (let j = 0; j < str.length; j++) {\n            if (str[i] === str[j]) {\n                count++;\n            }\n        }\n        if (count > 1) {\n            result.push(str[i]);\n        }\n    }\n    return result.join(\"\");\n}",
+    "    for(let i=0;i<str1.length;i++){\n        for(let j=0;j<str1.length;j++){\n            if(str1[i]===str1[j] && i!==j){\n                return str1[i]\n            }\n        }\n    }\n}"
+  ]
+}

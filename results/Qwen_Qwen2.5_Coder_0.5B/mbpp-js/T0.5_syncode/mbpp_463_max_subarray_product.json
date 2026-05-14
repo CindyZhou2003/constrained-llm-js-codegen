@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_463_max_subarray_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product subarray of the given array.\nfunction max_subarray_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_463_max_subarray_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_subarray_product;\n  assert.deepEqual(candidate([1, -2, -3, 0, 7, -8, -2]),112);\n  assert.deepEqual(candidate([6, -3, -10, 0, 2]),180);\n  assert.deepEqual(candidate([-2, -40, 0, -2, -3]),80);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let max_product = -Infinity;  \n  let current_product = 1;\n  for (let i = 0; i < arr.length; i++){\n    if(arr[i] < 0){\n      current_product = current_product * arr[i];\n    }else{\n      current_product = 1;\n    }\n    if(current_product > max_product){\n      max_product = current_product;\n    }\n  }\n  return max_product;\n}\n",
+    "    let max_prod = arr[0];\n    let min_prod = arr[0];\n    let max_prod_so_far = 1;\n    let min_prod_so_far = 1;\n    for(let i = 1; i < arr.length; i++){\n        let curr_prod = arr[i];\n        max_prod_so_far = Math.max(curr_prod, max_prod_so_far * curr_prod);\n        max_prod = Math.max(max_prod_so_far, max_prod);\n        min_prod_so_far = Math.min(curr_prod, min_prod_so_far * curr_prod);\n        min_prod = Math.min(min_prod_so_far, min_prod);\n        max_prod = Math.max(max_prod, max_prod_so_far, min_prod_so_far);\n    }\n    return max_prod;\n}\n",
+    "    let max = arr[0];\n    let min = arr[0];\n    let current = 1;\n    for(let i = 1; i < arr.length; i++){\n        current = current * arr[i];\n        if(current > max){\n            max = current;\n        }\n        if(current < 0){\n            current = 1;\n        }\n        if(arr[i] < min){\n            min = arr[i];\n        }\n    }\n    return max;\n}",
+    "    let max_product = arr[0];\n    let min_product = arr[0];\n    let result = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] < 0){\n            let temp = min_product;\n            min_product = max_product;\n            max_product = temp;\n        }\n        max_product = Math.max(arr[i], max_product * arr[i]);\n        min_product = Math.min(arr[i], min_product * arr[i]);\n        result = Math.max(result, max_product);\n    }\n    return result;\n}\n",
+    "    let max = arr[0]\n    let min = arr[0]\n    let res = arr[0]\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] < 0){\n            [min, max] = [max, min]\n        }\n        max = Math.max(arr[i], max*arr[i])\n        min = Math.min(arr[i], min*arr[i])\n        res = Math.max(res, max)\n    }\n    return res\n}\n"
+  ]
+}

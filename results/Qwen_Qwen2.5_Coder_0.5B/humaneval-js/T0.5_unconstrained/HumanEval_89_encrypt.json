@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_89_encrypt",
+  "language": "js",
+  "prompt": "//Create a function encrypt that takes a string as an argument and\n// returns a string encrypted with the alphabet being rotated. \n// The alphabet should be rotated in a manner such that the letters \n// shift down by two multiplied to two places.\n// For example:\n// >>> encrypt(\"hi\")\n// \"lm\"\n// >>> encrypt(\"asdfghjkl\")\n// \"ewhjklnop\"\n// >>> encrypt(\"gf\")\n// \"kj\"\n// >>> encrypt(\"et\")\n// \"ix\"\nfunction encrypt(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_89_encrypt.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encrypt;\n  assert.deepEqual(candidate(\"hi\"),\"lm\");\n  assert.deepEqual(candidate(\"asdfghjkl\"),\"ewhjklnop\");\n  assert.deepEqual(candidate(\"gf\"),\"kj\");\n  assert.deepEqual(candidate(\"et\"),\"ix\");\n  assert.deepEqual(candidate(\"faewfawefaewg\"),\"jeiajeaijeiak\");\n  assert.deepEqual(candidate(\"hellomyfriend\"),\"lippsqcjvmirh\");\n  assert.deepEqual(candidate(\"dxzdlmnilfuhmilufhlihufnmlimnufhlimnufhfucufh\"),\"hbdhpqrmpjylqmpyjlpmlyjrqpmqryjlpmqryjljygyjl\");\n  assert.deepEqual(candidate(\"a\"),\"e\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var newString = \"\";\n    for(var i=0; i<s.length; i++){\n        var charCode = s.charCodeAt(i);\n        var code = charCode + 2;\n        if(code > 90){\n            code = code - 26;\n        }\n        var char = String.fromCharCode(code);\n        newString += char;\n    }\n    return newString;\n}",
+    "    let alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    let rotated = alphabet.slice(alphabet.length-2)\n    let ans = ''\n    for(let i=0; i<s.length; i++){\n        let pos = alphabet.indexOf(s[i])\n        if(pos < 0) pos = 26\n        pos += 2\n        pos = pos % 26\n        ans += rotated[pos]\n    }\n    return ans\n}",
+    "    const alphabet = 'abcdefghijklmnopqrstuvwxyz'\n    let encrypted = ''\n    for (let i = 0; i < s.length; i++) {\n        let char = s[i]\n        if (char === ' '){\n            encrypted += ' '\n        } else {\n            let index = alphabet.indexOf(char)\n            let newIndex = (index + 2) % 26\n            encrypted += alphabet[newIndex]\n        }\n    }\n    return encrypted\n}\n",
+    "    let alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    let encrypted = \"\"\n    for(let i=0; i<s.length; i++){\n        let index = alphabet.indexOf(s[i])\n        if(index === -1){\n            encrypted += s[i]\n        }else{\n            let newIndex = (index + 2)%26\n            encrypted += alphabet[newIndex]\n        }\n    }\n    return encrypted\n}\n",
+    "  let encrypted = \"\"\n  for (let i = 0; i < s.length; i++){\n    let char = s[i]\n    if (char === \" \"){\n      encrypted += \" \"\n    } else if (char === char.toUpperCase()){\n      char = char.toLowerCase()\n    } else if (char === char.toLowerCase()){\n      char = char.toUpperCase()\n    } else if (char === char.toUpperCase() && char === char.toLowerCase()){\n      char = char.toUpperCase()\n    } else if (char === char.toUpperCase() || char === char.toLowerCase()){\n      char = char.toUpperCase()\n    } else if (char === char.toLowerCase() || char === char.toUpperCase()){\n      char = char.toLowerCase()\n    } else if (char === \" \"){\n      encrypted += \" \"\n    } else {\n      encrypted += char\n    }\n  }\n  return encrypted\n}\n"
+  ]
+}

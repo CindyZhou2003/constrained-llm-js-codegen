@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for (let i = 0; i < sample_names.length; i++) {\n        if (sample_names[i][0] === 'a' || sample_names[i][0] === 'e' || sample_names[i][0] === 'i' || sample_names[i][0] === 'o' || sample_names[i][0] === 'u') {\n            result.push(sample_names[i])\n        }\n    }\n    console.log(result)\n}",
+    "    let names_length = [];\n    sample_names.forEach((name) => {\n        if(name[0] !== name[0].toLowerCase()){\n            names_length.push(name.length);\n        }\n    });\n    return names_length;\n}\n",
+    "    let result = sample_names.filter((name) => name[0].toLowerCase() !== 'a');\n    return result.map((name) => name.length);\n}\n",
+    "    let new_array = [];\n    for(let i =0; i<sample_names.length; i++){\n        if(sample_names[i].charAt(0) === 'a'){\n            new_array.push(sample_names[i])\n        }\n    }\n    return new_array;\n}",
+    "    let names = sample_names.filter(name => name[0] !== \"a\");\n    let total = names.reduce((total, name) => total + name.length, 0);\n    console.log(total);\n}"
+  ]
+}

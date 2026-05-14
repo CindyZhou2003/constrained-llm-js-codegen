@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let temp = [];\n    function combination(arr, r) {\n        if (r === 1) {\n            for (let i = 0; i < arr.length; i++) {\n                temp.push(arr[i]);\n                result.push(temp.slice());\n                temp.pop();\n            }\n        } else {\n            for (let i = 0; i < arr.length; i++) {\n                temp.push(arr[i]);\n                combination(arr.slice(0, i) + arr.slice(i+1), r - 1);\n                temp.pop();\n            }\n        }\n    }\n    combination(test_list, test_list.length);\n    return result;\n}",
+    "    const result = [];\n    result.push(test_list[0]);\n    for(let i=1; i<test_list.length; i++){\n        result.push(test_list[i] + result[result.length - 1]);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < test_list.length; i++){\n        for(let j = i + 1; j < test_list.length; j++){\n            let arr = [test_list[i], test_list[j]];\n            result.push(arr);\n        }\n    }\n    return result;\n}\n",
+    "    var combinations = [];\n    combinations.push([0]);\n    for(var i = 0; i < test_list.length; i++){\n        var new_combination = [];\n        for(var j = 0; j < combinations[i].length; j++){\n            new_combination.push(combinations[i][j] + test_list[i]);\n        }\n        combinations.push(new_combination);\n    }\n    return combinations;\n}\n",
+    "  let newArr = [];\n  for(let i = 0; i < test_list.length; i++){\n    for(let j = i+1; j < test_list.length; j++){\n      newArr.push([test_list[i], test_list[j]]);\n    }\n  }\n  return newArr;\n}\n"
+  ]
+}

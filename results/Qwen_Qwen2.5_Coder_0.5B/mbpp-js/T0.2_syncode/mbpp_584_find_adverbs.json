@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_584_find_adverbs",
+  "language": "js",
+  "prompt": "//Write a function to find the first adverb ending with ly and its positions in a given string.\nfunction find_adverbs(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_584_find_adverbs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_adverbs;\n  assert.deepEqual(candidate(\"Clearly, he has no excuse for such behavior.\"),\"0-7: Clearly\");\n  assert.deepEqual(candidate(\"Please handle the situation carefuly\"),\"28-36: carefuly\");\n  assert.deepEqual(candidate(\"Complete the task quickly\"),\"18-25: quickly\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let adverbs = text.match(/ly$/g);\n    let adverb = adverbs[0];\n    let position = text.indexOf(adverb);\n    return adverb + \" \" + position;\n}",
+    "    var adverbs = [];\n    var adverb = '';\n    var adverb_position = [];\n    var adverb_position2 = [];\n    var adverb_position3 = [];\n    var adverb_position4 = [];\n    var adverb_position5 = [];\n    var adverb_position6 = [];\n    var adverb_position7 = [];\n    var adverb_position8 = [];\n    var adverb_position9 = [];\n    var adverb_position10 = [];\n    var adverb_position11 = [];\n    var adverb_position12 = [];\n    var adverb_position13 = [];\n    var adverb_position14 = [];\n    var adverb_position15 = [];\n    var adverb_position16 = [];\n    var adverb_position17 = [];\n    var adverb_position18 = [];\n    var adverb_position19 = [];\n    var adverb_position20 = [];\n    var adverb_position21 = [];\n    var adverb_position22 = [];\n    var adverb_position23 = [];\n    var adverb_position24 = [];\n    var adverb_position25 = [];\n    var adverb_position26 = [];\n    var adverb_position27 = [];\n    var adverb_position28 = [];\n    var adverb_position29 = [];\n    var adverb_position30 = [];\n    var adverb_position31 = [];\n    var adverb_position32 = [];\n    var adverb_position33 = [];\n    var adverb_position34 = [];\n    var adverb_position35 = [];\n    var adverb_position36 = [];\n    var adverb_position37 = [];\n    var adverb_position38 = [];\n    var adverb_position39 = [];\n    var adverb_position40 = [];\n    var adverb_position41 = [];\n    var adverb_position42 = [];\n    var adverb_position43 = [];\n    var adverb_position44 = [];\n    var adverb_position45 = [];\n    var adverb_position46 = [];\n    var adverb_position47 = [];\n    var adverb_position48 = [];\n    var adverb_position49 = [];\n    var adverb_position50 = [];\n    var adverb_position51 = [];\n    var adverb_position52 = [];\n    var adverb_position53 = [];\n    var adverb_position54 = [];\n    var adverb_position55 = [];\n    var adverb_position56 = [];\n    var adverb_position5",
+    "    let adverbs = [];\n    let adverb = \"\";\n    let position = 0;\n    for (let i = 0; i < text.length; i++) {\n        if (text[i] === \" \" || text[i] === \".\") {\n            adverb = text.slice(position, i);\n            if (adverb.endsWith(\"ly\")) {\n                adverbs.push(adverb);\n            }\n            position = i + 1;\n        }\n    }\n    return adverbs;\n}"
+  ]
+}

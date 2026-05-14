@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_37_sort_even",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the odd indicies, while its values at the even indicies are equal\n// to the values of the even indicies of l, but sorted.\n// >>> sort_even([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_even([5, 6, 3, 4])\n// [3, 6, 5, 4]\nfunction sort_even(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_37_sort_even.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_even;\n  assert.deepEqual(candidate([1, 2, 3]),[1, 2, 3]);\n  assert.deepEqual(candidate([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]),[-10, 3, -5, 2, -3, 3, 5, 0, 9, 1, 123]);\n  assert.deepEqual(candidate([5, 8, -12, 4, 23, 2, 3, 11, 12, -10]),[-12, 8, 3, 4, 5, 2, 12, 11, 23, -10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var arr = [];\n  var l1 = l.slice(0);\n  var l2 = l.slice(1);\n  for(var i = 0; i < l1.length; i++){\n    if(i % 2 !== 0){\n      arr.push(l1[i]);\n    }\n    else{\n      arr.push(l2[i]);\n    }\n  }\n  return arr;\n}\n",
+    "    //Your code here\n    // You can use the sort method to sort the array\n    // l.sort()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n    // l.map()\n    //You can use the spread operator to create a new array with the values of the even indicies of l\n",
+    "  // your code here\n  var l1 = [];\n  for(var i = 0; i < l.length; i++){\n    if(i % 2 === 0){\n      l1.push(l[i]);\n    }\n  }\n  return l1;\n}",
+    "    let even = l.filter((x, i) => i % 2 === 0);\n    let odd = l.filter((x, i) => i % 2 !== 0);\n    return odd.sort((a, b) => a - b);\n}",
+    "  var l2 = l.slice();\n  var l3 = l2.sort(function(a, b){\n    return a - b;\n  });\n  return l3.slice(0, l.length);\n}"
+  ]
+}

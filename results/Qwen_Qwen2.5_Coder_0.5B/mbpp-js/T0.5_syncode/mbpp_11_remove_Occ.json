@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_11_remove_Occ",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to remove first and last occurrence of a given character from the string.\nfunction remove_Occ(s, ch){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_11_remove_Occ.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_Occ;\n  assert.deepEqual(candidate(\"hello\", \"l\"),\"heo\");\n  assert.deepEqual(candidate(\"abcda\", \"a\"),\"bcd\");\n  assert.deepEqual(candidate(\"PHP\", \"P\"),\"H\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = s.split(\"\");\n    let index = arr.indexOf(ch);\n    if(index > 0) arr.splice(index, 1);\n    else if(index < arr.length - 1) arr.splice(index + 1, 1);\n    else return \"There is no such character in the string\";\n    return arr.join(\"\");\n}\n",
+    "    if(s.length==0){\n        return s;\n    }\n    if(s[0]==ch){\n        return remove_Occ(s.substr(1),ch);\n    }\n    if(s[s.length-1]==ch){\n        return remove_Occ(s.substr(0,s.length-1),ch);\n    }\n    return s[0]+remove_Occ(s.substr(1),ch);\n}",
+    "    let a = s.split(\"\");\n    let b = [];\n    for(let i = 0; i < a.length; i++){\n        if(a[i] != ch){\n            b.push(a[i]);\n        }\n    }\n    return b.join(\"\");\n}",
+    "    let str = s.split('');\n    for(let i=0;i<str.length;i++){\n        if(str[i] === ch){\n            str.splice(i, 1);\n            i--;\n        }\n    }\n    return str.join('');\n}",
+    "    let result = s.split(\"\");\n    if(result.indexOf(ch) == -1){\n        return s;\n    }\n    else{\n        result.splice(result.indexOf(ch), 1);\n        return result.join(\"\");\n    }\n}"
+  ]
+}

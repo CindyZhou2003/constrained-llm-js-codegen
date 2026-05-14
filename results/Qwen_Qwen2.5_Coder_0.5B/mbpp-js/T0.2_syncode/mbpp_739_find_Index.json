@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i;\n    var j;\n    var k;\n    var l;\n    var m;\n    var n;\n    var sum;\n    var sum1;\n    var sum2;\n    var sum3;\n    var sum4;\n    var sum5;\n    var sum6;\n    var sum7;\n    var sum8;\n    var sum9;\n    var sum10;\n    var sum11;\n    var sum12;\n    var sum13;\n    var sum14;\n    var sum15;\n    var sum16;\n    var sum17;\n    var sum18;\n    var sum19;\n    var sum20;\n    var sum21;\n    var sum22;\n    var sum23;\n    var sum24;\n    var sum25;\n    var sum26;\n    var sum27;\n    var sum28;\n    var sum29;\n    var sum30;\n    var sum31;\n    var sum32;\n    var sum33;\n    var sum34;\n    var sum35;\n    var sum36;\n    var sum37;\n    var sum38;\n    var sum39;\n    var sum40;\n    var sum41;\n    var sum42;\n    var sum43;\n    var sum44;\n    var sum45;\n    var sum46;\n    var sum47;\n    var sum48;\n    var sum49;\n    var sum50;\n    var sum51;\n    var sum52;\n    var sum53;\n    var sum54;\n    var sum55;\n    var sum56;\n    var sum57;\n    var sum58;\n    var sum59;\n    var sum60;\n    var sum61;\n    var sum62;\n    var sum63;\n    var sum64;\n    var sum65;\n    var sum66;\n    var sum67;\n    var sum68;\n    var sum69;\n    var sum70;\n    var sum71;\n    var sum72;\n    var sum73;\n    var sum74;\n    var sum75;\n    var sum76;\n    var sum77;\n    var sum78;\n    var sum79;\n    var sum80;\n    var sum81;\n    var sum82;\n   ",
+    "    let sum = 0;\n    let i = 1;\n    while(sum < n){\n        sum += i;\n        i++;\n    }\n    return i-1;\n}",
+    "    var num = 1;\n    var index = 0;\n    while (num < Math.pow(10,n)){\n        if (num.toString().length == n){\n            index = num;\n        }\n        num++;\n    }\n    return index;\n}"
+  ]
+}

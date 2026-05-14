@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_sum = -Infinity;\n    let max_arr = [];\n    let temp_sum = 0;\n    for(let i=0; i<arr.length; i++){\n        if(arr[i] > arr[i+1])\n            temp_sum += arr[i];\n        else if(arr[i] < arr[i+1])\n            temp_sum = 0;\n        if(temp_sum > max_sum){\n            max_sum = temp_sum;\n            max_arr = arr.slice(i);\n        }\n    }\n    console.log(max_arr, max_sum);\n}",
+    "    let max = 0;\n    let max_sum = 0;\n    for(let i=0; i<arr.length; i++){\n        let curr_max = 0;\n        for(let j=i; j<arr.length; j++){\n            if(arr[j] > arr[j-1]){\n                curr_max = Math.max(curr_max, arr[j])\n            }\n            if(curr_max > max){\n                max = curr_max;\n                max_sum = max;\n            }\n        }\n    }\n    return max_sum;\n}",
+    "    let max = -Infinity;\n    for(let i = 0; i < arr.length; i++){\n        let curr_sum = 0;\n        for(let j = i; j < arr.length; j++){\n            if(arr[j] > arr[j-1]){\n                curr_sum += arr[j];\n            }else{\n                break;\n            }\n        }\n        if(curr_sum > max){\n            max = curr_sum;\n        }\n    }\n    return max;\n}",
+    "    // Write your code here.\n    if(arr.length == 0) return 0;\n    let dp = new Array(arr.length).fill(0);\n    let max = dp[0] = arr[0];\n    for(let i = 1; i < arr.length; i++){\n        dp[i] = Math.max(arr[i], arr[i] + dp[i-1]);\n        if(dp[i] > max) max = dp[i];\n    }\n    return max;\n}",
+    "    let sums = [];\n    let max = 0;\n    for(let i = 0; i < arr.length; i++){\n        let sum = 0;\n        for(let j = i; j < arr.length; j++){\n            sum += arr[j];\n            sums.push(sum);\n            max = Math.max(max, sum);\n        }\n    }\n    return max;\n}"
+  ]
+}

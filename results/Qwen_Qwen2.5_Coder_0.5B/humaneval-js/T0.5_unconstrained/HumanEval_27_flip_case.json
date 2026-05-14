@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_27_flip_case",
+  "language": "js",
+  "prompt": "//For a given string, flip lowercase characters to uppercase and uppercase to lowercase.\n// >>> flip_case(\"Hello\")\n// \"hELLO\"\nfunction flip_case(string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_27_flip_case.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = flip_case;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"Hello!\"),\"hELLO!\");\n  assert.deepEqual(candidate(\"These violent delights have violent ends\"),\"tHESE VIOLENT DELIGHTS HAVE VIOLENT ENDS\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //your code here\n    return string.split('').map((letter) => {\n        if(letter === letter.toUpperCase()){\n            return letter.toLowerCase();\n        }\n        else{\n            return letter.toUpperCase();\n        }\n    }).join('');\n}",
+    "    return string.split('').map(x => x === x.toUpperCase() ? x.toLowerCase() : x.toUpperCase()).join('')\n}\n",
+    "  return string.split(\"\").map(char => char.toLowerCase() === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()).join(\"\")\n}\n",
+    "    var result = \"\";\n    for (var i = 0; i < string.length; i++) {\n        var current_char = string[i];\n        if (current_char === current_char.toUpperCase()) {\n            result += current_char.toLowerCase();\n        } else {\n            result += current_char.toUpperCase();\n        }\n    }\n    return result;\n}",
+    "    return string.replace(/[a-z]/g, (char) => char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase());\n}"
+  ]
+}

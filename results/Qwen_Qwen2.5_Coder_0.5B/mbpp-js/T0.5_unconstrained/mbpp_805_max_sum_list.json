@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_805_max_sum_list",
+  "language": "js",
+  "prompt": "//Write a function that returns the array in an array of lists whose sum of elements is the highest.\nfunction max_sum_list(lists){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_805_max_sum_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum_list;\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]),[10, 11, 12]);\n  assert.deepEqual(candidate([[3, 2, 1], [6, 5, 4], [12, 11, 10]]),[12, 11, 10]);\n  assert.deepEqual(candidate([[2, 3, 1]]),[2, 3, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let maxSum = 0;\n  let maxSumList = [];\n  for (let i = 0; i < lists.length; i++) {\n    let currentSum = 0;\n    for (let j = 0; j < lists[i].length; j++) {\n      currentSum += lists[i][j];\n    }\n    if (currentSum > maxSum) {\n      maxSum = currentSum;\n      maxSumList = lists[i];\n    }\n  }\n  return maxSumList;\n}\n\nlet lists = [[1,2,3,4,5], [1,2,3,4,5], [1,2,3,4,5]];",
+    "  if(lists.length === 1){\n    return lists[0];\n  }\n  let max = lists[0];\n  for(let i = 1; i < lists.length; i++){\n    if(max < lists[i]){\n      max = lists[i];\n    }\n  }\n  let sums = [];\n  for(let i = 0; i < lists.length; i++){\n    sums.push(lists[i].reduce((a,b)=>a+b));\n  }\n  let max_sum = sums.reduce((a,b)=>a+b);\n  let max_index = sums.indexOf(max_sum);\n  let max_list = lists[max_index];\n  return [max_list, max_sum];\n}\n",
+    "  let highest = 0;\n  let result = [];\n  let sum = 0;\n  for(let i=0; i<lists.length; i++){\n    for(let j=0; j<lists[i].length; j++){\n      sum += lists[i][j];\n    }\n    if(sum>highest){\n      highest = sum;\n      result = lists[i];\n    }\n    sum = 0;\n  }\n  return result;\n}\n\nlet lists = [[1, 2, 3], [4, 5], [6]];",
+    "  let max = lists[0];\n  let max_sum = 0;\n  for(let i = 0; i < lists.length; i++){\n    if(lists[i].reduce((a,b) => a + b, 0) > max_sum){\n      max_sum = lists[i].reduce((a,b) => a + b, 0);\n      max = lists[i];\n    }\n  }\n  return max;\n}\n",
+    "    let max=0;\n    for(let i=0;i<lists.length;i++){\n        let temp=0;\n        for(let j=0;j<lists[i].length;j++){\n            temp+=lists[i][j];\n        }\n        if(temp>max){\n            max=temp;\n        }\n    }\n    return max;\n}"
+  ]
+}

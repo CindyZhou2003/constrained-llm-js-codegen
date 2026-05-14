@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_274_even_binomial_Coeff_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that takes in a positive integer n and finds the sum of even index binomial coefficients.\nfunction even_binomial_Coeff_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_274_even_binomial_Coeff_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = even_binomial_Coeff_Sum;\n  assert.deepEqual(candidate(4),8);\n  assert.deepEqual(candidate(6),32);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let sum = 0;\n    for(let i = 0; i <= n; i++){\n        let binomial_coeff = binomialCoefficient(n, i);\n        if(binomial_coeff % 2 == 0){\n            sum += binomial_coeff;\n        }\n    }\n    return sum;\n}",
+    "    let sum = 0;\n    for(let i=1; i<=n; i++){\n        if(i%2==0){\n            sum+=Math.pow(-1,i)/(Math.pow(2,i))\n        }\n    }\n    return sum\n}",
+    "    let sum=0;\n    let binomial_Coeff_Sum=0;\n    for(let i=1;i<=n;i++){\n        let binomial_Coeff_Sum=(1/Math.pow(2,i))*(1/Math.pow(2,n-i+1));\n        sum+=binomial_Coeff_Sum;\n    }\n    return sum;\n}",
+    "    var sum = 0;\n    if(n <= 0){\n        return sum\n    }\n    for(var i = 1; i <= n; i++){\n        var sum = 0;\n        for(var j = 0; j <= i; j++){\n            if(j % 2 === 0){\n                sum += Math.pow(-1, j) / (Math.pow(2, j) - 1)\n            }\n        }\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n        sum /= Math.pow(2, i + 1)\n        sum *= Math.pow(-1, i)\n        sum *= Math.pow(2, i)\n       ",
+    "    let sum = 0;\n    let binomial_Coeff = 1;\n    for(let i=1;i<=n;i++){\n        binomial_Coeff = binomial_Coeff * i;\n        if(i%2 === 0){\n            sum += binomial_Coeff;\n        }\n    }\n    return sum;\n}\n"
+  ]
+}

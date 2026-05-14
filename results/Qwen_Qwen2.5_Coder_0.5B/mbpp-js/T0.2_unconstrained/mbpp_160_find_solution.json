@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let x = 0;\n    let y = 0;\n    let x2 = 0;\n    let y2 = 0;\n    let x3 = 0;\n    let y3 = 0;\n    let x4 = 0;\n    let y4 = 0;\n    let x5 = 0;\n    let y5 = 0;\n    let x6 = 0;\n    let y6 = 0;\n    let x7 = 0;\n    let y7 = 0;\n    let x8 = 0;\n    let y8 = 0;\n    let x9 = 0;\n    let y9 = 0;\n    let x10 = 0;\n    let y10 = 0;\n    let x11 = 0;\n    let y11 = 0;\n    let x12 = 0;\n    let y12 = 0;\n    let x13 = 0;\n    let y13 = 0;\n    let x14 = 0;\n    let y14 = 0;\n    let x15 = 0;\n    let y15 = 0;\n    let x16 = 0;\n    let y16 = 0;\n    let x17 = 0;\n    let y17 = 0;\n    let x18 = 0;\n    let y18 = 0;\n    let x19 = 0;\n    let y19 = 0;\n    let x20 = 0;\n    let y20 = 0;\n    let x21 = 0;\n    let y21 = 0;\n    let x22 = 0;\n    let y22 = 0;\n    let x23 = 0;\n    let y23 = 0;\n    let x24 = 0;\n    let y24 = 0;\n    let x25 = 0;\n    let y25 = 0;\n    let x26 = 0;\n    let y26 = 0;\n    let x27 = 0;\n    let y27 = 0;\n    let x28 = 0;\n    let y28 = 0;\n    let x29 = 0;\n    let y29 = 0;\n    let x30 = 0;\n   ",
+    "    if (b === 0) return [0, n / a];\n    if (n % b === 0) return [Math.floor(n / b), 0];\n    let x = find_solution(a, b, n % b);\n    if (x === undefined) return undefined;\n    return [x, n - x * a];\n}\n",
+    "    let x = 0, y = 0;\n    if (a === 0){\n        return undefined;\n    }\n    if (b === 0){\n        return undefined;\n    }\n    if (n % gcd(a, b) === 0){\n        return undefined;\n    }\n    let gcd = gcd(a, b);\n    if (n % gcd === 0){\n        x = (n / gcd) - (b / gcd);\n        y = (n / gcd) - (a / gcd);\n        return [x, y];\n    }\n    else {\n        return undefined;\n    }\n}\n"
+  ]
+}

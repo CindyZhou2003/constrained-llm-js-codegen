@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_94_index_minimum",
+  "language": "js",
+  "prompt": "//Given an array of tuples, write a function that returns the first value of the array with the smallest second value.\nfunction index_minimum(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_94_index_minimum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = index_minimum;\n  assert.deepEqual(candidate([[\"Rash\", 143], [\"Manjeet\", 200], [\"Varsha\", 100]]),\"Varsha\");\n  assert.deepEqual(candidate([[\"Yash\", 185], [\"Dawood\", 125], [\"Sanya\", 175]]),\"Dawood\");\n  assert.deepEqual(candidate([[\"Sai\", 345], [\"Salman\", 145], [\"Ayesha\", 96]]),\"Ayesha\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let min = test_list[0][1];\n    let min_index = 0;\n    for(let i = 0; i < test_list.length; i++){\n        if(test_list[i][1] < min){\n            min = test_list[i][1];\n            min_index = i;\n        }\n    }\n    return test_list[min_index][0];\n}",
+    "    let min = test_list[0][1];\n    let index = 0;\n    for(let i = 0; i < test_list.length; i++){\n        if(test_list[i][1] < min){\n            min = test_list[i][1];\n            index = i;\n        }\n    }\n    return test_list[index][0];\n}",
+    "    let min = test_list[0][1];\n    let index = 0;\n    for(let i = 0; i < test_list.length; i++){\n        if(test_list[i][1] < min){\n            min = test_list[i][1];\n            index = i;\n        }\n    }\n    return test_list[index][0];\n}"
+  ]
+}

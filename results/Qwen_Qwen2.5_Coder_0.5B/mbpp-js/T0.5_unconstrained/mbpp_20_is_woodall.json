@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(x % 2 == 0){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    if(x == 1){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    if((x%2)==0){\n        return \"woodall\"\n    }else{\n        return \"not woodall\"\n    }\n}",
+    "    if(x<0){\n        return \"invalid input\"\n    }\n    else if(x==0){\n        return \"Woodall\"\n    }\n    else{\n        var y=x/1.5\n        if(y%1==0){\n            return \"Woodall\"\n        }\n        else{\n            return \"Woodall\"\n        }\n    }\n}",
+    "    if(x%2==0){\n        return \"Woodall\"\n    }else{\n        return \"Not Woodall\"\n    }\n}"
+  ]
+}

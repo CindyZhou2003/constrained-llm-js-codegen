@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_156_int_to_mini_roman",
+  "language": "js",
+  "prompt": "//Given a positive integer, obtain its roman numeral equivalent as a string,\n// and return it in lowercase.\n// Restrictions: 1 <= num <= 1000\n// Examples:\n// >>> int_to_mini_roman(19)\n// \"xix\"\n// >>> int_to_mini_roman(152)\n// \"clii\"\n// >>> int_to_mini_roman(426)\n// \"cdxxvi\"\nfunction int_to_mini_roman(number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_156_int_to_mini_roman.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = int_to_mini_roman;\n  assert.deepEqual(candidate(19),\"xix\");\n  assert.deepEqual(candidate(152),\"clii\");\n  assert.deepEqual(candidate(251),\"ccli\");\n  assert.deepEqual(candidate(426),\"cdxxvi\");\n  assert.deepEqual(candidate(500),\"d\");\n  assert.deepEqual(candidate(1),\"i\");\n  assert.deepEqual(candidate(4),\"iv\");\n  assert.deepEqual(candidate(43),\"xliii\");\n  assert.deepEqual(candidate(90),\"xc\");\n  assert.deepEqual(candidate(94),\"xciv\");\n  assert.deepEqual(candidate(532),\"dxxxii\");\n  assert.deepEqual(candidate(900),\"cm\");\n  assert.deepEqual(candidate(994),\"cmxciv\");\n  assert.deepEqual(candidate(1000),\"m\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var roman = {\n        'M': 1000,\n        'CM': 900,\n        'D': 500,\n        'CD': 400,\n        'C': 100,\n        'XC': 90,\n        'L': 50,\n        'XL': 40,\n        'X': 10,\n        'IX': 9,\n        'V': 5,\n        'IV': 4,\n        'I': 1\n    }\n    var result = '';\n    for (var key in roman) {\n        if (number >= roman[key]) {\n            result += key.repeat(Math.floor(number/roman[key]));\n            number = number % roman[key];\n        }\n    }\n    return result;\n};\n",
+    "  var result = \"\";\n  var roman = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"];\n  var value = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];\n\n  for (var i=0; i<roman.length; i++){\n    while (number >= value[i]){\n      result += roman[i];\n      number -= value[i];\n    }\n  }\n\n  return result;\n}",
+    "    var roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1};\n    var romanNum = '';\n    for (var i = 0; i < number.length; i++){\n        var currNum = roman[number[i]];\n        if (i < number.length - 1 && currNum < roman[number[i+1]]){\n            romanNum += roman[number[i+1]] - currNum;\n            i++;\n        } else {\n            romanNum += currNum;\n        }\n    }\n    return romanNum;\n}\n\nmodule.exports = int_to_mini_roman;",
+    "  var result = '';\n  var roman = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};\n  var mapp = Object.keys(roman);\n  var mappReverse = Object.values(roman);\n  for(var i=0; i<mapp.length; i++){\n    while(number>=roman[mapp[i]]){\n      number-=roman[mapp[i]];\n      result += mappReverse[i];\n    }\n  }\n  return result;\n}",
+    "    let roman = '';\n    let num = number;\n    while(num > 0){\n        if(num >= 1000){\n            roman += 'M';\n            num -= 1000;\n        }\n        else if(num >= 900){\n            roman += 'CM';\n            num -= 900;\n        }\n        else if(num >= 500){\n            roman += 'D';\n            num -= 500;\n        }\n        else if(num >= 400){\n            roman += 'CD';\n            num -= 400;\n        }\n        else if(num >= 100){\n            roman += 'C';\n            num -= 100;\n        }\n        else if(num >= 90){\n            roman += 'XC';\n            num -= 90;\n        }\n        else if(num >= 50){\n            roman += 'L';\n            num -= 50;\n        }\n        else if(num >= 40){\n            roman += 'XL';\n            num -= 40;\n        }\n        else if(num >= 10){\n            roman += 'X';\n            num -= 10;\n        }\n        else if(num >= 9){\n            roman += 'IX';\n            num -= 9;\n        }\n        else if(num >= 5){\n            roman += 'V';\n            num -= 5;\n        }\n        else if(num >= 4){\n            roman += 'IV';\n            num -= 4;\n        }\n        else if(num >= 1){\n            roman += 'I';\n            num -= 1;\n        }\n    }\n    return roman;\n}"
+  ]
+}

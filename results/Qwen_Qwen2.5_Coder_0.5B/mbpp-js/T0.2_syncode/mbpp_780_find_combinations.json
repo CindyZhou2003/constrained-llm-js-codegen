@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let temp = [];\n    let n = test_list.length;\n    let k = 2;\n    for(let i = 0; i < n; i++){\n        temp.push(test_list[i]);\n        if(temp.length === k){\n            result.push(temp);\n            temp = [];\n        }\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i = 0; i < test_list.length; i++){\n        let temp = [];\n        let current = test_list[i];\n        for(let j = i + 1; j < test_list.length; j++){\n            temp.push(test_list[j]);\n        }\n        result.push([current].concat(temp));\n    }\n    return result;\n}\n",
+    "    var result = [];\n    var combinations = [];\n    var combination = [];\n    var i = 0;\n    var j = 0;\n    var k = 0;\n    var l = 0;\n    var n = test_list.length;\n    var m = test_list.length;\n    var sum = 0;\n    var sum1 = 0;\n    var sum2 = 0;\n    var sum3 = 0;\n    var sum4 = 0;\n    var sum5 = 0;\n    var sum6 = 0;\n    var sum7 = 0;\n    var sum8 = 0;\n    var sum9 = 0;\n    var sum10 = 0;\n    var sum11 = 0;\n    var sum12 = 0;\n    var sum13 = 0;\n    var sum14 = 0;\n    var sum15 = 0;\n    var sum16 = 0;\n    var sum17 = 0;\n    var sum18 = 0;\n    var sum19 = 0;\n    var sum20 = 0;\n    var sum21 = 0;\n    var sum22 = 0;\n    var sum23 = 0;\n    var sum24 = 0;\n    var sum25 = 0;\n    var sum26 = 0;\n    var sum27 = 0;\n    var sum28 = 0;\n    var sum29 = 0;\n    var sum30 = 0;\n    var sum31 = 0;\n    var sum32 = 0;\n    var sum33 = 0;\n    var sum34 = 0;\n    var sum35 = 0;\n    var sum36 = 0;\n    var sum37 = 0;\n    var sum38 = 0;\n    var sum39 = 0;\n    var sum40 = 0;\n    var sum41 = 0;\n    var sum42 = 0;\n    var sum43 = 0;\n    var sum44 = 0;\n    var sum45 = 0;\n    var sum46 = 0;\n    var sum47 = 0;\n    var sum48 = 0;\n    var sum49 = 0;\n    var sum50 = 0;\n    var sum51"
+  ]
+}

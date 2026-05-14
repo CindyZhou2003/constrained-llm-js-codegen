@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_428_shell_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort the given array by using shell sort.\nfunction shell_sort(my_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_428_shell_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = shell_sort;\n  assert.deepEqual(candidate([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]),[2, 3, 4, 5, 12, 12, 23, 56, 81, 95]);\n  assert.deepEqual(candidate([24, 22, 39, 34, 87, 73, 68]),[22, 24, 34, 39, 68, 73, 87]);\n  assert.deepEqual(candidate([32, 30, 16, 96, 82, 83, 74]),[16, 30, 32, 74, 82, 83, 96]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var increment = Math.floor(my_list.length/2);\n  while(increment>0){\n    for(var i=increment;i<my_list.length;i++){\n      for(var j=i;j>=increment && my_list[j]<my_list[j-increment];j-=increment){\n        swap(my_list,j,j-increment);\n      }\n    }\n    increment=increment/2;\n  }\n  return my_list;\n}\n  \n  //Write a function to sort the given array by using insertion sort.\n  // function insertion_sort(my_list){\n  //   var temp=my_list[0];\n  //   for(var i=1;i<my_list.length;i++){\n  //     for(var j=i;j>0 && my_list[j-1]>temp;j--){\n  //       my_list[j]=my_list[j-1];\n  //     }\n  //     my_list[j]=temp;\n  //   }\n  //   return my_list;\n  // }\n\n  //Write a function to sort the given array by using bubble sort.\n  // function bubble_sort(my_list){\n  //   var temp=my_list[0];\n  //   for(var i=0;i<my_list.length;i++){\n  //     for(var j=0;j<my_list.length-1-i;j++){\n  //       if(my_list[j]>my_list[j+1]){\n  //         swap(my_list,j,j+1);\n  //       }\n  //     }\n  //   }\n  //   return my_list;\n  // }\n\n  //Write a function to sort the given array by using merge sort.\n  // function merge_sort(my_list){\n  //   if(my_list.length<=1){\n  //     return my_list;\n  //   }\n  //   var mid=Math.floor(my_list.length/2);\n  //   var left=merge_sort(my_list.slice(0,mid));\n  //   var right=merge_sort(my_list.slice(mid));\n  //   return merge(left,right);\n  // }\n\n  // function merge(left,right){\n  //   var result=[];\n  //   while(left.length>0 && right.length>0){\n  //     if(left[0]<right[0]){\n  //       result.push(left.shift());\n  //     }\n  //     else{\n  //       result.push(right.shift());\n  //     }\n  //   }\n  //   if(left.length>0){\n  //     while(left.length>0){\n  //       result.push(left.shift());\n  //     }\n  //   }\n",
+    "    const n = my_list.length;\n    let gap = Math.floor(n/2);\n    while(gap > 0){\n        for(let i = gap; i < n; i++){\n            let temp = my_list[i];\n            let j = i;\n            while(j >= gap && my_list[j-gap] > temp){\n                my_list[j] = my_list[j-gap];\n                j -= gap;\n            }\n            my_list[j] = temp;\n        }\n        gap = Math.floor(gap/2);\n    }\n    return my_list;\n}",
+    "    var h = 1;\n    while(h < my_list.length/3){\n        h = 3*h+1;\n    }\n    while(h >= 1){\n        for(var i = h; i < my_list.length; i++){\n            var temp = my_list[i];\n            var j = i;\n            while(j >= h && my_list[j-h] > temp){\n                my_list[j] = my_list[j-h];\n                j = j-h;\n            }\n            my_list[j] = temp;\n        }\n        h = Math.floor(h/3);\n    }\n    return my_list;\n}",
+    "    var gap = Math.floor(my_list.length/2);\n    while(gap>0){\n        for(var i = gap; i < my_list.length; i++){\n            var temp = my_list[i];\n            var j = i;\n            while(j>=gap && my_list[j-gap]>temp){\n                my_list[j] = my_list[j-gap];\n                j = j-gap;\n            }\n            my_list[j] = temp;\n        }\n        gap = Math.floor(gap/2);\n    }\n    return my_list;\n}\n",
+    "    for(var i = Math.floor(my_list.length / 2); i > 0; i = Math.floor(i / 2)){\n        for(var j = i; j < my_list.length; j = j + i){\n            var temp = my_list[j];\n            var k = j - i;\n            while(k >= 0 && my_list[k] > temp){\n                my_list[k + i] = my_list[k];\n                k = k - i;\n            }\n            my_list[k + i] = temp;\n        }\n    }\n    return my_list;\n}\n"
+  ]
+}

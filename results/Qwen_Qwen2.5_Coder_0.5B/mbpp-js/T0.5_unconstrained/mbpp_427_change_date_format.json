@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_427_change_date_format",
+  "language": "js",
+  "prompt": "//Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format.\nfunction change_date_format(dt){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_427_change_date_format.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = change_date_format;\n  assert.deepEqual(candidate(\"2026-01-02\"),\"02-01-2026\");\n  assert.deepEqual(candidate(\"2020-11-13\"),\"13-11-2020\");\n  assert.deepEqual(candidate(\"2021-04-26\"),\"26-04-2021\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = dt.split(\"-\");\n    var new_dt = arr[2] + \"-\" + arr[0] + \"-\" + arr[1];\n    console.log(new_dt);\n}\nchange_date_format(\"2020-08-25\");\n",
+    "    var yyyy = dt.split('-')[0]\n    var mm = dt.split('-')[1]\n    var dd = dt.split('-')[2]\n    var date = yyyy + '-' + mm + '-' + dd\n    return date\n}",
+    "    let day = dt.slice(0,3);\n    let month = dt.slice(4,6);\n    let year = dt.slice(6);\n    let date = day + '-' + month + '-' + year;\n    return date;\n}\n",
+    "    let date = new Date(dt);\n    let date_formated = date.toLocaleDateString('en-IN', {\n        day: 'numeric',\n        month: 'long',\n        year: 'numeric'\n    });\n    return date_formated;\n}",
+    "    var month = dt.slice(0, 2);\n    var day = dt.slice(3, 5);\n    var year = dt.slice(6, 10);\n    var date = month + \"-\" + day + \"-\" + year;\n    return date;\n}"
+  ]
+}

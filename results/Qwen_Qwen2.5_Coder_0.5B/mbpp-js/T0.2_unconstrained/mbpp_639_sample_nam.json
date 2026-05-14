@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_639_sample_nam",
+  "language": "js",
+  "prompt": "//Write a function to sum the length of the names of a given array of names after removing the names that start with a lowercase letter.\nfunction sample_nam(sample_names){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_639_sample_nam.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sample_nam;\n  assert.deepEqual(candidate([\"sally\", \"Dylan\", \"rebecca\", \"Diana\", \"Joanne\", \"keith\"]),16);\n  assert.deepEqual(candidate([\"php\", \"res\", \"Python\", \"abcd\", \"Java\", \"aaa\"]),10);\n  assert.deepEqual(candidate([\"abcd\", \"Python\", \"abba\", \"aba\"]),6);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let names = sample_names.split(' ');\n    let result = [];\n    for(let i = 0; i < names.length; i++){\n        if(names[i].charAt(0) !== names[i].charAt(0).toLowerCase()){\n            result.push(names[i]);\n        }\n    }\n    return result;\n}",
+    "    let names = sample_names.split(\" \");\n    let names_length = names.map((name) => name.length);\n    let names_length_filtered = names_length.filter((name) => name[0] !== \"a\");\n    return names_length_filtered;\n}",
+    "    let names = sample_names.split(' ');\n    let result = names.map(name => name.length).filter(name => name[0] !== 'a').reduce((acc, curr) => acc + curr);\n    return result;\n}"
+  ]
+}

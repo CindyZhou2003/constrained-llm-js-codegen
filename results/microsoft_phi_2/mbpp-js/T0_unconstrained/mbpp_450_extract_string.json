@@ -1,1 +1,18 @@
-{"name": "mbpp_450_extract_string", "language": "js", "prompt": "//Write a function to extract specified size of strings from a given array of string values.\nfunction extract_string(str, l){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_450_extract_string.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_string;\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 8),[\"practice\", \"solution\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 6),[\"Python\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 9),[\"exercises\"]);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var result = [];\n    for(var i = 0; i < str.length;"]}
+{
+  "name": "mbpp_450_extract_string",
+  "language": "js",
+  "prompt": "//Write a function to extract specified size of strings from a given array of string values.\nfunction extract_string(str, l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_450_extract_string.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_string;\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 8),[\"practice\", \"solution\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 6),[\"Python\"]);\n  assert.deepEqual(candidate([\"Python\", \"list\", \"exercises\", \"practice\", \"solution\"], 9),[\"exercises\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = str.split(\" \");\n    var new_arr = [];\n    for(var i = 0; i < arr.length; i++){\n        if(arr[i].length >= l){\n            new_arr.push(arr[i].substring(0, l));\n        }\n    }\n    return new_arr;\n}\n\nvar str = \"This is a test string\";\nvar l = 3;\nvar new_arr = extract_string(str, l);"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_67_bell_number",
+  "language": "js",
+  "prompt": "//Write a function to find the number of ways to partition a set of Bell numbers.\nfunction bell_number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_67_bell_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bell_number;\n  assert.deepEqual(candidate(2),2);\n  assert.deepEqual(candidate(10),115975);\n  assert.deepEqual(candidate(56),6775685320645824322581483068371419745979053216268760300);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n<=1){\n        return 1;\n    }\n    return bell_number(n-1)+bell_number(n-2);\n}",
+    "    if(n==0){\n        return 1;\n    }\n    else{\n        return bell_number(n-1)+bell_number(n-2);\n    }\n}",
+    "    if(n == 0){\n        return 1;\n    }\n    else{\n        return bell_number(n-1) + bell_number(n-2);\n    }\n}\n"
+  ]
+}

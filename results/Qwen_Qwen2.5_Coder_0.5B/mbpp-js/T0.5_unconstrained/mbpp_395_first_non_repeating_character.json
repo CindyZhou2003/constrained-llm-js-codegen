@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_395_first_non_repeating_character",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first non-repeated character in a given string.\nfunction first_non_repeating_character(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_395_first_non_repeating_character.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_non_repeating_character;\n  assert.deepEqual(candidate(\"abcabc\"),undefined);\n  assert.deepEqual(candidate(\"abc\"),\"a\");\n  assert.deepEqual(candidate(\"ababc\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = str1.split('');\n    var obj = {};\n    for (var i = 0; i < str.length; i++) {\n        obj[str[i]] = (obj[str[i]] || 0) + 1;\n    }\n    for (var j = 0; j < str.length; j++) {\n        if (obj[str[j]] === 1) {\n            return str[j];\n        }\n    }\n    return \"_\";\n}",
+    "    let obj = {};\n    for(let i=0; i<str1.length; i++){\n        if(!obj[str1[i]]){\n            obj[str1[i]] = 1\n        }else{\n            obj[str1[i]] += 1\n        }\n    }\n    for(let i=0; i<str1.length; i++){\n        if(obj[str1[i]] == 1){\n            return str1[i]\n        }\n    }\n    return \"\"\n}\n",
+    "    let map = new Map();\n    for (let i = 0; i < str1.length; i++) {\n        if(map.has(str1[i])){\n            map.set(str1[i], map.get(str1[i])+1);\n        }\n        else{\n            map.set(str1[i], 1);\n        }\n    }\n    for (let i = 0; i < str1.length; i++) {\n        if(map.get(str1[i]) === 1){\n            return str1[i];\n        }\n    }\n    return \"_\";\n}",
+    "    let obj={};\n    for(let i=0;i<str1.length;i++){\n        let character=str1[i];\n        if(obj[character]){\n            obj[character]++;\n        }\n        else{\n            obj[character]=1;\n        }\n    }\n    for(let i=0;i<str1.length;i++){\n        let character=str1[i];\n        if(obj[character]==1){\n            return character;\n        }\n    }\n}",
+    "    for (let i = 0; i < str1.length; i++) {\n        let count = 0;\n        for (let j = 0; j < str1.length; j++) {\n            if (str1[i] == str1[j]) {\n                count++;\n            }\n        }\n        if (count == 1) {\n            return str1[i];\n        }\n    }\n}"
+  ]
+}

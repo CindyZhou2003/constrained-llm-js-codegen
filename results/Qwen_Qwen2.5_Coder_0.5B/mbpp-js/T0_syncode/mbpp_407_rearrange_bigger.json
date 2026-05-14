@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = n.toString().split('').sort((a,b) => a-b);\n    let i = arr.length-1;\n    while(i>=0 && arr[i] >= arr[i+1]){\n        i--;\n    }\n    if(i < 0){\n        return -1;\n    }\n    let j = arr.length-1;\n    while(arr[j] <= arr[i]){\n        j--;\n    }\n    [arr[i], arr[j]] = [arr[j], arr[i]];\n    return +arr.join('');\n}\n"
+  ]
+}

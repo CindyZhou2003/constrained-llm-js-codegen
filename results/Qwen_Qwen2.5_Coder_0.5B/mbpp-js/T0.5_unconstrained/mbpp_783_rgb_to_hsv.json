@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //Convert RGB to HSV\n    r = r / 255;\n    g = g / 255;\n    b = b / 255;\n    var max = Math.max(r, g, b);\n    var min = Math.min(r, g, b);\n    var diff = max - min;\n    var h, s, v = max;\n\n    if (max == min) {\n        h = 0; // achromatic\n    } else {\n        // Find which color is maximum\n        var maxIndex = 0;\n        if (r > g && r > b) {\n            maxIndex = 0;\n        } else if (g > b) {\n            maxIndex = 1;\n        } else {\n            maxIndex = 2;\n        }\n\n        // Find color value\n        var delta = maxIndex == 0 ? r - g : max - b;\n        var chroma = delta / max;\n\n        // Find hue\n        if (max == r) {\n            h = (g - b) / delta;\n        } else if (max == g) {\n            h = 2 + (b - r) / delta;\n        } else {\n            h = 4 + (r - g) / delta;\n        }\n\n        // Find saturation\n        if (maxIndex == 0) {\n            s = 0;\n        } else {\n            s = (chroma == 0) ? 0 : (max - min) / chroma;\n        }\n    }\n\n    // Return h, s, v\n    return {h: h * 360, s: s * 100, v: v * 100};\n}\n",
+    "  r = r / 255;\n  g = g / 255;\n  b = b / 255;\n\n  var hsv = new HSV(r, g, b);\n  return hsv;\n}\n",
+    "    r /= 255;\n    g /= 255;\n    b /= 255;\n    var min = Math.min(r, g, b);\n    var max = Math.max(r, g, b);\n    var h, s, v = max;\n    var delta = max - min;\n\n    if(max == 0){\n        h = 0;\n    }else{\n        if(max == r){\n            h = (g - b) / delta;\n        }else if(max == g){\n            h = 2 + (b - r) / delta;\n        }else{\n            h = 4 + (r - g) / delta;\n        }\n        h *= 60;\n    }\n\n    if(max == 0){\n        s = 0;\n    }else{\n        s = delta / max;\n    }\n\n    return {\n        h: h,\n        s: s,\n        v: v\n    };\n}\n\nrgb_to_hsv(255, 0, 0)",
+    "    r /= 255, g /= 255, b /= 255;\n    var max = Math.max(r, g, b), min = Math.min(r, g, b);\n    var h, s, v = max;\n    var delta = max - min;\n    if(max == min) {\n        h = 0;\n    } else {\n        switch(max) {\n            case r: h = (g - b) / delta; break;\n            case g: h = (b - r) / delta + 2; break;\n            case b: h = (r - g) / delta + 4; break;\n        }\n        h /= 6;\n    }\n    s = max == 0 ? 0 : delta / max;\n    return [h, s, v];\n}\n",
+    "    var max = Math.max(r, g, b), min = Math.min(r, g, b);\n    var h, s, v = max;\n    var delta = max - min;\n    if (max == min) {\n        h = 0;\n    } else if (max == r) {\n        h = (g - b) / delta;\n    } else if (max == g) {\n        h = 2 + (b - r) / delta;\n    } else if (max == b) {\n        h = 4 + (r - g) / delta;\n    }\n    if (h < 0) h += 6;\n    s = delta / max;\n    return h;\n}\n"
+  ]
+}

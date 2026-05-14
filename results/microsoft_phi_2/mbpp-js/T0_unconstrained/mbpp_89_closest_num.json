@@ -1,1 +1,18 @@
-{"name": "mbpp_89_closest_num", "language": "js", "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n", "doctests": "transform", "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py", "prompt_terminology": "reworded", "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();", "stop_tokens": ["\nfunction ", "\n/*", "\n//", "\nconsole.log"], "completions": ["    var i = N;\n    while(i > 0){\n        if(i %"]}
+{
+  "name": "mbpp_89_closest_num",
+  "language": "js",
+  "prompt": "//Write a function to find the closest smaller number than n.\nfunction closest_num(N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_89_closest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_num;\n  assert.deepEqual(candidate(11),10);\n  assert.deepEqual(candidate(7),6);\n  assert.deepEqual(candidate(12),11);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var i = 0;\n    while(i < N){\n        i++;\n    }\n    return i;\n}\n"
+  ]
+}

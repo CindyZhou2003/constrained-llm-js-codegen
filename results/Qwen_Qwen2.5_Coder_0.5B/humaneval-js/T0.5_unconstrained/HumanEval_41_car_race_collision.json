@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_41_car_race_collision",
+  "language": "js",
+  "prompt": "//Imagine a road that's a perfectly straight infinitely long line.\n// n cars are driving left to right;  simultaneously, a different set of n cars\n// are driving right to left.   The two sets of cars start out being very far from\n// each other.  All cars move in the same speed.  Two cars are said to collide\n// when a car that's moving left to right hits a car that's moving right to left.\n// However, the cars are infinitely sturdy and strong; as a result, they continue moving\n// in their trajectory as if they did not collide.\n// This function outputs the number of such collisions.\nfunction car_race_collision(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_41_car_race_collision.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = car_race_collision;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),9);\n  assert.deepEqual(candidate(4),16);\n  assert.deepEqual(candidate(8),64);\n  assert.deepEqual(candidate(10),100);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Write your code here\n    let count = 0;\n    let i = 1;\n    while(i < n){\n        count += n-i;\n        i += 2;\n    }\n    return count;\n}",
+    "  return n*(n+1)/2;\n}\n",
+    "  var c = 0;\n  for (var i = 0; i < n; ++i) {\n    for (var j = i+1; j < n; ++j) {\n      if (i === j) {\n        c += 0;\n      } else {\n        c += 1;\n      }\n    }\n  }\n  return c;\n}\n\nvar result = car_race_collision(1000000);",
+    "    if (n === 1){\n        return 0;\n    }\n    return n + car_race_collision(n - 1);\n}\n",
+    "    let cars = [];\n    let collisions = 0;\n    // let car1 = new Car(0, 0, 1, 1);\n    // let car2 = new Car(0, 0, 2, 1);\n    // let car3 = new Car(0, 0, 3, 1);\n    // let car4 = new Car(0, 0, 4, 1);\n    // let car5 = new Car(0, 0, 5, 1);\n    // let car6 = new Car(0, 0, 6, 1);\n    // let car7 = new Car(0, 0, 7, 1);\n    // let car8 = new Car(0, 0, 8, 1);\n    // let car9 = new Car(0, 0, 9, 1);\n    // let car10 = new Car(0, 0, 10, 1);\n    // cars.push(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10);\n    for (let i = 0; i < n; i++){\n        cars.push(new Car(0, 0, i, 1));\n    }\n    // console.log(cars);\n    for (let i = 0; i < n; i++){\n        for (let j = 0; j < n; j++){\n            if (i != j){\n                let car1 = cars[i];\n                let car2 = cars[j];\n                let distance = car1.distance(car2);\n                if (distance >= 0){\n                    collisions++;\n                }\n            }\n        }\n    }\n    return collisions;\n}\n"
+  ]
+}

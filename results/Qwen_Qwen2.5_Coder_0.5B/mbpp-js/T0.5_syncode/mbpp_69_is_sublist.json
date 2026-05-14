@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_69_is_sublist",
+  "language": "js",
+  "prompt": "//Write a function to check whether an array contains the given sublist or not.\nfunction is_sublist(l, s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_69_is_sublist.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_sublist;\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [3, 7]),false);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [4, 3]),true);\n  assert.deepEqual(candidate([2, 4, 3, 5, 7], [1, 6]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let i = 0;\n    while(i < l.length){\n        if(l[i] == s[0]){\n            let j = 0;\n            while(j < s.length){\n                if(l[i + j] != s[j]){\n                    break;\n                }\n                j++;\n            }\n            if(j == s.length){\n                return true;\n            }\n        }\n        i++;\n    }\n    return false;\n}",
+    "    if(l.length < s.length){\n        return false;\n    }\n\n    for(let i=0; i<s.length; i++){\n        if(l.indexOf(s[i]) < 0){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    for(var i=0;i<s.length;i++){\n        if(l.indexOf(s[i]) === -1){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    for(let i = 0; i < s.length; i++){\n        for(let j = 0; j < l.length; j++){\n            if(s[i] !== l[j]){\n                break;\n            }\n            if(j === l.length - 1){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n",
+    "    let l1 = l.length;\n    let s1 = s.length;\n    for (let i = 0; i <= l1; i++){\n        if (l1 === s1){\n            return true;\n        }\n        if (l[i] === s[0]){\n            return is_sublist(l.slice(i+1), s.slice(1));\n        }\n    }\n    return false;\n}\n"
+  ]
+}

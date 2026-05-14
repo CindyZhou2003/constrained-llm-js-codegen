@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_57_monotonic",
+  "language": "js",
+  "prompt": "//Return true is array elements are monotonically increasing or decreasing.\n// >>> monotonic([1, 2, 4, 20])\n// true\n// >>> monotonic([1, 20, 4, 10])\n// false\n// >>> monotonic([4, 1, 0, -10])\n// true\nfunction monotonic(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_57_monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = monotonic;\n  assert.deepEqual(candidate([1, 2, 4, 10]),true);\n  assert.deepEqual(candidate([1, 2, 4, 20]),true);\n  assert.deepEqual(candidate([1, 20, 4, 10]),false);\n  assert.deepEqual(candidate([4, 1, 0, -10]),true);\n  assert.deepEqual(candidate([4, 1, 1, 0]),true);\n  assert.deepEqual(candidate([1, 2, 3, 2, 5, 60]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 60]),true);\n  assert.deepEqual(candidate([9, 9, 9, 9]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < l.length; i++){\n        if(l[i] < l[i + 1]){\n            count++;\n        }else if(l[i] > l[i + 1]){\n            count--;\n        }\n        if(count < 0){\n            return false;\n        }\n    }\n    return true;\n}\n",
+    "    let sorted = l.sort((a,b)=>a-b);\n    if(sorted[0]==sorted[sorted.length-1])\n        return true;\n    else\n        return false;\n}",
+    "    if(l.length <= 1) return true;\n    for(var i = 0; i < l.length; i++){\n        if(l[i] > l[i+1]) return false;\n        if(l[i] < l[i+1]) return false;\n    }\n    return true;\n}\n",
+    "    if(l.length <= 1){\n        return true;\n    }\n    let prev = l[0];\n    let next = l[l.length - 1];\n    for(let i = 0; i < l.length - 1; i++){\n        if(prev < l[i + 1] && next > l[i + 1] || prev > l[i + 1] && next < l[i + 1]){\n            return false;\n        }\n        prev = l[i];\n        next = l[i + 1];\n    }\n    return true;\n}\n",
+    "    var flag = true;\n    for(var i = 0; i < l.length; i++){\n        if(l[i] > l[i+1]){\n            flag = false;\n            break;\n        }\n    }\n    for(var j = l.length - 1; j >= 0; j--){\n        if(l[j] < l[j-1]){\n            flag = false;\n            break;\n        }\n    }\n    return flag;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_472_check_Consecutive",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array contains consecutive numbers or not.\nfunction check_Consecutive(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_472_check_Consecutive.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_Consecutive;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n  assert.deepEqual(candidate([1, 2, 3, 5, 6]),false);\n  assert.deepEqual(candidate([1, 2, 1]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = l.split(\",\");\n    var arr1 = [];\n    for(var i = 0; i < arr.length; i++){\n        if(arr[i] != arr[i+1]){\n            arr1.push(arr[i]);\n        }\n    }\n    if(arr1.length == 0){\n        return true;\n    }\n    else{\n        return false;\n    }\n}",
+    "    let arr = l;\n    let arr1 = arr.sort((a,b)=>a-b);\n    for(let i = 0; i < arr1.length-1; i++){\n        if(arr1[i] + 1 !== arr1[i+1]){\n            return false;\n        }\n    }\n    return true;\n}",
+    "    var i=0;\n    var j=1;\n    while(j<l.length){\n        if(l[i]==l[j]){\n            i++;\n            j++;\n        }\n        else{\n            return false;\n        }\n    }\n    return true;\n}"
+  ]
+}

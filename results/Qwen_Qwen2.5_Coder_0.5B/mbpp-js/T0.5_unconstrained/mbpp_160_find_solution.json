@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let x = -b / a;\n    let y = (n - x * a) / b;\n    return [x, y];\n}\n",
+    "    if (b * a === 1){\n        return [0,0]\n    }\n    let x = Math.floor(n / b)\n    let y = (n % b) * -1\n    if (a > 0){\n        return [x, y]\n    } else {\n        return [x, -y]\n    }\n}\n",
+    "  let x, y;\n  let g = gcd(a, b);\n  if(a % g === 0 && b % g === 0){\n    x = (n / g) * b;\n    y = (n / g) * a - x * b / g;\n  }\n  return [x, y];\n}\n",
+    "  if (a == 0){\n    if (b == 0) return [0,0];\n    else return undefined;\n  }\n  if (b == 0) return [Infinity,n/a];\n  var x = 0;\n  var y = 0;\n  var ySum = 0;\n  var xSum = 0;\n  var temp = 0;\n  var max = Math.max(a,b);\n  var min = Math.min(a,b);\n  var tempMax = max;\n  var tempMin = min;\n  if (a > b){\n    tempMax = a;\n    tempMin = b;\n  }\n  for (var i = 0; i < max; i++){\n    x = x + 1;\n    y = y + 1;\n    ySum = ySum + b;\n    xSum = xSum + a;\n    if (ySum == n && xSum == n){\n      return [x,y];\n    }\n  }\n  if (ySum < n && xSum < n){\n    return undefined;\n  }\n  if (ySum > n && xSum > n){\n    x = x + 1;\n    y = y + 1;\n    ySum = ySum - n;\n    xSum = xSum - n;\n    if (ySum == n && xSum == n){\n      return [x,y];\n    }\n  }\n  if (ySum > n && xSum < n){\n    temp = x;\n    x = x + 1;\n    y = y + 1;\n    ySum = ySum - n;\n    xSum = xSum - n;\n    if (ySum == n && xSum == n){\n      return [x,y];\n    }\n  }\n  if (ySum < n && xSum > n){\n    temp = x;\n    x = x + 1;\n    y = y + 1;\n    ySum = ySum + b;\n    xSum = xSum + a;\n    if (ySum == n && xSum == n){\n      return [x,y];\n    }\n  }\n  if (ySum > n && xSum > n){\n    x = temp;\n    y = y + 1;\n    ySum = ySum - n;\n    xSum = xSum - n;\n    if (ySum == n && xSum == n){\n      return [x,y];\n   ",
+    "    let x = 0;\n    let y = 0;\n    let gcd = Math.gcd(a,b);\n    while(n !== 0){\n        if(n % gcd === 0){\n            x = n / gcd;\n            y = a / gcd;\n            return [x,y];\n        }\n        else{\n            n = n % gcd;\n        }\n    }\n    return undefined;\n}\n"
+  ]
+}

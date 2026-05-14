@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_70_strange_sort_list",
+  "language": "js",
+  "prompt": "//Given array of integers, return array in strange order.\n// Strange sorting, is when you start with the minimum value,\n// then maximum of the remaining integers, then minimum and so on.\n// Examples:\n// >>> strange_sort_list([1, 2, 3, 4])\n// [1, 4, 2, 3]\n// >>> strange_sort_list([5, 5, 5, 5])\n// [5, 5, 5, 5]\n// >>> strange_sort_list([])\n// []\nfunction strange_sort_list(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_70_strange_sort_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = strange_sort_list;\n  assert.deepEqual(candidate([1, 2, 3, 4]),[1, 4, 2, 3]);\n  assert.deepEqual(candidate([5, 6, 7, 8, 9]),[5, 9, 6, 8, 7]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),[1, 5, 2, 4, 3]);\n  assert.deepEqual(candidate([5, 6, 7, 8, 9, 1]),[1, 9, 5, 8, 6, 7]);\n  assert.deepEqual(candidate([5, 5, 5, 5]),[5, 5, 5, 5]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8]),[1, 8, 2, 7, 3, 6, 4, 5]);\n  assert.deepEqual(candidate([0, 2, 2, 2, 5, 5, -5, -5]),[-5, 5, -5, 5, 0, 2, 2, 2]);\n  assert.deepEqual(candidate([111111]),[111111]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //your code here\n    var newArr = []\n    var min = lst[0]\n    var max = lst[0]\n    var minIndex = 0\n    var maxIndex = 0\n    var temp = 0\n    for(var i = 0; i < lst.length; i++) {\n        if(min > lst[i]) {\n            min = lst[i]\n            minIndex = i\n        }\n        if(max < lst[i]) {\n            max = lst[i]\n            maxIndex = i\n        }\n    }\n    //console.log(min, max, minIndex, maxIndex)\n    for(var i = 0; i < lst.length; i++) {\n        if(i == minIndex) {\n            newArr.push(max)\n            max = maxIndex\n        } else if(i == maxIndex) {\n            newArr.push(min)\n            min = minIndex\n        } else {\n            newArr.push(lst[i])\n        }\n    }\n    return newArr\n}",
+    "    let arr = [];\n    for (let i = lst.length - 1; i >= 0; i--) {\n        arr.push(lst[i]);\n    }\n    return arr;\n}\n",
+    "  let min = lst[0];\n  let max = lst[0];\n  let result = [];\n  for(let i = 0; i < lst.length; i++){\n    if(min > lst[i]){\n      min = lst[i];\n    }\n    if(max < lst[i]){\n      max = lst[i];\n    }\n  }\n  for(let i = 0; i < lst.length; i++){\n    if(i % 2 === 0){\n      result.push(min);\n      min++;\n    }else{\n      result.push(max);\n      max--;\n    }\n  }\n  return result;\n}",
+    "  // your code here\n  var result = [];\n  lst.sort(function(a, b) {\n      return a - b;\n  });\n  for (var i = 0; i < lst.length; i++) {\n      result.push(lst[i]);\n  }\n  return result;\n}",
+    "    return lst.sort((a,b) => a - b);\n}"
+  ]
+}

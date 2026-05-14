@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    nums.sort((a, b) => b - a);\n    return nums.slice(0, n);\n}\n",
+    "    const heap = new MaxHeap();\n    for(let i = 0; i < nums.length; i++){\n        heap.insert(nums[i]);\n    }\n    const result = [];\n    for(let i = 0; i < n; i++){\n        result.push(heap.remove());\n    }\n    return result;\n}\n",
+    "  const heap = [];\n  nums.forEach(num => {\n    heap.push([num, 0]);\n  });\n  heap.sort((a, b) => b[0] - a[0]);\n  return heap.slice(0, n).map(item => item[0]);\n}",
+    "  var heap = new MaxHeap(nums.length);\n  for(var i = 0; i < nums.length; i++){\n    heap.insert(nums[i]);\n  }\n  var res = [];\n  for(var i = 0; i < n; i++){\n    res.push(heap.extractMax());\n  }\n  return res.reverse();\n}\n",
+    "  let heap = new MaxHeap();\n  for(let i = 0; i < nums.length; i++){\n    heap.add(nums[i]);\n  }\n  let result = [];\n  for(let i = 0; i < n; i++){\n    result.push(heap.top());\n    heap.remove();\n  }\n  return result;\n}"
+  ]
+}

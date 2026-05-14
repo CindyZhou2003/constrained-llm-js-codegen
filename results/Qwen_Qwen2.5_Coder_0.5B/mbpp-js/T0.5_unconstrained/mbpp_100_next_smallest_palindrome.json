@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let rev_num = num.toString().split(\"\").reverse().join(\"\");\n    let next_num = rev_num + 1;\n    if(rev_num < next_num){\n        return parseInt(next_num);\n    }else{\n        return parseInt(rev_num);\n    }\n}",
+    "    // Convert the number to a string\n    let strNum = num.toString();\n\n    // Reverse the string\n    let reversedStrNum = strNum.split(\"\").reverse().join(\"\");\n\n    // Check if the reversed string is a palindrome\n    let isPalindrome = true;\n    for (let i = 0; i < strNum.length / 2; i++) {\n        if (strNum[i] !== reversedStrNum[i]) {\n            isPalindrome = false;\n            break;\n        }\n    }\n\n    // If the reversed string is a palindrome, increment by 1 and convert back to an integer\n    if (isPalindrome) {\n        let nextPalindrome = parseInt(reversedStrNum) + 1;\n        return nextPalindrome;\n    } else {\n        // If the reversed string is not a palindrome, increment by 1 and return the original number\n        return num;\n    }\n}\n",
+    "    let str = String(num);\n    for(let i = str.length - 1; i >= 0; i--){\n        if(str[i] != '0'){\n            str = str.slice(0,i) + str.slice(i).repeat(2) + str.slice(i+1);\n            return parseInt(str);\n        }\n    }\n    return num;\n}\n",
+    "    let num1 = num + 1\n    let reverse = num1.toString().split(\"\").reverse().join(\"\");\n    let reverse_num = parseInt(reverse, 10)\n    let reverse_num1 = reverse_num + 1\n    let reverse_num1_str = reverse_num1.toString();\n    let reverse_num1_str_rev = reverse_num1_str.split(\"\").reverse().join(\"\");\n    let reverse_num1_str_rev_int = parseInt(reverse_num1_str_rev, 10);\n    if(reverse_num1_str_rev_int === reverse_num1){\n        return num1\n    }else{\n        return reverse_num1\n    }\n}",
+    "    let str = num.toString();\n    let left = str.slice(0,str.length-1);\n    let right = str.slice(str.length-1,str.length);\n    let strNum = parseInt(left + right);\n    let strNum2 = parseInt(right + left);\n    if (strNum < strNum2){\n        return strNum;\n    } else {\n        return strNum2;\n    }\n}"
+  ]
+}

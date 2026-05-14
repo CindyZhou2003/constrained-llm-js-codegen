@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_51_remove_vowels",
+  "language": "js",
+  "prompt": "//remove_vowels is a function that takes string and returns string without vowels.\n// >>> remove_vowels(\"\")\n// \"\"\n// >>> remove_vowels(\"abcdef\")\n// \"bcdf\"\n// >>> remove_vowels(\"aaaaa\")\n// \"\"\n// >>> remove_vowels(\"aaBAA\")\n// \"B\"\n// >>> remove_vowels(\"zbcd\")\n// \"zbcd\"\nfunction remove_vowels(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_51_remove_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_vowels;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"abcdef\nghijklm\"),\"bcdf\nghjklm\");\n  assert.deepEqual(candidate(\"fedcba\"),\"fdcb\");\n  assert.deepEqual(candidate(\"eeeee\"),\"\");\n  assert.deepEqual(candidate(\"acBAA\"),\"cB\");\n  assert.deepEqual(candidate(\"EcBOO\"),\"cB\");\n  assert.deepEqual(candidate(\"ybcd\"),\"ybcd\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Write code here...\n    var a = text.split(\"\");\n    var b = \"\";\n\n    for(var i=0; i<a.length; i++){\n        if(a[i]!=\"a\" && a[i]!=\"e\" && a[i]!=\"i\" && a[i]!=\"o\" && a[i]!=\"u\" && a[i]!=\"A\" && a[i]!=\"E\" && a[i]!=\"I\" && a[i]!=\"O\" && a[i]!=\"U\"){\n            b = b+a[i];\n        }\n    }\n    return b;\n}\n\n",
+    "    // write your code here\n    let result = \"\";\n    let vowels = [\"a\",\"e\",\"i\",\"o\",\"u\"];\n    for(let i = 0; i < text.length; i++){\n        if(!vowels.includes(text[i])){\n            result += text[i];\n        }\n    }\n    return result;\n}\n",
+    "    let vowels = ['a','e','i','o','u']\n    let newText = ''\n    for (let i = 0; i < text.length; i++) {\n        if (!vowels.includes(text[i])) {\n            newText += text[i]\n        }\n    }\n    return newText\n}\n",
+    "  var vowels = [\"a\",\"e\",\"i\",\"o\",\"u\"];\n  var new_text = \"\";\n  for(var i = 0; i < text.length; i++){\n    if(vowels.indexOf(text[i]) == -1){\n      new_text += text[i];\n    }\n  }\n  return new_text;\n}\n",
+    "    let vowels = ['a','e','i','o','u'];\n    let result = text.replace(/[aeiou]/gi, '');\n    return result;\n}\n"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_154_cycpattern_check",
+  "language": "js",
+  "prompt": "//You are given 2 words. You need to return true if the second word or any of its rotations is a substring in the first word\n// >>> cycpattern_check(\"abcd\", \"abd\")\n// false\n// >>> cycpattern_check(\"hello\", \"ell\")\n// true\n// >>> cycpattern_check(\"whassup\", \"psus\")\n// false\n// >>> cycpattern_check(\"abab\", \"baa\")\n// true\n// >>> cycpattern_check(\"efef\", \"eeff\")\n// false\n// >>> cycpattern_check(\"himenss\", \"simen\")\n// true\nfunction cycpattern_check(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_154_cycpattern_check.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = cycpattern_check;\n  assert.deepEqual(candidate(\"xyzw\", \"xyw\"),false);\n  assert.deepEqual(candidate(\"yello\", \"ell\"),true);\n  assert.deepEqual(candidate(\"whattup\", \"ptut\"),false);\n  assert.deepEqual(candidate(\"efef\", \"fee\"),true);\n  assert.deepEqual(candidate(\"abab\", \"aabb\"),false);\n  assert.deepEqual(candidate(\"winemtt\", \"tinem\"),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let a1 = a.split('').reverse().join('');\n    let a2 = a.split('').reverse().join('');\n    let b1 = b.split('').reverse().join('');\n    let b2 = b.split('').reverse().join('');\n    if (a1.includes(b1) || a2.includes(b2)) {\n        return true;\n    } else {\n        return false;\n    }\n}",
+    "    var a_char = a.split('').reverse().join('');\n    var b_char = b.split('').reverse().join('');\n    var abc = a_char.split('').reverse().join('');\n    var bca = b_char.split('').reverse().join('');\n    var abcba = abc.concat(abc).split('').reverse().join('');\n    var bcaba = bca.concat(bca).split('').reverse().join('');\n    if(a_char == b_char || abcba == bcaba || a_char == bca || abcba == bcaba){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    //your code here\n    if(a.length <= 0 || b.length <= 0){\n        return false;\n    }\n    let arr = b.split('');\n    let arr2 = [];\n    for(let i = 0; i < arr.length; i++){\n        arr2.push(arr.slice().reverse().join(''));\n    }\n    if(arr2.includes(a)){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    let a_rotated = a.split(\"\").reverse().join(\"\");\n    let b_rotated = b.split(\"\").reverse().join(\"\");\n    let a_rotated2 = a_rotated.split(\"\").reverse().join(\"\");\n    let b_rotated2 = b_rotated.split(\"\").reverse().join(\"\");\n    if(a_rotated === b || a_rotated2 === b_rotated2 || a_rotated === b_rotated || b_rotated === a_rotated2){\n        return true;\n    }else{\n        return false;\n    }\n}",
+    "    var arr = b.split('');\n    var arr2 = arr.reverse();\n    var arr3 = arr2.join('');\n    arr2 = arr.reverse();\n    var arr4 = arr2.join('');\n    var a2 = a.split('');\n    var a22 = a2.reverse();\n    var a3 = a22.join('');\n    a22 = a3.split('');\n    var a4 = a3.join('');\n    a3 = a4.split('');\n    var a5 = a3.reverse();\n    var a6 = a5.join('');\n    var arr5 = a6.split('');\n    var arr6 = arr5.reverse();\n    var arr7 = arr6.join('');\n    arr6 = arr7.split('');\n    var arr8 = arr6.reverse();\n    var arr9 = arr8.join('');\n    var arr10 = arr9.split('');\n    var arr11 = arr10.reverse();\n    var arr12 = arr11.join('');\n    arr11 = arr12.split('');\n    var arr13 = arr11.reverse();\n    var arr14 = arr13.join('');\n    arr13 = arr14.split('');\n    var arr15 = arr13.reverse();\n    var arr16 = arr15.join('');\n    arr15 = arr16.split('');\n    var arr17 = arr15.reverse();\n    var arr18 = arr17.join('');\n    arr17 = arr18.split('');\n    var arr19 = arr17.reverse();\n    var arr20 = arr19.join('');\n    arr19 = arr20.split('');\n    var arr21 = arr19.reverse();\n    var arr22 = arr21.join('');\n    arr21 = arr22.split('');\n    var arr23 = arr21.reverse();\n    var arr24 = arr23.join('');\n    arr23 = arr24.split('');\n    var arr25 = arr23.reverse();\n    var arr26 = arr25.join('');\n    arr25 = arr26.split('');\n    var arr27 = arr25.reverse();\n    var arr28 = arr27.join('');\n    arr27 = arr28.split('');\n    var arr29 = arr27.reverse();\n    var arr30 = arr29.join('');\n    arr29 = arr30.split('');\n    var arr31 = arr29.reverse();\n    var arr32 ="
+  ]
+}

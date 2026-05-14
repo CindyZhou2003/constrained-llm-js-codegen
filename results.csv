@@ -48,11 +48,7 @@ mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.5,unconstrained,5,0.5843828715365239,397,5,5,7
 mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.5,syncode,1,0.3783375314861461,397,5,5,9009.3103
 mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.5,syncode,5,0.5743073047858942,397,5,5,9009.3103
 mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0,syncode,1,0.3954659949622166,397,1,1,2530.5743
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,itergen,1,0.5113350125944585,397,1,1,
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,itergen,1,0.5264483627204031,397,3,3,
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,itergen,3,0.6045340050377834,397,3,3,
-mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,itergen,1,0.5088161209068011,397,1,1,
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,itergen,1,0.5962732919254659,161,1,1,1890.0425
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,itergen,1,0.5962732919254659,161,3,3,5904.0469
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,itergen,3,0.7080745341614907,161,3,3,5904.0469
-humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,itergen,1,0.6521739130434783,161,1,1,2716.4741
+mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,chopchop,1,0.5541561712846348,397,1,1,28921.0822
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0,syncode,1,0.5491183879093199,397,1,1,1094.7085
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0.2,syncode,1,0.5474391267842149,397,3,3,2693.3155
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0.2,syncode,3,0.6196473551637279,397,3,3,2693.3155

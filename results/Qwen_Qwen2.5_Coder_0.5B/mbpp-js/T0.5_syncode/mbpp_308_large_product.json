@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_308_large_product",
+  "language": "js",
+  "prompt": "//Write a function to find the specified number of largest products from two given lists, selecting one factor from each array.\nfunction large_product(nums1, nums2, N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_308_large_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = large_product;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 3),[60, 54, 50]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 4),[60, 54, 50, 48]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 5),[60, 54, 50, 48, 45]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // your code goes here\n    let product = [];\n    let nums1_max = Math.max(...nums1);\n    let nums2_max = Math.max(...nums2);\n    let nums1_min = Math.min(...nums1);\n    let nums2_min = Math.min(...nums2);\n    let nums1_product = nums1_max * nums2_max;\n    let nums2_product = nums1_min * nums2_min;\n    let nums1_min_product = nums1_min * nums2_max;\n    let nums2_min_product = nums1_max * nums2_min;\n    let max = nums1_max * nums2_max;\n    let min = nums1_min * nums2_min;\n    let min_product = nums1_min_product * nums2_min_product;\n    let product = [max, min, min_product];\n    let product_size = product.length;\n    product.sort((a, b) => b - a);\n    let result = [];\n    for (let i = 0; i < N; i++) {\n        result.push(product[i]);\n    }\n    return result;\n}",
+    "  let ans = [];\n  for (let i = 0; i < N; i++) {\n    let a = nums1[i];\n    let b = nums2[i];\n    let product = 1;\n    for (let j = 0; j < N; j++) {\n      if (i !== j) {\n        product *= nums1[j];\n      }\n    }\n    ans.push(product);\n  }\n  return ans;\n}\n",
+    "    let product = 1;\n    let max = 0;\n    if(N<2){\n        return 0;\n    }\n    for(let i=0; i<N; i++){\n        product = product*nums1[i];\n    }\n    max = product;\n    for(let i=0; i<N; i++){\n        product = product*nums2[i];\n    }\n    max = Math.max(max, product);\n    return max;\n}",
+    "    var result = [];\n    for(var i = 0; i < N; i++){\n        result.push(nums1[i] * nums2[i]);\n    }\n    return result.sort(function(a, b){return b-a;});\n}",
+    "    // Write your code here.\n    // nums1 and nums2 are the two given arrays\n    // N is the number of elements to be extracted from each array\n    // return the largest N elements from both arrays\n    let result = [];\n    for(let i = 0; i < N; i++){\n        let temp = [];\n        for(let j = 0; j < nums1.length; j++){\n            temp.push(nums1[j] * nums2[j]);\n        }\n        result.push(Math.max(...temp));\n    }\n    return result;\n}"
+  ]
+}

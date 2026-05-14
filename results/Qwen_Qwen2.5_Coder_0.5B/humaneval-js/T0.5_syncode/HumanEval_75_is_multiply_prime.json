@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_75_is_multiply_prime",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the given number is the multiplication of 3 prime numbers\n// and false otherwise.\n// Knowing that (a) is less then 100. \n// Example:\n// >>> is_multiply_prime(30)\n// true\n// 30 = 2 * 3 * 5\nfunction is_multiply_prime(a){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_75_is_multiply_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_multiply_prime;\n  assert.deepEqual(candidate(5),false);\n  assert.deepEqual(candidate(30),true);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(125),true);\n  assert.deepEqual(candidate(105),true);\n  assert.deepEqual(candidate(126),false);\n  assert.deepEqual(candidate(729),false);\n  assert.deepEqual(candidate(891),false);\n  assert.deepEqual(candidate(1001),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i = 2; i <= Math.sqrt(a); i++){\n        if(a % i == 0){\n            return false\n        }\n    }\n    return true\n}",
+    "    // your code here\n    var a = a;\n    var b = 0;\n    var c = 0;\n    var prime = 0;\n    var prime2 = 0;\n    var prime3 = 0;\n    var number = 0;\n    var primeArray = [];\n    var primeArray2 = [];\n    var primeArray3 = [];\n    for (var i = 2; i < a; i++) {\n    for (var j = 2; j < i; j++) {\n        if (i % j == 0) {\n            prime = i;\n            primeArray.push(prime);\n        }\n    }\n    for (var k = 2; k < prime; k++) {\n        if (prime % k == 0) {\n            prime2 = k;\n            primeArray2.push(prime2);\n        }\n    }\n    for (var l = 2; l < prime2; l++) {\n        if (prime2 % l == 0) {\n            prime3 = l;\n            primeArray3.push(prime3);\n        }\n    }\n    if (prime3 == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 3) {\n        for (var m = 0; m < primeArray3.length; m++) {\n            number = primeArray3[m];\n            if (a % number == 0) {\n                primeArray3.splice(m, 1);\n            }\n        }\n    }\n    if (primeArray3.length == 0) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 3) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3.length == 1) {\n        primeArray3.push(prime3);\n    }\n    if (primeArray3",
+    "    let b = 2;\n    let c = 3;\n    let d = 5;\n    while(a > 1){\n        if(a % b === 0 && a % c === 0 && a % d === 0){\n            return true;\n        }\n        b++;\n        c++;\n        d++;\n        a = Math.floor(a / 2);\n    }\n    return false;\n}",
+    "    let prime = [2,3,5];\n    let i = 0;\n    while (i < prime.length){\n        if(a % prime[i] == 0){\n            a /= prime[i];\n        } else {\n            i++;\n        }\n    }\n    return a === 1;\n}",
+    "    let arr = []\n    for(let i=2; i<a; i++){\n        if(a % i == 0){\n            arr.push(i)\n        }\n    }\n    if(arr.length == 3){\n        return true\n    }else{\n        return false\n    }\n}"
+  ]
+}

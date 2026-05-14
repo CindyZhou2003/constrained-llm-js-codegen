@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_68_is_Monotonic",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether the given array is monotonic or not.\nfunction is_Monotonic(A){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_68_is_Monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Monotonic;\n  assert.deepEqual(candidate([6, 5, 4, 4]),true);\n  assert.deepEqual(candidate([1, 2, 2, 3]),true);\n  assert.deepEqual(candidate([1, 3, 2]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var flag = false;\n    for(var i = 0; i < A.length-1; i++){\n        if(A[i] <= A[i+1])\n            continue;\n        else\n            flag = true;\n    }\n    if(flag)\n        return false;\n    else\n        return true;\n}",
+    "    for(let i=0;i<A.length;i++){\n        if(A[i]>A[i+1])\n            return false\n    }\n    return true\n}\n\n",
+    "    for(let i=0;i<A.length-1;i++){\n        if(A[i]>A[i+1]) return false;\n    }\n    return true;\n}",
+    "    for(let i=0; i<A.length-1; i++){\n        if(A[i]>A[i+1]){\n            return false\n        }\n    }\n    return true\n}",
+    "    var i = 0;\n    var j = A.length - 1;\n    while(i < j){\n        if(A[i] > A[j]){\n            return false;\n        }\n        i++;\n        j--;\n    }\n    return true;\n}"
+  ]
+}

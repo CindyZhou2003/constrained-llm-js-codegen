@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_117_list_to_float",
+  "language": "js",
+  "prompt": "//Write a function to convert all possible convertible elements in an array of lists to floats.\nfunction list_to_float(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_117_list_to_float.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = list_to_float;\n  assert.deepEqual(candidate([[\"3\", \"4\"], [\"1\", \"26.45\"], [\"7.32\", \"8\"], [\"4\", \"8\"]]),[[3.0, 4.0], [1.0, 26.45], [7.32, 8.0], [4.0, 8.0]]);\n  assert.deepEqual(candidate([[\"4\", \"4\"], [\"2\", \"27\"], [\"4.12\", \"9\"], [\"7\", \"11\"]]),[[4.0, 4.0], [2.0, 27.0], [4.12, 9.0], [7.0, 11.0]]);\n  assert.deepEqual(candidate([[\"6\", \"78\"], [\"5\", \"26.45\"], [\"1.33\", \"4\"], [\"82\", \"13\"]]),[[6.0, 78.0], [5.0, 26.45], [1.33, 4.0], [82.0, 13.0]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  //your code here\n  for (let i = 0; i < test_list.length; i++) {\n    test_list[i] = parseFloat(test_list[i]);\n  }\n  return test_list;\n}\n",
+    "    //your code goes here\n    return test_list.map(element => parseFloat(element))\n}\n",
+    "  for (let i = 0; i < test_list.length; i++){\n    if (typeof test_list[i] === 'string'){\n      test_list[i] = parseFloat(test_list[i]);\n    }\n  }\n  return test_list;\n}\n",
+    "    let new_list = [];\n    test_list.forEach(element => {\n        if (typeof element === \"string\") {\n            element = parseFloat(element);\n        }\n        new_list.push(element);\n    });\n    return new_list;\n}",
+    "    var float_list = [];\n    test_list.forEach(function (element){\n        if (typeof(element) === \"number\"){\n            float_list.push(element);\n        } else if (typeof(element) === \"string\" && !isNaN(parseFloat(element))){\n            float_list.push(parseFloat(element));\n        } else if (typeof(element) === \"string\" && element.includes(\".\")){\n            float_list.push(parseFloat(element));\n        } else if (typeof(element) === \"string\" && element.includes(\",\")){\n            float_list.push(parseFloat(element.replace(/,/g, \"\")));\n        } else {\n            float_list.push(element);\n        }\n    });\n    return float_list;\n}\n"
+  ]
+}

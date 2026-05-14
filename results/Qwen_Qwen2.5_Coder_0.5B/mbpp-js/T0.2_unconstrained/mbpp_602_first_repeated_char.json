@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_602_first_repeated_char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the first repeated character in a given string.\nfunction first_repeated_char(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_602_first_repeated_char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = first_repeated_char;\n  assert.deepEqual(candidate(\"abcabc\"),\"a\");\n  assert.deepEqual(candidate(\"abc\"),undefined);\n  assert.deepEqual(candidate(\"123123\"),\"1\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = str1.split(\"\");\n    let obj = {};\n    for(let i=0; i<arr.length; i++){\n        if(obj[arr[i]]){\n            return arr[i];\n        }\n        else{\n            obj[arr[i]] = 1;\n        }\n    }\n    return \"No repeated character\";\n}",
+    "    let str = str1.split(\"\");\n    let obj = {};\n    for(let i = 0; i < str.length; i++){\n        if(obj[str[i]]){\n            return str[i];\n        }\n        else{\n            obj[str[i]] = 1;\n        }\n    }\n    return false;\n}",
+    "    let str = str1.split('');\n    let result = '';\n    for(let i = 0; i < str.length; i++){\n        let count = 0;\n        for(let j = 0; j < str.length; j++){\n            if(str[i] == str[j]){\n                count++;\n            }\n        }\n        if(count > 1){\n            result = str[i];\n            break;\n        }\n    }\n    return result;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_172_count_occurance",
+  "language": "js",
+  "prompt": "//Write a function to count the number of occurence of the string 'std' in a given string.\nfunction count_occurance(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_172_count_occurance.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_occurance;\n  assert.deepEqual(candidate(\"letstdlenstdporstd\"),3);\n  assert.deepEqual(candidate(\"truststdsolensporsd\"),1);\n  assert.deepEqual(candidate(\"makestdsostdworthit\"),2);\n  assert.deepEqual(candidate(\"stds\"),1);\n  assert.deepEqual(candidate(\"\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i=0; i<s.length; i++){\n        if(s[i] == 's' && s[i+1] == 't' && s[i+2] == 'd'){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === 's' && s[i+1] === 't' && s[i+2] === 'd'){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < s.length; i++){\n        if(s[i] === 's'){\n            count++;\n        }\n    }\n    return count;\n}"
+  ]
+}

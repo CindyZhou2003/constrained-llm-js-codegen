@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_142_count_samepair",
+  "language": "js",
+  "prompt": "//Write a function to count number items that are identical in the same position of three given lists.\nfunction count_samepair(list1, list2, list3){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_142_count_samepair.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_samepair;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8], [2, 2, 3, 1, 2, 6, 7, 9], [2, 1, 3, 1, 2, 6, 7, 9]),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8], [2, 2, 3, 1, 2, 6, 7, 8], [2, 1, 3, 1, 2, 6, 7, 8]),4);\n  assert.deepEqual(candidate([1, 2, 3, 4, 2, 6, 7, 8], [2, 2, 3, 1, 2, 6, 7, 8], [2, 1, 3, 1, 2, 6, 7, 8]),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var count = 0;\n    for(var i = 0; i < list1.length; i++){\n        if(list1[i] === list2[i] && list2[i] === list3[i]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < list1.length; i++){\n        if(list1[i] == list2[i] && list1[i] == list3[i]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let count = 0;\n    for(let i = 0; i < list1.length; i++){\n        if(list1[i] == list2[i] && list2[i] == list3[i]){\n            count++;\n        }\n    }\n    return count;\n}",
+    "    let counter = 0;\n    for(let i = 0; i < list1.length; i++){\n        if(list1[i] === list2[i] && list2[i] === list3[i]){\n            counter++;\n        }\n    }\n    return counter;\n}\n",
+    "    //declare count variable\n    let count = 0;\n    //loop through the first list\n    for(let i = 0; i < list1.length; i++){\n        //loop through the second list\n        for(let j = 0; j < list2.length; j++){\n            //loop through the third list\n            for(let k = 0; k < list3.length; k++){\n                //if the elements are equal\n                if(list1[i] === list2[j] && list2[j] === list3[k]){\n                    //increment count\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}\nlet list1 = [1, 2, 3, 4, 5, 6, 7];\nlet list2 = [1, 2, 3, 4, 5, 6, 7];\nlet list3 = [1, 2, 3, 4, 5, 6, 7];"
+  ]
+}

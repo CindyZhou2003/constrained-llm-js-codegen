@@ -1,0 +1,22 @@
+{
+  "name": "mbpp_281_all_unique",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check if the elements of a given array are unique or not.\nfunction all_unique(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_281_all_unique.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = all_unique;\n  assert.deepEqual(candidate([1, 2, 3]),true);\n  assert.deepEqual(candidate([1, 2, 1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = true;\n    for(let i = 0; i < test_list.length; i++){\n        for(let j = i+1; j < test_list.length; j++){\n            if(test_list[i] == test_list[j]){\n                result = false;\n            }\n        }\n    }\n    return result;\n}",
+    "  for(let i=0; i<test_list.length-1; i++){\n    if(test_list[i] === test_list[i+1]){\n      return false;\n    }\n  }\n  return true;\n}\n",
+    "    var unique = true;\n    for(var i = 0; i<test_list.length; i++){\n        for(var j = i+1; j<test_list.length; j++){\n            if(test_list[i] == test_list[j]){\n                unique = false;\n            }\n        }\n    }\n    return unique;\n}",
+    "    let unique = true;\n    for(let i=0; i<test_list.length; i++){\n        for(let j=0; j<i; j++){\n            if(test_list[i] === test_list[j]){\n                unique = false;\n                break;\n            }\n        }\n    }\n    return unique;\n}\n",
+    "    let result = true;\n    for(let i = 0; i<test_list.length; i++){\n        for(let j = i+1; j<test_list.length; j++){\n            if(test_list[i] == test_list[j]){\n                result = false;\n            }\n        }\n    }\n    return result;\n}\n"
+  ]
+}
