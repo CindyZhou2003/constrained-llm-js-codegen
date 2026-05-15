@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_33_sort_third",
+  "language": "js",
+  "prompt": "//This function takes an array l and returns an array l' such that\n// l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal\n// to the values of the corresponding indicies of l, but sorted.\n// >>> sort_third([1, 2, 3])\n// [1, 2, 3]\n// >>> sort_third([5, 6, 3, 4, 8, 9, 2])\n// [2, 6, 3, 4, 8, 9, 5]\nfunction sort_third(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_33_sort_third.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_third;\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2]),[2, 6, 3, 4, 8, 9, 5]);\n  assert.deepEqual(candidate([5, 8, 3, 4, 6, 9, 2]),[2, 8, 3, 4, 6, 9, 5]);\n  assert.deepEqual(candidate([5, 6, 9, 4, 8, 3, 2]),[2, 6, 9, 4, 8, 3, 5]);\n  assert.deepEqual(candidate([5, 6, 3, 4, 8, 9, 2, 1]),[2, 6, 3, 4, 8, 9, 5, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let l_prime = [...l];\n    for(let i=0; i<l_prime.length; i+=3){\n        l_prime.splice(i, 1, ...l_prime.splice(i, 1).sort((a, b) => a - b));\n    }\n    return l_prime;\n}\n",
+    "    var result = [];\n    for(var i = 0; i < l.length; i++){\n        if(i % 3 !== 0){\n            result.push(l[i]);\n        } else{\n            result.push(l[i]);\n            result.sort();\n        }\n    }\n    return result;\n}\n",
+    "    // Create a copy of the array to avoid modifying the original\n    let l_prime = l.slice();\n    // Find the indices that are divisible by three\n    let divisible_by_three_indices = l_prime.filter((_, index) => index % 3 === 0);\n    // Sort the values at the indices that are divisible by three\n    divisible_by_three_indices.sort((a, b) => a - b);\n    // Replace the values at the indices that are divisible by three with the sorted values\n    divisible_by_three_indices.forEach((value, index) => {\n        l_prime[index * 3] = value;\n    });\n    return l_prime;\n}\n",
+    "    var l_prime = [];\n    var sort_index = 0;\n    var index = 0;\n    while(index < l.length){\n        if(index % 3 === 0){\n            l_prime.push(l[index]);\n        } else {\n            l_prime.push(l[index]);\n            l_prime[sort_index] = l[index];\n            sort_index++;\n        }\n        index++;\n    }\n    return l_prime;\n}\n",
+    "    let l_prime = l.slice();\n    let indices = [];\n    for(let i = 0; i < l.length; i++){\n        if(i % 3 === 0){\n            indices.push(i);\n        }\n    }\n    indices.sort((a, b) => l[a] - l[b]);\n    for(let i = 0; i < indices.length; i++){\n        l_prime[indices[i]] = l[indices[i]];\n    }\n    return l_prime;\n}\n"
+  ]
+}

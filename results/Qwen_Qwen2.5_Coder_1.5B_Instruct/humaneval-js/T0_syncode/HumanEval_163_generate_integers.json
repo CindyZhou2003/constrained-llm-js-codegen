@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_163_generate_integers",
+  "language": "js",
+  "prompt": "//Given two positive integers a and b, return the even digits between a\n// and b, in ascending order.\n// For example:\n// >>> generate_integers(2, 8)\n// [2, 4, 6, 8]\n// >>> generate_integers(8, 2)\n// [2, 4, 6, 8]\n// >>> generate_integers(10, 14)\n// []\nfunction generate_integers(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_163_generate_integers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = generate_integers;\n  assert.deepEqual(candidate(2, 10),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(10, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(132, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(17, 89),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        let str = i.toString();\n        for(let j = 0; j < str.length; j++){\n            if(str[j] % 2 === 0){\n                arr.push(str[j]);\n            }\n        }\n    }\n    return arr.sort((a, b) => a - b);\n}\n"
+  ]
+}

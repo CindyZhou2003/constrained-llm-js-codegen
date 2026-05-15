@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_49_modp",
+  "language": "js",
+  "prompt": "//Return 2^n modulo p (be aware of numerics).\n// >>> modp(3, 5)\n// 3\n// >>> modp(1101, 101)\n// 2\n// >>> modp(0, 101)\n// 1\n// >>> modp(3, 11)\n// 8\n// >>> modp(100, 101)\n// 1\nfunction modp(n, p){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_49_modp.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = modp;\n  assert.deepEqual(candidate(3, 5),3);\n  assert.deepEqual(candidate(1101, 101),2);\n  assert.deepEqual(candidate(0, 101),1);\n  assert.deepEqual(candidate(3, 11),8);\n  assert.deepEqual(candidate(100, 101),1);\n  assert.deepEqual(candidate(30, 5),4);\n  assert.deepEqual(candidate(31, 5),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var result = 1;\n  while(n > 0){\n    if(n % 2 == 1){\n      result = (result * n) % p;\n    }\n    n = Math.floor(n / 2);\n    n = n % p;\n  }\n  return result;\n}// Write a function that takes a number n and a prime number p, and returns the result of n^n modulo p.",
+    "    return Math.pow(n, p) % p;\n}\n",
+    "  var result = 1;\n  for(var i = 0; i < n; i++){\n    result = (result * n) % p;\n  }\n  return result;\n}// Write a function that takes a number and a base and returns the number in the base.",
+    "    var result = 1;\n    var base = n;\n\n    while (base > 0) {\n        if (base % 2 == 1) {\n            result = (result * base) % p;\n        }\n        base = Math.floor(base / 2);\n        base = base % p;\n    }\n\n    return result;\n}\n",
+    "    var result = 1;\n    for(var i = 0; i < n; i++){\n        result = (result * n) % p;\n    }\n    return result;\n}//Test the function"
+  ]
+}

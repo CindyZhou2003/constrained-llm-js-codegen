@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_20_find_closest_elements",
+  "language": "js",
+  "prompt": "//From a supplied array of numbers (of length at least two) select and return two that are the closest to each\n// other and return them in order (smaller number, larger number).\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n// [2.0, 2.2]\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n// [2.0, 2.0]\nfunction find_closest_elements(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_20_find_closest_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_closest_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]),[3.9, 4.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0]),[5.0, 5.9]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]),[2.0, 2.2]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]),[2.0, 2.0]);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1]),[2.2, 3.1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    numbers.sort((a, b) => a \u00a0=Options:\nA. 1.0, 2.0\nB. 2.0, 2.2\nC. 1.0, 2.2\nD. 2.0, 2.0",
+    "\n    numbers.sort((a, b) => a                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ",
+    "\n    numbers.sort((a, b) => a \u00a0=\u6709\u54ea\u4e9b\u7f16\u7a0b\u8bed\u8a00\u53ef\u4ee5\u7528\u6765\u5b9e\u73b0\u8fd9\u4e2a\u529f\u80fd\uff1f"
+  ]
+}

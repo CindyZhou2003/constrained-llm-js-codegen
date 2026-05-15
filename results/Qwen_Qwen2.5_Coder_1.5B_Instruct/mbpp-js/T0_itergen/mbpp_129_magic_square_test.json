@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var sum = 0;\n    var magic_sum = 0;\n    var magic_sum2 = 0;\n    var magic_sum3 = 0;\n    var magic_sum4 = 0;\n    var magic_sum5 = 0;\n    var magic_sum6 = 0;\n    var magic_sum7 = 0;\n    var magic_sum8 = 0;\n    var magic_sum9 = 0;\n    var magic_sum10 = 0;\n    var magic_sum11 = 0;\n    var magic_sum12 = 0;\n    var magic_sum13 = 0;\n    var magic_sum14 = 0;\n    var magic_sum15 = 0;\n    var magic_sum16 = 0;\n    var magic_sum17 = 0;\n    var magic_sum18 = 0;\n    var magic_sum19 = 0;\n    var magic_sum20 = 0;\n    var magic_sum21 = 0;\n    var magic_sum22 = 0;\n    var magic_sum23 = 0;\n    var magic_sum24 = 0;\n    var magic_sum25 = 0;\n    var magic_sum26 = 0;\n    var magic_sum27 = 0;\n    var magic_sum28 = 0;\n    var magic_sum29 = 0;\n    var magic_sum30 = 0;\n    var magic_sum31 = 0;\n    var magic_sum32 = 0;\n    var magic_sum33 = 0;\n    var magic_sum34 = 0;\n    var magic_sum35 = 0;\n    var magic_sum36 = 0;\n    var magic_sum37 = 0;\n    var magic_sum38 = 0;\n    var magic_sum39 = 0;\n    var magic_sum40 = 0;\n    var magic_sum41 = 0;\n    var magic_sum42 = 0;\n    var magic_sum43 = 0;\n    var magic"
+  ]
+}

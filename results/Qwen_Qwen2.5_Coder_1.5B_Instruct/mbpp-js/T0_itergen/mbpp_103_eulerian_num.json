@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_103_eulerian_num",
+  "language": "js",
+  "prompt": "//Write a function to find the Eulerian number a(n, m).\nfunction eulerian_num(n, m){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_103_eulerian_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = eulerian_num;\n  assert.deepEqual(candidate(3, 1),4);\n  assert.deepEqual(candidate(4, 1),11);\n  assert.deepEqual(candidate(5, 3),26);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n < m){\n        return 0;\n    }\n    if(n == m){\n        return 1;\n    }\n    return (n - m) * eulerian_num(n - 1, m) + eulerian_num(n - 1, m - 1);\n}\n"
+  ]
+}

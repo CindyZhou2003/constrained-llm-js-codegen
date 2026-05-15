@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_111_histogram",
+  "language": "js",
+  "prompt": "//Given a string representing a space separated lowercase letters, return an object\n// of the letter with the most repetition and containing the corresponding count.\n// If several letters have the same occurrence, return all of them.\n// Example:\n// >>> histogram(\"a b c\")\n// {\"a\": 1, \"b\": 1, \"c\": 1}\n// >>> histogram(\"a b b a\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"a b c a b\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"b b b b a\")\n// {\"b\": 4}\n// >>> histogram(\"\")\n// {}\nfunction histogram(test){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_111_histogram.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = histogram;\n  assert.deepEqual(candidate(\"a b b a\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c a b\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c d g\"),{\"a\": 1, \"b\": 1, \"c\": 1, \"d\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"b b b b a\"),{\"b\": 4});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"\"),{});\n  assert.deepEqual(candidate(\"a\"),{\"a\": 1});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let obj = {};\n    let maxCount = 0;\n    let result = {};\n\n    test.split(' ').forEachletter => {\n        if (obj[Letter]) {\n            obj[Letter]++;\n        } else {\n            obj[Letter] = 1;\n        }\n\n        if (obj[Letter] > maxCount) {\n            maxCount = obj[Letter];\n            result = {};\n            result[letter] = maxCount;\n        } else if (obj[Letter] === maxCount) {\n            result[letter] = maxCount;\n        }\n    });\n\n    return result;\n}",
+    "\n  var obj = {};\n  var max = 0;\n  var result = {};\n\n  test.split(' ').forEachLetter => {\n    if (obj[Letter]) {\n      obj[Letter]++;\n    } else {\n      obj[Letter] = 1;\n    }\n    if (obj[Letter] > max) {\n      max = obj[Letter];\n    }\n  });\n\n  for (var letter in obj) {\n    if (obj[letter] === max) {\n      result[letter] = obj[letter];\n    }\n  }\n\n  return result;\n}",
+    "\n  let obj = {};\n  let maxCount = 0;\n  let result = {};\n\n  test.split(' ').forEachletter => {\n    if (obj[`${letter}`]) {\n      obj[`${letter}`]++;\n    } else {\n      obj[`${letter}`] = 1;\n    }\n\n    if (obj[`${letter}`] > maxCount) {\n      maxCount = obj[`${letter}`];\n      result = {};\n      result[`${letter}`] = maxCount;\n    } else if (obj[`${letter}`] === maxCount) {\n      result[`${letter}`] = maxCount;\n    }\n  });\n\n  return result;\n}"
+  ]
+}

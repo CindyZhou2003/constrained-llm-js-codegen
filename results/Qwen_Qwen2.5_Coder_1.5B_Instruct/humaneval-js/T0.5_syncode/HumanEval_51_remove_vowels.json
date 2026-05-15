@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_51_remove_vowels",
+  "language": "js",
+  "prompt": "//remove_vowels is a function that takes string and returns string without vowels.\n// >>> remove_vowels(\"\")\n// \"\"\n// >>> remove_vowels(\"abcdef\")\n// \"bcdf\"\n// >>> remove_vowels(\"aaaaa\")\n// \"\"\n// >>> remove_vowels(\"aaBAA\")\n// \"B\"\n// >>> remove_vowels(\"zbcd\")\n// \"zbcd\"\nfunction remove_vowels(text){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_51_remove_vowels.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_vowels;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"abcdef\nghijklm\"),\"bcdf\nghjklm\");\n  assert.deepEqual(candidate(\"fedcba\"),\"fdcb\");\n  assert.deepEqual(candidate(\"eeeee\"),\"\");\n  assert.deepEqual(candidate(\"acBAA\"),\"cB\");\n  assert.deepEqual(candidate(\"EcBOO\"),\"cB\");\n  assert.deepEqual(candidate(\"ybcd\"),\"ybcd\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // create a string with all vowels\n    let vowels = \"aeiouAEIOU\";\n    // create an empty string to store the result\n    let result = \"\";\n    // loop through each character in the input string\n    for(let char of text){\n        // if the character is not a vowel, add it to the result string\n        if(!vowels.includes(char)){\n            result += char;\n        }\n    }\n    // return the result string\n    return result;\n}\n",
+    "    let vowels = 'aeiouAEIOU';\n    return text.split('').filter(char => !vowels.includes(char)).join('');\n}\n",
+    "    // create a string of vowels\n    var vowels = \"aeiouAEIOU\";\n    // create an empty string to hold the result\n    var result = \"\";\n    // loop through each character in the input string\n    for(var i=0; i<text.length; i++){\n        // if the character is not a vowel, add it to the result string\n        if(vowels.indexOf(text[i]) === -1){\n            result += text[i];\n        }\n    }\n    // return the result string\n    return result;\n}",
+    "    if(text === \"\"){\n        return \"\";\n    }\n    let vowels = \"aeiouAEIOU\";\n    let result = \"\";\n    for(let i = 0; i < text.length; i++){\n        if(!vowels.includes(text[i])){\n            result += text[i];\n        }\n    }\n    return result;\n}\n",
+    "    let vowels = 'aeiouAEIOU';\n    let result = '';\n\n    for (let char of text) {\n        if (!vowels.includes(char)) {\n            result += char;\n        }\n    }\n\n    return result;\n}\n"
+  ]
+}

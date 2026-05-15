@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_39_prime_fib",
+  "language": "js",
+  "prompt": "//prime_fib returns n-th number that is a Fibonacci number and it's also prime.\n// >>> prime_fib(1)\n// 2\n// >>> prime_fib(2)\n// 3\n// >>> prime_fib(3)\n// 5\n// >>> prime_fib(4)\n// 13\n// >>> prime_fib(5)\n// 89\nfunction prime_fib(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_39_prime_fib.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = prime_fib;\n  assert.deepEqual(candidate(1),2);\n  assert.deepEqual(candidate(2),3);\n  assert.deepEqual(candidate(3),5);\n  assert.deepEqual(candidate(4),13);\n  assert.deepEqual(candidate(5),89);\n  assert.deepEqual(candidate(6),233);\n  assert.deepEqual(candidate(7),1597);\n  assert.deepEqual(candidate(8),28657);\n  assert.deepEqual(candidate(9),514229);\n  assert.deepEqual(candidate(10),433494437);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let fib = [0, 1];\n    let i = 2;\n    while(i <= n){\n        fib[i] = fib[i-1] + fib[i-2];\n        if(isPrime(fib[i])){\n            return fib[i];\n        }\n        i++;\n    }\n}\n",
+    "    let fib = [0, 1];\n    let prime = 0;\n    while(fib.length <= n){\n        if(isPrime(fib[fib.length-1])){\n            prime = fib[fib.length-1];\n        }\n        fib.push(fib[fib.length-1] + fib[fib.length-2]);\n    }\n    return prime;\n}\n",
+    "    let fib = [0,1];\n    let count = 2;\n    while(count < n){\n        let next = fib[fib.length - 1] + fib[fib.length - 2];\n        fib.push(next);\n        if(isPrime(next)){\n            count++;\n        }\n    }\n    return fib[fib.length - 1];\n}\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = n.toString();\n    let len = str.length;\n    let max = 0;\n    let index = 0;\n    for(let i = len - 1; i >= 0; i--){\n        if(str[i] > max){\n            max = str[i];\n            index = i;\n        }\n    }\n    if(index == 0){\n        return -1;\n    }\n    let temp = str[index];\n    str[index] = str[len - 1];\n    str[len - 1] = temp;\n    let left = str.slice(0, index);\n    let right = str.slice(index + 1);\n    let sorted_right = right.split('').sort().join('');\n    return parseInt(left + sorted_right);\n}\n"
+  ]
+}

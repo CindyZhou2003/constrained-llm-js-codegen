@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_0_has_close_elements",
+  "language": "js",
+  "prompt": "//Check if in given array of numbers, are any two numbers closer to each other than\n// given threshold.\n// >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n// false\n// >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n// true\nfunction has_close_elements(numbers, threshold){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_0_has_close_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = has_close_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.3),true);\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2], 0.05),false);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.95),true);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0], 0.8),false);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.1),true);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1], 1.0),true);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1], 0.5),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Sort the numbers array\n    numbers.sort(function(a, b){\n        return a - b;\n    });\n    // Loop through the sorted numbers array\n    for(let i = 0; i < numbers.length - 1; i++){\n        // Check if the difference between the current number and the next number is less than the threshold\n        if(numbers[i + 1] - numbers[i] < threshold){\n            // If it is, return true\n            return true;\n        }\n    }\n    // If no two numbers are closer than the threshold, return false\n    return false;\n}",
+    "    //sort the array\n    var sortedNumbers = numbers.sort(function(a,b){return a-b;});\n    //loop through the sorted array\n    for(var i = 0; i < sortedNumbers.length - 1; i++){\n        //if the difference between two adjacent numbers is less than the threshold, return true\n        if(sortedNumbers[i+1] - sortedNumbers[i] < threshold){\n            return true;\n        }\n    }\n    //if no two adjacent numbers are closer than the threshold, return false\n    return false;\n}\n",
+    "    // sort the array\n    numbers.sort(function(a,b){\n        return a-b;\n    });\n\n    // loop through the array\n    for(let i=0; i<numbers.length-1; i++){\n        if(numbers[i+1]-numbers[i] < threshold){\n            return true;\n        }\n    }\n\n    return false;\n}\n",
+    "    numbers.sort(function(a, b){return a - b;});\n    for(var i = 0; i < numbers.length - 1; i++){\n        if(numbers[i + 1] - numbers[i] < threshold){\n            return true;\n        }\n    }\n    return false;\n}\n",
+    "    for(let i=0; i<numbers.length; i++){\n        for(let j=i+1; j<numbers.length; j++){\n            if(Math.abs(numbers[i] - numbers[j]) < threshold){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n"
+  ]
+}

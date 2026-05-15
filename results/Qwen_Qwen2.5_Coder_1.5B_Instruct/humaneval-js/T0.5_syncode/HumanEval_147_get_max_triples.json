@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_147_get_max_triples",
+  "language": "js",
+  "prompt": "//You are given a positive integer n. You have to create an integer array a of length n.\n// For each i (1 \u00e2\u2030\u00a4 i \u00e2\u2030\u00a4 n), the value of a[i] = i * i - i + 1.\n// Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, \n// and a[i] + a[j] + a[k] is a multiple of 3.\n// Example :\n// >>> get_max_triples(5)\n// 1\n// Explanation: \n// a = [1, 3, 7, 13, 21]\n// The only valid triple is (1, 7, 13).\nfunction get_max_triples(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_147_get_max_triples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_max_triples;\n  assert.deepEqual(candidate(5),1);\n  assert.deepEqual(candidate(6),4);\n  assert.deepEqual(candidate(10),36);\n  assert.deepEqual(candidate(100),53361);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var a = [];\n    for(var i=1; i<=n; i++){\n        a.push(i*i-i+1);\n    }\n    var count = 0;\n    for(var i=0; i<a.length-2; i++){\n        for(var j=i+1; j<a.length-1; j++){\n            for(var k=j+1; k<a.length; k++){\n                if((a[i]+a[j]+a[k])%3==0){\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}",
+    "    let arr = [];\n    for(let i = 1; i <= n; i++){\n        arr.push(i*i - i + 1);\n    }\n    let count = 0;\n    for(let i = 0; i < n; i++){\n        for(let j = i+1; j < n; j++){\n            for(let k = j+1; k < n; k++){\n                if((arr[i]+arr[j]+arr[k])%3 === 0){\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}",
+    "    let arr = new Array(n).fill(0);\n    for(let i = 1; i <= n; i++){\n        arr[i-1] = i * i - i + 1;\n    }\n    let count = 0;\n    let mod1 = 0;\n    let mod2 = 0;\n    let mod3 = 0;\n    for(let i = 0; i < n; i++){\n        mod1 += arr[i] % 3 === 0 ? 1 : 0;\n        mod2 += arr[i] % 3 === 1 ? 1 : 0;\n        mod3 += arr[i] % 3 === 2 ? 1 : 0;\n    }\n    for(let i = 0; i < n; i++){\n        let rem1 = arr[i] % 3;\n        for(let j = i+1; j < n; j++){\n            let rem2 = arr[j] % 3;\n            if(rem1 === rem2){\n                count += mod1 * mod2;\n            }else{\n                count += mod1 * mod3 + mod2 * mod3;\n            }\n        }\n    }\n    return count;\n}\n",
+    "    let arr = [];\n    for(let i = 1; i <= n; i++){\n        arr.push(i * i - i + 1);\n    }\n    let count = 0;\n    for(let i = 0; i < arr.length; i++){\n        for(let j = i + 1; j < arr.length; j++){\n            for(let k = j + 1; k < arr.length; k++){\n                if((arr[i] + arr[j] + arr[k]) % 3 === 0){\n                    count++;\n                }\n            }\n        }\n    }\n    return count;\n}\n",
+    "    let arr = []\n    for(let i=1;i<=n;i++){\n        arr.push(i*i-i+1)\n    }\n    let count = 0\n    for(let i=0;i<arr.length;i++){\n        for(let j=i+1;j<arr.length;j++){\n            for(let k=j+1;k<arr.length;k++){\n                if((arr[i]+arr[j]+arr[k])%3==0){\n                    count++\n                }\n            }\n        }\n    }\n    return count\n}\n"
+  ]
+}

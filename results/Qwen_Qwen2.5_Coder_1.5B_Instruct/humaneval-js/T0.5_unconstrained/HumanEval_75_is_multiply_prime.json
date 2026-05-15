@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_75_is_multiply_prime",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the given number is the multiplication of 3 prime numbers\n// and false otherwise.\n// Knowing that (a) is less then 100. \n// Example:\n// >>> is_multiply_prime(30)\n// true\n// 30 = 2 * 3 * 5\nfunction is_multiply_prime(a){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_75_is_multiply_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_multiply_prime;\n  assert.deepEqual(candidate(5),false);\n  assert.deepEqual(candidate(30),true);\n  assert.deepEqual(candidate(8),true);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(125),true);\n  assert.deepEqual(candidate(105),true);\n  assert.deepEqual(candidate(126),false);\n  assert.deepEqual(candidate(729),false);\n  assert.deepEqual(candidate(891),false);\n  assert.deepEqual(candidate(1001),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var count = 0;\n  for(var i = 2; i <= a; i++){\n    if(a % i === 0 && isPrime(i)){\n      count++;\n    }\n  }\n  return count === 3;\n}\n",
+    "    //write your code here\n    let primeFactors = [];\n    for(let i = 2; i <= a; i++){\n        if(a % i === 0){\n            primeFactors.push(i);\n            a = a / i;\n        }\n    }\n    let count = 0;\n    for(let i = 0; i < primeFactors.length; i++){\n        if(primeFactors[i] % 2 !== 0 && primeFactors[i] % 3 !== 0){\n            count++;\n        }\n    }\n    return count === 3;\n}",
+    "    let prime = 0;\n    for(let i = 2; i <= a; i++){\n        if(a % i === 0){\n            prime++;\n            if(prime > 3){\n                break;\n            }\n        }\n    }\n    return prime === 3;\n}\n",
+    "    let count = 0;\n    if(a<100){\n        for(let i=2;i<a;i++){\n            if(a%i===0){\n                count++;\n            }\n        }\n        if(count===2){\n            for(let j=2;j<=a;j++){\n                if(a%j===0){\n                    if(j===2||j===3||j===5){\n                        count++;\n                    }\n                }\n            }\n            if(count===3){\n                return true;\n            }\n        }\n    }\n    return false;\n}",
+    "    let count = 0;\n    for(let i = 2; i <= a; i++){\n        if(a % i === 0){\n            count++;\n            if(count > 3){\n                return false;\n            }\n        }\n    }\n    if(count === 3){\n        return true;\n    }\n    return false;\n}"
+  ]
+}

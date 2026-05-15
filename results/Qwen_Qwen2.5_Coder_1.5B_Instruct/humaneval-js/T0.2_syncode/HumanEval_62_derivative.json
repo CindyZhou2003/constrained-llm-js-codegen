@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_62_derivative",
+  "language": "js",
+  "prompt": "//xs represent coefficients of a polynomial.\n// xs[0] + xs[1] * x + xs[2] * x^2 + ....\n// Return derivative of this polynomial in the same form.\n// >>> derivative([3, 1, 2, 4, 5])\n// [1, 4, 12, 20]\n// >>> derivative([1, 2, 3])\n// [2, 6]\nfunction derivative(xs){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_62_derivative.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = derivative;\n  assert.deepEqual(candidate([3, 1, 2, 4, 5]),[1, 4, 12, 20]);\n  assert.deepEqual(candidate([1, 2, 3]),[2, 6]);\n  assert.deepEqual(candidate([3, 2, 1]),[2, 2]);\n  assert.deepEqual(candidate([3, 2, 1, 0, 4]),[2, 2, 0, 16]);\n  assert.deepEqual(candidate([1]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return xs.map((x, i) => x * i).slice(1);\n}\n",
+    "    return xs.map((x, i) => x * i).slice(1);\n}// Write a function that takes an array of numbers and returns a new array with the same numbers, but with each number multiplied by its index in the array. For example, if the input array is [1, 2, 3], the output array should be [0, 2, 6].\n",
+    "    let result = [];\n    for(let i = 1; i < xs.length; i++){\n        result.push(xs[i] * i);\n    }\n    return result;\n}// Write a function that takes an array of numbers and returns a new array with the derivative of the polynomial represented by the input array. The derivative of a polynomial is the polynomial obtained by differentiating each term of the original polynomial. The derivative of a term a_n x^n is a_n x^(n-1). The derivative of a constant is 0. For example, the derivative of 3x^2 + 1x + 2 is 6x + 1. The derivative of 1x + 2 is 2. The derivative of 2 is 0. The derivative of 0 is 0. The derivative of 3x^3 + 2x^2 + 4x + 5 is 9x^2 + 4x + 4. The derivative of 1x^4 + 2x^3 + 3x^2 + 4x + 5 is 16x^3 + 6x^2 + 8x + 5. The derivative of 2x^5 + 3x^4 + 4x^3 + 5x^2 + 6x + 7 is 30x^4 + 12x^3 + 24x^2 + 40x + 60. The derivative of 3x^6 + 4x^5 + 5x^4 + 6x^3 + 7x^2 + 8x + 9 is 180x^5 + 60x^4 + 24x^3 + 80x^2 + 120x + 240. The derivative of 4x^7 + 5x^6 + 6x^5 + 7x^4 + 8x^3 + 9x^2 + 10x + 11 is 252x^6 + 150x^5 + 75x^4 + 30x^3 + 10x^2 + 20x + 30. The derivative of 5x^8 + 6x^7 + 7x^6 +"
+  ]
+}

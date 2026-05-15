@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_83_starts_one_ends",
+  "language": "js",
+  "prompt": "//Given a positive integer n, return the count of the numbers of n-digit\n// positive integers that start or end with 1.\nfunction starts_one_ends(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_83_starts_one_ends.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = starts_one_ends;\n  assert.deepEqual(candidate(1),1);\n  assert.deepEqual(candidate(2),18);\n  assert.deepEqual(candidate(3),180);\n  assert.deepEqual(candidate(4),1800);\n  assert.deepEqual(candidate(5),18000);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(n==1){\n        return 1;\n    }\n    return 18*(10**(n-2));\n}\n",
+    "    if(n===1){\n        return 1;\n    }\n    return 2*9**(n-1);\n}",
+    "  //If the number of digits is 1, return 1\n  if(n === 1){\n    return 1;\n  }else{\n    //otherwise, return 10^(n-1) - 9^(n-1)\n    return Math.pow(10, n-1) - Math.pow(9, n-1);\n  }\n}",
+    "    if(n==1){\n        return 1\n    }\n    return 2*Math.pow(10,n-1)-Math.pow(10,n-2)\n    //Math.pow(10,n-1) gives the total number of n-digit positive integers, \n    //Math.pow(10,n-2) gives the number of n-digit positive integers that start or end with 0.\n    //So we subtract the latter from the former to get the number of n-digit positive integers that start or end with 1.\n}//Given a positive integer n, return the count of the numbers of n-digit",
+    "    if(n === 1) return 1;\n    return 2 * Math.pow(10, n - 2);\n}"
+  ]
+}

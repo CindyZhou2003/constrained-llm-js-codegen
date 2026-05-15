@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_124_valid_date",
+  "language": "js",
+  "prompt": "//You have to write a function which validates a given date string and\n// returns true if the date is valid otherwise false.\n// The date is valid if all of the following rules are satisfied:\n// 1. The date string is not empty.\n// 2. The number of days is not less than 1 or higher than 31 days for months 1,3,5,7,8,10,12. And the number of days is not less than 1 or higher than 30 days for months 4,6,9,11. And, the number of days is not less than 1 or higher than 29 for the month 2.\n// 3. The months should not be less than 1 or higher than 12.\n// 4. The date should be in the format: mm-dd-yyyy\n// >>> valid_date(\"03-11-2000\")\n// true\n// >>> valid_date(\"15-01-2012\")\n// false\n// >>> valid_date(\"04-0-2040\")\n// false\n// >>> valid_date(\"06-04-2020\")\n// true\n// >>> valid_date(\"06/04/2020\")\n// false\nfunction valid_date(date){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_124_valid_date.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = valid_date;\n  assert.deepEqual(candidate(\"03-11-2000\"),true);\n  assert.deepEqual(candidate(\"15-01-2012\"),false);\n  assert.deepEqual(candidate(\"04-0-2040\"),false);\n  assert.deepEqual(candidate(\"06-04-2020\"),true);\n  assert.deepEqual(candidate(\"01-01-2007\"),true);\n  assert.deepEqual(candidate(\"03-32-2011\"),false);\n  assert.deepEqual(candidate(\"\"),false);\n  assert.deepEqual(candidate(\"04-31-3000\"),false);\n  assert.deepEqual(candidate(\"06-06-2005\"),true);\n  assert.deepEqual(candidate(\"21-31-2000\"),false);\n  assert.deepEqual(candidate(\"04-12-2003\"),true);\n  assert.deepEqual(candidate(\"04122003\"),false);\n  assert.deepEqual(candidate(\"20030412\"),false);\n  assert.deepEqual(candidate(\"2003-04\"),false);\n  assert.deepEqual(candidate(\"2003-04-12\"),false);\n  assert.deepEqual(candidate(\"04-2003\"),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // your code here\n}\n\nmodule.exports = valid_date;",
+    "    let regex = /^\\d{2}-\\d{2}-\\d{4}$/;\n    let match = date.match(regex);\n    if(!match) return false;\n    let [month, day, year] = match[0].split('-');\n    let dayOfMonth = 31;\n    if(month == 4 || month == 6 || month == 9 || month == 11) dayOfMonth = 30;\n    if(month == 2) dayOfMonth = 29;\n    if(parseInt(month) < 1 || parseInt(month) > 12 || parseInt(day) < 1 || parseInt(day) > dayOfMonth) return false;\n    return true;\n}",
+    "    let month = date.substring(0,2)\n    let day = date.substring(3,5)\n    let year = date.substring(6,10)\n    if(month < 1 || month > 12){\n        return false\n    }\n    if(day < 1 || day > 31){\n        return false\n    }\n    if(month == 2 && day > 29){\n        return false\n    }\n    if(month == 4 || month == 6 || month == 9 || month == 11 && day > 30){\n        return false\n    }\n    return true\n}",
+    "    let d = date.split('-');\n    let month = d[0];\n    let day = d[1];\n    let year = d[2];\n    if(month < 1 || month > 12){\n        return false;\n    }\n    if(day < 1 || day > 31){\n        return false;\n    }\n    if(day > 30 && month == 4 || month == 6 || month == 9 || month == 11){\n        return false;\n    }\n    if(day > 29 && month == 2){\n        return false;\n    }\n    return true;\n}\n",
+    "    if(date === \"\"){\n        return false;\n    }\n    let arr = date.split('-');\n    if(arr.length !== 3){\n        return false;\n    }\n    let month = parseInt(arr[0]);\n    let day = parseInt(arr[1]);\n    let year = parseInt(arr[2]);\n    if(month < 1 || month > 12){\n        return false;\n    }\n    if(day < 1 || day > 31){\n        return false;\n    }\n    if(day === 31 && (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12)){\n        return false;\n    }\n    if(day === 30 && (month === 4 || month === 6 || month === 9 || month === 11)){\n        return false;\n    }\n    if(day === 29 && month === 2){\n        if(year % 4 !== 0){\n            return false;\n        }\n        if(year % 100 !== 0){\n            return true;\n        }\n        if(year % 400 !== 0){\n            return false;\n        }\n        return true;\n    }\n    return true;\n}"
+  ]
+}

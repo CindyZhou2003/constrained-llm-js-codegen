@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_34_unique",
+  "language": "js",
+  "prompt": "//Return sorted unique elements in an array\n// >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])\n// [0, 2, 3, 5, 9, 123]\nfunction unique(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_34_unique.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique;\n  assert.deepEqual(candidate([5, 3, 5, 2, 3, 3, 9, 0, 123]),[0, 2, 3, 5, 9, 123]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    return Array.from(new Set(l));\n}\n",
+    "    //remove duplicate\n    var unique = l.filter(function(item, pos) {\n        return l.indexOf(item) === pos;\n    });\n\n    //sort unique elements\n    unique.sort(function(a, b) {\n        return a - b;\n    });\n\n    return unique;\n}\n",
+    "    return l.filter((item, index) => l.indexOf(item) === index);\n}\n",
+    "    let unique = []\n    for(let i=0;i<l.length;i++){\n        if(unique.indexOf(l[i]) === -1){\n            unique.push(l[i])\n        }\n    }\n    return unique\n}//Return sorted unique elements in an array",
+    "    return l.filter((a, i) => l.indexOf(a) === i);\n}\n\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "HumanEval_13_greatest_common_divisor",
+  "language": "js",
+  "prompt": "//Return a greatest common divisor of two integers a and b\n// >>> greatest_common_divisor(3, 5)\n// 1\n// >>> greatest_common_divisor(25, 15)\n// 5\nfunction greatest_common_divisor(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_13_greatest_common_divisor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = greatest_common_divisor;\n  assert.deepEqual(candidate(3, 7),1);\n  assert.deepEqual(candidate(10, 15),5);\n  assert.deepEqual(candidate(49, 14),7);\n  assert.deepEqual(candidate(144, 60),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(b === 0){\n        return a;\n    }\n    return greatest_common_divisor(b, a % b);\n}\n\n"
+  ]
+}

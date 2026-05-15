@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_47_median",
+  "language": "js",
+  "prompt": "//Return median of elements in the array l.\n// >>> median([3, 1, 2, 4, 5])\n// 3\n// >>> median([-10, 4, 6, 1000, 10, 20])\n// 15.0\nfunction median(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_47_median.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median;\n  assert.deepEqual(candidate([3, 1, 2, 4, 5]),3);\n  assert.deepEqual(candidate([-10, 4, 6, 1000, 10, 20]),8.0);\n  assert.deepEqual(candidate([5]),5);\n  assert.deepEqual(candidate([6, 5]),5.5);\n  assert.deepEqual(candidate([8, 1, 3, 9, 9, 2, 7]),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    l.sort(function(a,b){return a-b;});\n    let mid = l.length / 2;\n    if(l.length % 2 === 0){\n        return (l[mid-1] + l[mid]) / 2;\n    } else {\n        return l[mid];\n    }\n}\n",
+    "    l.sort(function(a,b){return a-b});\n    var n = l.length;\n    if(n%2==0){\n        var mid1 = l[n/2-1];\n        var mid2 = l[n/2];\n        return (mid1+mid2)/2;\n    }else{\n        return l[n/2];\n    }\n}\n",
+    "    l.sort(function(a,b){return a-b});\n    var len = l.length;\n    if(len % 2 === 0){\n        return (l[len/2-1] + l[len/2])/2;\n    }else{\n        return l[len/2];\n    }\n}",
+    "    //sort the array\n    l.sort(function(a,b){return a-b});\n    //find the middle element\n    var mid = Math.floor(l.length/2);\n    //if the length of the array is odd, return the middle element\n    if(l.length%2 != 0){\n        return l[mid];\n    }\n    //if the length of the array is even, return the average of the two middle elements\n    else{\n        return (l[mid-1] + l[mid])/2;\n    }\n}",
+    "    let sorted = l.sort((a, b) => a - b);\n    let middle = Math.floor(sorted.length / 2);\n    if(sorted.length % 2 === 0){\n        return (sorted[middle - 1] + sorted[middle]) / 2;\n    }else{\n        return sorted[middle];\n    }\n}\n"
+  ]
+}

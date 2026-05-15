@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_148_bf",
+  "language": "js",
+  "prompt": "//There are eight planets in our solar system: the closerst to the Sun \n// is Mercury, the next one is Venus, then Earth, Mars, Jupiter, Saturn, \n// Uranus, Neptune.\n// Write a function that takes two planet names as strings planet1 and planet2. \n// The function should return an array containing all planets whose orbits are \n// located between the orbit of planet1 and the orbit of planet2, sorted by \n// the proximity to the sun. \n// The function should return an empty array if planet1 or planet2\n// are not correct planet names. \n// Examples\n// >>> bf(\"Jupiter\", \"Neptune\")\n// [\"Saturn\", \"Uranus\"]\n// >>> bf(\"Earth\", \"Mercury\")\n// \"Venus\"\n// >>> bf(\"Mercury\", \"Uranus\")\n// [\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"]\nfunction bf(planet1, planet2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_148_bf.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bf;\n  assert.deepEqual(candidate(\"Jupiter\", \"Neptune\"),[\"Saturn\", \"Uranus\"]);\n  assert.deepEqual(candidate(\"Earth\", \"Mercury\"),[\"Venus\"]);\n  assert.deepEqual(candidate(\"Mercury\", \"Uranus\"),[\"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"]);\n  assert.deepEqual(candidate(\"Neptune\", \"Venus\"),[\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\"]);\n  assert.deepEqual(candidate(\"Earth\", \"Earth\"),[]);\n  assert.deepEqual(candidate(\"Mars\", \"Earth\"),[]);\n  assert.deepEqual(candidate(\"Jupiter\", \"Makemake\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"];\n    let index1 = planets.indexOf(planet1);\n    let index2 = planets.indexOf(planet2);\n    if (index1 === -1 || index2 === -1) {\n        return [];\n    }\n    if (index1 > index2) {\n        let temp = index1;\n        index1 = index2;\n        index2 = temp;\n    }\n    let result = planets.slice(index1 + 1, index2);\n    return result;\n}",
+    "    let planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"];\n    let index1 = planets.indexOf(planet1);\n    let index2 = planets.indexOf(planet2);\n    if(index1 === -1 || index2 === -1){\n        return [];\n    }\n    if(index1 > index2){\n        let temp = index1;\n        index1 = index2;\n        index2 = temp;\n    }\n    return planets.slice(index1+1, index2);\n}\n",
+    "    let planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"];\n    let index1 = planets.indexOf(planet1);\n    let index2 = planets.indexOf(planet2);\n    if(index1 === -1 || index2 === -1){\n        return [];\n    }\n    if(index1 > index2){\n        [index1, index2] = [index2, index1];\n    }\n    return planets.slice(index1 + 1, index2);\n}",
+    "    let planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"];\n    let start = planets.indexOf(planet1);\n    let end = planets.indexOf(planet2);\n    let result = [];\n\n    if(start === -1 || end === -1){\n        return [];\n    }\n\n    if(start > end){\n        let temp = start;\n        start = end;\n        end = temp;\n    }\n\n    for(let i = start + 1; i < end; i++){\n        result.push(planets[i]);\n    }\n\n    return result;\n}\n",
+    "    let planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"];\n    let planetArray = [];\n    for(let i = 0; i < planets.length; i++){\n        if(planets[i] === planet1 || planets[i] === planet2){\n            for(let j = 0; j < planets.length; j++){\n                if(planets[j] > planets[i] && planets[j] < planets[ planets.length - 1]){\n                    planetArray.push(planets[j]);\n                }\n            }\n        }\n    }\n    return planetArray;\n}"
+  ]
+}

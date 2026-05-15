@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_163_generate_integers",
+  "language": "js",
+  "prompt": "//Given two positive integers a and b, return the even digits between a\n// and b, in ascending order.\n// For example:\n// >>> generate_integers(2, 8)\n// [2, 4, 6, 8]\n// >>> generate_integers(8, 2)\n// [2, 4, 6, 8]\n// >>> generate_integers(10, 14)\n// []\nfunction generate_integers(a, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_163_generate_integers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = generate_integers;\n  assert.deepEqual(candidate(2, 10),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(10, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(132, 2),[2, 4, 6, 8]);\n  assert.deepEqual(candidate(17, 89),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let arr = [];\n    if(b > a){\n        for(let i = a; i <= b; i++){\n            if(i % 2 == 0){\n                arr.push(i);\n            }\n        }\n    }else{\n        for(let i = b; i <= a; i++){\n            if(i % 2 == 0){\n                arr.push(i);\n            }\n        }\n    }\n    return arr;\n}\n",
+    "    let result = [];\n    for(let i = a; i <= b; i++){\n        let str = i.toString();\n        for(let j = 0; j < str.length; j++){\n            if(str[j] % 2 === 0){\n                result.push(str[j]);\n            }\n        }\n    }\n    return result.sort((a, b) => a - b);\n}// Given two positive integers a and b, return the even digits between a",
+    "    let arr = [];\n    if(a > b){\n        let temp = a;\n        a = b;\n        b = temp;\n    }\n    for(let i = a; i <= b; i++){\n        if(i % 2 === 0){\n            arr.push(i);\n        }\n    }\n    return arr;\n}\n",
+    "    let arr = [];\n    for(let i = a; i <= b; i++){\n        if(i.toString().includes('0') && i.toString().includes('2') && i.toString().includes('4') && i.toString().includes('6') && i.toString().includes('8')){\n            arr.push(i);\n        }\n    }\n    return arr;\n}\n",
+    "    let evenArray = [];\n    for(let i = a; i <= b; i++){\n        if(i % 2 === 0){\n            evenArray.push(i);\n        }\n    }\n    return evenArray.sort((a, b) => a - b);\n}// Write your code here"
+  ]
+}

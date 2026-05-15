@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_19_sort_numbers",
+  "language": "js",
+  "prompt": "//Input is a space-delimited string of numberals from 'zero' to 'nine'.\n// Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.\n// Return the string with numbers sorted from smallest to largest\n// >>> sort_numbers(\"three one five\")\n// \"one three five\"\nfunction sort_numbers(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_19_sort_numbers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_numbers;\n  assert.deepEqual(candidate(\"\"),\"\");\n  assert.deepEqual(candidate(\"three\"),\"three\");\n  assert.deepEqual(candidate(\"three five nine\"),\"three five nine\");\n  assert.deepEqual(candidate(\"five zero four seven nine eight\"),\"zero four five seven eight nine\");\n  assert.deepEqual(candidate(\"six five four three two one zero\"),\"zero one two three four five six\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var arr = numbers.split(\" \");\n    var obj = {\n        \"zero\": 0,\n        \"one\": 1,\n        \"two\": 2,\n        \"three\": 3,\n        \"four\": 4,\n        \"five\": 5,\n        \"six\": 6,\n        \"seven\": 7,\n        \"eight\": 8,\n        \"nine\": 9\n    };\n    arr.sort(function(a, b){\n        return obj[a] - obj[b];\n    });\n    return arr.join(\" \");\n}//Test cases",
+    "    var numArray = numbers.split(\" \");\n    numArray.sort(function(a,b){\n        return a-b;\n    });\n    return numArray.join(\" \");\n}// Write a function that takes a string of space-delimited numberals from 'zero' to 'nine'.",
+    "    let numberMap = {\n        zero: 0,\n        one: 1,\n        two: 2,\n        three: 3,\n        four: 4,\n        five: 5,\n        six: 6,\n        seven: 7,\n        eight: 8,\n        nine: 9\n    }\n    let numberArray = numbers.split(' ').map(num => numberMap[num])\n    numberArray.sort((a, b) => a - b)\n    return numberArray.join(' ')\n}\n",
+    "    let arr = numbers.split(' ')\n    let sorted = arr.sort(function(a, b){return a.localeCompare(b)})\n    return sorted.join(' ')\n}//Write a program that sorts a list of numbers from smallest to largest.",
+    "  var numArr = numbers.split(' ');\n  var numObj = {\n    'zero': '0',\n    'one': '1',\n    'two': '2',\n    'three': '3',\n    'four': '4',\n    'five': '5',\n    'six': '6',\n    'seven': '7',\n    'eight': '8',\n    'nine': '9'\n  };\n  var numSortArr = numArr.map(function(num) {\n    return numObj[num];\n  });\n  return numSortArr.sort().map(function(num) {\n    return numObj[num];\n  }).join(' ');\n}\n"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_108_count_nums",
+  "language": "js",
+  "prompt": "//Write a function count_nums which takes an array of integers and returns\n// the number of elements which has a sum of digits > 0.\n// If a number is negative, then its first signed digit will be negative:\n// e.g. -123 has signed digits -1, 2, and 3.\n// >>> count_nums([])\n// 0\n// >>> count_nums([-1, 11, -11])\n// 1\n// >>> count_nums([1, 1, 2])\n// 3\nfunction count_nums(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_108_count_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_nums;\n  assert.deepEqual(candidate([]),0);\n  assert.deepEqual(candidate([-1, -2, 0]),0);\n  assert.deepEqual(candidate([1, 1, 2, -2, 3, 4, 5]),6);\n  assert.deepEqual(candidate([1, 6, 9, -6, 0, 1, 5]),5);\n  assert.deepEqual(candidate([1, 100, 98, -7, 1, -1]),4);\n  assert.deepEqual(candidate([12, 23, 34, -45, -56, 0]),5);\n  assert.deepEqual(candidate([0, 1]),1);\n  assert.deepEqual(candidate([1]),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return arr.filter(num => {\n        let sum =findSumOfDigits(Math.abs(num));\n        return sum > 0;\n    }).length;\n}\n",
+    "\n    return arr.filter(num => {\n        let sum =\u5bf9\u9f50\u6587\u672c\n",
+    "\n  return arr.filter(num => {\n    let sum =Did I help you?"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_110_exchange",
+  "language": "js",
+  "prompt": "//In this problem, you will implement a function that takes two lists of numbers,\n// and determines whether it is possible to perform an exchange of elements\n// between them to make lst1 an array of only even numbers.\n// There is no limit on the number of exchanged elements between lst1 and lst2.\n// If it is possible to exchange elements between the lst1 and lst2 to make\n// all the elements of lst1 to be even, return \"YES\".\n// Otherwise, return \"NO\".\n// For example:\n// >>> exchange([1, 2, 3, 4], [1, 2, 3, 4])\n// \"YES\"\n// >>> exchange([1, 2, 3, 4], [1, 5, 3, 4])\n// \"NO\"\n// It is assumed that the input lists will be non-empty.\nfunction exchange(lst1, lst2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_110_exchange.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = exchange;\n  assert.deepEqual(candidate([1, 2, 3, 4], [1, 2, 3, 4]),\"YES\");\n  assert.deepEqual(candidate([1, 2, 3, 4], [1, 5, 3, 4]),\"NO\");\n  assert.deepEqual(candidate([1, 2, 3, 4], [2, 1, 4, 3]),\"YES\");\n  assert.deepEqual(candidate([5, 7, 3], [2, 6, 4]),\"YES\");\n  assert.deepEqual(candidate([5, 7, 3], [2, 6, 3]),\"NO\");\n  assert.deepEqual(candidate([3, 2, 6, 1, 8, 9], [3, 5, 5, 1, 1, 1]),\"NO\");\n  assert.deepEqual(candidate([100, 200], [200, 200]),\"YES\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let evenCount1 = 0;\n    let oddCount2 = 0;\n\n    // Count the number of even and odd elements in lst1 and lst2\n    for (let num of lst1) {\n        if (num % 2 === 0) {\n            evenCount1++;\n        } else {\n            oddCount2++;\n        }\n    }\n\n    for (let num of lst2) {\n        if (num % 2 === 0) {\n            evenCount2 =EvenCount2 + 1;\n        } else {\n            oddCount1++;\n        }\n    }\n\n    // Check if it's possible to make lst1 all even by exchanging elements\n    if (evenCount1 >= lst1.length) {\n        return \"YES\";\n    } else {\n        return \"NO\";\n    }\n}",
+    "\n    let evenCount1 = 0;\n    let oddCount2 = 0;\n\n    // Count the number of even numbers in lst1 and odd numbers in lst2\n    for (let num of lst1) {\n        if (num % 2 === 0) {\n            evenCount1++;\n        }\n    }\n    for (let num of lst2) {\n        if (num % 2 !== 0) {\n            oddCount2++;\n        }\n    }\n\n    // Check if it's possible to make lst1 all even by exchanging elements\n    if (evenCount1 >= lst1.length || oddCount2 >= lst2.length) {\n        return \"YES\";\n    } else {\n        return \"NO\";\n    }\n}",
+    "\n    let evenCount1 = 0;\n    let oddCount1 = 0;\n    let evenCount2 = 0;\n    let oddCount2 = 0;\n\n    // Count the number of even and odd elements in lst1\n    for (let num of lst1) {\n        if (num % 2 === 0) {\n            evenCount1++;\n        } else {\n            oddCount1++;\n        }\n    }\n\n    // Count the number of even and odd elements in lst2\n    for (let num of lst2) {\n        if (num % 2 === 0) {\n            evenCount2++;\n        } else {\n            oddCount2++;\n        }\n    }\n\n    // Check if it is possible to make lst1 an array of only even numbers\n    if (evenCount1 >= lst1.length) {\n        return \"YES\";\n    } else if (evenCount2 >= lst2.length) {\n        return \"YES\";\n    } else if (evenCount1 + oddCount2 >= lst1.length) {\n        return \"YES\";\n    } else {\n        return \"NO\";\n    }\n}"
+  ]
+}

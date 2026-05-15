@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_93_encode",
+  "language": "js",
+  "prompt": "//Write a function that takes a message, and encodes in such a \n// way that it swaps case of all letters, replaces all vowels in \n// the message with the letter that appears 2 places ahead of that \n// vowel in the english alphabet. \n// Assume only letters. \n// Examples:\n// >>> encode(\"test\")\n// \"TGST\"\n// >>> encode(\"This is a message\")\n// \"tHKS KS C MGSSCGG\"\nfunction encode(message){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_93_encode.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = encode;\n  assert.deepEqual(candidate(\"TEST\"),\"tgst\");\n  assert.deepEqual(candidate(\"Mudasir\"),\"mWDCSKR\");\n  assert.deepEqual(candidate(\"YES\"),\"ygs\");\n  assert.deepEqual(candidate(\"This is a message\"),\"tHKS KS C MGSSCGG\");\n  assert.deepEqual(candidate(\"I DoNt KnOw WhAt tO WrItE\"),\"k dQnT kNqW wHcT Tq wRkTg\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = '';\n    for(let i = 0; i < message.length; i++){\n        let char = message[i];\n        if(char === char.toUpperCase()){\n            result += char.toLowerCase();\n        } else {\n            result += char.toUpperCase();\n        }\n    }\n    return result;\n}\n",
+    "    //convert to array\n    let chars = message.split('');\n    //change case\n    chars = chars.map(char => {\n        if(char === char.toUpperCase()){\n            return char.toLowerCase();\n        } else {\n            return char.toUpperCase();\n        }\n    });\n    //replace vowels with the letter that appears 2 places ahead of that vowel in the english alphabet\n    chars = chars.map(char => {\n        switch(char){\n            case 'a':\n                return 'c';\n            case 'e':\n                return 'g';\n            case 'i':\n                return 'k';\n            case 'o':\n                return 'q';\n            case 'u':\n                return 'w';\n            case 'A':\n                return 'C';\n            case 'E':\n                return 'G';\n            case 'I':\n                return 'K';\n            case 'O':\n                return 'Q';\n            case 'U':\n                return 'W';\n            default:\n                return char;\n        }\n    });\n    //join array back into string\n    return chars.join('');\n}\n",
+    "  let vowels = ['a','e','i','o','u'];\n  let code = message.split('');\n  code.forEach((char,i)=>{\n    if(char === char.toUpperCase()){\n      if(vowels.includes(char.toLowerCase())){\n        let index = vowels.indexOf(char.toLowerCase()) + 2;\n        code[i] = vowels[index % vowels.length];\n      }else{\n        code[i] = char.toLowerCase().toUpperCase();\n      }\n    }else{\n      if(vowels.includes(char.toLowerCase())){\n        let index = vowels.indexOf(char.toLowerCase()) + 2;\n        code[i] = vowels[index % vowels.length].toUpperCase();\n      }else{\n        code[i] = char.toUpperCase().toLowerCase();\n      }\n    }\n  });\n  return code.join('');\n}\n",
+    "    var vowels = \"aeiouAEIOU\";\n    var result = \"\";\n    for(var i = 0; i < message.length; i++){\n        var char = message[i];\n        if(vowels.includes(char)){\n            var vowelIndex = vowels.indexOf(char);\n            var nextVowel = vowels[(vowelIndex + 2) % vowels.length];\n            result += nextVowel;\n        }else{\n            if(char === char.toUpperCase()){\n                result += char.toLowerCase();\n            }else{\n                result += char.toUpperCase();\n            }\n        }\n    }\n    return result;\n}\n",
+    "    var vowels = ['a','e','i','o','u'];\n    var result = '';\n    for(var i=0; i<message.length; i++){\n        var char = message[i];\n        var isVowel = vowels.indexOf(char.toLowerCase()) !== -1;\n        if(isVowel){\n            var nextVowel = vowels[(vowels.indexOf(char.toLowerCase()) + 2) % 5];\n            result += char.toUpperCase() === char ? nextVowel.toLowerCase() : nextVowel.toUpperCase();\n        }else{\n            result += char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase();\n        }\n    }\n    return result;\n}\n"
+  ]
+}

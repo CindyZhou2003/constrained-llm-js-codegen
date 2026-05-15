@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_59_largest_prime_factor",
+  "language": "js",
+  "prompt": "//Return the largest prime factor of n. Assume n > 1 and is not a prime.\n// >>> largest_prime_factor(13195)\n// 29\n// >>> largest_prime_factor(2048)\n// 2\nfunction largest_prime_factor(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_59_largest_prime_factor.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_prime_factor;\n  assert.deepEqual(candidate(15),5);\n  assert.deepEqual(candidate(27),3);\n  assert.deepEqual(candidate(63),7);\n  assert.deepEqual(candidate(330),11);\n  assert.deepEqual(candidate(13195),29);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var largestPrime = 1;\n    while(n % 2 === 0){\n        largestPrime = 2;\n        n = n / 2;\n    }\n    for(var i = 3; i <= Math.sqrt(n); i += 2){\n        while(n % i === 0){\n            largestPrime = i;\n            n = n / i;\n        }\n    }\n    if(n > 2){\n        largestPrime = n;\n    }\n    return largestPrime;\n}\n",
+    "  var largestPrime = 2;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 3;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 5;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 7;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 11;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 13;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 17;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 19;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 23;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 29;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 31;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 37;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 41;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 43;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 47;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 53;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 59;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 61;\n  while(n % largestPrime === 0){\n    n = n / largestPrime;\n  }\n  largestPrime = 67;\n  while(n",
+    "    let largestPrime = 1;\n    let divisor = 2;\n\n    while (n > 1) {\n        if (n % divisor === 0) {\n            largestPrime = divisor;\n            n /= divisor;\n        } else {\n            divisor++;\n        }\n    }\n\n    return largestPrime;\n}\n"
+  ]
+}

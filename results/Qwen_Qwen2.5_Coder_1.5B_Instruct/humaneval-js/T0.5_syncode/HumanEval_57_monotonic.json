@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_57_monotonic",
+  "language": "js",
+  "prompt": "//Return true is array elements are monotonically increasing or decreasing.\n// >>> monotonic([1, 2, 4, 20])\n// true\n// >>> monotonic([1, 20, 4, 10])\n// false\n// >>> monotonic([4, 1, 0, -10])\n// true\nfunction monotonic(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_57_monotonic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = monotonic;\n  assert.deepEqual(candidate([1, 2, 4, 10]),true);\n  assert.deepEqual(candidate([1, 2, 4, 20]),true);\n  assert.deepEqual(candidate([1, 20, 4, 10]),false);\n  assert.deepEqual(candidate([4, 1, 0, -10]),true);\n  assert.deepEqual(candidate([4, 1, 1, 0]),true);\n  assert.deepEqual(candidate([1, 2, 3, 2, 5, 60]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 60]),true);\n  assert.deepEqual(candidate([9, 9, 9, 9]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let inc = true;\n    let dec = true;\n    for(let i = 0; i < l.length - 1; i++){\n        if(l[i] < l[i + 1]){\n            dec = false;\n        }\n        if(l[i] > l[i + 1]){\n            inc = false;\n        }\n    }\n    return inc || dec;\n}",
+    "    return Math.max(...l) - Math.min(...l) === l.length - 1;\n}//The solution is to use the Math.max() and Math.min() functions to find the maximum and minimum values in the array, respectively. Then, we subtract the minimum value from the maximum value and compare the result to the length of the array minus one. If they are equal, the array is monotonic, and we return true. Otherwise, we return false. This solution works because in a monotonically increasing or decreasing array, the difference between the maximum and minimum values is equal to the length of the array minus one. For example, in the array [1, 2, 4, 20], the maximum value is 20 and the minimum value is 1, so the difference is 19, which is equal to the length of the array minus one. In the array [1, 20, 4, 10], the maximum value is 20 and the minimum value is 1, so the difference is 19, which is not equal to the length of the array minus one. In the array [4, 1, 0, -10], the maximum value is 4 and the minimum value is -10, so the difference is 14, which is equal to the length of the array minus one. Therefore, this solution correctly determines whether an array is monotonic or not. ////////<|fim_prefix|>//Given an array of integers, determine if it is monotonic (either strictly increasing or strictly decreasing).",
+    "    return l.every((v, i, arr) => v <= arr[i+1] || v >= arr[i+1]);\n}\n",
+    "    let increasing = true;\n    let decreasing = true;\n    for(let i = 0; i < l.length - 1; i++){\n        if(l[i] > l[i+1]){\n            increasing = false;\n        }\n        if(l[i] < l[i+1]){\n            decreasing = false;\n        }\n    }\n    return increasing || decreasing;\n}\n",
+    "    var inc = true;\n    var dec = true;\n    for(var i = 1; i < l.length; i++){\n        if(l[i] < l[i-1]){\n            inc = false;\n        }\n        if(l[i] > l[i-1]){\n            dec = false;\n        }\n    }\n    return inc || dec;\n}"
+  ]
+}

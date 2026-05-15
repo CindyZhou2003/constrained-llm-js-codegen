@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_46_fib4",
+  "language": "js",
+  "prompt": "//The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:\n// fib4(0) -> 0\n// fib4(1) -> 0\n// fib4(2) -> 2\n// fib4(3) -> 0\n// fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).\n// Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.\n// >>> fib4(5)\n// 4\n// >>> fib4(6)\n// 8\n// >>> fib4(7)\n// 14\nfunction fib4(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_46_fib4.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = fib4;\n  assert.deepEqual(candidate(5),4);\n  assert.deepEqual(candidate(8),28);\n  assert.deepEqual(candidate(10),104);\n  assert.deepEqual(candidate(12),386);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let fib = [0,0,2,0];\n    if(n < 4) return fib[n];\n    for(let i = 4; i <= n; i++){\n        fib[i] = fib[i-1] + fib[i-2] + fib[i-3] + fib[i-4];\n    }\n    return fib[n];\n}",
+    "    if(n == 0 || n == 1){\n        return 0;\n    }\n    else if(n == 2){\n        return 2;\n    }\n    else if(n == 3){\n        return 0;\n    }\n    else{\n        var a = 0;\n        var b = 2;\n        var c = 0;\n        var d = 0;\n        for(var i = 4; i <= n; i++){\n            d = a + b + c + d;\n            a = b;\n            b = c;\n            c = d;\n        }\n        return d;\n    }\n}\n",
+    "    if(n===0||n===1){\n        return 0;\n    }\n    if(n===2){\n        return 2;\n    }\n    if(n===3){\n        return 0;\n    }\n    var a=0;\n    var b=0;\n    var c=2;\n    var d=0;\n    for(let i=4;i<=n;i++){\n        d=a+b+c+d;\n        a=b;\n        b=c;\n        c=d;\n    }\n    return d;\n}\n",
+    "    if(n==0 || n==1){\n        return 0;\n    }\n    else if(n==2){\n        return 2;\n    }\n    else if(n==3){\n        return 0;\n    }\n    else{\n        let a=0;let b=0;let c=2;let d=0;\n        for(let i=4;i<=n;i++){\n            d=a+b+c+d;\n            a=b;\n            b=c;\n            c=d;\n        }\n        return d;\n    }\n}",
+    "    if(n===0||n===1){\n        return 0;\n    }\n    if(n===2){\n        return 2;\n    }\n    if(n===3){\n        return 0;\n    }\n    let arr=[0,0,2,0];\n    for(let i=4;i<=n;i++){\n        arr[i]=(arr[i-1]+arr[i-2]+arr[i-3]+arr[i-4])%1000000007;\n    }\n    return arr[n];\n}"
+  ]
+}

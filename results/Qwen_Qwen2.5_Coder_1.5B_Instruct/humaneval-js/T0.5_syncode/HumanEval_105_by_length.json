@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_105_by_length",
+  "language": "js",
+  "prompt": "//Given an array of integers, sort the integers that are between 1 and 9 inclusive,\n// reverse the resulting array, and then replace each digit by its corresponding name from\n// \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\".\n// For example:\n// >>> by_length([2, 1, 1, 4, 5, 8, 2, 3])\n// [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n// If the array is empty, return an empty array:\n// >>> by_length([])\n// []\n// If the array has any strange number ignore it:\n// >>> by_length([1, -1, 55])\n// [\"One\"]\nfunction by_length(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_105_by_length.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = by_length;\n  assert.deepEqual(candidate([2, 1, 1, 4, 5, 8, 2, 3]),[\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]);\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, -1, 55]),[\"One\"]);\n  assert.deepEqual(candidate([1, -1, 3, 2]),[\"Three\", \"Two\", \"One\"]);\n  assert.deepEqual(candidate([9, 4, 8]),[\"Nine\", \"Eight\", \"Four\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  var strArr = arr.filter(function(item){\n    return item >= 1 && item <= 9;\n  });\n  strArr.reverse();\n  var str = strArr.map(function(item){\n    return item.toString();\n  });\n  var strArr = str.map(function(item){\n    switch(item){\n      case '1': return 'One';\n      case '2': return 'Two';\n      case '3': return 'Three';\n      case '4': return 'Four';\n      case '5': return 'Five';\n      case '6': return 'Six';\n      case '7': return 'Seven';\n      case '8': return 'Eight';\n      case '9': return 'Nine';\n    }\n  });\n  return strArr;\n}//console.log(by_length([2, 1, 1, 4, 5, 8, 2, 3]));",
+    "  if(arr.length === 0){\n    return [];\n  }\n  let result = arr.filter(num => num >= 1 && num <= 9).sort((a, b) => a - b);\n  result.reverse();\n  let nameMap = {\n    1: \"One\",\n    2: \"Two\",\n    3: \"Three\",\n    4: \"Four\",\n    5: \"Five\",\n    6: \"Six\",\n    7: \"Seven\",\n    8: \"Eight\",\n    9: \"Nine\"\n  };\n  return result.map(num => nameMap[num]);\n}\n",
+    "  var strArr = arr.filter(function(item){\n    return item >= 1 && item <= 9;\n  });\n  strArr.sort(function(a,b){\n    return a-b;\n  });\n  var reverseArr = strArr.reverse();\n  var nameArr = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"];\n  var finalArr = reverseArr.map(function(item){\n    return nameArr[item-1];\n  });\n  return finalArr;\n}\n",
+    "    var names = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"];\n    var newArr = [];\n    arr.forEach(function(num){\n        if(num >= 1 && num <= 9){\n            newArr.push(names[num - 1]);\n        }\n    });\n    newArr.reverse();\n    return newArr;\n}\n",
+    "    if(arr.length === 0){\n        return [];\n    }\n    let filteredArr = arr.filter(num => num >= 1 && num <= 9);\n    let reversedArr = filteredArr.reverse();\n    let nameArr = [\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"];\n    let resultArr = reversedArr.map(num => nameArr[num - 1]);\n    return resultArr;\n}\n"
+  ]
+}

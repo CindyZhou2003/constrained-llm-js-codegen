@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_99_closest_integer",
+  "language": "js",
+  "prompt": "//Create a function that takes a value (string) representing a number\n// and returns the closest integer to it. If the number is equidistant\n// from two integers, round it away from zero.\n// Examples\n// >>> closest_integer(\"10\")\n// 10\n// >>> closest_integer(\"15.3\")\n// 15\n// Note:\n// Rounding away from zero means that if the given number is equidistant\n// from two integers, the one you should return is the one that is the\n// farthest from zero. For example closest_integer(\"14.5\") should\n// return 15 and closest_integer(\"-14.5\") should return -15.\nfunction closest_integer(value){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_99_closest_integer.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = closest_integer;\n  assert.deepEqual(candidate(\"10\"),10);\n  assert.deepEqual(candidate(\"14.5\"),15);\n  assert.deepEqual(candidate(\"-15.5\"),-16);\n  assert.deepEqual(candidate(\"15.3\"),15);\n  assert.deepEqual(candidate(\"0\"),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    // Convert the string to a number\n    const num = parseFloat(value);\n    // Determine the sign of the number\n    const sign = Math.sign(num);\n    // Get the integer part of the number\n    const integerPart = Math.floor(num);\n\n    // Calculate the fractional part of the number\n    const fractionalPart = num - integerPart;\n\n    // Determine which integer is closer\n    if (Math.abs(integerPart - num) === Math.abs(integerPart - (integerPart + sign))){\n        return integerPart + sign;\n    }else{\n        return integerPart;\n    }\n}\n",
+    "    let num = parseFloat(value);\n    let rounded = Math.round(num);\n    let decimal = num - rounded;\n    if(decimal === 0.5 || decimal === -0.5){\n        return num > 0 ? rounded + 1 : rounded - 1;\n    } else {\n        return rounded;\n    }\n}\n",
+    "    let num = parseFloat(value);\n    let rounded = Math.round(num);\n    let distanceToNearest = Math.abs(num - rounded);\n    let distanceToNearestPlusOne = Math.abs(num - (rounded + 1));\n    let distanceToNearestMinusOne = Math.abs(num - (rounded - 1));\n\n    if (distanceToNearestPlusOne < distanceToNearestMinusOne) {\n        return rounded + 1;\n    } else if (distanceToNearestMinusOne < distanceToNearestPlusOne) {\n        return rounded - 1;\n    } else {\n        return rounded;\n    }\n}\n",
+    "    let roundedValue = Math.round(value);\n    let decimalPart = value - roundedValue;\n\n    if (decimalPart === 0.5 || decimalPart === -0.5) {\n        return roundedValue > 0 ? Math.ceil(roundedValue) : Math.floor(roundedValue);\n    } else {\n        return roundedValue;\n    }\n}\n",
+    "    let number = parseFloat(value);\n    let rounded = Math.round(number);\n    let absoluteDifference = Math.abs(number - rounded);\n    \n    if (absoluteDifference === 0.5){\n        return number > 0 ? Math.ceil(number) : Math.floor(number);\n    } else {\n        return rounded;\n    }\n}\n"
+  ]
+}

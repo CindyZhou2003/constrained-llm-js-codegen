@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_109_move_one_ball",
+  "language": "js",
+  "prompt": "//We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The\n// numbers in the array will be randomly ordered. Your task is to determine if\n// it is possible to get an array sorted in non-decreasing order by performing \n// the following operation on the given array:\n// You are allowed to perform right shift operation any number of times.\n// One right shift operation means shifting all elements of the array by one\n// position in the right direction. The last element of the array will be moved to\n// the starting position in the array i.e. 0th index. \n// If it is possible to obtain the sorted array by performing the above operation\n// then return true else return false.\n// If the given array is empty then return true.\n// Note: The given array is guaranteed to have unique elements.\n// For Example:\n// >>> move_one_ball([3, 4, 5, 1, 2])\n// true\n// Explanation: By performin 2 right shift operations, non-decreasing order can\n// be achieved for the given array.\n// >>> move_one_ball([3, 5, 4, 1, 2])\n// false\n// Explanation:It is not possible to get non-decreasing order for the given\n// array by performing any number of right shift operations.\nfunction move_one_ball(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_109_move_one_ball.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_one_ball;\n  assert.deepEqual(candidate([3, 4, 5, 1, 2]),true);\n  assert.deepEqual(candidate([3, 5, 10, 1, 2]),true);\n  assert.deepEqual(candidate([4, 3, 1, 2]),false);\n  assert.deepEqual(candidate([3, 5, 4, 1, 2]),false);\n  assert.deepEqual(candidate([]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    if(arr.length == 0) return true;\n    let sorted = arr.slice().sort((a,b) => a-b);\n    let i = 0;\n    for(i = 0; i < arr.length; i++){\n        if(arr[i] != sorted[i]){\n            break;\n        }\n    }\n    return i == arr.length || arr.length == 1;\n}\n",
+    "    if(arr.length===0){\n        return true;\n    }\n    let sortedArr=arr.slice().sort((a,b)=>a-b);\n    for(let i=0;i<arr.length;i++){\n        if(arr[i]===sortedArr[i]){\n            continue;\n        }else{\n            let rightShiftCount=0;\n            for(let j=i;j<arr.length;j++){\n                if(arr[j]===sortedArr[i]){\n                    rightShiftCount++;\n                }\n            }\n            if(rightShiftCount===arr.length-i){\n                return true;\n            }\n        }\n    }\n    return false;\n}\n",
+    "    if(arr.length === 0){\n        return true;\n    }\n    let sortedArr = [...arr].sort((a, b) => a - b);\n    let left = 0;\n    let right = arr.length - 1;\n    while(left <= right){\n        if(arr[left] === sortedArr[left]){\n            left++;\n        }\n        if(arr[right] === sortedArr[right]){\n            right--;\n        }\n    }\n    return left === right;\n}\n",
+    "    if(arr.length === 0) return true;\n    let count = 0;\n    for(let i = 0; i < arr.length; i++){\n        if(arr[i] > arr[(i+1) % arr.length]) count++;\n    }\n    return count <= 1;\n}\n",
+    "    if(arr.length === 0){\n        return true;\n    }\n    let max = arr[0];\n    let maxIndex = 0;\n    for(let i = 1; i < arr.length; i++){\n        if(arr[i] > max){\n            max = arr[i];\n            maxIndex = i;\n        }\n    }\n    let rightShiftCount = 0;\n    for(let i = maxIndex; i < arr.length; i++){\n        if(arr[i] !== arr[0]){\n            return false;\n        }\n        rightShiftCount++;\n    }\n    for(let i = 0; i < maxIndex; i++){\n        if(arr[i] !== arr[arr.length - 1]){\n            return false;\n        }\n        rightShiftCount++;\n    }\n    return rightShiftCount <= 1;\n}\n"
+  ]
+}

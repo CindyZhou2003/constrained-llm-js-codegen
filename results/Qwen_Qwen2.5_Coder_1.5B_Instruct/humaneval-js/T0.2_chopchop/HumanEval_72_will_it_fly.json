@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_72_will_it_fly",
+  "language": "js",
+  "prompt": "//Write a function that returns true if the object q will fly, and false otherwise.\n// The object q will fly if it's balanced (it is a palindromic array) and the sum of its elements is less than or equal the maximum possible weight w.\n// Example:\n// >>> will_it_fly([1, 2], 5)\n// false\n// # 1+2 is less than the maximum possible weight, but it's unbalanced.\n// >>> will_it_fly([3, 2, 3], 1)\n// false\n// # it's balanced, but 3+2+3 is more than the maximum possible weight.\n// >>> will_it_fly([3, 2, 3], 9)\n// true\n// # 3+2+3 is less than the maximum possible weight, and it's balanced.\n// >>> will_it_fly([3], 5)\n// true\n// # 3 is less than the maximum possible weight, and it's balanced.\nfunction will_it_fly(q, w){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_72_will_it_fly.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = will_it_fly;\n  assert.deepEqual(candidate([3, 2, 3], 9),true);\n  assert.deepEqual(candidate([1, 2], 5),false);\n  assert.deepEqual(candidate([3], 5),true);\n  assert.deepEqual(candidate([3, 2, 3], 1),false);\n  assert.deepEqual(candidate([1, 2, 3], 6),false);\n  assert.deepEqual(candidate([5], 5),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return q.every((value, index) => value =make a function that returns true if the object q will fly, and false otherwise. The object q will fly if it's balanced (it is a palindromic array) and the sum of its elements is less than or equal the maximum possible weight w. Example: >>> will_it_fly([1, 2], 5) false # 1+2 is less than the maximum possible weight, but it's unbalanced. >>> will_it_fly([3, 2, 3], 1) false # it's balanced, but 3+2+3 is more than the maximum possible weight. >>> will_it_fly([3, 2, 3], 9) true # 3+2+3 is less than the maximum possible weight, and it's balanced. >>> will_it_fly([3], 5) true # 3 is less than the maximum possible weight, and it's balanced.\nOutput the complete function body enclosed in curly braces, e.g. { ... }.\nDo not write explanations, Markdown, bullets, or placeholders.\nNever output prose like 'Here in JavaScript', 'Solution:', or 'Explanation:'.\nDo not repeat comments or the function declaration.",
+    "\n  return q.join('') === q.reverse().join('') && q.reduce((acc, val) => acc    =\u8bbe\u8ba1\u4e00\u4e2a\u51fd\u6570\uff0c\u8be5\u51fd\u6570\u63a5\u53d7\u4e00\u4e2a\u5b57\u7b26\u4e32\u4f5c\u4e3a\u53c2\u6570\uff0c\u5e76\u8fd4\u56de\u4e00\u4e2a\u5e03\u5c14\u503c\uff0c\u8868\u793a\u8be5\u5b57\u7b26\u4e32\u662f\u5426\u4e3a\u56de\u6587\u3002\u56de\u6587\u662f\u6307\u6b63\u8bfb\u548c\u53cd\u8bfb\u90fd\u76f8\u540c\u7684\u5b57\u7b26\u4e32\u3002\u4f8b\u5982\uff0c\u8f93\u5165 \"level\" \u5c06\u8fd4\u56de true\uff0c\u800c\u8f93\u5165 \"world\" \u5c06\u8fd4\u56de false\u3002\n\n```javascript",
+    "\n    return q.join('') === q.reverse().join('') && q.reduce((acc, val) => acc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
+  ]
+}

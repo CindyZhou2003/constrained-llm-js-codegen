@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_58_common",
+  "language": "js",
+  "prompt": "//Return sorted unique common elements for two lists.\n// >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])\n// [1, 5, 653]\n// >>> common([5, 3, 2, 8], [3, 2])\n// [2, 3]\nfunction common(l1, l2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_58_common.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = common;\n  assert.deepEqual(candidate([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]),[1, 5, 653]);\n  assert.deepEqual(candidate([5, 3, 2, 8], [3, 2]),[2, 3]);\n  assert.deepEqual(candidate([4, 3, 2, 8], [3, 2, 4]),[2, 3, 4]);\n  assert.deepEqual(candidate([4, 3, 2, 8], []),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    l1.forEach(element => {\n        if(l2.includes(element) && !result.includes(element)){\n            result.push(element);\n        }\n    });\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < l1.length; i++){\n        for(let j = 0; j < l2.length; j++){\n            if(l1[i] === l2[j]){\n                if(!result.includes(l1[i])){\n                    result.push(l1[i]);\n                }\n            }\n        }\n    }\n    return result;\n}\n",
+    "    var result = [];\n    for(var i = 0; i < l1.length; i++){\n        for(var j = 0; j < l2.length; j++){\n            if(l1[i] === l2[j]){\n                if(result.indexOf(l1[i]) === -1){\n                    result.push(l1[i]);\n                }\n            }\n        }\n    }\n    return result;\n}"
+  ]
+}

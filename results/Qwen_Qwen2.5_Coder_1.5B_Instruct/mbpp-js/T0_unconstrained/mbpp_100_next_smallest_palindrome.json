@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let str = num.toString();\n    let len = str.length;\n    let mid = Math.floor(len/2);\n    let left = str.substring(0,mid);\n    let right = str.substring(mid,len);\n    let right_rev = right.split('').reverse().join('');\n    if(right == right_rev){\n        if(len%2 == 0){\n            return parseInt(left+right_rev);\n        }else{\n            return parseInt(left+right_rev+right.charAt(0));\n        }\n    }else{\n        let right_next = parseInt(right_rev)+1;\n        let right_next_str = right_next.toString();\n        let right_next_len = right_next_str.length;\n        let right_next_mid = Math.floor(right_next_len/2);\n        let right_next_left = right_next_str.substring(0,right_next_mid);\n        let right_next_right = right_next_str.substring(right_next_mid,right_next_len);\n        if(right_next_right == right_next_right.split('').reverse().join('')){\n            if(right_next_len%2 == 0){\n                return parseInt(left+right_next_right);\n            }else{\n                return parseInt(left+right_next_right+right_next_left.charAt(0));\n            }\n        }else{\n            return next_smallest_palindrome(num+1);\n        }\n    }\n}"
+  ]
+}

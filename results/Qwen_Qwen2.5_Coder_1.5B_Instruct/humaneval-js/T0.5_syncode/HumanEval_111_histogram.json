@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_111_histogram",
+  "language": "js",
+  "prompt": "//Given a string representing a space separated lowercase letters, return an object\n// of the letter with the most repetition and containing the corresponding count.\n// If several letters have the same occurrence, return all of them.\n// Example:\n// >>> histogram(\"a b c\")\n// {\"a\": 1, \"b\": 1, \"c\": 1}\n// >>> histogram(\"a b b a\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"a b c a b\")\n// {\"a\": 2, \"b\": 2}\n// >>> histogram(\"b b b b a\")\n// {\"b\": 4}\n// >>> histogram(\"\")\n// {}\nfunction histogram(test){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_111_histogram.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = histogram;\n  assert.deepEqual(candidate(\"a b b a\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c a b\"),{\"a\": 2, \"b\": 2});\n  assert.deepEqual(candidate(\"a b c d g\"),{\"a\": 1, \"b\": 1, \"c\": 1, \"d\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"b b b b a\"),{\"b\": 4});\n  assert.deepEqual(candidate(\"r t g\"),{\"r\": 1, \"t\": 1, \"g\": 1});\n  assert.deepEqual(candidate(\"\"),{});\n  assert.deepEqual(candidate(\"a\"),{\"a\": 1});\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var countObj = {};\n    var maxCount = 0;\n    var maxCountArray = [];\n\n    var testArr = test.split(' ');\n\n    for(var i = 0; i < testArr.length; i++){\n        if(countObj[testArr[i]]){\n            countObj[testArr[i]]++;\n        } else {\n            countObj[testArr[i]] = 1;\n        }\n    }\n\n    for(var letter in countObj){\n        if(countObj[letter] > maxCount){\n            maxCount = countObj[letter];\n            maxCountArray = [];\n            maxCountArray.push(letter);\n        } else if(countObj[letter] === maxCount){\n            maxCountArray.push(letter);\n        }\n    }\n\n    return maxCountArray.reduce(function(prev, curr){\n        prev[curr] = countObj[curr];\n        return prev;\n    }, {});\n}\n",
+    "    let obj={}\n    test=test.split(\" \")\n    for(let i=0;i<test.length;i++){\n        if(obj[test[i]]==undefined){\n            obj[test[i]]=1\n        }\n        else{\n            obj[test[i]]+=1\n        }\n    }\n    let max=0\n    for(let key in obj){\n        if(obj[key]>max){\n            max=obj[key]\n        }\n    }\n    let result={}\n    for(let key in obj){\n        if(obj[key]==max){\n            result[key]=obj[key]\n        }\n    }\n    return result\n}",
+    "  let obj = {};\n  let arr = test.split(' ');\n  let max = 0;\n  for(let i = 0; i < arr.length; i++){\n    if(obj[arr[i]]){\n      obj[arr[i]]++;\n      if(obj[arr[i]] > max){\n        max = obj[arr[i]];\n      }\n    } else {\n      obj[arr[i]] = 1;\n      if(obj[arr[i]] > max){\n        max = obj[arr[i]];\n      }\n    }\n  }\n  let res = {};\n  for(let key in obj){\n    if(obj[key] === max){\n      res[key] = obj[key];\n    }\n  }\n  return res;\n}\n",
+    "    var obj = {};\n    var max = 0;\n    for(var i = 0; i < test.length; i++){\n        if(obj[test[i]]){\n            obj[test[i]]++;\n            if(obj[test[i]] > max){\n                max = obj[test[i]];\n            }\n        }else{\n            obj[test[i]] = 1;\n            if(obj[test[i]] > max){\n                max = obj[test[i]];\n            }\n        }\n    }\n    var result = {};\n    for(var key in obj){\n        if(obj[key] === max){\n            result[key] = obj[key];\n        }\n    }\n    return result;\n}\n",
+    "  var obj = {};\n  var max = 0;\n  for(var i=0;i<test.length;i++){\n    if(obj[test[i]]){\n      obj[test[i]]++;\n    } else {\n      obj[test[i]] = 1;\n    }\n  }\n  for(var key in obj){\n    if(obj[key] > max){\n      max = obj[key];\n    }\n  }\n  for(var key in obj){\n    if(obj[key] === max){\n      result[key] = obj[key];\n    }\n  }\n  return result;\n}//console.log(histogram(\"a b c\"));"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_20_find_closest_elements",
+  "language": "js",
+  "prompt": "//From a supplied array of numbers (of length at least two) select and return two that are the closest to each\n// other and return them in order (smaller number, larger number).\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])\n// [2.0, 2.2]\n// >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])\n// [2.0, 2.0]\nfunction find_closest_elements(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_20_find_closest_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_closest_elements;\n  assert.deepEqual(candidate([1.0, 2.0, 3.9, 4.0, 5.0, 2.2]),[3.9, 4.0]);\n  assert.deepEqual(candidate([1.0, 2.0, 5.9, 4.0, 5.0]),[5.0, 5.9]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.2]),[2.0, 2.2]);\n  assert.deepEqual(candidate([1.0, 2.0, 3.0, 4.0, 5.0, 2.0]),[2.0, 2.0]);\n  assert.deepEqual(candidate([1.1, 2.2, 3.1, 4.1, 5.1]),[2.2, 3.1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    numbers.sort(function(a,b){return a-b});\n    var closest = numbers[1] - numbers[0];\n    var closestElements = [numbers[0], numbers[1]];\n    for(var i = 2; i < numbers.length; i++){\n        var difference = numbers[i] - numbers[i-1];\n        if(difference < closest){\n            closest = difference;\n            closestElements = [numbers[i-1], numbers[i]];\n        }\n    }\n    return closestElements;\n}\n\n",
+    "    let closest = [numbers[0], numbers[1]];\n    for(let i = 0; i < numbers.length - 1; i++){\n        for(let j = i + 1; j < numbers.length; j++){\n            if(Math.abs(numbers[i] - numbers[j]) < Math.abs(closest[0] - closest[1])){\n                closest = [numbers[i], numbers[j]];\n            }\n        }\n    }\n    return closest;\n}\n\n",
+    "    numbers.sort(function(a,b){return a-b});\n    var closest = numbers[1]-numbers[0];\n    var closest_pair = [numbers[0],numbers[1]];\n    for(var i=1;i<numbers.length-1;i++){\n        var diff = numbers[i+1]-numbers[i];\n        if(diff<closest){\n            closest = diff;\n            closest_pair = [numbers[i],numbers[i+1]];\n        }\n    }\n    return closest_pair;\n}\n\n"
+  ]
+}

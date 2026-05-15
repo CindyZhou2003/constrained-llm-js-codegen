@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_559_max_sub_array_sum",
+  "language": "js",
+  "prompt": "//Write a function to find the sum of the largest contiguous sublist in the given array.\nfunction max_sub_array_sum(a, size){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_559_max_sub_array_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum;\n  assert.deepEqual(candidate([-2, -3, 4, -1, -2, 1, 5, -3], 8),7);\n  assert.deepEqual(candidate([-3, -4, 5, -2, -3, 2, 6, -4], 8),8);\n  assert.deepEqual(candidate([-4, -5, 6, -3, -4, 3, 7, -5], 8),10);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_so_far = a[0];\n    let max_ending_here = a[0];\n    for(let i = 1; i < size; i++){\n        max_ending_here = Math.max(a[i], max_ending_here + a[i]);\n        max_so_far = Math.max(max_so_far, max_ending_here);\n    }\n    return max_so_far;\n}\nlet a = [-2, -3, 4, -1, -2, 1, 5, -3];\nlet size = a.length;"
+  ]
+}

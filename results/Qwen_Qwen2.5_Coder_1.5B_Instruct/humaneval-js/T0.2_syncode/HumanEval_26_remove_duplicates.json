@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_26_remove_duplicates",
+  "language": "js",
+  "prompt": "//From an array of integers, remove all elements that occur more than once.\n// Keep order of elements left the same as in the input.\n// >>> remove_duplicates([1, 2, 3, 2, 4])\n// [1, 3, 4]\nfunction remove_duplicates(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_26_remove_duplicates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_duplicates;\n  assert.deepEqual(candidate([]),[]);\n  assert.deepEqual(candidate([1, 2, 3, 4]),[1, 2, 3, 4]);\n  assert.deepEqual(candidate([1, 2, 3, 2, 4, 3, 5]),[1, 4, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let uniqueNumbers = [];\n    for(let i = 0; i < numbers.length; i++){\n        if(!uniqueNumbers.includes(numbers[i])){\n            uniqueNumbers.push(numbers[i]);\n        }\n    }\n    return uniqueNumbers;\n}\n",
+    "    let seen = new Set();\n    let result = [];\n    for(let num of numbers){\n        if(!seen.has(num)){\n            seen.add(num);\n            result.push(num);\n        }\n    }\n    return result;\n}\n",
+    "    let seen = new Set();\n    let result = [];\n\n    for(let num of numbers){\n        if(!seen.has(num)){\n            seen.add(num);\n            result.push(num);\n        }\n    }\n\n    return result;\n}\n"
+  ]
+}

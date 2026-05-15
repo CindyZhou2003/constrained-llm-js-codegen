@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_62_derivative",
+  "language": "js",
+  "prompt": "//xs represent coefficients of a polynomial.\n// xs[0] + xs[1] * x + xs[2] * x^2 + ....\n// Return derivative of this polynomial in the same form.\n// >>> derivative([3, 1, 2, 4, 5])\n// [1, 4, 12, 20]\n// >>> derivative([1, 2, 3])\n// [2, 6]\nfunction derivative(xs){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_62_derivative.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = derivative;\n  assert.deepEqual(candidate([3, 1, 2, 4, 5]),[1, 4, 12, 20]);\n  assert.deepEqual(candidate([1, 2, 3]),[2, 6]);\n  assert.deepEqual(candidate([3, 2, 1]),[2, 2]);\n  assert.deepEqual(candidate([3, 2, 1, 0, 4]),[2, 2, 0, 16]);\n  assert.deepEqual(candidate([1]),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let derivative = [];\n    for(let i = 1; i < xs.length; i++){\n        derivative.push(xs[i] * i);\n    }\n    return derivative;\n}//Given two arrays, A and B, of the same size, return a new array C such that C[i] = A[i] + B[i].",
+    "  let res = [];\n  for(let i = 1; i < xs.length; i++){\n    res.push(xs[i] * i);\n  }\n  return res;\n}// Write a function that takes a string and returns the same string but with every occurrence of the letter 'a' replaced with 'z'.",
+    "    return xs.map((x,i) => x * i).slice(1);\n}// https://www.codewars.com/kata/52fba8e5baa6917300000001/train/javascript",
+    "  let result = [];\n  for(let i = 1; i < xs.length; i++){\n    result.push(xs[i] * i);\n  }\n  return result;\n}/**\n * @param {number[]} xs\n * @return {number[]}\n */",
+    "    // your code here\n    let derivative = [];\n    for(let i = 0; i < xs.length - 1; i++){\n        derivative.push(xs[i] * (i + 1));\n    }\n    return derivative;\n}/**\n * Given a list of numbers, return a new list where each number is the sum of all previous numbers in the list.\n * \n * Example:\n * >>> cumulativeSum([1, 2, 3, 4, 5])\n * [1, 3, 6, 10, 15]\n * >>> cumulativeSum([0, 1, 2, 3, 4])\n * [0, 1, 3, 6, 10]\n * >>> cumulativeSum([-1, -2, -3, -4, -5])\n * [-1, -3, -6, -10, -15]\n */"
+  ]
+}

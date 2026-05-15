@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_34_unique",
+  "language": "js",
+  "prompt": "//Return sorted unique elements in an array\n// >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])\n// [0, 2, 3, 5, 9, 123]\nfunction unique(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_34_unique.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique;\n  assert.deepEqual(candidate([5, 3, 5, 2, 3, 3, 9, 0, 123]),[0, 2, 3, 5, 9, 123]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var a = [];\n    for(var i = 0; i < l.length; i++){\n        if(!a.includes(l[i])){\n            a.push(l[i]);\n        }\n    }\n    return a;\n}",
+    "    let unique = new Set(l);\n    return Array.from(unique);\n}\n",
+    "    return l.filter(function(item, index, self){\n        return self.indexOf(item) === index;\n    });\n}\n",
+    "  return [...new Set(l)];\n}\n",
+    "    return Array.from(new Set(l));\n}\n"
+  ]
+}

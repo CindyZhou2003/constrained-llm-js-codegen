@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_238_number_of_substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of non-empty substrings of a given string.\nfunction number_of_substrings(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_238_number_of_substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = number_of_substrings;\n  assert.deepEqual(candidate(\"abc\"),6);\n  assert.deepEqual(candidate(\"abcd\"),10);\n  assert.deepEqual(candidate(\"abcde\"),15);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let count = 0;\n    for(let i = 0; i < str.length; i++){\n        for(let j = i; j < str.length; j++){\n            if(str[i] !== str[j]){\n                count++;\n            }\n        }\n    }\n    return count;\n}"
+  ]
+}

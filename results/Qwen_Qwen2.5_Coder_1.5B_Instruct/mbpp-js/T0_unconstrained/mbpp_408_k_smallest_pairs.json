@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_408_k_smallest_pairs",
+  "language": "js",
+  "prompt": "//Write a function to find k number of smallest pairs which consist of one element from the first array and one element from the second array.\nfunction k_smallest_pairs(nums1, nums2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_408_k_smallest_pairs.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = k_smallest_pairs;\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 2),[[1, 2], [1, 4]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 1),[[1, 2]]);\n  assert.deepEqual(candidate([1, 3, 7], [2, 4, 6], 7),[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let pairs = [];\n    let minHeap = new MinHeap();\n    for(let i = 0; i < nums1.length; i++){\n        for(let j = 0; j < nums2.length; j++){\n            minHeap.insert([nums1[i], nums2[j]]);\n        }\n    }\n    while(k > 0 && minHeap.size() > 0){\n        let pair = minHeap.remove();\n        pairs.push(pair);\n        if(pair[1] + 1 < nums2.length){\n            minHeap.insert([pair[0], pair[1] + 1]);\n        }\n        k--;\n    }\n    return pairs;\n}\n\nclass MinHeap{\n    constructor(){\n        this.heap = [];\n    }\n    size(){\n        return this.heap.length;\n    }\n    insert(value){\n        this.heap.push(value);\n        this.bubbleUp(this.heap.length - 1);\n    }\n    remove(){\n        if(this.size() === 0){\n            return null;\n        }\n        let root = this.heap[0];\n        this.heap[0] = this.heap[this.size() - 1];\n        this.heap.pop();\n        this.bubbleDown(0);\n        return root;\n    }\n    bubbleUp(index){\n        while(index > 0 && this.heap[index][0] < this.heap[Math.floor((index - 1) / 2)][0]){\n            let temp = this.heap[index];\n            this.heap[index] = this.heap[Math.floor((index - 1) / 2)];\n            this.heap[Math.floor((index - 1) / 2)] = temp;\n            index = Math.floor((index - 1) / 2);\n        }\n    }\n    bubbleDown(index){\n        let left = 2 * index + 1;\n        let right = 2 * index + 2;\n        let smallest = index;\n        if(left < this.size() && this.heap[left][0] < this.heap[smallest][0]){\n            smallest = left;\n        }\n        if(right < this.size() && this.heap[right][0] < this.heap[smallest][0]){\n            smallest = right;\n        }\n        if(smallest !== index){\n            let temp = this.heap[index];\n            this.heap[index] = this.heap[smallest];\n            this.heap[smallest] = temp;\n            this.bubbleDown(smallest);\n        }\n    }\n}\n\nlet nums1 = [1, 7, 11];\nlet nums2 = [2, "
+  ]
+}

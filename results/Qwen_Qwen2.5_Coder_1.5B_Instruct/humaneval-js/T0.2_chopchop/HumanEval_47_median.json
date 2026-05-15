@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_47_median",
+  "language": "js",
+  "prompt": "//Return median of elements in the array l.\n// >>> median([3, 1, 2, 4, 5])\n// 3\n// >>> median([-10, 4, 6, 1000, 10, 20])\n// 15.0\nfunction median(l){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_47_median.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median;\n  assert.deepEqual(candidate([3, 1, 2, 4, 5]),3);\n  assert.deepEqual(candidate([-10, 4, 6, 1000, 10, 20]),8.0);\n  assert.deepEqual(candidate([5]),5);\n  assert.deepEqual(candidate([6, 5]),5.5);\n  assert.deepEqual(candidate([8, 1, 3, 9, 9, 2, 7]),7);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    l.sort((a, b) => a                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ",
+    "\n  l.sort((a, b) => a \u00a0=James Bond's Secret Agent: The Spy Who Loved Me",
+    "\n    l.sort((a, b) => a \u00a0=However, the provided code snippet is incomplete and lacks the implementation of the median function. The `sort` method is used to sort the array in ascending order, but it does not handle the case where the array has an odd number of elements. To find the median, we need to calculate the average of the two middle elements if the array has an odd number of elements, or the middle element if the array has an even number of elements.\n\nHere's the complete implementation of the median function:\n\n```javascript"
+  ]
+}

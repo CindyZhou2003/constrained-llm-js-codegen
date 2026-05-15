@@ -1,0 +1,20 @@
+{
+  "name": "HumanEval_95_check_dict_case",
+  "language": "js",
+  "prompt": "//Given an object, return true if all keys are strings in lower \n// case or all keys are strings in upper case, else return false.\n// The function should return false is the given object is empty.\n// Examples:\n// >>> check_dict_case({\"a\": \"apple\", \"b\": \"banana\"})\n// true\n// >>> check_dict_case({\"a\": \"apple\", \"A\": \"banana\", \"B\": \"banana\"})\n// false\n// >>> check_dict_case({\"a\": \"apple\", 8: \"banana\", \"a\": \"apple\"})\n// false\n// >>> check_dict_case({\"Name\": \"John\", \"Age\": \"36\", \"City\": \"Houston\"})\n// false\n// >>> check_dict_case({\"STATE\": \"NC\", \"ZIP\": \"12345\"})\n// true\nfunction check_dict_case(dict){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_95_check_dict_case.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_dict_case;\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"b\": \"banana\"}),true);\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"A\": \"banana\", \"B\": \"banana\"}),false);\n  assert.deepEqual(candidate({\"p\": \"pineapple\", \"5\": \"banana\", \"a\": \"apple\"}),false);\n  assert.deepEqual(candidate({\"Name\": \"John\", \"Age\": \"36\", \"City\": \"Houston\"}),false);\n  assert.deepEqual(candidate({\"STATE\": \"NC\", \"ZIP\": \"12345\"}),true);\n  assert.deepEqual(candidate({\"fruit\": \"Orange\", \"taste\": \"Sweet\"}),true);\n  assert.deepEqual(candidate({}),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    if (Object.keys(dict).length === 0) {\n        return false;\n    }\n    const keys = Object.keys(dict);\n    const lowerCaseKeys = keys.every(key => typeof key === 'string' && key.toLowerCase() === key);\n    const upperCaseKeys = keys.every(key => typeof key === 'string' && key.toUpperCase() === key);\n    return lowerCaseKeys || upperCaseKeys;\n}",
+    "\n    if (Object.keys(dict).length === 0) return false;\n    const allLower = Object.keys(dict).every(key => key === key.toLowerCase());\n    const allUpper = Object.keys(dict).every(key => key === key.toUpperCase());\n    return allLower || allUpper;\n}",
+    "\n    if (Object.keys(dict).length === 0) {\n        return false;\n    }\n    const allLower = Object.keys(dict).every(key => key === key.toLowerCase());\n    const allUpper = Object.keys(dict).every(key => key === key.toUpperCase());\n    return allLower || allUpper;\n}"
+  ]
+}

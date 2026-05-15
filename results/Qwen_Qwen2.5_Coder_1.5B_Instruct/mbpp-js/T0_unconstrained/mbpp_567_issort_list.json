@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_567_issort_list",
+  "language": "js",
+  "prompt": "//Write a function to check whether a specified array is sorted or not.\nfunction issort_list(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_567_issort_list.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = issort_list;\n  assert.deepEqual(candidate([1, 2, 4, 6, 8, 10, 12, 14, 16, 17]),true);\n  assert.deepEqual(candidate([1, 2, 4, 6, 8, 10, 12, 14, 20, 17]),false);\n  assert.deepEqual(candidate([1, 2, 4, 6, 8, 10, 15, 14, 20]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=0;i<list1.length-1;i++){\n        if(list1[i]>list1[i+1]){\n            return false;\n        }\n    }\n    return true;\n}\nlet list1=[1,2,3,4,5];"
+  ]
+}

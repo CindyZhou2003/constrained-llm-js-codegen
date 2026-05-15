@@ -1,0 +1,22 @@
+{
+  "name": "HumanEval_136_largest_smallest_integers",
+  "language": "js",
+  "prompt": "//Create a function that returns an array (a, b), where 'a' is\n// the largest of negative integers, and 'b' is the smallest\n// of positive integers in an array.\n// If there is no negative or positive integers, return them as undefined.\n// Examples:\n// >>> largest_smallest_integers([2, 4, 1, 3, 5, 7])\n// [undefined, 1]\n// >>> largest_smallest_integers([])\n// [undefined, undefined]\n// >>> largest_smallest_integers([0])\n// [undefined, undefined]\nfunction largest_smallest_integers(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\originals-with-cleaned-doctests\\HumanEval_136_largest_smallest_integers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = largest_smallest_integers;\n  assert.deepEqual(candidate([2, 4, 1, 3, 5, 7]),[undefined, 1]);\n  assert.deepEqual(candidate([2, 4, 1, 3, 5, 7, 0]),[undefined, 1]);\n  assert.deepEqual(candidate([1, 3, 2, 4, 5, 6, -2]),[-2, 1]);\n  assert.deepEqual(candidate([4, 5, 3, 6, 2, 7, -7]),[-7, 2]);\n  assert.deepEqual(candidate([7, 3, 8, 4, 9, 2, 5, -9]),[-9, 2]);\n  assert.deepEqual(candidate([]),[undefined, undefined]);\n  assert.deepEqual(candidate([0]),[undefined, undefined]);\n  assert.deepEqual(candidate([-1, -3, -5, -6]),[-1, undefined]);\n  assert.deepEqual(candidate([-1, -3, -5, -6, 0]),[-1, undefined]);\n  assert.deepEqual(candidate([-6, -4, -4, -3, 1]),[-3, 1]);\n  assert.deepEqual(candidate([-6, -4, -4, -3, -100, 1]),[-3, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "  let a = undefined;\n  let b = undefined;\n  for(let i = 0; i < lst.length; i++){\n    if(lst[i] < 0 && a === undefined){\n      a = lst[i];\n    } else if(lst[i] > 0 && b === undefined){\n      b = lst[i];\n    }\n  }\n  return [a, b];\n}\n",
+    "    let negArr = lst.filter(n => n < 0);\n    let posArr = lst.filter(n => n > 0);\n    return [negArr.length > 0 ? Math.max(...negArr) : undefined, posArr.length > 0 ? Math.min(...posArr) : undefined];\n}",
+    "  var a = lst.filter(function(i){\n    return i < 0;\n  }).sort(function(a,b){\n    return a-b;\n  });\n  var b = lst.filter(function(i){\n    return i > 0;\n  }).sort(function(a,b){\n    return a-b;\n  });\n  return a.length === 0 ? [undefined,undefined] : [a[a.length-1], b[0]];\n}\n",
+    "  var smallestPos = undefined;\n  var largestNeg = undefined;\n  for(var i = 0; i < lst.length; i++){\n    if(lst[i] > 0){\n      if(smallestPos === undefined || lst[i] < smallestPos){\n        smallestPos = lst[i];\n      }\n    }\n    if(lst[i] < 0){\n      if(largestNeg === undefined || lst[i] > largestNeg){\n        largestNeg = lst[i];\n      }\n    }\n  }\n  return [largestNeg, smallestPos];\n}\n",
+    "  let smallest = undefined;\n  let largest = undefined;\n  for(let i = 0; i < lst.length; i++){\n    if(lst[i] < 0){\n      smallest = smallest === undefined ? lst[i] : Math.min(smallest, lst[i]);\n    }\n    if(lst[i] > 0){\n      largest = largest === undefined ? lst[i] : Math.max(largest, lst[i]);\n    }\n  }\n  return [smallest, largest];\n}\n"
+  ]
+}
