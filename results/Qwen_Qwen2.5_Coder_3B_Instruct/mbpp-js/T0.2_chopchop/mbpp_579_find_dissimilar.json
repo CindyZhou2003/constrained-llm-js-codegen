@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_579_find_dissimilar",
+  "language": "js",
+  "prompt": "//Write a function to find the dissimilar elements in the given two tuples.\nfunction find_dissimilar(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_579_find_dissimilar.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_dissimilar;\n  assert.deepEqual(candidate([3, 4, 5, 6], [5, 7, 4, 10]),[3, 6, 7, 10]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [7, 2, 3, 9]),[1, 4, 7, 9]);\n  assert.deepEqual(candidate([21, 11, 25, 26], [26, 34, 21, 36]),[34, 36, 11, 25]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Convert tuples to arrays for easier manipulation\n    let arr1 = Array.from(test_tup1);\n    let arr2 = Array.from(test_tup2);\n    \n    // Find elements in arr1 that are not in arr2\n    let dissimilar_elements = arr1.filter(element => !arr2.includes(element));\n    \n    // Find elements in arr2 that are not in arr1\n    dissimilar_elements = dissimilar_elements.concat(arr2.filter(element => !arr1.includes(element)));\n    \n    // Return the dissimilar elements\n    return dissimilar_elements;\n}",
+    "\n    // Convert tuples to sets for easy comparison\n    const set1 = new Set(test_tup1);\n    const set2 = new Set(test_tup2);\n\n    // Find elements that are in set1 but not in set2\n    const dissimilar1 = [...set1].filter(item => !set2.has(item));\n\n    // Find elements that are in set2 but not in set1\n    const dissimilar2 = [...set2].filter(item => !set1.has(item));\n\n    // Combine the dissimilar elements from both sets\n    const dissimilar = dissimilar1.concat(dissimilar2);\n\n    return dissimilar;\n}",
+    "\n    // Convert tuples to sets for easy comparison\n    let set1 = new Set(test_tup1);\n    let set2 = new Set(test_tup2);\n\n    // Find elements in set1 that are not in set2\n    let dissimilar_elements = new Set([...set1].filter(x => !set2.has(x)));\n\n    // Find elements in set2 that are not in set1\n    dissimilar_elements = dissimilar_elements.union(new Set([...set2].filter(x => !set1.has(x))));\n\n    // Convert the set back to a tuple\n    return [...dissimilar_elements];\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_18_remove_dirty_chars",
+  "language": "js",
+  "prompt": "//Write a function to remove characters from the first string which are present in the second string.\nfunction remove_dirty_chars(string, second_string){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_18_remove_dirty_chars.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_dirty_chars;\n  assert.deepEqual(candidate(\"probasscurve\", \"pros\"),\"bacuve\");\n  assert.deepEqual(candidate(\"digitalindia\", \"talent\"),\"digiidi\");\n  assert.deepEqual(candidate(\"exoticmiles\", \"toxic\"),\"emles\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let result = '';\n  for (let i = 0; i < string.length; i++) {\n    if (!second_string.includes(string[i])) {\n      result += string[i];\n    }\n  }\n  return result;\n}\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_83_get_Char",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the character made by adding the ASCII value of all the characters of the given string modulo 26.\nfunction get_Char(strr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_83_get_Char.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_Char;\n  assert.deepEqual(candidate(\"abc\"),\"f\");\n  assert.deepEqual(candidate(\"gfg\"),\"t\");\n  assert.deepEqual(candidate(\"ab\"),\"c\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let sum = 0;\n  for (let i = 0; i < strr.length; i++) {\n    sum += strr.charCodeAt(i);\n  }\n  return String.fromCharCode\n  // Your code here\n  // return String.fromCharCode(sum % 26);\n  // return String.fromCharCode(sum % 26 + 65);\n  // return String.fromCharCode(sum % 26 + 97);\n  // return String.fromCharCode(sum % 26 + 48);\n  // return String.fromCharCode(sum % 26 + 10);\n  // return String.fromCharCode(sum % 26 + 13);\n  // return String.fromCharCode(sum % 26 + 16);\n  // return String.fromCharCode(sum % 26 + 19);\n  // return String.fromCharCode(sum % 26 + 22);\n  // return String.fromCharCode(sum % 26 + 25);\n  // return String.fromCharCode(sum % 26 + 28);\n  // return String.fromCharCode(sum % 26 + 31);\n  // return String.fromCharCode(sum % 26 + 34);\n  // return String.fromCharCode(sum % 26 + 37);\n  // return String.fromCharCode(sum % 26 + 40);\n  // return String.fromCharCode(sum % 26 + 43);\n  // return String.fromCharCode(sum % 26 + 46);\n  // return String.fromCharCode(sum % 26 + 49);\n  // return String.fromCharCode(sum % 26 + 52);\n  // return String.fromCharCode(sum % 26 + 55);\n  // return String.fromCharCode(sum % 26 + 58);\n  // return String.fromCharCode(sum % 26 + 61);\n  // return String.fromCharCode(sum % 26 + 64);\n  // return String.fromCharCode(sum % 26 + 67);\n  // return String.fromCharCode(sum % 26 + 70);\n  // return String.fromCharCode(sum % 26 + 73);\n  // return String.fromCharCode(sum % 26 + 76);\n  // return String.fromCharCode(sum % 26 + 79);\n  // return String.fromCharCode(sum % 26 + 82);\n  // return String.fromCharCode(sum % 26 + 85);\n  // return String.fromCharCode(sum % 26 + 88);\n  // return String.fromCharCode(sum"
+  ]
+}

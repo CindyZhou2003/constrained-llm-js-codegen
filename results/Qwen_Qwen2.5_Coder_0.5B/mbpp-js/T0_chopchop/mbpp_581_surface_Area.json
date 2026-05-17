@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_581_surface_Area",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the surface area of a square pyramid with a given base edge and height.\nfunction surface_Area(b, s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_581_surface_Area.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = surface_Area;\n  assert.deepEqual(candidate(3, 4),33);\n  assert.deepEqual(candidate(4, 5),56);\n  assert.deepEqual(candidate(1, 2),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return 2 * b * s + 2 * b * b;\n}\n"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_433_check_greater",
+  "language": "js",
+  "prompt": "//Write a function to check whether the entered number is greater than the elements of the given array.\nfunction check_greater(arr, number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_433_check_greater.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = check_greater;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], 4),false);\n  assert.deepEqual(candidate([2, 3, 4, 5, 6], 8),true);\n  assert.deepEqual(candidate([9, 7, 4, 8, 6, 1], 11),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i] > number) {\n      return true;\n    }\n  }\n  return false;\n}"
+  ]
+}

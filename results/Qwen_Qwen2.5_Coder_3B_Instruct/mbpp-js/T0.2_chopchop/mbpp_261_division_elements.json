@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_261_division_elements",
+  "language": "js",
+  "prompt": "//Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples.\nfunction division_elements(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_261_division_elements.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = division_elements;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[2, 2, 2, 3]);\n  assert.deepEqual(candidate([12, 6, 8, 16], [6, 3, 4, 4]),[2, 2, 2, 4]);\n  assert.deepEqual(candidate([20, 14, 36, 18], [5, 7, 6, 9]),[4, 2, 6, 2]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Check if both tuples have the same length\n    if (test_tup1.length !== test_tup2.length) {\n        throw new Error(\"Tuples must have the same length for element-wise division.\");\n    }\n\n    // Perform element-wise division\n    const result = test_tup1.map((element, index) => {\n        if (test_tup2[index] === 0) {\n            throw new Error(\"Division by zero encountered.\");\n        }\n        return element //test_tup2[index];\n    };\n\n    return result;\n}",
+    "\n    // Check if both tuples have the same length\n    if (test_tup1.length !== test_tup2.length) {\n        return \"Error: Tuples must have the same length\";\n    }\n\n    // Initialize an array to store the results\n    let result = [];\n\n    // Perform element-wise division\n    for (let i = 0; i < test_tup1.length; i++) {\n        // Check if the divisor is zero to avoid division by zero error\n        if (test_tup2[i] === 0) {\n            return \"Error: Division by zero encountered\";\n        }\n        // Calculate the division and store the result\n        result.push(test_tup1[i] / test_tup2[i]);\n    }\n\n    // Return the resulting tuple\n    return result;\n}",
+    "\n    // Check if both tuples have the same length\n    if (test_tup1.length !== test_tup2.length) {\n        return \"Error: Tuples must have the same length\";\n    }\n\n    // Initialize an array to store the results\n    let result = [];\n\n    // Perform element-wise division\n    for (let i = 0; i < test_tup1.length; i++) {\n        // Check if the divisor is zero to avoid division by zero error\n        if (test_tup2[i] === 0) {\n            return \"Error: Division by zero encountered\";\n        }\n        // Calculate the division and store the result\n        result.push(test_tup1[i] / test_tup2[i]);\n    }\n\n    // Return the resulting tuple\n    return result;\n}"
+  ]
+}

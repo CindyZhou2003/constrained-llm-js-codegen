@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_739_find_Index",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the index of smallest triangular number with n digits. https://www.geeksforgeeks.org/index-of-smallest-triangular-number-with-n-digits/\nfunction find_Index(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_739_find_Index.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Index;\n  assert.deepEqual(candidate(2),4);\n  assert.deepEqual(candidate(3),14);\n  assert.deepEqual(candidate(4),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let i = 1;\n  let j = 1;\n  let k = 1;\n  let l = 1;\n  let m = 1;\n  let n = 1;\n  let count = 0;\n  let index = 0;\n  while (count < n) {\n    i = i + 1;\n    j = j + 1;\n    k = k + 1;\n    l = l + 1;\n    m = m + 1;\n    n = n + 1;\n    count = count + 1;\n    if (i * j * k * l * m * n < 10 ** n) {\n      index = i * j * k * l * m * n;\n    }\n  }\n  return index;\n}\nOutput: function find_Index(n)function find_Index(n) {\n  let i = 1;\n  let j = 1;\n  let k = 1;\n  let l = 1;\n  let m = 1;\n  let n = 1;\n  let count = 0;\n  let index = 0;\n  while (count < n) {\n    i = i + 1;\n    j = j + 1;\n    k = k + 1;\n    l = l + 1;\n    m = m + 1;\n    n = n + 1;\n    count = count + 1;\n    if (i * j * k * l * m * n < 10 ** n) {\n      index = i * j * k * l * m * n;\n    }\n  }\n  return index;\n}\nOutput: function find_Index(n)function find_Index(n) {\n  let i = 1;\n  let j = 1;\n  let k = 1;\n  let l = 1;\n  let m = 1;\n  let n = 1;\n  let count = 0;\n  let index = 0;\n  while (count < n) {\n    i = i + 1;\n    j = j + 1;\n    k = k + 1;\n    l = l + 1;\n    m = m + 1;\n    n = n + 1;\n    count = count + 1;\n    if (i * j * k * l * m * n < 10 ** n) {\n      index = i * j * k * l *"
+  ]
+}

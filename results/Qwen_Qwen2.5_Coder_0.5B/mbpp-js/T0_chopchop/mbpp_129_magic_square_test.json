@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let sum = 0;\n  let sum2 = 0;\n  let sum3 = 0;\n  let sum4 = 0;\n  let sum5 = 0;\n  let sum6 = 0;\n  let sum7 = 0;\n  let sum8 = 0;\n  let sum9 = 0;\n  let sum10 = 0;\n  let sum11 = 0;\n  let sum12 = 0;\n  let sum13 = 0;\n  let sum14 = 0;\n  let sum15 = 0;\n  let sum16 = 0;\n  let sum17 = 0;\n  let sum18 = 0;\n  let sum19 = 0;\n  let sum20 = 0;\n  let sum21 = 0;\n  let sum22 = 0;\n  let sum23 = 0;\n  let sum24 = 0;\n  let sum25 = 0;\n  let sum26 = 0;\n  let sum27 = 0;\n  let sum28 = 0;\n  let sum29 = 0;\n  let sum30 = 0;\n  let sum31 = 0;\n  let sum32 = 0;\n  let sum33 = 0;\n  let sum34 = 0;\n  let sum35 = 0;\n  let sum36 = 0;\n  let sum37 = 0;\n  let sum38 = 0;\n  let sum39 = 0;\n  let sum40 = 0;\n  let sum41 = 0;\n  let sum42 = 0;\n  let sum43 = 0;\n  let sum44 = 0;\n  let sum45 = 0;\n  let sum46 = 0;\n  let sum47 = 0;\n  let sum48 = 0;\n  let sum49 = 0;\n  let sum50 = 0;\n  let sum51 = 0;\n  let sum52 = 0;\n  let sum53 = 0;\n  let sum54 = 0;\n  let sum55 = 0;\n  let sum56 = 0;\n  let sum57 = 0;\n "
+  ]
+}

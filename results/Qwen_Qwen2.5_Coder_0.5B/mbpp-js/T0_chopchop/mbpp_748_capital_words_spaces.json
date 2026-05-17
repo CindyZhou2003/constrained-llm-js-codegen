@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_748_capital_words_spaces",
+  "language": "js",
+  "prompt": "//Write a function to put spaces between words starting with capital letters in a given string.\nfunction capital_words_spaces(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_748_capital_words_spaces.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = capital_words_spaces;\n  assert.deepEqual(candidate(\"Python\"),\"Python\");\n  assert.deepEqual(candidate(\"PythonProgrammingExamples\"),\"Python Programming Examples\");\n  assert.deepEqual(candidate(\"GetReadyToBeCodingFreak\"),\"Get Ready To Be Coding Freak\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let arr = str1.split(' ');\n  let result = [];\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i][0] === arr[i][0].toUpperCase()) {\n      result.push(arr[i]);\n    } else {\n      result.push(arr[i].charAt(0).toUpperCase() + arr[i].slice(1));\n    }\n  }\n  return result.join(' ');\n}\n"
+  ]
+}

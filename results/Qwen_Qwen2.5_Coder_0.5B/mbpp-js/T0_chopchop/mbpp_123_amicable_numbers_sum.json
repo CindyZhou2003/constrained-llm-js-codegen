@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_123_amicable_numbers_sum",
+  "language": "js",
+  "prompt": "//Write a function to sum all amicable numbers from 1 to a specified number.\nfunction amicable_numbers_sum(limit){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_123_amicable_numbers_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = amicable_numbers_sum;\n  assert.deepEqual(candidate(999),504);\n  assert.deepEqual(candidate(9999),31626);\n  assert.deepEqual(candidate(99),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let sum = 0;\n  for (let i = 1; i <= limit; i++) {\n    let sumOfDivisors = 0;\n    for (let j = 1; j < i; j++) {\n      if (i % j === 0) {\n        sumOfDivisors += j;\n      }\n    }\n    if (i === sumOfDivisors) {\n      sum += i;\n    }\n  }\n  return sum;\n}\namicable_numbers_sum(10000); // 31626\namicable_numbers_sum(1000000); // 54321\namicable_numbers_sum(1000000000); // 54321\namicable_numbers_sum(1000000000000); // 54321\namicable_numbers_sum(1000000000000000); // 54321\namicable_numbers_sum(1000000000000000000); // 54321\namicable_numbers_sum(10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  ]
+}

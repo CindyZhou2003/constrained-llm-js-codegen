@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_116_tuple_to_int",
+  "language": "js",
+  "prompt": "//Write a function to convert a given array of positive integers into a single integer.\nfunction tuple_to_int(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_116_tuple_to_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_to_int;\n  assert.deepEqual(candidate([1, 2, 3]),123);\n  assert.deepEqual(candidate([4, 5, 6]),456);\n  assert.deepEqual(candidate([5, 6, 7]),567);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return nums.reduce((acc, num) => acc = t * 10 + num, 0);\n}",
+    "\n  return nums.reduce((acc, num) => acc =First, I'll write the function to convert an array of positive integers into a single integer. The function will use the `reduce` method to concatenate the numbers into a string and then convert that string back into an integer.\n\n```javascript",
+    "\n  return nums.reduce((acc, num) => acc =Multi-line comment explaining the function\n  // This function takes an array of positive integers and converts it into a single integer.\n  // It uses the reduce method to iterate over the array, multiplying each number by 10 raised to the power of its index,\n  // and then summing these values to form the final integer.\n  return nums.reduce((acc, num, index) => acc + num * Math.pow(10, index), 0);\n}"
+  ]
+}

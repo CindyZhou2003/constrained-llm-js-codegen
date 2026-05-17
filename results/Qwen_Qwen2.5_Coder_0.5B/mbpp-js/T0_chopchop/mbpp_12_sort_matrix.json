@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let sortedMatrix = M.sort((a, b) => aSumOfRowsSummingToBaysSumOfRowsSummingToA =) {\n    return aSumOfRowsSummingToBaysSumOfRowsSummingToA - bSumOfRowsSummingToBaysSumOfRowsSummingToA;\n  });\n  return sortedMatrix;\n}\nExplanation:\nThe function sort_matrix takes a matrix M as input and returns a new matrix sorted in ascending order according to the sum of its rows.\nThe function uses the sort() method to sort the matrix in ascending order according to the sum of its rows.\nThe sort() method takes a comparison function as an argument, which compares two elements of the matrix and returns a negative number if the first element is less than the second element, a positive number if the first element is greater than the second element, and zero if the two elements are equal.\nThe comparison function takes two elements of the matrix as arguments and returns a negative number if the first element is less than the second element, a positive number if the first element is greater than the second element, and zero if the two elements are equal.\nThe function returns the sorted matrix.\nThe sort_matrix function takes a matrix M as input and returns a new matrix sorted in ascending order according to the sum of its rows.\nThe function uses the sort() method to sort the matrix in ascending order according to the sum of its rows.\nThe sort() method takes a comparison function as an argument, which compares two elements of the matrix and returns a negative number if the first element is less than the second element, a positive number if the first element is greater than the second element, and zero if the two elements are equal.\nThe comparison function takes two elements of the matrix as arguments and returns a negative number if the first element is less than the second element, a positive number if the first element is greater than the second element, and zero if the two elements are equal.\nThe function returns the sorted matrix.\nThe sort_matrix function takes a matrix M as input and returns a new matrix sorted in ascending order according to the sum of its rows.\nThe function uses the sort() method to sort the matrix in ascending order according to the sum of its rows.\nThe sort() method takes a comparison function as an argument, which compares two elements of the matrix and returns a negative number if the first element is less than the second element, a positive number if the first element is greater than the second element,"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_755_second_smallest",
+  "language": "js",
+  "prompt": "//Write a function to find the second smallest number in an array.\nfunction second_smallest(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_755_second_smallest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = second_smallest;\n  assert.deepEqual(candidate([1, 2, -8, -2, 0, -2]),-2);\n  assert.deepEqual(candidate([1, 1, -0.5, 0, 2, -2, -2]),-0.5);\n  assert.deepEqual(candidate([2, 2]),undefined);\n  assert.deepEqual(candidate([2, 2, 2]),undefined);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (numbers.length < 2) {\n    return null; // Not enough elements to find a second smallest\n  }\n\n  let smallest = Infinity;\n  let second_smallest = Infinity;\n\n  for (let num of numbers) {\n    if (num < smallest) {\n      second_smallest = smallest;\n      smallest = num;\n    } else if (num < second_smallest && num !== smallest) {\n      second_smallest = num;\n    }\n  }\n\n  return second_smallest === Infinity ? null : second_smallest;\n}",
+    "\n    if (numbers.length < 2) {\n        return null; // Not enough elements to find a second smallest\n    }\n\n    let smallest = Infinity;\n    let second_smallest = Infinity;\n\n    for (let num of numbers) {\n        if (num < smallest) {\n            second_smallest = smallest;\n            smallest = num;\n        } else if (num < second_smallest && num !== smallest) {\n            second_smallest = num;\n        }\n    }\n\n    return second_smallest === Infinity ? null : second_smallest;\n}",
+    "\n  if (numbers.length < 2) {\n    return null; // Not enough elements to find a second smallest\n  }\n\n  let smallest = Infinity;\n  let second_smallest = Infinity;\n\n  for (let num of numbers) {\n    if (num < smallest) {\n      second_smallest = smallest;\n      smallest = num;\n    } else if (num < second_smallest && num !== smallest) {\n      second_smallest = num;\n    }\n  }\n\n  return second_smallest === Infinity ? null : second_smallest;\n}"
+  ]
+}

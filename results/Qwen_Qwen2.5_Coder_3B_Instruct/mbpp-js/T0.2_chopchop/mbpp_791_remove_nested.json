@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_791_remove_nested",
+  "language": "js",
+  "prompt": "//Write a function to remove tuples from the given array.\nfunction remove_nested(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_791_remove_nested.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_nested;\n  assert.deepEqual(candidate([1, 5, 7, [4, 6], 10]),[1, 5, 7, 10]);\n  assert.deepEqual(candidate([2, 6, 8, [5, 7], 11]),[2, 6, 8, 11]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], 12]),[3, 7, 9, 12]);\n  assert.deepEqual(candidate([3, 7, 9, [6, 8], [5, 12], 12]),[3, 7, 9, 12]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return test_tup.filter(item => !Array.isArray(item));\n}",
+    "\n    return test_tup.filter(item => !Array.isArray(item));\n}",
+    "\n    return test_tup.filter(item => !Array.isArray(item));\n}"
+  ]
+}

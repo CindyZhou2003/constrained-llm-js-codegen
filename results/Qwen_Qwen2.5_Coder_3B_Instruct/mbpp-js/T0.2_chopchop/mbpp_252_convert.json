@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_252_convert",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to convert complex numbers to polar coordinates.\nfunction convert(numbers){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_252_convert.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = convert;\n  assert.deepEqual(candidate(1),[1.0, 0.0]);\n  assert.deepEqual(candidate(4),[4.0, 0.0]);\n  assert.deepEqual(candidate(5),[5.0, 0.0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return numbers.map(num => {\n    const real = im = 0;\n    const magnitude = Math.sqrt(real * real + im * im);\n    const angle = Math.atan2(im, real);\n    return { magnitude, angle };\n  });\n}",
+    "\n  return numbers.map(num => {\n    const real =      num.real;\n    const imag =      num.imag;\n    const magnitude = Math.sqrt(real * real + imag * imag);\n    const angle = Math.atan2(imag, real);\n    return { magnitude, angle };\n  });\n}",
+    "\n  return numbers.map(num => {\n    const magnitude = Algebrite.eval(`sqrt(${num.real}^2 + ${num.imaginary}^2)`);\n    const angle = Algebrite.eval(`atan2(${num.imaginary}, ${num.real})`);\n    return { magnitude, angle };\n  });\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (num <= 0) return 1; // The smallest palindrome is 1 for non-positive numbers\n\n  function isPalindrome(str) {\n    return str === str.split('').reverse().join('');\n  }\n\n  let next = num + 1;\n\n  while (!isPalindromeStringified(next)) {\n    next++;\n  }\n\n  return next;\n}\n",
+    "\n  function is_palindrome(str) {\n    return str === str.split('').reverse().join('');\n  }\n\n  function increment_number(num) {\n    return num + 1;\n  }\n\n  function next_palindrome(num) {\n    let incremented = increment_number\n  // Your code here\n  // Continue the function to find the next smallest palindrome\n  // You may need to use helper functions like is_palindrome and increment_number\n  // Return the next smallest palindrome as an integer\n}",
+    "\n  if (num < 0) {\n    return null; // Negative numbers cannot be palindromes\n  }\n\n  // Helper function to check if a number is a palindrome\n  function is_palindrome(n) {\n    const str = n.toString();\n    return str === str.split('').reverse().join('');\n  }\n\n  // Start from the next number\n  let nextNum = num + 1;\n\n  // Find the next palindrome\n  while (!is_palindrome,nextNum)) {\n    nextNum++;\n  }\n\n  return nextNum;\n}"
+  ]
+}

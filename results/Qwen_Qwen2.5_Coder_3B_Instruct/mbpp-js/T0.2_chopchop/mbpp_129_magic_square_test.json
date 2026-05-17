@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_129_magic_square_test",
+  "language": "js",
+  "prompt": "//Write a function to calculate whether the matrix is a magic square.\nfunction magic_square_test(my_matrix){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_129_magic_square_test.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = magic_square_test;\n  assert.deepEqual(candidate([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 8]]),true);\n  assert.deepEqual(candidate([[2, 7, 6], [9, 5, 1], [4, 3, 7]]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    const n = my_matrix.length;\n    if (n === 0 || !Array.isArray(my_matrix)) return false;\n\n    // Calculate the sum of the first row to use as a reference\n    const magic_sum = my_matrix[0].reduce((sum, value) => sum  =; value, 0);\n\n    // Check rows\n    for (let i = 0; i < n; i++) {\n        if (my_matrix[i].reduce((sum, value) => sum + value, 0) !== magic_sum) {\n            return false;\n        }\n    }\n\n    // Check columns\n    for (let j = 0; j < n; j++) {\n        let col_sum = 0;\n        for (let i = 0; i < n; i++) {\n            col_sum += my_matrix[i][j];\n        }\n        if (col_sum !== magic_sum) {\n            return false;\n        }\n    }\n\n    // Check diagonals\n    let diag1_sum = 0;\n    let diag2_sum = 0;\n    for (let i = 0; i < n; i++) {\n        diag1_sum += my_matrix[i][i];\n        diag2_sum += my_matrix[i][n - 1 - i];\n    }\n    if (diag1_sum !== magic_sum || diag2_sum !== magic_sum) {\n        return false;\n    }\n\n    return true;\n}",
+    "\n  const n = my_matrix.length;\n  if (n === 0 || !Array.isArray(my_matrix)) return false;\n\n  // Calculate the sum of the first row to use as a reference\n  const magic_sum = my_matrix[0].reduce((acc, val) => acc  =^ val, 0);\n\n  // Check rows and columns\n  for (let i = 0; i < n; i++) {\n    if (my_matrix[i].reduce((acc, val) => acc + val, 0) !== magic_sum) return false;\n    if (my_matrix.map(row => row[i]).reduce((acc, val) => acc + val, 0) !== magic_sum) return false;\n  }\n\n  // Check diagonals\n  const diagonal1 = my_matrix.map((row, i) => row[i]).reduce((acc, val) => acc + val, 0);\n  const diagonal2 = my_matrix.map((row, i) => row[n - 1 - i]).reduce((acc, val) => acc + val, 0);\n  if (diagonal1 !== magic_sum || diagonal2 !== magic_sum) return false;\n\n  return true;\n}",
+    "\n  const n = my_matrix.length;\n  if (n === 0 || !Array.isArray(my_matrix)) {\n    return false;\n  }\n\n  // Calculate the sum of the first row to use as a reference\n  const magic_sum = my_matrix[0].reduce((sum, num) => sum  = n * (n * n + 1) / 2;\n\n  // Check if all rows have the same sum\n  for (let i = 0; i < n; i++) {\n    if (my_matrix[i].reduce((sum, num) => sum + num, 0) !== magic_sum) {\n      return false;\n    }\n  }\n\n  // Check if all columns have the same sum\n  for (let j = 0; j < n; j++) {\n    let col_sum = 0;\n    for (let i = 0; i < n; i++) {\n      col_sum += my_matrix[i][j];\n    }\n    if (col_sum !== magic_sum) {\n      return false;\n    }\n  }\n\n  // Check if the main diagonal has the same sum\n  let main_diag_sum = 0;\n  for (let i = 0; i < n; i++) {\n    main_diag_sum += my_matrix[i][i];\n  }\n  if (main_diag_sum !== magic_sum) {\n    return false;\n  }\n\n  // Check if the secondary diagonal has the same sum\n  let secondary_diag_sum = 0;\n  for (let i = 0; i < n; i++) {\n    secondary_diag_sum += my_matrix[i][n - 1 - i];\n  }\n  if (secondary_diag_sum !== magic_sum) {\n    return false;\n  }\n\n  return true;\n}"
+  ]
+}

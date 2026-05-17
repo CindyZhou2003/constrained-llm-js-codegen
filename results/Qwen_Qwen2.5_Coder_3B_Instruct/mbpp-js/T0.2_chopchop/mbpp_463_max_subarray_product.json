@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_463_max_subarray_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product subarray of the given array.\nfunction max_subarray_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_463_max_subarray_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_subarray_product;\n  assert.deepEqual(candidate([1, -2, -3, 0, 7, -8, -2]),112);\n  assert.deepEqual(candidate([6, -3, -10, 0, 2]),180);\n  assert.deepEqual(candidate([-2, -40, 0, -2, -3]),80);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (arr.length === 0) return 0;\n\n  let maxProduct = arr[0];\n  let minProduct = arr[0];\n  let result = arr[0];\n\n  for (let i = 1; i < arr.length; i++) {\n    if (arr[i] < 0) {\n      [maxProduct, minProduct] = [minProduct, maxProduct];\n    }\n\n    maxProduct = Math.max(arr[i], maxProduct * arr[i]);\n    minProduct = Math.min(arr[i], minProduct * arr[i]);\n\n    result = Math.max(result, maxProduct);\n  }\n\n  return result;\n}",
+    "\n  if (arr.length === 0) return 0;\n\n  let maxProduct = arr[0];\n  let minProduct = arr[0];\n  let result = arr[0];\n\n  for (let i = 1; i < arr.length; i++) {\n    if (arr[i] < 0) {\n      [maxProduct, minProduct] = [minProduct, maxProduct];\n    }\n\n    maxProduct = Math.max(arr[i], maxProduct * arr[i]);\n    minProduct = Math.min(arr[i], minProduct * arr[i]);\n\n    result = Math.max(result, maxProduct);\n  }\n\n  return result;\n}",
+    "\n    if (arr.length === 0) return 0;\n\n    let maxProduct = arr[0];\n    let minProduct = arr[0];\n    let result = arr[0];\n\n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i] < 0) {\n            [maxProduct, minProduct] = [minProduct, maxProduct];\n        }\n\n        maxProduct = Math.max(arr[i], maxProduct * arr[i]);\n        minProduct = Math.min(arr[i], minProduct * arr[i]);\n\n        result = Math.max(result, maxProduct);\n    }\n\n    return result;\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_608_bell_Number",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find nth bell number.\nfunction bell_Number(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_608_bell_Number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = bell_Number;\n  assert.deepEqual(candidate(2),2);\n  assert.deepEqual(candidate(3),5);\n  assert.deepEqual(candidate(4),15);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (n === 0) return 1;\n  if (n === 1) return 1;\n  if (n === 2) return 2;\n  if (n === 3) return 4;\n  if (n === 4) return 7;\n  if (n === 5) return 13;\n  if (n === 6) return 24;\n  if (n === 7) return 44;\n  if (n === 8) return 81;\n  if (n === 9) return 149;\n  if (n === 10) return 274;\n  if (n === 11) return 504;\n  if (n === 12) return 927;\n  if (n === 13) return 1705;\n  if (n === 14) return 3464;\n  if (n === 15) return 6375;\n  if (n === 16) return 12441;\n  if (n === 17) return 24934;\n  if (n === 18) return 47929;\n  if (n === 19) return 95844;\n  if (n === 20) return 189721;\n  if (n === 21) return 371444;\n  if (n === 22) return 743449;\n  if (n === 23) return 1493444;\n  if (n === 24) return 2993441;\n  if (n === 25) return 5983444;\n  if (n === 26) return 11973449;\n  if (n === 27) return 23973444;\n  if (n === 28) return 47973441;\n  if (n === 29) return 95973444;\n  if (n === 30) return 189973449;\n  if (n === 31) return 3"
+  ]
+}

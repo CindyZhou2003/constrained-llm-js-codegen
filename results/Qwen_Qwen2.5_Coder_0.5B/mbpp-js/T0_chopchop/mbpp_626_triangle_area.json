@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_626_triangle_area",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius.\nfunction triangle_area(r){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_626_triangle_area.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = triangle_area;\n  assert.deepEqual(candidate(-1),undefined);\n  assert.deepEqual(candidate(0),0);\n  assert.deepEqual(candidate(2),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let area = 0;\n  let x = 0;\n  let y = 0;\n  let z = 0;\n  let a = 0;\n  let b = 0;\n  let c = 0;\n  let s = 0;\n  let s1 = 0;\n  let s2 = 0;\n  let s3 = 0;\n  let s4 = 0;\n  let s5 = 0;\n  let s6 = 0;\n  let s7 = 0;\n  let s8 = 0;\n  let s9 = 0;\n  let s10 = 0;\n  let s11 = 0;\n  let s12 = 0;\n  let s13 = 0;\n  let s14 = 0;\n  let s15 = 0;\n  let s16 = 0;\n  let s17 = 0;\n  let s18 = 0;\n  let s19 = 0;\n  let s20 = 0;\n  let s21 = 0;\n  let s22 = 0;\n  let s23 = 0;\n  let s24 = 0;\n  let s25 = 0;\n  let s26 = 0;\n  let s27 = 0;\n  let s28 = 0;\n  let s29 = 0;\n  let s30 = 0;\n  let s31 = 0;\n  let s32 = 0;\n  let s33 = 0;\n  let s34 = 0;\n  let s35 = 0;\n  let s36 = 0;\n  let s37 = 0;\n  let s38 = 0;\n  let s39 = 0;\n  let s40 = 0;\n  let s41 = 0;\n  let s42 = 0;\n  let s43 = 0;\n  let s44 = 0;\n  let s45 = 0;\n  let s46 = 0;\n  let s47 = 0;\n  let s48 = 0;\n  let s49 = 0;\n  let s50 = 0;\n  let s51 = "
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_766_pair_wise",
+  "language": "js",
+  "prompt": "//Write a function to return an array of all pairs of consecutive items in a given array.\nfunction pair_wise(l1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_766_pair_wise.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = pair_wise;\n  assert.deepEqual(candidate([1, 1, 2, 3, 3, 4, 4, 5]),[[1, 1], [1, 2], [2, 3], [3, 3], [3, 4], [4, 4], [4, 5]]);\n  assert.deepEqual(candidate([1, 5, 7, 9, 10]),[[1, 5], [5, 7], [7, 9], [9, 10]]);\n  assert.deepEqual(candidate([5, 1, 9, 7, 10]),[[5, 1], [1, 9], [9, 7], [7, 10]]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),[[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  var result = [];\n  for (var i = 0; i < l1.length - 1; i++) {\n    result.push([l1[i], l1[i + 1]]);\n  }\n  return result;\n}",
+    "\n  var result = [];\n  for (var i = 0; i < l1.length - 1; i++) {\n    result.push([l1[i], l1[i + 1]]);\n  }\n  return result;\n}",
+    "\n  const result = [];\n  for (let i = 0; i < l1.length - 1; i++) {\n    result.push([l1[i], l1[i + 1]]);\n  }\n  return result;\n}"
+  ]
+}

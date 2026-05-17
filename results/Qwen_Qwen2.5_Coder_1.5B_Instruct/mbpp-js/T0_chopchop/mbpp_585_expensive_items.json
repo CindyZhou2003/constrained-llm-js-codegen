@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_585_expensive_items",
+  "language": "js",
+  "prompt": "//Write a function to find the n most expensive items in a given dataset.\nfunction expensive_items(items, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_585_expensive_items.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = expensive_items;\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}], 2),[{\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-1\", \"price\": 101.1}]);\n  assert.deepEqual(candidate([{\"name\": \"Item-1\", \"price\": 101.1}, {\"name\": \"Item-2\", \"price\": 555.22}, {\"name\": \"Item-3\", \"price\": 45.09}, {\"name\": \"Item-4\", \"price\": 22.75}], 1),[{\"name\": \"Item-2\", \"price\": 555.22}]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    items.sort((a, b) => bpriceApriceB\n    // Return the first n items\n    // Note: JavaScript arrays are zero-indexed, so the first item is at index 0\n    // So, we use slice(0, n) to get the first n items\n    // The slice method returns a new array that contains a portion of the original array\n    // The first argument is the start index (inclusive)\n    // The second argument is the end index (exclusive)\n    // So, slice(0, n) will return the first n items of the array\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The reverse method reverses the order of the elements in the array\n    // So, slice(0, n) will return the first n items of the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts the array in ascending order by default\n    // So, we use the reverse method to sort the array in descending order\n    // The sort method sorts"
+  ]
+}

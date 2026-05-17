@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_308_large_product",
+  "language": "js",
+  "prompt": "//Write a function to find the specified number of largest products from two given lists, selecting one factor from each array.\nfunction large_product(nums1, nums2, N){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_308_large_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = large_product;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 3),[60, 54, 50]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 4),[60, 54, 50, 48]);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [3, 6, 8, 9, 10, 6], 5),[60, 54, 50, 48, 45]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Helper function to calculate the product of two numbers\n  const product = (a, b) => a  =>\n  // Sort nums1 in descending order to get the largest numbers at the beginning\n  nums1.sort((a, b) => b  =>\n  // Sort nums2 in descending order to get the largest numbers at the beginning\n  nums2.sort((a, b) => b  =>\n  // Initialize an array to store the largest products\n  let largestProducts = [];\n  // Iterate N times to find the N largest products\n  for (let i = 0; i < N; i++) {\n    // Calculate the product of the largest numbers from both arrays\n    const product = nums1[0] * nums2[0];\n    // Add the product to the largestProducts array\n    largestProducts.push(product);\n    // Remove the largest numbers from both arrays\n    nums1.shift();\n    nums2.shift();\n  }\n  // Return the array of largest products\n  return largestProducts;\n}",
+    "\n  // Sort nums1 in descending order\n  nums1.sort((a, b) => b  \n    \n  // Sort nums2 in descending order\n  // This ensures that the largest products are formed by multiplying the largest numbers from both lists\n  // This is because multiplying the largest numbers from both lists will yield the largest possible product\n  // For example, if nums1 = [3, 1, 2] and nums2 = [4, 5, 6], the largest product will be 3 * 6 = 18\n  // because 3 is the largest number in nums1 and 6 is the largest number in nums2\n  // If we sorted nums1 in ascending order and nums2 in descending order, the largest product would be 1 * 6 = 6\n  // because 1 is the smallest number in nums1 and 6 is the largest number in nums2\n  nums2.sort((a, b) => b  - a);\n  \n  // Initialize an array to store the largest products\n  let largest_products = [];\n  \n  // Iterate over the first N elements of nums1 and nums2\n  for (let i = 0; i < N; i++) {\n    // Multiply the current element from nums1 with the current element from nums2\n    let product = nums1[i] * nums2[i];\n    \n    // Add the product to the largest_products array\n    largest_products.push(product);\n  }\n  \n  // Return the largest_products array\n  return largest_products;\n}",
+    "\n  // Create an array to store the products of all combinations of nums1 and nums2\n  const products = [];\n\n  // Iterate over each element in nums1\n  for (let i = 0; i < nums1.length; i++) {\n    // Iterate over each element in nums2\n    for (let j = 0; j < nums2.length; j++) {\n      // Calculate the product of the current elements from nums1 and nums2\n      const product = nums1[i] * nums2[j];\n      // Add the product to the products array\n      products.push(product);\n    }\n  }\n\n  // Sort the products array in descending order\n  products.sort((a, b) => b - a);\n\n  // Return the first N largest products\n  return products.slice(0, N);\n}"
+  ]
+}

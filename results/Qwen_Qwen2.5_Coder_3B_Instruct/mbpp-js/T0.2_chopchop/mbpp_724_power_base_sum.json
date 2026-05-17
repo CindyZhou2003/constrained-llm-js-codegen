@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_724_power_base_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power.\nfunction power_base_sum(base, power){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_724_power_base_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = power_base_sum;\n  assert.deepEqual(candidate(2, 100),115);\n  assert.deepEqual(candidate(8, 10),37);\n  assert.deepEqual(candidate(8, 15),62);\n  assert.deepEqual(candidate(3, 3),9);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Calculate the base raised to the power\n  let result = Math.pow(base, power);\n  \n  // Convert the result to a string to iterate over each digit\n  let resultStr = result.toString();\n  \n  // Initialize a variable to hold the sum of digits\n  let sum = 0;\n  \n  // Iterate over each character in the string\n  for (let char of resultStr) {\n    // Convert the character back to a number and add it to the sum\n    sum += parseInt(char, 10);\n  }\n  \n  // Return the sum of the digits\n  return sum;\n}",
+    "\n  // Calculate the base raised to the power\n  let result = Math.pow(base, power);\n  \n  // Convert the result to a string to iterate over each digit\n  let resultStr = result.toString();\n  \n  // Initialize a variable to store the sum of digits\n  let sum = 0;\n  \n  // Iterate over each character in the string\n  for (let char of resultStr) {\n    // Convert the character back to a number and add it to the sum\n    sum += parseInt(char, 10);\n  }\n  \n  // Return the sum of the digits\n  return sum;\n}",
+    "\n  // Calculate the base raised to the power\n  let result = Math.pow(base, power);\n  \n  // Convert the result to a string to iterate over each digit\n  let resultStr = result.toString();\n  \n  // Initialize a variable to hold the sum of the digits\n  let sum = 0;\n  \n  // Iterate over each character in the string representation of the result\n  for (let char of resultStr) {\n    // Convert the character back to a number and add it to the sum\n    sum += parseInt(char, 10);\n  }\n  \n  // Return the sum of the digits\n  return sum;\n}"
+  ]
+}

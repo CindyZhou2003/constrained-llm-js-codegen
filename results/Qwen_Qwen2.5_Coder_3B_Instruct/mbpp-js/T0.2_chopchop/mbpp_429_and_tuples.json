@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Extracting elementwise and tuples from the given two tuples\n    let result = [];\n    for (let i = 0; i < test_tup1.length; i++) {\n        // Check if both elements are tuples\n        if (Array.isArray(test_tup1[i]) && Array.isArray(test_tup2[i])) {\n            // If both are tuples, concatenate them\n            result.push(test_tup1[i].concat(test_tup2[i]));\n        } else {\n            // If not both are tuples, push the current element from both tuples\n            result.push([test_tup1[i], test_tup2[i]]);\n        }\n    }\n    return result;\n}",
+    "\n    // Extracting elementwise and tuples from the given two tuples\n    const elementwise_and_tuples = test_tup1.map((value, index) => {\n        return [value //test_tup2[index], value * test_tup2[index]];\n    // Returning the result as a new tuple\n    // Note: The division and multiplication operations are performed elementwise\n    // and the result is stored in a new array for each element\n    });\n    return elementwise_and_tuples;\n}",
+    "\n    // Extracting elementwise and tuples from the given two tuples\n    let result = [];\n    for (let i = 0; i < test_tup1.length; i++) {\n        if (Array.isArray(test_tup1[i]) && Array.isArray(test_tup2[i])) {\n            // If both elements are tuples, perform elementwise AND\n            result.push(test_tup1[i].filter((value, index) => value\n                && test_tup2[i][index]));\n        } else if (Array.isArray(test_tup1[i]) || Array.isArray(test_tup2[i])) {\n            // If one element is a tuple, return the tuple\n            result.push(test_tup1[i] || test_tup2[i]);\n        } else {\n            // If both elements are not tuples, return the AND of the values\n            result.push(test_tup1[i] && test_tup2[i]);\n        }\n    }\n    return result;\n}"
+  ]
+}

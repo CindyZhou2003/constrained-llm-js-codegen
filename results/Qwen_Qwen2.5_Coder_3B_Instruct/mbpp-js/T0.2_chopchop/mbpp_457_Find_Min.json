@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_457_Find_Min",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the sublist having minimum length.\nfunction Find_Min(lst){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_457_Find_Min.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = Find_Min;\n  assert.deepEqual(candidate([[1], [1, 2], [1, 2, 3]]),[1]);\n  assert.deepEqual(candidate([[1, 1], [1, 1, 1], [1, 2, 7, 8]]),[1, 1]);\n  assert.deepEqual(candidate([[\"x\"], [\"x\", \"y\"], [\"x\", \"y\", \"z\"]]),[\"x\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (lst.length === 0) return null; // Return null if the list is empty\n\n  let minLength = lst[0].length; // Initialize minLength with the length of the first sublist\n  let minSublist = lst[0]; // Initialize minSublist with the first sublist\n\n  for (let i = 1; i < lst.length; i++) {\n    if (lst[i].length < minLength) {\n      minLength = lst[i].length; // Update minLength if a shorter sublist is found\n      minSublist = lst[i]; // Update minSublist with the shorter sublist\n    }\n  }\n\n  return minSublist; // Return the sublist with the minimum length\n}",
+    "\n    if (lst.length === 0) {\n        return null; // Return null if the list is empty\n    }\n\n    let minLength = lst[0].length;\n    let minSublist = lst[0];\n\n    for (let i = 1; i < lst.length; i++) {\n        if (lst[i].length < minLength) {\n            minLength = lst[i].length;\n            minSublist = lst[i];\n        }\n    }\n\n    return minSublist;\n}",
+    "\n  if (lst.length === 0) return null; // Return null if the list is empty\n\n  let minLength = lst[0].length; // Initialize minLength with the length of the first sublist\n  let minSublist = lst[0]; // Initialize minSublist with the first sublist\n\n  for (let i = 1; i < lst.length; i++) {\n    if (lst[i].length < minLength) {\n      minLength = lst[i].length; // Update minLength if a shorter sublist is found\n      minSublist = lst[i]; // Update minSublist with the shorter sublist\n    }\n  }\n\n  return minSublist; // Return the sublist with the minimum length\n}"
+  ]
+}

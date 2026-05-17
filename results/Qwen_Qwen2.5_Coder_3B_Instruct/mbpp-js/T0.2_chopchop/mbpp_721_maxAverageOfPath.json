@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_721_maxAverageOfPath",
+  "language": "js",
+  "prompt": "//Given a square matrix of size N*N given as an array of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path.\nfunction maxAverageOfPath(cost){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_721_maxAverageOfPath.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = maxAverageOfPath;\n  assert.deepEqual(candidate([[1, 2, 3], [6, 5, 4], [7, 3, 9]]),5.2);\n  assert.deepEqual(candidate([[2, 3, 4], [7, 6, 5], [8, 4, 10]]),6.2);\n  assert.deepEqual(candidate([[3, 4, 5], [8, 7, 6], [9, 5, 11]]),7.2);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),5.8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const N = cost.length;\n  const dp = Array.from({ length: N }, () => Array(N).fill(0));\n\n  // Initialize the first cell\n  dp00 = float('inf')\n  if (cost[0][0] > 0) {\n    dp[0][0] = cost[0][0];\n  } else {\n    dp[0][0] = 0;\n  }\n\n  // Fill the first row\n  for (let j = 1; j < N; j++) {\n    dp[0][j] = dp[0][j - 1] + cost[0][j];\n  }\n\n  // Fill the first column\n  for (let i = 1; i < N; i++) {\n    dp[i][0] = dp[i - 1][0] + cost[i][0];\n  }\n\n  // Fill the rest of the matrix\n  for (let i = 1; i < N; i++) {\n    for (let j = 1; j < N; j++) {\n      dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]) + cost[i][j];\n    }\n  }\n\n  // Calculate the maximum average\n  let maxAverage = 0;\n  for (let i = 0; i < N; i++) {\n    for (let j = 0; j < N; j++) {\n      const totalCost = dp[i][j];\n      const numCells = i + j + 1;\n      const average = totalCost / numCells;\n      maxAverage = max(maxAverage, average);\n    }\n  }\n\n  return maxAverage;\n}",
+    "\n  const N = cost.length;\n  const dp = Array.from({ length: N }, () => Array(N).fill(0));\n\n  // Initialize the first cell\n  dp00 = arr[0][0];\n\n  // Fill the first row\n  for (let j = 1; j < N; j++) {\n    dp0j = dp0j + arr[0][j];\n  }\n\n  // Fill the first column\n  for (let i = 1; i < N; i++) {\n    dpij = dpij + arr[i][0];\n  }\n\n  // Fill the rest of the dp table\n  for (let i = 1; i < N; i++) {\n    for (let j = 1; j < N; j++) {\n      dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]) + arr[i][j];\n    }\n  }\n\n  // The maximum average is the maximum value in the dp table divided by N*N\n  const maxAverage = dp[N - 1][N - 1] / (N * N);\n\n  return maxAverage;\n}",
+    "\n  const N = cost.length;\n  const directions = [[0, 1], [1, 0]]; // Right and Down directions\n\n  // Helper function to perform DFS and calculate the average\n  function dfs(x, y, pathCost, pathLength) {\n    if (x === N - 1 && y === N - 1) {\n      return pathCost / pathLength;\n    }\n\n    let maxAverage = -Infinity;\n    for (const [dx, dy] 4 directions) {\n      const nx = x + dx;\n      const ny = y + dy;\n      if (nx >= 0 && nx < N && ny >= 0 && ny < N) {\n        const newAverage = dfs(nx, ny, pathCost + cost[nx][ny], pathLength + 1);\n        maxAverage = Math.max(maxAverage, newAverage);\n      }\n    }\n\n    return maxAverage;\n  }\n\n  // Start DFS from the top-left cell\n  return dfs(0, 0, cost[0][0], 1);\n}"
+  ]
+}

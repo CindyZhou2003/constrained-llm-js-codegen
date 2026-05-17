@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_630_get_coordinates",
+  "language": "js",
+  "prompt": "//Write a function to extract all the adjacent coordinates of the given coordinate array.\nfunction get_coordinates(test_tup){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_630_get_coordinates.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_coordinates;\n  assert.deepEqual(candidate([3, 4]),[[2, 3], [2, 4], [2, 5], [3, 3], [3, 4], [3, 5], [4, 3], [4, 4], [4, 5]]);\n  assert.deepEqual(candidate([4, 5]),[[3, 4], [3, 5], [3, 6], [4, 4], [4, 5], [4, 6], [5, 4], [5, 5], [5, 6]]);\n  assert.deepEqual(candidate([5, 6]),[[4, 5], [4, 6], [4, 7], [5, 5], [5, 6], [5, 7], [6, 5], [6, 6], [6, 7]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let res = [];\n    let row = test_tup[0];\n    let col = test_tup[1];\n    let directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]; // Up, Down, Left, Right\n\n    for (let dir of directions) {\n        let new_row = row + dir[0];\n        let new_col = col + dir[1];\n        res.push([new_row, new_col]);\n    }\n\n    return res;\n}",
+    "\n    let res = [];\n    let x = test_tup[0];\n    let y = test_tup[1];\n    res.push([x + 1, y]); // Right\n    res.push([x - 1, y]); // Left\n    res.push([x, y + 1]); // Down\n    res.push([x, y - 1]); // Up\n    return res;\n}",
+    "\n    let res = [];\n    let x = test_tup[0];\n    let y = test_tup[1];\n    let dx = [-1, 0, 1, 0];\n    let dy = [0, 1, 0, -1];\n    \n    for (let i = 0; i < 4; i++) {\n        let new_x = x + dx[i];\n        let new_y = y + dy[i];\n        res.push([new_x, new_y]);\n    }\n    \n    return res;\n}"
+  ]
+}

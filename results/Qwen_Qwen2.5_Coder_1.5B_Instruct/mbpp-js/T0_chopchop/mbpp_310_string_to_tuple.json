@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_310_string_to_tuple",
+  "language": "js",
+  "prompt": "//Write a function to convert a given string to an array of characters.\nfunction string_to_tuple(str1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_310_string_to_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = string_to_tuple;\n  assert.deepEqual(candidate(\"python 3.0\"),[\"p\", \"y\", \"t\", \"h\", \"o\", \"n\", \"3\", \".\", \"0\"]);\n  assert.deepEqual(candidate(\"item1\"),[\"i\", \"t\", \"e\", \"m\", \"1\"]);\n  assert.deepEqual(candidate(\"15.10\"),[\"1\", \"5\", \".\", \"1\", \"0\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return str1.split('');\n}"
+  ]
+}

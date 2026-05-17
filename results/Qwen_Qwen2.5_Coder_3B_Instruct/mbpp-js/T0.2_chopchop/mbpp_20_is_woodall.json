@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_20_is_woodall",
+  "language": "js",
+  "prompt": "//Write a function to check if the given number is woodball or not.\nfunction is_woodall(x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_20_is_woodall.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_woodall;\n  assert.deepEqual(candidate(383),true);\n  assert.deepEqual(candidate(254),false);\n  assert.deepEqual(candidate(200),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (x < 1) return false;\n  let n = 1;\n  let sum = 0;\n  while (sum < x) {\n    sum += n * n;\n    n++;\n  }\n  return sum === x;\n}",
+    "\n  if (x < 2) return false;\n  for (let n = 1; n <= Math.sqrt(x); n++) {\n    if (x % n === 0 && x % (n + 1) === 0) {\n      return true;\n    }\n  }\n  return false;\n}",
+    "\n  if (x < 1) return false;\n  let n = 1;\n  let sum = 0;\n  while (sum < x) {\n    sum += n * n;\n    n++;\n  }\n  return sum === x;\n}"
+  ]
+}

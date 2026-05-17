@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_264_dog_age",
+  "language": "js",
+  "prompt": "//Write a function to calculate a dog's age in dog's years.\nfunction dog_age(h_age){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_264_dog_age.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = dog_age;\n  assert.deepEqual(candidate(12),61);\n  assert.deepEqual(candidate(15),73);\n  assert.deepEqual(candidate(24),109);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\u533b\u7597\u536b\u751f",
+    "_result",
+    "where"
+  ]
+}

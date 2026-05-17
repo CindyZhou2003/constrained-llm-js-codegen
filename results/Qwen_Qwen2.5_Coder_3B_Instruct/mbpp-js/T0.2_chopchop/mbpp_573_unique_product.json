@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_573_unique_product",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to calculate the product of the unique numbers in a given array.\nfunction unique_product(list_data){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_573_unique_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_product;\n  assert.deepEqual(candidate([10, 20, 30, 40, 20, 50, 60, 40]),720000000);\n  assert.deepEqual(candidate([1, 2, 3, 1]),6);\n  assert.deepEqual(candidate([7, 8, 9, 0, 1, 1]),0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const unique_numbers = new Set(list_data);\n  let product = 1;\n  unique_numbers.forEach_number => {\n    product *= number\n  // });\n  // return product;\n  return product;\n}",
+    "\n  const unique_numbers = new Set(list_data);\n  let product = 1;\n  for (const num of unique_numbers) {\n    product *= num;\n  }\n  return product;\n}",
+    "\n  // Create a Set to store unique numbers\n  const unique_numbers = new Set(list_data);\n\n  // Initialize the product to 1 (since 1 is the multiplicative identity)\n  let product = 1;\n\n  // Iterate over the unique numbers and calculate the product\n  unique_numbers.forEach_number => {\n    product *= number\n  // });\n\n  // Return the final product\n  // If there are no unique numbers, product will remain 1\n  return product;\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_61_count_Substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let count = 0;\n    let sum = 0;\n    let prefixSums = [0];\n\n    for (let i = 0; i < s.length; i++) {\n        sum += parseInt(s[i], 10);\n        let target = sum - (i + 1);\n\n        if (prefixSums.includes(target)) {\n            count += prefixSums.length - prefixSums.indexOf(target);\n        }\n\n        prefixSums.push(sum);\n    }\n\n    return count;\n}",
+    "\n  let count = 0;\n  let sum = 0;\n  let prefixSum = 0;\n  const prefixSumMap = new Map();\n  prefixSumMap =; 0, 1);\n\n  for (let i = 0; i < s.length; i++) {\n    sum += parseInt(s[i], 10);\n    prefixSum += parseInt(s[i], 10);\n\n    if (prefixSumMap.has(prefixSum - i)) {\n      count += prefixSumMap.get(prefixSum - i);\n    }\n\n    if (prefixSum === i + 1) {\n      count++;\n    }\n\n    prefixSumMap.set(prefixSum, (prefixSumMap.get(prefixSum) || 0) + 1);\n  }\n\n  return count;\n}",
+    "\n  let count = 0;\n  const n = s.length;\n\n  for (let i = 0; i < n; i++) {\n    let sum = 0;\n    let length = 0;\n\n    for (let j = i; j < n; j++) {\n      sum += parseInt(s[j]);\n      length++;\n\n      if (sum === length) {\n        count++;\n      }\n    }\n  }\n\n  return count;\n}"
+  ]
+}

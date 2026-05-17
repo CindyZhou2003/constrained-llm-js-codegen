@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_785_tuple_str_int",
+  "language": "js",
+  "prompt": "//Write a function to convert array string to integer array.\nfunction tuple_str_int(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_785_tuple_str_int.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_str_int;\n  assert.deepEqual(candidate(\"(7, 8, 9)\"),[7, 8, 9]);\n  assert.deepEqual(candidate(\"(1, 2, 3)\"),[1, 2, 3]);\n  assert.deepEqual(candidate(\"(4, 5, 6)\"),[4, 5, 6]);\n  assert.deepEqual(candidate(\"(7, 81, 19)\"),[7, 81, 19]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Split the input string by commas and trim whitespace from each element\n    let str_list = test_str.split(',').map(item => item.trim());\n    \n    // Convert each string element to an integer\n    let int_list = str_list.map(item => parseInt(item, 10));\n    \n    // Filter out any non-integer values\n    int_list = int_list.filter(item => !isNaN(item));\n    \n    return int_list;\n}",
+    "\n    // Split the input string by commas to get individual string elements\n    let str_list = test_str.split(',');\n    \n    // Initialize an empty array to store the integer values\n    let int_list = [];\n    \n    // Iterate over each element in the string list\n    for (let i = 0; i < str_list.length; i++) {\n        // Trim any whitespace from the current string element\n        let str = str_list[i].trim();\n        \n        // Convert the trimmed string to an integer\n        let int_val = parseInt(str, 10);\n        \n        // Check if the conversion was successful\n        if (!isNaN(int_val)) {\n            // If successful, add the integer to the integer list\n            int_list.push(int_val);\n        }\n    }\n    \n    // Return the array of integers\n    return int_list;\n}",
+    "\n    // Split the input string by commas to get individual string elements\n    let str_list = test_str.split(\",\");\n    // Initialize an empty array to store the integer values\n    let int_list = [];\n    // Iterate over each element in the string list\n    for (let str of str_list) {\n        // Trim any leading or trailing whitespace from the string\n        let trimmed_str = str.trim();\n        // Convert the trimmed string to an integer\n        let int_val = parseInt(trimmed_str, 10);\n        // Check if the conversion was successful\n        if (!isNaN(int_val)) {\n            // If successful, add the integer to the integer list\n            int_list.push(int_val);\n        }\n    }\n    // Return the array of integers\n    return int_list;\n}"
+  ]
+}

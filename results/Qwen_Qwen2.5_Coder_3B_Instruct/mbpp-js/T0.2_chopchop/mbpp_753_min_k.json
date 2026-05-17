@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_753_min_k",
+  "language": "js",
+  "prompt": "//Write a function to find minimum k records from array array. https://www.geeksforgeeks.org/JavaScript-find-minimum-k-records-from-array-array/ - in this case a verbatim copy of test cases\nfunction min_k(test_list, K){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_753_min_k.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_k;\n  assert.deepEqual(candidate([[\"Manjeet\", 10], [\"Akshat\", 4], [\"Akash\", 2], [\"Nikhil\", 8]], 2),[[\"Akash\", 2], [\"Akshat\", 4]]);\n  assert.deepEqual(candidate([[\"Sanjeev\", 11], [\"Angat\", 5], [\"Akash\", 3], [\"Nepin\", 9]], 3),[[\"Akash\", 3], [\"Angat\", 5], [\"Nepin\", 9]]);\n  assert.deepEqual(candidate([[\"tanmay\", 14], [\"Amer\", 11], [\"Ayesha\", 9], [\"SKD\", 16]], 1),[[\"Ayesha\", 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Sort the list in ascending order\n    test_list.sort((a, b) => a  =>\n    // Select the first K elements from the sorted list\n    test_list.slice(0, K)\n  // Return the resulting array\n  )}",
+    "\n    // Sort the list in ascending order\n    test_list.sort((a, b) => a  =>\n    // Return the first K elements from the sorted list\n    test_list.slice(0, K)\n  // Example usage:\n  // console.log(min_k([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], 3)); // Output: [1, 1, 2]\n  // console.log(min_k([10, 20, 30, 40, 50], 2)); // Output: [10, 20]\n}",
+    "\n    // Sort the list in ascending order\n    test_list.sort((a, b) => a //b);\n    \n    // Return the first K elements from the sorted list\n    // These will be the minimum K records\n    // Note: This assumes that the records are comparable\n    // and that the comparison is done using the division operator\n    // If the comparison is done differently, the function will need to be adjusted\n    // For example, if the comparison is done using the greater than operator,\n    // the function would need to be adjusted to return the last K elements instead\n    // of the first K elements\n    // Also, if the records are not comparable, the function will need to be adjusted\n    // to handle that case\n    // For example, if the records are strings, the function would need to be adjusted\n    // to compare the strings lexicographically instead of using the division operator\n    return test_list.slice(0, K);\n}"
+  ]
+}

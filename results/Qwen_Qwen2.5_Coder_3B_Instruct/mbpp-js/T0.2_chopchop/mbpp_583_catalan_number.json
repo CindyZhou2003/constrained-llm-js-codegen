@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_583_catalan_number",
+  "language": "js",
+  "prompt": "//Write a function which returns nth catalan number.\nfunction catalan_number(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_583_catalan_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = catalan_number;\n  assert.deepEqual(candidate(10),16796);\n  assert.deepEqual(candidate(9),4862);\n  assert.deepEqual(candidate(7),429);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (num <= 1) return 1;\n  let catalan = 0;\n  for (let i = 0; i < num; i++) {\n    catalan += catalan_number(i) * catalan_number(num - i - 1);\n  }\n  return catalan;\n}",
+    "\n  if (num === 0 || num === 1) {\n    return 1;\n  }\n  let catalan = 0;\n  for (let i = 0; i < num; i++) {\n    catalan += catalan_number(i) * catalan_number(num - i - 1);\n  }\n  return catalan;\n}",
+    "\n  if (num === 0 || num === 1) {\n    return 1;\n  }\n  let catalan = 0;\n  for (let i = 0; i < num; i++) {\n    catalan += catalan_number(i) * catalan_number(num - i - 1);\n  }\n  return catalan;\n}"
+  ]
+}

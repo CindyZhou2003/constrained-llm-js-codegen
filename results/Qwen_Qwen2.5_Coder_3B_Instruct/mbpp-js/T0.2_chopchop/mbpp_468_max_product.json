@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_468_max_product",
+  "language": "js",
+  "prompt": "//Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.\nfunction max_product(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_468_max_product.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_product;\n  assert.deepEqual(candidate([3, 100, 4, 5, 150, 6]),3000);\n  assert.deepEqual(candidate([4, 42, 55, 68, 80]),50265600);\n  assert.deepEqual(candidate([10, 22, 9, 33, 21, 50, 41, 60]),2460);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (arr.length === 0) return 0;\n\n  const n = arr.length;\n  const dp = new Array(n).fill(1);\n\n  for (let i = 1; i < n; i++) {\n    for (let j = 0; j < i; j++) {\n      if (arr[i] > arr[j]) {\n        dp[i] = Math.max(dp[i], dp[j] * arr[i]);\n      }\n    }\n  }\n\n  return Math.max(...dp);\n}",
+    "\n    if (arr.length === 0) return 0;\n\n    let maxProduct = 1;\n    let minProduct = 1;\n    let result = arr[0];\n\n    for (let i = 1; i < arr.length; i++) {\n        if (arr[i] < 0) {\n            [maxProduct, minProduct] = [minProduct, maxProduct];\n        }\n\n        maxProduct = Math.max(arr[i], maxProduct * arr[i]);\n        minProduct = Math.min(arr[i], minProduct * arr[i]);\n\n        result = Math.max(result, maxProduct);\n    }\n\n    return result;\n}",
+    "\n  if (arr.length === 0) return 0;\n\n  const n = arr.length;\n  const dp = new Array(n).fill(1);\n\n  for (let i = 1; i < n; i++) {\n    for (let j = 0; j < i; j++) {\n      if (arr[i] > arr[j]) {\n        dp[i] = Math.max(dp[i], dp[j] * arr[i]);\n      }\n    }\n  }\n\n  return Math.max(...dp);\n}"
+  ]
+}

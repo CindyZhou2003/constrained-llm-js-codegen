@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_388_highest_Power_of_2",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the highest power of 2 that is less than or equal to n.\nfunction highest_Power_of_2(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_388_highest_Power_of_2.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = highest_Power_of_2;\n  assert.deepEqual(candidate(10),8);\n  assert.deepEqual(candidate(19),16);\n  assert.deepEqual(candidate(32),32);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let power = 1;\n  while (power <= n) {\n    power *= 2;\n  }\n  return power / 2;\n}"
+  ]
+}

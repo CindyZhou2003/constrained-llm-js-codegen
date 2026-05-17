@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_603_get_ludic",
+  "language": "js",
+  "prompt": "//Write a function to get all lucid numbers smaller than or equal to a given integer.\nfunction get_ludic(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_603_get_ludic.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_ludic;\n  assert.deepEqual(candidate(10),[1, 2, 3, 5, 7]);\n  assert.deepEqual(candidate(25),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25]);\n  assert.deepEqual(candidate(45),[1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (n < 2) return [];\n\n  let ludics = [2];\n  let index = 1;\n\n  while (true) {\n    let nextLudic = ludics[index] + 2;\n    if (nextLudic > n) break;\n\n    let isLudic = true;\n    for (let i = 0; i < index; i++) {\n      if (nextLudic % ludics[i] === 0) {\n        isLudic = false;\n        break;\n      }\n    }\n\n    if (isLudic) {\n      ludics.push(nextLudic);\n    }\n\n    index++;\n  }\n\n  return ludics;\n}",
+    "\n  if (n < 2) return [];\n\n  const ludics = [2];\n  let index = 1;\n\n  while (true) {\n    const nextLudic = ludics[index] + 1;\n    let isLudic = true;\n\n    for (let i = 0; i < ludics.length; i++) {\n      if (nextLudic % ludics[i] === 0) {\n        isLudic = false;\n        break;\n      }\n    }\n\n    if (isLudic) {\n      ludics.push(nextLudic);\n    }\n\n    if (ludics[ludics.length - 1] > n) break;\n    index++;\n  }\n\n  return ludics;\n}",
+    "\n    if (n < 2) return [];\n\n    const ludics = [2];\n    let i = 2;\n\n    while (true) {\n        let j = 0;\n        while (j < ludics.length && ludics[j] * i <= n) {\n            j++;\n        }\n        if (j === ludics.length) {\n            ludics.push(i);\n        }\n        i++;\n        if (ludics[ludics.length - 1] > n) break;\n    }\n\n    return ludics;\n}"
+  ]
+}

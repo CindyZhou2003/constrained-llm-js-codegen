@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_100_next_smallest_palindrome",
+  "language": "js",
+  "prompt": "//Write a function to find the next smallest palindrome of a specified integer, returned as an integer.\nfunction next_smallest_palindrome(num){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_100_next_smallest_palindrome.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = next_smallest_palindrome;\n  assert.deepEqual(candidate(99),101);\n  assert.deepEqual(candidate(1221),1331);\n  assert.deepEqual(candidate(120),121);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let str = num.toString();\n    let len = str.length;\n    let half = Math.floor(len / 2);\n    let left = str.substring(0, half);\n    let right = str.substring(half);\n    let reversed_right = right.split('').reverse().join('');\n    let next_right = parseInt(reversed_right) + 1;\n    let next_str = left + next_right;\n    if (len % 2 === 0) {\n        next_str = next_str + next_right;\n    }\n    return parseInt(next_str);\n}"
+  ]
+}

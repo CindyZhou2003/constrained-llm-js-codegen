@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_61_count_Substrings",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to count the number of substrings with the sum of digits equal to their length.\nfunction count_Substrings(s){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_61_count_Substrings.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Substrings;\n  assert.deepEqual(candidate(\"112112\"),6);\n  assert.deepEqual(candidate(\"111\"),6);\n  assert.deepEqual(candidate(\"1101112\"),12);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let count = 0;\n  for (let i = 0; i < s.length; i++) {\n    let sum = 0;\n    for (let j = i; j < s.length; j++) {\n      sum += parseInt(s[j]);\n      if (sum === j - i + 1) {\n        count++;\n      }\n    }\n  }\n  return count;\n}\nExplanation:\nThe function count_Substrings takes a string s as input and returns the count of substrings with the sum of digits equal to their length.\nThe function iterates over each character in the string s and calculates the sum of its digits using the parseInt function. It then checks if the sum is equal to the length of the substring by comparing it with the length of the substring minus the starting index i. If the sum is equal to the length of the substring, it increments the count.\nThe function returns the count of substrings with the sum of digits equal to their length.\nSample Input:\ncount_Substrings(\"1234567890\")\nSample Output:\n10\nExplanation:\nThe function count_Substrings is called with the string \"1234567890\" as input. The function iterates over each character in the string and calculates the sum of its digits using the parseInt function. It then checks if the sum is equal to the length of the substring by comparing it with the length of the substring minus the starting index i. If the sum is equal to the length of the substring, it increments the count. The function returns the count of substrings with the sum of digits equal to their length, which is 10 in this case.\nSample Input:\ncount_Substrings(\"1234567891\")\nSample Output:\n11\nExplanation:\nThe function count_Substrings is called with the string \"1234567891\" as input. The function iterates over each character in the string and calculates the sum of its digits using the parseInt function. It then checks if the sum is equal to the length of the substring by comparing it with the length of the substring minus the starting index i. If the sum is equal to the length of the substring, it increments the count. The function returns the count of substrings with the sum of digits equal to their length, which is 11 in this case.\nSample Input:\ncount_Substrings(\"12345678901\")\nSample"
+  ]
+}

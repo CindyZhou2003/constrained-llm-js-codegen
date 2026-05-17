@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_283_validate",
+  "language": "js",
+  "prompt": "//Write a JavaScript function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.\nfunction validate(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_283_validate.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = validate;\n  assert.deepEqual(candidate(1234),true);\n  assert.deepEqual(candidate(51241),false);\n  assert.deepEqual(candidate(321),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let arr = n.toString().split('');\n  let obj = {};\n  for (let i = 0; i < arr.length; i++) {\n    if (obj[arr[i]]) {\n      obj[arr[i]]++;\n    } else {\n      obj[arr[i]] = 1;\n    }\n  }\n  for (let key in obj) {\n    if (obj[key] > Number(key)) {\n      return false;\n    }\n  }\n  return true;\n}\nvalidate(123456789); // true\nvalidate(1234567890); // false\nvalidate(12345678901); // true\nvalidate(123456789012); // false\nvalidate(1234567890123); // true\nvalidate(12345678901234); // false\nvalidate(123456789012345); // true\nvalidate(1234567890123456); // false\nvalidate(12345678901234567); // true\nvalidate(123456789012345678); // false\nvalidate(1234567890123456789); // true\nvalidate(12345678901234567890); // false\nvalidate(123456789012345678901); // true\nvalidate(1234567890123456789012); // false\nvalidate(12345678901234567890123); // true\nvalidate(123456789012345678901234); // false\nvalidate(1234567890123456789012345); // true\nvalidate(1234567890123456789012"
+  ]
+}

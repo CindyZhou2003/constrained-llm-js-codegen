@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_245_max_sum",
+  "language": "js",
+  "prompt": "//Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing.\nfunction max_sum(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_245_max_sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sum;\n  assert.deepEqual(candidate([1, 15, 51, 45, 33, 100, 12, 18, 9]),194);\n  assert.deepEqual(candidate([80, 60, 30, 40, 20, 10]),210);\n  assert.deepEqual(candidate([2, 3, 14, 16, 21, 23, 29, 30]),138);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let maxSum = 0;\n  let currentSum = 0;\n  let currentMax = 0;\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i] > arr[i + 1]) {\n      currentSum += arr[i];\n      currentMax = Math.max(currentMax, currentSum);\n      currentSum = 0;\n    } else {\n      currentSum += arr[i];\n    }\n  }\n  return currentMax;\n}\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]); // 45\nmax_sum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, "
+  ]
+}

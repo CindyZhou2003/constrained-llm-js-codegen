@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_70_get_equal",
+  "language": "js",
+  "prompt": "//Write a function to find whether all the given lists have equal length or not.\nfunction get_equal(Input){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_70_get_equal.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = get_equal;\n  assert.deepEqual(candidate([[11, 22, 33], [44, 55, 66]]),true);\n  assert.deepEqual(candidate([[1, 2, 3], [4, 5, 6, 7]]),false);\n  assert.deepEqual(candidate([[1, 2], [3, 4]]),true);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (Input.length === 0) return true;\n  const first = Input[0];\n  const rest = Input.slice(1);\n  return rest.every((item) => get_equal(rest) && item ==== first);\n}\nExplanation: The function get_equal takes an array as input and returns true if all the elements in the array have the same length, and false otherwise. It does this by recursively calling itself on the rest of the array and checking if the first element of the array is equal to the first element of the rest of the array. If the first element of the array is equal to the first element of the rest of the array, then the function returns true. Otherwise, it returns false. The function also includes a check to ensure that the input array is not empty before calling the function. ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n ounces\n"
+  ]
+}

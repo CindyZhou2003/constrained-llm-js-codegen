@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_9_find_Rotations",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the minimum number of rotations (greater than 0) required to get the same string.\nfunction find_Rotations(str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_9_find_Rotations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Rotations;\n  assert.deepEqual(candidate(\"aaaa\"),1);\n  assert.deepEqual(candidate(\"ab\"),2);\n  assert.deepEqual(candidate(\"abc\"),3);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let rotations = 0;\n  let strLength = str.length;\n  for (let i = 0; i < strLength; i++) {\n    let current = str[i];\n    for (let j = i + 1; j < strLength; j++) {\n      if (str[j] === current) {\n        rotations++;\n        break;\n      }\n    }\n  }\n  return rotations;\n}\nExplanation:\nThe function find_Rotations(str) takes a string str as input and returns the minimum number of rotations required to get the same string.\nThe function iterates through the string str and checks for the first occurrence of each character. If a character is found, it increments the rotations variable and breaks out of the inner loop.\nThe function returns the value of rotations, which represents the minimum number of rotations required to get the same string.\nSample Input:\nfind_Rotations(\"abcde\")\nSample Output:\n4\nExplanation:\nThe input string is \"abcde\". The function iterates through the string and checks for the first occurrence of each character. The first occurrence of 'a' is at index 0, the first occurrence of 'b' is at index 1, the first occurrence of 'c' is at index 2, and the first occurrence of 'd' is at index 3. The function returns the value of rotations, which is 4, as the minimum number of rotations required to get the same string is 4.\nSample Input:\nfind_Rotations(\"hello\")\nSample Output:\n0\nExplanation:\nThe input string is \"hello\". The function iterates through the string and checks for the first occurrence of each character. The first occurrence of 'h' is at index 0, the first occurrence of 'e' is at index 1, the first occurrence of 'l' is at index 2, and the first occurrence of 'o' is at index 3. The function returns the value of rotations, which is 0, as there are no rotations required to get the same string.\nSample Input:\nfind_Rotations(\"abcde\")\nSample Output:\n4\nExplanation:\nThe input string is \"abcde\". The function iterates through the string and checks for the first occurrence of each character. The first occurrence of 'a' is at index 0, the first occurrence of 'b' is at index 1, the first occurrence of 'c' is at index 2, and the first occurrence"
+  ]
+}

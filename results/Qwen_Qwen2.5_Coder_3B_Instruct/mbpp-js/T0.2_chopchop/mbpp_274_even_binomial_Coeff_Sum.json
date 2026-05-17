@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_274_even_binomial_Coeff_Sum",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that takes in a positive integer n and finds the sum of even index binomial coefficients.\nfunction even_binomial_Coeff_Sum(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_274_even_binomial_Coeff_Sum.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = even_binomial_Coeff_Sum;\n  assert.deepEqual(candidate(4),8);\n  assert.deepEqual(candidate(6),32);\n  assert.deepEqual(candidate(2),2);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let sum = 0;\n  for (let i = 0; i <= n; i += 2) {\n    sum += Math.comb(n, i);\n  }\n  return sum;\n}",
+    "\n  let sum = 0;\n  for (let i = 0; i <= n; i += 2) {\n    sum += Math.pow(2, i);\n  }\n  return sum;\n}",
+    "\n  let sum = 0;\n  for (let i = 0; i <= n; i += 2) {\n    sum += binomialCoefficientCatalanNumber2n_i_i2n_i1_i2n_i2n_i3_i2n_i4_i2n_i5_i2n_i6_i2n_i7_i2n_i8_i2n_i9_i2n_i10_i2n_i11_i2n_i12_i2n_i13_i2n_i14_i2n_i15_i2n_i16_i2n_i17_i2n_i18_i2n_i19_i2n_i20_i2n_i21_i2n_i22_i2n_i23_i2n_i24_i2n_i25_i2n_i26_i2n_i27_i2n_i28_i2n_i29_i2n_i30_i2n_i31_i2n_i32_i2n_i33_i2n_i34_i2n_i35_i2n_i36_i2n_i37_i2n_i38_i2n_i39_i2n_i40_i2n_i41_i2n_i42_i2n_i43_i2n_i44_i2n_i45_i2n_i46_i2n_i47_i2n_i48_i2n_i49_i2n_i50_i2n_i51_i2n_i52_i2n_i53_i2n_i54_i2n_i55_i2n_i56_i2n_i57_i2n_i58_i2n_i59_i2n_i60_i2n_i61_i2n_i62_i2n_i63_i2n_i64_i2n_i65_i2n_i66_i2n_i67_i2n_i68_i2n_i69_i2n_i70_i2n_i71_i2n_i72_i2n_i73_i2n_i74_i2n_i75_i2n_i76_i2n_i77_i2n_i78_i2n_i79_i2n_i80_i2n"
+  ]
+}

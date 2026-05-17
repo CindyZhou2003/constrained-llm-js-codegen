@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_407_rearrange_bigger",
+  "language": "js",
+  "prompt": "//Write a function to create the next bigger number by rearranging the digits of a given number.\nfunction rearrange_bigger(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_407_rearrange_bigger.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rearrange_bigger;\n  assert.deepEqual(candidate(12),21);\n  assert.deepEqual(candidate(10),false);\n  assert.deepEqual(candidate(102),120);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Convert the number to a string\n  const numStr = n.toString();\n  \n  // Sort the digits in descending order\n  const sortedDigits = [...numStr].sort((a, b) => b \n    // If the digits are equal, sort them in ascending order\n    // This is done to ensure that the next bigger number is formed\n    // by rearranging the digits in descending order\n    // e.g. 123456789 becomes 987654321\n    ? a.localeCompare(b)\n    // If the digits are not equal, sort them in ascending order\n    : a.localeCompare(b)\n  );\n  \n  // Join the sorted digits back into a string\n  const sortedDigitsStr = sortedDigits.join('');\n  \n  // Convert the sorted digits back to a number\n  const sortedDigitsNum = parseInt(sortedDigitsStr, 10);\n  \n  // If the sorted digits are all the same, return the original number\n  if (sortedDigitsNum === n) {\n    return n;\n  }\n  \n  // Otherwise, return the next bigger number by rearranging the digits\n  return +sortedDigitsStr.slice(0, -1) + sortedDigitsNum;\n}\n"
+  ]
+}

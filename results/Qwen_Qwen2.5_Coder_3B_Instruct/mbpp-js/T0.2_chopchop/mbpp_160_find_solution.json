@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_160_find_solution",
+  "language": "js",
+  "prompt": "//Write a function that returns integers x and y that satisfy ax + by = n as an array, or return undefined if no solution exists.\nfunction find_solution(a, b, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_160_find_solution.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_solution;\n  assert.deepEqual(candidate(2, 3, 7),[2, 1]);\n  assert.deepEqual(candidate(4, 2, 7),undefined);\n  assert.deepEqual(candidate(1, 13, 17),[4, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (a === 0 && b === 0) {\n    if (n === 0) {\n      return [0, 0];\n    } else {\n      return undefined;\n    }\n  }\n\n  if (a === 0) {\n    if (n % b === 0) {\n      return [0, n / b];\n    } else {\n      return undefined;\n    }\n  }\n\n  if (b === 0) {\n    if (n % a === 0) {\n      return [n / a, 0];\n    } else {\n      return undefined;\n    }\n  }\n\n  let gcd = function gcd(x, y) {\n    while (y !== 0) {\n      let temp = y;\n      y = x % y;\n      x = temp;\n    }\n    return x;\n  };\n\n  let gcd_value = gcd(a, b);\n\n  if (n % gcd_value !== 0) {\n    return undefined;\n  }\n\n  let x = n / gcd_value * (b / gcd_value);\n  let y = n / gcd_value * (-a / gcd_value);\n\n  return [x, y];\n}",
+    "\n  if (a === 0 && b === 0) {\n    return n === 0 ? [0, 0] : undefined;\n  }\n  if (a === 0) {\n    return n % b === 0 ? [0, n / b] : undefined;\n  }\n  if (b === 0) {\n    return n % a === 0 ? [n / a, 0] : undefined;\n  }\n  const gcd = (x, y) => y !== 0 ? gcd(y, x % y) : x;\n  const d = gcd(a, b);\n  if (n % d !== 0) {\n    return undefined;\n  }\n  const x0 = n / d * (b / d);\n  const y0 = n / d * (a / d);\n  const k = Math.floor((n / d) / Math.abs(a / d));\n  const x = x0 - k * Math.abs(b / d);\n  const y = y0 + k * Math.abs(a / d);\n  return [x, y];\n}",
+    "\n    if (a === 0 && b === 0) {\n        if (n === 0) {\n            return [0, 0];\n        } else {\n            return undefined;\n        }\n    }\n\n    if (a === 0) {\n        if (n % b === 0) {\n            return [0, n / b];\n        } else {\n            return undefined;\n        }\n    }\n\n    if (b === 0) {\n        if (n % a === 0) {\n            return [n / a, 0];\n        } else {\n            return undefined;\n        }\n    }\n\n    const gcd = (x, y) => y === 0 ? x : gcd(y, x % y);\n    const d = gcd(a, b);\n\n    if (n % d !== 0) {\n        return undefined;\n    }\n\n    const x0 = n / d * (b / d);\n    const y0 = n / d * (-a / d);\n\n    const k = Math.floor((n / d) / Math.abs(a / d));\n\n    return [x0 + k * b, y0 - k * a];\n}"
+  ]
+}

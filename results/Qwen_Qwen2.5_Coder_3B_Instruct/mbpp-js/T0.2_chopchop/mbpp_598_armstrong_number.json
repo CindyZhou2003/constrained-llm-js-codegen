@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_598_armstrong_number",
+  "language": "js",
+  "prompt": "//Write a function to check whether the given number is armstrong or not.\nfunction armstrong_number(number){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_598_armstrong_number.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = armstrong_number;\n  assert.deepEqual(candidate(153),true);\n  assert.deepEqual(candidate(259),false);\n  assert.deepEqual(candidate(4458),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  const numStr = number.toString();\n  const numDigits = numStr.length;\n  const sum = numStr.split('').reduce((acc, digit) => acc  = += Math.pow(parseInt(digit), numDigits), 0);\n  return sum === number;\n}",
+    "\n  const numStr = number.toString();\n  const numDigits = numStr.length;\n  let sum = 0;\n\n  for (let i = 0; i < numDigits; i++) {\n    const digit = parseInt(numStr[i], 10);\n    sum += Math.pow(digit, numDigits);\n  }\n\n  return sum === number;\n}",
+    "\n  const numStr = number.toString();\n  const numDigits = numStr.length;\n  let sum = 0;\n\n  for (let i = 0; i < numDigits; i++) {\n    const digit = parseInt(numStr[i], 10);\n    sum += Math.pow(digit, numDigits);\n  }\n\n  return sum === number;\n}"
+  ]
+}

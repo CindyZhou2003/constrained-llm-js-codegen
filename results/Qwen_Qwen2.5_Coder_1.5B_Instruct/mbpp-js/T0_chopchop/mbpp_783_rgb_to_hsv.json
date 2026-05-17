@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let max = Math.max(r, g, b);\n    let min = Math.min(r, g, b);\n    let delta = max - min;\n    let h;\n    let s;\n    let v = max;\n\n    if (delta === 0) {\n        h = 0;\n        s = 0;\n    } else {\n        s = delta / v;\n        if (r === max) {\n            h = (g - b) / delta;\n        } else if (g === max) {\n            h = 2 + (b - r) / delta;\n        } else {\n            h = 4 + (r - g) / delta;\n        }\n        h /= 6;\n        if (h < 0) {\n            h += 1;\n        }\n    }\n\n    return [h, s, v];\n}"
+  ]
+}

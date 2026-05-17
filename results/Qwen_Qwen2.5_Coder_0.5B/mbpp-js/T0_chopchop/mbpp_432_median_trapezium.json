@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_432_median_trapezium",
+  "language": "js",
+  "prompt": "//Write a function to find the median length of a trapezium.\nfunction median_trapezium(base1, base2, height){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_432_median_trapezium.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median_trapezium;\n  assert.deepEqual(candidate(15, 25, 35),20);\n  assert.deepEqual(candidate(10, 20, 30),15);\n  assert.deepEqual(candidate(6, 9, 4),7.5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let sum1 = base1 + base2;\n  let sum2 = height + height;\n  let sum3 = base1 + height;\n  let sum4 = base2 + height;\n  let sum5 = base1 + base2 + height;\n  let sum6 = base1 + base2 + height;\n  let sum7 = base1 + base2 + height;\n  let sum8 = base1 + base2 + height;\n  let sum9 = base1 + base2 + height;\n  let sum10 = base1 + base2 + height;\n  let sum11 = base1 + base2 + height;\n  let sum12 = base1 + base2 + height;\n  let sum13 = base1 + base2 + height;\n  let sum14 = base1 + base2 + height;\n  let sum15 = base1 + base2 + height;\n  let sum16 = base1 + base2 + height;\n  let sum17 = base1 + base2 + height;\n  let sum18 = base1 + base2 + height;\n  let sum19 = base1 + base2 + height;\n  let sum20 = base1 + base2 + height;\n  let sum21 = base1 + base2 + height;\n  let sum22 = base1 + base2 + height;\n  let sum23 = base1 + base2 + height;\n  let sum24 = base1 + base2 + height;\n  let sum25 = base1 + base2 + height;\n  let sum26 = base1 + base2 + height;\n  let sum27 = base1 + base2 + height;\n  let sum28 = base1 + base2 + height;\n  let sum29 = base1 + base2 + height;\n  let sum30 = base1 + base2 + height;\n  let sum31 = base1 + base2 + height;\n  let sum32 = base1 + base2 + height;\n  let sum33 = base1 + base2 + height;\n  let sum34 = base1 + base2 + height;\n  let sum35 = base1 + base2 + height;\n  let sum36 = base1 + base2 + height;\n  let sum37 = base1 + base2 + height;\n  let sum38 = base"
+  ]
+}

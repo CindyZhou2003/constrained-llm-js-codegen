@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_57_find_Max_Num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the largest number that can be formed with the given array of digits.\nfunction find_Max_Num(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_57_find_Max_Num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Max_Num;\n  assert.deepEqual(candidate([1, 2, 3]),321);\n  assert.deepEqual(candidate([4, 5, 6, 1]),6541);\n  assert.deepEqual(candidate([1, 2, 3, 9]),9321);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    arr.sort((a, b) => b  // Sort the array in descending order\n    // Join the sorted array into a string\n    // Convert the string to a number\n    // Return the number\n    // Example usage:\n    // console.log(find_Max_Num([3, 30, 34, 5, 9])); // Output: 953430\n    // console.log(find_Max_Num([0, 0, 0, 0])); // Output: 0\n    // console.log(find_Max_Num([1, 34, 3, 9, 5])); // Output: 953431\n    // console.log(find_Max_Num([10, 2, 3, 4, 5])); // Output: 543210\n    // console.log(find_Max_Num([100, 2, 3, 4, 5])); // Output: 105432\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6])); // Output: 654321\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6, 7])); // Output: 7654321\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6, 7, 8])); // Output: 87654321\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6, 7, 8, 9])); // Output: 987654321\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])); // Output: 9876543210\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1])); // Output: 98765432101\n    // console.log(find_Max_Num([1, 2, 3, 4, 5, "
+  ]
+}

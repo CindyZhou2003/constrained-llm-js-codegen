@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_617_min_Jumps",
+  "language": "js",
+  "prompt": "//Write a function to check for the number of jumps required of given length to reach a point of form (d, 0) from origin in a 2d plane.\nfunction min_Jumps(steps, d){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_617_min_Jumps.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = min_Jumps;\n  assert.deepEqual(candidate([3, 4], 11),3.5);\n  assert.deepEqual(candidate([3, 4], 0),0);\n  assert.deepEqual(candidate([11, 14], 11),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let jumps = 0;\n  let current = 0;\n  let next = 0;\n  while (current !== d) {\n    if (steps[current] === 0) {\n      return -1;\n    }\n    next = current + steps[current];\n    if (next > d) {\n      return -1;\n    }\n    if (steps[next] === 0) {\n      return -1;\n    }\n    jumps++;\n    current = next;\n  }\n  return jumps;\n}\nExplanation:\nThe function min_Jumps takes in two parameters: steps and d.\nThe function returns the minimum number of jumps required to reach the point (d, 0) from the origin in a 2d plane.\nThe function starts by initializing the jumps variable to 0 and the current variable to 0.\nThe function then enters a while loop that continues until the current variable is equal to d.\nInside the loop, the function checks if the current variable is equal to 0. If it is, the function returns -1, indicating that there is no way to reach the point (d, 0) from the origin.\nThe function then checks if the steps variable at the current variable is equal to 0. If it is, the function returns -1, indicating that there is no way to reach the point (d, 0) from the origin.\nThe function then checks if the steps variable at the next variable is equal to 0. If it is, the function returns -1, indicating that there is no way to reach the point (d, 0) from the origin.\nThe function then increments the jumps variable by 1 and updates the current variable to the next variable.\nThe function then updates the next variable to the current variable plus the steps variable at the current variable.\nThe function then checks if the next variable is greater than d. If it is, the function returns -1, indicating that there is no way to reach the point (d, 0) from the origin.\nThe function then returns the jumps variable, which represents the minimum number of jumps required to reach the point (d, 0) from the origin in a 2d plane.\nExplanation:\nThe function min_Jumps takes in two parameters: steps and d.\nThe function returns the minimum number of jumps required to reach the point (d, 0) from the origin in a 2d plane.\nThe function starts by initializing the jumps variable to 0 and the current variable to "
+  ]
+}

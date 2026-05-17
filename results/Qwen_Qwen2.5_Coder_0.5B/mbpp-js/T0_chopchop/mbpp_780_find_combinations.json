@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let result = [];\n  let n = test_list.length;\n  let k = 2;\n  let arr = [];\n  for (let i = 0; i < n; i++) {\n    arr.push(test_list[i]);\n  }\n  let arr2 = arr.slice();\n  let arr3 = arr.slice();\n  let arr4 = arr.slice();\n  let arr5 = arr.slice();\n  let arr6 = arr.slice();\n  let arr7 = arr.slice();\n  let arr8 = arr.slice();\n  let arr9 = arr.slice();\n  let arr10 = arr.slice();\n  let arr11 = arr.slice();\n  let arr12 = arr.slice();\n  let arr13 = arr.slice();\n  let arr14 = arr.slice();\n  let arr15 = arr.slice();\n  let arr16 = arr.slice();\n  let arr17 = arr.slice();\n  let arr18 = arr.slice();\n  let arr19 = arr.slice();\n  let arr20 = arr.slice();\n  let arr21 = arr.slice();\n  let arr22 = arr.slice();\n  let arr23 = arr.slice();\n  let arr24 = arr.slice();\n  let arr25 = arr.slice();\n  let arr26 = arr.slice();\n  let arr27 = arr.slice();\n  let arr28 = arr.slice();\n  let arr29 = arr.slice();\n  let arr30 = arr.slice();\n  let arr31 = arr.slice();\n  let arr32 = arr.slice();\n  let arr33 = arr.slice();\n  let arr34 = arr.slice();\n  let arr35 = arr.slice();\n  let arr36 = arr.slice();\n  let arr37 = arr.slice();\n  let arr38 = arr.slice();\n  let arr39 = arr.slice();\n  let arr40 = arr.slice();\n  let arr41 = arr.slice();\n  let arr42 = arr.slice();\n  let arr43 = arr.slice();\n  let arr44 = arr.slice();\n  let arr45 = arr.slice();\n  let arr46 = arr.slice();\n  let arr47 = arr.slice();\n  let arr48 = arr.slice();\n  let arr49 = arr.slice();\n  let arr50 = arr.slice();\n  let arr51 = arr.slice();\n  let arr52 = arr.slice();\n  let arr"
+  ]
+}

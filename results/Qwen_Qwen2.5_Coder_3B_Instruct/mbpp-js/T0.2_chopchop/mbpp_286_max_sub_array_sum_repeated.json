@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_286_max_sub_array_sum_repeated",
+  "language": "js",
+  "prompt": "//Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.\nfunction max_sub_array_sum_repeated(a, n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_286_max_sub_array_sum_repeated.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum_repeated;\n  assert.deepEqual(candidate([10, 20, -30, -1], 4, 3),30);\n  assert.deepEqual(candidate([-1, 10, 20], 3, 2),59);\n  assert.deepEqual(candidate([-1, -2, -3], 3, 3),-1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let max_so_far = -Infinity;\n    let max_ending_here = 0;\n\n    for (let i = 0; i < n; i++) {\n        max_ending_here += a[i];\n        if (max_ending_here > max_so_far) {\n            max_so_far = max_ending_here;\n        }\n        if (max_ending_here < 0) {\n            max_ending_here = 0;\n        }\n    }\n\n    let total_sum = max_so_far * k;\n\n    max_so_far = -Infinity;\n    max_ending_here = 0;\n\n    for (let i = 0; i < n; i++) {\n        max_ending_here += a[i];\n        if (max_ending_here > max_so_far) {\n            max_so_far = max_ending_here;\n        }\n        if (max_ending_here < 0) {\n            max_ending_here = 0;\n        }\n    }\n\n    return total_sum - max_so_far;\n}",
+    "\n    let max_so_far = -Infinity;\n    let max_ending_here = 0;\n\n    for (let i = 0; i < n; i++) {\n        max_ending_here += a[i];\n        if (max_ending_here > max_so_far) {\n            max_so_far = max_ending_here;\n        }\n        if (max_ending_here < 0) {\n            max_ending_here = 0;\n        }\n    }\n\n    let total_sum = max_so_far * k;\n\n    max_so_far = -Infinity;\n    max_ending_here = 0;\n\n    for (let i = 0; i < n; i++) {\n        max_ending_here += a[i];\n        if (max_ending_here > max_so_far) {\n            max_so_far = max_ending_here;\n        }\n        if (max_ending_here < 0) {\n            max_ending_here = 0;\n        }\n    }\n\n    return Math.max(total_sum, max_so_far);\n}",
+    "\n    function max_sub_array_sum(arr, n) {\n        let max_so_far = arr[0];\n        let max_ending_here = arr[0];\n\n        for (let i = 1; i < n; i++) {\n            max_ending_here = Math.max(arr[i], max_ending_here + arr[i]);\n            max_so_far = Math.max(max_so_far, max_ending_here);\n        }\n\n        return max_so_far;\n    }\n\n    let total_sum = 0;\n    for (let i = 0; i < n; i++) {\n        total_sum += a[i];\n    }\n\n    let max_sum = max_sub_array_sum(a, n);\n\n    if (k === 1) {\n        return max_sum;\n    }\n\n    let max_sum_with_repeats = max_sum;\n\n    for (let i = 1; i < k; i++) {\n        max_sum_with_repeats = Math.max(max_sum_with_repeats, max_sum + (total_sum - max_sub_array_sum(a, n)));\n    }\n\n    return max_sum_with_repeats;\n}"
+  ]
+}

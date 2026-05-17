@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_71_comb_sort",
+  "language": "js",
+  "prompt": "//Write a function to sort an array of elements.\nfunction comb_sort(nums){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_71_comb_sort.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = comb_sort;\n  assert.deepEqual(candidate([5, 15, 37, 25, 79]),[5, 15, 25, 37, 79]);\n  assert.deepEqual(candidate([41, 32, 15, 19, 22]),[15, 19, 22, 32, 41]);\n  assert.deepEqual(candidate([99, 15, 13, 47]),[13, 15, 47, 99]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  let gap = nums.length;\n  let shrink = 1;\n  while (gap > 1 || shrink > 1) {\n    gap = Math.floor(gap / shrink);\n    if (gap > 1) {\n      shrink = 1;\n      while (gap > 1) {\n        gap = Math.floor(gap / shrink);\n        if (gap > 1) {\n          shrink = 2;\n          while (gap > 1) {\n            gap = Math.floor(gap / shrink);\n            if (gap > 1) {\n              shrink = 4;\n              while (gap > 1) {\n                gap = Math.floor(gap / shrink);\n                if (gap > 1) {\n                  shrink = 8;\n                  while (gap > 1) {\n                    gap = Math.floor(gap / shrink);\n                    if (gap > 1) {\n                      shrink = 16;\n                      while (gap > 1) {\n                        gap = Math.floor(gap / shrink);\n                        if (gap > 1) {\n                          shrink = 32;\n                          while (gap > 1) {\n                            gap = Math.floor(gap / shrink);\n                            if (gap > 1) {\n                              shrink = 64;\n                              while (gap > 1) {\n                                gap = Math.floor(gap / shrink);\n                                if (gap > 1) {\n                                  shrink = 128;\n                                  while (gap > 1) {\n                                    gap = Math.floor(gap / shrink);\n                                    if (gap > 1) {\n                                      shrink = 256;\n                                      while (gap > 1) {\n                                        gap = Math.floor(gap / shrink);\n                                        if (gap > 1) {\n                                          shrink = 512;\n                                          while (gap > 1) {\n                                            gap = Math.floor(gap / shrink);\n                                            if (gap > 1) {\n                                              shrink = 1024;\n                                              while (gap > 1) {\n                                                gap = Math.floor(gap / shrink);\n                                                if (gap > 1) {\n                                                  shrink = 2048;\n                                                  while (gap > 1) {\n                                                    gap = Math.floor(gap / shrink);\n                                                    if (gap > 1) {\n                                                      shrink = 4096;\n                                                      while (gap > 1) {\n                                                        gap = Math.floor(gap / shrink);\n                                                        if (gap > 1) {\n                                                          shrink = "
+  ]
+}

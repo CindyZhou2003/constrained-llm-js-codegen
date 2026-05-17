@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_3_is_not_prime",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to identify non-prime numbers.\nfunction is_not_prime(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_3_is_not_prime.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_not_prime;\n  assert.deepEqual(candidate(2),false);\n  assert.deepEqual(candidate(10),true);\n  assert.deepEqual(candidate(35),true);\n  assert.deepEqual(candidate(37),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (n <= 1) return true; // 0 and 1 are not prime numbers\n  if (n <= 3) return false; // 2 and 3 are prime numbers\n\n  // Eliminate even numbers and multiples of 3\n  if (n % 2 === 0 || n % 3 === 0) return true;\n\n  // Check for factors from 5 to the square root of n\n  for (let i = 5; i * i <= n; i += 6) {\n    if (n % i === 0 || n % (i + 2) === 0) return true;\n  }\n\n  return false;\n}",
+    "\n  if (n <= 1) return true; // 0 and 1 are not prime numbers\n  if (n <= 3) return false; // 2 and 3 are prime numbers\n\n  // Eliminate even numbers and multiples of 3\n  if (n % 2 === 0 || n % 3 === 0) return true;\n\n  // Check for factors from 5 to the square root of n\n  for (let i = 5; i * i <= n; i += 6) {\n    if (n % i === 0 || n % (i + 2) === 0) return true;\n  }\n\n  return false;\n}",
+    "\n  if (n <= 1) return true; // 0 and 1 are not prime numbers\n  if (n <= 3) return false; // 2 and 3 are prime numbers\n\n  // Eliminate even numbers and multiples of 3\n  if (n % 2 === 0 || n % 3 === 0) return true;\n\n  // Check for factors from 5 to the square root of n\n  for (let i = 5; i * i <= n; i += 6) {\n    if (n % i === 0 || n % (i + 2) === 0) return true;\n  }\n\n  return false;\n}"
+  ]
+}

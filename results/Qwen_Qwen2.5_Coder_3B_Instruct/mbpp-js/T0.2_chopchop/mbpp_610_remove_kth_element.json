@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_610_remove_kth_element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function which takes an array and returns an array with the same elements, but the k'th element removed.\nfunction remove_kth_element(list1, L){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_610_remove_kth_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = remove_kth_element;\n  assert.deepEqual(candidate([1, 1, 2, 3, 4, 4, 5, 1], 3),[1, 1, 3, 4, 4, 5, 1]);\n  assert.deepEqual(candidate([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4], 4),[0, 0, 1, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]);\n  assert.deepEqual(candidate([10, 10, 15, 19, 18, 18, 17, 26, 26, 17, 18, 10], 5),[10, 10, 15, 19, 18, 17, 26, 26, 17, 18, 10]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (L < 1 || L > list1.length) {\n    return list1; // Return the original list if L is out of bounds\n  }\n  return list1.filter((_, index) => index  =a + b;\n  }\n  return result;\n}\n",
+    "\n  if (L < 1 || L > list1.length) {\n    throw new Error(\"L must be between 1 and the length of the list.\");\n  }\n  return list1.filter((_, index) => index  =Explain the purpose of the `remove_kth_element` function and how it works.\n\n\nThe `remove_kth_element` function is designed to remove the k'th element from an array. Here's a breakdown of its purpose and how it works:\n\n### Purpose:\nThe function's primary purpose is to take an array `list1` and an integer `L` as input. It then returns a new array that is identical to the original array but with the k'th element removed. The function ensures that the k'th element is within the valid range of indices for the array.\n\n### How it Works:\n1. **Input Validation**: The function first checks if `L` is within the valid range. The valid range is from 1 to the length of the array. If `L` is out of this range, the function throws an error.\n\n2. **Filtering the Array**: The function uses the `filter` method to create a new array. The `filter` method iterates over each element of the array and includes it in the new array only if the condition specified in the callback function is true.\n\n3. **Condition for Filtering**: The condition in the `filter` method is `index !== L - 1`. This condition ensures that the k'th element (where `L` is 1-based) is not included in the new array. The subtraction of 1 is because array indices are zero-based, but the function uses a 1-based index for the k'th element.\n\n4. **Return the Result**: The function returns the new array, which contains all elements from the original array except the k'th element.\n\n### Example:\nSuppose you have an array `[1, 2, 3, 4, 5]` and you want to remove the 3rd element (index 2, since arrays are zero-based). The function will return `[1, 2, 4, 5]`.\n\n### Usage:\n```javascript\nconst list1 = [1, 2, 3, 4, 5];\nconst L = 3;\nconst result = remove_kth_element(list1, L);",
+    "\n  if (L < 1 || L > list1.length) {\n    return list1; // Return the original list if L is out of bounds\n  }\n  return list1.slice(0, L - 1).concat(list1.slice(L));\n}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_576_is_Sub_Array",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array is sublist of another or not.\nfunction is_Sub_Array(A, B){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_576_is_Sub_Array.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = is_Sub_Array;\n  assert.deepEqual(candidate([1, 4, 3, 5], [1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 1], [1, 2, 1]),true);\n  assert.deepEqual(candidate([1, 0, 2, 2], [2, 2, 0]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Write your code here\n  let result = false;\n  for (let i = 0; i < A.length; i++) {\n    if (A[i] === B[0]) {\n      let j = 0;\n      while (j < B.length && A[i + j] === B[j]) {\n        j++;\n      }\n      if (j === B.length) {\n        result = true;\n      }\n    }\n  }\n  return result;\n}\nExplanation:\nThe function is_Sub_Array takes two arrays A and B as input and returns true if B is a sublist of A, and false otherwise.\nThe function iterates over each element of A and checks if it is equal to the first element of B. If it is, it then iterates over the remaining elements of B and checks if they are equal to the next element of A. If all elements of B are found in A, the function returns true. Otherwise, it returns false.\nSample Input:\nA = [1, 2, 3, 4, 5]\nB = [1, 2, 3]\nSample Output:\ntrue\nExplanation:\nThe function is_Sub_Array(A, B) is called with A = [1, 2, 3, 4, 5] and B = [1, 2, 3]. The function iterates over each element of A and checks if it is equal to the first element of B. Since 1 is equal to 1, the function iterates over the remaining elements of B and checks if they are equal to the next element of A. Since 2 is equal to 2, the function iterates over the remaining elements of B and checks if they are equal to the next element of A. Since 3 is equal to 3, the function iterates over the remaining elements of B and checks if they are equal to the next element of A. Since 4 is equal to 4, the function iterates over the remaining elements of B and checks if they are equal to the next element of A. Since 5 is equal to 5, the function iterates over the remaining elements of B and checks if they are equal to the next element of A. Since all elements of B are found in A, the function returns true. Therefore, the output of the function is true.\nSample Input:\nA = [1, 2, 3, 4, 5]\nB = [1, 2,"
+  ]
+}

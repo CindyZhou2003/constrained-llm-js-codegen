@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_783_rgb_to_hsv",
+  "language": "js",
+  "prompt": "//Write a function to convert rgb color to hsv color. https://www.geeksforgeeks.org/program-change-rgb-color-model-hsv-color-model/\nfunction rgb_to_hsv(r, g, b){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_783_rgb_to_hsv.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = rgb_to_hsv;\n  assert.deepEqual(candidate(255, 255, 255),[0.0, 0.0, 100.0]);\n  assert.deepEqual(candidate(0, 215, 0),[120.0, 100.0, 84.31372549019608]);\n  assert.deepEqual(candidate(10, 215, 110),[149.26829268292684, 95.34883720930233, 84.31372549019608]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  // Normalize RGB values to the range [0, 1]\n  r /= 255;\n  g /= 255;\n  b /= 255;\n\n  // Find the minimum and maximum values\n  const min = Math.min(r, g, b);\n  const max = Math.max(r, g, b);\n\n  // Calculate the value (V)\n  const v = max;\n\n  // Calculate the difference between the maximum and minimum values\n  const delta = max - min;\n\n  // If the maximum value is 0, the color is grayscale\n  if (delta === 0) {\n    return { h: 0, s: 0, v: v };\n  }\n\n  // Calculate the saturation (S)\n  const s = delta / max;\n\n  // Calculate the hue (H)\n  let h;\n  if (max === r) {\n    h = ((g - b) / delta) % 6;\n  } else if (max === g) {\n    h = (b - r) / delta + 2;\n  } else {\n    h = (r - g) / delta + 4;\n  }\n\n  // Convert hue from [0, 6) to [0, 360)\n  h *= 60;\n\n  // Return the HSV values\n  return { h, s, v };\n}",
+    "\n    // Normalize RGB values to the range [0, 1]\n    r /= 255;\n    g /= 255;\n    b /= 255;\n\n    // Find the minimum and maximum values\n    let min = Math.min(r, g, b);\n    let max = Math.max(r, g, b);\n\n    // Calculate the value\n    let v = max;\n\n    // Calculate the saturation\n    let s = max === 0 ? 0 : (max - min) / max;\n\n    // Calculate the hue\n    let h = 0;\n    if (max === min) {\n        h = 0; // achromatic\n    } else {\n        switch (max) {\n            case r:\n                h = (60 * ((g - b) / (max - min))) + 360;\n                break;\n            case g:\n                h = (60 * ((b - r) / (max - min))) + 120;\n                break;\n            case b:\n                h = (60 * ((r - g) / (max - min))) + 240;\n                break;\n        }\n    }\n\n    // Return the HSV values as an array\n    return [h, s, v];\n}",
+    "\n  // Normalize RGB values to the range [0, 1]\n  r /= 255;\n  g /= 255;\n  b /= 255;\n\n  // Find the maximum and minimum values\n  let max = Math.max(r, g, b);\n  let min = Math.min(r, g, b);\n\n  // Calculate the value (V)\n  let v = max;\n\n  // Calculate the difference between max and min\n  let diff = max - min;\n\n  // If the max and min are the same, the color is grayscale\n  if (diff === 0) {\n    return { h: 0, s: 0, v: v };\n  }\n\n  // Calculate the saturation (S)\n  let s = diff / max;\n\n  // Calculate the hue (H)\n  let h;\n  if (max === r) {\n    h = (60 * ((g - b) / diff) + 360) % 360;\n  } else if (max === g) {\n    h = (60 * ((b - r) / diff) + 120) % 360;\n  } else if (max === b) {\n    h = (60 * ((r - g) / diff) + 240) % 360;\n  }\n\n  // Return the HSV values\n  return { h, s, v };\n}"
+  ]
+}

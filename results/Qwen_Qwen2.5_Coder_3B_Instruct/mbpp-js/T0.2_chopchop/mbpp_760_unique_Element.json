@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_760_unique_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to check whether an array of numbers contains only one distinct element or not.\nfunction unique_Element(arr){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_760_unique_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = unique_Element;\n  assert.deepEqual(candidate([1, 1, 1]),true);\n  assert.deepEqual(candidate([1, 2, 1, 2]),false);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5]),false);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return arr.length === 1 || arr.every((value, index) => value =They are not equal, so the function returns false.",
+    "\n  return arr.length === 1 || arr.every((value, index) => value  =Look at the code snippet provided. It defines a function `unique_Element` that takes an array `arr` as an argument. The function checks if the array has only one distinct element by comparing the length of the array to 1 or if every element in the array is equal to the first element. If either condition is true, the function returns `true`, indicating that the array contains only one distinct element. Otherwise, it returns `false`.",
+    "\n  return arr.length === 1 || arr.every((element, index) => element =\u6211\u60f3\u5728JavaScript\u4e2d\u5b9e\u73b0\u4e00\u4e2a\u51fd\u6570\uff0c\u8be5\u51fd\u6570\u63a5\u53d7\u4e00\u4e2a\u5b57\u7b26\u4e32\u4f5c\u4e3a\u53c2\u6570\uff0c\u5e76\u8fd4\u56de\u4e00\u4e2a\u5e03\u5c14\u503c\uff0c\u8868\u793a\u8be5\u5b57\u7b26\u4e32\u662f\u5426\u4e3a\u56de\u6587\u3002\u56de\u6587\u662f\u6307\u6b63\u8bfb\u548c\u53cd\u8bfb\u90fd\u76f8\u540c\u7684\u5b57\u7b26\u4e32\u3002\u8bf7\u63d0\u4f9b\u4e00\u4e2a\u5b9e\u73b0\u8be5\u529f\u80fd\u7684\u51fd\u6570\u3002"
+  ]
+}

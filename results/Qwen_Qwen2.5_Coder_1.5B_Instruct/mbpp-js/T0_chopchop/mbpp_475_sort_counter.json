@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_475_sort_counter",
+  "language": "js",
+  "prompt": "//Write a function to sort an object by value.\nfunction sort_counter(dict1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_475_sort_counter.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_counter;\n  assert.deepEqual(candidate({\"Math\": 81, \"Physics\": 83, \"Chemistry\": 87}),[[\"Chemistry\", 87], [\"Physics\", 83], [\"Math\", 81]]);\n  assert.deepEqual(candidate({\"Math\": 400, \"Physics\": 300, \"Chemistry\": 250}),[[\"Math\", 400], [\"Physics\", 300], [\"Chemistry\", 250]]);\n  assert.deepEqual(candidate({\"Math\": 900, \"Physics\": 1000, \"Chemistry\": 1250}),[[\"Chemistry\", 1250], [\"Physics\", 1000], [\"Math\", 900]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return Object.keys(dict1).sort((a, b) => dict1[b] - dict1[a]).reduce((acc, key) => {\n        acc(key) \n        // Add your code here\n        // Example: acc[key] = dict1[key];\n        // acc[key] = dict1[key] * 2;\n        // acc[key] = dict1[key] + 1;\n        // acc[key] = dict1[key] - 1;\n        // acc[key] = dict1[key] / 2;\n        // acc[key] = dict1[key] % 2;\n        // acc[key] = dict1[key] ** 2;\n        // acc[key] = dict1[key] ** 3;\n        // acc[key] = dict1[key] ** 4;\n        // acc[key] = dict1[key] ** 5;\n        // acc[key] = dict1[key] ** 6;\n        // acc[key] = dict1[key] ** 7;\n        // acc[key] = dict1[key] ** 8;\n        // acc[key] = dict1[key] ** 9;\n        // acc[key] = dict1[key] ** 10;\n        // acc[key] = dict1[key] ** 11;\n        // acc[key] = dict1[key] ** 12;\n        // acc[key] = dict1[key] ** 13;\n        // acc[key] = dict1[key] ** 14;\n        // acc[key] = dict1[key] ** 15;\n        // acc[key] = dict1[key] ** 16;\n        // acc[key] = dict1[key] ** 17;\n        // acc[key] = dict1[key] ** 18;\n        // acc[key] = dict1[key] ** 19;\n        // acc[key] = dict1[key] ** 20;\n        // acc[key] = dict1[key] ** 21;\n        // acc[key] = dict1[key] ** 22;\n        // acc[key] = dict1[key] ** 23;\n        // acc[key] = dict1[key] ** 24;\n        // acc[key] = dict1[key] ** 25;\n        // acc[key] = dict1[key] ** 26;\n        // acc[key] = dict1[key] ** 27;\n        // acc[key"
+  ]
+}

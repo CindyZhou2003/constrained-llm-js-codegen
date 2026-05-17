@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_616_tuple_modulo",
+  "language": "js",
+  "prompt": "//Write a function which takes two tuples of the same length and performs the element wise modulo.\nfunction tuple_modulo(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_616_tuple_modulo.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = tuple_modulo;\n  assert.deepEqual(candidate([10, 4, 5, 6], [5, 6, 7, 5]),[0, 4, 5, 1]);\n  assert.deepEqual(candidate([11, 5, 6, 7], [6, 7, 8, 6]),[5, 5, 6, 1]);\n  assert.deepEqual(candidate([12, 6, 7, 8], [7, 8, 9, 7]),[5, 6, 7, 1]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    // Check if both tuples have the same length\n    if (test_tup1.length !== test_tup2.length) {\n        throw new Error(\"Both tuples must have the same length\");\n    }\n\n    // Perform element-wise modulo operation\n    const result = test_tup1.map((element, index) => element //test_tup2[index] % 1);\n\n    // Return the result as a tuple\n    // In JavaScript, tuples are not a native type, so we return an array\n    // If you want to return a tuple, you would need to use a library or define a custom tuple type\n    return result;\n}",
+    "\n    return test_tup1.map((element, index) => element //test_tup2[index] % 1);\n  // This function takes two tuples (arrays) of the same length and returns a new tuple\n  // where each element is the result of the element-wise modulo operation.\n  // The modulo operation is performed using the division and modulus operators.\n  // The result is rounded to the nearest integer using the % operator.\n  // The function uses the map method to apply the modulo operation to each element\n  // of the input tuples.\n  // The map method returns a new array containing the results of the modulo operation.\n  // The function returns this new array.\n  // Example usage:\n  // tuple_modulo([10, 20, 30], [3, 4, 5]) returns [1, 0, 0]\n  // tuple_modulo([5, 10, 15], [2, 5, 10]) returns [1, 0, 0]\n  // tuple_modulo([7, 14, 21], [3, 6, 9]) returns [1, 0, 0]\n  // tuple_modulo([8, 16, 24], [4, 8, 12]) returns [0, 0, 0]\n  // tuple_modulo([9, 18, 27], [3, 6, 9]) returns [0, 0, 0]\n  // tuple_modulo([11, 22, 33], [4, 8, 12]) returns [3, 6, 9]\n  // tuple_modulo([13, 26, 39], [5, 10, 15]) returns [3, 6, 9]\n  // tuple_modulo([17, 34, 51], [6, 12, 18]) returns [5, 10, 15]\n  // tuple_modulo([19, 38, 57], [7, 14, 21]) returns [5, 10, 15]\n  // tuple_modulo([23, 46, 69], [8, 16, 24]) returns [7, 1",
+    "\n    // Check if both tuples have the same length\n    if (test_tup1.length !== test_tup2.length) {\n        throw new Error(\"Tuples must have the same length\");\n    }\n\n    // Perform element-wise modulo operation\n    const result = test_tup1.map((element, index) => element //test_tup2[index]);\n\n    // Return the result as a tuple\n    // In JavaScript, tuples are not a native type, so we return an array\n    // If you want to maintain a tuple-like structure, you can use a library like Immutable.js\n    return result;\n}"
+  ]
+}

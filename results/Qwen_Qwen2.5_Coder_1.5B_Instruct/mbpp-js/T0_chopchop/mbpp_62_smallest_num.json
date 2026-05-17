@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_62_smallest_num",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find smallest number in an array.\nfunction smallest_num(xs){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_62_smallest_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = smallest_num;\n  assert.deepEqual(candidate([10, 20, 1, 45, 99]),1);\n  assert.deepEqual(candidate([1, 2, 3]),1);\n  assert.deepEqual(candidate([45, 46, 50, 60]),45);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return Math.min(...xs);\n}"
+  ]
+}

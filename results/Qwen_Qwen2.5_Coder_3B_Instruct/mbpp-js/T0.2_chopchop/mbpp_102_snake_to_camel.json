@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_102_snake_to_camel",
+  "language": "js",
+  "prompt": "//Write a function to convert a snake case string to camel case string.\nfunction snake_to_camel(word){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_102_snake_to_camel.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = snake_to_camel;\n  assert.deepEqual(candidate(\"python_program\"),\"PythonProgram\");\n  assert.deepEqual(candidate(\"python_language\"),\"PythonLanguage\");\n  assert.deepEqual(candidate(\"programming_language\"),\"ProgrammingLanguage\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  return word.replace(/_([a-z])/g, (match, char) => chartoUpperCase\n  // Split the word by underscores\n  // Capitalize the first letter of each word after an underscore\n  // Join the words back together without underscores\n  // Return the resulting camel case string\n  // Example usage:\n  // console.log(snake_to_camel(\"hello_world\")); // Output: \"helloWorld\"\n  // console.log(snake_to_camel(\"this_is_a_snake_case_string\")); // Output: \"thisIsASnakeCaseString\"\n  // console.log(snake_to_camel(\"convert_this_to_camel\")); // Output: \"convertThisToCamel\"\n  // console.log(snake_to_camel(\"singleword\")); // Output: \"singleword\"\n  // console.log(snake_to_camel(\"\")); // Output: \"\"\n  // console.log(snake_to_camel(\"_leading_underscore\")); // Output: \"_leadingUnderscore\"\n  // console.log(snake_to_camel(\"trailing_underscore_\")); // Output: \"trailingUnderscore_\"\n  // console.log(snake_to_camel(\"multiple__double__underscores\")); // Output: \"multipleDoubleUnderscores\"\n  // console.log(snake_to_camel(\"mixed__Case__With__Underscores\")); // Output: \"mixedCaseWithUnderscores\"\n  // console.log(snake_to_camel(\"123numbers_in_snake_case\")); // Output: \"123numbersInSnakeCase\"\n  // console.log(snake_to_camel(\"snake_case_with_numbers123\")); // Output: \"snakeCaseWithNumbers123\"\n  // console.log(snake_to_camel(\"no_underscores\")); // Output: \"noUnderscores\"\n  // console.log(snake_to_camel(\"all_uppercase\")); // Output: \"allUppercase\"\n  // console.log(snake_to_camel(\"all_lowercase\")); // Output: \"allLowercase\"\n  // console.log(snake_to_camel(\"mixedCaseWithNumbers123\")); // Output: \"mixedCaseWithNumbers123\"\n  // console.log(snake_to_camel(\"mixedCaseWithNumbers123\")); // Output: \"mixedCaseWithNumbers123\"\n  // console.log(snake_to_camel(\"mixedCaseWithNumbers123\")); // Output: \"mixedCaseWithNumbers123\"\n  // console.log(sn",
+    "\n  return word.replace(/_([a-z])/g, function(match, group) {\n    return group.toUpperCase();\n  });\n}",
+    "\n  return word.replace(/_([a-z])/g, function(match, char) {\n    return char.toUpperCase();\n  });\n}"
+  ]
+}

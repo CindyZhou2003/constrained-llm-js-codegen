@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_397_median_numbers",
+  "language": "js",
+  "prompt": "//Write a function to find the median of three numbers.\nfunction median_numbers(a, b, c){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_397_median_numbers.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = median_numbers;\n  assert.deepEqual(candidate(25, 55, 65),55.0);\n  assert.deepEqual(candidate(20, 10, 30),20.0);\n  assert.deepEqual(candidate(15, 45, 75),45.0);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    return [a, b, c].sort((x, y) => x \u00a0=>\n        x - y\n     // Sort the array in ascending order\n    // Return the middle element\n    // If the array has an odd number of elements, return the middle element\n    // If the array has an even number of elements, return the average of the two middle elements\n    // If the array has only one element, return that element\n    // If the array has two elements, return the average of the two elements\n    // If the array has three elements, return the average of the two middle elements\n    // If the array has four elements, return the average of the two middle elements\n    // If the array has five elements, return the average of the two middle elements\n    // If the array has six elements, return the average of the two middle elements\n    // If the array has seven elements, return the average of the two middle elements\n    // If the array has eight elements, return the average of the two middle elements\n    // If the array has nine elements, return the average of the two middle elements\n    // If the array has ten elements, return the average of the two middle elements\n    // If the array has eleven elements, return the average of the two middle elements\n    // If the array has twelve elements, return the average of the two middle elements\n    // If the array has thirteen elements, return the average of the two middle elements\n    // If the array has fourteen elements, return the average of the two middle elements\n    // If the array has fifteen elements, return the average of the two middle elements\n    // If the array has sixteen elements, return the average of the two middle elements\n    // If the array has seventeen elements, return the average of the two middle elements\n    // If the array has eighteen elements, return the average of the two middle elements\n    // If the array has nineteen elements, return the average of the two middle elements\n    // If the array has twenty elements, return the average of the two middle elements\n    // If the array has twenty-one elements, return the average of the two middle elements\n    // If the array has twenty-two elements, return the average of the two middle elements\n    // If the array has twenty-three elements, return the average of the two middle elements\n    // If the array has twenty-four elements, return the average of the two middle elements"
+  ]
+}

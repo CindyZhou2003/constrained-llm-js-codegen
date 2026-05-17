@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_256_count_Primes_nums",
+  "language": "js",
+  "prompt": "//Write a JavaScript function that takes in a non-negative number and returns the number of prime numbers less than the given non-negative number.\nfunction count_Primes_nums(n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_256_count_Primes_nums.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = count_Primes_nums;\n  assert.deepEqual(candidate(5),2);\n  assert.deepEqual(candidate(10),4);\n  assert.deepEqual(candidate(100),25);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n  if (n <= 2) return 0;\n\n  let count = 0;\n  for (let i = 2; i < n; i++) {\n    if (isPrimeNums2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
+    "\n  if (n <= 2) return 0;\n\n  let count = 0;\n  for (let i = 2; i < n; i++) {\n    if (is_Prime_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers_Numbers",
+    "\n  if (n <= 2) return 0;\n\n  let count = 0;\n  for (let i = 2; i < n; i++) {\n    if (isPrimeNums23456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899) {\n      count++;\n    }\n  }\n  return count;\n}\n"
+  ]
+}

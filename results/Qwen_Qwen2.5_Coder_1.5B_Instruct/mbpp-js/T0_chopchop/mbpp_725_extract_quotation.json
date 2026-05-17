@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_725_extract_quotation",
+  "language": "js",
+  "prompt": "//Write a function to extract values between quotation marks \" \" of the given string.\nfunction extract_quotation(text1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_725_extract_quotation.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = extract_quotation;\n  assert.deepEqual(candidate(\"Cortex \"A53\" Based \"multi\" tasking \"Processor\"\"),[\"A53\", \"multi\", \"Processor\"]);\n  assert.deepEqual(candidate(\"Cast your \"favorite\" entertainment \"apps\"\"),[\"favorite\", \"apps\"]);\n  assert.deepEqual(candidate(\"Watch content \"4k Ultra HD\" resolution with \"HDR 10\" Support\"),[\"4k Ultra HD\", \"HDR 10\"]);\n  assert.deepEqual(candidate(\"Watch content '4k Ultra HD' resolution with 'HDR 10' Support\"),[]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "\n    let result = [];\n    let start = 0;\n    let end = 0;\n    while (end < text1.length) {\n        if (text1[end] === '\"') {\n            if (start === end) {\n                start = end + 1;\n            } else {\n                result.push(text1.substring(start, end));\n                start = end + 1;\n            }\n        }\n        end++;\n    }\n    return result;\n}"
+  ]
+}

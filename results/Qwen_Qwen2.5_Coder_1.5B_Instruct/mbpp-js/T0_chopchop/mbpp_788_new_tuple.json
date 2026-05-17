@@ -1,0 +1,18 @@
+{
+  "name": "mbpp_788_new_tuple",
+  "language": "js",
+  "prompt": "//Write a function to create a new array from the given string and array.\nfunction new_tuple(test_list, test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_788_new_tuple.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = new_tuple;\n  assert.deepEqual(candidate([\"WEB\", \"is\"], \"best\"),[\"WEB\", \"is\", \"best\"]);\n  assert.deepEqual(candidate([\"We\", \"are\"], \"Developers\"),[\"We\", \"are\", \"Developers\"]);\n  assert.deepEqual(candidate([\"Part\", \"is\"], \"Wrong\"),[\"Part\", \"is\", \"Wrong\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "Murder"
+  ]
+}
