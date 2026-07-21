@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_251_insert_element",
+  "language": "js",
+  "prompt": "//Write a function that takes in an array and an element and inserts the element before each element in the array, and returns the resulting array.\nfunction insert_element(list, element){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_251_insert_element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = insert_element;\n  assert.deepEqual(candidate([\"Red\", \"Green\", \"Black\"], \"c\"),[\"c\", \"Red\", \"c\", \"Green\", \"c\", \"Black\"]);\n  assert.deepEqual(candidate([\"python\", \"java\"], \"program\"),[\"program\", \"python\", \"program\", \"java\"]);\n  assert.deepEqual(candidate([\"happy\", \"sad\"], \"laugh\"),[\"laugh\", \"happy\", \"laugh\", \"sad\"]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < list.length; i++){\n        result.push(element);\n        result.push(list[i]);\n    }\n    return result;\n}\n",
+    "    let result = [];\n    for(let i = 0; i < list.length; i++){\n        result.push(element);\n        result.push(list[i]);\n    }\n    return result;\n}",
+    "    let result = [];\n    for(let i = 0; i < list.length; i++){\n        result.push(element);\n        result.push(list[i]);\n    }\n    return result;\n}\n"
+  ]
+}

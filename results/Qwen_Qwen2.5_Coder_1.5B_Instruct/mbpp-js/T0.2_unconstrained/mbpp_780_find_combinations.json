@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_780_find_combinations",
+  "language": "js",
+  "prompt": "//Write a function to find the combinations of sums with tuples in the given array array. https://www.geeksforgeeks.org/JavaScript-combinations-of-sum-with-tuples-in-array-array/\nfunction find_combinations(test_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_780_find_combinations.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_combinations;\n  assert.deepEqual(candidate([[2, 4], [6, 7], [5, 1], [6, 10]]),[[8, 11], [7, 5], [8, 14], [11, 8], [12, 17], [11, 11]]);\n  assert.deepEqual(candidate([[3, 5], [7, 8], [6, 2], [7, 11]]),[[10, 13], [9, 7], [10, 16], [13, 10], [14, 19], [13, 13]]);\n  assert.deepEqual(candidate([[4, 6], [8, 9], [7, 3], [8, 12]]),[[12, 15], [11, 9], [12, 18], [15, 12], [16, 21], [15, 15]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    let len = test_list.length;\n    for(let i = 0; i < len; i++){\n        for(let j = i+1; j < len; j++){\n            for(let k = j+1; k < len; k++){\n                result.push([test_list[i], test_list[j], test_list[k]]);\n            }\n        }\n    }\n    return result;\n}\nlet test_list = [1, 2, 3, 4, 5];",
+    "    let result = [];\n    let len = test_list.length;\n    for(let i = 0; i < len; i++){\n        for(let j = i + 1; j < len; j++){\n            for(let k = j + 1; k < len; k++){\n                result.push([test_list[i], test_list[j], test_list[k]]);\n            }\n        }\n    }\n    return result;\n}\n\nlet test_list = [1, 2, 3, 4];",
+    "    let result = [];\n    let len = test_list.length;\n    for(let i=0;i<len;i++){\n        let temp = test_list[i];\n        let temp_result = [];\n        for(let j=0;j<len;j++){\n            if(j!=i){\n                temp_result.push(temp+test_list[j]);\n            }\n        }\n        result.push(temp_result);\n    }\n    return result;\n}\nlet test_list = [1,2,3];"
+  ]
+}

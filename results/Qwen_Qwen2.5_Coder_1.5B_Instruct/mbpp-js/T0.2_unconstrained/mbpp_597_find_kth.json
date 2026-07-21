@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_597_find_kth",
+  "language": "js",
+  "prompt": "//Write a function to find kth element from the given two sorted arrays.\nfunction find_kth(arr1, arr2, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_597_find_kth.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_kth;\n  assert.deepEqual(candidate([2, 3, 6, 7, 9], [1, 4, 8, 10], 5),6);\n  assert.deepEqual(candidate([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7),256);\n  assert.deepEqual(candidate([3, 4, 7, 8, 10], [2, 5, 9, 11], 6),8);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let i = 0;\n    let j = 0;\n    while(i < arr1.length && j < arr2.length){\n        if(arr1[i] < arr2[j]){\n            i++;\n        }else{\n            j++;\n        }\n        k--;\n        if(k == 0){\n            return arr1[i];\n        }\n    }\n    while(i < arr1.length){\n        k--;\n        if(k == 0){\n            return arr1[i];\n        }\n        i++;\n    }\n    while(j < arr2.length){\n        k--;\n        if(k == 0){\n            return arr2[j];\n        }\n        j++;\n    }\n}",
+    "    let i = 0;\n    let j = 0;\n    while(i < arr1.length && j < arr2.length){\n        if(arr1[i] < arr2[j]){\n            k--;\n            i++;\n        }else{\n            k--;\n            j++;\n        }\n    }\n    if(k == 0){\n        return arr1[i-1];\n    }else if(k == 1){\n        return arr2[j-1];\n    }else{\n        return -1;\n    }\n}\nlet arr1 = [1, 2, 3, 4, 5];\nlet arr2 = [1, 2, 3, 4, 5];\nlet k = 3;",
+    "    let i = 0, j = 0;\n    while(i < arr1.length && j < arr2.length){\n        if(arr1[i] < arr2[j]){\n            k--;\n            if(k == 0){\n                return arr1[i];\n            }\n            i++;\n        }\n        else{\n            k--;\n            if(k == 0){\n                return arr2[j];\n            }\n            j++;\n        }\n    }\n    while(i < arr1.length){\n        k--;\n        if(k == 0){\n            return arr1[i];\n        }\n        i++;\n    }\n    while(j < arr2.length){\n        k--;\n        if(k == 0){\n            return arr2[j];\n        }\n        j++;\n    }\n}"
+  ]
+}

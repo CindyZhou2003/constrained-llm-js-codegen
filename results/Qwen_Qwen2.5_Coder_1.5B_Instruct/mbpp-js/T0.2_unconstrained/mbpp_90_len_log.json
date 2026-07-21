@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_90_len_log",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find the length of the longest word.\nfunction len_log(list1){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_90_len_log.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = len_log;\n  assert.deepEqual(candidate([\"python\", \"PHP\", \"bigdata\"]),7);\n  assert.deepEqual(candidate([\"a\", \"ab\", \"abc\"]),3);\n  assert.deepEqual(candidate([\"small\", \"big\", \"tall\"]),5);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var max = list1[0].length;\n    for(var i = 1; i < list1.length; i++){\n        if(list1[i].length > max){\n            max = list1[i].length;\n        }\n    }\n    return max;\n}",
+    "    let max = 0;\n    for(let i = 0; i < list1.length; i++){\n        if(list1[i].length > max){\n            max = list1[i].length;\n        }\n    }\n    return max;\n}\nlet list1 = [\"hello\", \"world\", \"javascript\", \"programming\"];",
+    "    var len = 0;\n    for(var i=0;i<list1.length;i++){\n        if(list1[i].length > len){\n            len = list1[i].length;\n        }\n    }\n    return len;\n}\nvar list1 = [\"hello\", \"world\", \"javascript\", \"programming\"];"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_12_sort_matrix",
+  "language": "js",
+  "prompt": "//Write a function to sort a given matrix in ascending order according to the sum of its rows.\nfunction sort_matrix(M){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_12_sort_matrix.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_matrix;\n  assert.deepEqual(candidate([[1, 2, 3], [2, 4, 5], [1, 1, 1]]),[[1, 1, 1], [1, 2, 3], [2, 4, 5]]);\n  assert.deepEqual(candidate([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]),[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]);\n  assert.deepEqual(candidate([[5, 8, 9], [6, 4, 3], [2, 1, 4]]),[[2, 1, 4], [6, 4, 3], [5, 8, 9]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let n = M.length;\n    let m = M[0].length;\n    let sum = new Array(n).fill(0);\n    for(let i = 0; i < n; i++){\n        for(let j = 0; j < m; j++){\n            sum[i] += M[i][j];\n        }\n    }\n    let temp;\n    for(let i = 0; i < n; i++){\n        for(let j = i + 1; j < n; j++){\n            if(sum[i] > sum[j]){\n                temp = sum[i];\n                sum[i] = sum[j];\n                sum[j] = temp;\n                for(let k = 0; k < m; k++){\n                    temp = M[i][k];\n                    M[i][k] = M[j][k];\n                    M[j][k] = temp;\n                }\n            }\n        }\n    }\n    return M;\n}\nlet M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];",
+    "    for(let i=0;i<M.length;i++){\n        for(let j=0;j<M[i].length;j++){\n            for(let k=i+1;k<M.length;k++){\n                if(M[i][j]>M[k][j]){\n                    let temp=M[i][j];\n                    M[i][j]=M[k][j];\n                    M[k][j]=temp;\n                }\n            }\n        }\n    }\n    return M;\n}\nlet M=[[1,2,3],[4,5,6],[7,8,9]];",
+    "    //sort the rows of the matrix\n    M.sort(function(a,b){\n        return a.reduce(function(sum,el){\n            return sum+el;\n        },0)-b.reduce(function(sum,el){\n            return sum+el;\n        },0);\n    });\n    return M;\n}"
+  ]
+}

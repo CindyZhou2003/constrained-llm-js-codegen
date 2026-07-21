@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_619_move_num",
+  "language": "js",
+  "prompt": "//Write a function to move all the numbers to the end of the given string.\nfunction move_num(test_str){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_619_move_num.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = move_num;\n  assert.deepEqual(candidate(\"I1love143you55three3000thousand\"),\"Iloveyouthreethousand1143553000\");\n  assert.deepEqual(candidate(\"Avengers124Assemble\"),\"AvengersAssemble124\");\n  assert.deepEqual(candidate(\"Its11our12path13to14see15things16do17things\"),\"Itsourpathtoseethingsdothings11121314151617\");\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    var str = test_str.split('');\n    var num = [];\n    var non_num = [];\n    for(var i=0;i<str.length;i++){\n        if(str[i] >= '0' && str[i] <= '9'){\n            num.push(str[i]);\n        }\n        else{\n            non_num.push(str[i]);\n        }\n    }\n    var result = non_num.concat(num);\n    return result.join('');\n}",
+    "    var res = test_str.split('');\n    var num = [];\n    var non_num = [];\n    for(var i=0;i<res.length;i++){\n        if(res[i] >= '0' && res[i] <= '9'){\n            num.push(res[i]);\n        }else{\n            non_num.push(res[i]);\n        }\n    }\n    return num.concat(non_num);\n}",
+    "    let num_arr = [];\n    let non_num_arr = [];\n    for(let i = 0; i < test_str.length; i++){\n        if(!isNaN(test_str[i])){\n            num_arr.push(test_str[i]);\n        }else{\n            non_num_arr.push(test_str[i]);\n        }\n    }\n    return non_num_arr.concat(num_arr);\n}"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_429_and_tuples",
+  "language": "js",
+  "prompt": "//Write a function to extract the elementwise and tuples from the given two tuples.\nfunction and_tuples(test_tup1, test_tup2){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_429_and_tuples.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = and_tuples;\n  assert.deepEqual(candidate([10, 4, 6, 9], [5, 2, 3, 3]),[0, 0, 2, 1]);\n  assert.deepEqual(candidate([1, 2, 3, 4], [5, 6, 7, 8]),[1, 2, 3, 0]);\n  assert.deepEqual(candidate([8, 9, 11, 12], [7, 13, 14, 17]),[0, 9, 10, 0]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let result = [];\n    for(let i = 0; i < test_tup1.length; i++){\n        result.push([test_tup1[i], test_tup2[i]]);\n    }\n    return result;\n}\nlet test_tup1 = (1, 2, 3);\nlet test_tup2 = (4, 5, 6);",
+    "    return (test_tup1, test_tup2)\n}",
+    "    # Extracting the elementwise elements\n    elementwise = tuple(a for a, b in zip(test_tup1, test_tup2))\n    # Extracting the tuples\n    tuples = tuple((a, b) for a, b in zip(test_tup1, test_tup2))\n    return elementwise, tuples\n}\n# Test the function\ntest_tup1 = (1, 2, 3)\ntest_tup2 = (4, 5, 6)\nelementwise, tuples = and_tuples(test_tup1, test_tup2)\nprint(\"Elementwise:\", elementwise)\nprint(\"Tuples:\", tuples)\n```\n\nOutput:\n```\nElementwise: (1, 2, 3)\nTuples: ((1, 4), (2, 5), (3, 6))\n``` \n\nIn this code, the function `and_tuples` takes two tuples as input and returns two tuples. The first tuple contains the elementwise elements of the input tuples, and the second tuple contains the tuples formed by the elementwise elements of the input tuples. The function uses the `zip` function to iterate over the elements of the input tuples simultaneously and extract the elementwise elements and tuples. The `tuple` function is used to convert the results into tuples. The function is tested with two tuples `(1, 2, 3)` and `(4, 5, 6)`, and the output shows the elementwise and tuples extracted from the input tuples."
+  ]
+}

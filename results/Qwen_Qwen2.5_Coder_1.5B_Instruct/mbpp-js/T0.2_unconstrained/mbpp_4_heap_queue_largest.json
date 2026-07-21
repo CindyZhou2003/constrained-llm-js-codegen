@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_4_heap_queue_largest",
+  "language": "js",
+  "prompt": "//Write a function to find the n largest integers from a given array of numbers, returned in descending order.\nfunction heap_queue_largest(nums, n){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_4_heap_queue_largest.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = heap_queue_largest;\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 3),[85, 75, 65]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 2),[85, 75]);\n  assert.deepEqual(candidate([25, 35, 22, 85, 14, 65, 75, 22, 58], 5),[85, 75, 65, 58, 35]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    //create a max heap\n    let max_heap = new MaxHeap();\n    //add all numbers to the max heap\n    for(let i = 0; i < nums.length; i++){\n        max_heap.add(nums[i]);\n    }\n    //extract the n largest numbers from the max heap\n    let largest_nums = [];\n    for(let i = 0; i < n; i++){\n        largest_nums.push(max_heap.remove());\n    }\n    //return the largest numbers in descending order\n    return largest_nums.sort((a, b) => b - a);\n}",
+    "    let heap = [];\n    for(let i = 0; i < nums.length; i++){\n        heap.push(nums[i]);\n        heapify(heap, i);\n    }\n    let largest = [];\n    for(let i = 0; i < n; i++){\n        largest.push(heap[0]);\n        heap[0] = heap[heap.length - 1];\n        heap.pop();\n        heapify(heap, 0);\n    }\n    return largest;\n}",
+    "    let heap = new MaxHeap();\n    for(let i = 0; i < nums.length; i++){\n        heap.insert(nums[i]);\n    }\n    let result = [];\n    for(let i = 0; i < n; i++){\n        result.push(heap.extractMax());\n    }\n    return result;\n}\n\nclass MaxHeap {\n    constructor() {\n        this.heap = [];\n    }\n\n    insert(value) {\n        this.heap.push(value);\n        this.bubbleUp();\n    }\n\n    extractMax() {\n        if (this.heap.length === 0) {\n            throw new Error(\"Heap is empty\");\n        }\n        let max = this.heap[0];\n        this.heap[0] = this.heap[this.heap.length - 1];\n        this.heap.pop();\n        this.bubbleDown();\n        return max;\n    }\n\n    bubbleUp() {\n        let index = this.heap.length - 1;\n        while (index > 0) {\n            let parentIndex = Math.floor((index - 1) / 2);\n            if (this.heap[parentIndex] < this.heap[index]) {\n                [this.heap[parentIndex], this.heap[index]] = [this.heap[index], this.heap[parentIndex]];\n                index = parentIndex;\n            } else {\n                break;\n            }\n        }\n    }\n\n    bubbleDown() {\n        let index = 0;\n        while (index < this.heap.length) {\n            let leftChildIndex = 2 * index + 1;\n            let rightChildIndex = 2 * index + 2;\n            let largestIndex = index;\n\n            if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] > this.heap[largestIndex]) {\n                largestIndex = leftChildIndex;\n            }\n\n            if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largestIndex]) {\n                largestIndex = rightChildIndex;\n            }\n\n            if (largestIndex !== index) {\n                [this.heap[index], this.heap[largestIndex]] = [this.heap[largestIndex], this.heap[index]];\n                index = largestIndex;\n            } else {\n                break;\n            }\n        }\n    }\n}\n"
+  ]
+}

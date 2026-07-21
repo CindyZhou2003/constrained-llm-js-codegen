@@ -72,3 +72,9 @@ humaneval-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0.5,unconstrained,5,0.720496894409
 mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,1,0.40973971452560876,397,3,3,14290.5902
 mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0.2,syncode,3,0.49370277078085645,397,3,3,14290.5902
 humaneval-js,Qwen_Qwen2.5_Coder_3B_Instruct,0,itergen,1,0.6521739130434783,161,1,1,2716.4741
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0.2,unconstrained,1,0.5449202350965575,397,3,3,11205.3572
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0.2,unconstrained,3,0.6095717884130982,397,3,3,11205.3572
+mbpp-js,Qwen_Qwen2.5_Coder_0.5B,0,chopchop,1,0.34005037783375314,397,1,1,43839.7402
+mbpp-js,Qwen_Qwen2.5_Coder_1.5B_Instruct,0,chopchop,1,0.5214105793450882,397,1,1,23351.8847
+mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,chopchop,1,0.5432409739714527,397,3,3,86434.8959
+mbpp-js,Qwen_Qwen2.5_Coder_3B_Instruct,0.2,chopchop,3,0.6045340050377834,397,3,3,86434.8959

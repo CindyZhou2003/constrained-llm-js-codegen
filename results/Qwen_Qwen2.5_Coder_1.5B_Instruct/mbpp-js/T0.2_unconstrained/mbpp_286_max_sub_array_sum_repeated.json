@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_286_max_sub_array_sum_repeated",
+  "language": "js",
+  "prompt": "//Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times.\nfunction max_sub_array_sum_repeated(a, n, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_286_max_sub_array_sum_repeated.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = max_sub_array_sum_repeated;\n  assert.deepEqual(candidate([10, 20, -30, -1], 4, 3),30);\n  assert.deepEqual(candidate([-1, 10, 20], 3, 2),59);\n  assert.deepEqual(candidate([-1, -2, -3], 3, 3),-1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let max_sum = -Infinity;\n    let current_sum = 0;\n    for(let i = 0; i < n * k; i++){\n        current_sum += a[i % n];\n        max_sum = Math.max(max_sum, current_sum);\n        if(current_sum < 0){\n            current_sum = 0;\n        }\n    }\n    return max_sum;\n}\nlet a = [1, -2, 3, 1];\nlet n = 3;\nlet k = 2;",
+    "    let max_sum = 0;\n    let current_sum = 0;\n    for(let i = 0; i < n; i++){\n        current_sum += a[i];\n        if(current_sum > max_sum){\n            max_sum = current_sum;\n        }\n        if(current_sum < 0){\n            current_sum = 0;\n        }\n    }\n    return max_sum * k;\n}\nlet a = [1, 2, 3];\nlet n = a.length;\nlet k = 2;",
+    "    let max_sum = 0;\n    let current_sum = 0;\n    for(let i = 0; i < n; i++){\n        current_sum += a[i];\n        max_sum = Math.max(max_sum, current_sum);\n    }\n    let max_sum_repeated = 0;\n    for(let i = 0; i < n; i++){\n        max_sum_repeated += a[i] * k;\n    }\n    return Math.max(max_sum, max_sum_repeated);\n}\nlet a = [1, 2, 3];\nlet n = a.length;\nlet k = 2;"
+  ]
+}

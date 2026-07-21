@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_733_find_first_occurrence",
+  "language": "js",
+  "prompt": "//Write a function to find the index of the first occurrence of a given number in a sorted array.\nfunction find_first_occurrence(A, x){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_733_find_first_occurrence.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_first_occurrence;\n  assert.deepEqual(candidate([2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5),1);\n  assert.deepEqual(candidate([2, 3, 5, 5, 6, 6, 8, 9, 9, 9], 5),2);\n  assert.deepEqual(candidate([2, 4, 1, 5, 6, 6, 8, 9, 9, 9], 6),4);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n\n        if(A[mid] === x){\n            result = mid;\n            high = mid - 1; // Move left to find the first occurrence\n        } else if(A[mid] < x){\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    return result;\n}\n",
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n\n        if(A[mid] === x){\n            result = mid;\n            high = mid - 1; // Move left to find the first occurrence\n        } else if(A[mid] < x){\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    return result;\n}\n",
+    "    let low = 0;\n    let high = A.length - 1;\n    let result = -1;\n\n    while(low <= high){\n        let mid = Math.floor((low + high) / 2);\n\n        if(A[mid] === x){\n            result = mid;\n            high = mid - 1;\n        }else if(A[mid] < x){\n            low = mid + 1;\n        }else{\n            high = mid - 1;\n        }\n    }\n\n    return result;\n}\n"
+  ]
+}

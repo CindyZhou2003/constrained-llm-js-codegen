@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_644_reverse_Array_Upto_K",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to reverse an array upto a given position.\nfunction reverse_Array_Upto_K(input, k){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_644_reverse_Array_Upto_K.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = reverse_Array_Upto_K;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], 4),[4, 3, 2, 1, 5, 6]);\n  assert.deepEqual(candidate([4, 5, 6, 7], 2),[5, 4, 6, 7]);\n  assert.deepEqual(candidate([9, 8, 7, 6, 5], 3),[7, 8, 9, 6, 5]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let start = 0;\n    let end = k-1;\n    while(start < end){\n        let temp = input[start];\n        input[start] = input[end];\n        input[end] = temp;\n        start++;\n        end--;\n    }\n    return input;\n}",
+    "    let start = 0;\n    let end = k - 1;\n    while(start < end){\n        let temp = input[start];\n        input[start] = input[end];\n        input[end] = temp;\n        start++;\n        end--;\n    }\n    return input;\n}",
+    "    let reversed = input.slice(0, k).reverse();\n    let remaining = input.slice(k);\n    return reversed.concat(remaining);\n}\nlet input = [1, 2, 3, 4, 5];\nlet k = 3;"
+  ]
+}

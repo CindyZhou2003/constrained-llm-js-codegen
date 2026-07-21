@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_304_find_Element",
+  "language": "js",
+  "prompt": "//Write a JavaScript function to find element at a given index after number of rotations.\nfunction find_Element(arr, ranges, rotations, index){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_304_find_Element.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = find_Element;\n  assert.deepEqual(candidate([1, 2, 3, 4, 5], [[0, 2], [0, 3]], 2, 1),3);\n  assert.deepEqual(candidate([1, 2, 3, 4], [[0, 1], [0, 2]], 1, 2),3);\n  assert.deepEqual(candidate([1, 2, 3, 4, 5, 6], [[0, 1], [0, 2]], 1, 1),1);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    let rotatedArray = arr.slice(rotations).concat(arr.slice(0, rotations));\n    let rotatedIndex = rotatedArray.indexOf(arr[index]);\n    return rotatedIndex;\n}\nlet arr = [1, 2, 3, 4, 5];\nlet ranges = [0, 4];\nlet rotations = 2;\nlet index = 3;",
+    "    let start = ranges[0];\n    let end = ranges[1];\n    let rotatedArray = arr.slice(start, end+1).concat(arr.slice(0, start));\n    for(let i = 0; i < rotations; i++){\n        let temp = rotatedArray[0];\n        for(let j = 0; j < rotatedArray.length-1; j++){\n            rotatedArray[j] = rotatedArray[j+1];\n        }\n        rotatedArray[rotatedArray.length-1] = temp;\n    }\n    return rotatedArray[index];\n}\nlet arr = [1, 2, 3, 4, 5, 6, 7];\nlet ranges = [0, 6];\nlet rotations = 3;\nlet index = 4;",
+    "    var start = ranges[0];\n    var end = ranges[1];\n    var res = 0;\n    for(var i = 0; i < rotations; i++){\n        if(arr[start] <= arr[end]){\n            if(index >= start && index <= end){\n                res = arr[index];\n                break;\n            }\n            else{\n                start++;\n                end--;\n            }\n        }\n        else{\n            if(index >= end && index <= start){\n                res = arr[index];\n                break;\n            }\n            else{\n                start--;\n                end++;\n            }\n        }\n    }\n    return res;\n}\nvar arr = [1, 2, 3, 4, 5];\nvar ranges = [0, 4];\nvar rotations = 2;\nvar index = 3;"
+  ]
+}

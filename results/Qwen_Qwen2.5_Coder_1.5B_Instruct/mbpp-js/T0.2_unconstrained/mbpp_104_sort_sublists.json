@@ -1,0 +1,20 @@
+{
+  "name": "mbpp_104_sort_sublists",
+  "language": "js",
+  "prompt": "//Write a function to sort each sublist of strings in a given array of lists.\nfunction sort_sublists(input_list){\n",
+  "doctests": "transform",
+  "original": "D:\\code\\constrained-llm-js-codegen\\benchmark\\MultiPL-E\\datasets\\..\\datasets\\mbpp-typed\\mbpp_104_sort_sublists.py",
+  "prompt_terminology": "reworded",
+  "tests": "const assert = require('node:assert');\n\n\nfunction test() {\n  let candidate = sort_sublists;\n  assert.deepEqual(candidate([[\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]]),[[\"green\", \"orange\"], [\"black\", \"white\"], [\"black\", \"orange\", \"white\"]]);\n  assert.deepEqual(candidate([[\" red \", \"green\"], [\"blue \", \" black\"], [\" orange\", \"brown\"]]),[[\" red \", \"green\"], [\" black\", \"blue \"], [\" orange\", \"brown\"]]);\n  assert.deepEqual(candidate([[\"zilver\", \"gold\"], [\"magnesium\", \"aluminium\"], [\"steel\", \"bronze\"]]),[[\"gold\", \"zilver\"], [\"aluminium\", \"magnesium\"], [\"bronze\", \"steel\"]]);\n}\n\ntest();",
+  "stop_tokens": [
+    "\nfunction ",
+    "\n/*",
+    "\n//",
+    "\nconsole.log"
+  ],
+  "completions": [
+    "    for(let i=0; i<input_list.length; i++){\n        input_list[i].sort();\n    }\n    return input_list;\n}\nlet input_list = [[\"banana\", \"apple\", \"cherry\"], [\"dog\", \"cat\", \"elephant\"], [\"zebra\", \"giraffe\", \"hippo\"]];\nlet sorted_list = sort_sublists(input_list);",
+    "    for(let i=0;i<input_list.length;i++){\n        input_list[i].sort();\n    }\n    return input_list;\n}\nlet input_list = [[\"banana\", \"apple\", \"cherry\"], [\"dog\", \"cat\", \"bird\"], [\"zebra\", \"elephant\", \"giraffe\"]];\nlet sorted_list = sort_sublists(input_list);",
+    "    for(let i=0;i<input_list.length;i++){\n        input_list[i].sort();\n    }\n    return input_list;\n}\nlet input_list = [[\"banana\", \"apple\", \"cherry\"], [\"dog\", \"cat\", \"bird\"], [\"zebra\", \"elephant\", \"giraffe\"]];\nlet sorted_list = sort_sublists(input_list);"
+  ]
+}

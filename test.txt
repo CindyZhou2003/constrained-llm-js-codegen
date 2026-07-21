@@ -1,0 +1,59 @@
+cd benchmark/MultiPL-E
+docker run --rm --network none -v "D:/code/constrained-llm-js-codegen/results/huamaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.2-unconstrained:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
+docker run --rm --network none -v "D:/code/constrained-llm-js-codegen/results/mbpp-js-microsoft_phi_2-0.2-syncode:/tutorial:rw" multipl-e-eval --dir /tutorial --output-dir /tutorial --recursive
+
+
+python pass_k.py D:\code\constrained-llm-js-codegen\results\huamaneval-js-Qwen_Qwen2.5_1.5B_Instruct-0.2-unconstrained
+
+python pass_k.py D:\code\constrained-llm-js-codegen\results\mbpp-js-microsoft_phi_2-0.2-syncode
+python pass_k.py D:\code\constrained-llm-js-codegen\results\mbpp-js-microsoft_phi_2-0.2-unconstrained
+python pass_k.py D:\code\constrained-llm-js-codegen\results\mbpp-js-microsoft_phi_2-0.0-syncode
+python pass_k.py D:\code\constrained-llm-js-codegen\results\mbpp-js-microsoft_phi_2-0.0-unconstrained
+
+python pass_k.py D:\code\constrained-llm-js-codegen\results\humaneval-js-microsoft_phi_2-0.2-syncode
+
+python pass_k.py D:\code\constrained-llm-js-codegen\results\mbpp-js-microsoft_phi_2-0.0-itergen
+
+pip install -U hf
+hf download seal-research/OmniCode --repo-type dataset --local-dir data
+
+
+python runjs.py --model Qwen/Qwen2.5-Coder-1.5B-Instruct --timeout 240 --temperature 0 --input-jsonl ../../datasets/test.jsonl --output-jsonl test_generations.jsonl --limit 2
+
+cd generators/chopchop
+python -m experiments.typescript.scripts.run --models llama7b --temps 0.01 --checkers grammar --output D:\code\constrained-llm-js-codegen\results\ts_chopchop_test
+
+python run_js_chopchop.py --model llama7b --grammar generators/grammars/javascript_chopchop.lark --input datasets/js_prompts_mbpp_ts_subset.jsonl --output results/js_chopchop_test --temp 0.01
+
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-0.5B --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode syncode --grammar generators/grammars/javascript.lark --output_base results --temperature 0.2 -n 3
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-1.5B-Instruct --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode unconstrained --output_base results
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-1.5B-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode unconstrained --output_base results
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-1.5B-Instruct --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode syncode --grammar generators/grammars/javascript.lark --output_base results
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode unconstrained --output_base results --temperature 0.2 -n 3
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode syncode --grammar generators/grammars/javascript.lark --output_base results --temperature 0.2 -n 3
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_humaneval.jsonl --dataset_name humaneval --mode syncode --grammar generators/grammars/javascript.lark --output_base results --temperature 0.5 -n 5
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode unconstrained --output_base results
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode syncode --grammar generators/grammars/javascript.lark --output_base results --temperature 0.2 -n 3
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode chopchop --grammar generators/grammars/javascript_chopchop.lark --pruner basic --output_base results
+
+
+python code_generator.py evaluate --model deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode unconstrained --temperature 0.01 --output_base results
+python code_generator.py evaluate --model codellama/CodeLlama-7b-Instruct-hf --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode chopchop --grammar generators/grammars/javascript_chopchop.lark --pruner basic --temperature 0.01 --output_base results
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-14B-Instruct --input_file datasets/js_prompts_mbpp.jsonl --dataset_name mbpp --mode unconstrained --temperature 0.01 --output_base results --num_completions 1
+python code_generator.py evaluate --model Qwen/Qwen2.5-Coder-3B-Instruct --input_file datasets/test.jsonl --dataset_name mbpp --mode itergen --grammar generators/grammars/javascript.lark --temperature 0.01 --output_base test_results --num_completions 1
+
+python code_generator.py --input_dir results/mbpp-js-codellama_CodeLlama_7b_Instruct_hf-0.01-chopchop --benchmark multipl-e
+
+models
+microsoft/Phi-4-mini-instruct
+Qwen/Qwen2.5-1.5B-Instruct
+Qwen/Qwen3-4B-Instruct
+Qwen/Qwen2.5-Coder-7B-Instruct
+google/gemma-3-4b-it
+deepseek-ai/deepseek-coder-6.7b-instruct
+deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+bigcode/starcoder2-7b
+
+codellama/CodeLlama-7b-Instruct-hf
+codellama/CodeLlama-13b-hf
+deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct
